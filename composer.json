@@ -16,9 +16,10 @@
         "symfony/yaml": "^4.0"
     },
     "require-dev": {
+        "gianluca78/merlo-crud-bundle": "dev-master",
         "symfony/dotenv": "^4.0",
         "symfony/profiler-pack": "^1.0",
-        "gianluca78/merlo-crud-bundle": "dev-master"
+        "symfony/web-server-bundle": "^4.0"
     },
     "repositories" : [{
         "type" : "vcs",
