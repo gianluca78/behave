@@ -1,0 +1,14 @@
+
+###> symfony/framework-bundle ###
+.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+.env.dist
+.idea/
+composer.lock
+composer.phar
+symfony.lock
+*~
