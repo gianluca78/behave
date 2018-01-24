@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="record_inserted_successfully">
+                <source>Record inserted successfully</source>
+                <target>Record inserted successfully</target>
+            </trans-unit>
+            <trans-unit id="record_edited_successfully">
+                <source>Record edited successfully</source>
+                <target>Record edited successfully</target>
+            </trans-unit>
+            <trans-unit id="record_deleted_successfully">
+                <source>Record deleted successfully</source>
+                <target>Record deleted successfully</target>
+            </trans-unit>
+            <trans-unit id="observation_new_title">
+                <source>Insert new observation</source>
+                <target>Insert new observation</target>
+            </trans-unit>
+            <trans-unit id="observation_edit_title">
+                <source>Edit observation</source>
+                <target>Edit observation</target>
+            </trans-unit>
+            <trans-unit id="observation_index_title">
+                <source>List of observations</source>
+                <target>List of observations</target>
+            </trans-unit>
+            <trans-unit id="edit">
+                <source>Edit</source>
+                <target>Edit</target>
+            </trans-unit>
+            <trans-unit id="new">
+                <source>New</source>
+                <target>New</target>
+            </trans-unit>
+            <trans-unit id="delete">
+                <source>Delete</source>
+                <target>Delete</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
