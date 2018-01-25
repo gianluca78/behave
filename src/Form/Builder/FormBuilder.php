@@ -65,9 +65,7 @@ class FormBuilder {
     private function addTextWidget(TextItem $item)
     {
         $textWidget = new TextWidget();
-        $textWidget->setId('item-' . $item->getId());
         $textWidget->setLabel($item->getLabel());
-        $textWidget->setName('item-' . $item->getId());
         $textWidget->setPlaceholder($item->getPlaceholder());
         $textWidget->setValue($item->getFieldValue());
 
@@ -77,9 +75,7 @@ class FormBuilder {
     private function addFrequencyWidget(FrequencyItem $item)
     {
         $frequencyWidget = new FrequencyWidget();
-        $frequencyWidget->setId('item-' . $item->getId());
         $frequencyWidget->setLabel($item->getLabel());
-        $frequencyWidget->setName('item-' . $item->getId());
         $frequencyWidget->setValue($item->getFieldValue());
         $frequencyWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
 

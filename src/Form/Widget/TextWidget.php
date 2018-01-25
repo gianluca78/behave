@@ -10,9 +10,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class TextWidget implements WidgetInterface {
 
-    private $id;
     private $label;
-    private $name;
     private $placeholder;
     private $value;
 
@@ -23,8 +21,6 @@ class TextWidget implements WidgetInterface {
             TextType::class,
             array(
                 'attr' => array(
-                    'id' => $this->id,
-                    'name' => $this->name,
                     'placeholder' => $this->placeholder,
                     'value' => $this->value
                 ),
@@ -52,22 +48,6 @@ class TextWidget implements WidgetInterface {
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLabel()
     {
         return $this->label;
@@ -79,22 +59,6 @@ class TextWidget implements WidgetInterface {
     public function setLabel($label)
     {
         $this->label = $label;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
     }
 
     /**

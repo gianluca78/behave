@@ -7,9 +7,7 @@ use App\Form\Type\Custom\FrequencyItemType;
 
 class FrequencyWidget implements WidgetInterface {
 
-    private $id;
     private $label;
-    private $name;
     private $observationLengthInMinutes;
     private $value;
 
@@ -20,41 +18,14 @@ class FrequencyWidget implements WidgetInterface {
             FrequencyItemType::class,
             array(
                 'attr' => array(
-                    'id' => $this->id,
-                    'name' => $this->name,
                     'value' => $this->value
                 ),
-                /*
-                'constraints' => array(
-                    new Type(
-                        array(
-                            'type' => 'integer',
-                            'message' => 'The value {{ value }} is not a valid {{ type }}.'
-                        )
-                    ),
-                ),*/
                 'counter_value' => 0,
                 'observation_length_in_minutes' => $this->observationLengthInMinutes
             )
         );
 
         return $formBuilderInterface;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     /**
@@ -71,22 +42,6 @@ class FrequencyWidget implements WidgetInterface {
     public function setLabel($label)
     {
         $this->label = $label;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
     }
 
     /**

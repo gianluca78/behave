@@ -18,8 +18,6 @@
     <div class="textItems" data-prototype="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
         {% for textItem in form.textItems %}
             <ul>
-                <li>{{ form_row(textItem.fieldName) }}</li>
-                <li>{{ form_row(textItem.fieldId) }}</li>
                 <li>{{ form_row(textItem.fieldValue) }}</li>
                 <li>{{ form_row(textItem.placeholder) }}</li>
                 <li>{{ form_row(textItem.positionNumber) }}</li>
@@ -32,8 +30,6 @@
          data-prototype="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}">
         {% for frequencyItem in form.frequencyItems %}
             <ul>
-                <li>{{ form_row(frequencyItem.fieldName) }}</li>
-                <li>{{ form_row(frequencyItem.fieldId) }}</li>
                 <li>{{ form_row(frequencyItem.fieldValue) }}</li>
                 <li>{{ form_row(frequencyItem.observationLengthInMinutes) }}</li>
                 <li>{{ form_row(frequencyItem.positionNumber) }}</li>
