@@ -10,20 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 class FrequencyItem extends Item
 {
     /**
-     * @var string $fieldName
-     *
-     * @ORM\Column(name="field_name", type="encrypted_string", length=255)
-     */
-    private $fieldName;
-
-    /**
-     * @var string $fieldId
-     *
-     * @ORM\Column(name="field_id",  type="encrypted_string", length=255)
-     */
-    private $fieldId;
-
-    /**
      * @var string $fieldValue
      *
      * @ORM\Column(name="field_value", type="encrypted_string", length=255)
@@ -91,38 +77,6 @@ class FrequencyItem extends Item
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFieldName()
-    {
-        return $this->fieldName;
-    }
-
-    /**
-     * @param string $fieldName
-     */
-    public function setFieldName($fieldName)
-    {
-        $this->fieldName = $fieldName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFieldId()
-    {
-        return $this->fieldId;
-    }
-
-    /**
-     * @param string $fieldId
-     */
-    public function setFieldId($fieldId)
-    {
-        $this->fieldId = $fieldId;
     }
 
     /**

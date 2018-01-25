@@ -14,14 +14,10 @@ class FrequencyItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                                                                        ->add('fieldName', null, array('required' => true))
-                                                                ->add('fieldId', null, array('required' => true))
-                                                                ->add('fieldValue', null, array('required' => true))
-                                                                ->add('observationLengthInMinutes', null, array('required' => true))
-                                                                ->add('positionNumber', null, array('required' => true))
-                                                                ->add('label', null, array('required' => true))
-                                    
-        ;
+            ->add('fieldValue', null, array('required' => true))
+            ->add('observationLengthInMinutes', null, array('required' => true))
+            ->add('positionNumber', null, array('required' => true))
+            ->add('label', null, array('required' => true));
     }
 
     public function configureOptions(OptionsResolver $resolver)

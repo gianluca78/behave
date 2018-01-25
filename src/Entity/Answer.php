@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="App\Repository\AnswerRepository")
  *  @ORM\InheritanceType("SINGLE_TABLE")
  *  @ORM\DiscriminatorColumn(name="type", type="string")
- *  @ORM\DiscriminatorMap({"text" = "TextAnswer", "frequency" = "FrequencyAnswer"})
+ *  @ORM\DiscriminatorMap({})
  */
 class Answer
 {
