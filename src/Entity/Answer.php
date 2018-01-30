@@ -19,12 +19,5 @@ class Answer
      */
     private $id;
 
-    /**
-     * @var Item $item
-     *
-     * @ORM\ManyToOne(targetEntity="Item", inversedBy="answers")
-     * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
-     */
-    private $observation;
 
 }

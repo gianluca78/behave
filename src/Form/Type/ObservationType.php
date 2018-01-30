@@ -9,8 +9,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-use App\Form\Type\TextItemType;
+use App\Form\Type\ChoiceItemType;
 use App\Form\Type\FrequencyItemType;
+use App\Form\Type\RangeItemType;
+use App\Form\Type\TextItemType;
 
 class ObservationType extends AbstractType
 {
@@ -20,14 +22,26 @@ class ObservationType extends AbstractType
             ->add('isEnabled', null, array('required' => false))
             ->add('name', null, array('required' => true))
             ->add('description', null, array('required' => true))
-            ->add('textItems', CollectionType::class, array(
-                'entry_type' => TextItemType::class,
+            ->add('choiceItems', CollectionType::class, array(
+                'entry_type' => ChoiceItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false
             ))
             ->add('frequencyItems', CollectionType::class, array(
                 'entry_type' => FrequencyItemType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ))
+            ->add('rangeItems', CollectionType::class, array(
+                'entry_type' => RangeItemType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ))
+            ->add('textItems', CollectionType::class, array(
+                'entry_type' => TextItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false

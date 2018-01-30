@@ -8,7 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  *  @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
  *  @ORM\InheritanceType("SINGLE_TABLE")
  *  @ORM\DiscriminatorColumn(name="type", type="string")
- *  @ORM\DiscriminatorMap({"text" = "TextItem", "frequency" = "FrequencyItem"})
+ *  @ORM\DiscriminatorMap({
+ *                          "choice" = "ChoiceItem",
+ *                          "frequency" = "FrequencyItem",
+ *                          "range" = "RangeItem",
+ *                          "text" = "TextItem",
+ * })
  */
 abstract class Item
 {

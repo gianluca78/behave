@@ -3,8 +3,12 @@
 namespace App\Form\Builder;
 
 use App\Entity\Observation;
+use App\Entity\RangeItem;
+use App\Form\Widget\ChoiceWidget;
 use App\Form\Widget\FrequencyWidget;
+use App\Form\Widget\RangeWidget;
 use App\Form\Widget\TextWidget;
+use App\Entity\ChoiceItem;
 use App\Entity\FrequencyItem;
 use App\Entity\TextItem;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -46,6 +50,12 @@ class FormBuilder {
                 case 'App\Entity\FrequencyItem':
                     $this->addFrequencyWidget($item);
                     break;
+                case 'App\Entity\RangeItem':
+                    $this->addRangeWidget($item);
+                    break;
+                case 'App\Entity\ChoiceItem':
+                    $this->addChoiceWidget($item);
+                    break;
             }
         }
 
@@ -60,6 +70,20 @@ class FormBuilder {
                 array('id' => $observation->getId())
             )
         );
+    }
+
+    private function addChoiceWidget(ChoiceItem $item)
+    {
+        //var_dump(explode(PHP_EOL, $item->getOptions())); exit;
+
+        $choiceWidget = new ChoiceWidget();
+        $choiceWidget->setLabel($item->getLabel());
+        $choiceWidget->setEmptyValue($item->getEmptyValue());
+        $choiceWidget->setIsExpanded($item->getIsExpanded());
+        $choiceWidget->setIsMultiple($item->getIsMultiple());
+        $choiceWidget->setOptions(array_flip(explode(PHP_EOL, $item->getOptions())));
+
+        $this->form = $choiceWidget->addField($this->form);
     }
 
     private function addTextWidget(TextItem $item)
@@ -81,5 +105,16 @@ class FormBuilder {
 
         $this->form = $frequencyWidget->addField($this->form);
 
+    }
+
+    private function addRangeWidget(RangeItem $item)
+    {
+        $rangeWidget = new RangeWidget();
+        $rangeWidget->setLabel($item->getLabel());
+        $rangeWidget->setMax($item->getMax());
+        $rangeWidget->setMin($item->getMin());
+        $rangeWidget->setStep($item->getStep());
+
+        $this->form = $rangeWidget->addField($this->form);
     }
 }
