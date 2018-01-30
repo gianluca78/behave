@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Form\Builder\FormBuilder;
-use App\Form\Handler\ItemFormHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,6 +14,8 @@ use App\Form\Handler\ObservationFormHandler;
 use App\Form\Type\ObservationType;
 
 use App\Entity\Observation;
+use App\Form\Builder\FormBuilder;
+use App\Form\Handler\ItemFormHandler;
 
 /**
  * @Route("/observation")
@@ -93,6 +93,7 @@ class ObservationController extends Controller
         $form = $this->createForm(ObservationType::class, $entity, array(
             'action' => $this->generateUrl('observation_new')
         ));
+
         
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('observation_list'));
@@ -103,7 +104,7 @@ class ObservationController extends Controller
             'title' => $this->get('translator')->trans(self::NEW_TITLE)
         );
 
-    }
+            }
 
     /**
     * @Route("/delete/{id}", name="observation_delete")
@@ -150,7 +151,7 @@ class ObservationController extends Controller
 
         $form = $formBuilder->getForm()->getForm();
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans('test'))) {
+        if ($formHandler->handle($form, $request, $this->get('translator')->trans('test'))) {
             return $this->redirect($this->generateUrl('observation_list'));
         }
 

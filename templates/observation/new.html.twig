@@ -14,26 +14,50 @@
     {{ form_row(form.name) }}
     {{ form_row(form.description) }}
 
-    <h3>textItems</h3>
-    <div class="textItems" data-prototype="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
-        {% for textItem in form.textItems %}
+    <h3>choiceItems</h3>
+    <div class="choiceItems" data-prototype="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}">
+        {% for choiceItem in form.choiceItems %}
             <ul>
-                <li>{{ form_row(textItem.fieldValue) }}</li>
-                <li>{{ form_row(textItem.placeholder) }}</li>
-                <li>{{ form_row(textItem.positionNumber) }}</li>
-                <li>{{ form_row(textItem.label) }}</li>
+                <li>{{ form_row(choiceItem.positionNumber) }}</li>
+                <li>{{ form_row(choiceItem.label) }}</li>
+                <li>{{ form_row(choiceItem.emptyValue) }}</li>
+                <li>{{ form_row(choiceItem.isExpanded) }}</li>
+                <li>{{ form_row(choiceItem.isMultiple) }}</li>
+                <li>{{ form_row(choiceItem.options) }}</li>
             </ul>
         {% endfor %}
     </div>
     <h3>frequencyItems</h3>
-    <div class="textFrequencyItems"
-         data-prototype="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}">
+    <div class="frequencyItems" data-prototype="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}">
         {% for frequencyItem in form.frequencyItems %}
             <ul>
-                <li>{{ form_row(frequencyItem.fieldValue) }}</li>
-                <li>{{ form_row(frequencyItem.observationLengthInMinutes) }}</li>
                 <li>{{ form_row(frequencyItem.positionNumber) }}</li>
                 <li>{{ form_row(frequencyItem.label) }}</li>
+                <li>{{ form_row(frequencyItem.fieldValue) }}</li>
+                <li>{{ form_row(frequencyItem.observationLengthInMinutes) }}</li>
+            </ul>
+        {% endfor %}
+    </div>
+    <h3>rangeItems</h3>
+    <div class="rangeItems" data-prototype="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}">
+        {% for rangeItem in form.rangeItems %}
+            <ul>
+                <li>{{ form_row(rangeItem.positionNumber) }}</li>
+                <li>{{ form_row(rangeItem.label) }}</li>
+                <li>{{ form_row(rangeItem.min) }}</li>
+                <li>{{ form_row(rangeItem.max) }}</li>
+                <li>{{ form_row(rangeItem.step) }}</li>
+            </ul>
+        {% endfor %}
+    </div>
+    <h3>textItems</h3>
+    <div class="textItems" data-prototype="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
+        {% for textItem in form.textItems %}
+            <ul>
+                <li>{{ form_row(textItem.positionNumber) }}</li>
+                <li>{{ form_row(textItem.label) }}</li>
+                <li>{{ form_row(textItem.fieldValue) }}</li>
+                <li>{{ form_row(textItem.placeholder) }}</li>
             </ul>
         {% endfor %}
     </div>
@@ -49,46 +73,163 @@
 
     <script>
         var $collectionHolder1;
+        var $addChoiceitemLink = $('<a href="#" class="addChoiceitemLink">+</a>');
+
+        var $newChoiceitemLinkLi = $('<li></li>').append($addChoiceitemLink);
+        var $collectionHolder2;
+        var $addFrequencyitemLink = $('<a href="#" class="addFrequencyitemLink">+</a>');
+
+        var $newFrequencyitemLinkLi = $('<li></li>').append($addFrequencyitemLink);
+        var $collectionHolder3;
+        var $addRangeitemLink = $('<a href="#" class="addRangeitemLink">+</a>');
+
+        var $newRangeitemLinkLi = $('<li></li>').append($addRangeitemLink);
+        var $collectionHolder4;
         var $addTextitemLink = $('<a href="#" class="addTextitemLink">+</a>');
 
         var $newTextitemLinkLi = $('<li></li>').append($addTextitemLink);
-        var $collectionHolder2;
-        var $addTextfrequencyitemLink = $('<a href="#" class="addTextfrequencyitemLink">+</a>');
-
-        var $newTextfrequencyitemLinkLi = $('<li></li>').append($addTextfrequencyitemLink);
 
         jQuery(document).ready(function () {
-            $collectionHolder1 = $('div.textItems');
-            $collectionHolder1.append($newTextitemLinkLi);
+            $collectionHolder1 = $('div.choiceItems');
+            $collectionHolder1.append($newChoiceitemLinkLi);
 
             $collectionHolder1.find('ul').each(function () {
-                addTextitemFormDeleteLink($(this));
+                addChoiceitemFormDeleteLink($(this));
             });
 
             $collectionHolder1.data('index', $collectionHolder1.find(':input').length);
 
-            $addTextitemLink.on('click', function (e) {
+            $addChoiceitemLink.on('click', function (e) {
                 e.preventDefault();
 
-                addTextitemForm($collectionHolder1, $newTextitemLinkLi);
+                addChoiceitemForm($collectionHolder1, $newChoiceitemLinkLi);
             });
-            $collectionHolder2 = $('div.textFrequencyItems');
-            $collectionHolder2.append($newTextfrequencyitemLinkLi);
+            $collectionHolder2 = $('div.frequencyItems');
+            $collectionHolder2.append($newFrequencyitemLinkLi);
 
             $collectionHolder2.find('ul').each(function () {
-                addTextfrequencyitemFormDeleteLink($(this));
+                addFrequencyitemFormDeleteLink($(this));
             });
 
             $collectionHolder2.data('index', $collectionHolder2.find(':input').length);
 
-            $addTextfrequencyitemLink.on('click', function (e) {
+            $addFrequencyitemLink.on('click', function (e) {
                 e.preventDefault();
 
-                addTextfrequencyitemForm($collectionHolder2, $newTextfrequencyitemLinkLi);
+                addFrequencyitemForm($collectionHolder2, $newFrequencyitemLinkLi);
+            });
+            $collectionHolder3 = $('div.rangeItems');
+            $collectionHolder3.append($newRangeitemLinkLi);
+
+            $collectionHolder3.find('ul').each(function () {
+                addRangeitemFormDeleteLink($(this));
+            });
+
+            $collectionHolder3.data('index', $collectionHolder3.find(':input').length);
+
+            $addRangeitemLink.on('click', function (e) {
+                e.preventDefault();
+
+                addRangeitemForm($collectionHolder3, $newRangeitemLinkLi);
+            });
+            $collectionHolder4 = $('div.textItems');
+            $collectionHolder4.append($newTextitemLinkLi);
+
+            $collectionHolder4.find('ul').each(function () {
+                addTextitemFormDeleteLink($(this));
+            });
+
+            $collectionHolder4.data('index', $collectionHolder4.find(':input').length);
+
+            $addTextitemLink.on('click', function (e) {
+                e.preventDefault();
+
+                addTextitemForm($collectionHolder4, $newTextitemLinkLi);
             });
 
         })
 
+        function addChoiceitemForm($collectionHolder, $newLinkLi) {
+
+            var prototype = $collectionHolder.data('prototype');
+
+            var index = $collectionHolder.data('index');
+
+            var newForm = prototype.replace(/__name__/g, index);
+
+            $collectionHolder.data('index', index + 1);
+
+            var $newFormLi = $('<li></li>').append(newForm);
+
+            $newLinkLi.before($newFormLi);
+
+            addChoiceitemFormDeleteLink($newFormLi);
+        }
+
+        function addChoiceitemFormDeleteLink($tagFormLi) {
+            var $removeFormA = $('<a href="#">-</a>');
+            $tagFormLi.append($removeFormA);
+
+            $removeFormA.on('click', function (e) {
+                e.preventDefault();
+
+                $tagFormLi.remove();
+            });
+        }
+        function addFrequencyitemForm($collectionHolder, $newLinkLi) {
+
+            var prototype = $collectionHolder.data('prototype');
+
+            var index = $collectionHolder.data('index');
+
+            var newForm = prototype.replace(/__name__/g, index);
+
+            $collectionHolder.data('index', index + 1);
+
+            var $newFormLi = $('<li></li>').append(newForm);
+
+            $newLinkLi.before($newFormLi);
+
+            addFrequencyitemFormDeleteLink($newFormLi);
+        }
+
+        function addFrequencyitemFormDeleteLink($tagFormLi) {
+            var $removeFormA = $('<a href="#">-</a>');
+            $tagFormLi.append($removeFormA);
+
+            $removeFormA.on('click', function (e) {
+                e.preventDefault();
+
+                $tagFormLi.remove();
+            });
+        }
+        function addRangeitemForm($collectionHolder, $newLinkLi) {
+
+            var prototype = $collectionHolder.data('prototype');
+
+            var index = $collectionHolder.data('index');
+
+            var newForm = prototype.replace(/__name__/g, index);
+
+            $collectionHolder.data('index', index + 1);
+
+            var $newFormLi = $('<li></li>').append(newForm);
+
+            $newLinkLi.before($newFormLi);
+
+            addRangeitemFormDeleteLink($newFormLi);
+        }
+
+        function addRangeitemFormDeleteLink($tagFormLi) {
+            var $removeFormA = $('<a href="#">-</a>');
+            $tagFormLi.append($removeFormA);
+
+            $removeFormA.on('click', function (e) {
+                e.preventDefault();
+
+                $tagFormLi.remove();
+            });
+        }
         function addTextitemForm($collectionHolder, $newLinkLi) {
 
             var prototype = $collectionHolder.data('prototype');
@@ -107,33 +248,6 @@
         }
 
         function addTextitemFormDeleteLink($tagFormLi) {
-            var $removeFormA = $('<a href="#">-</a>');
-            $tagFormLi.append($removeFormA);
-
-            $removeFormA.on('click', function (e) {
-                e.preventDefault();
-
-                $tagFormLi.remove();
-            });
-        }
-        function addTextfrequencyitemForm($collectionHolder, $newLinkLi) {
-
-            var prototype = $collectionHolder.data('prototype');
-
-            var index = $collectionHolder.data('index');
-
-            var newForm = prototype.replace(/__name__/g, index);
-
-            $collectionHolder.data('index', index + 1);
-
-            var $newFormLi = $('<li></li>').append(newForm);
-
-            $newLinkLi.before($newFormLi);
-
-            addTextfrequencyitemFormDeleteLink($newFormLi);
-        }
-
-        function addTextfrequencyitemFormDeleteLink($tagFormLi) {
             var $removeFormA = $('<a href="#">-</a>');
             $tagFormLi.append($removeFormA);
 

@@ -37,6 +37,27 @@ class Observation
      * @ORM\Column(name="description", type="encrypted_text", length=255)
      */
     private $description;
+    
+    /**
+     * @var ArrayCollection $choiceItems
+     *
+     * @ORM\OneToMany(targetEntity="ChoiceItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $choiceItems;
+    
+    /**
+     * @var ArrayCollection $frequencyItems
+     *
+     * @ORM\OneToMany(targetEntity="FrequencyItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $frequencyItems;
+    
+    /**
+     * @var ArrayCollection $rangeItems
+     *
+     * @ORM\OneToMany(targetEntity="RangeItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $rangeItems;
 
     /**
      * @var ArrayCollection $textItems
@@ -44,18 +65,13 @@ class Observation
      * @ORM\OneToMany(targetEntity="TextItem", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $textItems;
-
-    /**
-     * @var ArrayCollection $frequencyItems
-     *
-     * @ORM\OneToMany(targetEntity="FrequencyItem", mappedBy="observation", cascade={"persist", "remove"})
-     */
-    private $frequencyItems;
-
+    
     public function __construct()
     {
-        $this->textItems = new ArrayCollection();
+        $this->choiceItems = new ArrayCollection();
         $this->frequencyItems = new ArrayCollection();
+        $this->rangeItems = new ArrayCollection();
+        $this->textItems = new ArrayCollection();
     }
 
     /**
@@ -112,6 +128,40 @@ class Observation
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * Add choiceItem
+     *
+     * @param \App\Entity\ChoiceItem $choiceItem
+     *
+     * @return Observation
+     */
+    public function addChoiceItem(\App\Entity\ChoiceItem $choiceItem)
+    {
+        $this->choiceItems[] = $choiceItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove choiceItem
+     *
+     * @param \App\Entity\ChoiceItem $choiceItem
+     */
+    public function removeChoiceItem(\App\Entity\ChoiceItem $choiceItem)
+    {
+        $this->choiceItems->removeElement($choiceItem);
+    }
+
+    /**
+     * Get itemsChoice
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChoiceItems()
+    {
+        return $this->choiceItems;
     }
 
     /**
@@ -180,6 +230,40 @@ class Observation
     public function getFrequencyItems()
     {
         return $this->frequencyItems;
+    }
+
+    /**
+     * Add textRangeItem
+     *
+     * @param \App\Entity\RangeItem $textRangeItem
+     *
+     * @return Observation
+     */
+    public function addRangeItem(\App\Entity\RangeItem $textRangeItem)
+    {
+        $this->rangeItems[] = $textRangeItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove textRangeItem
+     *
+     * @param \App\Entity\RangeItem $textRangeItem
+     */
+    public function removeRangeItem(\App\Entity\RangeItem $textRangeItem)
+    {
+        $this->rangeItems->removeElement($textRangeItem);
+    }
+
+    /**
+     * Get textFrequecyItems
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRangeItems()
+    {
+        return $this->rangeItems;
     }
 
 }
