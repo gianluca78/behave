@@ -46,12 +46,19 @@ class Observation
     private $choiceItems;
     
     /**
+     * @var ArrayCollection $durationItems
+     *
+     * @ORM\OneToMany(targetEntity="DurationItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $durationItems;
+    
+    /**
      * @var ArrayCollection $frequencyItems
      *
      * @ORM\OneToMany(targetEntity="FrequencyItem", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $frequencyItems;
-    
+
     /**
      * @var ArrayCollection $rangeItems
      *
@@ -69,6 +76,7 @@ class Observation
     public function __construct()
     {
         $this->choiceItems = new ArrayCollection();
+        $this->durationItems = new ArrayCollection();
         $this->frequencyItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
         $this->textItems = new ArrayCollection();
@@ -199,31 +207,65 @@ class Observation
     }
 
     /**
-     * Add textFrequencyItem
+     * Add durationItem
      *
-     * @param \App\Entity\FrequencyItem $textFrequencyItem
+     * @param \App\Entity\DurationItem $durationItem
      *
      * @return Observation
      */
-    public function addFrequencyItem(\App\Entity\FrequencyItem $textFrequencyItem)
+    public function addDurationItem(\App\Entity\DurationItem $durationItem)
     {
-        $this->frequencyItems[] = $textFrequencyItem;
+        $this->durationItems[] = $durationItem;
 
         return $this;
     }
 
     /**
-     * Remove textFrequencyItem
+     * Remove durationItem
      *
-     * @param \App\Entity\FrequencyItem $textFrequencyItem
+     * @param \App\Entity\DurationItem $durationItem
      */
-    public function removeFrequencyItem(\App\Entity\FrequencyItem $textFrequencyItem)
+    public function removeDurationItem(\App\Entity\DurationItem $durationItem)
     {
-        $this->frequencyItems->removeElement($textFrequencyItem);
+        $this->durationItems->removeElement($durationItem);
     }
 
     /**
-     * Get textFrequecyItems
+     * Get durationItems
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDurationItems()
+    {
+        return $this->durationItems;
+    }
+
+    /**
+     * Add frequencyItem
+     *
+     * @param \App\Entity\FrequencyItem $frequencyItem
+     *
+     * @return Observation
+     */
+    public function addFrequencyItem(\App\Entity\FrequencyItem $frequencyItem)
+    {
+        $this->frequencyItems[] = $frequencyItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove frequencyItem
+     *
+     * @param \App\Entity\FrequencyItem $frequencyItem
+     */
+    public function removeFrequencyItem(\App\Entity\FrequencyItem $frequencyItem)
+    {
+        $this->frequencyItems->removeElement($frequencyItem);
+    }
+
+    /**
+     * Get frequencyItems
      *
      * @return \Doctrine\Common\Collections\Collection
      */

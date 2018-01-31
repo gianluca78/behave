@@ -419,3 +419,17 @@
             </div>
     {% endspaceless %}
 {% endblock %}
+
+{% block duration_item_widget %}
+    {% spaceless %}
+            <div class="duration-item">
+                {{- block('form_rows') -}}
+                {% if observationLengthInMinutes is defined %}
+                <div id="timer-{{ id }}">{{ observationLengthInMinutes }}</div>
+                <div id="player-{{ id }}">
+                    <a class="player" data-base-selector-id="{{ id }}" href="">start</a>
+                </div>
+                {% endif %}
+            </div>
+    {% endspaceless %}
+{% endblock %}

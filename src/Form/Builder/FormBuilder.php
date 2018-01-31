@@ -2,9 +2,11 @@
 
 namespace App\Form\Builder;
 
+use App\Entity\DurationItem;
 use App\Entity\Observation;
 use App\Entity\RangeItem;
 use App\Form\Widget\ChoiceWidget;
+use App\Form\Widget\DurationWidget;
 use App\Form\Widget\FrequencyWidget;
 use App\Form\Widget\RangeWidget;
 use App\Form\Widget\TextWidget;
@@ -46,6 +48,9 @@ class FormBuilder {
             switch(get_class($item)) {
                 case 'App\Entity\TextItem':
                     $this->addTextWidget($item);
+                    break;
+                case 'App\Entity\DurationItem':
+                    $this->addDurationWidget($item);
                     break;
                 case 'App\Entity\FrequencyItem':
                     $this->addFrequencyWidget($item);
@@ -94,6 +99,17 @@ class FormBuilder {
         $textWidget->setValue($item->getFieldValue());
 
         $this->form = $textWidget->addField($this->form);
+    }
+
+    private function addDurationWidget(DurationItem $item)
+    {
+        $durationWidget = new DurationWidget();
+        $durationWidget->setLabel($item->getLabel());
+        $durationWidget->setValue($item->getFieldValue());
+        $durationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
+
+        $this->form = $durationWidget->addField($this->form);
+
     }
 
     private function addFrequencyWidget(FrequencyItem $item)
