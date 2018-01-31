@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *  @ORM\DiscriminatorColumn(name="type", type="string")
  *  @ORM\DiscriminatorMap({
  *                          "choice" = "ChoiceItem",
+ *                          "duration" = "DurationItem",
  *                          "frequency" = "FrequencyItem",
  *                          "range" = "RangeItem",
  *                          "text" = "TextItem",

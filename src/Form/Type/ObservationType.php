@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 use App\Form\Type\ChoiceItemType;
+use App\Form\Type\DurationItemType;
 use App\Form\Type\FrequencyItemType;
 use App\Form\Type\RangeItemType;
 use App\Form\Type\TextItemType;
@@ -24,6 +25,12 @@ class ObservationType extends AbstractType
             ->add('description', null, array('required' => true))
             ->add('choiceItems', CollectionType::class, array(
                 'entry_type' => ChoiceItemType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ))
+            ->add('durationItems', CollectionType::class, array(
+                'entry_type' => DurationItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false
