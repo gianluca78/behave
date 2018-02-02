@@ -2,8 +2,8 @@ $( document ).ready(function() {
     $( '.duration-item' ).each(function(i, e) {
         children = $(e).children();
 
-        observationLengthInMinutesId = children[0].id;
-        timerId = children[2].id;
+        observationLengthInMinutesId = $(children[0]).children()[0].id;
+        timerId = $(children[0]).children()[4].id;
 
         startTimer(observationLengthInMinutesId, timerId);
     });
@@ -17,8 +17,13 @@ $( "a.player" ).click(function(e){
     occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
 
     if(timer.text() != '00:00') {
-        newString = ($( this ).text() == 'start') ? 'stop' : 'start';
-        $( this ).text(newString);
+        newString = ($( this ).text() == '►') ? '■' : '►';
+        newIcon = (newString == '■') ? '<img src="/icons/spinner.GIF" width="24px" height="24px">' : '<img src="/icons/spinner.png" width="24px" height="24px">';
+
+        iconSelector = $( this ).parent().parent().parent().children()[2];
+
+        $( this ).html(newString);
+        $ ( iconSelector ).html(newIcon);
 
         addOccurrenceTimestampForm(occurrencesTimestampDiv);
 

@@ -5,82 +5,114 @@
 {% endblock %}
 
 {% block body %}
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        <div>{{ flashMessage }}</div>
-    {% endfor %}
-    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row text-center">
+                {% set itemTypologies = ['Choice', 'Double', 'Duration', 'Frequency', 'Range', 'Text'] %}
 
-    {{ form_row(form.isEnabled) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.description) }}
+                {% for typology in itemTypologies %}
+                    <div class="col-md-6 border" style="cursor:move;" draggable="true" ondragstart="handleDragStart(event);">
+                        {{ typology }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
 
-    <h3>choiceItems</h3>
-    <div class="choiceItems" data-prototype="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}">
-        {% for choiceItem in form.choiceItems %}
-            <ul>
-                <li>{{ form_row(choiceItem.positionNumber) }}</li>
-                <li>{{ form_row(choiceItem.label) }}</li>
-                <li>{{ form_row(choiceItem.emptyValue) }}</li>
-                <li>{{ form_row(choiceItem.isExpanded) }}</li>
-                <li>{{ form_row(choiceItem.isMultiple) }}</li>
-                <li>{{ form_row(choiceItem.options) }}</li>
-            </ul>
-        {% endfor %}
-    </div>
-    <h3>durationItems</h3>
-    <div class="durationItems" data-prototype="{{ form_widget(form.durationItems.vars.prototype)|e('html_attr') }}">
-        {% for durationItem in form.durationItems %}
-            <ul>
-                <li>{{ form_row(durationItem.positionNumber) }}</li>
-                <li>{{ form_row(durationItem.label) }}</li>
-                <li>{{ form_row(durationItem.fieldValue) }}</li>
-                <li>{{ form_row(durationItem.observationLengthInMinutes) }}</li>
-            </ul>
-        {% endfor %}
-    </div>
-    <h3>frequencyItems</h3>
-    <div class="frequencyItems" data-prototype="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}">
-        {% for frequencyItem in form.frequencyItems %}
-            <ul>
-                <li>{{ form_row(frequencyItem.positionNumber) }}</li>
-                <li>{{ form_row(frequencyItem.label) }}</li>
-                <li>{{ form_row(frequencyItem.fieldValue) }}</li>
-                <li>{{ form_row(frequencyItem.observationLengthInMinutes) }}</li>
-            </ul>
-        {% endfor %}
-    </div>
-    <h3>rangeItems</h3>
-    <div class="rangeItems" data-prototype="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}">
-        {% for rangeItem in form.rangeItems %}
-            <ul>
-                <li>{{ form_row(rangeItem.positionNumber) }}</li>
-                <li>{{ form_row(rangeItem.label) }}</li>
-                <li>{{ form_row(rangeItem.min) }}</li>
-                <li>{{ form_row(rangeItem.max) }}</li>
-                <li>{{ form_row(rangeItem.step) }}</li>
-            </ul>
-        {% endfor %}
-    </div>
-    <h3>textItems</h3>
-    <div class="textItems" data-prototype="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
-        {% for textItem in form.textItems %}
-            <ul>
-                <li>{{ form_row(textItem.positionNumber) }}</li>
-                <li>{{ form_row(textItem.label) }}</li>
-                <li>{{ form_row(textItem.fieldValue) }}</li>
-                <li>{{ form_row(textItem.placeholder) }}</li>
-            </ul>
-        {% endfor %}
-    </div>
+        <div class="col-md-8">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div>{{ flashMessage }}</div>
+            {% endfor %}
+            {{ form_start(form) }}
+
+            {{ form_row(form.isEnabled) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.description) }}
 
 
-    {{ form_end(form) }}
+
+            <div id="target" class="col-md-8" ondrop="" ondragover=""></div>
+
+            {{ form_row(form._token) }}
+
+
+            <h3>choiceItems</h3>
+            <div class="choiceItems" data-prototype="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}">
+                {% for choiceItem in form.choiceItems %}
+                    <ul>
+                        <li>{{ form_row(choiceItem.positionNumber) }}</li>
+                        <li>{{ form_row(choiceItem.label) }}</li>
+                        <li>{{ form_row(choiceItem.emptyValue) }}</li>
+                        <li>{{ form_row(choiceItem.isExpanded) }}</li>
+                        <li>{{ form_row(choiceItem.isMultiple) }}</li>
+                        <li>{{ form_row(choiceItem.options) }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+            <h3>durationItems</h3>
+            <div class="durationItems" data-prototype="{{ form_widget(form.durationItems.vars.prototype)|e('html_attr') }}">
+                {% for durationItem in form.durationItems %}
+                    <ul>
+                        <li>{{ form_row(durationItem.positionNumber) }}</li>
+                        <li>{{ form_row(durationItem.label) }}</li>
+                        <li>{{ form_row(durationItem.fieldValue) }}</li>
+                        <li>{{ form_row(durationItem.observationLengthInMinutes) }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+            <h3>frequencyItems</h3>
+            <div class="frequencyItems" data-prototype="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}">
+                {% for frequencyItem in form.frequencyItems %}
+                    <ul>
+                        <li>{{ form_row(frequencyItem.positionNumber) }}</li>
+                        <li>{{ form_row(frequencyItem.label) }}</li>
+                        <li>{{ form_row(frequencyItem.fieldValue) }}</li>
+                        <li>{{ form_row(frequencyItem.observationLengthInMinutes) }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+            <h3>rangeItems</h3>
+            <div class="rangeItems" data-prototype="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}">
+                {% for rangeItem in form.rangeItems %}
+                    <ul>
+                        <li>{{ form_row(rangeItem.positionNumber) }}</li>
+                        <li>{{ form_row(rangeItem.label) }}</li>
+                        <li>{{ form_row(rangeItem.min) }}</li>
+                        <li>{{ form_row(rangeItem.max) }}</li>
+                        <li>{{ form_row(rangeItem.step) }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+            <h3>textItems</h3>
+            <div class="textItems" data-prototype="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
+                {% for textItem in form.textItems %}
+                    <ul>
+                        <li>{{ form_row(textItem.positionNumber) }}</li>
+                        <li>{{ form_row(textItem.label) }}</li>
+                        <li>{{ form_row(textItem.fieldValue) }}</li>
+                        <li>{{ form_row(textItem.placeholder) }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+
+            {{ form_end(form) }}
+
+        </div>
+    </div>
 {% endblock %}
 
 
 
 {% block javascripts %}
     {{ parent() }}
+
+
+    <script>
+        function handleDragStart(e) {
+            console.log(e.target.style);
+
+            e.target.style.opacity = '0.4';  // this / e.target is the source node.
+        }
+    </script>
 
     <script>
         var $collectionHolder1;
@@ -316,4 +348,5 @@
 
 
     </script>
+
 {% endblock %}

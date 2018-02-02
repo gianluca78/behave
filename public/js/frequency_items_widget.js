@@ -2,8 +2,8 @@ $( document ).ready(function() {
     $( '.frequency-item' ).each(function(i, e) {
         children = $(e).children();
 
-        observationLengthInMinutesId = children[1].id;
-        timerId = children[3].id;
+        observationLengthInMinutesId = $(children[0]).children()[0].id;
+        timerId = $(children[0]).children()[5].id;
 
         startTimer(observationLengthInMinutesId, timerId);
     });
@@ -13,7 +13,7 @@ $( "a.counter" ).click(function(e){
     e.preventDefault();
 
     baseSelectorId = $( this ).attr('data-base-selector-id');
-    counter = parseInt($( "#" + baseSelectorId + "_counter" ).val()) + 1
+    counter = parseInt($( "#" + baseSelectorId + "_counter" ).val()) + 1;
     timer = $( "#timer-" + baseSelectorId );
     occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
 
