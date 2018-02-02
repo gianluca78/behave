@@ -8,28 +8,40 @@
         <div>{{ flashMessage }}</div>
     {% endfor %}
 
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            <h2>Observation list</h2>
 
-<table>
-    <tr>
-                <th>id</th>
-                <th> name</th>
-                <th></th>
-        <th></th>
-    </tr>
-    {% for record in records %}
-        <tr>
+            <table class="table table-stripped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th> name</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                {% for record in records %}
+                    <tr>
                         <td>{{ record.id }}</td>
                         <td>{{ record. name }}</td>
-            
-                        <td><a href="{{ path('observation_edit', {'id': record.id}) }}">{% trans %}Edit{% endtrans %}</a></td>
-            <td><a href="{{ path('observation_delete', {'id': record.id}) }}">{% trans %}Delete{% endtrans %}</a></td>
 
+                        <td><a href="{{ path('observation_edit', {'id': record.id}) }}">
+                                {% trans %}Edit{% endtrans %}
+                            </a>
+                        </td>
+                        <td><a href="{{ path('observation_delete', {'id': record.id}) }}">
+                                {% trans %}Delete{% endtrans %}
+                            </a>
+                        </td>
                     </tr>
-    
-    {% endfor %}
-    
-</table>
+                {% endfor %}
+                </tbody>
+            </table>
 
-<a href="{{ path('observation_new') }}">{% trans %}New{% endtrans %}</a>
-
+            <a href="{{ path('observation_new') }}">{% trans %}New{% endtrans %}</a>
+        </div>
+    </div>
 {% endblock %}
