@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *                          "choice" = "ChoiceItem",
  *                          "duration" = "DurationItem",
  *                          "frequency" = "FrequencyItem",
+ *                          "integer" = "IntegerItem",
  *                          "range" = "RangeItem",
  *                          "text" = "TextItem",
  * })

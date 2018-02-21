@@ -7,12 +7,25 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class TextWidget implements WidgetInterface {
 
     private $label;
     private $placeholder;
+    private $translator;
     private $value;
+
+    CONST NOT_BLANK_MESSAGE = 'This value should not be blank.';
+    CONST LENGTH_MIN = 2;
+    CONST LENGTH_MAX = 255;
+    CONST LENGTH_MIN_MESSAGE = 'The inserted text must be at least {{ limit }} characters long';
+    CONST LENGTH_MAX_MESSAGE = 'The inserted text cannot be longer than {{ limit }} characters';
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
@@ -27,15 +40,15 @@ class TextWidget implements WidgetInterface {
                 'constraints' => array(
                     new NotBlank(
                         array(
-                            'message' => 'This value should not be blank.'
+                            'message' => self::NOT_BLANK_MESSAGE
                         )
                     ),
                     new Length(
                         array(
-                            'min' => 2,
-                            'max' => 255,
-                            'minMessage' => 'The inserted text must be at least {{ limit }} characters long',
-                            'maxMessage' => 'The inserted text cannot be longer than {{ limit }} characters',
+                            'min' => self::LENGTH_MIN,
+                            'max' => self::LENGTH_MAX,
+                            'minMessage' => self::LENGTH_MIN_MESSAGE,
+                            'maxMessage' => self::LENGTH_MAX_MESSAGE,
                         )
                     )
                 )

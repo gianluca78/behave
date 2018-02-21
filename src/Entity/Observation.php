@@ -60,6 +60,13 @@ class Observation
     private $frequencyItems;
 
     /**
+     * @var ArrayCollection $integerItems
+     *
+     * @ORM\OneToMany(targetEntity="IntegerItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $integerItems;
+
+    /**
      * @var ArrayCollection $rangeItems
      *
      * @ORM\OneToMany(targetEntity="RangeItem", mappedBy="observation", cascade={"persist", "remove"})
@@ -78,6 +85,7 @@ class Observation
         $this->choiceItems = new ArrayCollection();
         $this->durationItems = new ArrayCollection();
         $this->frequencyItems = new ArrayCollection();
+        $this->integerItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
         $this->textItems = new ArrayCollection();
     }
@@ -272,6 +280,40 @@ class Observation
     public function getFrequencyItems()
     {
         return $this->frequencyItems;
+    }
+
+    /**
+     * Add integerItem
+     *
+     * @param \App\Entity\IntegerItem $integerItem
+     *
+     * @return Observation
+     */
+    public function addIntegerItem(\App\Entity\IntegerItem $integerItem)
+    {
+        $this->integerItems[] = $integerItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove integerItem
+     *
+     * @param \App\Entity\IntegerItem $integerItem
+     */
+    public function removeIntegerItem(\App\Entity\IntegerItem $integerItem)
+    {
+        $this->integerItems->removeElement($integerItem);
+    }
+
+    /**
+     * Get integerItems
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIntegerItems()
+    {
+        return $this->integerItems;
     }
 
     /**

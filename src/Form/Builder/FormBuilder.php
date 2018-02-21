@@ -3,11 +3,13 @@
 namespace App\Form\Builder;
 
 use App\Entity\DurationItem;
+use App\Entity\IntegerItem;
 use App\Entity\Observation;
 use App\Entity\RangeItem;
 use App\Form\Widget\ChoiceWidget;
 use App\Form\Widget\DurationWidget;
 use App\Form\Widget\FrequencyWidget;
+use App\Form\Widget\IntegerWidget;
 use App\Form\Widget\RangeWidget;
 use App\Form\Widget\TextWidget;
 use App\Entity\ChoiceItem;
@@ -16,22 +18,25 @@ use App\Entity\TextItem;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-
+use Symfony\Component\Translation\TranslatorInterface;
 
 class FormBuilder {
 
     private $form;
     private $formFactory;
+    private $translator;
     private $urlGenerator;
 
     public function __construct(FormFactoryInterface $formFactoryInterface,
-                                UrlGeneratorInterface $urlGeneratorInterface)
+                                UrlGeneratorInterface $urlGeneratorInterface,
+                                TranslatorInterface $translator)
     {
         $this->urlGenerator = $urlGeneratorInterface;
         $this->formFactory = $formFactoryInterface;
         $this->form = $this->formFactory->createBuilder()
                     ->setMethod('POST')
         ;
+        $this->translator = $translator;
     }
 
     /**
@@ -46,8 +51,8 @@ class FormBuilder {
     {
         foreach($items as $key => $item) {
             switch(get_class($item)) {
-                case 'App\Entity\TextItem':
-                    $this->addTextWidget($item);
+                case 'App\Entity\ChoiceItem':
+                    $this->addChoiceWidget($item);
                     break;
                 case 'App\Entity\DurationItem':
                     $this->addDurationWidget($item);
@@ -55,11 +60,14 @@ class FormBuilder {
                 case 'App\Entity\FrequencyItem':
                     $this->addFrequencyWidget($item);
                     break;
+                case 'App\Entity\IntegerItem':
+                    $this->addIntegerWidget($item);
+                    break;
                 case 'App\Entity\RangeItem':
                     $this->addRangeWidget($item);
                     break;
-                case 'App\Entity\ChoiceItem':
-                    $this->addChoiceWidget($item);
+                case 'App\Entity\TextItem':
+                    $this->addTextWidget($item);
                     break;
             }
         }
@@ -71,7 +79,7 @@ class FormBuilder {
     {
         $this->form->setAction(
             $this->urlGenerator->generate(
-                'observation_measure',
+                'measure',
                 array('id' => $observation->getId())
             )
         );
@@ -79,9 +87,7 @@ class FormBuilder {
 
     private function addChoiceWidget(ChoiceItem $item)
     {
-        //var_dump(explode(PHP_EOL, $item->getOptions())); exit;
-
-        $choiceWidget = new ChoiceWidget();
+        $choiceWidget = new ChoiceWidget($this->translator);
         $choiceWidget->setLabel($item->getLabel());
         $choiceWidget->setEmptyValue($item->getEmptyValue());
         $choiceWidget->setIsExpanded($item->getIsExpanded());
@@ -91,19 +97,9 @@ class FormBuilder {
         $this->form = $choiceWidget->addField($this->form);
     }
 
-    private function addTextWidget(TextItem $item)
-    {
-        $textWidget = new TextWidget();
-        $textWidget->setLabel($item->getLabel());
-        $textWidget->setPlaceholder($item->getPlaceholder());
-        $textWidget->setValue($item->getFieldValue());
-
-        $this->form = $textWidget->addField($this->form);
-    }
-
     private function addDurationWidget(DurationItem $item)
     {
-        $durationWidget = new DurationWidget();
+        $durationWidget = new DurationWidget($this->translator);
         $durationWidget->setLabel($item->getLabel());
         $durationWidget->setValue($item->getFieldValue());
         $durationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
@@ -114,7 +110,7 @@ class FormBuilder {
 
     private function addFrequencyWidget(FrequencyItem $item)
     {
-        $frequencyWidget = new FrequencyWidget();
+        $frequencyWidget = new FrequencyWidget($this->translator);
         $frequencyWidget->setLabel($item->getLabel());
         $frequencyWidget->setValue($item->getFieldValue());
         $frequencyWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
@@ -123,9 +119,18 @@ class FormBuilder {
 
     }
 
+    private function addIntegerWidget(IntegerItem $item)
+    {
+        $integerWidget = new IntegerWidget($this->translator);
+        $integerWidget->setLabel($item->getLabel());
+        $integerWidget->setValue($item->getFieldValue());
+
+        $this->form = $integerWidget->addField($this->form);
+    }
+
     private function addRangeWidget(RangeItem $item)
     {
-        $rangeWidget = new RangeWidget();
+        $rangeWidget = new RangeWidget($this->translator);
         $rangeWidget->setLabel($item->getLabel());
         $rangeWidget->setMax($item->getMax());
         $rangeWidget->setMin($item->getMin());
@@ -133,4 +138,15 @@ class FormBuilder {
 
         $this->form = $rangeWidget->addField($this->form);
     }
+
+    private function addTextWidget(TextItem $item)
+    {
+        $textWidget = new TextWidget($this->translator);
+        $textWidget->setLabel($item->getLabel());
+        $textWidget->setPlaceholder($item->getPlaceholder());
+        $textWidget->setValue($item->getFieldValue());
+
+        $this->form = $textWidget->addField($this->form);
+    }
+
 }

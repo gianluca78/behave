@@ -2,6 +2,7 @@
 
 namespace App\Form\Widget;
 
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints\Choice;
@@ -13,6 +14,15 @@ class ChoiceWidget implements WidgetInterface {
     private $isExpanded;
     private $isMultiple;
     private $options;
+    private $translator;
+
+    CONST NOT_VALID_CHOICE = 'The value you selected is not a valid choice.';
+    CONST NOT_VALID_MULTIPLE_CHOICE = 'One or more of the given values is invalid.';
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
@@ -25,8 +35,8 @@ class ChoiceWidget implements WidgetInterface {
                     array(
                         'choices' => $this->options,
                         'multiple' => $this->isMultiple,
-                        'message' => 'The value you selected is not a valid choice.',
-                        'multipleMessage' => 'One or more of the given values is invalid.',
+                        'message' => $this->translator->trans(self::NOT_VALID_CHOICE),
+                        'multipleMessage' => $this->translator->trans(self::NOT_VALID_MULTIPLE_CHOICE),
                     )
                 )
             )

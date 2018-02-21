@@ -14,8 +14,6 @@ use App\Form\Handler\ObservationFormHandler;
 use App\Form\Type\ObservationType;
 
 use App\Entity\Observation;
-use App\Form\Builder\FormBuilder;
-use App\Form\Handler\ItemFormHandler;
 
 /**
  * @Route("/observation")
@@ -125,40 +123,4 @@ class ObservationController extends Controller
 
         return $this->redirect($this->generateUrl('observation_list'));
     }
-
-    /**
-     * @Route("/measure/{id}", name="observation_measure")
-     * @Method({"GET", "POST"})
-     *
-     * @param Request $request
-     * @param FormBuilder $formBuilder
-     * @param Observation $observation
-     * @param ItemFormHandler $formHandler
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @Template
-     */
-    public function createFormAction(Request $request,
-                                     FormBuilder $formBuilder,
-                                     Observation $observation,
-                                     ItemFormHandler $formHandler)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository('App\Entity\Item')->findItemsByObservation($observation);
-
-        $formBuilder->addItems($items);
-        $formBuilder->setAction($observation);
-
-        $form = $formBuilder->getForm()->getForm();
-
-        if ($formHandler->handle($form, $request, $this->get('translator')->trans('test'))) {
-            return $this->redirect($this->generateUrl('observation_list'));
-        }
-
-        return array(
-            'form' => $form->createView(),
-        );
-
-    }
-
 }

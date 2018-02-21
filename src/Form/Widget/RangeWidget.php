@@ -6,6 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 
 use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class RangeWidget implements WidgetInterface {
 
@@ -13,7 +14,16 @@ class RangeWidget implements WidgetInterface {
     private $min;
     private $max;
     private $step;
+    private $translator;
     private $value;
+
+    CONST MIN_MESSAGE = 'The minimum allowed value is {{ limit }}';
+    CONST MAX_MESSAGE = 'The maximum allowed value is {{ limit }}';
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
@@ -32,8 +42,8 @@ class RangeWidget implements WidgetInterface {
                         array(
                             'min' => $this->min,
                             'max' => $this->max,
-                            'minMessage' => 'The minimum allowed value is {{ limit }}',
-                            'maxMessage' => 'The maximum allowed value is {{ limit }}'
+                            'minMessage' => $this->translator->trans(self::MIN_MESSAGE),
+                            'maxMessage' => $this->translator->trans(self::MAX_MESSAGE)
                         )
                     )
                 )
