@@ -3,15 +3,20 @@
 namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use App\Form\Type\Custom\DurationItemType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class DurationWidget extends FrequencyWidget {
+class IntegerWidget implements WidgetInterface {
 
     private $label;
-    private $observationLengthInMinutes;
     private $translator;
     private $value;
+
+    CONST NOT_BLANK_MESSAGE = 'This value should not be blank.';
+    CONST MESSAGE = 'The value {{ value }} is not a valid {{ type }}.';
 
     public function __construct(TranslatorInterface $translator)
     {
@@ -22,13 +27,24 @@ class DurationWidget extends FrequencyWidget {
     {
         $formBuilderInterface->add(
             $this->label,
-            DurationItemType::class,
+            IntegerType::class,
             array(
                 'attr' => array(
                     'value' => $this->value
                 ),
-                'counter_value' => 0,
-                'observation_length_in_minutes' => $this->observationLengthInMinutes
+                'constraints' => array(
+                    new NotBlank(
+                        array(
+                            'message' => self::NOT_BLANK_MESSAGE
+                        )
+                    ),
+                    new Type(
+                        array(
+                            'type' => 'integer',
+                            'message' => self::MESSAGE,
+                        )
+                    )
+                )
             )
         );
 
@@ -49,38 +65,6 @@ class DurationWidget extends FrequencyWidget {
     public function setLabel($label)
     {
         $this->label = $label;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlaceholder()
-    {
-        return $this->placeholder;
-    }
-
-    /**
-     * @param mixed $placeholder
-     */
-    public function setPlaceholder($placeholder)
-    {
-        $this->placeholder = $placeholder;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getObservationLengthInMinutes()
-    {
-        return $this->observationLengthInMinutes;
-    }
-
-    /**
-     * @param mixed $observationLengthInMinutes
-     */
-    public function setObservationLengthInMinutes($observationLengthInMinutes)
-    {
-        $this->observationLengthInMinutes = $observationLengthInMinutes;
     }
 
     /**

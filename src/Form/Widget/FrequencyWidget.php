@@ -4,12 +4,19 @@ namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Form\Type\Custom\FrequencyItemType;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class FrequencyWidget implements WidgetInterface {
 
     private $label;
     private $observationLengthInMinutes;
+    private $translator;
     private $value;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     public function addField(FormBuilderInterface $formBuilderInterface)
     {

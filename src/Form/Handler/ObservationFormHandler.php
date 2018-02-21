@@ -18,6 +18,7 @@ class ObservationFormHandler {
         private $originalChoiceItems;
         private $originalDurationItems;
         private $originalFrequencyItems;
+        private $originalIntegerItems;
         private $originalRangeItems;
         private $originalTextItems;
     
@@ -31,6 +32,7 @@ class ObservationFormHandler {
                 $this->originalChoiceItems = new ArrayCollection();
                 $this->originalDurationItems = new ArrayCollection();
                 $this->originalFrequencyItems = new ArrayCollection();
+                $this->originalIntegerItems = new ArrayCollection();
                 $this->originalRangeItems = new ArrayCollection();
                 $this->originalTextItems = new ArrayCollection();
             }
@@ -52,6 +54,7 @@ class ObservationFormHandler {
                 $this->removeChoiceItems($validObject);
                 $this->removeDurationItems($validObject);
                 $this->removeFrequencyItems($validObject);
+                $this->removeIntegerItems($validObject);
                 $this->removeRangeItems($validObject);
                 $this->removeTextItems($validObject);
         
@@ -74,6 +77,11 @@ class ObservationFormHandler {
         }
                 if($entity->getFrequencyItems()->isEmpty()==false) {
             foreach($entity->getFrequencyItems() as $relatedEntity) {
+                $relatedEntity->setObservation($entity);
+            }
+        }
+                if($entity->getIntegerItems()->isEmpty()==false) {
+            foreach($entity->getIntegerItems() as $relatedEntity) {
                 $relatedEntity->setObservation($entity);
             }
         }
@@ -118,6 +126,16 @@ class ObservationFormHandler {
         foreach($this->originalFrequencyItems as $frequencyItem) {
             if (false === $entity->getFrequencyItems()->contains($frequencyItem)) {
                 $this->entityManager->remove($frequencyItem);
+                $this->entityManager->flush();
+            }
+        }
+
+        return $entity;
+    }
+        public function removeIntegerItems(Observation $entity) {
+        foreach($this->originalIntegerItems as $integerItem) {
+            if (false === $entity->getIntegerItems()->contains($integerItem)) {
+                $this->entityManager->remove($integerItem);
                 $this->entityManager->flush();
             }
         }
@@ -170,6 +188,15 @@ class ObservationFormHandler {
     {
         foreach($originalFrequencyItems as $frequencyItem) {
             $this->originalFrequencyItems->add($frequencyItem);
+        }
+    }
+        /**
+    * @param ArrayCollection $originalIntegerItems
+    */
+    public function setOriginalIntegerItems($originalIntegerItems)
+    {
+        foreach($originalIntegerItems as $integerItem) {
+            $this->originalIntegerItems->add($integerItem);
         }
     }
         /**
