@@ -19,6 +19,7 @@ class ObservationFormHandler {
         private $originalDurationItems;
         private $originalFrequencyItems;
         private $originalIntegerItems;
+        private $originalMeterItems;
         private $originalRangeItems;
         private $originalTextItems;
     
@@ -33,6 +34,7 @@ class ObservationFormHandler {
                 $this->originalDurationItems = new ArrayCollection();
                 $this->originalFrequencyItems = new ArrayCollection();
                 $this->originalIntegerItems = new ArrayCollection();
+                $this->originalMeterItems = new ArrayCollection();
                 $this->originalRangeItems = new ArrayCollection();
                 $this->originalTextItems = new ArrayCollection();
             }
@@ -55,6 +57,7 @@ class ObservationFormHandler {
                 $this->removeDurationItems($validObject);
                 $this->removeFrequencyItems($validObject);
                 $this->removeIntegerItems($validObject);
+                $this->removeMeterItems($validObject);
                 $this->removeRangeItems($validObject);
                 $this->removeTextItems($validObject);
         
@@ -82,6 +85,11 @@ class ObservationFormHandler {
         }
                 if($entity->getIntegerItems()->isEmpty()==false) {
             foreach($entity->getIntegerItems() as $relatedEntity) {
+                $relatedEntity->setObservation($entity);
+            }
+        }
+                if($entity->getMeterItems()->isEmpty()==false) {
+            foreach($entity->getMeterItems() as $relatedEntity) {
                 $relatedEntity->setObservation($entity);
             }
         }
@@ -136,6 +144,16 @@ class ObservationFormHandler {
         foreach($this->originalIntegerItems as $integerItem) {
             if (false === $entity->getIntegerItems()->contains($integerItem)) {
                 $this->entityManager->remove($integerItem);
+                $this->entityManager->flush();
+            }
+        }
+
+        return $entity;
+    }
+        public function removeMeterItems(Observation $entity) {
+        foreach($this->originalMeterItems as $meterItem) {
+            if (false === $entity->getMeterItems()->contains($meterItem)) {
+                $this->entityManager->remove($meterItem);
                 $this->entityManager->flush();
             }
         }
@@ -197,6 +215,15 @@ class ObservationFormHandler {
     {
         foreach($originalIntegerItems as $integerItem) {
             $this->originalIntegerItems->add($integerItem);
+        }
+    }
+        /**
+    * @param ArrayCollection $originalMeterItems
+    */
+    public function setOriginalMeterItems($originalMeterItems)
+    {
+        foreach($originalMeterItems as $meterItem) {
+            $this->originalMeterItems->add($meterItem);
         }
     }
         /**

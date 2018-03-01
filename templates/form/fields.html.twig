@@ -176,7 +176,7 @@
 {# Errors #}
 
 {% block form_errors -%}
-    {%- if errors|length > 0 -%}
+    {%- if errors|length> 0 -%}
         <div class="{% if form is not rootform %}invalid-feedback{% else %}alert alert-danger{% endif %}">
             <ul class="list-unstyled mb-0">
                 {%- for error in errors -%}
@@ -246,18 +246,55 @@
                 {{- block('form_rows') -}}
             </div>
         {% endif %}
-
-        <!--
-            <div class="duration-item">
-                {{- block('form_rows') -}}
-                {% if observationLengthInMinutes is defined %}
-                <div id="timer-{{ id }}">{{ observationLengthInMinutes }}</div>
-                <div id="player-{{ id }}">
-                    <a class="player" data-base-selector-id="{{ id }}" href="">start</a>
-                </div>
-                {% endif %}
-            </div>
-        -->
     {% endspaceless %}
 {% endblock %}
 
+{% block meter_item_widget %}
+    {% spaceless %}
+            <div class="form-group text-center square-container">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                    {% for row in 1..11 %}
+                        {% for column in 1..11 %}
+                            {% if(row==1 and column==1) %}
+                                {% set label = labelMaxY %}
+                            {% elseif(row==6 and column==1) %}
+                                {% set label = labelY %}
+                            {% elseif(row==10 and column==1) %}
+                                {% set label = labelMinY %}
+                            {% endif %}
+                            {% if(row==11 and column==2) %}
+                                {% set label = labelMinX %}
+                            {% elseif(row==11 and column==6) %}
+                                {% set label = labelX %}
+                            {% elseif(row==11 and column==10) %}
+                                {% set label = labelMaxX %}
+                            {% endif %}
+
+                            <div class="square" data-row="{{ row }}" data-column="{{ column }}">
+                                {% if( ((row==1 or row==6 or row==10) and column==1)
+                                or ((column==2 or column==6 or column==10) and row==11)
+                                )
+                                %}
+                                    <div class="content">
+                                        <div class="table">
+                                            <div class="table-cell meter-labels">
+                                                {{ label }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
+                </div>
+                {{ form_widget(form.xValue) }}
+                {{ form_widget(form.yValue) }}
+            </div>
+
+
+
+    {% endspaceless %}
+{% endblock %}

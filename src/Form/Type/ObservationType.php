@@ -13,6 +13,7 @@ use App\Form\Type\ChoiceItemType;
 use App\Form\Type\DurationItemType;
 use App\Form\Type\FrequencyItemType;
 use App\Form\Type\IntegerItemType;
+use App\Form\Type\MeterItemType;
 use App\Form\Type\RangeItemType;
 use App\Form\Type\TextItemType;
 
@@ -44,6 +45,12 @@ class ObservationType extends AbstractType
             ))
             ->add('integerItems', CollectionType::class, array(
                 'entry_type' => IntegerItemType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ))
+            ->add('meterItems', CollectionType::class, array(
+                'entry_type' => MeterItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false

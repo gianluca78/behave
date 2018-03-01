@@ -8,10 +8,11 @@
     <div class="row">
         <div class="col-md-4">
             <div class="row text-center">
-                {% set itemTypologies = ['Choice', 'Double', 'Duration', 'Frequency', 'Range', 'Text'] %}
+                {% set itemTypologies = ['Choice', 'Double', 'Duration', 'Frequency', 'Integer', 'Meter', 'Range', 'Text'] %}
 
                 {% for typology in itemTypologies %}
-                    <div class="col-md-6 border" style="cursor:move;" draggable="true" ondragstart="handleDragStart(event);">
+                    <div class="col-md-6 border" style="cursor:move;" draggable="true"
+                         ondragstart="handleDragStart(event);">
                         {{ typology }}
                     </div>
                 {% endfor %}
@@ -28,14 +29,13 @@
             {{ form_row(form.name) }}
             {{ form_row(form.description) }}
 
-
-
             <div id="target" class="col-md-8" ondrop="" ondragover=""></div>
 
             {{ form_row(form._token) }}
 
 
             <h3>choiceItems</h3>
+
             <div class="choiceItems" data-prototype="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}">
                 {% for choiceItem in form.choiceItems %}
                     <ul>
@@ -49,7 +49,9 @@
                 {% endfor %}
             </div>
             <h3>durationItems</h3>
-            <div class="durationItems" data-prototype="{{ form_widget(form.durationItems.vars.prototype)|e('html_attr') }}">
+
+            <div class="durationItems"
+                 data-prototype="{{ form_widget(form.durationItems.vars.prototype)|e('html_attr') }}">
                 {% for durationItem in form.durationItems %}
                     <ul>
                         <li>{{ form_row(durationItem.positionNumber) }}</li>
@@ -60,7 +62,9 @@
                 {% endfor %}
             </div>
             <h3>frequencyItems</h3>
-            <div class="frequencyItems" data-prototype="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}">
+
+            <div class="frequencyItems"
+                 data-prototype="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}">
                 {% for frequencyItem in form.frequencyItems %}
                     <ul>
                         <li>{{ form_row(frequencyItem.positionNumber) }}</li>
@@ -71,7 +75,9 @@
                 {% endfor %}
             </div>
             <h3>integerItems</h3>
-            <div class="integerItems" data-prototype="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}">
+
+            <div class="integerItems"
+                 data-prototype="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}">
                 {% for integerItem in form.integerItems %}
                     <ul>
                         <li>{{ form_row(integerItem.positionNumber) }}</li>
@@ -80,7 +86,26 @@
                     </ul>
                 {% endfor %}
             </div>
+            <h3>meterItems</h3>
+
+            <div class="meterItems" data-prototype="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}">
+                {% for meterItem in form.meterItems %}
+                    <ul>
+                        <li>{{ form_row(meterItem.positionNumber) }}</li>
+                        <li>{{ form_row(meterItem.label) }}</li>
+                        <li>{{ form_row(meterItem.xValue) }}</li>
+                        <li>{{ form_row(meterItem.yValue) }}</li>
+                        <li>{{ form_row(meterItem.labelY) }}</li>
+                        <li>{{ form_row(meterItem.labelMaxY) }}</li>
+                        <li>{{ form_row(meterItem.labelMinY) }}</li>
+                        <li>{{ form_row(meterItem.labelX) }}</li>
+                        <li>{{ form_row(meterItem.labelMaxX) }}</li>
+                        <li>{{ form_row(meterItem.labelMinX) }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
             <h3>rangeItems</h3>
+
             <div class="rangeItems" data-prototype="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}">
                 {% for rangeItem in form.rangeItems %}
                     <ul>
@@ -93,6 +118,7 @@
                 {% endfor %}
             </div>
             <h3>textItems</h3>
+
             <div class="textItems" data-prototype="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
                 {% for textItem in form.textItems %}
                     <ul>
@@ -131,10 +157,14 @@
 
     var $newIntegeritemLinkLi = $('<li></li>').append($addIntegeritemLink);
     var $collectionHolder5;
+    var $addMeteritemLink = $('<a href="#" class="addMeteritemLink">+</a>');
+
+    var $newMeteritemLinkLi = $('<li></li>').append($addMeteritemLink);
+    var $collectionHolder6;
     var $addRangeitemLink = $('<a href="#" class="addRangeitemLink">+</a>');
 
     var $newRangeitemLinkLi = $('<li></li>').append($addRangeitemLink);
-    var $collectionHolder6;
+    var $collectionHolder7;
     var $addTextitemLink = $('<a href="#" class="addTextitemLink">+</a>');
 
     var $newTextitemLinkLi = $('<li></li>').append($addTextitemLink);
@@ -196,33 +226,47 @@
 
             addIntegeritemForm($collectionHolder4, $newIntegeritemLinkLi);
         });
-        $collectionHolder5 = $('div.rangeItems');
-        $collectionHolder5.append($newRangeitemLinkLi);
+        $collectionHolder5 = $('div.meterItems');
+        $collectionHolder5.append($newMeteritemLinkLi);
 
         $collectionHolder5.find('ul').each(function () {
-            addRangeitemFormDeleteLink($(this));
+            addMeteritemFormDeleteLink($(this));
         });
 
         $collectionHolder5.data('index', $collectionHolder5.find(':input').length);
 
-        $addRangeitemLink.on('click', function (e) {
+        $addMeteritemLink.on('click', function (e) {
             e.preventDefault();
 
-            addRangeitemForm($collectionHolder5, $newRangeitemLinkLi);
+            addMeteritemForm($collectionHolder5, $newMeteritemLinkLi);
         });
-        $collectionHolder6 = $('div.textItems');
-        $collectionHolder6.append($newTextitemLinkLi);
+        $collectionHolder6 = $('div.rangeItems');
+        $collectionHolder6.append($newRangeitemLinkLi);
 
         $collectionHolder6.find('ul').each(function () {
-            addTextitemFormDeleteLink($(this));
+            addRangeitemFormDeleteLink($(this));
         });
 
         $collectionHolder6.data('index', $collectionHolder6.find(':input').length);
 
+        $addRangeitemLink.on('click', function (e) {
+            e.preventDefault();
+
+            addRangeitemForm($collectionHolder6, $newRangeitemLinkLi);
+        });
+        $collectionHolder7 = $('div.textItems');
+        $collectionHolder7.append($newTextitemLinkLi);
+
+        $collectionHolder7.find('ul').each(function () {
+            addTextitemFormDeleteLink($(this));
+        });
+
+        $collectionHolder7.data('index', $collectionHolder7.find(':input').length);
+
         $addTextitemLink.on('click', function (e) {
             e.preventDefault();
 
-            addTextitemForm($collectionHolder6, $newTextitemLinkLi);
+            addTextitemForm($collectionHolder7, $newTextitemLinkLi);
         });
 
     })
@@ -326,6 +370,33 @@
     }
 
     function addIntegeritemFormDeleteLink($tagFormLi) {
+        var $removeFormA = $('<a href="#">-</a>');
+        $tagFormLi.append($removeFormA);
+
+        $removeFormA.on('click', function (e) {
+            e.preventDefault();
+
+            $tagFormLi.remove();
+        });
+    }
+    function addMeteritemForm($collectionHolder, $newLinkLi) {
+
+        var prototype = $collectionHolder.data('prototype');
+
+        var index = $collectionHolder.data('index');
+
+        var newForm = prototype.replace(/__name__/g, index);
+
+        $collectionHolder.data('index', index + 1);
+
+        var $newFormLi = $('<li></li>').append(newForm);
+
+        $newLinkLi.before($newFormLi);
+
+        addMeteritemFormDeleteLink($newFormLi);
+    }
+
+    function addMeteritemFormDeleteLink($tagFormLi) {
         var $removeFormA = $('<a href="#">-</a>');
         $tagFormLi.append($removeFormA);
 

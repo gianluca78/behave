@@ -14,13 +14,11 @@ class RangeItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                                                                        ->add('positionNumber', null, array('required' => true))
-                                                                ->add('label', null, array('required' => true))
-                                                                ->add('min', null, array('required' => true))
-                                                                ->add('max', null, array('required' => true))
-                                                                ->add('step', null, array('required' => true))
-                                    
-        ;
+            ->add('positionNumber', null, array('required' => true))
+            ->add('label', null, array('required' => true))
+            ->add('min', null, array('required' => true))
+            ->add('max', null, array('required' => true))
+            ->add('step', null, array('required' => true));
     }
 
     public function configureOptions(OptionsResolver $resolver)
