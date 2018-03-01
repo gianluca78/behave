@@ -15,4 +15,12 @@
 
     <script src="{{ asset('js/duration_items_widget.js') }}"></script>
     <script src="{{ asset('js/frequency_items_widget.js') }}"></script>
+
+
+    <script>
+        $( '.square' ).on('click', function(e){
+            $( "input[name*='xValue']" ).val($( this ).attr('data-row'));
+            $( "input[name*='yValue']" ).val($( this ).attr('data-column'));
+        });
+    </script>
 {% endblock %}

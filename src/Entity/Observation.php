@@ -67,6 +67,13 @@ class Observation
     private $integerItems;
 
     /**
+     * @var ArrayCollection $meterItems
+     *
+     * @ORM\OneToMany(targetEntity="MeterItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $meterItems;    
+    
+    /**
      * @var ArrayCollection $rangeItems
      *
      * @ORM\OneToMany(targetEntity="RangeItem", mappedBy="observation", cascade={"persist", "remove"})
@@ -86,6 +93,7 @@ class Observation
         $this->durationItems = new ArrayCollection();
         $this->frequencyItems = new ArrayCollection();
         $this->integerItems = new ArrayCollection();
+        $this->meterItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
         $this->textItems = new ArrayCollection();
     }
@@ -178,40 +186,6 @@ class Observation
     public function getChoiceItems()
     {
         return $this->choiceItems;
-    }
-
-    /**
-     * Add textItem
-     *
-     * @param \App\Entity\TextItem $textItem
-     *
-     * @return Observation
-     */
-    public function addTextItem(\App\Entity\TextItem $textItem)
-    {
-        $this->textItems[] = $textItem;
-
-        return $this;
-    }
-
-    /**
-     * Remove textItem
-     *
-     * @param \App\Entity\TextItem $textItem
-     */
-    public function removeTextItem(\App\Entity\TextItem $textItem)
-    {
-        $this->textItems->removeElement($textItem);
-    }
-
-    /**
-     * Get itemsText
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTextItems()
-    {
-        return $this->textItems;
     }
 
     /**
@@ -317,6 +291,40 @@ class Observation
     }
 
     /**
+     * Add meterItem
+     *
+     * @param \App\Entity\MeterItem $meterItem
+     *
+     * @return Observation
+     */
+    public function addMeterItem(\App\Entity\MeterItem $meterItem)
+    {
+        $this->meterItems[] = $meterItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove meterItem
+     *
+     * @param \App\Entity\MeterItem $meterItem
+     */
+    public function removeMeterItem(\App\Entity\MeterItem $meterItem)
+    {
+        $this->meterItems->removeElement($meterItem);
+    }
+
+    /**
+     * Get itemsMeter
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMeterItems()
+    {
+        return $this->meterItems;
+    }
+
+    /**
      * Add textRangeItem
      *
      * @param \App\Entity\RangeItem $textRangeItem
@@ -348,6 +356,40 @@ class Observation
     public function getRangeItems()
     {
         return $this->rangeItems;
+    }
+
+    /**
+     * Add textItem
+     *
+     * @param \App\Entity\TextItem $textItem
+     *
+     * @return Observation
+     */
+    public function addTextItem(\App\Entity\TextItem $textItem)
+    {
+        $this->textItems[] = $textItem;
+
+        return $this;
+    }
+
+    /**
+     * Remove textItem
+     *
+     * @param \App\Entity\TextItem $textItem
+     */
+    public function removeTextItem(\App\Entity\TextItem $textItem)
+    {
+        $this->textItems->removeElement($textItem);
+    }
+
+    /**
+     * Get itemsText
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTextItems()
+    {
+        return $this->textItems;
     }
 
 }

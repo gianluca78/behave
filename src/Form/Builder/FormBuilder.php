@@ -4,12 +4,14 @@ namespace App\Form\Builder;
 
 use App\Entity\DurationItem;
 use App\Entity\IntegerItem;
+use App\Entity\MeterItem;
 use App\Entity\Observation;
 use App\Entity\RangeItem;
 use App\Form\Widget\ChoiceWidget;
 use App\Form\Widget\DurationWidget;
 use App\Form\Widget\FrequencyWidget;
 use App\Form\Widget\IntegerWidget;
+use App\Form\Widget\MeterWidget;
 use App\Form\Widget\RangeWidget;
 use App\Form\Widget\TextWidget;
 use App\Entity\ChoiceItem;
@@ -62,6 +64,9 @@ class FormBuilder {
                     break;
                 case 'App\Entity\IntegerItem':
                     $this->addIntegerWidget($item);
+                    break;
+                case 'App\Entity\MeterItem':
+                    $this->addMeterWidget($item);
                     break;
                 case 'App\Entity\RangeItem':
                     $this->addRangeWidget($item);
@@ -126,6 +131,22 @@ class FormBuilder {
         $integerWidget->setValue($item->getFieldValue());
 
         $this->form = $integerWidget->addField($this->form);
+    }
+
+    private function addMeterWidget(MeterItem $item)
+    {
+        $meterWidget = new MeterWidget($this->translator);
+        $meterWidget->setLabel($item->getLabel());
+        $meterWidget->setValueX($item->getXValue());
+        $meterWidget->setValueY($item->getYValue());
+        $meterWidget->setLabelX($item->getLabelX());
+        $meterWidget->setLabelMinX($item->getLabelMinX());
+        $meterWidget->setLabelMaxX($item->getLabelMaxX());
+        $meterWidget->setLabelY($item->getLabelY());
+        $meterWidget->setLabelMinY($item->getLabelMinY());
+        $meterWidget->setLabelMaxY($item->getLabelMaxY());
+
+        $this->form = $meterWidget->addField($this->form);
     }
 
     private function addRangeWidget(RangeItem $item)

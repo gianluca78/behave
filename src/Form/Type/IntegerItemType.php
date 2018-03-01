@@ -14,11 +14,9 @@ class IntegerItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                                                                        ->add('positionNumber', null, array('required' => true))
-                                                                ->add('label', null, array('required' => true))
-                                                                ->add('fieldValue', null, array('required' => true))
-                                    
-        ;
+            ->add('positionNumber', null, array('required' => true))
+            ->add('label', null, array('required' => true))
+            ->add('fieldValue', null, array('required' => true));
     }
 
     public function configureOptions(OptionsResolver $resolver)

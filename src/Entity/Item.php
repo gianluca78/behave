@@ -9,12 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
  *  @ORM\InheritanceType("SINGLE_TABLE")
  *  @ORM\DiscriminatorColumn(name="type", type="string")
  *  @ORM\DiscriminatorMap({
- *                          "choice" = "ChoiceItem",
- *                          "duration" = "DurationItem",
+ *                          "choice"    = "ChoiceItem",
+ *                          "duration"  = "DurationItem",
  *                          "frequency" = "FrequencyItem",
- *                          "integer" = "IntegerItem",
- *                          "range" = "RangeItem",
- *                          "text" = "TextItem",
+ *                          "integer"   = "IntegerItem",
+ *                          "meter"     = "MeterItem",
+ *                          "range"     = "RangeItem",
+ *                          "text"      = "TextItem",
  * })
  */
 abstract class Item
