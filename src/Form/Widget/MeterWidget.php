@@ -27,7 +27,7 @@ class MeterWidget implements WidgetInterface {
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
         $formBuilderInterface->add(
-            $this->label,
+            'meterWidget',
             MeterItemType::class,
             array(
                 'attr' => array(

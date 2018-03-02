@@ -29,6 +29,7 @@ class ChoiceWidget implements WidgetInterface {
         $options = array(
             'choices' => $this->options,
             'expanded' => $this->isExpanded,
+            'label' => $this->label,
             'multiple' => $this->isMultiple,
             'constraints' => array(
                 new Choice(
@@ -47,7 +48,7 @@ class ChoiceWidget implements WidgetInterface {
         }
 
         $formBuilderInterface->add(
-            $this->label,
+            'choiceWidget',
             ChoiceType::class,
             $options
         );
