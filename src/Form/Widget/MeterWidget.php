@@ -34,6 +34,7 @@ class MeterWidget implements WidgetInterface {
                     'valueX' => $this->valueX,
                     'valueY' => $this->valueY,
                 ),
+                'label' => $this->label,
                 'label_y' => $this->labelY,
                 'label_min_y' => $this->labelMinY,
                 'label_max_y' => $this->labelMaxY,

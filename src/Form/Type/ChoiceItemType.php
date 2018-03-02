@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\ChoiceItem;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
@@ -19,7 +20,7 @@ class ChoiceItemType extends AbstractType
             ->add('emptyValue', null, array('required' => false))
             ->add('isExpanded', null, array('required' => false))
             ->add('isMultiple', null, array('required' => false))
-            ->add('options', null, array('required' => true));
+            ->add('options', TextareaType::class, array('required' => true));
     }
 
     public function configureOptions(OptionsResolver $resolver)

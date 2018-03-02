@@ -139,6 +139,7 @@ class FormBuilder {
         $meterWidget->setLabel($item->getLabel());
         $meterWidget->setValueX($item->getXValue());
         $meterWidget->setValueY($item->getYValue());
+        $meterWidget->setLabel($item->getLabel());
         $meterWidget->setLabelX($item->getLabelX());
         $meterWidget->setLabelMinX($item->getLabelMinX());
         $meterWidget->setLabelMaxX($item->getLabelMaxX());
