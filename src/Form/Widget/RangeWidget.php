@@ -28,7 +28,7 @@ class RangeWidget implements WidgetInterface {
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
         $formBuilderInterface->add(
-            $this->label,
+            'rangeWidget',
             RangeType::class,
             array(
                 'attr' => array(
@@ -46,7 +46,8 @@ class RangeWidget implements WidgetInterface {
                             'maxMessage' => $this->translator->trans(self::MAX_MESSAGE)
                         )
                     )
-                )
+                ),
+                'label' => $this->label,
             )
         );
 

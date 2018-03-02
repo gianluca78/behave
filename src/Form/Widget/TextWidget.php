@@ -30,7 +30,7 @@ class TextWidget implements WidgetInterface {
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
         $formBuilderInterface->add(
-            $this->label,
+            'textWidget',
             TextType::class,
             array(
                 'attr' => array(
@@ -51,7 +51,8 @@ class TextWidget implements WidgetInterface {
                             'maxMessage' => self::LENGTH_MAX_MESSAGE,
                         )
                     )
-                )
+                ),
+                'label' => $this->label
             )
         );
 

@@ -21,13 +21,14 @@ class FrequencyWidget implements WidgetInterface {
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
         $formBuilderInterface->add(
-            $this->label,
+            'frequencyWidget',
             FrequencyItemType::class,
             array(
                 'attr' => array(
                     'value' => $this->value
                 ),
                 'counter_value' => 0,
+                'label' => $this->label,
                 'observation_length_in_minutes' => $this->observationLengthInMinutes
             )
         );

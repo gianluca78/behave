@@ -26,7 +26,7 @@ class IntegerWidget implements WidgetInterface {
     public function addField(FormBuilderInterface $formBuilderInterface)
     {
         $formBuilderInterface->add(
-            $this->label,
+            'integerWidget',
             IntegerType::class,
             array(
                 'attr' => array(
@@ -44,7 +44,8 @@ class IntegerWidget implements WidgetInterface {
                             'message' => self::MESSAGE,
                         )
                     )
-                )
+                ),
+                'label' => $this->label,
             )
         );
 
