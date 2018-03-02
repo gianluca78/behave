@@ -7,6 +7,36 @@ $( document ).ready(function() {
 
         startTimer(observationLengthInMinutesId, timerId);
     });
+
+    $( '.frequency-item' ).each(function(i, e) {
+        children = $(e).children();
+
+        observationLengthInMinutesId = $(children[0]).children()[0].id;
+        timerId = $(children[0]).children()[5].id;
+
+        startTimer(observationLengthInMinutesId, timerId);
+    });
+});
+
+$( "a.counter" ).click(function(e){
+    e.preventDefault();
+
+    baseSelectorId = $( this ).attr('data-base-selector-id');
+    counter = parseInt($( "#" + baseSelectorId + "_counter" ).val()) + 1;
+    timer = $( "#timer-" + baseSelectorId );
+    occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
+
+    if(timer.text() != '00:00') {
+        $( "#" + baseSelectorId + "_counter" ).val(counter);
+        $( "#counter-" + baseSelectorId + " span" ).text(counter);
+
+        addOccurrenceTimestampForm(occurrencesTimestampDiv);
+
+        lastIndex = $( "#" + baseSelectorId + '_occurrenceTimestamps' ).find(':input').length - 1;
+        timestamp = ~~(Date.now()/1000);
+        $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
+    }
+
 });
 
 $( "a.player" ).click(function(e){
@@ -41,8 +71,6 @@ function addOccurrenceTimestampForm($collectionHolder) {
     var index = $collectionHolder.find(':input').length;
 
     var newForm = prototype.replace(/__name__/g, index);
-
-    console.log(newForm);
 
     $collectionHolder.data('index', index + 1);
     $collectionHolder.append(newForm);
