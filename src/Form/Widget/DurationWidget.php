@@ -18,10 +18,10 @@ class DurationWidget extends FrequencyWidget {
         $this->translator = $translator;
     }
 
-    public function addField(FormBuilderInterface $formBuilderInterface)
+    public function addField(FormBuilderInterface $formBuilderInterface, $name)
     {
         $formBuilderInterface->add(
-            'durationWidget',
+            $name,
             DurationItemType::class,
             array(
                 'attr' => array(

@@ -18,10 +18,10 @@ class FrequencyWidget implements WidgetInterface {
         $this->translator = $translator;
     }
 
-    public function addField(FormBuilderInterface $formBuilderInterface)
+    public function addField(FormBuilderInterface $formBuilderInterface, $name)
     {
         $formBuilderInterface->add(
-            'frequencyWidget',
+            $name,
             FrequencyItemType::class,
             array(
                 'attr' => array(

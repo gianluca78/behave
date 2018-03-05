@@ -24,7 +24,7 @@ class ChoiceWidget implements WidgetInterface {
         $this->translator = $translator;
     }
 
-    public function addField(FormBuilderInterface $formBuilderInterface)
+    public function addField(FormBuilderInterface $formBuilderInterface, $name)
     {
         $options = array(
             'choices' => $this->options,
@@ -48,7 +48,7 @@ class ChoiceWidget implements WidgetInterface {
         }
 
         $formBuilderInterface->add(
-            'choiceWidget',
+            $name,
             ChoiceType::class,
             $options
         );

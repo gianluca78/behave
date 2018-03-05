@@ -27,10 +27,10 @@ class TextWidget implements WidgetInterface {
         $this->translator = $translator;
     }
 
-    public function addField(FormBuilderInterface $formBuilderInterface)
+    public function addField(FormBuilderInterface $formBuilderInterface, $name)
     {
         $formBuilderInterface->add(
-            'textWidget',
+            $name,
             TextType::class,
             array(
                 'attr' => array(

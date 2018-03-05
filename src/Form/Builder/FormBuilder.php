@@ -99,7 +99,7 @@ class FormBuilder {
         $choiceWidget->setIsMultiple($item->getIsMultiple());
         $choiceWidget->setOptions(array_flip(explode(PHP_EOL, $item->getOptions())));
 
-        $this->form = $choiceWidget->addField($this->form);
+        $this->form = $choiceWidget->addField($this->form, 'item-' . $item->getId());
     }
 
     private function addDurationWidget(DurationItem $item)
@@ -109,7 +109,7 @@ class FormBuilder {
         $durationWidget->setValue($item->getFieldValue());
         $durationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
 
-        $this->form = $durationWidget->addField($this->form);
+        $this->form = $durationWidget->addField($this->form, 'item-' . $item->getId());
 
     }
 
@@ -120,7 +120,7 @@ class FormBuilder {
         $frequencyWidget->setValue($item->getFieldValue());
         $frequencyWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
 
-        $this->form = $frequencyWidget->addField($this->form);
+        $this->form = $frequencyWidget->addField($this->form, 'item-' . $item->getId());
 
     }
 
@@ -130,7 +130,7 @@ class FormBuilder {
         $integerWidget->setLabel($item->getLabel());
         $integerWidget->setValue($item->getFieldValue());
 
-        $this->form = $integerWidget->addField($this->form);
+        $this->form = $integerWidget->addField($this->form, 'item-' . $item->getId());
     }
 
     private function addMeterWidget(MeterItem $item)
@@ -147,7 +147,7 @@ class FormBuilder {
         $meterWidget->setLabelMinY($item->getLabelMinY());
         $meterWidget->setLabelMaxY($item->getLabelMaxY());
 
-        $this->form = $meterWidget->addField($this->form);
+        $this->form = $meterWidget->addField($this->form, 'item-' . $item->getId());
     }
 
     private function addRangeWidget(RangeItem $item)
@@ -158,7 +158,7 @@ class FormBuilder {
         $rangeWidget->setMin($item->getMin());
         $rangeWidget->setStep($item->getStep());
 
-        $this->form = $rangeWidget->addField($this->form);
+        $this->form = $rangeWidget->addField($this->form, 'item-' . $item->getId());
     }
 
     private function addTextWidget(TextItem $item)
@@ -168,7 +168,7 @@ class FormBuilder {
         $textWidget->setPlaceholder($item->getPlaceholder());
         $textWidget->setValue($item->getFieldValue());
 
-        $this->form = $textWidget->addField($this->form);
+        $this->form = $textWidget->addField($this->form, 'item-' . $item->getId());
     }
 
 }
