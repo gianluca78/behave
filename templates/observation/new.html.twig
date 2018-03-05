@@ -8,13 +8,10 @@
     <div class="row">
         <div class="col-md-4">
             <div class="row text-center">
-                {% set itemTypologies = ['Choice', 'Double', 'Duration', 'Frequency', 'Integer', 'Meter', 'Range', 'Text'] %}
+                {% set itemTypologies = ['Choice', 'Duration', 'Frequency', 'Integer', 'Meter', 'Range', 'Text'] %}
 
                 {% for typology in itemTypologies %}
-                    <div class="col-md-6 border" style="cursor:move;" draggable="true"
-                         ondragstart="handleDragStart(event);">
-                        {{ typology }}
-                    </div>
+                    <div class="col-md-6 border typology" style="cursor:move;">{{ typology }}</div>
                 {% endfor %}
             </div>
         </div>
@@ -29,21 +26,50 @@
             {{ form_row(form.name) }}
             {{ form_row(form.description) }}
 
-            <div id="target" class="col-md-8" ondrop="" ondragover=""></div>
-
             {{ form_row(form._token) }}
 
+            <div class="items"
+                 data-index-item="0"
+                 data-prototype-choice="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-duration="{{ form_widget(form.durationItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-frequency="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-integer="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-meter="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-range="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-text="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}"
+                 >
+            </div>
 
+            <!--
+            <div class="choiceItems" data-prototype="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}">
+                {% for choiceItem in form.choiceItems %}
+                    <ul>
+                        <li>{{ form_row(choiceItem.isExpanded) }}</li>
+                        <li>{{ form_row(choiceItem.isMultiple) }}</li>
+                        <li>{{ form_row(choiceItem.positionNumber) }}</li>
+                        <li>{{ form_row(choiceItem.label) }}</li>
+                        <li>{{ form_row(choiceItem.emptyValue) }}</li>
+                        <li>{{ form_row(choiceItem.options) }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+            -->
+
+            {{ form_row(form.submit) }}
+
+
+
+            <!--
             <h3>choiceItems</h3>
 
             <div class="choiceItems" data-prototype="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}">
                 {% for choiceItem in form.choiceItems %}
                     <ul>
+                        <li>{{ form_row(choiceItem.isExpanded) }}</li>
+                        <li>{{ form_row(choiceItem.isMultiple) }}</li>
                         <li>{{ form_row(choiceItem.positionNumber) }}</li>
                         <li>{{ form_row(choiceItem.label) }}</li>
                         <li>{{ form_row(choiceItem.emptyValue) }}</li>
-                        <li>{{ form_row(choiceItem.isExpanded) }}</li>
-                        <li>{{ form_row(choiceItem.isMultiple) }}</li>
                         <li>{{ form_row(choiceItem.options) }}</li>
                     </ul>
                 {% endfor %}
@@ -130,7 +156,9 @@
                 {% endfor %}
             </div>
 
+
             {{ form_end(form) }}
+            -->
 
         </div>
     </div>
@@ -140,327 +168,85 @@
     {{ parent() }}
 
     <script>
-    var $collectionHolder1;
-    var $addChoiceitemLink = $('<a href="#" class="addChoiceitemLink">+</a>');
+    var $collectionHolder = $('div.items');
 
-    var $newChoiceitemLinkLi = $('<li></li>').append($addChoiceitemLink);
-    var $collectionHolder2;
-    var $addDurationitemLink = $('<a href="#" class="addDurationitemLink">+</a>');
+    $( '.typology' ).on('click', function(e){
+        e.preventDefault();
 
-    var $newDurationitemLinkLi = $('<li></li>').append($addDurationitemLink);
-    var $collectionHolder3;
-    var $addFrequencyitemLink = $('<a href="#" class="addFrequencyitemLink">+</a>');
+        switch($( this ).text()) {
+            case 'Choice':
+                addItemForm($collectionHolder, 'choice');
+                break;
 
-    var $newFrequencyitemLinkLi = $('<li></li>').append($addFrequencyitemLink);
-    var $collectionHolder4;
-    var $addIntegeritemLink = $('<a href="#" class="addIntegeritemLink">+</a>');
+            case 'Duration':
+                addItemForm($collectionHolder, 'duration');
+                break;
 
-    var $newIntegeritemLinkLi = $('<li></li>').append($addIntegeritemLink);
-    var $collectionHolder5;
-    var $addMeteritemLink = $('<a href="#" class="addMeteritemLink">+</a>');
+            case 'Frequency':
+                addItemForm($collectionHolder, 'frequency');
+                break;
 
-    var $newMeteritemLinkLi = $('<li></li>').append($addMeteritemLink);
-    var $collectionHolder6;
-    var $addRangeitemLink = $('<a href="#" class="addRangeitemLink">+</a>');
+            case 'Integer':
+                addItemForm($collectionHolder, 'integer');
+                break;
 
-    var $newRangeitemLinkLi = $('<li></li>').append($addRangeitemLink);
-    var $collectionHolder7;
-    var $addTextitemLink = $('<a href="#" class="addTextitemLink">+</a>');
+            case 'Meter':
+                addItemForm($collectionHolder, 'meter');
+                break;
 
-    var $newTextitemLinkLi = $('<li></li>').append($addTextitemLink);
+            case 'Range':
+                addItemForm($collectionHolder, 'range');
+                break;
 
-    jQuery(document).ready(function () {
-        $collectionHolder1 = $('div.choiceItems');
-        $collectionHolder1.append($newChoiceitemLinkLi);
+            case 'Text':
+                addItemForm($collectionHolder, 'text');
+        }
+    });
 
-        $collectionHolder1.find('ul').each(function () {
-            addChoiceitemFormDeleteLink($(this));
-        });
+    function addItemForm($collectionHolder, type) {
 
-        $collectionHolder1.data('index', $collectionHolder1.find(':input').length);
+        var prototype = $collectionHolder.data('prototype-' + type);
 
-        $addChoiceitemLink.on('click', function (e) {
-            e.preventDefault();
+        var index = $collectionHolder.data('index-item');
 
-            addChoiceitemForm($collectionHolder1, $newChoiceitemLinkLi);
-        });
-        $collectionHolder2 = $('div.durationItems');
-        $collectionHolder2.append($newDurationitemLinkLi);
-
-        $collectionHolder2.find('ul').each(function () {
-            addDurationitemFormDeleteLink($(this));
-        });
-
-        $collectionHolder2.data('index', $collectionHolder2.find(':input').length);
-
-        $addDurationitemLink.on('click', function (e) {
-            e.preventDefault();
-
-            addDurationitemForm($collectionHolder2, $newDurationitemLinkLi);
-        });
-        $collectionHolder3 = $('div.frequencyItems');
-        $collectionHolder3.append($newFrequencyitemLinkLi);
-
-        $collectionHolder3.find('ul').each(function () {
-            addFrequencyitemFormDeleteLink($(this));
-        });
-
-        $collectionHolder3.data('index', $collectionHolder3.find(':input').length);
-
-        $addFrequencyitemLink.on('click', function (e) {
-            e.preventDefault();
-
-            addFrequencyitemForm($collectionHolder3, $newFrequencyitemLinkLi);
-        });
-        $collectionHolder4 = $('div.integerItems');
-        $collectionHolder4.append($newIntegeritemLinkLi);
-
-        $collectionHolder4.find('ul').each(function () {
-            addIntegeritemFormDeleteLink($(this));
-        });
-
-        $collectionHolder4.data('index', $collectionHolder4.find(':input').length);
-
-        $addIntegeritemLink.on('click', function (e) {
-            e.preventDefault();
-
-            addIntegeritemForm($collectionHolder4, $newIntegeritemLinkLi);
-        });
-        $collectionHolder5 = $('div.meterItems');
-        $collectionHolder5.append($newMeteritemLinkLi);
-
-        $collectionHolder5.find('ul').each(function () {
-            addMeteritemFormDeleteLink($(this));
-        });
-
-        $collectionHolder5.data('index', $collectionHolder5.find(':input').length);
-
-        $addMeteritemLink.on('click', function (e) {
-            e.preventDefault();
-
-            addMeteritemForm($collectionHolder5, $newMeteritemLinkLi);
-        });
-        $collectionHolder6 = $('div.rangeItems');
-        $collectionHolder6.append($newRangeitemLinkLi);
-
-        $collectionHolder6.find('ul').each(function () {
-            addRangeitemFormDeleteLink($(this));
-        });
-
-        $collectionHolder6.data('index', $collectionHolder6.find(':input').length);
-
-        $addRangeitemLink.on('click', function (e) {
-            e.preventDefault();
-
-            addRangeitemForm($collectionHolder6, $newRangeitemLinkLi);
-        });
-        $collectionHolder7 = $('div.textItems');
-        $collectionHolder7.append($newTextitemLinkLi);
-
-        $collectionHolder7.find('ul').each(function () {
-            addTextitemFormDeleteLink($(this));
-        });
-
-        $collectionHolder7.data('index', $collectionHolder7.find(':input').length);
-
-        $addTextitemLink.on('click', function (e) {
-            e.preventDefault();
-
-            addTextitemForm($collectionHolder7, $newTextitemLinkLi);
-        });
-
-    })
-
-    function addChoiceitemForm($collectionHolder, $newLinkLi) {
-
-        var prototype = $collectionHolder.data('prototype');
-
-        var index = $collectionHolder.data('index');
+        $collectionHolder.data('index-item', parseInt(index) + 1);
 
         var newForm = prototype.replace(/__name__/g, index);
 
-        $collectionHolder.data('index', index + 1);
+        var $newFormLi = $collectionHolder.append(newForm);
 
-        var $newFormLi = $('<li></li>').append(newForm);
+        lastPositionNumber = $( "input[name*='positionNumber']" ).eq(-2).val();
+        lastPositionNumber = (isNaN(parseInt(lastPositionNumber))) ? '0' : parseInt(lastPositionNumber);
 
-        $newLinkLi.before($newFormLi);
+        $( "input[name*='positionNumber']" ).last().val(parseInt(lastPositionNumber) + 1);
 
-        addChoiceitemFormDeleteLink($newFormLi);
+        addItemFormDeleteLink($collectionHolder);
     }
 
-    function addChoiceitemFormDeleteLink($tagFormLi) {
+    function addItemFormDeleteLink($collectionHolder) {
         var $removeFormA = $('<a href="#">-</a>');
-        $tagFormLi.append($removeFormA);
+        var index = $collectionHolder.data('index-item');
+
+        $( '.items' ).append($removeFormA);
 
         $removeFormA.on('click', function (e) {
             e.preventDefault();
 
-            $tagFormLi.remove();
+            $( this ).prev().remove();
+            $( this ).remove();
+
+            $collectionHolder.data('index-item', index - 1);
+
+            $( "input[id*='positionNumber']").each(function( key, value ){
+
+                positionNumber = parseInt(key) + 1;
+
+                $ ( this ).val(positionNumber);
+
+            });
+
         });
     }
-    function addDurationitemForm($collectionHolder, $newLinkLi) {
-
-        var prototype = $collectionHolder.data('prototype');
-
-        var index = $collectionHolder.data('index');
-
-        var newForm = prototype.replace(/__name__/g, index);
-
-        $collectionHolder.data('index', index + 1);
-
-        var $newFormLi = $('<li></li>').append(newForm);
-
-        $newLinkLi.before($newFormLi);
-
-        addDurationitemFormDeleteLink($newFormLi);
-    }
-
-    function addDurationitemFormDeleteLink($tagFormLi) {
-        var $removeFormA = $('<a href="#">-</a>');
-        $tagFormLi.append($removeFormA);
-
-        $removeFormA.on('click', function (e) {
-            e.preventDefault();
-
-            $tagFormLi.remove();
-        });
-    }
-    function addFrequencyitemForm($collectionHolder, $newLinkLi) {
-
-        var prototype = $collectionHolder.data('prototype');
-
-        var index = $collectionHolder.data('index');
-
-        var newForm = prototype.replace(/__name__/g, index);
-
-        $collectionHolder.data('index', index + 1);
-
-        var $newFormLi = $('<li></li>').append(newForm);
-
-        $newLinkLi.before($newFormLi);
-
-        addFrequencyitemFormDeleteLink($newFormLi);
-    }
-
-    function addFrequencyitemFormDeleteLink($tagFormLi) {
-        var $removeFormA = $('<a href="#">-</a>');
-        $tagFormLi.append($removeFormA);
-
-        $removeFormA.on('click', function (e) {
-            e.preventDefault();
-
-            $tagFormLi.remove();
-        });
-    }
-    function addIntegeritemForm($collectionHolder, $newLinkLi) {
-
-        var prototype = $collectionHolder.data('prototype');
-
-        var index = $collectionHolder.data('index');
-
-        var newForm = prototype.replace(/__name__/g, index);
-
-        $collectionHolder.data('index', index + 1);
-
-        var $newFormLi = $('<li></li>').append(newForm);
-
-        $newLinkLi.before($newFormLi);
-
-        addIntegeritemFormDeleteLink($newFormLi);
-    }
-
-    function addIntegeritemFormDeleteLink($tagFormLi) {
-        var $removeFormA = $('<a href="#">-</a>');
-        $tagFormLi.append($removeFormA);
-
-        $removeFormA.on('click', function (e) {
-            e.preventDefault();
-
-            $tagFormLi.remove();
-        });
-    }
-    function addMeteritemForm($collectionHolder, $newLinkLi) {
-
-        var prototype = $collectionHolder.data('prototype');
-
-        var index = $collectionHolder.data('index');
-
-        var newForm = prototype.replace(/__name__/g, index);
-
-        $collectionHolder.data('index', index + 1);
-
-        var $newFormLi = $('<li></li>').append(newForm);
-
-        $newLinkLi.before($newFormLi);
-
-        addMeteritemFormDeleteLink($newFormLi);
-    }
-
-    function addMeteritemFormDeleteLink($tagFormLi) {
-        var $removeFormA = $('<a href="#">-</a>');
-        $tagFormLi.append($removeFormA);
-
-        $removeFormA.on('click', function (e) {
-            e.preventDefault();
-
-            $tagFormLi.remove();
-        });
-    }
-    function addRangeitemForm($collectionHolder, $newLinkLi) {
-
-        var prototype = $collectionHolder.data('prototype');
-
-        var index = $collectionHolder.data('index');
-
-        var newForm = prototype.replace(/__name__/g, index);
-
-        $collectionHolder.data('index', index + 1);
-
-        var $newFormLi = $('<li></li>').append(newForm);
-
-        $newLinkLi.before($newFormLi);
-
-        addRangeitemFormDeleteLink($newFormLi);
-    }
-
-    function addRangeitemFormDeleteLink($tagFormLi) {
-        var $removeFormA = $('<a href="#">-</a>');
-        $tagFormLi.append($removeFormA);
-
-        $removeFormA.on('click', function (e) {
-            e.preventDefault();
-
-            $tagFormLi.remove();
-        });
-    }
-    function addTextitemForm($collectionHolder, $newLinkLi) {
-
-        var prototype = $collectionHolder.data('prototype');
-
-        var index = $collectionHolder.data('index');
-
-        var newForm = prototype.replace(/__name__/g, index);
-
-        $collectionHolder.data('index', index + 1);
-
-        var $newFormLi = $('<li></li>').append(newForm);
-
-        $newLinkLi.before($newFormLi);
-
-        addTextitemFormDeleteLink($newFormLi);
-    }
-
-    function addTextitemFormDeleteLink($tagFormLi) {
-        var $removeFormA = $('<a href="#">-</a>');
-        $tagFormLi.append($removeFormA);
-
-        $removeFormA.on('click', function (e) {
-            e.preventDefault();
-
-            $tagFormLi.remove();
-        });
-    }
-
 
     </script>
 {% endblock %}

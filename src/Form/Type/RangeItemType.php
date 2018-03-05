@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\RangeItem;
 
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 class RangeItemType extends AbstractType
@@ -14,7 +14,7 @@ class RangeItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('positionNumber', null, array('required' => true))
+            ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
             ->add('min', null, array('required' => true))
             ->add('max', null, array('required' => true))

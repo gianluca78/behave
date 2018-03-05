@@ -5,6 +5,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Observation;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -24,7 +25,7 @@ class ObservationType extends AbstractType
         $builder
             ->add('isEnabled', null, array('required' => false))
             ->add('name', null, array('required' => true))
-            ->add('description', null, array('required' => true))
+            ->add('description', TextareaType::class, array('required' => true))
             ->add('choiceItems', CollectionType::class, array(
                 'entry_type' => ChoiceItemType::class,
                 'allow_add' => true,
