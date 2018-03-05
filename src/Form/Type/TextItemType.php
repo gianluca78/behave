@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\TextItem;
 
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 class TextItemType extends AbstractType
@@ -14,7 +14,7 @@ class TextItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('positionNumber', null, array('required' => true))
+            ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
             ->add('fieldValue', null, array('required' => true))
             ->add('placeholder', null, array('required' => true));
