@@ -6,5 +6,5 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 interface WidgetInterface {
 
-    public function addField(FormBuilderInterface $formBuilderInterface);
+    public function addField(FormBuilderInterface $formBuilderInterface, $name);
 }

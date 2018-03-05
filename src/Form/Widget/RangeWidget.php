@@ -25,10 +25,10 @@ class RangeWidget implements WidgetInterface {
         $this->translator = $translator;
     }
 
-    public function addField(FormBuilderInterface $formBuilderInterface)
+    public function addField(FormBuilderInterface $formBuilderInterface, $name)
     {
         $formBuilderInterface->add(
-            'rangeWidget',
+            $name,
             RangeType::class,
             array(
                 'attr' => array(

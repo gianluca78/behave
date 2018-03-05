@@ -24,10 +24,10 @@ class MeterWidget implements WidgetInterface {
         $this->translator = $translator;
     }
 
-    public function addField(FormBuilderInterface $formBuilderInterface)
+    public function addField(FormBuilderInterface $formBuilderInterface, $name)
     {
         $formBuilderInterface->add(
-            'meterWidget',
+            $name,
             MeterItemType::class,
             array(
                 'attr' => array(
