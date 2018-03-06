@@ -18,7 +18,7 @@ class RangeItemType extends AbstractType
             ->add('label', null, array('required' => true))
             ->add('min', null, array('required' => true))
             ->add('max', null, array('required' => true))
-            ->add('step', null, array('required' => true));
+            ->add('step', null, array('required' => true, 'attr' => array('value' => 1)));
     }
 
     public function configureOptions(OptionsResolver $resolver)
