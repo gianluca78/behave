@@ -10,13 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 class FrequencyItem extends Item
 {
     /**
-     * @var string $fieldValue
-     *
-     * @ORM\Column(name="field_value", type="encrypted_string", length=255)
-     */
-    private $fieldValue = 0;
-
-    /**
      * @var integer $observationLengthInMinutes
      *
      * @ORM\Column(name="observation_length_in_minutes", type="integer")
@@ -77,22 +70,6 @@ class FrequencyItem extends Item
     public function setId($id)
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFieldValue()
-    {
-        return $this->fieldValue;
-    }
-
-    /**
-     * @param string $fieldValue
-     */
-    public function setFieldValue($fieldValue)
-    {
-        $this->fieldValue = $fieldValue;
     }
 
     /**

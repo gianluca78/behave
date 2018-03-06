@@ -16,7 +16,6 @@ class FrequencyItemType extends AbstractType
         $builder
             ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
-            ->add('fieldValue', null, array('required' => true))
             ->add('observationLengthInMinutes', null, array('required' => true));
     }
 

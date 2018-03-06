@@ -106,7 +106,6 @@ class FormBuilder {
     {
         $durationWidget = new DurationWidget($this->translator);
         $durationWidget->setLabel($item->getLabel());
-        $durationWidget->setValue($item->getFieldValue());
         $durationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
 
         $this->form = $durationWidget->addField($this->form, 'item-' . $item->getId());
@@ -117,7 +116,6 @@ class FormBuilder {
     {
         $frequencyWidget = new FrequencyWidget($this->translator);
         $frequencyWidget->setLabel($item->getLabel());
-        $frequencyWidget->setValue($item->getFieldValue());
         $frequencyWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
 
         $this->form = $frequencyWidget->addField($this->form, 'item-' . $item->getId());

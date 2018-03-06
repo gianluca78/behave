@@ -16,8 +16,8 @@ class MeterItemType extends AbstractType
         $builder
             ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
-            ->add('xValue', null, array('required' => true))
-            ->add('yValue', null, array('required' => true))
+            ->add('xValue', HiddenType::class, array('required' => true))
+            ->add('yValue', HiddenType::class, array('required' => true))
             ->add('labelY', null, array('required' => true))
             ->add('labelMaxY', null, array('required' => true))
             ->add('labelMinY', null, array('required' => true))

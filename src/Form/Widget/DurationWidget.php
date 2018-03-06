@@ -83,20 +83,4 @@ class DurationWidget extends FrequencyWidget {
     {
         $this->observationLengthInMinutes = $observationLengthInMinutes;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * @param mixed $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-    }
 }

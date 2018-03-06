@@ -10,13 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 class DurationItem extends Item
 {
     /**
-     * @var string $fieldValue
-     *
-     * @ORM\Column(name="field_value", type="encrypted_string", length=255)
-     */
-    private $fieldValue = 0;
-
-    /**
      * @var integer $observationLengthInMinutes
      *
      * @ORM\Column(name="observation_length_in_minutes", type="integer")
@@ -30,22 +23,6 @@ class DurationItem extends Item
      * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
      */
     private $observation;
-
-    /**
-     * @return string
-     */
-    public function getFieldValue()
-    {
-        return $this->fieldValue;
-    }
-
-    /**
-     * @param string $fieldValue
-     */
-    public function setFieldValue($fieldValue)
-    {
-        $this->fieldValue = $fieldValue;
-    }
 
     /**
      * @return int
