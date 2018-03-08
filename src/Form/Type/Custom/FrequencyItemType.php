@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class FrequencyItemType extends AbstractType
 {
@@ -42,10 +42,10 @@ class FrequencyItemType extends AbstractType
                     'entry_type' => HiddenType::class,
                     'entry_options' => array(
                         'constraints' => array(
-                            new Type(
+                            new Regex(
                                 array(
-                                    'type' => 'integer',
-                                    'message' => 'The value {{ value }} is not a valid {{ type }}.'
+                                    'pattern' => '/^[0-9]{10}$/',
+                                    'message' => 'The value {{ value }} is not a valid timestamp.'
                                 )
                             )
                         )

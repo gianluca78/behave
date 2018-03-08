@@ -392,4 +392,10 @@ class Observation
         return $this->textItems;
     }
 
+    public function countItems()
+    {
+        return $this->choiceItems->count() + $this->durationItems->count() + $this->frequencyItems->count() +
+            $this->integerItems->count() + $this->meterItems->count() + $this->rangeItems->count() +
+            $this->textItems->count();
+    }
 }
