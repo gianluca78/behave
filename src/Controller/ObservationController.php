@@ -70,7 +70,8 @@ class ObservationController extends Controller
         return $this->render('observation/new.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE)
+                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
+                'numberOfItems' => $observation->countItems()
             )
         );
     }
