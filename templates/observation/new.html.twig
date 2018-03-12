@@ -205,19 +205,17 @@
 
         index = $collectionHolder.attr('data-index-item');
         newIndex = parseInt(index) + 1;
-
-        newForm = prototype.replace(/__name__/g, index);
-
-        $collectionHolder.attr('data-index-item', newIndex);
-
-        $( "input[name*='positionNumber']" ).last().val(newIndex);
-
         itemNumber = $collectionHolder.attr('data-item-number');
         newItemNumber = parseInt(itemNumber) + 1;
+
+        newForm = prototype.replace(/__name__/g, index);
 
         $collectionHolder.append('<h3>Item ' + itemNumber + '</h3>');
         $collectionHolder.append(newForm);
 
+        $( "input[name*='positionNumber']" ).last().val(newIndex);
+
+        $collectionHolder.attr('data-index-item', newIndex);
         $collectionHolder.attr('data-item-number', newItemNumber);
 
         addItemFormDeleteLink();
