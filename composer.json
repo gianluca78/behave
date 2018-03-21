@@ -6,6 +6,7 @@
     "ext-iconv": "*",
     "guzzlehttp/psr7": "^1.4",
     "hwi/oauth-bundle": "^0.6.1",
+    "php-http/curl-client": "^1.7",
     "php-http/guzzle6-adapter": "^1.1",
     "php-http/httplug-bundle": "^1.9",
     "sensio/framework-extra-bundle": "^5.1",
