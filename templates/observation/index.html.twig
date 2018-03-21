@@ -4,6 +4,20 @@
 {% endblock %}
 
 {% block body %}
+
+    {% if app.request.get('_route') not in ['observation_new', 'entries'] %}
+        <li><a href="{{ path("observation_new") }}">Home</a></li>
+    {% endif %}
+    {% if app.user %}
+
+        <a href="{{ url('secured_index') }}">Protected route</a>
+        <a href="{{ logout_url("secured_area") }}">
+            <button>Logout</button>
+        </a>
+    {% else %}
+        <a href="/connect/auth0"><button>Login</button></a>
+    {% endif %}
+
     {% for flashMessage in app.session.flashbag.get('success') %}
         <div>{{ flashMessage }}</div>
     {% endfor %}
