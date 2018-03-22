@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -86,6 +87,11 @@ class Observation
      * @ORM\OneToMany(targetEntity="TextItem", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $textItems;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation")
+     */
+    private $observationDates;
     
     public function __construct()
     {
@@ -96,6 +102,7 @@ class Observation
         $this->meterItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
         $this->textItems = new ArrayCollection();
+        $this->observationDates = new ArrayCollection();
     }
 
     /**
@@ -397,5 +404,36 @@ class Observation
         return $this->choiceItems->count() + $this->durationItems->count() + $this->frequencyItems->count() +
             $this->integerItems->count() + $this->meterItems->count() + $this->rangeItems->count() +
             $this->textItems->count();
+    }
+
+    /**
+     * @return Collection|ObservationDate[]
+     */
+    public function getObservationDates()
+    {
+        return $this->observationDates;
+    }
+
+    public function addObservationDate(ObservationDate $observationDate)
+    {
+        if (!$this->observationDates->contains($observationDate)) {
+            $this->observationDates[] = $observationDate;
+            $observationDate->setObservation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeObservationDate(ObservationDate $observationDate)
+    {
+        if ($this->observationDates->contains($observationDate)) {
+            $this->observationDates->removeElement($observationDate);
+            // set the owning side to null (unless already changed)
+            if ($observationDate->getObservation() === $this) {
+                $observationDate->setObservation(null);
+            }
+        }
+
+        return $this;
     }
 }

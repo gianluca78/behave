@@ -45,7 +45,7 @@
                 {% if numberOfItems is defined %}
                     {% for positionNumber in 1..numberOfItems %}
                         {% for choiceItem in form.choiceItems %}
-                            {% if positionNumber == choiceItem.vars.value.positionNumber.value %}
+                            {% if positionNumber == choiceItem.vars.value.positionNumber %}
                                 <div>
                                     <h3>Item {{ positionNumber }}</h3>
                                     {{ form_row(choiceItem.isExpanded) }}
