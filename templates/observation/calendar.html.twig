@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-4 col-sm-4 col-md-4">
+            <div id="my-calendar"></div>
+        </div>
+        <div class="col-8 col-sm-8 col-md-8">
+            {{ form_start(form) }}
+            {{ form_row(form.startTime) }}
+            {{ form_row(form.endTime) }}
+            {{ form_row(form.submit) }}
+
+            {{ form_row(form._token) }}
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/zabuto_calendar.min.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('js/zabuto_calendar.min.js') }}/"></script>
+
+    <script type="application/javascript">
+        var eventData = [
+            {% for observationDate in observation.observationDates %}
+                { "date": "{{ observationDate.startDateTimestamp | date('Y-m-d') }}", "badge": false },
+            {% endfor %}
+        ];
+
+        var selectedDates = [];
+
+        $(document).ready(function () {
+            $("#my-calendar").zabuto_calendar(
+                {
+                    language: "en",
+                    show_previous: false,
+                    show_next: true,
+                    cell_border: true,
+                    show_days: true,
+                    nav_icon: {
+                        prev: '<',
+                        next: '>'
+                    },
+                    data: eventData,
+                    action: function() {
+                        selectedDate = $("#" + this.id).data("date");
+
+                        if($("#" + this.id).hasClass('event')) {
+                            selectedDates = $.grep(selectedDates, function(value) {
+                                return value != selectedDate;
+                            });
+
+                            $("#" + this.id).removeClass('event');
+
+                        } else {
+                            $("#" + this.id).addClass('event');
+                            selectedDates.push(selectedDate);
+                        }
+
+                        console.log(selectedDates);
+                    }
+                }
+            );
+
+            $('.event').each(function(i, obj) {
+                $('<input>').attr({
+                    type: 'hidden',
+                    id: 'calendar_dates',
+                    name: 'calendar[dates][]',
+                    value: $("#" + obj.id).data("date")
+                }).appendTo('form');
+
+            });
+        });
+
+        $('form').submit(function(event) {
+            for(i=0; i<selectedDates.length; i++) {
+                console.log(selectedDates[i]);
+                $('<input>').attr({
+                    type: 'hidden',
+                    id: 'calendar_dates',
+                    name: 'calendar[dates][]',
+                    value: selectedDates[i]
+                }).appendTo('form');
+            }
+        });
+    </script>
+
+{% endblock %}
