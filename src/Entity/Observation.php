@@ -89,7 +89,7 @@ class Observation
     private $textItems;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation")
+     * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $observationDates;
     

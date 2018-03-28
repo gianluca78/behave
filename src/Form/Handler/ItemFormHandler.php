@@ -44,7 +44,7 @@ class ItemFormHandler
 
     public function create($data, $message)
     {
-        var_dump($data); exit;
+        //var_dump($data); exit;
         /*
         $this->entityManager->persist($entity);
         $this->entityManager->flush();

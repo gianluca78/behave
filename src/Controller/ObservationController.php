@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\Handler\CalendarFormHandler;
+use App\Form\Type\CalendarType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -25,10 +27,43 @@ class ObservationController extends Controller
 {
     CONST NEW_SUCCESS_STRING = 'Record inserted successfully';
     CONST EDIT_SUCCESS_STRING = 'Record edited successfully';
+    CONST DATES_ADDED_SUCCESS = 'Dates added successfully';
     CONST DELETE_SUCCESS_STRING = 'Record deleted successfully';
+    CONST CALENDAR_TITLE = 'Pick your favourite dates';
     CONST NEW_TITLE = 'Insert new observation';
     CONST EDIT_TITLE = 'Edit observation';
     CONST INDEX_TITLE = 'List of observations';
+
+    /**
+     * @Route("/dates/{id}", name="observation_dates")
+     * @Method({"GET", "POST"})
+     * @Template
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function calendarAction(Request $request, Observation $observation, CalendarFormHandler $calendarFormHandler)
+    {
+        $form = $this->createForm(CalendarType::class, null, array(
+            'action' => $this->generateUrl('observation_dates', array('id' => $observation->getId())),
+        ));
+
+        $startTime = ($observation->getObservationDates()->count() > 1) ? $observation->getObservationDates()->first()->getStartDateTimestamp() : null;
+        $endTime = ($observation->getObservationDates()->count() > 1) ? $observation->getObservationDates()->first()->getEndDateTimestamp() : null;
+
+        $form->get('startTime')->setData($startTime);
+        $form->get('endTime')->setData($endTime);
+
+        if($calendarFormHandler->handle($form, $request, $observation, $this->get('translator')->trans(self::DATES_ADDED_SUCCESS))) {
+            return $this->redirect($this->generateUrl('observation_list'));
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'title' => self::CALENDAR_TITLE,
+            'observation' => $observation
+        );
+    }
 
     /**
      * @Route("/list", name="observation_list")
