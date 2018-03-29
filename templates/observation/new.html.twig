@@ -65,6 +65,7 @@
                                     <h3>Item {{ positionNumber }}</h3>
                                     {{ form_row(durationItem.label) }}
                                     {{ form_row(durationItem.observationLengthInMinutes) }}
+                                    {{ form_row(durationItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -76,6 +77,7 @@
                                     <h3>Item {{ positionNumber }}</h3>
                                     {{ form_row(frequencyItem.label) }}
                                     {{ form_row(frequencyItem.observationLengthInMinutes) }}
+                                    {{ form_row(frequencyItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -87,6 +89,7 @@
                                     <h3>Item {{ positionNumber }}</h3>
                                     {{ form_row(integerItem.label) }}
                                     {{ form_row(integerItem.fieldValue) }}
+                                    {{ form_row(integerItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -105,6 +108,7 @@
                                     {{ form_row(meterItem.labelX) }}
                                     {{ form_row(meterItem.labelMaxX) }}
                                     {{ form_row(meterItem.labelMinX) }}
+                                    {{ form_row(meterItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -118,6 +122,7 @@
                                     {{ form_row(rangeItem.min) }}
                                     {{ form_row(rangeItem.max) }}
                                     {{ form_row(rangeItem.step) }}
+                                    {{ form_row(rangeItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -130,6 +135,7 @@
                                     {{ form_row(textItem.label) }}
                                     {{ form_row(textItem.fieldValue) }}
                                     {{ form_row(textItem.placeholder) }}
+                                    {{ form_row(textItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -141,6 +147,7 @@
             </div>
 
             {{ form_row(form.submit) }}
+            {{ form_end(form, {'render_rest': false}) }}
 
         </div>
     </div>
