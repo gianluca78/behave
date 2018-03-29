@@ -19,6 +19,7 @@
                     <th> name</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
 
@@ -30,6 +31,10 @@
 
                         <td><a href="{{ path('observation_edit', {'id': record.id}) }}">
                                 {% trans %}Edit{% endtrans %}
+                            </a>
+                        </td>
+                        <td><a href="{{ path('observation_dates', {'id': record.id}) }}">
+                                {% trans %}Dates{% endtrans %}
                             </a>
                         </td>
                         <td><a href="{{ path('observation_delete', {'id': record.id}) }}">
