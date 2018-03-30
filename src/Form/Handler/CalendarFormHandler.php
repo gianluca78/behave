@@ -50,19 +50,21 @@ class CalendarFormHandler
             $this->entityManager->flush();
         }
 
-        foreach($data['dates'] as $date) {
-            $startDate = new \DateTime($date);
-            $startDate->setTime($data['startTime']['hour'], $data['startTime']['minute'], '00');
+        if(isset($data['dates'])) {
+            foreach($data['dates'] as $date) {
+                $startDate = new \DateTime($date);
+                $startDate->setTime($data['startTime']['hour'], $data['startTime']['minute'], '00');
 
-            $endDate = new \DateTime($date);
-            $endDate->setTime($data['endTime']['hour'], $data['endTime']['minute'], '00');
+                $endDate = new \DateTime($date);
+                $endDate->setTime($data['endTime']['hour'], $data['endTime']['minute'], '00');
 
-            $observationDate = new ObservationDate();
-            $observationDate->setStartDateTimestamp($startDate);
-            $observationDate->setEndDateTimestamp($endDate);
-            $observationDate->setObservation($observation);
+                $observationDate = new ObservationDate();
+                $observationDate->setStartDateTimestamp($startDate);
+                $observationDate->setEndDateTimestamp($endDate);
+                $observationDate->setObservation($observation);
 
-            $observation->addObservationDate($observationDate);
+                $observation->addObservationDate($observationDate);
+            }
         }
 
         $this->entityManager->persist($observation);

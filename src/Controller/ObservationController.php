@@ -48,8 +48,8 @@ class ObservationController extends Controller
             'action' => $this->generateUrl('observation_dates', array('id' => $observation->getId())),
         ));
 
-        $startTime = ($observation->getObservationDates()->count() > 1) ? $observation->getObservationDates()->first()->getStartDateTimestamp() : null;
-        $endTime = ($observation->getObservationDates()->count() > 1) ? $observation->getObservationDates()->first()->getEndDateTimestamp() : null;
+        $startTime = ($observation->getObservationDates()->count() > 0) ? $observation->getObservationDates()->first()->getStartDateTimestamp() : null;
+        $endTime = ($observation->getObservationDates()->count() > 0) ? $observation->getObservationDates()->first()->getEndDateTimestamp() : null;
 
         $form->get('startTime')->setData($startTime);
         $form->get('endTime')->setData($endTime);
