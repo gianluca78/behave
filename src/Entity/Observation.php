@@ -436,4 +436,18 @@ class Observation
 
         return $this;
     }
+
+    public function isDateIncluded(\DateTime $dateTime)
+    {
+        foreach($this->getObservationDates() as $observationDate) {
+            $dateStart = $observationDate->getStartDateTimestamp();
+            $dateEnd = $observationDate->getEndDateTimestamp();
+
+            if($dateTime >= $dateStart && $dateTime <= $dateEnd) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

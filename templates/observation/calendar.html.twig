@@ -66,6 +66,7 @@
                             });
 
                             $("#" + this.id).removeClass('event');
+                            $("input[value='" + selectedDate + "']").remove();
 
                         } else {
                             $("#" + this.id).addClass('event');
@@ -91,6 +92,7 @@
         $('form').submit(function(event) {
             for(i=0; i<selectedDates.length; i++) {
                 console.log(selectedDates[i]);
+
                 $('<input>').attr({
                     type: 'hidden',
                     id: 'calendar_dates',

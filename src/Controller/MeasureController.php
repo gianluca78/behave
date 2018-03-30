@@ -47,6 +47,10 @@ class MeasureController extends Controller
         $em = $this->getDoctrine()->getManager();
         $items = $em->getRepository('App\Entity\Item')->findItemsByObservation($observation);
 
+        if(!$observation->isDateIncluded(new \DateTime())) {
+            return $this->render('measure/not_allowed.html.twig');
+        }
+
         $formBuilder->addItems($items);
         $formBuilder->setAction($observation);
 
