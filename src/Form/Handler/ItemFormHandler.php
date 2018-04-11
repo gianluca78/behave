@@ -1,6 +1,7 @@
 <?php
 namespace App\Form\Handler;
 
+use App\CouchDb\Client;
 use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\Form\FormInterface,
     Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -10,16 +11,18 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class ItemFormHandler
 {
-
+    private $couchDbClient;
     private $entityManager;
     private $session;
 
     public function __construct(
         EntityManagerInterface $entityManager,
+        Client $couchDbClient,
         SessionInterface $session
     )
     {
         $this->entityManager = $entityManager;
+        $this->couchDbClient = $couchDbClient;
         $this->session = $session;
     }
 
@@ -44,7 +47,12 @@ class ItemFormHandler
 
     public function create($data, $message)
     {
-        //var_dump($data); exit;
+        $this->couchDbClient->connect()->postDataToDatabase($data);
+
+
+
+        exit;
+
         /*
         $this->entityManager->persist($entity);
         $this->entityManager->flush();

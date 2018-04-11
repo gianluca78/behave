@@ -111,5 +111,4 @@ class DurationItem extends Item
     {
         return $this->observation;
     }
-
 }
