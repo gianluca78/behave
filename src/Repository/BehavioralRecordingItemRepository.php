@@ -2,15 +2,15 @@
 
 namespace App\Repository;
 
-use App\Entity\DurationItem;
+use App\Entity\BehavioralRecordingItem;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class DurationItemRepository extends ServiceEntityRepository
+class BehavioralRecordingItemRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, DurationItem::class);
+        parent::__construct($registry, BehavioralRecordingItem::class);
     }
 
     /*

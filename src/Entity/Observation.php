@@ -47,18 +47,18 @@ class Observation
     private $choiceItems;
     
     /**
-     * @var ArrayCollection $durationItems
+     * @var ArrayCollection $behavioralRecordingItems
      *
-     * @ORM\OneToMany(targetEntity="DurationItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="BehavioralRecordingItem", mappedBy="observation", cascade={"persist", "remove"})
      */
-    private $durationItems;
+    private $behavioralRecordingItems;
     
     /**
-     * @var ArrayCollection $frequencyItems
+     * @var ArrayCollection $intervalRecordingItems
      *
-     * @ORM\OneToMany(targetEntity="FrequencyItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="IntervalRecordingItem", mappedBy="observation", cascade={"persist", "remove"})
      */
-    private $frequencyItems;
+    private $intervalRecordingItems;
 
     /**
      * @var ArrayCollection $integerItems
@@ -96,8 +96,8 @@ class Observation
     public function __construct()
     {
         $this->choiceItems = new ArrayCollection();
-        $this->durationItems = new ArrayCollection();
-        $this->frequencyItems = new ArrayCollection();
+        $this->behavioralRecordingItems = new ArrayCollection();
+        $this->intervalRecordingItems = new ArrayCollection();
         $this->integerItems = new ArrayCollection();
         $this->meterItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
@@ -196,71 +196,71 @@ class Observation
     }
 
     /**
-     * Add durationItem
+     * Add behavioralRecordingItem
      *
-     * @param \App\Entity\DurationItem $durationItem
+     * @param \App\Entity\BehavioralRecordingItem $behavioralRecordingItem
      *
      * @return Observation
      */
-    public function addDurationItem(\App\Entity\DurationItem $durationItem)
+    public function addBehavioralRecordingItem(\App\Entity\BehavioralRecordingItem $behavioralRecordingItem)
     {
-        $this->durationItems[] = $durationItem;
+        $this->behavioralRecordingItems[] = $behavioralRecordingItem;
 
         return $this;
     }
 
     /**
-     * Remove durationItem
+     * Remove behavioralRecordingItem
      *
-     * @param \App\Entity\DurationItem $durationItem
+     * @param \App\Entity\BehavioralRecordingItem $behavioralRecordingItem
      */
-    public function removeDurationItem(\App\Entity\DurationItem $durationItem)
+    public function removeBehavioralRecordingItem(\App\Entity\BehavioralRecordingItem $behavioralRecordingItem)
     {
-        $this->durationItems->removeElement($durationItem);
+        $this->behavioralRecordingItems->removeElement($behavioralRecordingItem);
     }
 
     /**
-     * Get durationItems
+     * Get behavioralRecordingItems
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDurationItems()
+    public function getBehavioralRecordingItems()
     {
-        return $this->durationItems;
+        return $this->behavioralRecordingItems;
     }
 
     /**
-     * Add frequencyItem
+     * Add intervalRecordingItem
      *
-     * @param \App\Entity\FrequencyItem $frequencyItem
+     * @param \App\Entity\IntervalRecordingItem $intervalRecordingItem
      *
      * @return Observation
      */
-    public function addFrequencyItem(\App\Entity\FrequencyItem $frequencyItem)
+    public function addIntervalRecordingItem(\App\Entity\IntervalRecordingItem $frequencyItem)
     {
-        $this->frequencyItems[] = $frequencyItem;
+        $this->intervalRecordingItems[] = $frequencyItem;
 
         return $this;
     }
 
     /**
-     * Remove frequencyItem
+     * Remove intervalRecordingItem
      *
-     * @param \App\Entity\FrequencyItem $frequencyItem
+     * @param \App\Entity\IntervalRecordingItem $frequencyItem
      */
-    public function removeFrequencyItem(\App\Entity\FrequencyItem $frequencyItem)
+    public function removeIntervalRecordingItem(\App\Entity\IntervalRecordingItem $frequencyItem)
     {
-        $this->frequencyItems->removeElement($frequencyItem);
+        $this->intervalRecordingItems->removeElement($frequencyItem);
     }
 
     /**
-     * Get frequencyItems
+     * Get intervalRecordingItems
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getFrequencyItems()
+    public function getIntervalRecordingItems()
     {
-        return $this->frequencyItems;
+        return $this->intervalRecordingItems;
     }
 
     /**
@@ -401,7 +401,7 @@ class Observation
 
     public function countItems()
     {
-        return $this->choiceItems->count() + $this->durationItems->count() + $this->frequencyItems->count() +
+        return $this->choiceItems->count() + $this->behavioralRecordingItems->count() + $this->intervalRecordingItems->count() +
             $this->integerItems->count() + $this->meterItems->count() + $this->rangeItems->count() +
             $this->textItems->count();
     }

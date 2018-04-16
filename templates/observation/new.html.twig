@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="row text-center">
-                {% set itemTypologies = ['Choice', 'Duration', 'Frequency', 'Integer', 'Meter', 'Range', 'Text'] %}
+                {% set itemTypologies = ['Behavioral Recording', 'Choice', 'Integer', 'Interval Recording', 'Meter', 'Range', 'Text'] %}
 
                 {% for typology in itemTypologies %}
                     <div class="col-md-6 border typology" style="cursor:move;">{{ typology }}</div>
@@ -34,8 +34,8 @@
                  data-index-item="0"
                  data-item-number="{{ itemNumber }}"
                  data-prototype-choice="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}"
-                 data-prototype-duration="{{ form_widget(form.durationItems.vars.prototype)|e('html_attr') }}"
-                 data-prototype-frequency="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-behavioral-recording="{{ form_widget(form.behavioralRecordingItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-interval-recording="{{ form_widget(form.intervalRecordingItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-integer="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-meter="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-range="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}"
@@ -59,25 +59,25 @@
                             {% endif %}
                         {% endfor %}
 
-                        {% for durationItem in form.durationItems %}
-                            {% if positionNumber == durationItem.vars.value.positionNumber %}
+                        {% for behavioralRecordingItem in form.behavioralRecordingItems %}
+                            {% if positionNumber == behavioralRecordingItem.vars.value.positionNumber %}
                                 <div>
                                     <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(durationItem.label) }}
-                                    {{ form_row(durationItem.observationLengthInMinutes) }}
-                                    {{ form_row(durationItem.positionNumber) }}
+                                    {{ form_row(behavioralRecordingItem.label) }}
+                                    {{ form_row(behavioralRecordingItem.observationLengthInMinutes) }}
+                                    {{ form_row(behavioralRecordingItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
                         {% endfor %}
 
-                        {% for frequencyItem in form.frequencyItems %}
-                            {% if positionNumber == frequencyItem.vars.value.positionNumber %}
+                        {% for intervalRecordingItem in form.intervalRecordingItems %}
+                            {% if positionNumber == intervalRecordingItem.vars.value.positionNumber %}
                                 <div>
                                     <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(frequencyItem.label) }}
-                                    {{ form_row(frequencyItem.observationLengthInMinutes) }}
-                                    {{ form_row(frequencyItem.positionNumber) }}
+                                    {{ form_row(intervalRecordingItem.label) }}
+                                    {{ form_row(intervalRecordingItem.observationLengthInMinutes) }}
+                                    {{ form_row(intervalRecordingItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -181,12 +181,12 @@
                 addItemForm('choice');
                 break;
 
-            case 'Duration':
-                addItemForm('duration');
+            case 'Behavioral Recording':
+                addItemForm('behavioral-recording');
                 break;
 
-            case 'Frequency':
-                addItemForm('frequency');
+            case 'Interval Recording':
+                addItemForm('interval-recording');
                 break;
 
             case 'Integer':

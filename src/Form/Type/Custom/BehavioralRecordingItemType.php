@@ -1,6 +1,7 @@
 <?php
 namespace App\Form\Type\Custom;
 
+use App\Form\Type\IntervalRecordingItemType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
@@ -10,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class FrequencyItemType extends AbstractType
+class BehavioralRecordingItemType extends IntervalRecordingItemType
 {
     /**
      * {@inheritdoc}
@@ -29,11 +30,7 @@ class FrequencyItemType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('counter', HiddenType::class, array(
-                'data' => $options['counter_value']
-            )
-        )
-            ->add('observationLengthInMinutes', HiddenType::class, array(
+        $builder->add('observationLengthInMinutes', HiddenType::class, array(
                     'data' => $options['observation_length_in_minutes']
                 )
             )

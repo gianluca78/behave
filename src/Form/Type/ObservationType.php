@@ -10,10 +10,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
+use App\Form\Type\BehavioralRecordingItemType;
 use App\Form\Type\ChoiceItemType;
-use App\Form\Type\DurationItemType;
-use App\Form\Type\FrequencyItemType;
 use App\Form\Type\IntegerItemType;
+use App\Form\Type\IntervalRecordingItemType;
 use App\Form\Type\MeterItemType;
 use App\Form\Type\RangeItemType;
 use App\Form\Type\TextItemType;
@@ -32,20 +32,20 @@ class ObservationType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false
             ))
-            ->add('durationItems', CollectionType::class, array(
-                'entry_type' => DurationItemType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false
-            ))
-            ->add('frequencyItems', CollectionType::class, array(
-                'entry_type' => FrequencyItemType::class,
+            ->add('behavioralRecordingItems', CollectionType::class, array(
+                'entry_type' => BehavioralRecordingItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false
             ))
             ->add('integerItems', CollectionType::class, array(
                 'entry_type' => IntegerItemType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ))
+            ->add('intervalRecordingItems', CollectionType::class, array(
+                'entry_type' => IntervalRecordingItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false

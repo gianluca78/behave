@@ -17,8 +17,8 @@ class ObservationFormHandler
     private $entityManager;
     private $session;
     private $originalChoiceItems;
-    private $originalDurationItems;
-    private $originalFrequencyItems;
+    private $originalBehavioralRecordingItems;
+    private $originalIntervalRecordingItems;
     private $originalIntegerItems;
     private $originalMeterItems;
     private $originalRangeItems;
@@ -32,8 +32,8 @@ class ObservationFormHandler
         $this->entityManager = $entityManager;
         $this->session = $session;
         $this->originalChoiceItems = new ArrayCollection();
-        $this->originalDurationItems = new ArrayCollection();
-        $this->originalFrequencyItems = new ArrayCollection();
+        $this->originalBehavioralRecordingItems = new ArrayCollection();
+        $this->originalIntervalRecordingItems = new ArrayCollection();
         $this->originalIntegerItems = new ArrayCollection();
         $this->originalMeterItems = new ArrayCollection();
         $this->originalRangeItems = new ArrayCollection();
@@ -55,8 +55,8 @@ class ObservationFormHandler
         $validObject = $form->getData();
 
         $this->removeChoiceItems($validObject);
-        $this->removeDurationItems($validObject);
-        $this->removeFrequencyItems($validObject);
+        $this->removeBehavioralRecordingItems($validObject);
+        $this->removeIntervalRecordingItems($validObject);
         $this->removeIntegerItems($validObject);
         $this->removeMeterItems($validObject);
         $this->removeRangeItems($validObject);
@@ -74,13 +74,13 @@ class ObservationFormHandler
                 $relatedEntity->setObservation($entity);
             }
         }
-        if ($entity->getDurationItems()->isEmpty() == false) {
-            foreach ($entity->getDurationItems() as $relatedEntity) {
+        if ($entity->getBehavioralRecordingItems()->isEmpty() == false) {
+            foreach ($entity->getBehavioralRecordingItems() as $relatedEntity) {
                 $relatedEntity->setObservation($entity);
             }
         }
-        if ($entity->getFrequencyItems()->isEmpty() == false) {
-            foreach ($entity->getFrequencyItems() as $relatedEntity) {
+        if ($entity->getIntervalRecordingItems()->isEmpty() == false) {
+            foreach ($entity->getIntervalRecordingItems() as $relatedEntity) {
                 $relatedEntity->setObservation($entity);
             }
         }
@@ -123,11 +123,11 @@ class ObservationFormHandler
         return $entity;
     }
 
-    public function removeDurationItems(Observation $entity)
+    public function removeBehavioralRecordingItems(Observation $entity)
     {
-        foreach ($this->originalDurationItems as $durationItem) {
-            if (false === $entity->getDurationItems()->contains($durationItem)) {
-                $this->entityManager->remove($durationItem);
+        foreach ($this->originalBehavioralRecordingItems as $behavioralRecordingItem) {
+            if (false === $entity->getBehavioralRecordingItems()->contains($behavioralRecordingItem)) {
+                $this->entityManager->remove($behavioralRecordingItem);
                 $this->entityManager->flush();
             }
         }
@@ -135,11 +135,11 @@ class ObservationFormHandler
         return $entity;
     }
 
-    public function removeFrequencyItems(Observation $entity)
+    public function removeIntervalRecordingItems(Observation $entity)
     {
-        foreach ($this->originalFrequencyItems as $frequencyItem) {
-            if (false === $entity->getFrequencyItems()->contains($frequencyItem)) {
-                $this->entityManager->remove($frequencyItem);
+        foreach ($this->originalIntervalRecordingItems as $intervalRecordingItem) {
+            if (false === $entity->getIntervalRecordingItems()->contains($intervalRecordingItem)) {
+                $this->entityManager->remove($intervalRecordingItem);
                 $this->entityManager->flush();
             }
         }
@@ -206,22 +206,22 @@ class ObservationFormHandler
     }
 
     /**
-     * @param ArrayCollection $originalDurationItems
+     * @param ArrayCollection $originalBehavioralRecordingItems
      */
-    public function setOriginalDurationItems($originalDurationItems)
+    public function setOriginalBehavioralRecordingItems($originalBehavioralRecordingItems)
     {
-        foreach ($originalDurationItems as $durationItem) {
-            $this->originalDurationItems->add($durationItem);
+        foreach ($originalBehavioralRecordingItems as $behavioralRecordingItem) {
+            $this->originalBehavioralRecordingItems->add($behavioralRecordingItem);
         }
     }
 
     /**
-     * @param ArrayCollection $originalFrequencyItems
+     * @param ArrayCollection $originalIntervalRecordingItems
      */
-    public function setOriginalFrequencyItems($originalFrequencyItems)
+    public function setOriginalIntervalRecordingItems($originalIntervalRecordingItems)
     {
-        foreach ($originalFrequencyItems as $frequencyItem) {
-            $this->originalFrequencyItems->add($frequencyItem);
+        foreach ($originalIntervalRecordingItems as $intervalRecordingItem) {
+            $this->originalIntervalRecordingItems->add($intervalRecordingItem);
         }
     }
 

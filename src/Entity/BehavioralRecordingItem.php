@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\FrequencyItemRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BahavioralRecordingItemRepository")
  */
-class FrequencyItem extends Item
+class BehavioralRecordingItem extends Item
 {
     /**
      * @var integer $observationLengthInMinutes
@@ -19,10 +19,42 @@ class FrequencyItem extends Item
     /**
      * @var Observation $observation
      *
-     * @ORM\ManyToOne(targetEntity="Observation", inversedBy="frequencyItems")
+     * @ORM\ManyToOne(targetEntity="Observation", inversedBy="behavioralRecordingItems")
      * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
      */
     private $observation;
+
+    /**
+     * @return int
+     */
+    public function getObservationLengthInMinutes()
+    {
+        return $this->observationLengthInMinutes;
+    }
+
+    /**
+     * @param int $observationLengthInMinutes
+     */
+    public function setObservationLengthInMinutes($observationLengthInMinutes)
+    {
+        $this->observationLengthInMinutes = $observationLengthInMinutes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * @return mixed
@@ -54,38 +86,6 @@ class FrequencyItem extends Item
     public function setLabel($label)
     {
         $this->label = $label;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getObservationLengthInMinutes()
-    {
-        return $this->observationLengthInMinutes;
-    }
-
-    /**
-     * @param int $observationLengthInMinutes
-     */
-    public function setObservationLengthInMinutes($observationLengthInMinutes)
-    {
-        $this->observationLengthInMinutes = $observationLengthInMinutes;
     }
 
     /**

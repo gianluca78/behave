@@ -3,10 +3,10 @@
 namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use App\Form\Type\Custom\DurationItemType;
+use App\Form\Type\Custom\IntervalRecordingItemType;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class DurationWidget extends FrequencyWidget {
+class IntervalRecordingWidget implements WidgetInterface {
 
     private $label;
     private $observationLengthInMinutes;
@@ -22,7 +22,7 @@ class DurationWidget extends FrequencyWidget {
     {
         $formBuilderInterface->add(
             $name,
-            DurationItemType::class,
+            IntervalRecordingItemType::class,
             array(
                 'attr' => array(
                     'value' => $this->value
@@ -82,5 +82,21 @@ class DurationWidget extends FrequencyWidget {
     public function setObservationLengthInMinutes($observationLengthInMinutes)
     {
         $this->observationLengthInMinutes = $observationLengthInMinutes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
     }
 }

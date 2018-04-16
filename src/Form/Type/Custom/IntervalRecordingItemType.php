@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class DurationItemType extends FrequencyItemType
+class IntervalRecordingItemType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -29,7 +29,11 @@ class DurationItemType extends FrequencyItemType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('observationLengthInMinutes', HiddenType::class, array(
+        $builder->add('counter', HiddenType::class, array(
+                'data' => $options['counter_value']
+            )
+        )
+            ->add('observationLengthInMinutes', HiddenType::class, array(
                     'data' => $options['observation_length_in_minutes']
                 )
             )

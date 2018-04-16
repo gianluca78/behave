@@ -2,20 +2,20 @@
 
 namespace App\Form\Builder;
 
-use App\Entity\DurationItem;
+use App\Entity\BehavioralRecordingItem;
 use App\Entity\IntegerItem;
 use App\Entity\MeterItem;
 use App\Entity\Observation;
 use App\Entity\RangeItem;
+use App\Form\Widget\BehavioralRecordingWidget;
 use App\Form\Widget\ChoiceWidget;
-use App\Form\Widget\DurationWidget;
-use App\Form\Widget\FrequencyWidget;
 use App\Form\Widget\IntegerWidget;
+use App\Form\Widget\IntervalRecordingWidget;
 use App\Form\Widget\MeterWidget;
 use App\Form\Widget\RangeWidget;
 use App\Form\Widget\TextWidget;
 use App\Entity\ChoiceItem;
-use App\Entity\FrequencyItem;
+use App\Entity\IntervalRecordingItem;
 use App\Entity\TextItem;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -53,17 +53,17 @@ class FormBuilder {
     {
         foreach($items as $key => $item) {
             switch(get_class($item)) {
+                case 'App\Entity\BehavioralRecordingItem':
+                    $this->addBehavioralRecordingWidget($item);
+                    break;
                 case 'App\Entity\ChoiceItem':
                     $this->addChoiceWidget($item);
                     break;
-                case 'App\Entity\DurationItem':
-                    $this->addDurationWidget($item);
-                    break;
-                case 'App\Entity\FrequencyItem':
-                    $this->addFrequencyWidget($item);
-                    break;
                 case 'App\Entity\IntegerItem':
                     $this->addIntegerWidget($item);
+                    break;
+                case 'App\Entity\IntervalRecordingItem':
+                    $this->addIntervalRecordingWidget($item);
                     break;
                 case 'App\Entity\MeterItem':
                     $this->addMeterWidget($item);
@@ -102,23 +102,13 @@ class FormBuilder {
         $this->form = $choiceWidget->addField($this->form, 'item-' . $item->getId());
     }
 
-    private function addDurationWidget(DurationItem $item)
+    private function addBehavioralRecordingWidget(BehavioralRecordingItem $item)
     {
-        $durationWidget = new DurationWidget($this->translator);
-        $durationWidget->setLabel($item->getLabel());
-        $durationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
+        $behavioralRecordingWidget = new BehavioralRecordingWidget($this->translator);
+        $behavioralRecordingWidget->setLabel($item->getLabel());
+        $behavioralRecordingWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
 
-        $this->form = $durationWidget->addField($this->form, 'item-' . $item->getId());
-
-    }
-
-    private function addFrequencyWidget(FrequencyItem $item)
-    {
-        $frequencyWidget = new FrequencyWidget($this->translator);
-        $frequencyWidget->setLabel($item->getLabel());
-        $frequencyWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
-
-        $this->form = $frequencyWidget->addField($this->form, 'item-' . $item->getId());
+        $this->form = $behavioralRecordingWidget->addField($this->form, 'item-' . $item->getId());
 
     }
 
@@ -129,6 +119,16 @@ class FormBuilder {
         $integerWidget->setValue($item->getFieldValue());
 
         $this->form = $integerWidget->addField($this->form, 'item-' . $item->getId());
+    }
+
+    private function addIntervalRecordingWidget(IntervalRecordingItem $item)
+    {
+        $intervalRecordingWidget = new IntervalRecordingWidget($this->translator);
+        $intervalRecordingWidget->setLabel($item->getLabel());
+        $intervalRecordingWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
+
+        $this->form = $intervalRecordingWidget->addField($this->form, 'item-' . $item->getId());
+
     }
 
     private function addMeterWidget(MeterItem $item)

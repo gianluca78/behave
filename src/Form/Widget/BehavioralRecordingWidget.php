@@ -3,10 +3,10 @@
 namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use App\Form\Type\Custom\FrequencyItemType;
+use App\Form\Type\Custom\BehavioralRecordingItemType;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class FrequencyWidget implements WidgetInterface {
+class BehavioralRecordingWidget extends IntervalRecordingWidget {
 
     private $label;
     private $observationLengthInMinutes;
@@ -22,7 +22,7 @@ class FrequencyWidget implements WidgetInterface {
     {
         $formBuilderInterface->add(
             $name,
-            FrequencyItemType::class,
+            BehavioralRecordingItemType::class,
             array(
                 'attr' => array(
                     'value' => $this->value
@@ -82,21 +82,5 @@ class FrequencyWidget implements WidgetInterface {
     public function setObservationLengthInMinutes($observationLengthInMinutes)
     {
         $this->observationLengthInMinutes = $observationLengthInMinutes;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * @param mixed $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
     }
 }

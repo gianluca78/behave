@@ -2,15 +2,15 @@
 
 namespace App\Repository;
 
-use App\Entity\FrequencyItem;
+use App\Entity\IntervalRecordingItem;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class FrequencyItemRepository extends ServiceEntityRepository
+class IntervalRecordingItemRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, FrequencyItem::class);
+        parent::__construct($registry, IntervalRecordingItem::class);
     }
 
     /*

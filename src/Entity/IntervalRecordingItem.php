@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\DurationItemRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\IntervalRecordingItemRepository")
  */
-class DurationItem extends Item
+class IntervalRecordingItem extends Item
 {
     /**
      * @var integer $observationLengthInMinutes
@@ -19,42 +19,10 @@ class DurationItem extends Item
     /**
      * @var Observation $observation
      *
-     * @ORM\ManyToOne(targetEntity="Observation", inversedBy="durationItems")
+     * @ORM\ManyToOne(targetEntity="Observation", inversedBy="intervalRecordingItems")
      * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
      */
     private $observation;
-
-    /**
-     * @return int
-     */
-    public function getObservationLengthInMinutes()
-    {
-        return $this->observationLengthInMinutes;
-    }
-
-    /**
-     * @param int $observationLengthInMinutes
-     */
-    public function setObservationLengthInMinutes($observationLengthInMinutes)
-    {
-        $this->observationLengthInMinutes = $observationLengthInMinutes;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * @return mixed
@@ -86,6 +54,38 @@ class DurationItem extends Item
     public function setLabel($label)
     {
         $this->label = $label;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getObservationLengthInMinutes()
+    {
+        return $this->observationLengthInMinutes;
+    }
+
+    /**
+     * @param int $observationLengthInMinutes
+     */
+    public function setObservationLengthInMinutes($observationLengthInMinutes)
+    {
+        $this->observationLengthInMinutes = $observationLengthInMinutes;
     }
 
     /**
