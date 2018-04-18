@@ -10,6 +10,7 @@ security:
                 resource_owners:
                     auth0: "/auth0/callback"
                 login_path:        /login
+                default_target_path: observation_list
                 use_forward:       false
                 failure_path:      /login
 
@@ -17,7 +18,7 @@ security:
                     service: hwi_oauth.user.provider
             logout:
                 path:   /auth0/logout
-                target: /
+                target: observation_list
         main:
             anonymous: ~
     access_control:
