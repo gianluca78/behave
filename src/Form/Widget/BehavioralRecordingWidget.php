@@ -10,6 +10,8 @@ class BehavioralRecordingWidget extends IntervalRecordingWidget {
 
     private $label;
     private $observationLengthInMinutes;
+    private $partialLengthInSeconds;
+    private $typology;
     private $translator;
     private $value;
 
@@ -29,7 +31,9 @@ class BehavioralRecordingWidget extends IntervalRecordingWidget {
                 ),
                 'counter_value' => 0,
                 'label' => $this->label,
-                'observation_length_in_minutes' => $this->observationLengthInMinutes
+                'observation_length_in_minutes' => $this->observationLengthInMinutes,
+                'partial_length_in_seconds' => $this->partialLengthInSeconds,
+                'typology' => $this->typology
             )
         );
 
@@ -53,6 +57,22 @@ class BehavioralRecordingWidget extends IntervalRecordingWidget {
     }
 
     /**
+     * @param mixed $partialLengthInSeconds
+     */
+    public function setPartialLengthInSeconds($partialLengthInSeconds)
+    {
+        $this->partialLengthInSeconds = $partialLengthInSeconds;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPartialLengthInSeconds()
+    {
+        return $this->partialLengthInSeconds;
+    }
+
+    /**
      * @return mixed
      */
     public function getPlaceholder()
@@ -66,6 +86,22 @@ class BehavioralRecordingWidget extends IntervalRecordingWidget {
     public function setPlaceholder($placeholder)
     {
         $this->placeholder = $placeholder;
+    }
+
+    /**
+     * @param mixed $typology
+     */
+    public function setTypology($typology)
+    {
+        $this->typology = $typology;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypology()
+    {
+        return $this->typology;
     }
 
     /**

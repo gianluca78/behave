@@ -1,50 +1,43 @@
-var startDate = new Date();
-//console.log(startDate.getTime());
-
-var observationLengthInMinutes = null;
-
 self.addEventListener("message", function(e) {
-    observationLengthInMinutes = e.data.observationLengthInMinutes;
-    partialLengthInSeconds = e.data.partialLengthInSeconds || null;
+    var startDate = new Date();
+    var observationLengthInMinutes = e.data.observationLengthInMinutes;
+    var partialLengthInSeconds = e.data.partialLengthInSeconds || null;
 
     var countDownDate = new Date(startDate.getTime() + observationLengthInMinutes * 60000).getTime();
-    //var totalNumberOfIntervals = (observationLengthInMinutes * 60) / partialLengthInSeconds;
 
     // Update the count down every 1 second
     var x = setInterval(function() {
-        countdown(countDownDate, partialLengthInSeconds);
+        countdown(countDownDate, startDate, observationLengthInMinutes, partialLengthInSeconds);
     }, 100);
-
-    //console.log(totalNumberOfIntervals);
-
 }, false);
 
-function countdown(countDownDate, partialLengthInSeconds)
+function countdown(countDownDate, startDate, observationLengthInMinutes, partialLengthInSeconds)
 {
     // Get todays date and time
     var now = new Date().getTime();
 
     // Find the distance between now an the count down date
     var distance = countDownDate - now;
-
-    var intervalNumber = getIntervalNumber(startDate.getTime(), countDownDate, partialLengthInSeconds, now)
-
     var observationLengthInMilliseconds = observationLengthInMinutes * 60 * 1000;
     var partialLengthInMilliseconds = partialLengthInSeconds * 1000;
-
-    var distanceInterval = distance - (observationLengthInMilliseconds - intervalNumber * partialLengthInMilliseconds) + 1;
+    var hasInterval = (partialLengthInMilliseconds) ? true : false;
 
     // Time calculations for days, hours, minutes and seconds
     var minutes = formatTimestampDifferenceToTimerSeconds(distance);
     var seconds = formatTimestampDifferenceToTimerMinutes(distance);
-    var minutesInterval = formatTimestampDifferenceToTimerSeconds(distanceInterval);
-    var secondsInterval = formatTimestampDifferenceToTimerMinutes(distanceInterval);
 
+    if(partialLengthInMilliseconds) {
+        var intervalNumber = getIntervalNumber(startDate.getTime(), countDownDate, partialLengthInMilliseconds, now);
+        var distanceInterval = distance - (observationLengthInMilliseconds - intervalNumber * partialLengthInMilliseconds) + 1;
+        var minutesInterval = formatTimestampDifferenceToTimerSeconds(distanceInterval);
+        var secondsInterval = formatTimestampDifferenceToTimerMinutes(distanceInterval);
+    }
 
     //console.log(distance, observationLengthInMinutes * 60 * 1000, intervalNumber);
 
     postMessage({
         'timer': minutes + ':' + seconds,
+        'hasInterval': hasInterval,
         'intervalNumber': intervalNumber,
         'intervalTimer': minutesInterval + ':' + secondsInterval
     });
@@ -80,13 +73,11 @@ function formatTimestampDifferenceToTimerSeconds(timestampDifference)
     return seconds;
 }
 
-function getIntervalNumber(startDate, endDate, partialLengthInSeconds, now)
+function getIntervalNumber(startDate, endDate, partialLengthInMilliseconds, now)
 {
-    partialLengthInMilliseconds = partialLengthInSeconds * 1000;
-
     thresholds = [];
 
-    for(i=startDate; i<=endDate; i+= partialLengthInMilliseconds) {
+    for(i=startDate; i<=endDate; i+=partialLengthInMilliseconds) {
         thresholds.push(i);
     }
 

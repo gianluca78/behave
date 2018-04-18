@@ -10,11 +10,25 @@ use Doctrine\ORM\Mapping as ORM;
 class BehavioralRecordingItem extends Item
 {
     /**
-     * @var integer $observationLengthInMinutes
+     * @var integer $partialLengthInSeconds
      *
-     * @ORM\Column(name="observation_length_in_minutes", type="integer")
+     * @ORM\Column(name="partial_length_in_seconds", type="integer", nullable=true)
+     */
+    private $partialLengthInSeconds;
+
+    /**
+     * @var integer $observationLengthInSeconds
+     *
+     * @ORM\Column(name="observation_length_in_seconds", type="integer")
      */
     private $observationLengthInMinutes;
+
+    /**
+     * @var string $typology;
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $typology;
 
     /**
      * @var Observation $observation
@@ -23,6 +37,22 @@ class BehavioralRecordingItem extends Item
      * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
      */
     private $observation;
+
+    /**
+     * @param int $partialLengthInSeconds
+     */
+    public function setPartialLengthInSeconds($partialLengthInSeconds)
+    {
+        $this->partialLengthInSeconds = $partialLengthInSeconds;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPartialLengthInSeconds()
+    {
+        return $this->partialLengthInSeconds;
+    }
 
     /**
      * @return int
@@ -38,6 +68,24 @@ class BehavioralRecordingItem extends Item
     public function setObservationLengthInMinutes($observationLengthInMinutes)
     {
         $this->observationLengthInMinutes = $observationLengthInMinutes;
+    }
+
+
+
+    /**
+     * @param mixed $typology
+     */
+    public function setTypology($typology)
+    {
+        $this->typology = $typology;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypology()
+    {
+        return $this->typology;
     }
 
     /**

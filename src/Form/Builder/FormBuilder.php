@@ -107,6 +107,8 @@ class FormBuilder {
         $behavioralRecordingWidget = new BehavioralRecordingWidget($this->translator);
         $behavioralRecordingWidget->setLabel($item->getLabel());
         $behavioralRecordingWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
+        $behavioralRecordingWidget->setPartialLengthInSeconds($item->getPartialLengthInSeconds());
+        $behavioralRecordingWidget->setTypology($item->getTypology());
 
         $this->form = $behavioralRecordingWidget->addField($this->form, 'item-' . $item->getId());
 
