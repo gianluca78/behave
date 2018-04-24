@@ -58,6 +58,11 @@ class BehavioralRecordingItemType extends IntervalRecordingItemType
                     )
                 )
             )
+            ->add('intervalData', CollectionType::class, array(
+                    'allow_add' => true,
+                    'entry_type' => IntervalRecordingItemType::class,
+                )
+            )
         ;
     }
 

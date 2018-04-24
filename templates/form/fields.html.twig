@@ -193,6 +193,10 @@
         {% if typology is defined and typology == 'duration' %}
             {{ block('duration') }}
         {% endif %}
+
+        {% if typology is defined and typology != 'duration' %}
+            {{ block('time_sampling') }}
+        {% endif %}
     {% endspaceless %}
 {% endblock %}
 
@@ -218,6 +222,10 @@
                     </div>
                 </div>
             </div>
+
+            <div id="progressBar-{{ id }}" class="row progress-bar">
+                <div></div>
+            </div>
         </div>
     {% else %}
         <div class="duration-item">
@@ -225,12 +233,6 @@
         </div>
     {% endif %}
 {% endblock %}
-
-
-
-
-
-
 
 
 {% block interval_recording_item_widget %}
@@ -366,4 +368,41 @@
             </div>
         {% endif %}
     {% endspaceless %}
+{% endblock %}
+
+{% block time_sampling %}
+    {% if observationLengthInMinutes is defined %}
+        <div class="form-group time-sampling-item">
+            <div class="row">
+                {{ typology }}
+            </div>
+
+            <div class="row">
+                {{ form_widget(form.observationLengthInMinutes) }}
+                {{ form_widget(form.occurrenceTimestamps) }}
+                {{ form_widget(form.partialLengthInSeconds) }}
+                {{ form_widget(form.intervalData) }}
+
+                <div id="timer-{{ id }}" class="col-2 col-sm-2 col-md-2">
+                    {{ observationLengthInMinutes }}
+                </div>
+
+                <div class="col-8 col-sm-8 col-md-8">
+                    {{ form_label(form) }}
+                </div>
+
+                <div class="col-2 col-sm-2 col-md-2">
+                    <a id="button-{{ id }}" class="counter btn btn-primary btn-lg red-button" data-base-selector-id="{{ id }}" href="" role="button">+</a>
+                </div>
+            </div>
+
+            <div id="progressBar-{{ id }}" class="row progress-bar">
+                <div></div>
+            </div>
+        </div>
+    {% else %}
+        <div class="time-sampling-item">
+            {{- block('form_rows') -}}
+        </div>
+    {% endif %}
 {% endblock %}

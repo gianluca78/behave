@@ -17,8 +17,7 @@ class CalendarType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('dates', TextType::class)
-            ->add('dates', CollectionType::class, array(
+        $builder->add('dates', CollectionType::class, array(
                 'entry_type' => HiddenType::class,
                 'mapped' => false,
                 'allow_add' => true

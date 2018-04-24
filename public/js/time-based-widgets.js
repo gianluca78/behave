@@ -36,7 +36,6 @@ $( "a.counter" ).click(function(e){
         timestamp = ~~(Date.now()/1000);
         $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
     }
-
 });
 
 $( "a.player" ).click(function(e){

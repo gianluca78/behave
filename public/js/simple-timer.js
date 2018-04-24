@@ -20,6 +20,9 @@ function countdown(countDownDate, startDate, observationLengthInMinutes, partial
     var distance = countDownDate - now;
     var observationLengthInMilliseconds = observationLengthInMinutes * 60 * 1000;
     var partialLengthInMilliseconds = partialLengthInSeconds * 1000;
+
+    //console.log(partialLengthInSeconds);
+
     var hasInterval = (partialLengthInMilliseconds) ? true : false;
 
     // Time calculations for days, hours, minutes and seconds
@@ -36,10 +39,12 @@ function countdown(countDownDate, startDate, observationLengthInMinutes, partial
     //console.log(distance, observationLengthInMinutes * 60 * 1000, intervalNumber);
 
     postMessage({
-        'timer': minutes + ':' + seconds,
+        'distance': distance,
         'hasInterval': hasInterval,
+        'timer': minutes + ':' + seconds,
         'intervalNumber': intervalNumber,
-        'intervalTimer': minutesInterval + ':' + secondsInterval
+        'intervalTimer': minutesInterval + ':' + secondsInterval,
+        'observationLengthInMilliseconds': observationLengthInMilliseconds
     });
 
     if(minutes == '00' && seconds == '00') {
