@@ -1,7 +1,6 @@
 <?php
 namespace App\Form\Type\Custom;
 
-use App\Form\Type\IntervalRecordingItemType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
@@ -11,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class BehavioralRecordingItemType extends IntervalRecordingItemType
+class BehavioralRecordingItemType extends AbstractType
 {
     /**
      * {@inheritdoc}

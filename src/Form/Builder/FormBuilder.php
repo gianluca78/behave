@@ -10,12 +10,10 @@ use App\Entity\RangeItem;
 use App\Form\Widget\BehavioralRecordingWidget;
 use App\Form\Widget\ChoiceWidget;
 use App\Form\Widget\IntegerWidget;
-use App\Form\Widget\IntervalRecordingWidget;
 use App\Form\Widget\MeterWidget;
 use App\Form\Widget\RangeWidget;
 use App\Form\Widget\TextWidget;
 use App\Entity\ChoiceItem;
-use App\Entity\IntervalRecordingItem;
 use App\Entity\TextItem;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -61,9 +59,6 @@ class FormBuilder {
                     break;
                 case 'App\Entity\IntegerItem':
                     $this->addIntegerWidget($item);
-                    break;
-                case 'App\Entity\IntervalRecordingItem':
-                    $this->addIntervalRecordingWidget($item);
                     break;
                 case 'App\Entity\MeterItem':
                     $this->addMeterWidget($item);
@@ -121,16 +116,6 @@ class FormBuilder {
         $integerWidget->setValue($item->getFieldValue());
 
         $this->form = $integerWidget->addField($this->form, 'item-' . $item->getId());
-    }
-
-    private function addIntervalRecordingWidget(IntervalRecordingItem $item)
-    {
-        $intervalRecordingWidget = new IntervalRecordingWidget($this->translator);
-        $intervalRecordingWidget->setLabel($item->getLabel());
-        $intervalRecordingWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
-
-        $this->form = $intervalRecordingWidget->addField($this->form, 'item-' . $item->getId());
-
     }
 
     private function addMeterWidget(MeterItem $item)

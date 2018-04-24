@@ -54,13 +54,6 @@ class Observation
     private $behavioralRecordingItems;
     
     /**
-     * @var ArrayCollection $intervalRecordingItems
-     *
-     * @ORM\OneToMany(targetEntity="IntervalRecordingItem", mappedBy="observation", cascade={"persist", "remove"})
-     */
-    private $intervalRecordingItems;
-
-    /**
      * @var ArrayCollection $integerItems
      *
      * @ORM\OneToMany(targetEntity="IntegerItem", mappedBy="observation", cascade={"persist", "remove"})
@@ -97,7 +90,6 @@ class Observation
     {
         $this->choiceItems = new ArrayCollection();
         $this->behavioralRecordingItems = new ArrayCollection();
-        $this->intervalRecordingItems = new ArrayCollection();
         $this->integerItems = new ArrayCollection();
         $this->meterItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
@@ -227,40 +219,6 @@ class Observation
     public function getBehavioralRecordingItems()
     {
         return $this->behavioralRecordingItems;
-    }
-
-    /**
-     * Add intervalRecordingItem
-     *
-     * @param \App\Entity\IntervalRecordingItem $intervalRecordingItem
-     *
-     * @return Observation
-     */
-    public function addIntervalRecordingItem(\App\Entity\IntervalRecordingItem $frequencyItem)
-    {
-        $this->intervalRecordingItems[] = $frequencyItem;
-
-        return $this;
-    }
-
-    /**
-     * Remove intervalRecordingItem
-     *
-     * @param \App\Entity\IntervalRecordingItem $frequencyItem
-     */
-    public function removeIntervalRecordingItem(\App\Entity\IntervalRecordingItem $frequencyItem)
-    {
-        $this->intervalRecordingItems->removeElement($frequencyItem);
-    }
-
-    /**
-     * Get intervalRecordingItems
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIntervalRecordingItems()
-    {
-        return $this->intervalRecordingItems;
     }
 
     /**
@@ -401,7 +359,7 @@ class Observation
 
     public function countItems()
     {
-        return $this->choiceItems->count() + $this->behavioralRecordingItems->count() + $this->intervalRecordingItems->count() +
+        return $this->choiceItems->count() + $this->behavioralRecordingItems->count() +
             $this->integerItems->count() + $this->meterItems->count() + $this->rangeItems->count() +
             $this->textItems->count();
     }

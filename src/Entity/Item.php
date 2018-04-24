@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  *  @ORM\DiscriminatorMap({
  *                          "behavioralRecording"  = "BehavioralRecordingItem",
  *                          "choice"               = "ChoiceItem",
- *                          "interval"             = "IntervalRecordingItem",
  *                          "integer"              = "IntegerItem",
  *                          "meter"                = "MeterItem",
  *                          "range"                = "RangeItem",

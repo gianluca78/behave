@@ -13,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use App\Form\Type\BehavioralRecordingItemType;
 use App\Form\Type\ChoiceItemType;
 use App\Form\Type\IntegerItemType;
-use App\Form\Type\IntervalRecordingItemType;
 use App\Form\Type\MeterItemType;
 use App\Form\Type\RangeItemType;
 use App\Form\Type\TextItemType;
@@ -40,12 +39,6 @@ class ObservationType extends AbstractType
             ))
             ->add('integerItems', CollectionType::class, array(
                 'entry_type' => IntegerItemType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false
-            ))
-            ->add('intervalRecordingItems', CollectionType::class, array(
-                'entry_type' => IntervalRecordingItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false

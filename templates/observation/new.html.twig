@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="row text-center">
-                {% set itemTypologies = ['Behavioral Recording', 'Choice', 'Integer', 'Interval Recording', 'Meter', 'Range', 'Text'] %}
+                {% set itemTypologies = ['Behavioral Recording', 'Choice', 'Integer', 'Meter', 'Range', 'Text'] %}
 
                 {% for typology in itemTypologies %}
                     <div class="col-md-6 border typology" style="cursor:move;">{{ typology }}</div>
@@ -35,7 +35,6 @@
                  data-item-number="{{ itemNumber }}"
                  data-prototype-choice="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-behavioral-recording="{{ form_widget(form.behavioralRecordingItems.vars.prototype)|e('html_attr') }}"
-                 data-prototype-interval-recording="{{ form_widget(form.intervalRecordingItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-integer="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-meter="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-range="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}"
@@ -68,18 +67,6 @@
                                     {{ form_row(behavioralRecordingItem.partialLengthInSeconds) }}
                                     {{ form_row(behavioralRecordingItem.typology) }}
                                     {{ form_row(behavioralRecordingItem.positionNumber) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% for intervalRecordingItem in form.intervalRecordingItems %}
-                            {% if positionNumber == intervalRecordingItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(intervalRecordingItem.label) }}
-                                    {{ form_row(intervalRecordingItem.observationLengthInMinutes) }}
-                                    {{ form_row(intervalRecordingItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -209,8 +196,9 @@
     });
 
     function addItemForm(type) {
-
         prototype = $collectionHolder.data('prototype-' + type);
+
+        console.log(prototype);
 
         index = $collectionHolder.attr('data-index-item');
         newIndex = parseInt(index) + 1;

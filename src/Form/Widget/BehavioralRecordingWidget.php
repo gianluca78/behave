@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use App\Form\Type\Custom\BehavioralRecordingItemType;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class BehavioralRecordingWidget extends IntervalRecordingWidget {
+class BehavioralRecordingWidget implements WidgetInterface {
 
     private $label;
     private $observationLengthInMinutes;
