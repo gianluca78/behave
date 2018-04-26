@@ -11,9 +11,9 @@ if (typeof jQuery.ui == 'undefined') {
         return this.each(function() {
             function addTimeIntervalForm($collectionHolder) {
                 var prototype = $collectionHolder.data('prototype');
-                
-                var index = $collectionHolder.find(':input').length / 2;               
-                
+
+                var index = $collectionHolder.find(':input').length / 2;
+
                 var newForm = prototype.replace(/__name__/g, index);
 
                 $collectionHolder.data('index', index + 1);
