@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 use App\Form\Type\BehavioralRecordingItemType;
 use App\Form\Type\ChoiceItemType;
+use App\Form\Type\DirectObservationItemType;
 use App\Form\Type\IntegerItemType;
 use App\Form\Type\MeterItemType;
 use App\Form\Type\RangeItemType;
@@ -27,6 +28,12 @@ class ObservationType extends AbstractType
             ->add('description', TextareaType::class, array('required' => true))
             ->add('choiceItems', CollectionType::class, array(
                 'entry_type' => ChoiceItemType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ))
+            ->add('directObservationItems', CollectionType::class, array(
+                'entry_type' => DirectObservationItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false

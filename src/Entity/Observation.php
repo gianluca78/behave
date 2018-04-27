@@ -85,6 +85,11 @@ class Observation
      * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $observationDates;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DirectObservationItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $directObservationItems;
     
     public function __construct()
     {
@@ -95,6 +100,7 @@ class Observation
         $this->rangeItems = new ArrayCollection();
         $this->textItems = new ArrayCollection();
         $this->observationDates = new ArrayCollection();
+        $this->directObservationItems = new ArrayCollection();
     }
 
     /**
@@ -359,7 +365,7 @@ class Observation
 
     public function countItems()
     {
-        return $this->choiceItems->count() + $this->behavioralRecordingItems->count() +
+        return $this->choiceItems->count() + $this->behavioralRecordingItems->count() + $this->directObservationItems->count() +
             $this->integerItems->count() + $this->meterItems->count() + $this->rangeItems->count() +
             $this->textItems->count();
     }
@@ -407,5 +413,36 @@ class Observation
         }
 
         return false;
+    }
+
+    /**
+     * @return Collection|DirectObservationItem[]
+     */
+    public function getDirectObservationItems()
+    {
+        return $this->directObservationItems;
+    }
+
+    public function addDirectObservationItem(DirectObservationItem $directObservationItem)
+    {
+        if (!$this->directObservationItems->contains($directObservationItem)) {
+            $this->directObservationItems[] = $directObservationItem;
+            $directObservationItem->setObservation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDirectObservationItem(DirectObservationItem $directObservationItem)
+    {
+        if ($this->directObservationItems->contains($directObservationItem)) {
+            $this->directObservationItems->removeElement($directObservationItem);
+            // set the owning side to null (unless already changed)
+            if ($directObservationItem->getObservation() === $this) {
+                $directObservationItem->setObservation(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Form\Builder;
 
 use App\Entity\BehavioralRecordingItem;
+use App\Entity\DirectObservationItem;
 use App\Entity\IntegerItem;
 use App\Entity\MeterItem;
 use App\Entity\Observation;
 use App\Entity\RangeItem;
 use App\Form\Widget\BehavioralRecordingWidget;
+use App\Form\Widget\DirectObservationWidget;
 use App\Form\Widget\ChoiceWidget;
 use App\Form\Widget\IntegerWidget;
 use App\Form\Widget\MeterWidget;
@@ -56,6 +58,9 @@ class FormBuilder {
                     break;
                 case 'App\Entity\ChoiceItem':
                     $this->addChoiceWidget($item);
+                    break;
+                case 'App\Entity\DirectObservationItem':
+                    $this->addDirectObservationWidget($item);
                     break;
                 case 'App\Entity\IntegerItem':
                     $this->addIntegerWidget($item);
@@ -106,6 +111,18 @@ class FormBuilder {
         $behavioralRecordingWidget->setTypology($item->getTypology());
 
         $this->form = $behavioralRecordingWidget->addField($this->form, 'item-' . $item->getId());
+
+    }
+
+    private function addDirectObservationWidget(DirectObservationItem $item)
+    {
+        $directObservationWidget = new DirectObservationWidget($this->translator);
+        $directObservationWidget->setLabel($item->getLabel());
+        $directObservationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
+        $directObservationWidget->setIntervalLengthInSeconds($item->getIntervalLengthInSeconds());
+        $directObservationWidget->setTypology($item->getTypology());
+
+        $this->form = $directObservationWidget->addField($this->form, 'item-' . $item->getId());
 
     }
 

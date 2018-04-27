@@ -192,10 +192,26 @@
     {% spaceless %}
         {% if typology is defined and typology == 'duration' %}
             {{ block('duration') }}
-        {% endif %}
 
-        {% if typology is defined and typology != 'duration' %}
+        {% elseif typology is defined and typology != 'duration' %}
             {{ block('time_sampling') }}
+
+        {% else %}
+            {{- block('form_rows') -}}
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
+
+{% block direct_observation_item_widget %}
+    {% spaceless %}
+        {% if typology is defined and typology == 'duration' %}
+            {{ block('duration') }}
+
+        {% elseif typology is defined and typology != 'duration' %}
+            {{ block('time_sampling') }}
+
+        {% else %}
+            {{- block('form_rows') -}}
         {% endif %}
     {% endspaceless %}
 {% endblock %}
@@ -380,7 +396,7 @@
             <div class="row">
                 {{ form_widget(form.observationLengthInMinutes) }}
                 {{ form_widget(form.occurrenceTimestamps) }}
-                {{ form_widget(form.partialLengthInSeconds) }}
+                {{ form_widget(form.intervalLengthInSeconds) }}
                 {{ form_widget(form.intervalData) }}
 
                 <div id="timer-{{ id }}" class="col-2 col-sm-2 col-md-2">

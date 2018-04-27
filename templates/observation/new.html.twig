@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="row text-center">
-                {% set itemTypologies = ['Behavioral Recording', 'Choice', 'Integer', 'Meter', 'Range', 'Text'] %}
+                {% set itemTypologies = ['Behavioral Recording', 'Choice', 'Direct Observation', 'Integer', 'Meter', 'Range', 'Text'] %}
 
                 {% for typology in itemTypologies %}
                     <div class="col-md-6 border typology" style="cursor:move;">{{ typology }}</div>
@@ -34,6 +34,7 @@
                  data-index-item="0"
                  data-item-number="{{ itemNumber }}"
                  data-prototype-choice="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-direct-observation="{{ form_widget(form.directObservationItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-behavioral-recording="{{ form_widget(form.behavioralRecordingItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-integer="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-meter="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}"
@@ -67,6 +68,20 @@
                                     {{ form_row(behavioralRecordingItem.partialLengthInSeconds) }}
                                     {{ form_row(behavioralRecordingItem.typology) }}
                                     {{ form_row(behavioralRecordingItem.positionNumber) }}
+                                </div>
+                                <a href="#" class="remove-item">-</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for directObservationItem in form.directObservationItems %}
+                            {% if positionNumber == directObservationItem.vars.value.positionNumber %}
+                                <div>
+                                    <h3>Item {{ positionNumber }}</h3>
+                                    {{ form_row(directObservationItem.label) }}
+                                    {{ form_row(directObservationItem.observationLengthInMinutes) }}
+                                    {{ form_row(directObservationItem.intervalLengthInSeconds) }}
+                                    {{ form_row(directObservationItem.typology) }}
+                                    {{ form_row(directObservationItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -172,6 +187,10 @@
 
             case 'Behavioral Recording':
                 addItemForm('behavioral-recording');
+                break;
+
+            case 'Direct Observation':
+                addItemForm('direct-observation');
                 break;
 
             case 'Interval Recording':

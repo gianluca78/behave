@@ -18,6 +18,7 @@ class ObservationFormHandler
     private $session;
     private $originalChoiceItems;
     private $originalBehavioralRecordingItems;
+    private $originalDirectObservationItems;
     private $originalIntegerItems;
     private $originalMeterItems;
     private $originalRangeItems;
@@ -32,6 +33,7 @@ class ObservationFormHandler
         $this->session = $session;
         $this->originalChoiceItems = new ArrayCollection();
         $this->originalBehavioralRecordingItems = new ArrayCollection();
+        $this->originalDirectObservationItems = new ArrayCollection();
         $this->originalIntegerItems = new ArrayCollection();
         $this->originalMeterItems = new ArrayCollection();
         $this->originalRangeItems = new ArrayCollection();
@@ -54,6 +56,7 @@ class ObservationFormHandler
 
         $this->removeChoiceItems($validObject);
         $this->removeBehavioralRecordingItems($validObject);
+        $this->removeDirectObservationItems($validObject);
         $this->removeIntegerItems($validObject);
         $this->removeMeterItems($validObject);
         $this->removeRangeItems($validObject);
@@ -73,6 +76,11 @@ class ObservationFormHandler
         }
         if ($entity->getBehavioralRecordingItems()->isEmpty() == false) {
             foreach ($entity->getBehavioralRecordingItems() as $relatedEntity) {
+                $relatedEntity->setObservation($entity);
+            }
+        }
+        if ($entity->getDirectObservationItems()->isEmpty() == false) {
+            foreach ($entity->getDirectObservationItems() as $relatedEntity) {
                 $relatedEntity->setObservation($entity);
             }
         }
@@ -120,6 +128,18 @@ class ObservationFormHandler
         foreach ($this->originalBehavioralRecordingItems as $behavioralRecordingItem) {
             if (false === $entity->getBehavioralRecordingItems()->contains($behavioralRecordingItem)) {
                 $this->entityManager->remove($behavioralRecordingItem);
+                $this->entityManager->flush();
+            }
+        }
+
+        return $entity;
+    }
+
+    public function removeDirectObservationItems(Observation $entity)
+    {
+        foreach ($this->originalDirectObservationItems as $directObservationItem) {
+            if (false === $entity->getDirectObservationItems()->contains($directObservationItem)) {
+                $this->entityManager->remove($directObservationItem);
                 $this->entityManager->flush();
             }
         }
@@ -195,6 +215,15 @@ class ObservationFormHandler
         }
     }
 
+    /**
+     * @param ArrayCollection $originalDirectObservationItems
+     */
+    public function setOriginalDirectObservationItems($originalDirectObservationItems)
+    {
+        foreach ($originalDirectObservationItems as $directObservationItem) {
+            $this->originalDirectObservationItems->add($directObservationItem);
+        }
+    }
 
     /**
      * @param ArrayCollection $originalIntegerItems
