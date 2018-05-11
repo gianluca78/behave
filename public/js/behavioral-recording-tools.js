@@ -8,6 +8,12 @@ if (typeof jQuery.ui == 'undefined') {
 
 (function ( $ ) {
     $.fn.behavioralRecordingTool = function() {
+        activeIntervalNumber = [];
+        isCounterClicked = [];
+        intervalPlayedAudio = [];
+        numberOfSecondsToClickToCounterButton = 5;
+        timestampLastPlayedAudio = [];
+
         return this.each(function() {
             function addTimeIntervalForm($collectionHolder) {
                 var prototype = $collectionHolder.data('prototype');
@@ -36,19 +42,16 @@ if (typeof jQuery.ui == 'undefined') {
                 var timeleft = (timeleft == timetotal) ? 0 : timetotal;
 
                 $element.find('div').animate(
-                    { width: progressBarWidth }, timeleft, 'linear'
+                    { width: progressBarWidth }, 1, 'linear'
                 ).html('');
             };
 
             function startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId)
             {
-                w = null;
-                data = null;
-                observationLengthInMinutes = $( '#' + observationLengthInMinutesId ).val();
-                partialLengthInSeconds = $ ( '#' + partialLengthInSecondsId ).val() || null;
-                intervalPlayedAudio = [];
-                isCounterClicked = false;
-                timestampLastPlayedAudio = null;
+                var w = null;
+                var data = null;
+                var observationLengthInMinutes = $( '#' + observationLengthInMinutesId ).val();
+                var partialLengthInSeconds = $ ( '#' + partialLengthInSecondsId ).val() || null;
 
                 // First check whether Web Workers are supported
                 if (typeof(Worker)!=="undefined"){
@@ -57,7 +60,8 @@ if (typeof jQuery.ui == 'undefined') {
                         w = new Worker("/js/simple-timer.js");
                         w.postMessage({
                             observationLengthInMinutes: observationLengthInMinutes,
-                            partialLengthInSeconds: partialLengthInSeconds
+                            partialLengthInSeconds: partialLengthInSeconds,
+                            timerId: timerId
                         });
                     }
 
@@ -65,30 +69,40 @@ if (typeof jQuery.ui == 'undefined') {
                     w.onmessage = function (event) {
                         var timestampNow = ~~(Date.now()/1000);
                         var button = $ ( '#' + buttonId);
-                        data = event.data;
+                        var data = event.data;
 
-                        $( '#' + timerId ).text(data.timer);
+                        $( '#' + data.timerId ).text(data.timer);
 
                         var audioElement = new Audio(audioPath);
 
-                        if(data.hasInterval == true &&
-                            data.intervalTimer == '00:00' &&
-                            intervalPlayedAudio.includes(data.intervalNumber)==false
-                            ) {
-
-                            intervalPlayedAudio.push(data.intervalNumber);
-                            timestampLastPlayedAudio = ~~(Date.now()/1000);
-
-                            audioElement.play();
-                            $( '#' + timerId ).effect('shake');
+                        if(!(timerId in intervalPlayedAudio)) {
+                            intervalPlayedAudio[timerId] = [];
                         }
 
-                        if(timestampNow >= timestampLastPlayedAudio && timestampNow <= timestampLastPlayedAudio + 3){
-                            method = (!isCounterClicked) ? 'removeClass' : 'addClass';
+                        if(!(timerId in activeIntervalNumber)) {
+                            activeIntervalNumber[timerId] = 0;
+                        }
+
+                        if(data.hasInterval == true &&
+                            data.intervalTimer == '00:00' &&
+                            $.inArray(data.intervalNumber, intervalPlayedAudio[timerId]) == -1
+                            ) {
+
+                            intervalPlayedAudio[timerId].push(data.intervalNumber);
+                            timestampLastPlayedAudio[timerId] = ~~(Date.now()/1000);
+
+                            audioElement.play();
+                            $( '#' + data.timerId ).effect('shake');
+
+                            activeIntervalNumber[timerId]++;
+                        }
+
+                        if(timestampNow >= timestampLastPlayedAudio[timerId] && timestampNow <= timestampLastPlayedAudio[timerId] + numberOfSecondsToClickToCounterButton){
+                            method = (!isCounterClicked[buttonId]) ? 'removeClass' : 'addClass';
                             button[method]('red-button');
                         } else {
                             button.addClass('red-button');
-                            isCounterClicked = false;
+                            isCounterClicked[buttonId] = false;
                         }
 
                         progress(
@@ -130,18 +144,20 @@ if (typeof jQuery.ui == 'undefined') {
 
                 if( !$(this).hasClass('red-button') ) {
                     baseSelectorId = $( this ).attr('data-base-selector-id');
+                    timerSelectorId = $(this).attr("id").replace('button', 'timer');
+
                     dataIntervalDiv = $( "#" + baseSelectorId + '_intervalData' );
 
                     addTimeIntervalForm(dataIntervalDiv);
 
                     lastIndex = ($( "#" + baseSelectorId + '_intervalData' ).find(':input').length / 2) - 1;
-                    intervalNumber = (data.timer == '00:00') ? data.intervalNumber : data.intervalNumber - 1;
 
-                    $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_intervalNumber').val(intervalNumber);
+                    $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_intervalNumber').val(activeIntervalNumber[timerSelectorId]);
                     $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_isBehaviorOccurred').val(true);
 
                     $(this).addClass('red-button');
-                    isCounterClicked = true;
+
+                    isCounterClicked[$(this).attr("id")] = true;
                 }
             });
 

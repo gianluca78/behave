@@ -59,7 +59,7 @@ class DirectObservationItemType extends AbstractType
             )
             ->add('intervalData', CollectionType::class, array(
                     'allow_add' => true,
-                    'entry_type' => IntervalRecordingItemType::class,
+                    'entry_type' => IntervalRecordingItem2Type::class,
                 )
             )
         ;

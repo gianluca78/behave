@@ -250,6 +250,13 @@
     {% endif %}
 {% endblock %}
 
+{% block interval_recording_item2_widget %}
+    {% spaceless %}
+        {{ form_widget(form.intervalNumber) }}
+        {{ form_widget(form.isBehaviorOccurred) }}
+    {% endspaceless %}
+{% endblock %}
+
 
 {% block interval_recording_item_widget %}
     {% spaceless %}
@@ -415,6 +422,8 @@
             <div id="progressBar-{{ id }}" class="row progress-bar">
                 <div></div>
             </div>
+
+            {{ form_widget(form.typology) }}
         </div>
     {% else %}
         <div class="time-sampling-item">

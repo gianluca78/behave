@@ -20,7 +20,8 @@ class IntervalRecordingItemType extends AbstractType
         parent::buildView($view, $form, $options);
 
         $view->vars = array_merge($view->vars, array(
-            'observationLengthInMinutes' => str_pad($options['observation_length_in_minutes'], 2, '0', STR_PAD_LEFT) . ':00'
+            'observationLengthInMinutes' => str_pad($options['observation_length_in_minutes'], 2, '0', STR_PAD_LEFT) . ':00',
+            'typology' => $options['typology']
         ));
     }
 
@@ -29,12 +30,16 @@ class IntervalRecordingItemType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('counter', HiddenType::class, array(
-                'data' => $options['counter_value']
+        $builder->add('observationLengthInMinutes', HiddenType::class, array(
+                'data' => $options['observation_length_in_minutes']
             )
         )
-            ->add('observationLengthInMinutes', HiddenType::class, array(
-                    'data' => $options['observation_length_in_minutes']
+            ->add('partialLengthInSeconds', HiddenType::class, array(
+                    'data' => $options['partial_length_in_seconds']
+                )
+            )
+            ->add('typology', HiddenType::class, array(
+                    'data' => $options['typology']
                 )
             )
             ->add('occurrenceTimestamps', CollectionType::class, array(
@@ -52,6 +57,11 @@ class IntervalRecordingItemType extends AbstractType
                     )
                 )
             )
+            ->add('intervalData', CollectionType::class, array(
+                    'allow_add' => true,
+                    'entry_type' => DirectObservationItemType::class,
+                )
+            )
         ;
     }
 
@@ -63,7 +73,9 @@ class IntervalRecordingItemType extends AbstractType
         $defaults = array(
             'compound' => true,
             'counter_value' => null,
-            'observation_length_in_minutes' => null
+            'observation_length_in_minutes' => null,
+            'partial_length_in_seconds' => null,
+            'typology' => null,
         );
 
         $resolver->setDefaults($defaults);

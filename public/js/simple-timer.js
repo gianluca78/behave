@@ -2,16 +2,17 @@ self.addEventListener("message", function(e) {
     var startDate = new Date();
     var observationLengthInMinutes = e.data.observationLengthInMinutes;
     var partialLengthInSeconds = e.data.partialLengthInSeconds || null;
+    var timerId = e.data.timerId;
 
     var countDownDate = new Date(startDate.getTime() + observationLengthInMinutes * 60000).getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function() {
-        countdown(countDownDate, startDate, observationLengthInMinutes, partialLengthInSeconds);
+        countdown(countDownDate, startDate, observationLengthInMinutes, partialLengthInSeconds, timerId);
     }, 100);
 }, false);
 
-function countdown(countDownDate, startDate, observationLengthInMinutes, partialLengthInSeconds)
+function countdown(countDownDate, startDate, observationLengthInMinutes, partialLengthInSeconds, timerId)
 {
     // Get todays date and time
     var now = new Date().getTime();
@@ -44,7 +45,8 @@ function countdown(countDownDate, startDate, observationLengthInMinutes, partial
         'timer': minutes + ':' + seconds,
         'intervalNumber': intervalNumber,
         'intervalTimer': minutesInterval + ':' + secondsInterval,
-        'observationLengthInMilliseconds': observationLengthInMilliseconds
+        'observationLengthInMilliseconds': observationLengthInMilliseconds,
+        'timerId': timerId
     });
 
     if(minutes == '00' && seconds == '00') {

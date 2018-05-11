@@ -29,7 +29,7 @@ class DirectObservationWidget implements WidgetInterface {
                 'attr' => array(
                     'value' => $this->value
                 ),
-                'counter_value' => 0,
+                'counter_value' => 0, //to be removed
                 'label' => $this->label,
                 'observation_length_in_minutes' => $this->observationLengthInMinutes,
                 'interval_length_in_seconds' => $this->intervalLengthInSeconds,
