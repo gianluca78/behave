@@ -17,7 +17,6 @@ class ObservationFormHandler
     private $entityManager;
     private $session;
     private $originalChoiceItems;
-    private $originalBehavioralRecordingItems;
     private $originalDirectObservationItems;
     private $originalIntegerItems;
     private $originalMeterItems;
@@ -32,7 +31,6 @@ class ObservationFormHandler
         $this->entityManager = $entityManager;
         $this->session = $session;
         $this->originalChoiceItems = new ArrayCollection();
-        $this->originalBehavioralRecordingItems = new ArrayCollection();
         $this->originalDirectObservationItems = new ArrayCollection();
         $this->originalIntegerItems = new ArrayCollection();
         $this->originalMeterItems = new ArrayCollection();
@@ -55,7 +53,6 @@ class ObservationFormHandler
         $validObject = $form->getData();
 
         $this->removeChoiceItems($validObject);
-        $this->removeBehavioralRecordingItems($validObject);
         $this->removeDirectObservationItems($validObject);
         $this->removeIntegerItems($validObject);
         $this->removeMeterItems($validObject);
@@ -71,11 +68,6 @@ class ObservationFormHandler
     {
         if ($entity->getChoiceItems()->isEmpty() == false) {
             foreach ($entity->getChoiceItems() as $relatedEntity) {
-                $relatedEntity->setObservation($entity);
-            }
-        }
-        if ($entity->getBehavioralRecordingItems()->isEmpty() == false) {
-            foreach ($entity->getBehavioralRecordingItems() as $relatedEntity) {
                 $relatedEntity->setObservation($entity);
             }
         }
@@ -116,18 +108,6 @@ class ObservationFormHandler
         foreach ($this->originalChoiceItems as $choiceItem) {
             if (false === $entity->getChoiceItems()->contains($choiceItem)) {
                 $this->entityManager->remove($choiceItem);
-                $this->entityManager->flush();
-            }
-        }
-
-        return $entity;
-    }
-
-    public function removeBehavioralRecordingItems(Observation $entity)
-    {
-        foreach ($this->originalBehavioralRecordingItems as $behavioralRecordingItem) {
-            if (false === $entity->getBehavioralRecordingItems()->contains($behavioralRecordingItem)) {
-                $this->entityManager->remove($behavioralRecordingItem);
                 $this->entityManager->flush();
             }
         }
@@ -202,16 +182,6 @@ class ObservationFormHandler
     {
         foreach ($originalChoiceItems as $choiceItem) {
             $this->originalChoiceItems->add($choiceItem);
-        }
-    }
-
-    /**
-     * @param ArrayCollection $originalBehavioralRecordingItems
-     */
-    public function setOriginalBehavioralRecordingItems($originalBehavioralRecordingItems)
-    {
-        foreach ($originalBehavioralRecordingItems as $behavioralRecordingItem) {
-            $this->originalBehavioralRecordingItems->add($behavioralRecordingItem);
         }
     }
 

@@ -45,14 +45,7 @@ class Observation
      * @ORM\OneToMany(targetEntity="ChoiceItem", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $choiceItems;
-    
-    /**
-     * @var ArrayCollection $behavioralRecordingItems
-     *
-     * @ORM\OneToMany(targetEntity="BehavioralRecordingItem", mappedBy="observation", cascade={"persist", "remove"})
-     */
-    private $behavioralRecordingItems;
-    
+
     /**
      * @var ArrayCollection $integerItems
      *
@@ -94,7 +87,6 @@ class Observation
     public function __construct()
     {
         $this->choiceItems = new ArrayCollection();
-        $this->behavioralRecordingItems = new ArrayCollection();
         $this->integerItems = new ArrayCollection();
         $this->meterItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
@@ -191,40 +183,6 @@ class Observation
     public function getChoiceItems()
     {
         return $this->choiceItems;
-    }
-
-    /**
-     * Add behavioralRecordingItem
-     *
-     * @param \App\Entity\BehavioralRecordingItem $behavioralRecordingItem
-     *
-     * @return Observation
-     */
-    public function addBehavioralRecordingItem(\App\Entity\BehavioralRecordingItem $behavioralRecordingItem)
-    {
-        $this->behavioralRecordingItems[] = $behavioralRecordingItem;
-
-        return $this;
-    }
-
-    /**
-     * Remove behavioralRecordingItem
-     *
-     * @param \App\Entity\BehavioralRecordingItem $behavioralRecordingItem
-     */
-    public function removeBehavioralRecordingItem(\App\Entity\BehavioralRecordingItem $behavioralRecordingItem)
-    {
-        $this->behavioralRecordingItems->removeElement($behavioralRecordingItem);
-    }
-
-    /**
-     * Get behavioralRecordingItems
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getBehavioralRecordingItems()
-    {
-        return $this->behavioralRecordingItems;
     }
 
     /**
@@ -365,7 +323,7 @@ class Observation
 
     public function countItems()
     {
-        return $this->choiceItems->count() + $this->behavioralRecordingItems->count() + $this->directObservationItems->count() +
+        return $this->choiceItems->count() + $this->directObservationItems->count() +
             $this->integerItems->count() + $this->meterItems->count() + $this->rangeItems->count() +
             $this->textItems->count();
     }

@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
-use App\Form\Type\BehavioralRecordingItemType;
 use App\Form\Type\ChoiceItemType;
 use App\Form\Type\DirectObservationItemType;
 use App\Form\Type\IntegerItemType;
@@ -34,12 +33,6 @@ class ObservationType extends AbstractType
             ))
             ->add('directObservationItems', CollectionType::class, array(
                 'entry_type' => DirectObservationItemType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false
-            ))
-            ->add('behavioralRecordingItems', CollectionType::class, array(
-                'entry_type' => BehavioralRecordingItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false

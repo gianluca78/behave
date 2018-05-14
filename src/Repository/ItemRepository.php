@@ -18,7 +18,6 @@ class ItemRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('i')
             ->leftJoin('App\Entity\ChoiceItem', 'c', 'WITH', 'i.id = c.id')
-            ->leftJoin('App\Entity\BehavioralRecordingItem', 'b', 'WITH', 'i.id = b.id')
             ->leftJoin('App\Entity\DirectObservationItem', 'd', 'WITH', 'i.id = d.id')
             ->leftJoin('App\Entity\IntegerItem', 'inte', 'WITH', 'i.id = inte.id')
             ->leftJoin('App\Entity\MeterItem', 'm', 'WITH', 'i.id = m.id')
@@ -26,7 +25,6 @@ class ItemRepository extends ServiceEntityRepository
             ->leftJoin('App\Entity\TextItem', 't', 'WITH', 'i.id = t.id')
             ->where('inte.observation = :observation')
             ->orWhere('t.observation = :observation')
-            ->orWhere('b.observation = :observation')
             ->orWhere('d.observation = :observation')
             ->orWhere('r.observation = :observation')
             ->orWhere('c.observation = :observation')

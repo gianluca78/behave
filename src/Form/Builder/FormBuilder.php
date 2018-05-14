@@ -53,9 +53,6 @@ class FormBuilder {
     {
         foreach($items as $key => $item) {
             switch(get_class($item)) {
-                case 'App\Entity\BehavioralRecordingItem':
-                    $this->addBehavioralRecordingWidget($item);
-                    break;
                 case 'App\Entity\ChoiceItem':
                     $this->addChoiceWidget($item);
                     break;
@@ -100,18 +97,6 @@ class FormBuilder {
         $choiceWidget->setOptions(array_flip(explode(PHP_EOL, $item->getOptions())));
 
         $this->form = $choiceWidget->addField($this->form, 'item-' . $item->getId());
-    }
-
-    private function addBehavioralRecordingWidget(BehavioralRecordingItem $item)
-    {
-        $behavioralRecordingWidget = new BehavioralRecordingWidget($this->translator);
-        $behavioralRecordingWidget->setLabel($item->getLabel());
-        $behavioralRecordingWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
-        $behavioralRecordingWidget->setPartialLengthInSeconds($item->getPartialLengthInSeconds());
-        $behavioralRecordingWidget->setTypology($item->getTypology());
-
-        $this->form = $behavioralRecordingWidget->addField($this->form, 'item-' . $item->getId());
-
     }
 
     private function addDirectObservationWidget(DirectObservationItem $item)
