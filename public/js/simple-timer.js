@@ -37,8 +37,6 @@ function countdown(countDownDate, startDate, observationLengthInMinutes, partial
         var secondsInterval = formatTimestampDifferenceToTimerMinutes(distanceInterval);
     }
 
-    //console.log(distance, observationLengthInMinutes * 60 * 1000, intervalNumber);
-
     postMessage({
         'distance': distance,
         'hasInterval': hasInterval,
