@@ -111,5 +111,4 @@ class FrequencyItem extends Item
     {
         return $this->observation;
     }
-
 }

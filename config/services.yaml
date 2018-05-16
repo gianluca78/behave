@@ -2,9 +2,11 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
-    open_ssl_cypher_method: aes128
-    open_ssl_iv: hou7gcd3987yhngr
-    open_ssl_private_key: MIICWwIBAAKBgGS3UxakZD1cKiBbAOaATnaokZaICvYelPCUb14Uufx0qeC6iuZnFVTxQqplFh9+z688+hLkRMdTlW5PLY8BFLXktxDHHjnKkKHARoRZ7UM8FyWY9YyvLRpxzcdHECgcrUcO1n1rfE11H3MIvcc8pV5cpO8OChnnbwvXIb7jDtRTAgMBAAECgYAR7fzxs/RQZB7vwaOoZUESqLG6XZ+t7wXOym4FDqWJhu9THYJqwAExLP4UPYixtK6eYLmYMWD5Jy0cBSZ0Jdocyk1DeMT+lHhBrTMVfPwfA7Py+8RQJa6uusTypZh4VMSkv3od9GuMgDY2fu3X68YCNbLrbbehDawWgQ3O81UBsQJBAKhmWfSXGfjnnUTuD/LQxJm0sIBpv/rB5ABOwNKP1lfj6uhWQ7izlmnGXA2QCKBMvDroRLP0rqkANtGHoz4QXOkCQQCZG5jTnV21NGnNEEsmXkynXcTGO/nGMhwlig2TCtIEC+vejiYzrwAeAVPHrD6siofDfgR/oCSKFi5/ypmn2PHbAkA2idduYJV3yENl9JfTswtJIHzdSeJ0KuFVvCu0xgLMOjN1BaMvKXJ4VVawycoRaGi5x0mg4ojCkSAv4fbbfd8pAkAWqBDLb8QIJoNphvm36chqE+QkeYeSnqOvomgz1CwT0TfMLTjV+RWJWyTsrT5xBeblNOaxhB8kF/g1jOOEBQR1AkEAhdRn6Y/RRU5MCrFb6wO45LaZ5z2pSg9kzgYhkez6+duQcq12MOKcWtNY7LFJ/MoXrmIpx4sDxsh27PyHV99NUA==
+    open_ssl_cypher_method: '%env(OPEN_SSL_CYPHER_METHOD)%'
+    open_ssl_iv: '%env(OPEN_SSL_IV)%'
+    open_ssl_private_key: '%env(OPEN_SSL_PRIVATE_KEY)%'
+    couch_db_url: '%env(COUCH_DB_URL)%'
+    couch_db_database_name: '%env(COUCH_DB_DATABASE_NAME)%'
 
 services:
     # default configuration for services in *this* file
@@ -29,3 +31,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    GuzzleHttp\Client:
+        public: true
+
+    App\CouchDb\Client:
+        arguments:
+            $guzzle: '@GuzzleHttp\Client'
+            $url: '%couch_db_url%'
+            $databaseName: '%couch_db_database_name%'
