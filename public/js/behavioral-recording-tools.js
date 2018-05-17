@@ -91,18 +91,23 @@ if (typeof jQuery.ui == 'undefined') {
                             intervalPlayedAudio[timerId].push(data.intervalNumber);
                             timestampLastPlayedAudio[timerId] = ~~(Date.now()/1000);
 
+                            audioElement.pause();
                             audioElement.play();
                             $( '#' + data.timerId ).effect('shake');
 
                             activeIntervalNumber[timerId]++;
                         }
 
-                        if(timestampNow >= timestampLastPlayedAudio[timerId] && timestampNow <= timestampLastPlayedAudio[timerId] + numberOfSecondsToClickToCounterButton){
-                            method = (!isCounterClicked[buttonId]) ? 'removeClass' : 'addClass';
-                            button[method]('red-button');
+                        if(data.hasInterval == true) {
+                            if(timestampNow >= timestampLastPlayedAudio[timerId] && timestampNow <= timestampLastPlayedAudio[timerId] + numberOfSecondsToClickToCounterButton){
+                                method = (!isCounterClicked[buttonId]) ? 'removeClass' : 'addClass';
+                                button[method]('red-button');
+                            } else {
+                                button.addClass('red-button');
+                                isCounterClicked[buttonId] = false;
+                            }
                         } else {
-                            button.addClass('red-button');
-                            isCounterClicked[buttonId] = false;
+                            button.removeClass('red-button');
                         }
 
                         progress(
@@ -126,6 +131,17 @@ if (typeof jQuery.ui == 'undefined') {
                 progressBarId = $(children)[1].id;
 
                 startTimer(observationLengthInMinutesId, timerId, null, null, progressBarId);
+            });
+
+            $( '.frequency-item' ).each(function(i, e) {
+                children = $(e).children();
+
+                observationLengthInMinutesId = $(children[0]).children()[0].id;
+                timerId = $(children[0]).children()[5].id;
+                buttonId = $(children[0]).children()[6].lastChild.id;
+                progressBarId = $(children[1])[0].id;
+
+                startTimer(observationLengthInMinutesId, timerId, null, buttonId, progressBarId);
             });
 
             $( '.time-sampling-item' ).each(function(i, e) {
@@ -154,11 +170,30 @@ if (typeof jQuery.ui == 'undefined') {
 
                     $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_intervalNumber').val(activeIntervalNumber[timerSelectorId]);
                     $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_isBehaviorOccurred').val(true);
+                    $( '#' + baseSelectorId + '_counter').val(parseInt($( '#' + baseSelectorId + '_counter').val()) + 1);
 
                     $(this).addClass('red-button');
 
                     isCounterClicked[$(this).attr("id")] = true;
                 }
+            });
+
+            $( "a.frequency-counter" ).click(function(e){
+                e.preventDefault();
+
+                baseSelectorId = $( this ).attr('data-base-selector-id');
+                counterValue = parseInt($( '#' + baseSelectorId + '_counter').val()) + 1;
+                occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
+
+                addOccurrenceTimestampForm(occurrencesTimestampDiv);
+
+                lastIndex = $( "#" + baseSelectorId + '_occurrenceTimestamps' ).find(':input').length - 1;
+                timestamp = ~~(Date.now()/1000);
+
+                $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
+                $( '#' + baseSelectorId + '_counter').val(counterValue);
+                $( '#counter-' + baseSelectorId).html(counterValue);
+
             });
 
             $( "a.player" ).click(function(e){

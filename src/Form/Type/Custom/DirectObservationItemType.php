@@ -21,7 +21,8 @@ class DirectObservationItemType extends AbstractType
 
         $view->vars = array_merge($view->vars, array(
             'observationLengthInMinutes' => str_pad($options['observation_length_in_minutes'], 2, '0', STR_PAD_LEFT) . ':00',
-            'typology' => $options['typology']
+            'typology' => $options['typology'],
+            'counter' => $options['counter_value']
         ));
     }
 
@@ -57,6 +58,9 @@ class DirectObservationItemType extends AbstractType
                     )
                 )
             )
+            ->add('counter', HiddenType::class, array(
+                'data' => $options['counter_value']
+            ))
             ->add('intervalData', CollectionType::class, array(
                     'allow_add' => true,
                     'entry_type' => IntervalRecordingItemType::class,
@@ -72,7 +76,7 @@ class DirectObservationItemType extends AbstractType
     {
         $defaults = array(
             'compound' => true,
-            'counter_value' => null,
+            'counter_value' => 0,
             'observation_length_in_minutes' => null,
             'interval_length_in_seconds' => null,
             'typology' => null,

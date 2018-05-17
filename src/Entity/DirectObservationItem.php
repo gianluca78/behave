@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Validator\Constraints as AppAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DirectObservationItemRepository")
+ * @AppAssert\IsMultiple
  */
 class DirectObservationItem extends Item
 {

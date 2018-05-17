@@ -188,26 +188,15 @@
 {%- endblock form_errors %}
 
 {# custom #}
-{% block behavioral_recording_item_widget %}
-    {% spaceless %}
-        {% if typology is defined and typology == 'duration' %}
-            {{ block('duration') }}
-
-        {% elseif typology is defined and typology != 'duration' %}
-            {{ block('time_sampling') }}
-
-        {% else %}
-            {{- block('form_rows') -}}
-        {% endif %}
-    {% endspaceless %}
-{% endblock %}
-
 {% block direct_observation_item_widget %}
     {% spaceless %}
         {% if typology is defined and typology == 'duration' %}
             {{ block('duration') }}
 
-        {% elseif typology is defined and typology != 'duration' %}
+        {% elseif typology is defined and typology == 'frequency' %}
+            {{ block('frequency') }}
+
+        {% elseif typology is defined and typology != 'duration' and typology != 'frequency' %}
             {{ block('time_sampling') }}
 
         {% else %}
@@ -250,18 +239,44 @@
     {% endif %}
 {% endblock %}
 
-{% block interval_recording_item2_widget %}
+{% block frequency %}
     {% spaceless %}
-        {{ form_widget(form.intervalNumber) }}
-        {{ form_widget(form.isBehaviorOccurred) }}
+        {% if observationLengthInMinutes is defined %}
+            <div class="form-group frequency-item">
+                <div class="row">
+                    {{ form_widget(form.observationLengthInMinutes) }}
+                    {{ form_widget(form.occurrenceTimestamps) }}
+                    {{ form_widget(form.counter) }}
+                    <div id="counter-{{ id }}" class="col-2 col-sm-2 col-md-2">
+                        <span>0</span>
+                    </div>
+                    <div class="col-5 col-sm-6 col-md-6 ">
+                        {{ form_label(form) }}
+                    </div>
+                    <div id="timer-{{ id }}" class="col-2 col-sm-2 col-md-2">
+                        {{ observationLengthInMinutes }}
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2">
+                        <a id="button-{{ id }}" class="frequency-counter btn btn-primary btn-lg red-button" data-base-selector-id="{{ id }}" href="" role="button">+</a>
+                    </div>
+                </div>
+
+                <div id="progressBar-{{ id }}" class="row progress-bar">
+                    <div></div>
+                </div>
+            </div>
+        {% else %}
+            <div>
+                {{- block('form_rows') -}}
+            </div>
+        {% endif %}
     {% endspaceless %}
 {% endblock %}
-
 
 {% block interval_recording_item_widget %}
     {% spaceless %}
         {% if observationLengthInMinutes is defined %}
-            <div class="form-group frequency-item">
+            <div class="form-group">
                 <div class="row">
                     {{ form_widget(form.observationLengthInMinutes) }}
                     {{ form_widget(form.occurrenceTimestamps) }}
@@ -281,7 +296,7 @@
                 </div>
             </div>
         {% else %}
-            <div class="frequency-item">
+            <div>
                 {{- block('form_rows') -}}
             </div>
         {% endif %}
@@ -424,6 +439,7 @@
             </div>
 
             {{ form_widget(form.typology) }}
+            {{ form_widget(form.counter) }}
         </div>
     {% else %}
         <div class="time-sampling-item">

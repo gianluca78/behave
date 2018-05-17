@@ -2,6 +2,7 @@
 namespace App\Form\Type;
 
 use App\Entity\DirectObservationItem;
+use App\Validator\Constraints\IsMultiple;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,6 +17,7 @@ class DirectObservationItemType extends AbstractType
     {
         $choices = array(
             'Duration Recording' => 'duration',
+            'Frequency' => 'frequency',
             'Interval Recording - Whole Interval' => 'whole-interval',
             'Interval Recording - Partial Interval' => 'partial-interval',
             'Interval Recording - Momentary Time Sampling' => 'momentary-time-sampling'
@@ -25,7 +27,8 @@ class DirectObservationItemType extends AbstractType
             ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
             ->add('observationLengthInMinutes', null, array('required' => true))
-            ->add('intervalLengthInSeconds', null, array('required' => false))
+            ->add('intervalLengthInSeconds', null, array('required' => false)
+            )
             ->add('typology', ChoiceType::class, array(
                 'choices' => $choices,
                 'constraints' => array(
