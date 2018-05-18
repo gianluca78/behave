@@ -13,9 +13,18 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script src="{{ asset('js/time-based-widgets.js') }}"></script>
+    <script>
+        audioPath = '{{ asset('sounds/171756__nenadsimic__picked-coin-echo-2.wav') }}';
+    </script>
+
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/behavioral-recording-tools.js') }}"></script>
 
     <script>
+        $( document ).ready(function() {
+            $( '#form' ).behavioralRecordingTool();
+        });
+
         $( '.square' ).on('click', function(e){
             $( "input[name*='xValue']" ).val($( this ).attr('data-row'));
             $( "input[name*='yValue']" ).val($( this ).attr('data-column'));

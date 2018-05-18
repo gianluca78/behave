@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class FrequencyItemType extends AbstractType
+class DirectObservationItemType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -20,7 +20,9 @@ class FrequencyItemType extends AbstractType
         parent::buildView($view, $form, $options);
 
         $view->vars = array_merge($view->vars, array(
-            'observationLengthInMinutes' => str_pad($options['observation_length_in_minutes'], 2, '0', STR_PAD_LEFT) . ':00'
+            'observationLengthInMinutes' => str_pad($options['observation_length_in_minutes'], 2, '0', STR_PAD_LEFT) . ':00',
+            'typology' => $options['typology'],
+            'counter' => $options['counter_value']
         ));
     }
 
@@ -29,12 +31,16 @@ class FrequencyItemType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('counter', HiddenType::class, array(
-                'data' => $options['counter_value']
-            )
-        )
-            ->add('observationLengthInMinutes', HiddenType::class, array(
+        $builder->add('observationLengthInMinutes', HiddenType::class, array(
                     'data' => $options['observation_length_in_minutes']
+                )
+            )
+            ->add('intervalLengthInSeconds', HiddenType::class, array(
+                    'data' => $options['interval_length_in_seconds']
+                )
+            )
+            ->add('typology', HiddenType::class, array(
+                    'data' => $options['typology']
                 )
             )
             ->add('occurrenceTimestamps', CollectionType::class, array(
@@ -52,6 +58,14 @@ class FrequencyItemType extends AbstractType
                     )
                 )
             )
+            ->add('counter', HiddenType::class, array(
+                'data' => $options['counter_value']
+            ))
+            ->add('intervalData', CollectionType::class, array(
+                    'allow_add' => true,
+                    'entry_type' => IntervalRecordingItemType::class,
+                )
+            )
         ;
     }
 
@@ -62,8 +76,10 @@ class FrequencyItemType extends AbstractType
     {
         $defaults = array(
             'compound' => true,
-            'counter_value' => null,
-            'observation_length_in_minutes' => null
+            'counter_value' => 0,
+            'observation_length_in_minutes' => null,
+            'interval_length_in_seconds' => null,
+            'typology' => null,
         );
 
         $resolver->setDefaults($defaults);

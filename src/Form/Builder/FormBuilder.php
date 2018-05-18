@@ -2,20 +2,20 @@
 
 namespace App\Form\Builder;
 
-use App\Entity\DurationItem;
+use App\Entity\BehavioralRecordingItem;
+use App\Entity\DirectObservationItem;
 use App\Entity\IntegerItem;
 use App\Entity\MeterItem;
 use App\Entity\Observation;
 use App\Entity\RangeItem;
+use App\Form\Widget\BehavioralRecordingWidget;
+use App\Form\Widget\DirectObservationWidget;
 use App\Form\Widget\ChoiceWidget;
-use App\Form\Widget\DurationWidget;
-use App\Form\Widget\FrequencyWidget;
 use App\Form\Widget\IntegerWidget;
 use App\Form\Widget\MeterWidget;
 use App\Form\Widget\RangeWidget;
 use App\Form\Widget\TextWidget;
 use App\Entity\ChoiceItem;
-use App\Entity\FrequencyItem;
 use App\Entity\TextItem;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -56,11 +56,8 @@ class FormBuilder {
                 case 'App\Entity\ChoiceItem':
                     $this->addChoiceWidget($item);
                     break;
-                case 'App\Entity\DurationItem':
-                    $this->addDurationWidget($item);
-                    break;
-                case 'App\Entity\FrequencyItem':
-                    $this->addFrequencyWidget($item);
+                case 'App\Entity\DirectObservationItem':
+                    $this->addDirectObservationWidget($item);
                     break;
                 case 'App\Entity\IntegerItem':
                     $this->addIntegerWidget($item);
@@ -102,23 +99,15 @@ class FormBuilder {
         $this->form = $choiceWidget->addField($this->form, 'item-' . $item->getId());
     }
 
-    private function addDurationWidget(DurationItem $item)
+    private function addDirectObservationWidget(DirectObservationItem $item)
     {
-        $durationWidget = new DurationWidget($this->translator);
-        $durationWidget->setLabel($item->getLabel());
-        $durationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
+        $directObservationWidget = new DirectObservationWidget($this->translator);
+        $directObservationWidget->setLabel($item->getLabel());
+        $directObservationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
+        $directObservationWidget->setIntervalLengthInSeconds($item->getIntervalLengthInSeconds());
+        $directObservationWidget->setTypology($item->getTypology());
 
-        $this->form = $durationWidget->addField($this->form, 'item-' . $item->getId());
-
-    }
-
-    private function addFrequencyWidget(FrequencyItem $item)
-    {
-        $frequencyWidget = new FrequencyWidget($this->translator);
-        $frequencyWidget->setLabel($item->getLabel());
-        $frequencyWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
-
-        $this->form = $frequencyWidget->addField($this->form, 'item-' . $item->getId());
+        $this->form = $directObservationWidget->addField($this->form, 'item-' . $item->getId());
 
     }
 

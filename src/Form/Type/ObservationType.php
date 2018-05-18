@@ -11,8 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 use App\Form\Type\ChoiceItemType;
-use App\Form\Type\DurationItemType;
-use App\Form\Type\FrequencyItemType;
+use App\Form\Type\DirectObservationItemType;
 use App\Form\Type\IntegerItemType;
 use App\Form\Type\MeterItemType;
 use App\Form\Type\RangeItemType;
@@ -32,14 +31,8 @@ class ObservationType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false
             ))
-            ->add('durationItems', CollectionType::class, array(
-                'entry_type' => DurationItemType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false
-            ))
-            ->add('frequencyItems', CollectionType::class, array(
-                'entry_type' => FrequencyItemType::class,
+            ->add('directObservationItems', CollectionType::class, array(
+                'entry_type' => DirectObservationItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false

@@ -45,20 +45,6 @@ class Observation
      * @ORM\OneToMany(targetEntity="ChoiceItem", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $choiceItems;
-    
-    /**
-     * @var ArrayCollection $durationItems
-     *
-     * @ORM\OneToMany(targetEntity="DurationItem", mappedBy="observation", cascade={"persist", "remove"})
-     */
-    private $durationItems;
-    
-    /**
-     * @var ArrayCollection $frequencyItems
-     *
-     * @ORM\OneToMany(targetEntity="FrequencyItem", mappedBy="observation", cascade={"persist", "remove"})
-     */
-    private $frequencyItems;
 
     /**
      * @var ArrayCollection $integerItems
@@ -92,17 +78,21 @@ class Observation
      * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation", cascade={"persist", "remove"})
      */
     private $observationDates;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\DirectObservationItem", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $directObservationItems;
     
     public function __construct()
     {
         $this->choiceItems = new ArrayCollection();
-        $this->durationItems = new ArrayCollection();
-        $this->frequencyItems = new ArrayCollection();
         $this->integerItems = new ArrayCollection();
         $this->meterItems = new ArrayCollection();
         $this->rangeItems = new ArrayCollection();
         $this->textItems = new ArrayCollection();
         $this->observationDates = new ArrayCollection();
+        $this->directObservationItems = new ArrayCollection();
     }
 
     /**
@@ -193,74 +183,6 @@ class Observation
     public function getChoiceItems()
     {
         return $this->choiceItems;
-    }
-
-    /**
-     * Add durationItem
-     *
-     * @param \App\Entity\DurationItem $durationItem
-     *
-     * @return Observation
-     */
-    public function addDurationItem(\App\Entity\DurationItem $durationItem)
-    {
-        $this->durationItems[] = $durationItem;
-
-        return $this;
-    }
-
-    /**
-     * Remove durationItem
-     *
-     * @param \App\Entity\DurationItem $durationItem
-     */
-    public function removeDurationItem(\App\Entity\DurationItem $durationItem)
-    {
-        $this->durationItems->removeElement($durationItem);
-    }
-
-    /**
-     * Get durationItems
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDurationItems()
-    {
-        return $this->durationItems;
-    }
-
-    /**
-     * Add frequencyItem
-     *
-     * @param \App\Entity\FrequencyItem $frequencyItem
-     *
-     * @return Observation
-     */
-    public function addFrequencyItem(\App\Entity\FrequencyItem $frequencyItem)
-    {
-        $this->frequencyItems[] = $frequencyItem;
-
-        return $this;
-    }
-
-    /**
-     * Remove frequencyItem
-     *
-     * @param \App\Entity\FrequencyItem $frequencyItem
-     */
-    public function removeFrequencyItem(\App\Entity\FrequencyItem $frequencyItem)
-    {
-        $this->frequencyItems->removeElement($frequencyItem);
-    }
-
-    /**
-     * Get frequencyItems
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFrequencyItems()
-    {
-        return $this->frequencyItems;
     }
 
     /**
@@ -401,7 +323,7 @@ class Observation
 
     public function countItems()
     {
-        return $this->choiceItems->count() + $this->durationItems->count() + $this->frequencyItems->count() +
+        return $this->choiceItems->count() + $this->directObservationItems->count() +
             $this->integerItems->count() + $this->meterItems->count() + $this->rangeItems->count() +
             $this->textItems->count();
     }
@@ -449,5 +371,36 @@ class Observation
         }
 
         return false;
+    }
+
+    /**
+     * @return Collection|DirectObservationItem[]
+     */
+    public function getDirectObservationItems()
+    {
+        return $this->directObservationItems;
+    }
+
+    public function addDirectObservationItem(DirectObservationItem $directObservationItem)
+    {
+        if (!$this->directObservationItems->contains($directObservationItem)) {
+            $this->directObservationItems[] = $directObservationItem;
+            $directObservationItem->setObservation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDirectObservationItem(DirectObservationItem $directObservationItem)
+    {
+        if ($this->directObservationItems->contains($directObservationItem)) {
+            $this->directObservationItems->removeElement($directObservationItem);
+            // set the owning side to null (unless already changed)
+            if ($directObservationItem->getObservation() === $this) {
+                $directObservationItem->setObservation(null);
+            }
+        }
+
+        return $this;
     }
 }

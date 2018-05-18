@@ -3,13 +3,15 @@
 namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
-use App\Form\Type\Custom\FrequencyItemType;
+use App\Form\Type\Custom\DirectObservationItemType;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class FrequencyWidget implements WidgetInterface {
+class DirectObservationWidget implements WidgetInterface {
 
     private $label;
     private $observationLengthInMinutes;
+    private $intervalLengthInSeconds;
+    private $typology;
     private $translator;
     private $value;
 
@@ -22,14 +24,16 @@ class FrequencyWidget implements WidgetInterface {
     {
         $formBuilderInterface->add(
             $name,
-            FrequencyItemType::class,
+            DirectObservationItemType::class,
             array(
                 'attr' => array(
                     'value' => $this->value
                 ),
-                'counter_value' => 0,
+                'counter_value' => 0, //to be removed
                 'label' => $this->label,
-                'observation_length_in_minutes' => $this->observationLengthInMinutes
+                'observation_length_in_minutes' => $this->observationLengthInMinutes,
+                'interval_length_in_seconds' => $this->intervalLengthInSeconds,
+                'typology' => $this->typology
             )
         );
 
@@ -53,6 +57,22 @@ class FrequencyWidget implements WidgetInterface {
     }
 
     /**
+     * @param mixed $intervalLengthInSeconds
+     */
+    public function setIntervalLengthInSeconds($intervalLengthInSeconds)
+    {
+        $this->intervalLengthInSeconds = $intervalLengthInSeconds;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIntervalLengthInSeconds()
+    {
+        return $this->intervalLengthInSeconds;
+    }
+
+    /**
      * @return mixed
      */
     public function getPlaceholder()
@@ -69,6 +89,22 @@ class FrequencyWidget implements WidgetInterface {
     }
 
     /**
+     * @param mixed $typology
+     */
+    public function setTypology($typology)
+    {
+        $this->typology = $typology;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypology()
+    {
+        return $this->typology;
+    }
+
+    /**
      * @return mixed
      */
     public function getObservationLengthInMinutes()
@@ -82,21 +118,5 @@ class FrequencyWidget implements WidgetInterface {
     public function setObservationLengthInMinutes($observationLengthInMinutes)
     {
         $this->observationLengthInMinutes = $observationLengthInMinutes;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * @param mixed $value
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
     }
 }

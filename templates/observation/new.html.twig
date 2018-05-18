@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="row text-center">
-                {% set itemTypologies = ['Choice', 'Duration', 'Frequency', 'Integer', 'Meter', 'Range', 'Text'] %}
+                {% set itemTypologies = ['Choice', 'Direct Observation', 'Integer', 'Meter', 'Range', 'Text'] %}
 
                 {% for typology in itemTypologies %}
                     <div class="col-md-6 border typology" style="cursor:move;">{{ typology }}</div>
@@ -34,8 +34,7 @@
                  data-index-item="0"
                  data-item-number="{{ itemNumber }}"
                  data-prototype-choice="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}"
-                 data-prototype-duration="{{ form_widget(form.durationItems.vars.prototype)|e('html_attr') }}"
-                 data-prototype-frequency="{{ form_widget(form.frequencyItems.vars.prototype)|e('html_attr') }}"
+                 data-prototype-direct-observation="{{ form_widget(form.directObservationItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-integer="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-meter="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-range="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}"
@@ -59,25 +58,15 @@
                             {% endif %}
                         {% endfor %}
 
-                        {% for durationItem in form.durationItems %}
-                            {% if positionNumber == durationItem.vars.value.positionNumber %}
+                        {% for directObservationItem in form.directObservationItems %}
+                            {% if positionNumber == directObservationItem.vars.value.positionNumber %}
                                 <div>
                                     <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(durationItem.label) }}
-                                    {{ form_row(durationItem.observationLengthInMinutes) }}
-                                    {{ form_row(durationItem.positionNumber) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% for frequencyItem in form.frequencyItems %}
-                            {% if positionNumber == frequencyItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(frequencyItem.label) }}
-                                    {{ form_row(frequencyItem.observationLengthInMinutes) }}
-                                    {{ form_row(frequencyItem.positionNumber) }}
+                                    {{ form_row(directObservationItem.label) }}
+                                    {{ form_row(directObservationItem.observationLengthInMinutes) }}
+                                    {{ form_row(directObservationItem.intervalLengthInSeconds) }}
+                                    {{ form_row(directObservationItem.typology) }}
+                                    {{ form_row(directObservationItem.positionNumber) }}
                                 </div>
                                 <a href="#" class="remove-item">-</a>
                             {% endif %}
@@ -181,12 +170,8 @@
                 addItemForm('choice');
                 break;
 
-            case 'Duration':
-                addItemForm('duration');
-                break;
-
-            case 'Frequency':
-                addItemForm('frequency');
+            case 'Direct Observation':
+                addItemForm('direct-observation');
                 break;
 
             case 'Integer':
@@ -207,9 +192,7 @@
     });
 
     function addItemForm(type) {
-
         prototype = $collectionHolder.data('prototype-' + type);
-
         index = $collectionHolder.attr('data-index-item');
         newIndex = parseInt(index) + 1;
         itemNumber = $collectionHolder.attr('data-item-number');

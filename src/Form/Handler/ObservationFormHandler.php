@@ -17,8 +17,7 @@ class ObservationFormHandler
     private $entityManager;
     private $session;
     private $originalChoiceItems;
-    private $originalDurationItems;
-    private $originalFrequencyItems;
+    private $originalDirectObservationItems;
     private $originalIntegerItems;
     private $originalMeterItems;
     private $originalRangeItems;
@@ -32,8 +31,7 @@ class ObservationFormHandler
         $this->entityManager = $entityManager;
         $this->session = $session;
         $this->originalChoiceItems = new ArrayCollection();
-        $this->originalDurationItems = new ArrayCollection();
-        $this->originalFrequencyItems = new ArrayCollection();
+        $this->originalDirectObservationItems = new ArrayCollection();
         $this->originalIntegerItems = new ArrayCollection();
         $this->originalMeterItems = new ArrayCollection();
         $this->originalRangeItems = new ArrayCollection();
@@ -55,8 +53,7 @@ class ObservationFormHandler
         $validObject = $form->getData();
 
         $this->removeChoiceItems($validObject);
-        $this->removeDurationItems($validObject);
-        $this->removeFrequencyItems($validObject);
+        $this->removeDirectObservationItems($validObject);
         $this->removeIntegerItems($validObject);
         $this->removeMeterItems($validObject);
         $this->removeRangeItems($validObject);
@@ -74,13 +71,8 @@ class ObservationFormHandler
                 $relatedEntity->setObservation($entity);
             }
         }
-        if ($entity->getDurationItems()->isEmpty() == false) {
-            foreach ($entity->getDurationItems() as $relatedEntity) {
-                $relatedEntity->setObservation($entity);
-            }
-        }
-        if ($entity->getFrequencyItems()->isEmpty() == false) {
-            foreach ($entity->getFrequencyItems() as $relatedEntity) {
+        if ($entity->getDirectObservationItems()->isEmpty() == false) {
+            foreach ($entity->getDirectObservationItems() as $relatedEntity) {
                 $relatedEntity->setObservation($entity);
             }
         }
@@ -123,23 +115,11 @@ class ObservationFormHandler
         return $entity;
     }
 
-    public function removeDurationItems(Observation $entity)
+    public function removeDirectObservationItems(Observation $entity)
     {
-        foreach ($this->originalDurationItems as $durationItem) {
-            if (false === $entity->getDurationItems()->contains($durationItem)) {
-                $this->entityManager->remove($durationItem);
-                $this->entityManager->flush();
-            }
-        }
-
-        return $entity;
-    }
-
-    public function removeFrequencyItems(Observation $entity)
-    {
-        foreach ($this->originalFrequencyItems as $frequencyItem) {
-            if (false === $entity->getFrequencyItems()->contains($frequencyItem)) {
-                $this->entityManager->remove($frequencyItem);
+        foreach ($this->originalDirectObservationItems as $directObservationItem) {
+            if (false === $entity->getDirectObservationItems()->contains($directObservationItem)) {
+                $this->entityManager->remove($directObservationItem);
                 $this->entityManager->flush();
             }
         }
@@ -206,22 +186,12 @@ class ObservationFormHandler
     }
 
     /**
-     * @param ArrayCollection $originalDurationItems
+     * @param ArrayCollection $originalDirectObservationItems
      */
-    public function setOriginalDurationItems($originalDurationItems)
+    public function setOriginalDirectObservationItems($originalDirectObservationItems)
     {
-        foreach ($originalDurationItems as $durationItem) {
-            $this->originalDurationItems->add($durationItem);
-        }
-    }
-
-    /**
-     * @param ArrayCollection $originalFrequencyItems
-     */
-    public function setOriginalFrequencyItems($originalFrequencyItems)
-    {
-        foreach ($originalFrequencyItems as $frequencyItem) {
-            $this->originalFrequencyItems->add($frequencyItem);
+        foreach ($originalDirectObservationItems as $directObservationItem) {
+            $this->originalDirectObservationItems->add($directObservationItem);
         }
     }
 

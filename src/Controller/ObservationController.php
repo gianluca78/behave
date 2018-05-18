@@ -94,6 +94,13 @@ class ObservationController extends Controller
     */
     public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler)
     {
+        $formHandler->setOriginalChoiceItems($observation->getChoiceItems());
+        $formHandler->setOriginalDirectObservationItems($observation->getDirectObservationItems());
+        $formHandler->setOriginalIntegerItems($observation->getIntegerItems());
+        $formHandler->setOriginalMeterItems($observation->getMeterItems());
+        $formHandler->setOriginalRangeItems($observation->getRangeItems());
+        $formHandler->setOriginalTextItems($observation->getTextItems());
+
         $form = $this->createForm(ObservationType::class, $observation, array(
             'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId())),
         ));
@@ -138,7 +145,7 @@ class ObservationController extends Controller
             'title' => $this->get('translator')->trans(self::NEW_TITLE)
         );
 
-            }
+    }
 
     /**
     * @Route("/delete/{id}", name="observation_delete")

@@ -47,6 +47,8 @@ class ItemFormHandler
 
     public function create($data, $message)
     {
+        var_dump($data);exit;
+
         $this->couchDbClient->connect()->postDataToDatabase($data);
 
 
