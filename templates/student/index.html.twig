@@ -10,13 +10,13 @@
 
     <div class="row">
         <div class="col-md-12 col-md-offset-1">
-            <h2>Observation list</h2>
+            <h2>Students list</h2>
 
             <table class="table table-stripped table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>id</th>
-                    <th> name</th>
+                    <th> student id</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -27,17 +27,17 @@
                 {% for record in records %}
                     <tr>
                         <td>{{ record.id }}</td>
-                        <td>{{ record. name }}</td>
+                        <td>{{ record.studentId }}</td>
 
-                        <td><a href="{{ path('observation_edit', {'id': record.id}) }}">
+                        <td><a href="{{ path('student_edit', {'id': record.id}) }}">
                                 {% trans %}Edit{% endtrans %}
                             </a>
                         </td>
                         <td><a href="{{ path('observation_dates', {'id': record.id}) }}">
-                                {% trans %}Dates{% endtrans %}
+                                {% trans %}Observations{% endtrans %}
                             </a>
                         </td>
-                        <td><a href="{{ path('observation_delete', {'id': record.id}) }}">
+                        <td><a href="{{ path('student_delete', {'id': record.id}) }}">
                                 {% trans %}Delete{% endtrans %}
                             </a>
                         </td>
@@ -46,7 +46,8 @@
                 </tbody>
             </table>
 
-            <a href="{{ path('observation_new') }}">{% trans %}New{% endtrans %}</a>
+            <a href="{{ path('student_new') }}">{% trans %}New{% endtrans %}</a>
         </div>
     </div>
+
 {% endblock %}

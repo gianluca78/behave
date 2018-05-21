@@ -18,9 +18,11 @@ security:
                     service: hwi_oauth.user.provider
             logout:
                 path:   /auth0/logout
-                target: observation_list
+                target: student_list
         main:
             anonymous: ~
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/observation, roles: ROLE_OAUTH_USER }
+        - { path: ^/student, roles: ROLE_OAUTH_USER }
         - { path: ^/secured, roles: ROLE_OAUTH_USER }

@@ -91,11 +91,19 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-{% include 'nav_bar.html.twig' %}
     <div class="container-fluid">
         <div class="row jumbotron">
             <header class="col-md-12">
                 <h1>Behave</h1>
+
+                {% if app.user %}
+                    <a href="{{ logout_url("secured_area") }}">
+                        <button type="button" class="btn btn-primary btn-sm">Logout</button>
+                    </a>
+                {% else %}
+                    <a href="/connect/auth0"><button type="button" class="btn btn-primary btn-sm">Login</button></a>
+                {% endif %}
+
             </header>
         </div>
 
