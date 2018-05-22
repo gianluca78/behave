@@ -18,7 +18,9 @@ class IsUserIdUniqueValidator extends ConstraintValidator {
     {
         $repository = $this->entityManager->getRepository('App:Student');
 
-        if ($repository->findOneByStudentId($student->getStudentId())) {
+        $existingStudent = $repository->findOneByStudentId($student->getStudentId());
+
+        if ($existingStudent && $existingStudent->getId() != $student->getId()) {
             $this->context->buildViolation($constraint->message)
                 ->atPath('studentId')
                 ->setParameter('{{ string }}', $student->getStudentId())

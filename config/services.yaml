@@ -39,3 +39,9 @@ services:
             $guzzle: '@GuzzleHttp\Client'
             $url: '%couch_db_url%'
             $databaseName: '%couch_db_database_name%'
+
+    App\Security\Encoder\OpenSslEncoder:
+        arguments:
+            $cypherMethod: '%open_ssl_cypher_method%'
+            $iv: '%open_ssl_iv%'
+            $privateKey: '%open_ssl_private_key%'

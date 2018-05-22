@@ -12,7 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
 
 use App\Form\Handler\StudentFormHandler;
 use App\Form\Type\StudentType;
-
 use App\Entity\Student;
 
 /**
@@ -105,7 +104,7 @@ class StudentController extends Controller
             'title' => $this->get('translator')->trans(self::NEW_TITLE)
         );
 
-            }
+    }
 
     /**
     * @Route("/delete/{id}", name="student_delete")

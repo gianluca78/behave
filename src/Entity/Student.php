@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use App\Validator\Constraints as AppAssert;
@@ -47,6 +49,16 @@ class Student
      *
      */
     private $updateAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="student")
+     */
+    private $observations;
+
+    public function __construct()
+    {
+        $this->observations = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -112,6 +124,38 @@ class Student
     {
         return $this->updateAt;
     }
+
+    /**
+     * @return Collection|Observation[]
+     */
+    public function getObservations()
+    {
+        return $this->observations;
+    }
+
+    public function addObservation(Observation $observation)
+    {
+        if (!$this->observations->contains($observation)) {
+            $this->observations[] = $observation;
+            $observation->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeObservation(Observation $observation)
+    {
+        if ($this->observations->contains($observation)) {
+            $this->observations->removeElement($observation);
+            // set the owning side to null (unless already changed)
+            if ($observation->getStudent() === $this) {
+                $observation->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 
 }

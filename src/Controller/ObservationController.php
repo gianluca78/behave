@@ -16,6 +16,7 @@ use App\Form\Handler\ObservationFormHandler;
 use App\Form\Type\ObservationType;
 
 use App\Entity\Observation;
+use App\Entity\Student;
 
 /**
  * @Route("/observation")
@@ -25,10 +26,10 @@ use App\Entity\Observation;
  */
 class ObservationController extends Controller
 {
-    CONST NEW_SUCCESS_STRING = 'Record inserted successfully';
-    CONST EDIT_SUCCESS_STRING = 'Record edited successfully';
+    CONST NEW_SUCCESS_STRING = 'Observation inserted successfully';
+    CONST EDIT_SUCCESS_STRING = 'Observation edited successfully';
     CONST DATES_ADDED_SUCCESS = 'Dates added successfully';
-    CONST DELETE_SUCCESS_STRING = 'Record deleted successfully';
+    CONST DELETE_SUCCESS_STRING = 'Observation deleted successfully';
     CONST CALENDAR_TITLE = 'Pick your favourite dates';
     CONST NEW_TITLE = 'Insert new observation';
     CONST EDIT_TITLE = 'Edit observation';
@@ -84,6 +85,24 @@ class ObservationController extends Controller
     }
 
     /**
+     * @Route("/student/{id}/list", name="observation_student_list")
+     * @Method({"GET"})
+     * @Template
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexStudentAction(Student $student)
+    {
+        $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findByStudent($student);
+
+        return array(
+            'records' => $records,
+            'title' => $this->get('translator')->trans(self::INDEX_TITLE)
+        );
+    }
+
+    /**
     * @Route("/edit/{id}", name="observation_edit")
     * @Method({"GET", "POST"})  
     *
@@ -94,15 +113,9 @@ class ObservationController extends Controller
     */
     public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler)
     {
-        $formHandler->setOriginalChoiceItems($observation->getChoiceItems());
-        $formHandler->setOriginalDirectObservationItems($observation->getDirectObservationItems());
-        $formHandler->setOriginalIntegerItems($observation->getIntegerItems());
-        $formHandler->setOriginalMeterItems($observation->getMeterItems());
-        $formHandler->setOriginalRangeItems($observation->getRangeItems());
-        $formHandler->setOriginalTextItems($observation->getTextItems());
-
         $form = $this->createForm(ObservationType::class, $observation, array(
             'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId())),
+            'creator_username' => $this->getUser()->getUsername()
         ));
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
@@ -112,8 +125,7 @@ class ObservationController extends Controller
         return $this->render('observation/new.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
-                'numberOfItems' => $observation->countItems()
+                'title' => $this->get('translator')->trans(self::EDIT_TITLE)
             )
         );
     }
@@ -132,7 +144,8 @@ class ObservationController extends Controller
         $entity = new Observation();
 
         $form = $this->createForm(ObservationType::class, $entity, array(
-            'action' => $this->generateUrl('observation_new')
+            'action' => $this->generateUrl('observation_new'),
+            'creator_username' => $this->getUser()->getUsername()
         ));
 
         

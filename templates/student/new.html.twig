@@ -9,24 +9,7 @@
         <div>{{ flashMessage }}</div>
     {% endfor %}
     {{ form_start(form) }}
-    
-                                    {{ form_row(form.studentId) }}
-            
-    
 
+    {{ form_row(form.studentId) }}
     {{ form_end(form) }}
-{% endblock %}
-
-
-
-{% block javascripts %}
-    <script>
-        
-        jQuery(document).ready(function() {
-            
-        })
-
-        
-
-    </script>
 {% endblock %}
