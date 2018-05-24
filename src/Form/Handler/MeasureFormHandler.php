@@ -66,6 +66,37 @@ class MeasureFormHandler
 
     public function create(Measure $entity, $message)
     {
+        if ($entity->getChoiceItems()->isEmpty() == false) {
+            foreach ($entity->getChoiceItems() as $relatedEntity) {
+                $relatedEntity->setMeasure($entity);
+            }
+        }
+        if ($entity->getDirectObservationItems()->isEmpty() == false) {
+            foreach ($entity->getDirectObservationItems() as $relatedEntity) {
+                $relatedEntity->setMeasure($entity);
+            }
+        }
+        if ($entity->getIntegerItems()->isEmpty() == false) {
+            foreach ($entity->getIntegerItems() as $relatedEntity) {
+                $relatedEntity->setMeasure($entity);
+            }
+        }
+        if ($entity->getMeterItems()->isEmpty() == false) {
+            foreach ($entity->getMeterItems() as $relatedEntity) {
+                $relatedEntity->setMeasure($entity);
+            }
+        }
+        if ($entity->getRangeItems()->isEmpty() == false) {
+            foreach ($entity->getRangeItems() as $relatedEntity) {
+                $relatedEntity->setMeasure($entity);
+            }
+        }
+        if ($entity->getTextItems()->isEmpty() == false) {
+            foreach ($entity->getTextItems() as $relatedEntity) {
+                $relatedEntity->setMeasure($entity);
+            }
+        }
+        
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
 
