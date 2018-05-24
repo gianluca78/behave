@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\Handler\CalendarFormHandler;
 use App\Form\Type\CalendarType;
+use App\Security\Encoder\OpenSslEncoder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -92,9 +93,11 @@ class ObservationController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexStudentAction(Student $student)
+    public function indexStudentAction(Student $student, OpenSslEncoder $encoder)
     {
-        $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findByStudent($student);
+        $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findByStudentAndCreatorUsername(
+            $student, $encoder->encrypt($this->getUser()->getUsername())
+        );
 
         return array(
             'records' => $records,
@@ -113,13 +116,23 @@ class ObservationController extends Controller
     */
     public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler)
     {
+        if($observation->getStudent()->getCreatorUsername() != $this->getUser()->getUsername()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
         $form = $this->createForm(ObservationType::class, $observation, array(
             'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId())),
             'creator_username' => $this->getUser()->getUsername()
         ));
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('observation_list'));
+            return $this->redirect($this->generateUrl('observation_student_list', array(
+                'id' => $observation->getStudent()->getId())
+                )
+            );
         }
 
         return $this->render('observation/new.html.twig',
@@ -170,6 +183,13 @@ class ObservationController extends Controller
     */
     public function deleteAction(Request $request, Observation $entity)
     {
+        if($entity->getStudent()->getCreatorUsername() != $this->getUser()->getUsername()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $em->remove($entity);

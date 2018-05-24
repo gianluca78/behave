@@ -54,6 +54,12 @@ class Observation
      */
     private $student;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Measure", inversedBy="observations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $measure;
+
     public function __construct()
     {
         $this->observationDates = new ArrayCollection();
@@ -184,6 +190,18 @@ class Observation
     public function setStudent($student)
     {
         $this->student = $student;
+
+        return $this;
+    }
+
+    public function getMeasure()
+    {
+        return $this->measure;
+    }
+
+    public function setMeasure($measure)
+    {
+        $this->measure = $measure;
 
         return $this;
     }

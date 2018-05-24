@@ -23,6 +23,7 @@ security:
             anonymous: ~
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/measure, roles: ROLE_OAUTH_USER }
         - { path: ^/observation, roles: ROLE_OAUTH_USER }
         - { path: ^/student, roles: ROLE_OAUTH_USER }
         - { path: ^/secured, roles: ROLE_OAUTH_USER }

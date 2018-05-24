@@ -1,6 +1,7 @@
 <?php
 namespace App\Form\Type;
 
+use App\Entity\Measure;
 use App\Entity\Observation;
 use App\Entity\Student;
 
@@ -28,6 +29,18 @@ class ObservationType extends AbstractType
             ->add('name', null, array('required' => true))
             ->add('description', TextareaType::class, array('required' => true))
             ->add('observerUsername', null, array('required' => true))
+            ->add('measure', EntityType::class, array(
+                    'class' => Measure::class,
+                    'choice_label' => 'name',
+                    'placeholder' => '-- select --',
+                    'query_builder' => function (EntityRepository $er) {
+                            return $er->createQueryBuilder('m')
+                                ->where('m.isShared = :isShared')
+                                ->setParameter('isShared', 1)
+                                ;
+                        },
+                )
+            )
             ->add('student', EntityType::class, array(
                 'class' => Student::class,
                 'choice_label' => 'studentId',
