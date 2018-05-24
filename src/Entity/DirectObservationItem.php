@@ -27,10 +27,10 @@ class DirectObservationItem extends Item
     private $typology;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Observation", inversedBy="directObservationItems")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Measure", inversedBy="directObservationItems")
+     * @ORM\JoinColumn(name="measure_id", referencedColumnName="id")
      */
-    private $observation;
+    private $measure;
 
     /**
      * @return mixed
@@ -92,16 +92,28 @@ class DirectObservationItem extends Item
         return $this;
     }
 
-    public function getObservation()
+    /**
+     * Set measure
+     *
+     * @param \App\Entity\Measure $measure
+     *
+     * @return Measure
+     */
+    public function setMeasure(\App\Entity\Measure $measure = null)
     {
-        return $this->observation;
-    }
-
-    public function setObservation($observation)
-    {
-        $this->observation = $observation;
+        $this->measure = $measure;
 
         return $this;
+    }
+
+    /**
+     * Get measure
+     *
+     * @return \App\Entity\Measure
+     */
+    public function getMeasure()
+    {
+        return $this->measure;
     }
 
     /**

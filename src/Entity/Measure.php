@@ -41,40 +41,40 @@ class Measure
     /**
      * @var ArrayCollection $choiceItems
      *
-     * @ORM\OneToMany(targetEntity="ChoiceItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="ChoiceItem", mappedBy="measure", cascade={"persist", "remove"})
      */
     private $choiceItems;
 
     /**
      * @var ArrayCollection $integerItems
      *
-     * @ORM\OneToMany(targetEntity="IntegerItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="IntegerItem", mappedBy="measure", cascade={"persist", "remove"})
      */
     private $integerItems;
 
     /**
      * @var ArrayCollection $meterItems
      *
-     * @ORM\OneToMany(targetEntity="MeterItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="MeterItem", mappedBy="measure", cascade={"persist", "remove"})
      */
     private $meterItems;
 
     /**
      * @var ArrayCollection $rangeItems
      *
-     * @ORM\OneToMany(targetEntity="RangeItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="RangeItem", mappedBy="measure", cascade={"persist", "remove"})
      */
     private $rangeItems;
 
     /**
      * @var ArrayCollection $textItems
      *
-     * @ORM\OneToMany(targetEntity="TextItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="TextItem", mappedBy="measure", cascade={"persist", "remove"})
      */
     private $textItems;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\DirectObservationItem", mappedBy="observation", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\DirectObservationItem", mappedBy="measure", cascade={"persist", "remove"})
      */
     private $directObservationItems;
 

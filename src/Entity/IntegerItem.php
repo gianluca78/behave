@@ -18,12 +18,12 @@ class IntegerItem extends Item
     private $fieldValue;
 
     /**
-     * @var Observation $observation
+     * @var Measure $measure
      *
-     * @ORM\ManyToOne(targetEntity="Observation", inversedBy="integerItems")
-     * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Measure", inversedBy="integerItems")
+     * @ORM\JoinColumn(name="measure_id", referencedColumnName="id")
      */
-    private $observation;
+    private $measure;
 
     /**
      * @return mixed
@@ -90,27 +90,27 @@ class IntegerItem extends Item
     }
 
     /**
-     * Set observation
+     * Set measure
      *
-     * @param \App\Entity\Observation $observation
+     * @param \App\Entity\Measure $measure
      *
-     * @return Observation
+     * @return Measure
      */
-    public function setObservation(\App\Entity\Observation $observation = null)
+    public function setMeasure(\App\Entity\Measure $measure = null)
     {
-        $this->observation = $observation;
+        $this->measure = $measure;
 
         return $this;
     }
 
     /**
-     * Get observation
+     * Get measure
      *
-     * @return \App\Entity\Observation
+     * @return \App\Entity\Measure
      */
-    public function getObservation()
+    public function getMeasure()
     {
-        return $this->observation;
+        return $this->measure;
     }
 
 }

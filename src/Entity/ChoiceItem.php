@@ -41,10 +41,10 @@ class ChoiceItem extends Item
     /**
      * @var Observation $observation
      *
-     * @ORM\ManyToOne(targetEntity="Observation", inversedBy="choiceItems")
-     * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Measure", inversedBy="choiceItems")
+     * @ORM\JoinColumn(name="measure_id", referencedColumnName="id")
      */
-    private $observation;
+    private $measure;
 
     /**
      * @return string
@@ -111,19 +111,27 @@ class ChoiceItem extends Item
     }
 
     /**
-     * @return Observation
+     * Set measure
+     *
+     * @param \App\Entity\Measure $measure
+     *
+     * @return Measure
      */
-    public function getObservation()
+    public function setMeasure(\App\Entity\Measure $measure = null)
     {
-        return $this->observation;
+        $this->measure = $measure;
+
+        return $this;
     }
 
     /**
-     * @param Observation $observation
+     * Get measure
+     *
+     * @return \App\Entity\Measure
      */
-    public function setObservation($observation)
+    public function getMeasure()
     {
-        $this->observation = $observation;
+        return $this->measure;
     }
 
     /**

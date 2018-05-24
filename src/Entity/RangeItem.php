@@ -31,12 +31,12 @@ class RangeItem extends Item
     private $step;
 
     /**
-     * @var Observation $observation
+     * @var Measure $measure
      *
-     * @ORM\ManyToOne(targetEntity="Observation", inversedBy="rangeItems")
-     * @ORM\JoinColumn(name="observation_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Measure", inversedBy="rangeItems")
+     * @ORM\JoinColumn(name="measure_id", referencedColumnName="id")
      */
-    private $observation;
+    private $measure;
 
     /**
      * @return mixed
@@ -135,26 +135,26 @@ class RangeItem extends Item
     }
 
     /**
-     * Set survey
+     * Set measure
      *
-     * @param \App\Entity\Observation $observation
+     * @param \App\Entity\Measure $measure
      *
-     * @return Observation
+     * @return Measure
      */
-    public function setObservation(\App\Entity\Observation $observation = null)
+    public function setMeasure(\App\Entity\Measure $measure = null)
     {
-        $this->observation = $observation;
+        $this->measure = $measure;
 
         return $this;
     }
 
     /**
-     * Get observation
+     * Get measure
      *
-     * @return \App\Entity\Observation
+     * @return \App\Entity\Measure
      */
-    public function getObservation()
+    public function getMeasure()
     {
-        return $this->observation;
+        return $this->measure;
     }
 }
