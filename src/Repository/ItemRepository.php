@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Item;
-use App\Entity\Observation;
+use App\Entity\Measure;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -14,7 +14,7 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
-    public function findItemsByObservation(Observation $observation)
+    public function findItemsByMeasure(Measure $measure)
     {
         return $this->createQueryBuilder('i')
             ->leftJoin('App\Entity\ChoiceItem', 'c', 'WITH', 'i.id = c.id')
@@ -23,13 +23,13 @@ class ItemRepository extends ServiceEntityRepository
             ->leftJoin('App\Entity\MeterItem', 'm', 'WITH', 'i.id = m.id')
             ->leftJoin('App\Entity\RangeItem', 'r', 'WITH', 'i.id = r.id')
             ->leftJoin('App\Entity\TextItem', 't', 'WITH', 'i.id = t.id')
-            ->where('inte.observation = :observation')
-            ->orWhere('t.observation = :observation')
-            ->orWhere('d.observation = :observation')
-            ->orWhere('r.observation = :observation')
-            ->orWhere('c.observation = :observation')
-            ->orWhere('m.observation = :observation')
-            ->setParameter('observation', $observation)
+            ->where('inte.measure = :measure')
+            ->orWhere('t.measure = :measure')
+            ->orWhere('d.measure = :measure')
+            ->orWhere('r.measure = :measure')
+            ->orWhere('c.measure = :measure')
+            ->orWhere('m.measure = :measure')
+            ->setParameter('measure', $measure)
             ->orderBy('i.positionNumber', 'ASC')
             ->getQuery()
             ->getResult();

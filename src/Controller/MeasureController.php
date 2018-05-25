@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Response;
 
 use App\Entity\Measure;
+use App\Entity\Observation;
 use App\Form\Handler\MeasureFormHandler;
 use App\Form\Type\MeasureType;
 
@@ -154,15 +155,16 @@ class MeasureController extends Controller
      */
     public function createFormAction(Request $request,
                                      FormBuilder $formBuilder,
-                                     Measure $observation,
+                                     Observation $observation,
                                      ItemFormHandler $formHandler)
     {
         $em = $this->getDoctrine()->getManager();
-        $items = $em->getRepository('App\Entity\Item')->findItemsByMeasure($observation);
+        $items = $em->getRepository('App\Entity\Item')->findItemsByMeasure($observation->getMeasure());
 
+        /*
         if(!$observation->isDateIncluded(new \DateTime())) {
             return $this->render('measure/not_allowed.html.twig');
-        }
+        }*/
 
         $formBuilder->addItems($items);
         $formBuilder->setAction($observation);

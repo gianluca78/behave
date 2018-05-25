@@ -52,6 +52,7 @@ if (typeof jQuery.ui == 'undefined') {
                 var data = null;
                 var observationLengthInMinutes = $( '#' + observationLengthInMinutesId ).val();
                 var partialLengthInSeconds = $ ( '#' + partialLengthInSecondsId ).val() || null;
+                var numberOfIntervals = Math.round(observationLengthInMinutes * 60 / partialLengthInSeconds);
 
                 // First check whether Web Workers are supported
                 if (typeof(Worker)!=="undefined"){
@@ -99,9 +100,13 @@ if (typeof jQuery.ui == 'undefined') {
                         }
 
                         if(data.hasInterval == true) {
-                            if(timestampNow >= timestampLastPlayedAudio[timerId] && timestampNow <= timestampLastPlayedAudio[timerId] + numberOfSecondsToClickToCounterButton){
+                            if(timestampNow >= timestampLastPlayedAudio[timerId]
+                                && timestampNow <= timestampLastPlayedAudio[timerId] + numberOfSecondsToClickToCounterButton
+                                ){
                                 method = (!isCounterClicked[buttonId]) ? 'removeClass' : 'addClass';
                                 button[method]('red-button');
+                            } else if (numberOfIntervals == data.intervalNumber) {
+                                button.removeClass('red-button');
                             } else {
                                 button.addClass('red-button');
                                 isCounterClicked[buttonId] = false;
