@@ -7,7 +7,7 @@ use App\Validator\Constraints as AppAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DirectObservationItemRepository")
- * @AppAssert\IsMultiple
+ * @AppAssert\IsMultiple*
  */
 class DirectObservationItem extends Item
 {

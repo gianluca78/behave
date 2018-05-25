@@ -65,17 +65,17 @@ class MeasureController extends Controller
      * @param MeasureFormHandler $formHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Measure $observation, MeasureFormHandler $formHandler)
+    public function editAction(Request $request, Measure $measure, MeasureFormHandler $formHandler)
     {
-        $formHandler->setOriginalChoiceItems($observation->getChoiceItems());
-        $formHandler->setOriginalDirectObservationItems($observation->getDirectObservationItems());
-        $formHandler->setOriginalIntegerItems($observation->getIntegerItems());
-        $formHandler->setOriginalMeterItems($observation->getMeterItems());
-        $formHandler->setOriginalRangeItems($observation->getRangeItems());
-        $formHandler->setOriginalTextItems($observation->getTextItems());
+        $formHandler->setOriginalChoiceItems($measure->getChoiceItems());
+        $formHandler->setOriginalDirectObservationItems($measure->getDirectObservationItems());
+        $formHandler->setOriginalIntegerItems($measure->getIntegerItems());
+        $formHandler->setOriginalMeterItems($measure->getMeterItems());
+        $formHandler->setOriginalRangeItems($measure->getRangeItems());
+        $formHandler->setOriginalTextItems($measure->getTextItems());
 
-        $form = $this->createForm(MeasureType::class, $observation, array(
-            'action' => $this->generateUrl('measure_edit', array('id' => $observation->getId())),
+        $form = $this->createForm(MeasureType::class, $measure, array(
+            'action' => $this->generateUrl('measure_edit', array('id' => $measure->getId())),
         ));
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
@@ -86,7 +86,7 @@ class MeasureController extends Controller
             array(
                 'form' => $form->createView(),
                 'title' => $this->get('translator')->trans(self::EDIT_TITLE),
-                'numberOfItems' => $observation->countItems()
+                'numberOfItems' => $measure->countItems()
             )
         );
     }

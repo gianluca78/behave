@@ -28,10 +28,11 @@
 
             {{ form_row(form._token) }}
 
+            {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems : 1 %}
             {% set itemNumber = (numberOfItems is defined) ? numberOfItems + 1 : 1 %}
 
             <div class="items"
-                 data-index-item="0"
+                 data-index-item="{{ indexItemNumber }}"
                  data-item-number="{{ itemNumber }}"
                  data-prototype-choice="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-direct-observation="{{ form_widget(form.directObservationItems.vars.prototype)|e('html_attr') }}"
