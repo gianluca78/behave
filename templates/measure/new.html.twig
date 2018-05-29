@@ -28,12 +28,10 @@
 
             {{ form_row(form._token) }}
 
-            {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems : 1 %}
-            {% set itemNumber = (numberOfItems is defined) ? numberOfItems + 1 : 1 %}
+            {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems - 1 : - 1 %}
 
             <div class="items"
                  data-index-item="{{ indexItemNumber }}"
-                 data-item-number="{{ itemNumber }}"
                  data-prototype-choice="{{ form_widget(form.choiceItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-direct-observation="{{ form_widget(form.directObservationItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-integer="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}"
@@ -196,18 +194,16 @@
             prototype = $collectionHolder.data('prototype-' + type);
             index = $collectionHolder.attr('data-index-item');
             newIndex = parseInt(index) + 1;
-            itemNumber = $collectionHolder.attr('data-item-number');
-            newItemNumber = parseInt(itemNumber) + 1;
+            newItemNumber = newIndex + 1;
 
-            newForm = prototype.replace(/__name__/g, index);
+            newForm = prototype.replace(/__name__/g, newIndex);
 
-            $collectionHolder.append('<h3>Item ' + itemNumber + '</h3>');
+            $collectionHolder.append('<h3>Item ' + newItemNumber + '</h3>');
             $collectionHolder.append(newForm);
 
-            $( "input[name*='positionNumber']" ).last().val(newIndex);
+            $( "input[name*='positionNumber']" ).last().val(newItemNumber);
 
             $collectionHolder.attr('data-index-item', newIndex);
-            $collectionHolder.attr('data-item-number', newItemNumber);
 
             addItemFormDeleteLink();
         }
@@ -218,8 +214,6 @@
             $( '.items' ).append($removeFormA);
 
             $removeFormA.on('click', function (e) {
-                console.log($(this));
-
                 e.preventDefault();
 
                 $( this ).prev().remove();
@@ -227,7 +221,12 @@
                 $( this ).remove();
 
                 index = $collectionHolder.data('index-item');
+
+                console.log(index);
+
                 $collectionHolder.attr('data-index-item', index - 1);
+
+                console.log($collectionHolder.data('index-item'));
 
                 resetPositionNumbers();
             });
