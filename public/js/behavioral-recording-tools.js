@@ -105,11 +105,13 @@ if (typeof jQuery.ui == 'undefined') {
                                 ){
                                 method = (!isCounterClicked[buttonId]) ? 'removeClass' : 'addClass';
                                 button[method]('red-button');
-                            } else if (numberOfIntervals == data.intervalNumber) {
-                                button.removeClass('red-button');
                             } else {
-                                button.addClass('red-button');
-                                isCounterClicked[buttonId] = false;
+                                    if(data.timer == '00:00') {
+                                        button.removeClass('red-button');
+                                    } else {
+                                        button.addClass('red-button');
+                                        isCounterClicked[buttonId] = false;
+                                    }
                             }
                         } else {
                             button.removeClass('red-button');
