@@ -101,7 +101,8 @@ class ObservationController extends Controller
 
         return array(
             'records' => $records,
-            'title' => $this->get('translator')->trans(self::INDEX_TITLE)
+            'title' => $this->get('translator')->trans(self::INDEX_TITLE),
+            'student' => $student
         );
     }
 
@@ -144,7 +145,7 @@ class ObservationController extends Controller
     }
 
     /**
-    * @Route("/new", name="observation_new")
+    * @Route("/new/{id}", name="observation_new")
     * @Method({"GET", "POST"})
     * @Template
     *
@@ -152,18 +153,26 @@ class ObservationController extends Controller
     * @param ObservationFormHandler $formHandler
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function newAction(Request $request, ObservationFormHandler $formHandler)
+    public function newAction(Request $request, Student $student, ObservationFormHandler $formHandler)
     {
+        if($student->getCreatorUsername() != $this->getUser()->getUsername()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
         $entity = new Observation();
+        $entity->setStudent($student);
 
         $form = $this->createForm(ObservationType::class, $entity, array(
-            'action' => $this->generateUrl('observation_new'),
+            'action' => $this->generateUrl('observation_new', array('id' => $student->getId())),
             'creator_username' => $this->getUser()->getUsername()
         ));
 
         
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('observation_list'));
+            return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
         }
 
         return array(

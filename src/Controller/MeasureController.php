@@ -48,7 +48,9 @@ class MeasureController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $records = $this->getDoctrine()->getRepository('App\Entity\Measure')->findAll();
+        $records = $this->getDoctrine()->getRepository('App\Entity\Measure')->findByCreatorUsername(
+            $this->getUser()->getUsername()
+        );
 
         return array(
             'records' => $records,

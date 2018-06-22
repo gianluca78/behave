@@ -10,7 +10,7 @@ security:
                 resource_owners:
                     auth0: "/auth0/callback"
                 login_path:        /login
-                default_target_path: observation_list
+                default_target_path: student_list
                 use_forward:       false
                 failure_path:      /login
 
@@ -23,6 +23,7 @@ security:
             anonymous: ~
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user, roles: ROLE_OAUTH_USER }
         - { path: ^/measure, roles: ROLE_OAUTH_USER }
         - { path: ^/observation, roles: ROLE_OAUTH_USER }
         - { path: ^/student, roles: ROLE_OAUTH_USER }

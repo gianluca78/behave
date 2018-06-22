@@ -49,7 +49,7 @@
                 </tbody>
             </table>
 
-            <a href="{{ path('observation_new') }}">{% trans %}New{% endtrans %}</a>
+            <a href="{{ path('observation_new', { 'id': student.id } ) }}">{% trans %}New{% endtrans %}</a>
         </div>
     </div>
 {% endblock %}

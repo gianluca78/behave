@@ -4,6 +4,56 @@
     {{ title }}
 {% endblock %}
 
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <script>
+        function formatResults (result) {
+            if(result.imageSrc) {
+                var $result = $(
+                    '<span><img width="30px" src=" ' + result.imageSrc +' " /> ' + result.text + '</span>'
+                );
+            } else {
+                var $result = $(
+                    '<span>' + result.text + '</span>'
+                );
+            }
+
+            return $result;
+        };
+
+        $('#observation_observerUsername').select2({
+            ajax: {
+                url: '{{ path('user_search') }}',
+                dataType: 'json'
+            },
+            templateResult: formatResults
+
+            /*
+            escapeMarkup: function(m) {
+                // Do not escape HTML in the select options text
+                return m;
+            }*/
+
+        });
+
+        $('#observation_observerUsername').change(
+            function() {
+                $('#observation_test').val($(this).val());
+            }
+        );
+
+
+    </script>
+
+{% endblock %}
+
 {% block body %}
 
     {% for flashMessage in app.session.flashbag.get('success') %}
@@ -14,8 +64,9 @@
     {{ form_row(form.isEnabled) }}
     {{ form_row(form.name) }}
     {{ form_row(form.description) }}
-    {{ form_row(form.student) }}
     {{ form_row(form.measure) }}
+    {{ form_row(form.observerUsername) }}
+    {{ form_row(form.test) }}
 
     {{ form_row(form._token) }}
 

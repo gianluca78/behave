@@ -10,7 +10,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
 
@@ -29,6 +31,7 @@ class ObservationType extends AbstractType
             ->add('name', null, array('required' => true))
             ->add('description', TextareaType::class, array('required' => true))
             ->add('observerUsername', null, array('required' => true))
+            ->add('test', TextType::class, array('required' => true, 'mapped' => false))
             ->add('measure', EntityType::class, array(
                     'class' => Measure::class,
                     'choice_label' => 'name',
@@ -41,17 +44,7 @@ class ObservationType extends AbstractType
                         },
                 )
             )
-            ->add('student', EntityType::class, array(
-                'class' => Student::class,
-                'choice_label' => 'studentId',
-                'placeholder' => '-- select --',
-                'query_builder' => function (EntityRepository $er) use ($options) {
-                        return $er->createQueryBuilder('s')
-                            ->where('s.creatorUsername = :creatorUsername')
-                            ->setParameter('creatorUsername', $this->sslEncoder->encrypt($options['creator_username']))
-                            ->orderBy('s.creatorUsername', 'ASC');
-                    },
-            ))
+            ->add('observerUsername', ChoiceType::class)
             ->add('submit', SubmitType::class);
     }
 
