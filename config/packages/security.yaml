@@ -1,7 +1,8 @@
 security:
     providers:
         hwi:
-            id: hwi_oauth.user.provider
+            #id: hwi_oauth.user.provider
+            id: App\Security\UserProvider
 
     firewalls:
         secured_area:
@@ -15,7 +16,8 @@ security:
                 failure_path:      /login
 
                 oauth_user_provider:
-                    service: hwi_oauth.user.provider
+                    #service: hwi_oauth.user.provider
+                    service: App\Security\UserProvider
             logout:
                 path:   /auth0/logout
                 target: student_list

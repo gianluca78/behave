@@ -15,10 +15,8 @@ class StudentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                                                                        ->add('studentId', null, array('required' => true))
-                                                ->add('submit', SubmitType::class);
-        
-        ;
+            ->add('studentId', null, array('required' => true))
+            ->add('submit', SubmitType::class);;
     }
 
     public function configureOptions(OptionsResolver $resolver)
