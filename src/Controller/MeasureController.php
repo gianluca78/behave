@@ -48,8 +48,8 @@ class MeasureController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $records = $this->getDoctrine()->getRepository('App\Entity\Measure')->findByCreatorUsername(
-            $this->getUser()->getUsername()
+        $records = $this->getDoctrine()->getRepository('App\Entity\Measure')->findByCreatorUserId(
+            $this->getUser()->getUserId()
         );
 
         return array(
@@ -105,7 +105,7 @@ class MeasureController extends Controller
     public function newAction(Request $request, MeasureFormHandler $formHandler)
     {
         $entity = new Measure();
-        $entity->setCreatorUsername($this->getUser()->getUsername());
+        $entity->setCreatorUserId($this->getUser()->getUserId());
 
         $form = $this->createForm(MeasureType::class, $entity, array(
             'action' => $this->generateUrl('measure_new')

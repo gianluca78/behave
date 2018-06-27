@@ -39,8 +39,8 @@ class StudentController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $records = $this->getDoctrine()->getRepository('App\Entity\Student')->findByCreatorUsername(
-            $this->getUser()->getUsername()
+        $records = $this->getDoctrine()->getRepository('App\Entity\Student')->findByCreatorUserId(
+            $this->getUser()->getUserId()
         );
 
         return array(
@@ -88,7 +88,7 @@ class StudentController extends Controller
     public function newAction(Request $request, StudentFormHandler $formHandler)
     {
         $entity = new Student();
-        $entity->setCreatorUsername($this->getUser()->getUsername());
+        $entity->setCreatorUserId($this->getUser()->getUserId());
 
         $form = $this->createForm(StudentType::class, $entity, array(
             'action' => $this->generateUrl('student_new')

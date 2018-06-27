@@ -45,9 +45,19 @@ class Observation
     private $observationDates;
 
     /**
+     * @ORM\Column(name="observer_user_id", type="encrypted_string", length=255)
+     */
+    private $observerUserId;
+
+    /**
      * @ORM\Column(name="observer_username", type="encrypted_string", length=255)
      */
     private $observerUsername;
+
+    /**
+     * @ORM\Column(name="creator_user_id", type="encrypted_string", length=255)
+     */
+    private $creatorUserId;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Student", inversedBy="observations")
@@ -122,19 +132,19 @@ class Observation
     }
 
     /**
-     * @param mixed $observerUsername
+     * @param mixed $observerUserId
      */
-    public function setObserverUsername($observerUsername)
+    public function setObserverUserId($observerUserId)
     {
-        $this->observerUsername = $observerUsername;
+        $this->observerUserId = $observerUserId;
     }
 
     /**
      * @return mixed
      */
-    public function getObserverUsername()
+    public function getObserverUserId()
     {
-        return $this->observerUsername;
+        return $this->observerUserId;
     }
 
     /**
@@ -192,6 +202,38 @@ class Observation
         $this->student = $student;
 
         return $this;
+    }
+
+    /**
+     * @param mixed $observerUsername
+     */
+    public function setObserverUsername($observerUsername)
+    {
+        $this->observerUsername = $observerUsername;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getObserverUsername()
+    {
+        return $this->observerUsername;
+    }
+
+    /**
+     * @param mixed $creatorUserId
+     */
+    public function setCreatorUserId($creatorUserId)
+    {
+        $this->creatorUserId = $creatorUserId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatorUserId()
+    {
+        return $this->creatorUserId;
     }
 
     public function getMeasure()

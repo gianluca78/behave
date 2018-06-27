@@ -22,9 +22,9 @@ class Measure
     private $id;
 
     /**
-     * @ORM\Column(name="creator_username", type="encrypted_string", length=255)
+     * @ORM\Column(name="creator_user_id", type="encrypted_string", length=255)
      */
-    private $creatorUsername;
+    private $creatorUserId;
 
     /**
      * @var string $name
@@ -117,19 +117,19 @@ class Measure
     }
 
     /**
-     * @param mixed $creatorUsername
+     * @param mixed $creatorUserId
      */
-    public function setCreatorUsername($creatorUsername)
+    public function setCreatorUserId($creatorUserId)
     {
-        $this->creatorUsername = $creatorUsername;
+        $this->creatorUserId = $creatorUserId;
     }
 
     /**
      * @return mixed
      */
-    public function getCreatorUsername()
+    public function getCreatorUserId()
     {
-        return $this->creatorUsername;
+        return $this->creatorUserId;
     }
 
     /**

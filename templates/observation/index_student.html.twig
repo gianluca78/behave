@@ -19,6 +19,7 @@
                     <th> name</th>
                     <th> description</th>
                     <th> is enabled</th>
+                    <th> observer</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -31,6 +32,7 @@
                         <td>{{ record.name }}</td>
                         <td>{{ record.description }}</td>
                         <td>{{ record.isEnabled }}</td>
+                        <td>{{ record.observerUsername }}</td>
 
                         <td><a href="{{ path('observation_edit', {'id': record.id}) }}">
                                 {% trans %}Edit{% endtrans %}

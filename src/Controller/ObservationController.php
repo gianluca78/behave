@@ -95,8 +95,8 @@ class ObservationController extends Controller
      */
     public function indexStudentAction(Student $student, OpenSslEncoder $encoder)
     {
-        $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findByStudentAndCreatorUsername(
-            $student, $encoder->encrypt($this->getUser()->getUsername())
+        $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findByStudentAndCreatorUserId(
+            $student, $encoder->encrypt($this->getUser()->getUserId())
         );
 
         return array(
@@ -117,7 +117,7 @@ class ObservationController extends Controller
     */
     public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler)
     {
-        if($observation->getStudent()->getCreatorUsername() != $this->getUser()->getUsername()) {
+        if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
 
@@ -125,8 +125,7 @@ class ObservationController extends Controller
         }
 
         $form = $this->createForm(ObservationType::class, $observation, array(
-            'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId())),
-            'creator_username' => $this->getUser()->getUsername()
+            'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId()))
         ));
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
@@ -155,7 +154,7 @@ class ObservationController extends Controller
     */
     public function newAction(Request $request, Student $student, ObservationFormHandler $formHandler)
     {
-        if($student->getCreatorUsername() != $this->getUser()->getUsername()) {
+        if($student->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
 
@@ -164,10 +163,10 @@ class ObservationController extends Controller
 
         $entity = new Observation();
         $entity->setStudent($student);
+        $entity->setCreatorUserId($this->getUser()->getUserId());
 
         $form = $this->createForm(ObservationType::class, $entity, array(
-            'action' => $this->generateUrl('observation_new', array('id' => $student->getId())),
-            'creator_username' => $this->getUser()->getUsername()
+            'action' => $this->generateUrl('observation_new', array('id' => $student->getId()))
         ));
 
         
@@ -192,7 +191,7 @@ class ObservationController extends Controller
     */
     public function deleteAction(Request $request, Observation $entity)
     {
-        if($entity->getStudent()->getCreatorUsername() != $this->getUser()->getUsername()) {
+        if($entity->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
 

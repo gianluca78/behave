@@ -3,35 +3,26 @@ namespace App\Form\Type;
 
 use App\Entity\Measure;
 use App\Entity\Observation;
-use App\Entity\Student;
-
-use App\Security\Encoder\OpenSslEncoder;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
 
 class ObservationType extends AbstractType
 {
-    private $sslEncoder;
-
-    public function __construct(OpenSslEncoder $sslEncoder) {
-        $this->sslEncoder = $sslEncoder;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('isEnabled', null, array('required' => false))
             ->add('name', null, array('required' => true))
             ->add('description', TextareaType::class, array('required' => true))
-            ->add('observerUsername', null, array('required' => true))
-            ->add('test', TextType::class, array('required' => true, 'mapped' => false))
+            ->add('observerUsername', TextType::class, array('required' => true))
+            ->add('observerUserId', HiddenType::class, array('required' => true))
             ->add('measure', EntityType::class, array(
                     'class' => Measure::class,
                     'choice_label' => 'name',
@@ -44,15 +35,13 @@ class ObservationType extends AbstractType
                         },
                 )
             )
-            ->add('observerUsername', ChoiceType::class)
             ->add('submit', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Observation::class,
-            'creator_username' => null
+            'data_class' => Observation::class
         ));
     }
 }

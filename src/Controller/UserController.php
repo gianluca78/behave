@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function search(Request $request, Auth0Api $auth0Api)
     {
-        $results = array('results');
+        $results = array();
 
         if(!$request->isXmlHttpRequest()) {
             $response = new Response('not allowed');
@@ -70,12 +70,21 @@ class UserController extends Controller
             return $response;
         }
 
-        foreach($auth0Api->getUsers($request->get('q')) as $key => $user) {
+        foreach($auth0Api->getUsers($request->get('term')) as $key => $user) {
+            $results[] = array(
+                'id' => $user->user_id,
+                'label' => '<img width="4%" src="' . $user->picture . '">' . $user->name . '</img>',
+                'value' => $user->user_id,
+                'picture' => $user->picture
+            );
+
+
+            /*
             $results['results'][] = array(
                 'id' => $user->user_id,
                 'text' => $user->name,
                 'imageSrc' => $user->picture
-            );
+            );*/
         }
 
         return new Response(

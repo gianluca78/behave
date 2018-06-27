@@ -14,12 +14,12 @@ class ObservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Observation::class);
     }
 
-    public function findByStudentAndCreatorUsername(Student $student, $creatorUsername)
+    public function findByStudentAndCreatorUserId(Student $student, $creatorUserId)
     {
         return $this->createQueryBuilder('o')
             ->join('o.student', 's')
             ->where('o.student = :student')->setParameter('student', $student)
-            ->andWhere('s.creatorUsername = :creatorUsername')->setParameter('creatorUsername', $creatorUsername)
+            ->andWhere('s.creatorUserId = :creatorUserId')->setParameter('creatorUserId', $creatorUserId)
             ->getQuery()
             ->getResult()
             ;

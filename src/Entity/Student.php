@@ -28,9 +28,9 @@ class Student
     private $studentId;
 
     /**
-     * @ORM\Column(name="creator_username", type="encrypted_string", length=255)
+     * @ORM\Column(name="creator_user_id", type="encrypted_string", length=255)
      */
-    private $creatorUsername;
+    private $creatorUserId;
 
     /**
      * @var datetime $createdAt
@@ -78,19 +78,19 @@ class Student
     }
 
     /**
-     * @param mixed $creatorUsername
+     * @param mixed $creatorUserId
      */
-    public function setCreatorUsername($creatorUsername)
+    public function setCreatorUserId($creatorUserId)
     {
-        $this->creatorUsername = $creatorUsername;
+        $this->creatorUserId = $creatorUserId;
     }
 
     /**
      * @return mixed
      */
-    public function getCreatorUsername()
+    public function getCreatorUserId()
     {
-        return $this->creatorUsername;
+        return $this->creatorUserId;
     }
 
     /**
