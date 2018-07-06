@@ -11,6 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+use App\Form\Type\ObservationSchedulerType;
+
 use Doctrine\ORM\EntityRepository;
 
 class ObservationType extends AbstractType
@@ -21,7 +24,11 @@ class ObservationType extends AbstractType
             ->add('isEnabled', null, array('required' => false))
             ->add('name', null, array('required' => true))
             ->add('description', TextareaType::class, array('required' => true))
-            ->add('observerUsername', TextType::class, array('required' => true))
+            ->add('observerUsername', TextType::class, array(
+                'required' => true,
+                'label' => 'Observer username, email, or surname and name'
+                )
+            )
             ->add('observerUserId', HiddenType::class, array('required' => true))
             ->add('measure', EntityType::class, array(
                     'class' => Measure::class,
@@ -35,6 +42,8 @@ class ObservationType extends AbstractType
                         },
                 )
             )
+            ->add('hasDates', null)
+            ->add('observationScheduler', ObservationSchedulerType::class)
             ->add('submit', SubmitType::class);
     }
 

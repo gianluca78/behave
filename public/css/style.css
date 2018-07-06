@@ -19,3 +19,14 @@
     background-color: cornflowerblue;
     box-sizing: border-box;
 }
+
+.time-range-start-time,
+.time-range-end-time,
+.exact-time,
+.weekly-nr-of-weeks,
+.weekly-days-of-week,
+.repeat-end,
+.repeat-end-after-nr-of-occurrences,
+.repeat-end-date {
+    display: none;
+}

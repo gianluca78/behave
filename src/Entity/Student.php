@@ -48,7 +48,7 @@ class Student
      * @Gedmo\Timestampable(on="update")
      *
      */
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="student")
@@ -110,11 +110,11 @@ class Student
     }
 
     /**
-     * @param mixed $updateAt
+     * @param mixed $updatedAt
      */
-    public function setUpdateAt($updateAt)
+    public function setUpdateAt($updatedAt)
     {
-        $this->updateAt = $updateAt;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
@@ -122,7 +122,7 @@ class Student
      */
     public function getUpdateAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**

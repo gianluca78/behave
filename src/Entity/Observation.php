@@ -6,6 +6,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ObservationRepository")
  */
@@ -40,7 +43,14 @@ class Observation
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation", cascade={"persist", "remove"})
+     * @var string $hasDates
+     *
+     * @ORM\Column(name="has_dates", type="boolean")
+     */
+    private $hasDates;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $observationDates;
 
@@ -69,6 +79,12 @@ class Observation
      * @ORM\JoinColumn(nullable=false)
      */
     private $measure;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\ObservationScheduler", mappedBy="observation", cascade={"persist", "remove"})
+     * @Assert\Valid
+     */
+    private $observationScheduler;
 
     public function __construct()
     {
@@ -132,6 +148,22 @@ class Observation
     }
 
     /**
+     * @param string $hasDates
+     */
+    public function setHasDates($hasDates)
+    {
+        $this->hasDates = $hasDates;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHasDates()
+    {
+        return $this->hasDates;
+    }
+
+    /**
      * @param mixed $observerUserId
      */
     public function setObserverUserId($observerUserId)
@@ -174,6 +206,13 @@ class Observation
                 $observationDate->setObservation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function resetObservationDates()
+    {
+        $this->observationDates->clear();
 
         return $this;
     }
@@ -244,6 +283,23 @@ class Observation
     public function setMeasure($measure)
     {
         $this->measure = $measure;
+
+        return $this;
+    }
+
+    public function getObservationScheduler()
+    {
+        return $this->observationScheduler;
+    }
+
+    public function setObservationScheduler(ObservationScheduler $observationScheduler)
+    {
+        $this->observationScheduler = $observationScheduler;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $observationScheduler->getObservation()) {
+            $observationScheduler->setObservation($this);
+        }
 
         return $this;
     }

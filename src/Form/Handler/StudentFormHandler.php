@@ -23,7 +23,7 @@ class StudentFormHandler {
     {
         $this->entityManager = $entityManager;
         $this->session = $session;
-            }
+    }
 
     public function handle(FormInterface $form, Request $request, $message)
     {
@@ -39,7 +39,6 @@ class StudentFormHandler {
 
         $validObject = $form->getData();
 
-        
         $this->create($validObject, $message);
 
         return true;
@@ -47,12 +46,9 @@ class StudentFormHandler {
 
     public function create(Student $entity, $message)
     {
-        
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
 
         $this->session->getFlashBag()->add('success', $message);
     }
-
-    
-    }
+}

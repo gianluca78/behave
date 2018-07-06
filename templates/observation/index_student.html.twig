@@ -16,10 +16,11 @@
                 <thead>
                 <tr>
                     <th>id</th>
-                    <th> name</th>
-                    <th> description</th>
-                    <th> is enabled</th>
-                    <th> observer</th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>is enabled</th>
+                    <th>observer</th>
+                    <th>dates</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -33,6 +34,22 @@
                         <td>{{ record.description }}</td>
                         <td>{{ record.isEnabled }}</td>
                         <td>{{ record.observerUsername }}</td>
+                        <td>
+                            {% if(record.hasDates) %}
+                                <ul>
+                                    {% for date in record.observationDates %}
+                                        <li>{{ date.startDateTimestamp.format('Y-m-d H:i') }}
+                                            {% if(date.startDateTimestamp != date.endDateTimestamp) %}
+                                                -
+                                                {{ date.endDateTimestamp.format('H:i') }}
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                No
+                            {% endif %}
+                        </td>
 
                         <td><a href="{{ path('observation_edit', {'id': record.id}) }}">
                                 {% trans %}Edit{% endtrans %}

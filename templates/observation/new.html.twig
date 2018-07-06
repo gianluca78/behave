@@ -6,12 +6,15 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
     <script>
         $( "#observation_observerUsername" ).autocomplete({
@@ -34,6 +37,109 @@
             };
 
 
+        $( document ).ready(function() {
+            showHideScheduler();
+            showHideTime();
+            showHideRepeatOptions();
+            showHideRepeatEndOptions();
+        });
+
+        $('#observation_observationScheduler_startDate').datepicker({
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+        });
+
+        $('#observation_observationScheduler_repeatEndDate').datepicker({
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+        });
+
+        $('#observation_hasDates').change(function () {
+            showHideScheduler();
+        });
+
+        $('#observation_observationScheduler_timeOption').change(function(){
+            showHideTime();
+        });
+
+        $('#observation_observationScheduler_repeatOption').change(function() {
+           showHideRepeatOptions();
+        });
+
+        $('#observation_observationScheduler_repeatEndOption').change(function() {
+           showHideRepeatEndOptions();
+        });
+
+        function showHideTime() {
+            switch ($('#observation_observationScheduler_timeOption').val()) {
+                case '0':
+                    $('.time-range-start-time').hide();
+                    $('.time-range-end-time').hide();
+                    $('.exact-time').hide();
+                    break;
+
+                case '1':
+                    $('.time-range-start-time').show();
+                    $('.time-range-end-time').show();
+                    $('.exact-time').hide();
+
+                    break;
+
+                case '2':
+                    $('.time-range-start-time').hide();
+                    $('.time-range-end-time').hide();
+                    $('.exact-time').show();
+
+                    break;
+            }
+        }
+
+        function showHideRepeatOptions() {
+            switch ($('#observation_observationScheduler_repeatOption').val()) {
+                case '0':
+                    $('.weekly-nr-of-weeks').hide();
+                    $('.weekly-days-of-week').hide();
+                    $('.repeat-end').hide();
+                    $('.repeat-end-after-nr-of-occurrences').hide();
+
+                    break;
+
+                case '1':
+                    $('.weekly-nr-of-weeks').show();
+                    $('.weekly-days-of-week').show();
+                    $('.repeat-end').show();
+                    $('.repeat-end-after-nr-of-occurrences').show();
+
+                    break;
+            }
+        }
+
+
+        function showHideRepeatEndOptions() {
+            if($('#observation_observationScheduler_repeatEndOption').is(":visible")) {
+                switch ($('#observation_observationScheduler_repeatEndOption').val()) {
+                    case '0':
+                        $('.repeat-end-after-nr-of-occurrences').show();
+                        $('.repeat-end-date').hide();
+
+                        break;
+
+                    case '1':
+                        $('.repeat-end-after-nr-of-occurrences').hide();
+                        $('.repeat-end-date').show();
+
+                        break;
+                }
+            }
+        }
+
+        function showHideScheduler() {
+            if ($('#observation_hasDates').prop("checked")) {
+                $('#scheduler').show();
+            } else {
+                $('#scheduler').hide();
+            }
+        }
     </script>
 
 {% endblock %}
@@ -51,6 +157,57 @@
     {{ form_row(form.measure) }}
     {{ form_row(form.observerUsername) }}
     {{ form_row(form.observerUserId) }}
+    {{ form_row(form.hasDates) }}
+
+    <div id="scheduler">
+        <div class="row">
+            <div class="col-3 col-sm-3 col-md-3">
+                {{ form_row(form.observationScheduler.startDate) }}
+            </div>
+            <div class="col-3 col-sm-3 col-md-3">
+                {{ form_row(form.observationScheduler.timeOption) }}
+            </div>
+            <div class="col-3 col-sm-3 col-md-3 time-range-start-time">
+                {{ form_row(form.observationScheduler.timeRangeStartTime) }}
+            </div>
+            <div class="col-3 col-sm-3 col-md-3 time-range-end-time">
+                {{ form_row(form.observationScheduler.timeRangeEndTime) }}
+            </div>
+            <div class="col-3 col-sm-3 col-md-3 exact-time">
+                {{ form_row(form.observationScheduler.exactTime) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 col-sm-2 col-md-2">
+                {{ form_row(form.observationScheduler.repeatOption) }}
+            </div>
+
+            <div class="col-1 col-sm-1 col-md-1 weekly-nr-of-weeks">
+                {{ form_row(form.observationScheduler.weeklyNumberOfWeeks) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6 col-sm-6 col-md-6 weekly-days-of-week">
+                {{ form_row(form.observationScheduler.weeklyDaysOfWeek) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 col-sm-2 col-md-2 repeat-end">
+                {{ form_row(form.observationScheduler.repeatEndOption) }}
+            </div>
+
+            <div class="col-1 col-sm-1 col-md-1 repeat-end-after-nr-of-occurrences">
+                {{ form_row(form.observationScheduler.repeatEndAfterNumberOfOccurrences) }}
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-3 repeat-end-date">
+                {{ form_row(form.observationScheduler.repeatEndDate) }}
+            </div>
+        </div>
+    </div>
 
     {{ form_row(form._token) }}
 
