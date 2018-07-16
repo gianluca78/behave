@@ -43,13 +43,6 @@ class Observation
     private $description;
 
     /**
-     * @var string $hasDates
-     *
-     * @ORM\Column(name="has_dates", type="boolean")
-     */
-    private $hasDates;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $observationDates;
@@ -148,22 +141,6 @@ class Observation
     }
 
     /**
-     * @param string $hasDates
-     */
-    public function setHasDates($hasDates)
-    {
-        $this->hasDates = $hasDates;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHasDates()
-    {
-        return $this->hasDates;
-    }
-
-    /**
      * @param mixed $observerUserId
      */
     public function setObserverUserId($observerUserId)
@@ -219,6 +196,10 @@ class Observation
 
     public function isDateIncluded(\DateTime $dateTime)
     {
+        if($this->getObservationScheduler() && $this->getObservationScheduler()->getHasDates()) {
+            return true;
+        }
+
         foreach($this->getObservationDates() as $observationDate) {
             $dateStart = $observationDate->getStartDateTimestamp();
             $dateEnd = $observationDate->getEndDateTimestamp();

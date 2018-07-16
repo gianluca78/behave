@@ -42,7 +42,6 @@ class ObservationType extends AbstractType
                         },
                 )
             )
-            ->add('hasDates', null)
             ->add('observationScheduler', ObservationSchedulerType::class)
             ->add('submit', SubmitType::class);
     }

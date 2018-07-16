@@ -19,7 +19,14 @@ class ObservationScheduler
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @var string $hasDates
+     *
+     * @ORM\Column(name="has_dates", type="boolean")
+     */
+    private $hasDates;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
      */
     private $startDate;
 
@@ -84,34 +91,42 @@ class ObservationScheduler
      */
     public function validate(ExecutionContextInterface $context, $payload)
     {
-        if($this->getTimeOption() == 1 && $this->getTimeRangeStartTime() >= $this->getTimeRangeEndTime()) {
-            $context->buildViolation('The start time must be before the end time')
-                ->atPath('timeRangeStartTime')
-                ->addViolation();
-        }
+        if($this->getHasDates()) {
+            if(!$this->getStartDate()) {
+                $context->buildViolation('Required field')
+                    ->atPath('startDate')
+                    ->addViolation();
+            }
 
-        if($this->getWeeklyNumberOfWeeks() && $this->getWeeklyNumberOfWeeks() <= 0) {
-            $context->buildViolation('This value must be a positive integer')
-                ->atPath('weeklyNumberOfWeeks')
-                ->addViolation();
-        }
+            if($this->getTimeOption() == 1 && $this->getTimeRangeStartTime() >= $this->getTimeRangeEndTime()) {
+                $context->buildViolation('The start time must be before the end time')
+                    ->atPath('timeRangeStartTime')
+                    ->addViolation();
+            }
 
-        if($this->getRepeatOption() == 1 && count($this->getWeeklyDaysOfWeek()) == 0) {
-            $context->buildViolation('This value must be a positive integer')
-                ->atPath('weeklyDaysOfWeek')
-                ->addViolation();
-        }
+            if($this->getWeeklyNumberOfWeeks() && $this->getWeeklyNumberOfWeeks() <= 0) {
+                $context->buildViolation('This value must be a positive integer')
+                    ->atPath('weeklyNumberOfWeeks')
+                    ->addViolation();
+            }
 
-        if($this->getRepeatEndOption() == 0 && $this->getRepeatEndAfterNumberOfOccurrences() <= 0) {
-            $context->buildViolation('This value must be a positive integer')
-                ->atPath('repeatEndAfterNumberOfOccurrences')
-                ->addViolation();
-        }
+            if($this->getRepeatOption() == 1 && count($this->getWeeklyDaysOfWeek()) == 0) {
+                $context->buildViolation('This value must be a positive integer')
+                    ->atPath('weeklyDaysOfWeek')
+                    ->addViolation();
+            }
 
-        if($this->getRepeatEndOption() == 1 && $this->getRepeatEndDate() <= $this->getStartDate()) {
-            $context->buildViolation('The end date must follow the start date')
-                ->atPath('repeatEndDate')
-                ->addViolation();
+            if($this->getRepeatEndOption() === '0' && $this->getRepeatEndAfterNumberOfOccurrences() <= 0) {
+                $context->buildViolation('This value must be a positive integer')
+                    ->atPath('repeatEndAfterNumberOfOccurrences')
+                    ->addViolation();
+            }
+
+            if($this->getRepeatEndOption() === '1' && $this->getRepeatEndDate() <= $this->getStartDate()) {
+                $context->buildViolation('The end date must follow the start date')
+                    ->atPath('repeatEndDate')
+                    ->addViolation();
+            }
         }
 
     }
@@ -119,6 +134,22 @@ class ObservationScheduler
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $hasDates
+     */
+    public function setHasDates($hasDates)
+    {
+        $this->hasDates = $hasDates;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHasDates()
+    {
+        return $this->hasDates;
     }
 
     public function getStartDate()

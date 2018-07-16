@@ -163,13 +163,17 @@ class MeasureController extends Controller
         $em = $this->getDoctrine()->getManager();
         $items = $em->getRepository('App\Entity\Item')->findItemsByMeasure($observation->getMeasure());
 
-        /*
-        if(!$observation->isDateIncluded(new \DateTime())) {
-            return $this->render('measure/not_allowed.html.twig');
-        }*/
+        if($observation->getObserverUserId() != $this->getUser()->getUserId() || !$observation->isDateIncluded(new \DateTime())) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
 
         $formBuilder->addItems($items);
         $formBuilder->setAction($observation);
+        $formBuilder->setObservationId($observation->getId());
+        $formBuilder->setUserId($this->getUser()->getUserId());
 
         $form = $formBuilder->getForm()->getForm();
 

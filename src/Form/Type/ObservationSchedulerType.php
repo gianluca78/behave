@@ -20,7 +20,9 @@ class ObservationSchedulerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('startDate', TextType::class, array(
+        $builder
+            ->add('hasDates', null)
+            ->add('startDate', TextType::class, array(
             'required' => false
         ))
             ->add('timeOption', ChoiceType::class, array(
@@ -94,8 +96,7 @@ class ObservationSchedulerType extends AbstractType
                 )
             )
             ->add('repeatEndDate', TextType::class, array(
-                    'required' => false,
-                    'constraints' => new Assert\Date()
+                    'required' => false
                 )
             )
         ;
@@ -103,20 +104,20 @@ class ObservationSchedulerType extends AbstractType
         $builder->get('startDate')
             ->addModelTransformer(new CallbackTransformer(
                 function ($dateTimeToString) {
-                    return $dateTimeToString->format('Y-m-d');
+                    return (is_a($dateTimeToString, 'DateTime')) ? $dateTimeToString->format('Y-m-d') : null;
                 },
                 function ($stringToDatetime) {
-                    return \DateTime::createFromFormat('Y-m-d', $stringToDatetime);
+                    return ($stringToDatetime) ? \DateTime::createFromFormat('Y-m-d', $stringToDatetime) : null;
                 }
             ));
 
         $builder->get('repeatEndDate')
             ->addModelTransformer(new CallbackTransformer(
                 function ($dateTimeToString) {
-                    return $dateTimeToString->format('Y-m-d');
+                    return (is_a($dateTimeToString, 'DateTime')) ? $dateTimeToString->format('Y-m-d') : null;
                 },
                 function ($stringToDatetime) {
-                    return \DateTime::createFromFormat('Y-m-d', $stringToDatetime);
+                    return ($stringToDatetime) ? \DateTime::createFromFormat('Y-m-d', $stringToDatetime) : null;
                 }
             ))
         ;

@@ -18,6 +18,7 @@ use App\Form\Widget\TextWidget;
 use App\Entity\ChoiceItem;
 use App\Entity\TextItem;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -85,6 +86,20 @@ class FormBuilder {
                 array('id' => $observation->getId())
             )
         );
+    }
+
+    public function setObservationId($observationId)
+    {
+        $this->form->add('observationId', HiddenType::class, array(
+            'data' => $observationId,
+        ));
+    }
+
+    public function setUserId($userId)
+    {
+        $this->form->add('userId', HiddenType::class, array(
+            'data' => $userId,
+        ));
     }
 
     private function addChoiceWidget(ChoiceItem $item)

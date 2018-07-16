@@ -52,7 +52,7 @@ class ObservationFormHandler
     {
         $this->entityManager->persist($entity);
 
-        if($entity->getHasDates()) {
+        if($schedulerData->getHasDates()) {
             $entity->resetObservationDates();
 
             $firstStartDate = new \DateTime();
@@ -206,7 +206,6 @@ class ObservationFormHandler
                 }
             }
         }
-
 
         $this->entityManager->flush();
 

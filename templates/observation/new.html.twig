@@ -54,7 +54,7 @@
             todayHighlight: true
         });
 
-        $('#observation_hasDates').change(function () {
+        $('#observation_observationScheduler_hasDates').change(function () {
             showHideScheduler();
         });
 
@@ -134,7 +134,7 @@
         }
 
         function showHideScheduler() {
-            if ($('#observation_hasDates').prop("checked")) {
+            if ($('#observation_observationScheduler_hasDates').prop("checked")) {
                 $('#scheduler').show();
             } else {
                 $('#scheduler').hide();
@@ -157,7 +157,7 @@
     {{ form_row(form.measure) }}
     {{ form_row(form.observerUsername) }}
     {{ form_row(form.observerUserId) }}
-    {{ form_row(form.hasDates) }}
+    {{ form_row(form.observationScheduler.hasDates) }}
 
     <div id="scheduler">
         <div class="row">

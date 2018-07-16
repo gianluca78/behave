@@ -47,19 +47,13 @@ class ItemFormHandler
 
     public function create($data, $message)
     {
-        echo(json_encode($data));exit;
+        $createdAt = new \DateTime();
+
+        $data['createdAt'] = $createdAt;
+        $data['remoteAddress'] = $_SERVER['REMOTE_ADDR'];
 
         $this->couchDbClient->connect()->postDataToDatabase($data);
 
-
-
-        exit;
-
-        /*
-        $this->entityManager->persist($entity);
-        $this->entityManager->flush();
-
         $this->session->getFlashBag()->add('success', $message);
-        */
     }
 }

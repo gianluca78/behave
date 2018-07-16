@@ -35,7 +35,7 @@
                         <td>{{ record.isEnabled }}</td>
                         <td>{{ record.observerUsername }}</td>
                         <td>
-                            {% if(record.hasDates) %}
+                            {% if(record.observationScheduler.hasDates) %}
                                 <ul>
                                     {% for date in record.observationDates %}
                                         <li>{{ date.startDateTimestamp.format('Y-m-d H:i') }}
