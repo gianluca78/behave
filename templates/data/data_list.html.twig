@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(".dropdown-item").on('click', function(e) {
+            e.stopPropagation();
+
+            values = new Array();
+            values.phaseId = $(this).data('phase-id');
+            values.ids = new Array();
+            values.phasename = this.text;
+
+            $('input[name="data_id"]:checked').each(function() {
+                values.ids.push(this.value); //console.log(this.value);
+            });
+
+            $.ajax({
+                url:"{{ path('observation_phase_save_observation_phase_data', {
+                            'id': observation.id
+                        })
+                     }}",
+                type:"POST",
+                data: { phaseId: values.phaseId, ids: values.ids },
+                success:function(response) {
+                    window.location.replace("{{ path('data_list', {
+                        'id': observation.id
+                        })
+                    }}");
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            <h2>Association data - phase</h2>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Label
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    {% for phase in observationPhases %}
+                        <a class="dropdown-item" href="#!" data-phase-id="{{ phase.id }}">{{ phase.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <table class="table table-stripped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th> name</th>
+                    <th> phase</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <form method="GET">
+                        {% for record in observationData %}
+                            <tr>
+                                <td><input type="checkbox" name="data_id" value="{{ record.id }}"></td>
+                                <td>{{ record.value.createdAt.date }}</td>
+                                <td>
+                                    {{ render(controller(
+                                    'App\\Controller\\ObservationPhaseController::hasDataIdAction',
+                                    { 'dataId': record.id }
+                                    )) }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

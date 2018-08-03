@@ -22,8 +22,30 @@ class Client {
             $response = $this->guzzle->request("GET", "/", array(
                 'base_uri' => $this->url
             ));
+
             if($response->getStatusCode() == 200) {
                 echo $response->getBody();
+            }
+        } catch (\GuzzleHttp\ExceptionRequestException $e) {
+            throw new \Exception('no connection with CouchDb server');
+        }
+
+        return $this;
+    }
+
+    public function getObservationsById($id)
+    {
+        try {
+            $response = $this->guzzle->request(
+                "GET",
+                'http://localhost:5984/' . $this->databaseName . '/_design/allObservation/_view/byObservationId?key=%22' . $id .'%22',
+                array(
+                    'base_uri' => $this->url
+                )
+            );
+
+            if($response->getStatusCode() == 200) {
+                return $response->getBody();
             }
         } catch (\GuzzleHttp\ExceptionRequestException $e) {
             throw new \Exception('no connection with CouchDb server');

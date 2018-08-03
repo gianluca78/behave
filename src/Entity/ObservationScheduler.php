@@ -104,7 +104,7 @@ class ObservationScheduler
                     ->addViolation();
             }
 
-            if($this->getWeeklyNumberOfWeeks() && $this->getWeeklyNumberOfWeeks() <= 0) {
+            if($this->getWeeklyNumberOfWeeks() && $this->getWeeklyNumberOfWeeks() <= 0 || !$this->getWeeklyNumberOfWeeks()) {
                 $context->buildViolation('This value must be a positive integer')
                     ->atPath('weeklyNumberOfWeeks')
                     ->addViolation();

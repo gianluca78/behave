@@ -48,6 +48,11 @@ class Observation
     private $observationDates;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ObservationPhase", mappedBy="observation", cascade={"persist", "remove"})
+     */
+    private $observationPhases;
+
+    /**
      * @ORM\Column(name="observer_user_id", type="encrypted_string", length=255)
      */
     private $observerUserId;
@@ -82,6 +87,7 @@ class Observation
     public function __construct()
     {
         $this->observationDates = new ArrayCollection();
+        $this->observationPhases = new ArrayCollection();
     }
 
     /**
@@ -210,6 +216,37 @@ class Observation
         }
 
         return false;
+    }
+
+    /**
+     * @return Collection|ObservationPhase[]
+     */
+    public function getObservationPhases()
+    {
+        return $this->observationPhases;
+    }
+
+    public function addObservationPhase(ObservationPhase $observationPhase)
+    {
+        if (!$this->observationPhases->contains($observationPhase)) {
+            $this->observationPhases[] = $observationPhase;
+            $observationPhase->setObservation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeObservationPhase(ObservationPhase $observationPhase)
+    {
+        if ($this->observationPhases->contains($observationPhase)) {
+            $this->observationPhases->removeElement($observationPhase);
+            // set the owning side to null (unless already changed)
+            if ($observationPhase->getObservation() === $this) {
+                $observationPhase->setObservation(null);
+            }
+        }
+
+        return $this;
     }
 
     public function getStudent()

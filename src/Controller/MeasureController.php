@@ -28,7 +28,7 @@ use App\Form\Handler\ItemFormHandler;
  */
 class MeasureController extends Controller
 {
-    CONST NEW_COMPLETE_SUCCESS_STRING = '';
+    CONST NEW_COMPLETE_SUCCESS_STRING = 'Data saved successfully';
     CONST NEW_SUCCESS_STRING = 'Record inserted successfully';
     CONST EDIT_SUCCESS_STRING = 'Record edited successfully';
     CONST DATES_ADDED_SUCCESS = 'Dates added successfully';
@@ -113,7 +113,7 @@ class MeasureController extends Controller
 
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('measure_list'));
+            return $this->redirect($this->generateUrl('measure_new'));
         }
 
         return array(
@@ -178,7 +178,7 @@ class MeasureController extends Controller
         $form = $formBuilder->getForm()->getForm();
 
         if ($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_COMPLETE_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('measure_list'));
+            return $this->redirect($this->generateUrl('homepage'));
         }
 
         return array(

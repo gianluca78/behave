@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div>{{ flashMessage }}</div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form._token) }}
+    {{ form_row(form.submit) }}
+    {{ form_end(form, {'render_rest': false}) }}
+
+{% endblock %}

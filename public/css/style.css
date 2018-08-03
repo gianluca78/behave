@@ -30,3 +30,11 @@
 .repeat-end-date {
     display: none;
 }
+
+/*****************************/
+/*   LEGEND SPINNER COLORS   */
+/*****************************/
+.azure { background-color: #C5F3FF; }
+.blue { background-color: #C7D7FF; }
+.yellow { background-color: #FFDF99; }
+.rose { background-color: #F7CA9F; }

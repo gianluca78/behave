@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div>
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ path('student_list') }}">Students list</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('measure_list') }}">Measures list</a>
+        </li>
+    </ul>
+{% endblock %}

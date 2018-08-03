@@ -23,6 +23,7 @@
                     <th>dates</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
 
@@ -59,7 +60,11 @@
                                 {% trans %}Delete{% endtrans %}
                             </a>
                         </td>
-                        <td><a href="#">
+                        <td><a href="{{ path('observation_phase_list', { 'id': record.id }) }}">
+                                {% trans %}Phases{% endtrans %}
+                            </a>
+                        </td>
+                        <td><a href="{{ path('data_list', { 'id': record.id }) }}">
                                 {% trans %}Data{% endtrans %}
                             </a>
                         </td>
