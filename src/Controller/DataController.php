@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Utility\HighchartsGenerator;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\RequestException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -53,18 +55,127 @@ class DataController extends Controller
     }
 
     /**
-     * @Route("/analysis", name="data_analysis")
-     * @Method({"GET"})
+     * @Route("/analysis/{id}", name="data_analysis")
+     * @Method({"GET", "POST"})
      * @Template
      *
      */
-    public function analysisAction()
+    public function analysisAction(Observation $observation, Request $request, CouchDbClient $couchDbClient)
     {
         $config = array (
             'base_uri' => 'http://150.145.114.110/rtest/p'
         );
 
         $guzzle = new GuzzleClient($config);
+        $twigVariables = array();
+
+        if ($request->isMethod('POST')) {
+            $formData = $request->request->all();
+
+            $itemId = 'item-' . $formData['item'];
+
+            unset($formData['item']);
+
+            $phaseNames = array_keys($formData);
+
+            $fase = implode(',', array_fill(0, count(explode(',', $formData[$phaseNames[0]])), $phaseNames[0]))
+                . ',' . implode(',', array_fill(0, count(explode(',', $formData[$phaseNames[1]])), $phaseNames[1]));
+
+            $data = '';
+
+            $idData = $formData[$phaseNames[0]] . ',' . $formData[$phaseNames[1]];
+
+            $rawData = $couchDbClient->getByIds(explode(',', $idData));
+            $rawData = json_decode($rawData->getContents())->rows;
+
+            foreach($rawData as $key => $observationData) {
+                $data.= $observationData->value->$itemId;
+
+                if($key != count($rawData) -1) {
+                    $data.= ',';
+                }
+            }
+
+            $response = $guzzle->request('GET' , 'users', [ 'query' => [
+                    //'data' => '7,4,3,5,3,3,3,3',
+                    //'data' => '7,4,3,5,3,3,7,4',
+                    'data' => $data,
+                    'fase' => $fase
+                ]
+                ]
+            );
+
+            $data = json_decode($response->getBody()->getContents());
+
+            $series = array();
+            $phaseNameLoopIndex = 0;
+            $dataLoopIndex = 0;
+            $lastPhaseName = '';
+            $countPhases = array_count_values($data->database->PHASE);
+
+            foreach($countPhases as $phaseName => $count) {
+                $series[] = array('name' => $phaseName);
+
+                if($phaseNameLoopIndex > 0) {
+                    $count+= $countPhases[$lastPhaseName];
+                }
+
+                $lastPhaseName = $phaseName;
+
+                for($i=$dataLoopIndex; $i<$count; $i++) {
+                    $series[$phaseNameLoopIndex]['data'][] = $data->database->DV[$i];
+
+                    $dataLoopIndex++;
+                }
+
+                $phaseNameLoopIndex++;
+
+            }
+
+            //var_dump($series);exit;
+            //var_dump($data); exit;
+            //var_dump(array_count_values($data->database->PHASE)); exit;
+
+            $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
+            $chart = $highchartsGenerator->generateScatterPlot(
+                'Scatter plot (observation name)',
+                /*array(
+                    array("name" => "Baseline",
+                        "data" => array(1,2,4,5,6,3,8)
+                    ),
+                    array("name" => "Intervention",
+                        "data" => array(1,52,45,5,63,3,8)
+                    ),
+                ),*/
+                $series,
+                'linechart',
+                'x',
+                'y'
+            );
+
+            $twigVariables = array(
+                'data' => $data,
+                'phasesLength' => array_count_values($data->database->PHASE),
+                'interceptEstimate' => $data->regression->coefficients[0]->Estimate,
+                'interceptStdError' => $data->regression->coefficients[0]->{'Std. Error'},
+                'interceptTValue' => $data->regression->coefficients[0]->{'t value'},
+                'interceptPr' => $data->regression->coefficients[0]->{'Pr(>|t|)'},
+                'treatmentEstimate' => $data->regression->coefficients[1]->Estimate,
+                'treatmentStdError' => $data->regression->coefficients[1]->{'Std. Error'},
+                'treatmentTValue' => $data->regression->coefficients[1]->{'t value'},
+                'treatmentPr' => $data->regression->coefficients[1]->{'Pr(>|t|)'},
+                'treatmentXTimeNaEstimate' => $data->regression->coefficients[2]->Estimate,
+                'treatmentXTimeNaStdError' => $data->regression->coefficients[2]->{'Std. Error'},
+                'treatmentXTimeNaTValue' => $data->regression->coefficients[2]->{'t value'},
+                'treatmentXTimeNaPr' => $data->regression->coefficients[2]->{'Pr(>|t|)'},
+                'r2' => $data->regression->{'r.squared'},
+                'adjustedR2' => $data->regression->{'adj.r.squared'},
+                'chart' => $chart
+            );
+
+
+
+        }
 
         /*
         $response = $guzzle -> request('GET' , 'users', [ 'query' => [
@@ -72,85 +183,19 @@ class DataController extends Controller
                 'fase' => 'A,A,A,A,A,A,A,A,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B'
                 ]
             ]
-        );*/
+        );
 
         $response = $guzzle -> request('GET' , 'users', [ 'query' => [
                 'data' => '0.5,0.5,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0,0,0,0,0,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0,0.5,0.5,0,0.5,0.5,1.5,0,1,1,0,0,0,0,2,1.5,0,0,1,1,0.5,0,0,1.5,0,0,0,0,0,1,1,1,1,0.5,1,1,0,1,1,1,1,1,1.5,1,5,4.5,2,3.5,1,1,4,5,3.5,5,5,3,1,4.5,5,6,4,2,1,1.5,1.5,0.5,0,4,5.5,4,4,5.5,6,6,5,8.5,5,7.5,7.5,5.5,4,6,6.5',
                 'fase' => 'A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B,B'
                 ]
             ]
-        );
+        );*/
 
-        $data = json_decode($response->getBody()->getContents());
-
-        $series = array();
-        $phaseNameLoopIndex = 0;
-        $dataLoopIndex = 0;
-        $lastPhaseName = '';
-        $countPhases = array_count_values($data->database->PHASE);
-
-        foreach($countPhases as $phaseName => $count) {
-            $series[] = array('name' => $phaseName);
-
-            if($phaseNameLoopIndex > 0) {
-                $count+= $countPhases[$lastPhaseName];
-            }
-
-            $lastPhaseName = $phaseName;
-
-            for($i=$dataLoopIndex; $i<$count; $i++) {
-                $series[$phaseNameLoopIndex]['data'][] = $data->database->DV[$i];
-
-                $dataLoopIndex++;
-            }
-
-            $phaseNameLoopIndex++;
-
-        }
-
-        //var_dump($series);exit;
-        //var_dump($data); exit;
-        //var_dump(array_count_values($data->database->PHASE)); exit;
-
-        $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
-        $chart = $highchartsGenerator->generateScatterPlot(
-            'title',
-            /*array(
-                array("name" => "Baseline",
-                    "data" => array(1,2,4,5,6,3,8)
-                ),
-                array("name" => "Intervention",
-                    "data" => array(1,52,45,5,63,3,8)
-                ),
-            ),*/
-            $series,
-            'linechart',
-            'x',
-            'y'
-        );
-
-
-
-        //var_dump($data->regression->aliased); exit;
-
-        return array(
-            'data' => $data,
-            'phasesLength' => array_count_values($data->database->PHASE),
-            'interceptEstimate' => $data->regression->coefficients[0]->Estimate,
-            'interceptStdError' => $data->regression->coefficients[0]->{'Std. Error'},
-            'interceptTValue' => $data->regression->coefficients[0]->{'t value'},
-            'interceptPr' => $data->regression->coefficients[0]->{'Pr(>|t|)'},
-            'treatmentEstimate' => $data->regression->coefficients[1]->Estimate,
-            'treatmentStdError' => $data->regression->coefficients[1]->{'Std. Error'},
-            'treatmentTValue' => $data->regression->coefficients[1]->{'t value'},
-            'treatmentPr' => $data->regression->coefficients[1]->{'Pr(>|t|)'},
-            'treatmentXTimeNaEstimate' => $data->regression->coefficients[2]->Estimate,
-            'treatmentXTimeNaStdError' => $data->regression->coefficients[2]->{'Std. Error'},
-            'treatmentXTimeNaTValue' => $data->regression->coefficients[2]->{'t value'},
-            'treatmentXTimeNaPr' => $data->regression->coefficients[2]->{'Pr(>|t|)'},
-            'r2' => $data->regression->{'r.squared'},
-            'adjustedR2' => $data->regression->{'adj.r.squared'},
-            'chart' => $chart
-        );
+        return array_merge(array(
+            'observation' => $observation,
+            'phases' => $observation->getObservationPhases(),
+            'measure' => $observation->getMeasure(),
+        ), $twigVariables);
     }
 }

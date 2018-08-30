@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <form action="{{ path('data_analysis', {'id' : observation.id}) }}" method="post">
+        {% for phase in phases %}
+            <input type="checkbox" name="{{ phase.name }}" value="{{ phase.dataIds|join(',') }}"> {{ phase }}<br>
+        {% endfor %}
 
+        {% for item in measure.integerItems %}
+            <input type="radio" name="item" value="{{ item.id }}"> {{ item.label }}<br>
+        {% endfor %}
+
+        {% for item in measure.rangeItems %}
+            <input type="radio" name="item" value="{{ item.id }}"> {{ item.label }}<br>
+        {% endfor %}
+
+        {% for item in measure.directObservationItems %}
+            <input type="radio" name="item" value="{{ item.id }}"> {{ item.label }}<br>
+        {% endfor %}
+
+        <input type="submit" value="Analyze">
+    </form>
+
+
+    {% if data is defined and data.outMonte == 'Allison & Gorman' %}
     <h2>Allison & Gorman</h2>
 
     <h3>Descriptive Statistics</h3>
@@ -123,8 +144,9 @@
             <td>{{ data.regression.fstatistic.value }}</td>
         </tr>
     </table>
+    {% endif %}
 
-
+    {% if data is defined and data.outMonte != 'Allison & Gorman' %}
     <h2>Parker's TAU-U</h2>
 
     <h3>Partition and Full Matrices</h3>
@@ -170,7 +192,7 @@
             <th></th>
             <th>A vs B</th>
             <th>A vs B + TREND B</th>
-            <th>A vs B + TREND B + TREND A</th>
+            <th>A vs B + TREND B - TREND A</th>
         </tr>
         </thead>
         <tbody>
@@ -199,8 +221,20 @@
     <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
     <div style="width:100%; clear:both;">
+        {% if data.outMonte == 'AvsB+trendB-trendA' %}
+            {% set tauUAnalysisValue = data.TAU_U_Analysis[10].AvsBTrendBTrendA | round(3, 'ceil') %}
+        {% endif %}
+
+        {% if data.outMonte == 'AvsB+trendB' %}
+            {% set tauUAnalysisValue = data.TAU_U_Analysis[10].AvsBTrendB | round(3, 'ceil') %}
+        {% endif %}
+
+        {% if data.outMonte == 'AvsB' %}
+            {% set tauUAnalysisValue = data.PartitionsOfMatrix[10].AvsB | round(3, 'ceil') %}
+        {% endif %}
+
         {{ include('data/spinner.html.twig',
-            {'spinnerWidth' : 60, 'tauUAnalysisValue': 0.4 })
+            {'spinnerWidth' : 60, 'tauUAnalysisValue': tauUAnalysisValue })
         }}
 
         <div style="width:40%; float:left; ">
@@ -210,16 +244,18 @@
                 <li><span class="yellow">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}medium{% endtrans %}</li>
                 <li><span class="rose">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}large{% endtrans %}</li>
             </ul>
-            <div style="padding-left:25px;" id="message"><strong>The effect size is: 0.4.</strong><br>
+            <div style="padding-left:25px;" id="message"><strong>The effect size is: {{ tauUAnalysisValue }}.</strong><br>
                 The treatment has a %s effect on the %s of the behaviour occurrence
             </div>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
 
+    {% if data is defined %}
     <script src="{{ asset('js/vendor/highcharts/6.1.1/highcharts.js') }}"></script>
     <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/series-label.js') }}"></script>
     <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/exporting.js') }}"></script>
@@ -245,7 +281,13 @@
             var newAngle = (val*90) + (270) ;
             $("#SvgArrow").attr("transform", "rotate(" + newAngle +")");
         }
+
+        $(document).ready(function(){
+
+        });
+
     </script>
+    {% endif %}
 
 {% endblock %}
 

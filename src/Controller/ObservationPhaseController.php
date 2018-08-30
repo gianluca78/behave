@@ -173,7 +173,7 @@ class ObservationPhaseController extends Controller
 
          foreach($phases as $phase) {
              if($phase->getId() == $request->get('phaseId')) {
-                 $phase->setDataIds(array_merge($request->get('ids'), $phase->getDataIds()));
+                 $phase->setDataIds(array_unique(array_merge($request->get('ids'), $phase->getDataIds())));
 
                  $entityManager = $this->getDoctrine()->getManager();
                  $entityManager->persist($phase);

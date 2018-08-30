@@ -33,6 +33,29 @@ class Client {
         return $this;
     }
 
+    public function getByIds(array $ids)
+    {
+        try {
+            $keys = implode(',', array_map(function($element) { return '%22' . $element . '%22'; }, $ids));
+
+            $response = $this->guzzle->request(
+                "GET",
+                'http://localhost:5984/' . $this->databaseName . '/_design/allObservation/_view/byId?keys=[' . $keys . ']',
+                array(
+                    'base_uri' => $this->url
+                )
+            );
+
+            if($response->getStatusCode() == 200) {
+                return $response->getBody();
+            }
+        } catch (\GuzzleHttp\ExceptionRequestException $e) {
+            throw new \Exception('no connection with CouchDb server');
+        }
+
+        return $this;
+    }
+
     public function getObservationsById($id)
     {
         try {
