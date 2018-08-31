@@ -1,3 +1,7 @@
+.page-header.navbar .page-logo .logo-default {
+    margin: 4px 0 0;
+}
+
 .red-button, .red-button:hover {
     background-color: darkred;
     color: #ffffff;
