@@ -26,8 +26,8 @@ class ChoiceItemType extends AbstractType
                 'mapped' => false,
                 'placeholder' => '-- Select a type --'
             ))
-            ->add('isExpanded', HiddenType::class, array('required' => false))
-            ->add('isMultiple', HiddenType::class, array('required' => false))
+            ->add('isExpanded', null, array('required' => false))
+            ->add('isMultiple', null, array('required' => false))
             ->add('label', null, array('required' => true))
             ->add('emptyValue', null, array('required' => false))
             ->add('options', TextareaType::class, array('required' => true));
