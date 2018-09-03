@@ -26,6 +26,7 @@ class ChoiceWidget implements WidgetInterface {
     {
         $options = array(
             'choices' => $this->options,
+            'expanded' => $this->isExpanded,
             'label' => $this->label,
             'multiple' => $this->isMultiple,
             'constraints' => array(
