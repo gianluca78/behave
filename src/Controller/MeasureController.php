@@ -113,7 +113,7 @@ class MeasureController extends Controller
 
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('measure_new'));
+            return $this->redirect($this->generateUrl('measure_list'));
         }
 
         return array(
@@ -163,12 +163,13 @@ class MeasureController extends Controller
         $em = $this->getDoctrine()->getManager();
         $items = $em->getRepository('App\Entity\Item')->findItemsByMeasure($observation->getMeasure());
 
+        /*
         if($observation->getObserverUserId() != $this->getUser()->getUserId() || !$observation->isDateIncluded(new \DateTime())) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
 
             return $response;
-        }
+        }*/
 
         $formBuilder->addItems($items);
         $formBuilder->setAction($observation);

@@ -5,30 +5,20 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row text-center">
-                {% set itemTypologies = ['Choice', 'Direct Observation', 'Integer', 'Meter', 'Range', 'Text'] %}
 
-                {% for typology in itemTypologies %}
-                    <div class="col-md-6 border typology" style="cursor:move;">{{ typology }}</div>
-                {% endfor %}
-            </div>
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>Compose your measure</div>
         </div>
+        <div id="measure-form" class="portlet-body">
 
-        <div class="col-md-8">
-            {% for flashMessage in app.session.flashbag.get('success') %}
-                <div>{{ flashMessage }}</div>
-            {% endfor %}
+            {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems - 1 : - 1 %}
+
             {{ form_start(form) }}
-
             {{ form_row(form.isShared) }}
             {{ form_row(form.name) }}
             {{ form_row(form.description) }}
-
-            {{ form_row(form._token) }}
-
-            {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems - 1 : - 1 %}
 
             <div class="items"
                  data-index-item="{{ indexItemNumber }}"
@@ -37,106 +27,50 @@
                  data-prototype-integer="{{ form_widget(form.integerItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-meter="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-range="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}"
-                 data-prototype-text="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}"
-                    >
-
-                {% if numberOfItems is defined %}
-                    {% for positionNumber in 1..numberOfItems %}
-                        {% for choiceItem in form.choiceItems %}
-                            {% if positionNumber == choiceItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(choiceItem.isExpanded) }}
-                                    {{ form_row(choiceItem.isMultiple) }}
-                                    {{ form_row(choiceItem.positionNumber) }}
-                                    {{ form_row(choiceItem.label) }}
-                                    {{ form_row(choiceItem.emptyValue) }}
-                                    {{ form_row(choiceItem.options) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% for directObservationItem in form.directObservationItems %}
-                            {% if positionNumber == directObservationItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(directObservationItem.label) }}
-                                    {{ form_row(directObservationItem.observationLengthInMinutes) }}
-                                    {{ form_row(directObservationItem.intervalLengthInSeconds) }}
-                                    {{ form_row(directObservationItem.typology) }}
-                                    {{ form_row(directObservationItem.positionNumber) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% for integerItem in form.integerItems %}
-                            {% if positionNumber == integerItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(integerItem.label) }}
-                                    {{ form_row(integerItem.fieldValue) }}
-                                    {{ form_row(integerItem.positionNumber) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% for meterItem in form.meterItems %}
-                            {% if positionNumber == meterItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(meterItem.label) }}
-                                    {{ form_row(meterItem.xValue) }}
-                                    {{ form_row(meterItem.yValue) }}
-                                    {{ form_row(meterItem.labelY) }}
-                                    {{ form_row(meterItem.labelMaxY) }}
-                                    {{ form_row(meterItem.labelMinY) }}
-                                    {{ form_row(meterItem.labelX) }}
-                                    {{ form_row(meterItem.labelMaxX) }}
-                                    {{ form_row(meterItem.labelMinX) }}
-                                    {{ form_row(meterItem.positionNumber) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% for rangeItem in form.rangeItems %}
-                            {% if positionNumber == rangeItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(rangeItem.label) }}
-                                    {{ form_row(rangeItem.min) }}
-                                    {{ form_row(rangeItem.max) }}
-                                    {{ form_row(rangeItem.step) }}
-                                    {{ form_row(rangeItem.positionNumber) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% for textItem in form.textItems %}
-                            {% if positionNumber == textItem.vars.value.positionNumber %}
-                                <div>
-                                    <h3>Item {{ positionNumber }}</h3>
-                                    {{ form_row(textItem.label) }}
-                                    {{ form_row(textItem.fieldValue) }}
-                                    {{ form_row(textItem.placeholder) }}
-                                    {{ form_row(textItem.positionNumber) }}
-                                </div>
-                                <a href="#" class="remove-item">-</a>
-                            {% endif %}
-                        {% endfor %}
-
-                    {% endfor %}
-                {% endif %}
-
+                 data-prototype-text="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
             </div>
 
-            {{ form_row(form.submit) }}
-            {{ form_end(form, {'render_rest': false}) }}
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-offset-3 col-md-9">
+                        <a class="btn btn-circle green" href="javascript:;" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-plus"></i> Add item
+                            <i class="fa fa-angle-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="fa fa-dot-circle-o"></i>Choice</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="fa fa-dot-circle-o"></i>Direct Observation</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="fa fa-superscript"></i>Integer</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="fa fa-th"></i>Meter</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="fa fa-dot-circle-o"></i>Range</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="fa fa-dot-circle-o"></i>Text</a>
+                            </li>
+                        </ul>
 
+                        {{ form_widget(form.submit, {'class': 'btn btn-circle green'}) }}
+                        {{ form_row(form._token) }}
+                        <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form, {'render_rest': false}) }}
         </div>
     </div>
 {% endblock %}
@@ -161,10 +95,44 @@
             });
         });
 
-        $( '.typology' ).on('click', function(e){
+        $( ".portlet-body").on('change', "select[id*='type']", function(){
+            isExpandedElementId = $(this).attr('id').replace('type', 'isExpanded');
+            isMultipleElementId = $(this).attr('id').replace('type', 'isMultiple');
+
+            switch($(this).val()) {
+                //checkboxes
+                case '0':
+                    $('#' + isExpandedElementId).val(1);
+                    $('#' + isMultipleElementId).val(1);
+                break;
+
+                //dropdown
+                case '1':
+                    $('#' + isExpandedElementId).val(1);
+                    $('#' + isMultipleElementId).val(0);
+                break;
+
+                //dropdown multiple
+                case '2':
+                    $('#' + isExpandedElementId).val(0);
+                    $('#' + isMultipleElementId).val(1);
+                break;
+
+                //radio
+                case '3':
+                    $('#' + isExpandedElementId).val(0);
+                    $('#' + isMultipleElementId).val(0);
+                break;
+
+
+
+            }
+        });
+
+        $( '.dropdown-menu a' ).on('click', function(e){
             e.preventDefault();
 
-            switch($( this ).text()) {
+            switch($.trim($( this ).text())) {
                 case 'Choice':
                     addItemForm('choice');
                     break;
@@ -198,38 +166,13 @@
 
             newForm = prototype.replace(/__name__/g, newIndex);
 
-            $collectionHolder.append('<h3>Item ' + newItemNumber + '</h3>');
-            $collectionHolder.append(newForm);
+            portlet = '<div class="portlet"><div class="portlet-title"><div class="tools"><a href="javascript:;" class="collapse" data-original-title="" title=""> </a><a href="javascript:;" class="remove" data-original-title="" title=""> </a></div></div><div class="portlet-body">' + newForm + '</div></div>';
+
+            $collectionHolder.append(portlet);
 
             $( "input[name*='positionNumber']" ).last().val(newItemNumber);
 
             $collectionHolder.attr('data-index-item', newIndex);
-
-            addItemFormDeleteLink();
-        }
-
-        function addItemFormDeleteLink() {
-            $removeFormA = $('<a href="#" class="remove-item">-</a>');
-
-            $( '.items' ).append($removeFormA);
-
-            $removeFormA.on('click', function (e) {
-                e.preventDefault();
-
-                $( this ).prev().remove();
-                $( this ).prev().remove();
-                $( this ).remove();
-
-                index = $collectionHolder.data('index-item');
-
-                console.log(index);
-
-                $collectionHolder.attr('data-index-item', index - 1);
-
-                console.log($collectionHolder.data('index-item'));
-
-                resetPositionNumbers();
-            });
         }
 
         function resetPositionNumbers()
