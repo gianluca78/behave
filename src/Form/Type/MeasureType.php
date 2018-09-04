@@ -23,7 +23,14 @@ class MeasureType extends AbstractType
     {
         $builder
             ->add('name', null, array('required' => true))
-            ->add('isShared', null, array('required' => false))
+            ->add('isShared', null, array(
+                'required' => false,
+                'label' => 'Shared',
+                'attr' => array(
+                    'data-on-color' => 'primary',
+                    'data-off-color' => 'default'
+                )
+            ))
             ->add('description', TextareaType::class, array('required' => true))
             ->add('choiceItems', CollectionType::class, array(
                 'entry_type' => ChoiceItemType::class,

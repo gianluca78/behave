@@ -24,6 +24,10 @@
     box-sizing: border-box;
 }
 
+.bootstrap-tagsinput{
+    width: 100%;
+}
+
 .time-range-start-time,
 .time-range-end-time,
 .exact-time,

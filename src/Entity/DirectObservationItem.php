@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Constraints as AppAssert;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DirectObservationItemRepository")
@@ -31,6 +33,22 @@ class DirectObservationItem extends Item
      * @ORM\JoinColumn(name="measure_id", referencedColumnName="id")
      */
     private $measure;
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if(($this->getTypology() == 'whole-interval' ||
+            $this->getTypology() == 'partial-interval' ||
+            $this->getTypology() == 'momentary-time-sampling') &&
+            !$this->getIntervalLengthInSeconds()
+        ) {
+            $context->buildViolation('Required field')
+                ->atPath('intervalLengthInSeconds')
+                ->addViolation();
+        }
+    }
 
     /**
      * @return mixed

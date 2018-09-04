@@ -109,7 +109,7 @@ class FormBuilder {
         $choiceWidget->setEmptyValue($item->getEmptyValue());
         $choiceWidget->setIsExpanded($item->getIsExpanded());
         $choiceWidget->setIsMultiple($item->getIsMultiple());
-        $choiceWidget->setOptions(array_flip(explode(PHP_EOL, $item->getOptions())));
+        $choiceWidget->setOptions(array_flip(explode(',', $item->getOptions())));
 
         $this->form = $choiceWidget->addField($this->form, 'item-' . $item->getId());
     }

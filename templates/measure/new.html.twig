@@ -5,18 +5,22 @@
 {% endblock %}
 
 {% block body %}
+    {{ form_start(form) }}
 
     <div class="portlet box green">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-gift"></i>Compose your measure</div>
+                <i class="fa fa-gift"></i>Compose your measure
+            </div>
+
+            <div class="actions">
+                {{ form_widget(form.isShared) }}
+            </div>
+
         </div>
         <div id="measure-form" class="portlet-body">
-
             {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems - 1 : - 1 %}
 
-            {{ form_start(form) }}
-            {{ form_row(form.isShared) }}
             {{ form_row(form.name) }}
             {{ form_row(form.description) }}
 
@@ -65,8 +69,9 @@
                         </ul>
 
                         {{ form_widget(form.submit, {'class': 'btn btn-circle green'}) }}
-                        {{ form_row(form._token) }}
                         <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
+                        {{ form_row(form._token) }}
+
                     </div>
                 </div>
             </div>
@@ -75,27 +80,33 @@
     </div>
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
+
+    <script src="{{ asset('theme/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
 
     <script>
         var $collectionHolder = $('div.items');
 
         $( document ).ready(function() {
-            $( '.remove-item' ).on('click', function (e) {
-                e.preventDefault();
-
-                $( this ).prev().remove();
-                $( this ).prev().remove();
-                $( this ).remove();
-
-                $collectionHolder.data('index-item', index - 1);
-
-                resetPositionNumbers();
-            });
+            $("#measure_isShared").bootstrapSwitch('state', false);
+            $("#measure_isShared").bootstrapSwitch('size', 'small');
         });
 
-        $( ".portlet-body").on('change', "select[id*='type']", function(){
+        $("#measure_isShared").bootstrapSwitch('onSwitchChange', function() {
+            if($("#measure_isShared").bootstrapSwitch('state')) {
+                $("#measure_isShared").val(1);
+            } else {
+                $("#measure_isShared").val(0);
+            }
+
+        });
+
+        $(".portlet-body").on('change', "select[id*='type']", function(){
             isExpandedElementId = $(this).attr('id').replace('type', 'isExpanded');
             isMultipleElementId = $(this).attr('id').replace('type', 'isMultiple');
 
@@ -123,6 +134,26 @@
                     $('#' + isExpandedElementId).val(1);
                     $('#' + isMultipleElementId).val(0);
                 break;
+            }
+        });
+
+        $(".portlet-body").on('change', "select[id*='typology']", function(){
+            intervalLengthInSecondsId = $(this).attr('id').replace('typology', 'intervalLengthInSeconds');
+
+            switch($(this).val()) {
+                case 'duration':
+                case 'frequency':
+                    $('#' + intervalLengthInSecondsId).parent().parent().hide();
+
+                        console.log($('#' + intervalLengthInSecondsId));
+                    break;
+
+                case 'whole-interval':
+                case 'partial-interval':
+                case 'momentary-time-sampling':
+                    $('#' + intervalLengthInSecondsId).parent().parent().show();
+                    console.log($('#' + intervalLengthInSecondsId));
+                    break;
             }
         });
 
@@ -170,6 +201,12 @@
             $( "input[name*='positionNumber']" ).last().val(newItemNumber);
 
             $collectionHolder.attr('data-index-item', newIndex);
+
+            //se choice
+            $ ('input[id*="options"]').tagsinput('refresh');
+
+            //se direct
+            $('input[id*=intervalLengthInSeconds]').parent().parent().hide();
         }
 
         function resetPositionNumbers()

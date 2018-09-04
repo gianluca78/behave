@@ -27,8 +27,6 @@ class DirectObservationItemType extends AbstractType
             ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
             ->add('observationLengthInMinutes', null, array('required' => true))
-            ->add('intervalLengthInSeconds', null, array('required' => false)
-            )
             ->add('typology', ChoiceType::class, array(
                 'choices' => $choices,
                 'constraints' => array(
@@ -37,7 +35,8 @@ class DirectObservationItemType extends AbstractType
                         'message' => 'Choose a valid typology of observation'
                     ))
                 )
-            ));
+            ))
+            ->add('intervalLengthInSeconds', null, array('required' => false))
         ;
     }
 
