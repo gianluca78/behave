@@ -97,6 +97,59 @@
             $("#measure_isShared").bootstrapSwitch('size', 'small');
         });
 
+
+        $(".portlet-body").on('click', '.m-icon-swapup', function(){
+            selectedItemId = $(this).parent().parent().parent().next().children().attr('id');
+            positionNumberId = selectedItemId + '_' + 'positionNumber';
+            positionNumberStartValue = parseInt($('#' + positionNumberId).val());
+
+            portlet = $(this).parent().parent().parent();
+
+            if(positionNumberStartValue != '0') {
+                itemIndex = positionNumberStartValue - 1;
+
+                //the selected element goes up
+                console.log($('#' + positionNumberId));
+
+                $('#' + positionNumberId).val(positionNumberStartValue - 1);
+
+                console.log($('#' + positionNumberId));
+
+                previousElementPositionNumber = $('input[id*="' + itemIndex + '_positionNumber"]');
+
+                //the previous element goes down
+                previousElementPositionNumber.val(parseInt(previousElementPositionNumber.val()) + 1);
+
+                portlet.prev().insertAfter(portlet);
+
+            }
+        });
+
+        $(".portlet-body").on('click', '.m-icon-swapdown', function(){
+            selectedItemId = $(this).parent().parent().parent().next().children().attr('id');
+            positionNumberId = selectedItemId + '_' + 'positionNumber';
+            positionNumberStartValue = parseInt($('#' + positionNumberId).val());
+
+            portlet = $(this).parent().parent().parent();
+            numberOfItems = $('input[id*=positionNumber]').length;
+
+            if(positionNumberStartValue != numberOfItems) {
+                itemIndex = positionNumberStartValue - 1;
+
+                //the selected element goes down
+                $('#' + positionNumberId).val(positionNumberStartValue + 1);
+
+                previousElementPositionNumber = $('input[id*="' + itemIndex + '_positionNumber"]');
+
+                //the previous element goes up
+                previousElementPositionNumber.val(parseInt(previousElementPositionNumber.val()) - 1);
+
+                portlet.next().insertBefore(portlet);
+
+                $(".portlet-body").trigger( "change" );
+            }
+        });
+
         $("#measure_isShared").bootstrapSwitch('onSwitchChange', function() {
             if($("#measure_isShared").bootstrapSwitch('state')) {
                 $("#measure_isShared").val(1);
@@ -144,8 +197,7 @@
                 case 'duration':
                 case 'frequency':
                     $('#' + intervalLengthInSecondsId).parent().parent().hide();
-
-                        console.log($('#' + intervalLengthInSecondsId));
+                    console.log($('#' + intervalLengthInSecondsId));
                     break;
 
                 case 'whole-interval':
@@ -194,7 +246,7 @@
 
             newForm = prototype.replace(/__name__/g, newIndex);
 
-            portlet = '<div class="portlet"><div class="portlet-title"><div class="tools"><a href="javascript:;" class="collapse" data-original-title="" title=""> </a><a href="javascript:;" class="remove" data-original-title="" title=""> </a></div></div><div class="portlet-body">' + newForm + '</div></div>';
+            portlet = '<div class="portlet"><div class="portlet-title"><div class="tools"><a href="javascript:;" class="m-icon-swapup" data-original-title="" title=""> </a><a href="javascript:;" class="m-icon-swapdown" data-original-title="" title=""> </a><a href="javascript:;" class="collapse" data-original-title="" title=""> </a><a href="javascript:;" class="remove" data-original-title="" title=""> </a></div></div><div class="portlet-body">' + newForm + '</div></div>';
 
             $collectionHolder.append(portlet);
 
@@ -202,23 +254,13 @@
 
             $collectionHolder.attr('data-index-item', newIndex);
 
-            //se choice
-            $ ('input[id*="options"]').tagsinput('refresh');
+            if(type == 'choice') {
+                $ ('input[id*="options"]').tagsinput('refresh');
+            }
 
-            //se direct
-            $('input[id*=intervalLengthInSeconds]').parent().parent().hide();
+            if(type == 'direct-observation') {
+                $('input[id*=intervalLengthInSeconds]').parent().parent().hide();
+            }
         }
-
-        function resetPositionNumbers()
-        {
-            $( "input[id*='positionNumber']" ).each(function( key, value ){
-
-                positionNumber = parseInt(key) + 1;
-
-                $ ( this ).val(positionNumber);
-
-            });
-        }
-
     </script>
 {% endblock %}
