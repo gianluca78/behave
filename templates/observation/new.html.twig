@@ -4,6 +4,24 @@
     {{ title }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_list') }}">Students</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('observation_student_list', { 'id': student.id }) }}">Observations</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>New</span>
+    </li>
+{% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
@@ -32,7 +50,7 @@
         }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
                 return $( "<li>" )
                         .attr( "data-value", item.value )
-                        .append( item.label).html(item.label)
+                        .append(item.label).html(item.label)
                         .appendTo( ul );
             };
 
@@ -42,6 +60,9 @@
             showHideTime();
             showHideRepeatOptions();
             showHideRepeatEndOptions();
+
+            $("#observation_isEnabled").bootstrapSwitch('state', $("#observation_isEnabled").val());
+            $("#observation_isEnabled").bootstrapSwitch('size', 'small');
         });
 
         $('#observation_observationScheduler_startDate').datepicker({
@@ -145,75 +166,84 @@
 {% endblock %}
 
 {% block body %}
-
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        <div>{{ flashMessage }}</div>
-    {% endfor %}
     {{ form_start(form) }}
 
-    {{ form_row(form.isEnabled) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.measure) }}
-    {{ form_row(form.observerUsername) }}
-    {{ form_row(form.observerUserId) }}
-    {{ form_row(form.observationScheduler.hasDates) }}
-
-    <div id="scheduler">
-        <div class="row">
-            <div class="col-3 col-sm-3 col-md-3">
-                {{ form_row(form.observationScheduler.startDate) }}
-            </div>
-            <div class="col-3 col-sm-3 col-md-3">
-                {{ form_row(form.observationScheduler.timeOption) }}
-            </div>
-            <div class="col-3 col-sm-3 col-md-3 time-range-start-time">
-                {{ form_row(form.observationScheduler.timeRangeStartTime) }}
-            </div>
-            <div class="col-3 col-sm-3 col-md-3 time-range-end-time">
-                {{ form_row(form.observationScheduler.timeRangeEndTime) }}
-            </div>
-            <div class="col-3 col-sm-3 col-md-3 exact-time">
-                {{ form_row(form.observationScheduler.exactTime) }}
-            </div>
+    <div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>Compose your measure
         </div>
 
-        <div class="row">
-            <div class="col-2 col-sm-2 col-md-2">
-                {{ form_row(form.observationScheduler.repeatOption) }}
-            </div>
-
-            <div class="col-1 col-sm-1 col-md-1 weekly-nr-of-weeks">
-                {{ form_row(form.observationScheduler.weeklyNumberOfWeeks) }}
-            </div>
+        <div class="actions">
+            {{ form_widget(form.isEnabled) }}
         </div>
 
-        <div class="row">
-            <div class="col-6 col-sm-6 col-md-6 weekly-days-of-week">
-                {{ form_row(form.observationScheduler.weeklyDaysOfWeek) }}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-2 col-sm-2 col-md-2 repeat-end">
-                {{ form_row(form.observationScheduler.repeatEndOption) }}
-            </div>
-
-            <div class="col-1 col-sm-1 col-md-1 repeat-end-after-nr-of-occurrences">
-                {{ form_row(form.observationScheduler.repeatEndAfterNumberOfOccurrences) }}
-            </div>
-
-            <div class="col-3 col-sm-3 col-md-3 repeat-end-date">
-                {{ form_row(form.observationScheduler.repeatEndDate) }}
-            </div>
-        </div>
     </div>
 
-    {{ form_row(form._token) }}
+    <div id="measure-form" class="portlet-body">
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.measure) }}
+        {{ form_row(form.observerUsername) }}
+        {{ form_row(form.observerUserId) }}
+        {{ form_row(form.observationScheduler.hasDates) }}
 
-    {{ form_row(form.submit) }}
-    {{ form_end(form, {'render_rest': false}) }}
+        <div id="scheduler">
+            <div class="row">
+                <div class="col-3 col-sm-3 col-md-3">
+                    {{ form_row(form.observationScheduler.startDate) }}
+                </div>
+                <div class="col-3 col-sm-3 col-md-3">
+                    {{ form_row(form.observationScheduler.timeOption) }}
+                </div>
+                <div class="col-3 col-sm-3 col-md-3 time-range-start-time">
+                    {{ form_row(form.observationScheduler.timeRangeStartTime) }}
+                </div>
+                <div class="col-3 col-sm-3 col-md-3 time-range-end-time">
+                    {{ form_row(form.observationScheduler.timeRangeEndTime) }}
+                </div>
+                <div class="col-3 col-sm-3 col-md-3 exact-time">
+                    {{ form_row(form.observationScheduler.exactTime) }}
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2">
+                    {{ form_row(form.observationScheduler.repeatOption) }}
+                </div>
 
+                <div class="col-1 col-sm-1 col-md-1 weekly-nr-of-weeks">
+                    {{ form_row(form.observationScheduler.weeklyNumberOfWeeks) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 weekly-days-of-week">
+                    {{ form_row(form.observationScheduler.weeklyDaysOfWeek) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 repeat-end">
+                    {{ form_row(form.observationScheduler.repeatEndOption) }}
+                </div>
+
+                <div class="col-1 col-sm-1 col-md-1 repeat-end-after-nr-of-occurrences">
+                    {{ form_row(form.observationScheduler.repeatEndAfterNumberOfOccurrences) }}
+                </div>
+
+                <div class="col-3 col-sm-3 col-md-3 repeat-end-date">
+                    {{ form_row(form.observationScheduler.repeatEndDate) }}
+                </div>
+            </div>
+        </div>
+
+        {{ form_row(form._token) }}
+
+        {{ form_row(form.submit) }}
+        {{ form_end(form, {'render_rest': false}) }}
+
+    </div>
+    </div>
 
 {% endblock %}

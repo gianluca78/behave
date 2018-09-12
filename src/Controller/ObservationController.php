@@ -176,7 +176,8 @@ class ObservationController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE)
+            'title' => $this->get('translator')->trans(self::NEW_TITLE),
+            'student' => $student
         );
 
     }
