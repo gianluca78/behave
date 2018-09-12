@@ -372,6 +372,15 @@ class Measure
         return $this;
     }
 
+    public function getSlugIsShared()
+    {
+        if($this->getIsShared()) {
+            return 'Yes';
+        }
+
+        return 'No';
+    }
+
     public function getIsShared()
     {
         return $this->isShared;

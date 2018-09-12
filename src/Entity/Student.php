@@ -55,6 +55,11 @@ class Student
      */
     private $observations;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $sex;
+
     public function __construct()
     {
         $this->observations = new ArrayCollection();
@@ -152,6 +157,18 @@ class Student
                 $observation->setStudent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSex()
+    {
+        return $this->sex;
+    }
+
+    public function setSex(int $sex)
+    {
+        $this->sex = $sex;
 
         return $this;
     }

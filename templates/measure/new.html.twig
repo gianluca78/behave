@@ -4,6 +4,20 @@
     {{ title }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('measure_list') }}">Measures</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>New</span>
+    </li>
+{% endblock %}
+
 {% block body %}
     {{ form_start(form) }}
 
@@ -32,6 +46,147 @@
                  data-prototype-meter="{{ form_widget(form.meterItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-range="{{ form_widget(form.rangeItems.vars.prototype)|e('html_attr') }}"
                  data-prototype-text="{{ form_widget(form.textItems.vars.prototype)|e('html_attr') }}">
+
+                {% if numberOfItems is defined %}
+                    {% for positionNumber in 1..numberOfItems %}
+                        {% for choiceItem in form.choiceItems %}
+                            {% if positionNumber == choiceItem.vars.value.positionNumber %}
+                                <div class="portlet">
+                                    <div class="portlet-title">
+                                        <div class="tools">
+                                            <a href="javascript:;" class="m-icon-swapup" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="m-icon-swapdown" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        {{ form_row(choiceItem.isExpanded) }}
+                                        {{ form_row(choiceItem.isMultiple) }}
+                                        {{ form_row(choiceItem.positionNumber) }}
+                                        {{ form_row(choiceItem.label) }}
+                                        {{ form_row(choiceItem.emptyValue) }}
+                                        {{ form_row(choiceItem.options) }}
+
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for directObservationItem in form.directObservationItems %}
+                            {% if positionNumber == directObservationItem.vars.value.positionNumber %}
+                                <div class="portlet">
+                                    <div class="portlet-title">
+                                        <div class="tools">
+                                            <a href="javascript:;" class="m-icon-swapup" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="m-icon-swapdown" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        {{ form_row(directObservationItem.label) }}
+                                        {{ form_row(directObservationItem.observationLengthInMinutes) }}
+                                        {{ form_row(directObservationItem.intervalLengthInSeconds) }}
+                                        {{ form_row(directObservationItem.typology) }}
+                                        {{ form_row(directObservationItem.positionNumber) }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for integerItem in form.integerItems %}
+                            {% if positionNumber == integerItem.vars.value.positionNumber %}
+                                <div class="portlet">
+                                    <div class="portlet-title">
+                                        <div class="tools">
+                                            <a href="javascript:;" class="m-icon-swapup" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="m-icon-swapdown" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        {{ form_row(integerItem.label) }}
+                                        {{ form_row(integerItem.fieldValue) }}
+                                        {{ form_row(integerItem.positionNumber) }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for meterItem in form.meterItems %}
+                            {% if positionNumber == meterItem.vars.value.positionNumber %}
+                                <div class="portlet">
+                                    <div class="portlet-title">
+                                        <div class="tools">
+                                            <a href="javascript:;" class="m-icon-swapup" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="m-icon-swapdown" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        {{ form_row(meterItem.label) }}
+                                        {{ form_row(meterItem.xValue) }}
+                                        {{ form_row(meterItem.yValue) }}
+                                        {{ form_row(meterItem.labelY) }}
+                                        {{ form_row(meterItem.labelMaxY) }}
+                                        {{ form_row(meterItem.labelMinY) }}
+                                        {{ form_row(meterItem.labelX) }}
+                                        {{ form_row(meterItem.labelMaxX) }}
+                                        {{ form_row(meterItem.labelMinX) }}
+                                        {{ form_row(meterItem.positionNumber) }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for rangeItem in form.rangeItems %}
+                            {% if positionNumber == rangeItem.vars.value.positionNumber %}
+                                <div class="portlet">
+                                    <div class="portlet-title">
+                                        <div class="tools">
+                                            <a href="javascript:;" class="m-icon-swapup" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="m-icon-swapdown" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        {{ form_row(rangeItem.label) }}
+                                        {{ form_row(rangeItem.min) }}
+                                        {{ form_row(rangeItem.max) }}
+                                        {{ form_row(rangeItem.step) }}
+                                        {{ form_row(rangeItem.positionNumber) }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for textItem in form.textItems %}
+                            {% if positionNumber == textItem.vars.value.positionNumber %}
+                                <div class="portlet">
+                                    <div class="portlet-title">
+                                        <div class="tools">
+                                            <a href="javascript:;" class="m-icon-swapup" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="m-icon-swapdown" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                                            <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        {{ form_row(textItem.label) }}
+                                        {{ form_row(textItem.fieldValue) }}
+                                        {{ form_row(textItem.placeholder) }}
+                                        {{ form_row(textItem.positionNumber) }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    {% endfor %}
+                {% endif %}
             </div>
 
             <div class="form-actions">
@@ -93,7 +248,7 @@
         var $collectionHolder = $('div.items');
 
         $( document ).ready(function() {
-            $("#measure_isShared").bootstrapSwitch('state', false);
+            $("#measure_isShared").bootstrapSwitch('state', $("#measure_isShared").val());
             $("#measure_isShared").bootstrapSwitch('size', 'small');
         });
 

@@ -1,49 +1,128 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    {{ title }}
+{{ title }}
+{% endblock %}
+
+{% block breadcrumbs %}
+<li>
+    <a href="{{ path('homepage') }}">Home</a>
+    <i class="fa fa-circle"></i>
+</li>
+<li>
+    <span>Measures</span>
+</li>
+{% endblock %}
+
+{% block pageTitle %}
+Measures
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/datatables/datatables.min.css') }}">
+<link rel="stylesheet"
+      href="{{ asset('theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+
+<script src="{{ asset('theme/assets/global/scripts/datatable.js') }}"></script>
+<script src="{{ asset('theme/assets/global/plugins/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}"></script>
+<script src="{{ asset('theme/assets/pages/scripts/table-datatables-managed.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        <div>{{ flashMessage }}</div>
-    {% endfor %}
+{% for flashMessage in app.session.flashbag.get('success') %}
+<div class="alert alert-success">
+    {{ flashMessage }}
+</div>
+{% endfor %}
 
-    <div class="row">
-        <div class="col-md-12 col-md-offset-1">
-            <h2>Measure list</h2>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-dark">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject bold uppercase"> Managed Table</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-toolbar">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn-group pull-right">
+                                <button id="data_list_editable_1_new" class="btn sbold green"> {% trans %}New{% endtrans %}
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <table class="table table-stripped table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>id</th>
-                    <th> name</th>
-                    <th> description</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <tbody>
-                {% for record in records %}
+                <table class="table table-striped table-bordered table-hover table-checkable order-column"
+                       id="data_list">
+                    <thead>
                     <tr>
-                        <td>{{ record.id }}</td>
-                        <td>{{ record.name }}</td>
-                        <td>{{ record.description }}</td>
+                        <th>
+                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                <input type="checkbox" class="group-checkable" data-set="#data_list .checkboxes"/>
+                                <span></span>
+                            </label>
+                        </th>
+                        <th> Name</th>
+                        <th> Description</th>
+                        <th> Shared</th>
+                        <th> Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                        <td><a href="{{ path('measure_edit', {'id': record.id}) }}">
+                    {% for record in records %}
+                    <tr class="odd gradeX">
+                        <td>
+                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                <input type="checkbox" class="checkboxes" value="{{ record.id }}"/>
+                                <span></span>
+                            </label>
+                        </td>
+                        <td> {{ record.name }} </td>
+                        <td>
+                            {{ record.description }}
+                        </td>
+                        <td>
+                            {% if(record.isShared == '1') %}
+                                {% set classname = 'label-success' %}
+                            {% else %}
+                                {% set classname = 'label-warning' %}
+                            {% endif %}
+                            <span class="label label-sm {{ classname }}">
+                                {{ record.slugIsShared }}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="{{ path('measure_edit', {'id': record.id}) }}">
                                 {% trans %}Edit{% endtrans %}
                             </a>
-                        </td>
-                        <td><a href="{{ path('measure_delete', {'id': record.id}) }}">
+
+                            <a href="{{ path('measure_delete', {'id': record.id}) }}">
                                 {% trans %}Delete{% endtrans %}
                             </a>
                         </td>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    {% endfor %}
 
-            <a href="{{ path('measure_new') }}">{% trans %}New{% endtrans %}</a>
+                    </tbody>
+                </table>
+
+
+            </div>
         </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
     </div>
-{% endblock %}
+</div>
+
+
+        {% endblock %}
