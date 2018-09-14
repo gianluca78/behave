@@ -1,6 +1,13 @@
 var AppCalendar = function() {
 
+    var h = {};
+    var scheduledDates = [];
+
     return {
+        setScheduledDates: function(dates) {
+            scheduledDates = dates;
+        },
+
         //main function to initiate the module
         init: function() {
             this.initCalendar();
@@ -11,13 +18,6 @@ var AppCalendar = function() {
             if (!jQuery().fullCalendar) {
                 return;
             }
-
-            var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear();
-
-            var h = {};
 
             if (App.isRTL()) {
                 if ($('#calendar').parents(".portlet").width() <= 720) {
@@ -98,7 +98,7 @@ var AppCalendar = function() {
             $('#calendar').fullCalendar({ //re-initialize the calendar
                 header: h,
                 defaultView: 'month', // change default view with available options from http://arshaw.com/fullcalendar/docs/views/Available_Views/ 
-                slotMinutes: 15,
+                slotMinutes: 30,
                 editable: true,
                 droppable: true, // this allows things to be dropped onto the calendar !!!
                 drop: function(date, allDay) { // this function is called when something is dropped
@@ -123,7 +123,8 @@ var AppCalendar = function() {
                         $(this).remove();
                     }
                 },
-                events: [{
+                events: scheduledDates
+                /*[{
                     title: 'All Day Event',
                     start: new Date(y, m, 1),
                     backgroundColor: App.getBrandColor('yellow')
@@ -164,7 +165,7 @@ var AppCalendar = function() {
                     end: new Date(y, m, 29),
                     backgroundColor: App.getBrandColor('yellow'),
                     url: 'http://google.com/',
-                }]
+                }]*/
             });
 
         }

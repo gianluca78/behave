@@ -219,4 +219,35 @@ class ObservationController extends Controller
 
         return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
     }
+
+    /**
+     * @Route("/enableDisable/{id}/{ids}", name="observation_enable_disable")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @param Observation $entity
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function enableDisableAction(Request $request, Student $student)
+    {
+        $ids = json_decode($request->get('ids'), true);
+
+        $em = $this->getDoctrine()->getManager();
+
+        foreach($ids as $id) {
+            $observation = $em->getRepository('App\Entity\Observation')->find($id);
+
+            $isEnableNewValue = ($observation->getIsEnabled()) ? false : true;
+
+            $observation->setIsEnabled($isEnableNewValue);
+
+            $em->persist($observation);
+            $em->flush();
+
+        }
+
+        $this->get('session')->getFlashbag()->add('success', 'Observation(s) update with success');
+
+        return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
+    }
 }

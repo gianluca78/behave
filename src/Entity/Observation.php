@@ -84,6 +84,11 @@ class Observation
      */
     private $observationScheduler;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isSingleCaseDesign;
+
     public function __construct()
     {
         $this->observationDates = new ArrayCollection();
@@ -323,6 +328,18 @@ class Observation
         if ($this !== $observationScheduler->getObservation()) {
             $observationScheduler->setObservation($this);
         }
+
+        return $this;
+    }
+
+    public function getIsSingleCaseDesign()
+    {
+        return $this->isSingleCaseDesign;
+    }
+
+    public function setIsSingleCaseDesign(bool $isSingleCaseDesign)
+    {
+        $this->isSingleCaseDesign = $isSingleCaseDesign;
 
         return $this;
     }

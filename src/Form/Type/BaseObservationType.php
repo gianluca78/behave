@@ -19,10 +19,10 @@ class BaseObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('isEnabled', null, array(
+            ->add('isSingleCaseDesign', null, array(
                     'required' => false,
                     'value' => 0,
-                    'label' => 'Enabled'
+                    'label' => 'Single case'
                 )
             )
             ->add('name', null, array('required' => true))

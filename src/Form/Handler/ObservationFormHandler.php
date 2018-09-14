@@ -193,10 +193,10 @@ class ObservationFormHandler
                     $observationDate = new ObservationDate();
 
                     $startDate = clone $scheduledDate;
-                    $startDate->setTime($firstStartDate->format('H'), $firstStartDate->format('i'));
+                    $startDate->setTime($firstStartDate->format('H'), $firstStartDate->format('i'), $firstStartDate->format('s'));
 
                     $endDate = clone $scheduledDate;
-                    $endDate->setTime($firstEndDate->format('H'), $firstEndDate->format('i'));
+                    $endDate->setTime($firstEndDate->format('H'), $firstEndDate->format('i'), $firstEndDate->format('s'));
 
                     $observationDate->setStartDateTimestamp($startDate);
                     $observationDate->setEndDateTimestamp($endDate);
