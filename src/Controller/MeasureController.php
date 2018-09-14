@@ -88,7 +88,8 @@ class MeasureController extends Controller
             array(
                 'form' => $form->createView(),
                 'title' => $this->get('translator')->trans(self::EDIT_TITLE),
-                'numberOfItems' => $measure->countItems()
+                'numberOfItems' => $measure->countItems(),
+                'actionName' => 'Edit'
             )
         );
     }
@@ -118,29 +119,37 @@ class MeasureController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE)
+            'title' => $this->get('translator')->trans(self::NEW_TITLE),
+            'actionName' => 'New'
         );
 
     }
 
     /**
-     * @Route("/delete/{id}", name="measure_delete")
+     * @Route("/delete/{ids}", name="measure_delete")
      * @Method({"GET"})
      *
      * @param Request $request
      * @param Measure $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction(Request $request, Measure $entity)
+    public function deleteAction(Request $request)
     {
+        $ids = json_decode($request->get('ids'), true);
+
         $em = $this->getDoctrine()->getManager();
 
-        $em->remove($entity);
-        $em->flush();
+        foreach($ids as $id) {
+            $measure = $em->getRepository('App\Entity\Measure')->find($id);
+
+            $em->remove($measure);
+            $em->flush();
+        }
 
         $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));
 
         return $this->redirect($this->generateUrl('measure_list'));
+
     }
 
     /**

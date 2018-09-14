@@ -90,6 +90,11 @@ class Observation
         $this->observationPhases = new ArrayCollection();
     }
 
+    public function getSlugIsEnabled()
+    {
+        return ($this->isEnabled) ? 'Yes' : 'No';
+    }
+
     /**
      * @return mixed
      */

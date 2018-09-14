@@ -1,84 +1,162 @@
 {% extends 'base.html.twig' %}
+
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_list') }}">Students</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ student.studentId }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>Observations</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>List</span>
+    </li>
+{% endblock %}
+
+{% block pageTitle %}
+    Observations
+{% endblock %}
+
 {% block title %}
     {{ title }}
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/datatables/datatables.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}">
+{% endblock %}
+
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('success') %}
-        <div>{{ flashMessage }}</div>
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
     {% endfor %}
 
+
     <div class="row">
-        <div class="col-md-12 col-md-offset-1">
-            <h2>Students observation list</h2>
+        <div class="col-md-12">
+            <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <div class="portlet light bordered">
+                <div class="portlet-title">
+                    <div class="caption font-dark">
+                        <i class="icon-settings font-dark"></i>
+                        <span class="caption-subject bold uppercase"> List </span>
+                    </div>
+                    <div class="actions">
+                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="fa fa-line-chart"></i>
+                        </a>
+                        <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column"
+                           id="observation-datatable">
+                        <thead>
+                        <tr>
+                            <th>
+                                <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                    <input type="checkbox" class="group-checkable" data-set="#observation-datatable .checkboxes"/>
+                                    <span></span>
+                                </label>
+                            </th>
+                            <th> Name</th>
+                            <th> Description</th>
+                            <th> Enabled</th>
+                            <th> Observer</th>
+                            <th> Nr. observations</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-            <table class="table table-stripped table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>id</th>
-                    <th>name</th>
-                    <th>description</th>
-                    <th>is enabled</th>
-                    <th>observer</th>
-                    <th>dates</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
+                        {% for record in records %}
+                            <tr class="odd gradeX">
+                                <td>
+                                    <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
+                                        <input type="checkbox" class="checkboxes" value="{{ record.id }}"/>
+                                        <span></span>
+                                    </label>
+                                </td>
+                                <td> {{ record.name }} </td>
+                                <td>
+                                    {{ record.description }}
+                                </td>
+                                <td>
+                                    {% if(record.isEnabled == '1') %}
+                                        {% set classname = 'label-success' %}
+                                    {% else %}
+                                        {% set classname = 'label-warning' %}
+                                    {% endif %}
+                                    <span class="label label-sm {{ classname }}">
+                                {{ record.slugIsEnabled }}
+                            </span>
+                                </td>
+                                <td>{{ record.observerUsername }}</td>
+                                <td><!-- couchDb --></td>
+                            </tr>
+                        {% endfor %}
 
-                <tbody>
-                {% for record in records %}
-                    <tr>
-                        <td>{{ record.id }}</td>
-                        <td>{{ record.name }}</td>
-                        <td>{{ record.description }}</td>
-                        <td>{{ record.isEnabled }}</td>
-                        <td>{{ record.observerUsername }}</td>
-                        <td>
-                            {% if(record.observationScheduler.hasDates) %}
-                                <ul>
-                                    {% for date in record.observationDates %}
-                                        <li>{{ date.startDateTimestamp.format('Y-m-d H:i') }}
-                                            {% if(date.startDateTimestamp != date.endDateTimestamp) %}
-                                                -
-                                                {{ date.endDateTimestamp.format('H:i') }}
-                                            {% endif %}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            {% else %}
-                                No
-                            {% endif %}
-                        </td>
+                        </tbody>
+                    </table>
 
-                        <td><a href="{{ path('observation_edit', {'id': record.id}) }}">
-                                {% trans %}Edit{% endtrans %}
-                            </a>
-                        </td>
-                        <td><a href="{{ path('observation_delete', {'id': record.id}) }}">
-                                {% trans %}Delete{% endtrans %}
-                            </a>
-                        </td>
-                        <td><a href="{{ path('observation_phase_list', { 'id': record.id }) }}">
-                                {% trans %}Phases{% endtrans %}
-                            </a>
-                        </td>
-                        <td><a href="{{ path('data_list', { 'id': record.id }) }}">
-                                {% trans %}Data{% endtrans %}
-                            </a>
-                        </td>
-                        <td><a href="{{ path('data_analysis', { 'id': record.id }) }}">
-                                {% trans %}Data analysis{% endtrans %}
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
 
-            <a href="{{ path('observation_new', { 'id': student.id } ) }}">{% trans %}New{% endtrans %}</a>
+                </div>
+            </div>
+            <!-- END EXAMPLE TABLE PORTLET-->
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('theme/assets/global/plugins/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}"></script>
+    <script src="{{ asset('theme/assets/pages/scripts/table-datatables-managed.js') }}"></script>
+
+    <script>
+        $('#add-button').on('click', function(){
+            if(!$(this).hasClass('opaque')) {
+                location.assign('{{ path('observation_new', { 'id': student.id }) }}');
+            }
+        });
+
+        $('#edit-button').on('click', function(){
+            if(!$(this).hasClass('opaque')) {
+                location.assign('/observation/edit/' + $("#observation-datatable :checked").val());
+            }
+        });
+
+        $('#delete-button').on('click', function(){
+            ids = [];
+
+            $('.checkboxes').each(function() {
+                if($(this).is(':checked')) {
+                    ids.push($(this).val());
+                }
+            });
+
+            location.assign('/observation/delete/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
+        });
+
+    </script>
 {% endblock %}

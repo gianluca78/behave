@@ -1,28 +1,74 @@
 var TableDatatablesManaged = function () {
-    var e = function () {
-        var e = $("#data_list");
+    var measureDatatable = function () {
+        var e = $("#measure-datatable");
         e.dataTable({language: {aria: {sortAscending: ": activate to sort column ascending", sortDescending: ": activate to sort column descending"}, emptyTable: "No data available in table", info: "Showing _START_ to _END_ of _TOTAL_ records", infoEmpty: "No records found", infoFiltered: "(filtered1 from _MAX_ total records)", lengthMenu: "Show _MENU_", search: "Search:", zeroRecords: "No matching records found", paginate: {previous: "Prev", next: "Next", last: "Last", first: "First"}}, bStateSave: !0, lengthMenu: [
             [20, 40, 50, -1],
             [20, 40, 50, "All"]
         ], pageLength: 20, pagingType: "bootstrap_full_number", columnDefs: [
-            {orderable: !1, targets: [0, 4]},
-            {searchable: !1, targets: [0, 4]},
+            {orderable: false, targets: 0 },
+            {searchable: false, targets: 0 },
             {className: "dt-right"}
         ], order: [
             [1, "asc"]
         ]});
-        jQuery("#data_list_wrapper");
+        jQuery("#measure-datatable_wrapper");
         e.find(".group-checkable").change(function () {
             var e = jQuery(this).attr("data-set"), t = jQuery(this).is(":checked");
             jQuery(e).each(function () {
                 t ? ($(this).prop("checked", !0), $(this).parents("tr").addClass("active")) : ($(this).prop("checked", !1), $(this).parents("tr").removeClass("active"))
             })
+
+            if(t) {
+                $('#add-button').addClass('opaque');
+                $('#edit-button').addClass('opaque');
+            } else {
+                $('#add-button').removeClass('opaque');
+                $('#edit-button').removeClass('opaque');
+            }
+
+
         }), e.on("change", "tbody tr .checkboxes", function () {
             $(this).parents("tr").toggleClass("active")
         })
     };
+
+    var observationDatatable = function () {
+        var e = $("#observation-datatable");
+        e.dataTable({language: {aria: {sortAscending: ": activate to sort column ascending", sortDescending: ": activate to sort column descending"}, emptyTable: "No data available in table", info: "Showing _START_ to _END_ of _TOTAL_ records", infoEmpty: "No records found", infoFiltered: "(filtered1 from _MAX_ total records)", lengthMenu: "Show _MENU_", search: "Search:", zeroRecords: "No matching records found", paginate: {previous: "Prev", next: "Next", last: "Last", first: "First"}}, bStateSave: !0, lengthMenu: [
+            [20, 40, 50, -1],
+            [20, 40, 50, "All"]
+        ], pageLength: 20, pagingType: "bootstrap_full_number", columnDefs: [
+            {orderable: false, targets: 0 },
+            {searchable: false, targets: 0 },
+            {className: "dt-right"}
+        ], order: [
+            [1, "asc"]
+        ]});
+        jQuery("#observation-datatable_wrapper");
+        e.find(".group-checkable").change(function () {
+            var e = jQuery(this).attr("data-set"), t = jQuery(this).is(":checked");
+            jQuery(e).each(function () {
+                t ? ($(this).prop("checked", !0), $(this).parents("tr").addClass("active")) : ($(this).prop("checked", !1), $(this).parents("tr").removeClass("active"))
+            })
+
+            if(t) {
+                $('#add-button').addClass('opaque');
+                $('#edit-button').addClass('opaque');
+                $('#data-analysis-button').addClass('opaque');
+            } else {
+                $('#add-button').removeClass('opaque');
+                $('#edit-button').removeClass('opaque');
+                $('#data-analysis-button').removeClass('opaque');
+            }
+        }), e.on("change", "tbody tr .checkboxes", function () {
+            $(this).parents("tr").toggleClass("active")
+        })
+    };
+
+
+
     return{init: function () {
-        jQuery().dataTable && (e())
+        jQuery().dataTable && (measureDatatable(), observationDatatable())
     }}
 }();
 

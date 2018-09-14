@@ -25,7 +25,8 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
-
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.skinFlat.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -33,19 +34,21 @@
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+    <script src="{{ asset('theme/assets/global/plugins/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
     <script>
-        $( "#observation_observerUsername" ).autocomplete({
+        $( "#observation_base_observation_observerUsername" ).autocomplete({
             source: "{{ path('user_search') }}",
             minLength: 2,
             select: function( event, ui ) {
                 event.preventDefault();
-                $('#observation_observerUsername').val(jQuery(ui.item.label).text());
-                $('#observation_observerUserId').val(ui.item.value);
+                $('#observation_base_observation_observerUsername').val(jQuery(ui.item.label).text());
+                $('#observation_base_observation_observerUserId').val(ui.item.value);
             },
             focus: function(event, ui) {
                 event.preventDefault();
-                $("#observation_observerUsername").val(jQuery(ui.item.label).text());
+                $("#observation_base_observation_observerUsername").val(jQuery(ui.item.label).text());
             }
         }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
                 return $( "<li>" )
@@ -57,12 +60,71 @@
 
         $( document ).ready(function() {
             showHideScheduler();
-            showHideTime();
+            //showHideTime();
             showHideRepeatOptions();
             showHideRepeatEndOptions();
 
-            $("#observation_isEnabled").bootstrapSwitch('state', $("#observation_isEnabled").val());
-            $("#observation_isEnabled").bootstrapSwitch('size', 'small');
+            isEnabled = ($("#observation_base_observation_isEnabled").val() == '0') ? false : true;
+
+            $("#observation_base_observation_isEnabled").bootstrapSwitch('state', isEnabled);
+            $("#observation_base_observation_isEnabled").bootstrapSwitch('size', 'small');
+
+            $('#observation_observationScheduler_hasDates').bootstrapSwitch();
+
+            moment.locale("en-GB");
+
+            var $range = $(".js-range-slider");
+            var start = moment("2016-10-02 00:00", "YYYY-MM-DD HH:mm");
+            var end = moment("2016-10-03 00:00", "YYYY-MM-DD HH:mm");
+
+            $range.ionRangeSlider({
+                type: "double",
+                grid: true,
+                min: start.format("x"),
+                max: end.format("x"),
+                step: 1800000,                // 30 minutes in ms
+                prettify: function (num) {
+                    return moment(num, 'x').format("h:mm A");
+                },
+                onChange: changeTimeRangeValues,
+                onFinish: changeTimeRangeValues
+            });
+
+            function changeTimeRangeValues()
+            {
+                slider = $range.data("ionRangeSlider");
+
+                fromHour = moment(slider.result.from).format('H');
+                fromMinutes = moment(slider.result.from).format('mm');
+
+                toHour = moment(slider.result.to).format('H');
+                toMinutes = moment(slider.result.to).format('mm');
+
+                if(slider.result.from == slider.result.to) {
+                    $('#observation_observationScheduler_timeOption').val(2);
+                    $('#observation_observationScheduler_exactTime_hour').val(fromHour);
+                    $('#observation_observationScheduler_exactTime_minute').val(fromMinutes);
+                } else {
+                    $('#observation_observationScheduler_timeOption').val(1);
+                    $('#observation_observationScheduler_timeRangeStartTime_hour').val(fromHour);
+                    $('#observation_observationScheduler_timeRangeStartTime_minute').val(fromMinutes);
+                    $('#observation_observationScheduler_timeRangeEndTime_hour').val(toHour);
+                    $('#observation_observationScheduler_timeRangeEndTime_minute').val(toMinutes);
+
+                    if(isAllDay($range.data("ionRangeSlider"))) {
+                        $('#observation_observationScheduler_timeOption').val(0);
+                    }
+                }
+            }
+
+            function isAllDay(data)
+            {
+                if(data.result.min == data.result.from && data.result.max == data.result.to) {
+                    return true;
+                };
+
+                return false;
+            }
         });
 
         $('#observation_observationScheduler_startDate').datepicker({
@@ -75,12 +137,8 @@
             todayHighlight: true
         });
 
-        $('#observation_observationScheduler_hasDates').change(function () {
+        $("#observation_observationScheduler_hasDates").bootstrapSwitch('onSwitchChange', function() {
             showHideScheduler();
-        });
-
-        $('#observation_observationScheduler_timeOption').change(function(){
-            showHideTime();
         });
 
         $('#observation_observationScheduler_repeatOption').change(function() {
@@ -91,63 +149,39 @@
            showHideRepeatEndOptions();
         });
 
-        function showHideTime() {
-            switch ($('#observation_observationScheduler_timeOption').val()) {
-                case '0':
-                    $('.time-range-start-time').hide();
-                    $('.time-range-end-time').hide();
-                    $('.exact-time').hide();
-                    break;
-
-                case '1':
-                    $('.time-range-start-time').show();
-                    $('.time-range-end-time').show();
-                    $('.exact-time').hide();
-
-                    break;
-
-                case '2':
-                    $('.time-range-start-time').hide();
-                    $('.time-range-end-time').hide();
-                    $('.exact-time').show();
-
-                    break;
-            }
-        }
-
         function showHideRepeatOptions() {
             switch ($('#observation_observationScheduler_repeatOption').val()) {
                 case '0':
-                    $('.weekly-nr-of-weeks').hide();
-                    $('.weekly-days-of-week').hide();
-                    $('.repeat-end').hide();
-                    $('.repeat-end-after-nr-of-occurrences').hide();
+                    $('#observation_observationScheduler_weeklyNumberOfWeeks').parent().parent().hide();
+                    $('#observation_observationScheduler_weeklyDaysOfWeek').parent().parent().hide();
+                    $('#observation_observationScheduler_repeatEndOption').parent().parent().hide();
+                    $('#observation_observationScheduler_repeatEndAfterNumberOfOccurrences').parent().parent().hide();
+                    $('#observation_observationScheduler_repeatEndDate').parent().parent().hide();
 
                     break;
 
                 case '1':
-                    $('.weekly-nr-of-weeks').show();
-                    $('.weekly-days-of-week').show();
-                    $('.repeat-end').show();
-                    $('.repeat-end-after-nr-of-occurrences').show();
+                    $('#observation_observationScheduler_weeklyNumberOfWeeks').parent().parent().show();
+                    $('#observation_observationScheduler_weeklyDaysOfWeek').parent().parent().show();
+                    $('#observation_observationScheduler_repeatEndOption').parent().parent().show();
+                    $('#observation_observationScheduler_repeatEndAfterNumberOfOccurrences').parent().parent().show();
 
                     break;
             }
         }
-
 
         function showHideRepeatEndOptions() {
             if($('#observation_observationScheduler_repeatEndOption').is(":visible")) {
                 switch ($('#observation_observationScheduler_repeatEndOption').val()) {
                     case '0':
-                        $('.repeat-end-after-nr-of-occurrences').show();
-                        $('.repeat-end-date').hide();
+                        $('#observation_observationScheduler_repeatEndAfterNumberOfOccurrences').parent().parent().show();
+                        $('#observation_observationScheduler_repeatEndDate').parent().parent().hide();
 
                         break;
 
                     case '1':
-                        $('.repeat-end-after-nr-of-occurrences').hide();
-                        $('.repeat-end-date').show();
+                        $('#observation_observationScheduler_repeatEndAfterNumberOfOccurrences').parent().parent().hide();
+                        $('#observation_observationScheduler_repeatEndDate').parent().parent().show();
 
                         break;
                 }
@@ -171,79 +205,126 @@
     <div class="portlet box green">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-gift"></i>Compose your measure
+            <i class="fa fa-gift"></i>New observation
         </div>
 
         <div class="actions">
-            {{ form_widget(form.isEnabled) }}
+            {{ form_widget(form.base_observation.isEnabled) }}
         </div>
 
     </div>
 
     <div id="measure-form" class="portlet-body">
-        {{ form_row(form.name) }}
-        {{ form_row(form.description) }}
-        {{ form_row(form.measure) }}
-        {{ form_row(form.observerUsername) }}
-        {{ form_row(form.observerUserId) }}
-        {{ form_row(form.observationScheduler.hasDates) }}
+        {{ form_row(form.base_observation.name) }}
+        {{ form_row(form.base_observation.description) }}
+        {{ form_row(form.base_observation.measure) }}
+        {{ form_row(form.base_observation.observerUsername) }}
+        {{ form_row(form.base_observation.observerUserId) }}
 
-        <div id="scheduler">
-            <div class="row">
-                <div class="col-3 col-sm-3 col-md-3">
-                    {{ form_row(form.observationScheduler.startDate) }}
-                </div>
-                <div class="col-3 col-sm-3 col-md-3">
-                    {{ form_row(form.observationScheduler.timeOption) }}
-                </div>
-                <div class="col-3 col-sm-3 col-md-3 time-range-start-time">
-                    {{ form_row(form.observationScheduler.timeRangeStartTime) }}
-                </div>
-                <div class="col-3 col-sm-3 col-md-3 time-range-end-time">
-                    {{ form_row(form.observationScheduler.timeRangeEndTime) }}
-                </div>
-                <div class="col-3 col-sm-3 col-md-3 exact-time">
-                    {{ form_row(form.observationScheduler.exactTime) }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-2 col-sm-2 col-md-2">
-                    {{ form_row(form.observationScheduler.repeatOption) }}
-                </div>
-
-                <div class="col-1 col-sm-1 col-md-1 weekly-nr-of-weeks">
-                    {{ form_row(form.observationScheduler.weeklyNumberOfWeeks) }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-6 col-sm-6 col-md-6 weekly-days-of-week">
-                    {{ form_row(form.observationScheduler.weeklyDaysOfWeek) }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-2 col-sm-2 col-md-2 repeat-end">
-                    {{ form_row(form.observationScheduler.repeatEndOption) }}
-                </div>
-
-                <div class="col-1 col-sm-1 col-md-1 repeat-end-after-nr-of-occurrences">
-                    {{ form_row(form.observationScheduler.repeatEndAfterNumberOfOccurrences) }}
-                </div>
-
-                <div class="col-3 col-sm-3 col-md-3 repeat-end-date">
-                    {{ form_row(form.observationScheduler.repeatEndDate) }}
-                </div>
+        <div class="form-group">
+            <label class="control-label required col-md-3">Schedule observation dates</label>
+            <div class="col-md-9">
+                {{ form_widget(form.observationScheduler.hasDates ) }}
             </div>
         </div>
 
-        {{ form_row(form._token) }}
+        <div id="scheduler">
+            {{ form_row(form.observationScheduler.startDate) }}
 
-        {{ form_row(form.submit) }}
-        {{ form_end(form, {'render_rest': false}) }}
+            <div class="hidden">
+                {{ form_row(form.observationScheduler.timeOption) }}
+                {{ form_row(form.observationScheduler.timeRangeStartTime) }}
+                {{ form_row(form.observationScheduler.timeRangeEndTime) }}
+                {{ form_row(form.observationScheduler.exactTime) }}
+            </div>
+
+            <div class="form-group">
+                <label class="control-label required col-md-3">Time range</label>
+                <div class="col-md-9">
+                    <div class="range-slider">
+                        <input type="text" class="js-range-slider" value="" />
+                    </div>
+                </div>
+            </div>
+
+            {{ form_row(form.observationScheduler.repeatOption) }}
+            {{ form_row(form.observationScheduler.weeklyNumberOfWeeks) }}
+            
+            <div class="form-body">
+                <div class="form-group" style="display: block;">
+                    <label class="col-md-3 control-label">Weekly days of week</label>
+
+                    <div class="col-md-9">
+                        <div class="btn-group" data-toggle="buttons">
+
+                                <label class="btn btn-default active" for="observation_observationScheduler_weeklyDaysOfWeek_0"
+                                                             class=""><input
+                                                class="toggle"
+                                                id="observation_observationScheduler_weeklyDaysOfWeek_0"
+                                                name="observation[observationScheduler][weeklyDaysOfWeek][]" value="0"
+                                                type="checkbox"> Sun</label>
+                                <label class="btn btn-default" for="observation_observationScheduler_weeklyDaysOfWeek_1"
+                                                             class=""><input
+                                                class="toggle"
+                                                id="observation_observationScheduler_weeklyDaysOfWeek_1"
+                                                name="observation[observationScheduler][weeklyDaysOfWeek][]" value="1"
+                                                type="checkbox"> Mon</label>
+                                <label class="btn btn-default" for="observation_observationScheduler_weeklyDaysOfWeek_2"
+                                                             class=""><input
+                                                class="toggle"
+                                                id="observation_observationScheduler_weeklyDaysOfWeek_2"
+                                                name="observation[observationScheduler][weeklyDaysOfWeek][]" value="2"
+                                                type="checkbox"> Tue</label>
+                                <label class="btn btn-default" for="observation_observationScheduler_weeklyDaysOfWeek_3"
+                                                             class=""><input
+                                                class="toggle"
+                                                id="observation_observationScheduler_weeklyDaysOfWeek_3"
+                                                name="observation[observationScheduler][weeklyDaysOfWeek][]" value="3"
+                                                type="checkbox"> Wed</label>
+                                <label class="btn btn-default" for="observation_observationScheduler_weeklyDaysOfWeek_4"
+                                                             class=""><input
+                                                class="toggle"
+                                                id="observation_observationScheduler_weeklyDaysOfWeek_4"
+                                                name="observation[observationScheduler][weeklyDaysOfWeek][]" value="4"
+                                                type="checkbox"> Thu</label>
+                                <label class="btn btn-default" for="observation_observationScheduler_weeklyDaysOfWeek_5"
+                                                             class=""><input
+                                                class="toggle"
+                                                id="observation_observationScheduler_weeklyDaysOfWeek_5"
+                                                name="observation[observationScheduler][weeklyDaysOfWeek][]" value="5"
+                                                type="checkbox"> Fri</label>
+                                <label class="btn btn-default" for="observation_observationScheduler_weeklyDaysOfWeek_6"
+                                                             class=""><input
+                                                class="toggle"
+                                                id="observation_observationScheduler_weeklyDaysOfWeek_6"
+                                                name="observation[observationScheduler][weeklyDaysOfWeek][]" value="6"
+                                                type="checkbox"> Sat</label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{ form_row(form.observationScheduler.repeatEndOption) }}
+            {{ form_row(form.observationScheduler.repeatEndAfterNumberOfOccurrences) }}
+            {{ form_row(form.observationScheduler.repeatEndDate) }}
+
+            {{ form_row(form._token) }}
+
+
+
+            {{ form_end(form, {'render_rest': false}) }}
 
     </div>
+
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    {{ form_widget(form.base_observation.submit, {'class': 'btn btn-circle green'}) }}
+                    <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

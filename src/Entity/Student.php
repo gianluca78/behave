@@ -23,7 +23,7 @@ class Student
     private $id;
 
     /**
-     * @ORM\Column(name="student_id", type="string", length=10)
+     * @ORM\Column(name="student_id", type="encrypted_string", length=255)
      */
     private $studentId;
 

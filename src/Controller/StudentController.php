@@ -71,7 +71,8 @@ class StudentController extends Controller
         return $this->render('student/new.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE)
+                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
+                'actionName' => 'Edit'
             )
         );
     }
@@ -101,7 +102,8 @@ class StudentController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE)
+            'title' => $this->get('translator')->trans(self::NEW_TITLE),
+            'actionName' => 'New'
         );
 
     }

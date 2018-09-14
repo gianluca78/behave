@@ -16,15 +16,14 @@ use App\Form\Type\ObservationSchedulerType;
 
 use Doctrine\ORM\EntityRepository;
 
-class ObservationType extends AbstractType
+class ObservationEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('base_observation', BaseObservationType::class, array(
             'data_class' => Observation::class,
             'creatorUserId' => $options['creatorUserId'],
-        ))
-            ->add('observationScheduler', ObservationSchedulerType::class);
+        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

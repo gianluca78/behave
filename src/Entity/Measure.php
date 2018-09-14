@@ -22,14 +22,14 @@ class Measure
     private $id;
 
     /**
-     * @ORM\Column(name="creator_user_id", type="encrypted_string", length=255)
+     * @ORM\Column(name="creator_user_id", type="string", length=255)
      */
     private $creatorUserId;
 
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="encrypted_string", unique = true, length=255)
+     * @ORM\Column(name="name", type="string", unique = true, length=255)
      */
     private $name;
 
@@ -101,6 +101,7 @@ class Measure
         $this->textItems = new ArrayCollection();
         $this->directObservationItems = new ArrayCollection();
         $this->observations = new ArrayCollection();
+        $this->isShared = false;
     }
 
     public function __toString()

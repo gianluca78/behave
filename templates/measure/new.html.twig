@@ -14,7 +14,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>New</span>
+        <span>{{ actionName }}</span>
     </li>
 {% endblock %}
 
@@ -248,7 +248,9 @@
         var $collectionHolder = $('div.items');
 
         $( document ).ready(function() {
-            $("#measure_isShared").bootstrapSwitch('state', $("#measure_isShared").val());
+            isShared = ($("#measure_isShared").val() == '0') ? false : true;
+
+            $("#measure_isShared").bootstrapSwitch('state', isShared);
             $("#measure_isShared").bootstrapSwitch('size', 'small');
         });
 

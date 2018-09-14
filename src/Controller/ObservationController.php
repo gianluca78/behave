@@ -14,7 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Response;
 
 use App\Form\Handler\ObservationFormHandler;
+use App\Form\Handler\ObservationEditFormHandler;
 use App\Form\Type\ObservationType;
+use App\Form\Type\ObservationEditType;
 
 use App\Entity\Observation;
 use App\Entity\Student;
@@ -112,10 +114,10 @@ class ObservationController extends Controller
     *
     * @param Request $request
     * @param Observation $observation
-    * @param ObservationFormHandler $formHandler
+    * @param ObservationEditFormHandler $formHandler
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler)
+    public function editAction(Request $request, Observation $observation, ObservationEditFormHandler $formHandler)
     {
         if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
@@ -124,8 +126,9 @@ class ObservationController extends Controller
             return $response;
         }
 
-        $form = $this->createForm(ObservationType::class, $observation, array(
-            'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId()))
+        $form = $this->createForm(ObservationEditType::class, $observation, array(
+            'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId())),
+            'creatorUserId' => $this->getUser()->getUserId()
         ));
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
@@ -135,10 +138,11 @@ class ObservationController extends Controller
             );
         }
 
-        return $this->render('observation/new.html.twig',
+        return $this->render('observation/edit.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE)
+                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
+                'student' => $observation->getStudent()
             )
         );
     }
@@ -166,7 +170,8 @@ class ObservationController extends Controller
         $entity->setCreatorUserId($this->getUser()->getUserId());
 
         $form = $this->createForm(ObservationType::class, $entity, array(
-            'action' => $this->generateUrl('observation_new', array('id' => $student->getId()))
+            'action' => $this->generateUrl('observation_new', array('id' => $student->getId())),
+            'creatorUserId' => $this->getUser()->getUserId()
         ));
 
         
@@ -183,29 +188,35 @@ class ObservationController extends Controller
     }
 
     /**
-    * @Route("/delete/{id}", name="observation_delete")
+    * @Route("/delete/{id}/{ids}", name="observation_delete")
     * @Method({"GET"})
     *
     * @param Request $request
     * @param Observation $entity
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function deleteAction(Request $request, Observation $entity)
+    public function deleteAction(Request $request, Student $student)
     {
-        if($entity->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
-            $response = new Response('not allowed');
-            $response->setStatusCode(403);
-
-            return $response;
-        }
+        $ids = json_decode($request->get('ids'), true);
 
         $em = $this->getDoctrine()->getManager();
 
-        $em->remove($entity);
-        $em->flush();
+        foreach($ids as $id) {
+            $observation = $em->getRepository('App\Entity\Observation')->find($id);
+
+            if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
+                $response = new Response('not allowed');
+                $response->setStatusCode(403);
+
+                return $response;
+            }
+
+            $em->remove($observation);
+            $em->flush();
+        }
 
         $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));
 
-        return $this->redirect($this->generateUrl('observation_list'));
+        return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
     }
 }

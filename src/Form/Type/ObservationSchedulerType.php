@@ -21,7 +21,9 @@ class ObservationSchedulerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('hasDates', null)
+            ->add('hasDates', null, array(
+                'label' => ' '
+            ))
             ->add('startDate', TextType::class, array(
             'required' => false
         ))
@@ -79,7 +81,10 @@ class ObservationSchedulerType extends AbstractType
                     'Sat' => 6
                 ),
                 'expanded' => true,
-                'multiple' => true
+                'multiple' => true,
+                'attr' => array(
+                    'class' => 'toggle'
+                )
             ))
             ->add('repeatEndOption', ChoiceType::class, array(
                     'required' => false,
