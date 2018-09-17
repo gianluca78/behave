@@ -48,22 +48,28 @@
     <script>
         AppCalendar.setScheduledDates(
             [
-                {% for observationDate in observation.observationDates %}
-                {
-                    {% if (observationDate.startDateTimestamp | date('H:i:s')) == '00:00:00' and observationDate.endDateTimestamp | date('H:i:s') == '23:59:59' %}
-                        {% set allDay = 'true' %}
-                    {% else %}
-                        {% set allDay = 'false' %}
-                    {% endif %}
-                    title: '{{ observation.name }}',
-                    start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
-                    end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
-                    allDay: {{ allDay }},
-                    backgroundColor: App.getBrandColor('red')
-                }{% if loop.index != observation.observationDates | length %},{% endif %}
-                {% endfor %}
+                {% if((observation.observationDates | length) > 0) %}
+                    {% for observationDate in observation.observationDates %}
+                    {
+                        {% if (observationDate.startDateTimestamp | date('H:i:s')) == '00:00:00' and observationDate.endDateTimestamp | date('H:i:s') == '23:59:59' %}
+                            {% set allDay = 'true' %}
+                        {% else %}
+                            {% set allDay = 'false' %}
+                        {% endif %}
+                        title: '{{ observation.name }}',
+                        start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
+                        end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
+                        allDay: {{ allDay }},
+                        backgroundColor: App.getBrandColor('red')
+                    }{% if loop.index != observation.observationDates | length %},{% endif %}
+                    {% endfor %}
+
+                {% else %}
+
+                {% endif %}
             ]
         );
+        AppCalendar.setHasDates({{ observation.observationScheduler.hasDates }});
     </script>
 {% endblock %}
 
@@ -81,7 +87,7 @@
                 <div class="portlet-body">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <div id="calendar" class="has-toolbar"> </div>
+                            <div id="calendar" data-observation-id="{{ observation.id }}" data-observation-name="{{ observation.name }}" class="has-toolbar"> </div>
                         </div>
                     </div>
                 </div>

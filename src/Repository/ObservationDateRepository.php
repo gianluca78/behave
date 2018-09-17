@@ -19,6 +19,19 @@ class ObservationDateRepository extends ServiceEntityRepository
         parent::__construct($registry, ObservationDate::class);
     }
 
+    public function findByObservationIdAndDate()
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.observation = :observation')
+            ->andWhere('')
+            ->setParameter('val', $value)
+            ->orderBy('o.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    /**
 //     * @return ObservationDate[] Returns an array of ObservationDate objects
 //     */

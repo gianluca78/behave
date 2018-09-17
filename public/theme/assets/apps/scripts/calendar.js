@@ -2,10 +2,15 @@ var AppCalendar = function() {
 
     var h = {};
     var scheduledDates = [];
+    var hasDates;
 
     return {
         setScheduledDates: function(dates) {
             scheduledDates = dates;
+        },
+
+        setHasDates: function(flagHasDates) {
+            hasDates = flagHasDates;
         },
 
         //main function to initiate the module
@@ -14,7 +19,6 @@ var AppCalendar = function() {
         },
 
         initCalendar: function() {
-
             if (!jQuery().fullCalendar) {
                 return;
             }
@@ -68,6 +72,48 @@ var AppCalendar = function() {
                     revertDuration: 0 //  original position after the drag
                 });
             };
+
+            function updateEvents()
+            {
+                events = $('#calendar').fullCalendar('clientEvents');
+                startDates = [];
+                endDates = [];
+
+                $(events).each(function(){
+                    startDates.push(this.start.format('YYYY-MM-DD HH:mm:ss'));
+
+                    if(!this.allDay && this.end != null) {
+                        endDates.push(this.end.format('YYYY-MM-DD HH:mm:ss'));
+                    } else {
+                        endDates.push(this.start.format('YYYY-MM-DD') + ' 23:59:59');
+                    }
+                });
+
+                $.ajax({
+                    url:"/calendar/update-date",
+                    type:"POST",
+                    data: {
+                        observationId: $( "#calendar" ).data('observation-id'),
+                        startDates: JSON.stringify(startDates),
+                        endDates: JSON.stringify(endDates)
+                    },
+                    success:function(response) {
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                        console.log(error);
+
+                    }
+                });
+
+                //alert(event.title + " was dropped on " + event.start.format());
+
+                /*
+                if (!confirm("Are you sure about this change?")) {
+                    revertFunc();
+                }*/
+            }
 
             var addEvent = function(title) {
                 title = title.length === 0 ? "Untitled Event" : title;
@@ -123,49 +169,88 @@ var AppCalendar = function() {
                         $(this).remove();
                     }
                 },
-                events: scheduledDates
-                /*[{
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    backgroundColor: App.getBrandColor('yellow')
-                }, {
-                    title: 'Long Event',
-                    start: new Date(y, m, d - 5),
-                    end: new Date(y, m, d - 2),
-                    backgroundColor: App.getBrandColor('green')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d - 3, 16, 0),
-                    allDay: false,
-                    backgroundColor: App.getBrandColor('red')
-                }, {
-                    title: 'Repeating Event',
-                    start: new Date(y, m, d + 4, 16, 0),
-                    allDay: false,
-                    backgroundColor: App.getBrandColor('green')
-                }, {
-                    title: 'Meeting',
-                    start: new Date(y, m, d, 10, 30),
-                    allDay: false,
-                }, {
-                    title: 'Lunch',
-                    start: new Date(y, m, d, 12, 0),
-                    end: new Date(y, m, d, 14, 0),
-                    backgroundColor: App.getBrandColor('grey'),
-                    allDay: false,
-                }, {
-                    title: 'Birthday Party',
-                    start: new Date(y, m, d + 1, 19, 0),
-                    end: new Date(y, m, d + 1, 22, 30),
-                    backgroundColor: App.getBrandColor('purple'),
-                    allDay: false,
-                }, {
-                    title: 'Click for Google',
-                    start: new Date(y, m, 28),
-                    end: new Date(y, m, 29),
-                    backgroundColor: App.getBrandColor('yellow'),
-                    url: 'http://google.com/',
-                }]*/
+                eventDrop: function(event, delta, revertFunc) {
+                    updateEvents();
+                },
+                eventOverlap: false,
+                eventResize: function(event, delta, revertFunc) {
+                    updateEvents();
+                },
+                events: scheduledDates,
+
+                viewRender: function( view, element ) {
+
+                    /*
+                    y = '2018';
+                    m = '09';
+                    d = '01';
+
+                    events = [{
+                        title: 'All Day Event',
+                        start: new Date(y, m, 1),
+                        backgroundColor: App.getBrandColor('yellow')
+                    }, {
+                        title: 'Long Event',
+                        start: new Date(y, m, d - 5),
+                        end: new Date(y, m, d - 2),
+                        backgroundColor: App.getBrandColor('green')
+                    }, {
+                        title: 'Repeating Event',
+                        start: new Date(y, m, d - 3, 16, 0),
+                        allDay: false,
+                        backgroundColor: App.getBrandColor('red')
+                    }, {
+                        title: 'Repeating Event',
+                        start: new Date(y, m, d + 4, 16, 0),
+                        allDay: false,
+                        backgroundColor: App.getBrandColor('green')
+                    }, {
+                        title: 'Meeting',
+                        start: new Date(y, m, d, 10, 30),
+                        allDay: false
+                    }, {
+                        title: 'Lunch',
+                        start: new Date(y, m, d, 12, 0),
+                        end: new Date(y, m, d, 14, 0),
+                        backgroundColor: App.getBrandColor('grey'),
+                        allDay: false
+                    }, {
+                        title: 'Birthday Party',
+                        start: new Date(y, m, d + 1, 19, 0),
+                        end: new Date(y, m, d + 1, 22, 30),
+                        backgroundColor: App.getBrandColor('purple'),
+                        allDay: false
+                    }, {
+                        title: 'Click for Google',
+                        start: new Date(y, m, 28),
+                        end: new Date(y, m, 29),
+                        backgroundColor: App.getBrandColor('yellow'),
+                        url: 'http://google.com/'
+                    }];*/
+
+                    console.log(hasDates);
+
+                    if(hasDates != 1) {
+                        $('#calendar').fullCalendar('removeEvents');
+
+                        events = [];
+
+                        firstDate = $('#calendar').fullCalendar('getView').start.format('YYYY-MM-DD');
+                        untilDate = new Date($('#calendar').fullCalendar('getView').end.format('YYYY-MM-DD'));
+
+                        for (d = new Date(firstDate); d < untilDate; d.setDate(d.getDate() + 1)) {
+                            events.push({
+                                title: $('#calendar').data('observation-name'),
+                                start: new Date(d),
+                                backgroundColor: App.getBrandColor('red'),
+                                allDay: true
+                            })
+                        }
+
+                        $('#calendar').fullCalendar('addEventSource', events);
+                        $('#calendar').fullCalendar('refetchEvents');
+                    }
+                }
             });
 
         }
