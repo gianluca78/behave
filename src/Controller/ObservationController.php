@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\Handler\CalendarFormHandler;
 use App\Form\Type\CalendarType;
 use App\Security\Encoder\OpenSslEncoder;
+use App\Utility\CouchDbData2Csv;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -20,6 +21,8 @@ use App\Form\Type\ObservationEditType;
 
 use App\Entity\Observation;
 use App\Entity\Student;
+use App\CouchDb\Client as CouchDbClient;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 /**
  * @Route("/observation")
@@ -249,5 +252,30 @@ class ObservationController extends Controller
         $this->get('session')->getFlashbag()->add('success', 'Observation(s) update with success');
 
         return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
+    }
+
+    /**
+     * @Route("/download-data/{id}", name="observation_download_data")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @param Observation $entity
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function downloadDataAction(Observation $observation, CouchDbClient $couchDbClient, CouchDbData2Csv $couchDbData2Csv)
+    {
+        $rawData = $couchDbClient->getObservationsById($observation->getId());
+
+        $path = $this->container->getParameter('kernel.root_dir').'/Resources/tmp/raw-data.csv';
+
+        $couchDbData2Csv->convert(json_decode($rawData->getContents(), true)['rows'], $path);
+
+        $response = new BinaryFileResponse($path);
+        $response->headers->set('Content-type', 'text/csv');
+        $response->headers->set('Cache-Control', 'private');
+        $response->headers->set('Content-Disposition', 'attachment; filename="raw-data.csv";');
+        $response->sendHeaders();
+
+        return $response;
     }
 }

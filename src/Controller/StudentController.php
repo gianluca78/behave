@@ -95,7 +95,6 @@ class StudentController extends Controller
             'action' => $this->generateUrl('student_new')
         ));
 
-        
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('student_list'));
         }

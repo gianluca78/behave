@@ -69,6 +69,9 @@
                         <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-trash"></i>
                         </a>
+                        <a id="download-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="fa fa-download"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -137,13 +140,23 @@
     <script src="{{ asset('theme/assets/pages/scripts/table-datatables-managed.js') }}"></script>
 
     <script>
+        $( document ).ready(function() {
+            $('#edit-button').addClass('opaque');
+            $('#delete-button').addClass('opaque');
+            $('#data-analysis-button').addClass('opaque');
+            $('#enable-button').addClass('opaque');
+            $('#download-button').addClass('opaque');
+        });
+
         $('#add-button').on('click', function(){
             if(!$(this).hasClass('opaque')) {
                 location.assign('{{ path('observation_new', { 'id': student.id }) }}');
             }
         });
 
-        $('#edit-button').on('click', function(){
+        $('#edit-button').on('click', function(e){
+            e.preventDefault();
+
             if(!$(this).hasClass('opaque')) {
                 location.assign('/observation/edit/' + $("#observation-datatable :checked").val());
             }
@@ -155,16 +168,22 @@
             }
         });
 
-        $('#delete-button').on('click', function(){
-            ids = [];
+        $('#delete-button').on('click', function(e){
+            e.preventDefault();
 
-            $('.checkboxes').each(function() {
-                if($(this).is(':checked')) {
-                    ids.push($(this).val());
+            if(!$(this).hasClass('opaque')) {
+                ids = [];
+
+                $('.checkboxes').each(function() {
+                    if($(this).is(':checked')) {
+                        ids.push($(this).val());
+                    }
+                });
+
+                if(ids.length > 0) {
+                    location.assign('/observation/delete/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
                 }
-            });
-
-            location.assign('/observation/delete/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
+            }
         });
 
         $('#enable-button').on('click', function(){
@@ -177,6 +196,12 @@
             });
 
             location.assign('/observation/enableDisable/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
+        });
+
+        $('#download-button').on('click', function() {
+            if(!$(this).hasClass('opaque')) {
+                location.assign('/observation/download-data/' + $("#observation-datatable :checked").val());
+            }
         });
 
     </script>

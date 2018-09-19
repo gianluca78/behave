@@ -248,7 +248,7 @@
         var $collectionHolder = $('div.items');
 
         $( document ).ready(function() {
-            isShared = ($("#measure_isShared").val() == '0') ? false : true;
+            isShared = ($("#measure_isShared").is(':checked')) ? true : false;
 
             $("#measure_isShared").bootstrapSwitch('state', isShared);
             $("#measure_isShared").bootstrapSwitch('size', 'small');
@@ -305,15 +305,6 @@
 
                 $(".portlet-body").trigger( "change" );
             }
-        });
-
-        $("#measure_isShared").bootstrapSwitch('onSwitchChange', function() {
-            if($("#measure_isShared").bootstrapSwitch('state')) {
-                $("#measure_isShared").val(1);
-            } else {
-                $("#measure_isShared").val(0);
-            }
-
         });
 
         $(".portlet-body").on('change', "select[id*='type']", function(){

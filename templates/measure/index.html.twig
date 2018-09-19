@@ -36,19 +36,28 @@ Measures
 <script src="{{ asset('theme/assets/pages/scripts/table-datatables-managed.js') }}"></script>
 
 <script>
+    $( document ).ready(function() {
+        $('#edit-button').addClass('opaque');
+        $('#delete-button').addClass('opaque');
+    });
+
     $('#add-button').on('click', function(){
         if(!$(this).hasClass('opaque')) {
             location.assign('{{ path('measure_new') }}');
         }
     });
 
-    $('#edit-button').on('click', function(){
+    $('#edit-button').on('click', function(e){
+        e.preventDefault();
+
         if(!$(this).hasClass('opaque')) {
             location.assign('/measure/edit/' + $("#measure-datatable :checked").val());
         }
     });
 
-    $('#delete-button').on('click', function(){
+    $('#delete-button').on('click', function(e){
+        e.preventDefault();
+
         ids = [];
 
         $('.checkboxes').each(function() {
@@ -57,7 +66,10 @@ Measures
             }
         });
 
-        location.assign('/measure/delete/' + encodeURIComponent(JSON.stringify(ids)));
+        if(ids.length > 0) {
+            location.assign('/measure/delete/' + encodeURIComponent(JSON.stringify(ids)));
+        }
+
     });
 </script>
 
