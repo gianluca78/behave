@@ -19,7 +19,6 @@ var TableDatatablesManaged = function () {
             })
 
             if(t) {
-                $('#edit-button').removeClass('opaque');
                 $('#delete-button').removeClass('opaque');
             } else {
                 $('#edit-button').addClass('opaque');

@@ -75,7 +75,8 @@ class ObservationPhaseController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE)
+            'title' => $this->get('translator')->trans(self::NEW_TITLE),
+            'observation' => $observation
         );
     }
 
@@ -104,7 +105,8 @@ class ObservationPhaseController extends Controller
         return $this->render('observation_phase/new.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE)
+                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
+                'observation' => $observationPhase->getObservation()
             )
         );
     }

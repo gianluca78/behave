@@ -35,6 +35,7 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/fullcalendar/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/css/components.min.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -60,7 +61,8 @@
                         start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
                         end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
                         allDay: {{ allDay }},
-                        backgroundColor: App.getBrandColor('red')
+                        backgroundColor: App.getBrandColor('red'),
+                        test: true
                     }{% if loop.index != observation.observationDates | length %},{% endif %}
                     {% endfor %}
 

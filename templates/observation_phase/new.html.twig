@@ -1,19 +1,69 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}
     {{ title }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_list') }}">Students</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.student.studentId }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.name }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('observation_phase_list', { 'id': observation.id }) }}">Phases</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>New</span>
+    </li>
+{% endblock %}
+
+{% block pageTitle %}
+    Data
+{% endblock %}
+
 {% block body %}
-
-    {% for flashMessage in app.session.flashbag.get('success') %}
-        <div>{{ flashMessage }}</div>
-    {% endfor %}
-
     {{ form_start(form) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form._token) }}
-    {{ form_row(form.submit) }}
-    {{ form_end(form, {'render_rest': false}) }}
 
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>New phase
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form._token) }}
+
+        {{ form_end(form, {'render_rest': false}) }}
+
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    {{ form_widget(form.submit, {'class': 'btn btn-circle green'}) }}
+                    <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 {% endblock %}

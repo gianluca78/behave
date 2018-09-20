@@ -3,45 +3,121 @@
     {{ title }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_list') }}">Students</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.student.studentId }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.name }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>Data</span>
+    </li>
+{% endblock %}
+
+{% block pageTitle %}
+    Data
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/css/components.min.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
 {% block body %}
     {% for flashMessage in app.session.flashbag.get('success') %}
-        <div>{{ flashMessage }}</div>
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
     {% endfor %}
 
     <div class="row">
-        <div class="col-md-12 col-md-offset-1">
-            <h2>Observation phases list</h2>
+        <div class="col-md-22">
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class=" icon-layers font-green"></i>
+                        <span class="caption-subject font-green bold uppercase">Observation phases</span>
+                    </div>
+                    <div class="actions">
+                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_new', {'id': observation.id }) }}">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    {% if observation.observationPhases | length == 0 %}
+                        <div class="note note-info">
+                            <h4 class="block">No phases defined!</h4>
+                            <p> Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...)</p>
+                        </div>
+                    {% endif %}
 
-            <table class="table table-stripped table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>id</th>
-                    <th> name</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
+                    <div class="mt-element-step">
+                        {% for record in records|batch(6) %}
+                        <div class="row step-background">
+                            {% if(record | length == 1) %}
+                                {% set indexGrid = 12 %}
+                            {% endif %}
 
-                <tbody>
-                {% for record in records %}
-                    <tr>
-                        <td>{{ record.id }}</td>
-                        <td>{{ record. name }}</td>
+                            {% if(record | length == 2) %}
+                                {% set indexGrid = 6 %}
+                            {% endif %}
 
-                        <td><a href="{{ path('observation_phase_edit', {'id': record.id}) }}">
-                                {% trans %}Edit{% endtrans %}
-                            </a>
-                        </td>
-                        <td><a href="{{ path('observation_phase_delete', {'id': record.id}) }}">
-                                {% trans %}Delete{% endtrans %}
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                            {% if(record | length == 3) %}
+                                {% set indexGrid = 4 %}
+                            {% endif %}
 
-            <a href="{{ path('observation_phase_new', {'id': observation.id} ) }}">{% trans %}New{% endtrans %}</a>
+                            {% if(record | length == 4 or record | length == 5) %}
+                                {% set indexGrid = 3 %}
+                            {% endif %}
+
+                            {% if(record | length == 6) %}
+                                {% set indexGrid = 2 %}
+                            {% endif %}
+
+                            {% for phase in record %}
+                                <div class="col-md-{{ indexGrid }} bg-grey-steel mt-step-col">
+                                    <div class="mt-step-number">{{ loop.index }}</div>
+                                    <div class="mt-step-title uppercase font-grey-cascade">
+                                        <sup class="badge badge-success">gathered data: {{ phase.dataIds | length }} </sup> {{ phase.name }}
+                                    </div>
+                                    <div class="mt-step-content font-grey-cascade">
+
+                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_edit', {'id': phase.id }) }}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_delete', {'id': phase.id }) }}">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_delete', {'id': phase.id }) }}">
+                                            <i class="fa fa-list"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
