@@ -15,6 +15,7 @@ use App\Form\Type\ObservationPhaseType;
 
 use App\Entity\Observation;
 use App\Entity\ObservationPhase;
+use App\CouchDb\Client as CouchDbClient;
 
 /**
  * @Route("/observation-phase")
@@ -40,14 +41,25 @@ class ObservationPhaseController extends Controller
      * @param Observation $observation
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Observation $observation)
+    public function indexAction(Observation $observation, CouchDbClient $couchDbClient)
     {
+        if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
+        $observationData = $couchDbClient->getObservationsById($observation->getId());
+
         $records = $this->getDoctrine()->getRepository('App\Entity\ObservationPhase')->findByObservation($observation);
 
         return array(
             'records' => $records,
             'title' => $this->get('translator')->trans(self::INDEX_TITLE),
-            'observation' => $observation
+            'observation' => $observation,
+            'observationData' => json_decode($observationData->getContents())->rows,
+            'observationPhases' => $observation->getObservationPhases()
         );
     }
 
