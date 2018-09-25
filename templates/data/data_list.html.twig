@@ -1,84 +1,173 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_list') }}">Students</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.student.studentId }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.name }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>Phase data</span>
+    </li>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/slick/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/slick/slick/slick-theme.css') }}">
+{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
 
+    <script src="{{ asset('theme/assets/global/plugins/horizontal-timeline/horizontal-timeline.js') }}"></script>
+    <script src="{{ asset('theme/assets/global/plugins/slick/slick/slick.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/highcharts.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/series-label.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/exporting.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/export-data.js') }}"></script>
+
+
     <script>
-        $(".dropdown-item").on('click', function(e) {
-            e.stopPropagation();
-
-            values = new Array();
-            values.phaseId = $(this).data('phase-id');
-            values.ids = new Array();
-            values.phasename = this.text;
-
-            $('input[name="data_id"]:checked').each(function() {
-                values.ids.push(this.value); //console.log(this.value);
-            });
-
-            $.ajax({
-                url:"{{ path('observation_phase_save_observation_phase_data', {
-                            'id': observation.id
-                        })
-                     }}",
-                type:"POST",
-                data: { phaseId: values.phaseId, ids: values.ids },
-                success:function(response) {
-                    window.location.replace("{{ path('data_list', {
-                        'id': observation.id
-                        })
-                    }}");
-                },
-                error: function(xhr, status, error) {
-                    console.log(xhr.responseText);
-                }
-            });
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
         });
+        $('.slider-nav').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: true,
+            centerMode: true,
+            focusOnSelect: true
+        });
+    </script>
+
+    <script type="text/javascript">
+        {{ chart(chart) }}
     </script>
 {% endblock %}
 
-{% block body %}
-    <div class="row">
-        <div class="col-md-12 col-md-offset-1">
-            <h2>Association data - phase</h2>
+    {% block body %}
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Gathered data</span>
+                        </div>
+                        <div class="actions">
+                            <div class="btn-group">
+                                <a class="btn blue btn-outline btn-circle btn-sm" href="javascript:;"
+                                   data-toggle="dropdown"
+                                   data-hover="dropdown" data-close-others="true"> Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a href="javascript:;"> Action 1</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="javascript:;">Action 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Action 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Action 4</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body" style="background-color: #87cefa;">
+                        <div class="mt-element-step">
+                            <div class="row step-background">
 
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Label
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    {% for phase in observationPhases %}
-                        <a class="dropdown-item" href="#!" data-phase-id="{{ phase.id }}">{{ phase.name }}</a>
-                    {% endfor %}
+                                <div class="slider slider-nav">
+                                    {% for data in phaseData %}
+                                        <div>
+                                            <h3>{{ data.createdAt | date('Y-m-d H:m') }}</h3>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="slider slider-for">
+                                    {% for data in phaseData %}
+                                        <div class="mt-element-list">
+                                            <div class="mt-list-head list-news font-white bg-blue">
+                                                <div class="list-head-title-container">
+                                                    <h3 class="list-title">Data gathered
+                                                        on {{ data.createdAt | date('Y-m-d H:m') }}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="mt-list-container list-news">
+                                                <ul>
+                                                    {% for key, item in data %}
+                                                        {% if key != 'createdAt' %}
+                                                            <li class="mt-list-item">
+                                                                {% set itemValue = (item is iterable) ? item.xValue ~ ', ' ~ item.yValue : item %}
+
+                                                                <div class="list-datetime bold uppercase font-green">{{ key }}</div>
+                                                                <div class="list-item-content">
+                                                                    <h3 class="uppercase">
+                                                                        {{ itemValue }}
+                                                                    </h3>
+
+                                                                    <p></p>
+                                                                </div>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <table class="table table-stripped table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th> name</th>
-                    <th> phase</th>
-                </tr>
-                </thead>
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Phase {{ observationPhase.name }} scatter plot</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
 
-                <tbody>
-                    <form method="GET">
-                        {% for record in observationData %}
-                            <tr>
-                                <td><input type="checkbox" name="data_id" value="{{ record.id }}"></td>
-                                <td>{{ record.value.createdAt.date }}</td>
-                                <td>
-                                    {{ render(controller(
-                                    'App\\Controller\\ObservationPhaseController::hasDataIdAction',
-                                    { 'dataId': record.id }
-                                    )) }}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </form>
-                </tbody>
-            </table>
         </div>
-    </div>
-{% endblock %}
+
+
+
+    {% endblock %}

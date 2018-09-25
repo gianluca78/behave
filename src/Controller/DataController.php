@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Utility\CouchDbDataTransformer;
 use App\Utility\HighchartsGenerator;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
@@ -14,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpFoundation\Response;
 
 use App\Entity\Observation;
+use App\Entity\ObservationPhase;
 use App\CouchDb\Client as CouchDbClient;
 use GuzzleHTTP\Client as GuzzleClient;
 
@@ -30,27 +32,46 @@ class DataController extends Controller
      * @Method({"GET"})
      * @Template
      *
-     * @param Observation $entity
+     * @param ObservationPhase $observationPhase
      * @param CouchDbClient $couchDbClient
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function dataListAction(Observation $observation, CouchDbClient $couchDbClient)
+    public function dataListAction(ObservationPhase $observationPhase, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer)
     {
-        if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
+        if($observationPhase->getObservation()->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
 
             return $response;
         }
 
-        $observationData = $couchDbClient->getObservationsById($observation->getId());
+        $phaseData = $couchDbClient->getByIds($observationPhase->getDataIds());
+        $phaseData = $couchDbDataTransformer->transform(json_decode($phaseData->getContents(), true)['rows']);
 
-        //var_dump(json_decode($observationData->getContents())->rows); exit;
+        $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
+        $chart = $highchartsGenerator->generateScatterPlot(
+            $observationPhase->getObservation()->getName(),
+            array(
+                array("name" => "Baseline",
+                    "data" => array(1,2,4,5,6,3,8)
+                ),
+                array("name" => "Intervention",
+                    "data" => array(1,52,45,5,63,3,8)
+                ),
+            ),
+            //$series,
+            'linechart',
+            'x',
+            'y'
+        );
+
 
         return array(
-            'observation' => $observation,
-            'observationData' => json_decode($observationData->getContents())->rows,
-            'observationPhases' => $observation->getObservationPhases()
+            'title' => 'Phase data',
+            'observation' => $observationPhase->getObservation(),
+            'phaseData' => $phaseData,
+            'chart' => $chart,
+            'observationPhase' => $observationPhase
         );
     }
 

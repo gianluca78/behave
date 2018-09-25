@@ -51,3 +51,28 @@
 .blue { background-color: #C7D7FF; }
 .yellow { background-color: #FFDF99; }
 .rose { background-color: #F7CA9F; }
+
+/*****************************/
+/*            SLICK          */
+/*****************************/
+.slider-for {
+
+    min-height: 500px;
+    background-color: lightgray;
+}
+
+.slider-for table tr td.first {
+    width: 100% !important;
+    color: red;
+}
+
+.slider-for table tr td.second {
+    width: 100% !important;
+    color: #008000;
+}
+
+.slider-nav div {
+    height: 100px;
+    border: 1px solid lightgray;
+    text-align: center;
+}
