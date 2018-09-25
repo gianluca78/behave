@@ -5,8 +5,11 @@ namespace App\Form\Widget;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Form\Type\Custom\DirectObservationItemType;
 use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class DirectObservationWidget implements WidgetInterface {
+
+    CONST ITEM_TYPOLOGY = 'direct-observation';
 
     private $label;
     private $observationLengthInMinutes;
@@ -36,6 +39,15 @@ class DirectObservationWidget implements WidgetInterface {
                 'typology' => $this->typology
             )
         );
+
+        $formBuilderInterface->add(
+            $name . '-typology',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => self::ITEM_TYPOLOGY
+                )
+            ));
 
         return $formBuilderInterface;
     }

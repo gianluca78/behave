@@ -4,6 +4,7 @@ namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Form\Type\Custom\MeterItemType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class MeterWidget implements WidgetInterface {
@@ -18,6 +19,8 @@ class MeterWidget implements WidgetInterface {
     private $labelX;
     private $labelMaxX;
     private $labelMinX;
+
+    CONST ITEM_TYPOLOGY = 'meter';
 
     public function __construct(TranslatorInterface $translator)
     {
@@ -43,6 +46,15 @@ class MeterWidget implements WidgetInterface {
                 'label_max_x' => $this->labelMaxX,
             )
         );
+
+        $formBuilderInterface->add(
+            $name . '-typology',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => self::ITEM_TYPOLOGY
+                )
+            ));
 
         return $formBuilderInterface;
     }

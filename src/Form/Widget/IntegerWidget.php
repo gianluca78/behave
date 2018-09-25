@@ -4,6 +4,7 @@ namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -17,6 +18,7 @@ class IntegerWidget implements WidgetInterface {
 
     CONST NOT_BLANK_MESSAGE = 'This value should not be blank.';
     CONST MESSAGE = 'The value {{ value }} is not a valid {{ type }}.';
+    CONST ITEM_TYPOLOGY = 'integer';
 
     public function __construct(TranslatorInterface $translator)
     {
@@ -48,6 +50,15 @@ class IntegerWidget implements WidgetInterface {
                 'label' => $this->label,
             )
         );
+
+        $formBuilderInterface->add(
+            $name . '-typology',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => self::ITEM_TYPOLOGY
+                )
+            ));
 
         return $formBuilderInterface;
     }

@@ -5,6 +5,7 @@ namespace App\Form\Widget;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Validator\Constraints\Choice;
 
 class ChoiceWidget implements WidgetInterface {
@@ -16,6 +17,7 @@ class ChoiceWidget implements WidgetInterface {
 
     CONST NOT_VALID_CHOICE = 'The value you selected is not a valid choice.';
     CONST NOT_VALID_MULTIPLE_CHOICE = 'One or more of the given values is invalid.';
+    CONST ITEM_TYPOLOGY = 'choice';
 
     public function __construct(TranslatorInterface $translator)
     {
@@ -51,7 +53,37 @@ class ChoiceWidget implements WidgetInterface {
             $options
         );
 
+        $formBuilderInterface->add(
+            $name . '-typology',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => self::ITEM_TYPOLOGY . '-' . $this->getTypologyName()
+                )
+            )
+        );
+
         return $formBuilderInterface;
+    }
+
+    private function getTypologyName()
+    {
+        if($this->getIsExpanded() == 1 && $this->getIsMultiple() == 1) {
+            return 'checkboxes';
+        }
+
+        if($this->getIsExpanded() == 0 && $this->getIsMultiple() == 0) {
+            return 'dropdown';
+        }
+
+        if($this->getIsExpanded() == 0 && $this->getIsMultiple() == 1) {
+            return 'dropdown-multiple';
+        }
+
+        if($this->getIsExpanded() == 1 && $this->getIsMultiple() == 0) {
+            return 'radio';
+        }
+
     }
 
     /**

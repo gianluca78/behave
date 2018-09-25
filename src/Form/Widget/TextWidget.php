@@ -4,6 +4,7 @@ namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -21,6 +22,7 @@ class TextWidget implements WidgetInterface {
     CONST LENGTH_MAX = 255;
     CONST LENGTH_MIN_MESSAGE = 'The inserted text must be at least {{ limit }} characters long';
     CONST LENGTH_MAX_MESSAGE = 'The inserted text cannot be longer than {{ limit }} characters';
+    CONST ITEM_TYPOLOGY = 'text';
 
     public function __construct(TranslatorInterface $translator)
     {
@@ -55,6 +57,15 @@ class TextWidget implements WidgetInterface {
                 'label' => $this->label
             )
         );
+
+        $formBuilderInterface->add(
+            $name . '-typology',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => self::ITEM_TYPOLOGY
+                )
+            ));
 
         return $formBuilderInterface;
     }

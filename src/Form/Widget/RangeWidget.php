@@ -4,6 +4,7 @@ namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -19,6 +20,7 @@ class RangeWidget implements WidgetInterface {
 
     CONST MIN_MESSAGE = 'The minimum allowed value is {{ limit }}';
     CONST MAX_MESSAGE = 'The maximum allowed value is {{ limit }}';
+    CONST ITEM_TYPOLOGY = 'range';
 
     public function __construct(TranslatorInterface $translator)
     {
@@ -50,6 +52,15 @@ class RangeWidget implements WidgetInterface {
                 'label' => $this->label,
             )
         );
+
+        $formBuilderInterface->add(
+            $name . '-typology',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => self::ITEM_TYPOLOGY
+                )
+            ));
 
         return $formBuilderInterface;
     }
