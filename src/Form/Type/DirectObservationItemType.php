@@ -36,7 +36,7 @@ class DirectObservationItemType extends AbstractType
                     ))
                 )
             ))
-            ->add('intervalLengthInSeconds', null, array('required' => true))
+            ->add('intervalLengthInSeconds', null, array('required' => false))
         ;
     }
 
