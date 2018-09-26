@@ -56,6 +56,33 @@ class MeterWidget implements WidgetInterface {
                 )
             ));
 
+        $formBuilderInterface->add(
+            $name . '-label',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => $this->label
+                )
+            ));
+
+        $formBuilderInterface->add(
+            $name . '-label-x',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => $this->labelX
+                )
+            ));
+
+        $formBuilderInterface->add(
+            $name . '-label-y',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => $this->labelY
+                )
+            ));
+
         return $formBuilderInterface;
     }
 

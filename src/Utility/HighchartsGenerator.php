@@ -24,6 +24,7 @@ class HighchartsGenerator {
         $ob->title->text($title);
 
         $ob->xAxis->title(array('text'  => $xAxisTitle));
+        //$ob->xAxis->categories(array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'));
         $ob->xAxis->allowDecimals(false);
         //$ob->xAxis->plotLines($this->generatePlotLines($series));
 

@@ -45,12 +45,51 @@ class DataController extends Controller
             return $response;
         }
 
-        $phaseData = $couchDbClient->getByIds($observationPhase->getDataIds());
-        $phaseData = $couchDbDataTransformer->transform(json_decode($phaseData->getContents(), true)['rows']);
+        $rawPhaseData = $couchDbClient->getByIds($observationPhase->getDataIds());
+        $rawPhaseData = json_decode($rawPhaseData->getContents(), true)['rows'];
+        $phaseData = $couchDbDataTransformer->transformByData($rawPhaseData);
+        $chartData = $couchDbDataTransformer->transformByItemTypology($rawPhaseData);
 
         $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
         $chart = $highchartsGenerator->generateScatterPlot(
             $observationPhase->getObservation()->getName(),
+            array(
+                array(
+                    'name' => array_keys($chartData)[0],
+                    'data' => $chartData[array_keys($chartData)[0]]
+                ),
+                array(
+                    'name' => array_keys($chartData)[1],
+                    'data' => $chartData[array_keys($chartData)[1]]
+                ),
+                array(
+                    'name' => array_keys($chartData)[2],
+                    'data' => $chartData[array_keys($chartData)[2]]
+                ),
+                array(
+                    'name' => array_keys($chartData)[3],
+                    'data' => $chartData[array_keys($chartData)[3]]
+                ),
+                array(
+                    'name' => array_keys($chartData)[4],
+                    'data' => $chartData[array_keys($chartData)[4]]
+                ),
+                array(
+                    'name' => array_keys($chartData)[5],
+                    'data' => $chartData[array_keys($chartData)[5]]
+                ),
+                array(
+                    'name' => array_keys($chartData)[6],
+                    'data' => $chartData[array_keys($chartData)[6]]
+                ),
+                array(
+                    'name' => array_keys($chartData)[7],
+                    'data' => $chartData[array_keys($chartData)[7]]
+                ),
+            )
+
+
+            /*
             array(
                 array("name" => "Baseline",
                     "data" => array(1,2,4,5,6,3,8)
@@ -58,7 +97,7 @@ class DataController extends Controller
                 array("name" => "Intervention",
                     "data" => array(1,52,45,5,63,3,8)
                 ),
-            ),
+            )*/,
             //$series,
             'linechart',
             'x',

@@ -60,6 +60,15 @@ class IntegerWidget implements WidgetInterface {
                 )
             ));
 
+        $formBuilderInterface->add(
+            $name . '-label',
+            HiddenType::class,
+            array(
+                'attr' => array(
+                    'value' => $this->label
+                )
+            ));
+
         return $formBuilderInterface;
     }
 

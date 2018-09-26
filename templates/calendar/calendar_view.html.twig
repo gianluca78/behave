@@ -78,6 +78,8 @@
 
 {% block body %}
     <div class="row">
+        <a href="{{ path('observation_phase_list', {'id': observation.id }) }}">Phases</a>
+
         <div class="col-md-12">
             <div class="portlet light portlet-fit bordered calendar">
                 <div class="portlet-title">

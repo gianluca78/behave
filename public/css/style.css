@@ -56,23 +56,17 @@
 /*            SLICK          */
 /*****************************/
 .slider-for {
-
     min-height: 500px;
-    background-color: lightgray;
 }
 
-.slider-for table tr td.first {
-    width: 100% !important;
-    color: red;
+.mt-element-step .step-thin .active {
+    background-color: #2C3E50 !important;
 }
 
-.slider-for table tr td.second {
-    width: 100% !important;
-    color: #008000;
+.mt-element-step .step-thin .active .mt-step-number {
+    color: #2C3E50 !important;
 }
 
-.slider-nav div {
-    height: 100px;
-    border: 1px solid lightgray;
-    text-align: center;
+.slick-prev:before, .slick-next:before {
+    color:#2C3E50 !important;
 }
