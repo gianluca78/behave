@@ -85,106 +85,116 @@
 {% endblock %}
 
     {% block body %}
+        {% if phaseData | length == 0 %}
         <div class="row">
-            <div class="col-md-6 col-sm-6">
-                <div class="portlet light portlet-fit bordered">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="icon-directions font-green hide"></i>
-                            <span class="caption-subject bold font-dark uppercase "> Gathered data</span>
+            <div class="col-md-12 col-sm-12">
+                <div class="note note-info">
+                    <h4 class="block">No data gathered!</h4>
+                    <p> When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.</p>
+                </div>
+            </div>
+        </div>
+        {% else %}
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-directions font-green hide"></i>
+                                <span class="caption-subject bold font-dark uppercase "> Gathered data</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="mt-element-step">
-                            <div class="row step-thin">
-                                <div class="slider slider-nav">
-                                    {% for data in phaseData %}
-                                        <div class="col-lg-4 bg-grey mt-step-col">
-                                            <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
-                                            <div class="mt-step-title uppercase font-grey-cascade">Date</div>
-                                            <div class="mt-step-content font-grey-cascade">{{ data.createdAt | date('Y-m-d H:i') }}</div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
+                        <div class="portlet-body">
+                            <div class="mt-element-step">
+                                <div class="row step-thin">
+                                    <div class="slider slider-nav">
+                                        {% for data in phaseData %}
+                                            <div class="col-lg-4 bg-grey mt-step-col">
+                                                <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
+                                                <div class="mt-step-title uppercase font-grey-cascade">Date</div>
+                                                <div class="mt-step-content font-grey-cascade">{{ data.createdAt | date('Y-m-d H:i') }}</div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
 
-                                <div class="slider slider-for">
-                                    {% for data in phaseData %}
-                                        <div class="mt-element-list">
-                                            <div class="mt-list-head list-news font-white bg-blue-chambray">
-                                                <div class="list-head-title-container">
-                                                    <h3 class="list-title">Data gathered on {{ data.createdAt | date('Y-m-d H:i') }}</h3>
+                                    <div class="slider slider-for">
+                                        {% for data in phaseData %}
+                                            <div class="mt-element-list">
+                                                <div class="mt-list-head list-news font-white bg-blue-chambray">
+                                                    <div class="list-head-title-container">
+                                                        <h3 class="list-title">Data gathered on {{ data.createdAt | date('Y-m-d H:i') }}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-list-container list-news">
+                                                    <ul>
+                                                        {% for key, item in data %}
+                                                            {% if key != 'createdAt' %}
+                                                                <li class="mt-list-item">
+                                                                    {% if item.typology == 'choice-checkboxes' %}
+                                                                        {% set itemValue = item.value | join(', ') %}
+                                                                    {% endif %}
+
+                                                                    {% if item.typology == 'choice-radio' %}
+                                                                        {% set itemValue = item.value %}
+                                                                    {% endif %}
+
+                                                                    {% if item.typology == 'direct-observation' %}
+                                                                        {% set itemValue = item.observationData %}
+                                                                    {% endif %}
+
+                                                                    {% if item.typology == 'integer' %}
+                                                                        {% set itemValue = item.value %}
+                                                                    {% endif %}
+
+                                                                    {% if item.typology == 'range' %}
+                                                                        {% set itemValue = item.value %}
+                                                                    {% endif %}
+
+                                                                    {% if item.typology == 'meter' %}
+                                                                        {% set itemValue = item.value | join(', ') %}
+                                                                    {% endif %}
+
+                                                                    {% if item.typology == 'text' %}
+                                                                        {% set itemValue = item.value %}
+                                                                    {% endif %}
+
+                                                                    <div class="list-datetime bold uppercase font-blue-chambray">{{ key }} {{ item.label }}</div>
+                                                                    <div class="list-item-content">
+                                                                        <p></p>
+
+                                                                        <h3 class="uppercase">
+                                                                            {{ itemValue }}
+                                                                        </h3>
+
+
+                                                                    </div>
+                                                                </li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </ul>
                                                 </div>
                                             </div>
-                                            <div class="mt-list-container list-news">
-                                                <ul>
-                                                    {% for key, item in data %}
-                                                        {% if key != 'createdAt' %}
-                                                            <li class="mt-list-item">
-                                                                {% if item.typology == 'choice-checkboxes' %}
-                                                                    {% set itemValue = item.value | join(', ') %}
-                                                                {% endif %}
-
-                                                                {% if item.typology == 'choice-radio' %}
-                                                                    {% set itemValue = item.value %}
-                                                                {% endif %}
-
-                                                                {% if item.typology == 'direct-observation' %}
-                                                                    {% set itemValue = item.observationData %}
-                                                                {% endif %}
-
-                                                                {% if item.typology == 'integer' %}
-                                                                    {% set itemValue = item.value %}
-                                                                {% endif %}
-
-                                                                {% if item.typology == 'range' %}
-                                                                    {% set itemValue = item.value %}
-                                                                {% endif %}
-
-                                                                {% if item.typology == 'meter' %}
-                                                                    {% set itemValue = item.value | join(', ') %}
-                                                                {% endif %}
-
-                                                                {% if item.typology == 'text' %}
-                                                                    {% set itemValue = item.value %}
-                                                                {% endif %}
-
-                                                                <div class="list-datetime bold uppercase font-blue-chambray">{{ key }} {{ item.label }}</div>
-                                                                <div class="list-item-content">
-                                                                    <p></p>
-
-                                                                    <h3 class="uppercase">
-                                                                        {{ itemValue }}
-                                                                    </h3>
-
-
-                                                                </div>
-                                                            </li>
-                                                        {% endif %}
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-sm-6">
-                <div class="portlet light portlet-fit bordered">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="icon-directions font-green hide"></i>
-                            <span class="caption-subject bold font-dark uppercase "> Phase {{ observationPhase.name }} scatter plot</span>
+                <div class="col-md-6 col-sm-6">
+                    <div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-directions font-green hide"></i>
+                                <span class="caption-subject bold font-dark uppercase "> Phase {{ observationPhase.name }} scatter plot</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                        <div class="portlet-body">
+                            <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </div>
+        {% endif %}
     {% endblock %}

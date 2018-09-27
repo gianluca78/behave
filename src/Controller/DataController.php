@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Utility\CouchDbDataTransformer;
+use App\Utility\EffectSizeChecker;
 use App\Utility\HighchartsGenerator;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
@@ -48,7 +49,6 @@ class DataController extends Controller
         $rawPhaseData = $couchDbClient->getByIds($observationPhase->getDataIds());
         $rawPhaseData = json_decode($rawPhaseData->getContents(), true)['rows'];
         $phaseData = $couchDbDataTransformer->transformByData($rawPhaseData);
-        $chartData = $couchDbDataTransformer->transformByItemTypology($rawPhaseData);
         $chartData = $couchDbDataTransformer->transformByNameAndData($rawPhaseData);
 
         $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
@@ -75,7 +75,7 @@ class DataController extends Controller
      * @Template
      *
      */
-    public function analysisAction(Observation $observation, Request $request, CouchDbClient $couchDbClient)
+    public function analysisAction(Observation $observation, Request $request, CouchDbClient $couchDbClient, EffectSizeChecker $effectSizeChecker)
     {
         $config = array (
             'base_uri' => 'http://150.145.114.110/rtest/p'
@@ -170,6 +170,7 @@ class DataController extends Controller
 
             $twigVariables = array(
                 'data' => $data,
+                'analysisMessage' => $effectSizeChecker->getResultMessage($data),
                 'phasesLength' => array_count_values($data->database->PHASE),
                 'interceptEstimate' => $data->regression->coefficients[0]->Estimate,
                 'interceptStdError' => $data->regression->coefficients[0]->{'Std. Error'},
@@ -211,6 +212,7 @@ class DataController extends Controller
             'observation' => $observation,
             'phases' => $observation->getObservationPhases(),
             'measure' => $observation->getMeasure(),
+            'title' => 'Data analysis'
         ), $twigVariables);
     }
 }

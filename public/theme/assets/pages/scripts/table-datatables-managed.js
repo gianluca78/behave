@@ -129,6 +129,7 @@ var TableDatatablesManaged = function () {
                 $('#edit-button').addClass('opaque');
                 $('#download-button').addClass('opaque');
                 $('#data-analysis-button').addClass('opaque');
+                $('#phase-list-button').addClass('opaque');
             }
 
             if($('.checkboxes:checked').length == 0) {

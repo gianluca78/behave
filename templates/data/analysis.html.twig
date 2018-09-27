@@ -1,6 +1,118 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_list') }}">Students</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.student.studentId }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>{{ observation.name }}</span>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>Data analysis</span>
+    </li>
+{% endblock %}
 
 {% block body %}
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-directions font-green hide"></i>
+                        <span class="caption-subject bold font-dark uppercase "> Phases to be compared</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-thin">
+                            <div class="slider slider-nav">
+                                {% for phase in phases %}
+                                    {% if(phases | length == 1) %}
+                                        {% set indexGrid = 12 %}
+                                    {% endif %}
+
+                                    {% if(phases | length == 2) %}
+                                        {% set indexGrid = 6 %}
+                                    {% endif %}
+
+                                    {% if(phases | length == 3) %}
+                                        {% set indexGrid = 4 %}
+                                    {% endif %}
+
+                                    {% if(phases | length == 4 or phases | length == 5) %}
+                                        {% set indexGrid = 3 %}
+                                    {% endif %}
+
+                                    {% if(phases | length == 6) %}
+                                        {% set indexGrid = 2 %}
+                                    {% endif %}
+
+                                    <div class="col-lg-{{ indexGrid }} bg-grey mt-step-col phase-container"
+                                         data-phase-name="{{ phase.name }}">
+                                        <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
+                                        <div class="mt-step-title uppercase font-grey-cascade">{{ phase.name }}</div>
+                                        <div class="mt-step-content font-grey-cascade">{{ phase.dataIds | length }}
+                                            observations
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-directions font-green hide"></i>
+                        <span class="caption-subject bold font-dark uppercase "> Item be analyzed</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-thin">
+                            <div class="slider slider-nav">
+                                {% for item in measure.choiceItems %}{% endfor %}
+
+                                {% for item in measure.integerItems %}{% endfor %}
+
+                                {% for item in measure.meterItems %}{% endfor %}
+
+                                {% for item in measure.rangeItems %}{% endfor %}
+
+                                {% for item in measure.directObservationItems %}{% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <form action="{{ path('data_analysis', {'id' : observation.id}) }}" method="post">
         {% for phase in phases %}
             <input type="checkbox" name="{{ phase.name }}" value="{{ phase.dataIds|join(',') }}"> {{ phase }}<br>
@@ -21,234 +133,383 @@
         <input type="submit" value="Analyze">
     </form>
 
+    <div class="modal fade" id="warning-dialog" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body"> You can analyze only 2 phases at a time</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    {% if data is defined %}
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Scatter plot</span>
+                            <span class="caption-helper"></span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Speedometer</span>
+                            <span class="caption-helper"></span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                {% if data.outMonte == 'AvsB+trendB-trendA' %}
+                                    {% set analysisValue = data.TAU_U_Analysis[10].AvsBTrendBTrendA | round(3, 'ceil') %}
+                                {% endif %}
+
+                                {% if data.outMonte == 'AvsB+trendB' %}
+                                    {% set analysisValue = data.TAU_U_Analysis[10].AvsBTrendB | round(3, 'ceil') %}
+                                {% endif %}
+
+                                {% if data.outMonte == 'AvsB' %}
+                                    {% set analysisValue = data.PartitionsOfMatrix[10].AvsB | round(3, 'ceil') %}
+                                {% endif %}
+
+                                {% if data.outMonte == 'Allison & Gorman' %}
+                                    {% set analysisValue = data.R.value | round(3, 'ceil') %}
+                                {% endif %}
+
+                                {{ include('data/spinner.html.twig',
+                                {'spinnerWidth' : 100, 'analysisValue': analysisValue }) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 text-center">
+                                <ul class="list-inline">
+                                    <li><span class="azure">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}
+                                        null{% endtrans %}</li>
+                                    <li><span class="blue">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}
+                                        small{% endtrans %}</li>
+                                    <li><span class="yellow">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}
+                                        medium{% endtrans %}</li>
+                                    <li><span class="rose">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}
+                                        large{% endtrans %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 text-center">
+                                <div style="padding-left:25px;" id="message"><strong>The effect size
+                                        is: {{ analysisValue }}.</strong><br>
+                                    {{ analysisMessage }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 
     {% if data is defined and data.outMonte == 'Allison & Gorman' %}
-    <h2>Allison & Gorman</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Allison & Gorman</span>
+                            <span class="caption-helper">Descriptive Statistics</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th scope="row">Length</th>
+                                <td>{{ data.database.DV | length }}</td>
+                            </tr>
+                            {% for phaseName, phaseLength in phasesLength %}
+                                <tr>
+                                    <th scope="row">Number of phase: {{ phaseName }}</th>
+                                    <td>{{ phaseLength }}</td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <th scope="row">Theoretical minimum</th>
+                                <td>{{ data.miny }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Empirical minimum</th>
+                                <td>{{ min(data.database.DV) | round(1, 'ceil') }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Theoretical maximum</th>
+                                <td>{{ data.maxy }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Empirical maximum</th>
+                                <td>{{ max(data.database.DV) | round(1, 'ceil') }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Allison & Gorman</span>
+                            <span class="caption-helper">Method</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th scope="row">Selected method</th>
+                                <td>{{ data.smethod }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tested method</th>
+                                <td>{{ data.method }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Product of the bivariate correlation coefficient of detrended DV with X
+                                    and X(T-na), respectively:
+                                </th>
+                                <td>{{ data.product }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h3>Descriptive Statistics</h3>
-    <table class="table">
-        <tr>
-            <th scope="row">Length</th>
-            <td>{{ data.database.DV | length }}</td>
-        </tr>
-        {% for phaseName, phaseLength in phasesLength %}
-            <tr>
-                <th scope="row">Number of phase: {{ phaseName }}</th>
-                <td>{{ phaseLength }}</td>
-            </tr>
-        {% endfor %}
-        <tr>
-            <th scope="row">Theoretical minimum</th>
-            <td>{{ data.miny }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Empirical minimum</th>
-            <td>{{ min(data.database.DV) | round(1, 'ceil') }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Theoretical maximum</th>
-            <td>{{ data.maxy }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Empirical maximum</th>
-            <td>{{ max(data.database.DV) | round(1, 'ceil') }}</td>
-        </tr>
-    </table>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Allison & Gorman</span>
+                            <span class="caption-helper">Effect Size</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th scope="row">Cohen's d</th>
+                                <td>{{ data.cohen_d_ConNum.value }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">r</th>
+                                <td>{{ data.R.value }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Allison & Gorman</span>
+                            <span class="caption-helper">Regression output</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th scope="row">Formula</th>
+                                <td>Detrended Score = B0 + B1 Treatment + B3 Treatment x (Time-na) + e</td>
+                            </tr>
+                        </table>
 
-    <h3>Method</h3>
-    <table class="table">
-        <tr>
-            <th scope="row">Selected method</th>
-            <td>{{ data.smethod }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Tested method</th>
-            <td>{{ data.method }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Product of the bivariate correlation coefficient of detrended DV with X and X(T-na), respectively:</th>
-            <td>{{ data.product }}</td>
-        </tr>
-    </table>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Estimate</th>
+                                <th>Std. Error</th>
+                                <th>t value</th>
+                                <th>Pr(>|t|)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">(Intercept)</th>
+                                <td>{{ interceptEstimate | round(1, 'floor') }}</td>
+                                <td>{{ interceptStdError | round(4, 'ceil') }}</td>
+                                <td>{{ interceptTValue | round(1, 'floor') }}</td>
+                                <td>{{ interceptPr | round(5, 'ceil') }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Treatment</th>
+                                <td>{{ treatmentEstimate | round(4, 'ceil') }}</td>
+                                <td>{{ treatmentStdError | round(4, 'ceil') }}</td>
+                                <td>{{ treatmentTValue | round(4, 'ceil') }}</td>
+                                <td>{{ treatmentPr | round(5, 'ceil') }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Treatment x (Time-na)</th>
+                                <td>{{ treatmentXTimeNaEstimate | round(4, 'ceil') }}</td>
+                                <td>{{ treatmentXTimeNaStdError | round(4, 'ceil') }}</td>
+                                <td>{{ treatmentXTimeNaTValue | round(4, 'ceil') }}</td>
+                                <td>{{ treatmentXTimeNaPr | round(4, 'ceil') }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <h3>Effect Size</h3>
-    <table class="table">
-        <tr>
-            <th scope="row">Cohen's d</th>
-            <td>{{ data.cohen_d_ConNum.value }}</td>
-        </tr>
-        <tr>
-            <th scope="row">r</th>
-            <td>{{ data.R.value }}</td>
-        </tr>
-    </table>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Allison & Gorman</span>
+                            <span class="caption-helper">Effect Size</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th scope="row">Residual se</th>
+                                <td>{{ data.regression.sigma | round(3, 'ceil') }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">R<sup>2</sup></th>
+                                <td>{{ r2 | round(3, 'ceil') }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Adjusted R<sup>2</sup></th>
+                                <td>{{ adjustedR2 | round(3, 'ceil') }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">F({{ data.regression.fstatistic.numdf }}
+                                    .{{ data.regression.fstatistic.dendf }})
+                                </th>
+                                <td>{{ data.regression.fstatistic.value }}</td>
+                            </tr>
 
-    <h3>Regression output</h3>
-    <table class="table">
-        <tr>
-            <th scope="row">Formula</th>
-            <td>Detrended Score = B0 + B1 Treatment + B3 Treatment x (Time-na) + e</td>
-        </tr>
-    </table>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Estimate</th>
-            <th>Std. Error</th>
-            <th>t value</th>
-            <th>Pr(>|t|)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">(Intercept)</th>
-            <td>{{ interceptEstimate | round(1, 'floor') }}</td>
-            <td>{{ interceptStdError | round(4, 'ceil') }}</td>
-            <td>{{ interceptTValue | round(1, 'floor') }}</td>
-            <td>{{ interceptPr | round(5, 'ceil') }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Treatment</th>
-            <td>{{ treatmentEstimate | round(4, 'ceil') }}</td>
-            <td>{{ treatmentStdError | round(4, 'ceil') }}</td>
-            <td>{{ treatmentTValue | round(4, 'ceil') }}</td>
-            <td>{{ treatmentPr | round(5, 'ceil') }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Treatment x (Time-na)</th>
-            <td>{{ treatmentXTimeNaEstimate | round(4, 'ceil') }}</td>
-            <td>{{ treatmentXTimeNaStdError | round(4, 'ceil') }}</td>
-            <td>{{ treatmentXTimeNaTValue | round(4, 'ceil') }}</td>
-            <td>{{ treatmentXTimeNaPr | round(4, 'ceil') }}</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <table class="table">
-        <tr>
-            <th scope="row">Residual se</th>
-            <td>{{ data.regression.sigma | round(3, 'ceil') }}</td>
-        </tr>
-        <tr>
-            <th scope="row">R<sup>2</sup></th>
-            <td>{{ r2 | round(3, 'ceil') }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Adjusted R<sup>2</sup></th>
-            <td>{{ adjustedR2 | round(3, 'ceil') }}</td>
-        </tr>
-        <tr>
-            <th scope="row">F({{ data.regression.fstatistic.numdf }}.{{ data.regression.fstatistic.dendf }})</th>
-            <td>{{ data.regression.fstatistic.value }}</td>
-        </tr>
-    </table>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endif %}
 
     {% if data is defined and data.outMonte != 'Allison & Gorman' %}
-    <h2>Parker's TAU-U</h2>
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> Parker's TAU-U</span>
+                            <span class="caption-helper">Partition and Full Matrices</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>TREND A</th>
+                                <th>TREND B</th>
+                                <th>FULL MATRIX</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-    <h3>Partition and Full Matrices</h3>
+                            {% set firstColumnHeaders = ['n pairs', 'n pos', 'n neg', 'S', 'Tau', 'SDs', 'VaRs', 'Z', 'p(Z based)'] %}
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>TREND A</th>
-            <th>TREND B</th>
-            <th>FULL MATRIX</th>
-        </tr>
-        </thead>
-        <tbody>
+                            {% for columnHeader in firstColumnHeaders %}
+                                <tr>
+                                    <th scope="row">{{ columnHeader }}</th>
+                                    <td>{{ data.PartitionsOfMatrix[loop.index0].TrendA }}</td>
+                                    <td>{{ data.PartitionsOfMatrix[loop.index0].TrendB }}</td>
+                                    <td>{{ data.FullMatrix[loop.index0][0] }}</td>
+                                </tr>
+                            {% endfor %}
 
-        {% set firstColumnHeaders = ['n pairs', 'n pos', 'n neg', 'S', 'Tau', 'SDs', 'VaRs', 'Z', 'p(Z based)'] %}
+                            <tr>
+                                <th scope="row">r Effect Size</th>
+                                <td>{{ data.PartitionsOfMatrix[10].TrendA | round(3, 'ceil') }}</td>
+                                <td>{{ data.PartitionsOfMatrix[10].TrendB | round(3, 'ceil') }}</td>
+                                <td>{{ data.FullMatrix[10][0] | round(3, 'ceil') }}</td>
+                                <td></td>
+                            </tr>
 
-        {% for columnHeader in firstColumnHeaders %}
-            <tr>
-                <th scope="row">{{ columnHeader }}</th>
-                <td>{{ data.PartitionsOfMatrix[loop.index0].TrendA }}</td>
-                <td>{{ data.PartitionsOfMatrix[loop.index0].TrendB }}</td>
-                <td>{{ data.FullMatrix[loop.index0][0] }}</td>
-            </tr>
-        {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="icon-directions font-green hide"></i>
+                            <span class="caption-subject bold font-dark uppercase "> TAU_U Analysis</span>
+                            <span class="caption-helper"></span>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>A vs B</th>
+                                <th>A vs B + TREND B</th>
+                                <th>A vs B + TREND B - TREND A</th>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-            <tr>
-                <th scope="row">r Effect Size</th>
-                <td>{{ data.PartitionsOfMatrix[10].TrendA | round(3, 'ceil') }}</td>
-                <td>{{ data.PartitionsOfMatrix[10].TrendB | round(3, 'ceil') }}</td>
-                <td>{{ data.FullMatrix[10][0] | round(3, 'ceil') }}</td>
-                <td></td>
-            </tr>
+                            {% set firstColumnHeaders = ['n pairs', 'n pos', 'n neg', 'S', 'Tau', 'SDs', 'VaRs', 'Z', 'p(Z based)'] %}
 
-        </tbody>
-    </table>
+                            {% for columnHeader in firstColumnHeaders %}
+                                <tr>
+                                    <th scope="row">{{ columnHeader }}</th>
+                                    <td>{{ data.PartitionsOfMatrix[loop.index0].AvsB }}</td>
+                                    <td>{{ data.TAU_U_Analysis[loop.index0].AvsBTrendB }}</td>
+                                    <td>{{ data.TAU_U_Analysis[loop.index0].AvsBTrendBTrendA }}</td>
+                                </tr>
+                            {% endfor %}
 
-    <h3>TAU_U Analysis</h3>
+                            <tr>
+                                <th scope="row">r Effect Size</th>
+                                <td>{{ data.PartitionsOfMatrix[10].AvsB | round(3, 'ceil') }}</td>
+                                <td>{{ data.TAU_U_Analysis[10].AvsBTrendB | round(3, 'ceil') }}</td>
+                                <td>{{ data.TAU_U_Analysis[10].AvsBTrendBTrendA | round(3, 'ceil') }}</td>
+                            </tr>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>A vs B</th>
-            <th>A vs B + TREND B</th>
-            <th>A vs B + TREND B - TREND A</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        {% set firstColumnHeaders = ['n pairs', 'n pos', 'n neg', 'S', 'Tau', 'SDs', 'VaRs', 'Z', 'p(Z based)'] %}
-
-        {% for columnHeader in firstColumnHeaders %}
-            <tr>
-                <th scope="row">{{ columnHeader }}</th>
-                <td>{{ data.PartitionsOfMatrix[loop.index0].AvsB }}</td>
-                <td>{{ data.TAU_U_Analysis[loop.index0].AvsBTrendB }}</td>
-                <td>{{ data.TAU_U_Analysis[loop.index0].AvsBTrendBTrendA }}</td>
-            </tr>
-        {% endfor %}
-
-            <tr>
-                <th scope="row">r Effect Size</th>
-                <td>{{ data.PartitionsOfMatrix[10].AvsB | round(3, 'ceil') }}</td>
-                <td>{{ data.TAU_U_Analysis[10].AvsBTrendB | round(3, 'ceil') }}</td>
-                <td>{{ data.TAU_U_Analysis[10].AvsBTrendBTrendA | round(3, 'ceil') }}</td>
-            </tr>
-
-        </tbody>
-    </table>
-
-    <div id="linechart" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-
-    <div style="width:100%; clear:both;">
-        {% if data.outMonte == 'AvsB+trendB-trendA' %}
-            {% set tauUAnalysisValue = data.TAU_U_Analysis[10].AvsBTrendBTrendA | round(3, 'ceil') %}
-        {% endif %}
-
-        {% if data.outMonte == 'AvsB+trendB' %}
-            {% set tauUAnalysisValue = data.TAU_U_Analysis[10].AvsBTrendB | round(3, 'ceil') %}
-        {% endif %}
-
-        {% if data.outMonte == 'AvsB' %}
-            {% set tauUAnalysisValue = data.PartitionsOfMatrix[10].AvsB | round(3, 'ceil') %}
-        {% endif %}
-
-        {{ include('data/spinner.html.twig',
-            {'spinnerWidth' : 60, 'tauUAnalysisValue': tauUAnalysisValue })
-        }}
-
-        <div style="width:40%; float:left; ">
-            <ul class="list-style-none">
-                <li><span class="azure">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}null{% endtrans %}</li>
-                <li><span class="blue">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}small{% endtrans %}</li>
-                <li><span class="yellow">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}medium{% endtrans %}</li>
-                <li><span class="rose">&nbsp;&nbsp;</span> {% trans from "r_analysis" %}large{% endtrans %}</li>
-            </ul>
-            <div style="padding-left:25px;" id="message"><strong>The effect size is: {{ tauUAnalysisValue }}.</strong><br>
-                The treatment has a %s effect on the %s of the behaviour occurrence
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     {% endif %}
 {% endblock %}
 
@@ -256,37 +517,45 @@
     {{ parent() }}
 
     {% if data is defined %}
-    <script src="{{ asset('js/vendor/highcharts/6.1.1/highcharts.js') }}"></script>
-    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/series-label.js') }}"></script>
-    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/exporting.js') }}"></script>
-    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/export-data.js') }}"></script>
+        <script src="{{ asset('js/vendor/highcharts/6.1.1/highcharts.js') }}"></script>
+        <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/series-label.js') }}"></script>
+        <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/exporting.js') }}"></script>
+        <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/export-data.js') }}"></script>
 
-    <script type="text/javascript">
-        {{ chart(chart) }}
-    </script>
+        <script type="text/javascript">
+            {{ chart(chart) }}
+        </script>
 
-    <script>
-        $(function(){
-            rotate();
-        });
+        <script>
+            $(function () {
+                rotate();
+            });
 
-        function rotate()
-        {
-            rotateArrow(parseFloat($("#tau-u-analysis").val()));
-        }
+            function rotate() {
+                rotateArrow(parseFloat($("#tau-u-analysis").val()));
+            }
 
 
-        function rotateArrow(val)
-        {
-            var newAngle = (val*90) + (270) ;
-            $("#SvgArrow").attr("transform", "rotate(" + newAngle +")");
-        }
+            function rotateArrow(val) {
+                var newAngle = (val * 90) + (270);
+                $("#SvgArrow").attr("transform", "rotate(" + newAngle + ")");
+            }
 
-        $(document).ready(function(){
+            $('.phase-container').on('click', function () {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                    $('input[name="' + $(this).data('phase-name') + '"').prop('checked', false);
 
-        });
-
-    </script>
+                } else {
+                    if ($('input[type="checkbox"]:checked').length == 2) {
+                        $('#warning-dialog').modal('show');
+                    } else {
+                        $(this).addClass('active');
+                        $('input[name="' + $(this).data('phase-name') + '"').prop('checked', true);
+                    }
+                }
+            });
+        </script>
     {% endif %}
 
 {% endblock %}
