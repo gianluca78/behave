@@ -44,7 +44,7 @@
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
-.phase-container {
+.phase-container, .item-container {
     cursor: pointer;
 }
 
