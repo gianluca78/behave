@@ -122,6 +122,7 @@ var TableDatatablesManaged = function () {
                 $('#download-button').removeClass('opaque');
                 $('#enable-button').removeClass('opaque');
                 $('#data-analysis-button').removeClass('opaque');
+                $('#phase-list-button').removeClass('opaque');
             }
 
             if($('.checkboxes:checked').length > 1) {
@@ -136,6 +137,7 @@ var TableDatatablesManaged = function () {
                 $('#download-button').addClass('opaque');
                 $('#enable-button').addClass('opaque');
                 $('#data-analysis-button').addClass('opaque');
+                $('#phase-list-button').addClass('opaque');
             }
 
             $(this).parents("tr").toggleClass("active")

@@ -122,48 +122,4 @@
         </div>
     </div>
 
-    <!--
-    <div class="row">
-        <div class="col-md-12 col-md-offset-1">
-            <h2>Students list</h2>
-
-            <table class="table table-stripped table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>id</th>
-                    <th> student id</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <tbody>
-                {% for record in records %}
-                    <tr>
-                        <td>{{ record.id }}</td>
-                        <td>{{ record.studentId }}</td>
-
-                        <td><a href="{{ path('student_edit', {'id': record.id}) }}">
-                                {% trans %}Edit{% endtrans %}
-                            </a>
-                        </td>
-                        <td><a href="{{ path('student_delete', {'id': record.id}) }}">
-                                {% trans %}Delete{% endtrans %}
-                            </a>
-                        </td>
-                        <td><a href="{{ path('observation_student_list', {'id': record.id}) }}">
-                                {% trans %}Observations {% endtrans %} ({{ record.observations | length }})
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-            <a href="{{ path('student_new') }}">{% trans %}New{% endtrans %}</a>
-        </div>
-    </div>
-    -->
-
 {% endblock %}

@@ -61,7 +61,10 @@
                             <i class="fa fa-power-off"></i>
                         </a>
                         <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="fa fa-binoculars"></i>
+                            <i class="fa fa-calendar"></i>
+                        </a>
+                        <a id="phase-list-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="fa fa-list-ol"></i>
                         </a>
                         <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-edit"></i>
@@ -146,6 +149,7 @@
             $('#data-analysis-button').addClass('opaque');
             $('#enable-button').addClass('opaque');
             $('#download-button').addClass('opaque');
+            $('#phase-list-button').addClass('opaque');
         });
 
         $('#add-button').on('click', function(){
@@ -201,6 +205,12 @@
         $('#download-button').on('click', function() {
             if(!$(this).hasClass('opaque')) {
                 location.assign('/observation/download-data/' + $("#observation-datatable :checked").val());
+            }
+        });
+
+        $('#phase-list-button').on('click', function() {
+            if(!$(this).hasClass('opaque')) {
+                location.assign('/observation-phase/list/' + $("#observation-datatable :checked").val());
             }
         });
 

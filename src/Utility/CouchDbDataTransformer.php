@@ -12,8 +12,6 @@ class CouchDbDataTransformer {
      */
     public function transformByData($data)
     {
-        //var_dump($data); exit;
-
         $results = array();
 
         foreach($data as $values) {
@@ -44,8 +42,6 @@ class CouchDbDataTransformer {
             $results[] = $row;
 
         }
-
-        //var_dump($results); exit;
 
         return $results;
     }
@@ -102,15 +98,28 @@ class CouchDbDataTransformer {
 
         }
 
-        //var_dump($results);exit;
-
         return $results;
 
     }
 
+    public function transformByNameAndData($data)
+    {
+        $results = array();
+
+        $itemTypologyData = $this->transformByItemTypology($data);
+
+        foreach($itemTypologyData as $name => $values) {
+            $results[] = array(
+                'name' => $name,
+                'data' => $values
+            );
+        }
+
+        return $results;
+    }
+
     private function calculateDirectObservationData($value)
     {
-        //duration
         if(!$value['typology'] && !$value['counter']) {
             $numberOfSeconds = 0;
 
@@ -124,4 +133,4 @@ class CouchDbDataTransformer {
 
         return $value['counter'];
     }
-} 
+}
