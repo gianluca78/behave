@@ -65,8 +65,7 @@
                                         {% set indexGrid = 2 %}
                                     {% endif %}
 
-                                    <div class="col-lg-{{ indexGrid }} bg-grey mt-step-col phase-container"
-                                         data-phase-name="{{ phase.name }}">
+                                    <div class="col-lg-{{ indexGrid }} bg-grey mt-step-col phase-container" data-phase-name="{{ phase.name }}">
                                         <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
                                         <div class="mt-step-title uppercase font-grey-cascade">{{ phase.name }}</div>
                                         <div class="mt-step-content font-grey-cascade">{{ phase.dataIds | length }}
@@ -95,15 +94,35 @@
                     <div class="mt-element-step">
                         <div class="row step-thin">
                             <div class="slider slider-nav">
-                                {% for item in measure.choiceItems %}{% endfor %}
+                                {% for key, itemValues in items[0] %}
+                                    {% if(items[0] | length == 1) %}
+                                        {% set indexGrid = 12 %}
+                                    {% endif %}
 
-                                {% for item in measure.integerItems %}{% endfor %}
+                                    {% if(items[0] | length == 2) %}
+                                        {% set indexGrid = 6 %}
+                                    {% endif %}
 
-                                {% for item in measure.meterItems %}{% endfor %}
+                                    {% if(items[0] | length == 3) %}
+                                        {% set indexGrid = 4 %}
+                                    {% endif %}
 
-                                {% for item in measure.rangeItems %}{% endfor %}
+                                    {% if(items[0] | length == 4 or phases | length == 5) %}
+                                        {% set indexGrid = 3 %}
+                                    {% endif %}
 
-                                {% for item in measure.directObservationItems %}{% endfor %}
+                                    {% if(items[0] | length == 6) %}
+                                        {% set indexGrid = 2 %}
+                                    {% endif %}
+
+                                    <div class="col-lg-{{ indexGrid }} bg-grey mt-step-col item-container" data-item-id="{{ key | split('-') | last }}">
+                                        <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
+                                        <div class="mt-step-title uppercase font-grey-cascade">{{ itemValues.label }}</div>
+                                        <div class="mt-step-content font-grey-cascade"></div>
+                                    </div>
+
+                                {% endfor %}
+
                             </div>
                         </div>
                     </div>
@@ -116,6 +135,10 @@
     <form action="{{ path('data_analysis', {'id' : observation.id}) }}" method="post">
         {% for phase in phases %}
             <input type="checkbox" name="{{ phase.name }}" value="{{ phase.dataIds|join(',') }}"> {{ phase }}<br>
+        {% endfor %}
+
+        {% for item in measure.choiceItems %}
+            <input type="radio" name="item" value="{{ item.id }}"> {{ item.label }}<br>
         {% endfor %}
 
         {% for item in measure.integerItems %}
@@ -133,7 +156,7 @@
         <input type="submit" value="Analyze">
     </form>
 
-    <div class="modal fade" id="warning-dialog" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal fade" id="warning-dialog-phase" tabindex="-1" role="basic" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -141,6 +164,23 @@
                     <h4 class="modal-title">Warning</h4>
                 </div>
                 <div class="modal-body"> You can analyze only 2 phases at a time</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="warning-dialog-item" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body"> You can select only 1 item at a time</div>
                 <div class="modal-footer">
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                 </div>
@@ -516,47 +556,64 @@
 {% block javascripts %}
     {{ parent() }}
 
-    {% if data is defined %}
-        <script src="{{ asset('js/vendor/highcharts/6.1.1/highcharts.js') }}"></script>
-        <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/series-label.js') }}"></script>
-        <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/exporting.js') }}"></script>
-        <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/export-data.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/highcharts.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/series-label.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/exporting.js') }}"></script>
+    <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/export-data.js') }}"></script>
 
+    {% if data is defined %}
         <script type="text/javascript">
             {{ chart(chart) }}
-        </script>
 
-        <script>
             $(function () {
                 rotate();
             });
 
             function rotate() {
-                rotateArrow(parseFloat($("#tau-u-analysis").val()));
+                rotateArrow(parseFloat($("#analysis").val()));
             }
-
-
+            
             function rotateArrow(val) {
                 var newAngle = (val * 90) + (270);
                 $("#SvgArrow").attr("transform", "rotate(" + newAngle + ")");
             }
-
-            $('.phase-container').on('click', function () {
-                if ($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                    $('input[name="' + $(this).data('phase-name') + '"').prop('checked', false);
-
-                } else {
-                    if ($('input[type="checkbox"]:checked').length == 2) {
-                        $('#warning-dialog').modal('show');
-                    } else {
-                        $(this).addClass('active');
-                        $('input[name="' + $(this).data('phase-name') + '"').prop('checked', true);
-                    }
-                }
-            });
         </script>
+
     {% endif %}
+
+    <script>
+
+        $('.phase-container').on('click', function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('input[name="' + $(this).data('phase-name') + '"').prop('checked', false);
+
+            } else {
+                if ($('input[type="checkbox"]:checked').length == 2) {
+                    $('#warning-dialog-phase').modal('show');
+                } else {
+                    $(this).addClass('active');
+                    $('input[name="' + $(this).data('phase-name') + '"').prop('checked', true);
+                }
+            }
+        });
+
+        $('.item-container').on('click', function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                $('input[name="item"][value="' + $(this).data('item-id') + '"]').prop('checked', false);
+
+            } else {
+                if ($('input[name="item"]:checked').length == 1) {
+                    $('#warning-dialog-item').modal('show');
+                } else {
+                    $(this).addClass('active');
+                    $('input[name="item"][value="' + $(this).data('item-id') + '"]').prop('checked', true);
+                }
+            }
+        });
+    </script>
+
 
 {% endblock %}
 

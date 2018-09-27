@@ -75,8 +75,13 @@ class DataController extends Controller
      * @Template
      *
      */
-    public function analysisAction(Observation $observation, Request $request, CouchDbClient $couchDbClient, EffectSizeChecker $effectSizeChecker)
+    public function analysisAction(Observation $observation, Request $request, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer, EffectSizeChecker $effectSizeChecker)
     {
+        $gatheredData = $couchDbClient->getObservationsById($observation->getId());
+        $gatheredData = json_decode($gatheredData->getContents(), true)['rows'];
+
+        $items = $couchDbDataTransformer->transformByData($gatheredData, false);
+
         $config = array (
             'base_uri' => 'http://150.145.114.110/rtest/p'
         );
@@ -209,6 +214,7 @@ class DataController extends Controller
         );*/
 
         return array_merge(array(
+            'items' => $items,
             'observation' => $observation,
             'phases' => $observation->getObservationPhases(),
             'measure' => $observation->getMeasure(),

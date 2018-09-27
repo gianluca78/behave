@@ -8,9 +8,10 @@ class CouchDbDataTransformer {
      * Return an array of items and values grouped for data
      *
      * @param $data
+     * @param $replaceItemNumbers
      * @return array
      */
-    public function transformByData($data)
+    public function transformByData($data, $replaceItemNumbers = true)
     {
         $results = array();
 
@@ -22,21 +23,24 @@ class CouchDbDataTransformer {
 
             foreach($values['value'] as $key => $value) {
                 if(strpos($key, 'item') !== false && strpos($key, 'typology') == false && strpos($key, 'label') == false) {
-                    $itemNumber += 1;
 
+                    $itemNumber = ($replaceItemNumbers) ? $itemNumber += 1 : $key;
+                    $itemNumberIndex = (is_string($itemNumber)) ? $itemNumber : 'item-' . $itemNumber;
 
-
-                    $row['item-' . $itemNumber]['value'] = $value;
-                    $row['item-' . $itemNumber]['label'] = $values['value'][$key . '-label'];
-                    $row['item-' . $itemNumber]['typology'] = $values['value'][$key . '-typology'];
+                    $row[$itemNumberIndex]['value'] = $value;
+                    $row[$itemNumberIndex]['label'] = $values['value'][$key . '-label'];
+                    $row[$itemNumberIndex]['typology'] = $values['value'][$key . '-typology'];
 
                     if($values['value'][$key . '-typology'] == 'direct-observation') {
-                        $row['item-' . $itemNumber]['observationData'] = $this->calculateDirectObservationData($value);
+                        $row[$itemNumberIndex]['observationData'] = $this->calculateDirectObservationData($value);
                     }
 
                 }
 
-                $row['createdAt'] = $values['value']['createdAt']['date'];
+                if($replaceItemNumbers) {
+                    $row['createdAt'] = $values['value']['createdAt']['date'];
+                }
+
             }
 
             $results[] = $row;
