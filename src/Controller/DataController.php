@@ -82,110 +82,6 @@ class DataController extends Controller
 
         $items = $couchDbDataTransformer->transformByData($gatheredData, false);
 
-        /*
-        $config = array (
-            'base_uri' => 'http://150.145.114.110/rtest/p'
-        );
-
-        $guzzle = new GuzzleClient($config);
-        $twigVariables = array();
-
-        if ($request->isMethod('POST')) {
-            $formData = $request->request->all();
-
-            $itemId = 'item-' . $formData['item'];
-
-            unset($formData['item']);
-
-            $phaseNames = array_keys($formData);
-
-            $fase = implode(',', array_fill(0, count(explode(',', $formData[$phaseNames[0]])), $phaseNames[0]))
-                . ',' . implode(',', array_fill(0, count(explode(',', $formData[$phaseNames[1]])), $phaseNames[1]));
-
-            $data = '';
-
-            $idData = $formData[$phaseNames[0]] . ',' . $formData[$phaseNames[1]];
-
-            $rawData = $couchDbClient->getByIds(explode(',', $idData));
-            $rawData = json_decode($rawData->getContents())->rows;
-
-            foreach($rawData as $key => $observationData) {
-                $data.= $observationData->value->$itemId;
-
-                if($key != count($rawData) -1) {
-                    $data.= ',';
-                }
-            }
-
-            $response = $guzzle->request('GET' , 'users', [ 'query' => [
-                    'data' => $data,
-                    'fase' => $fase
-                ]
-                ]
-            );
-
-            $data = json_decode($response->getBody()->getContents());
-
-            $series = array();
-            $phaseNameLoopIndex = 0;
-            $dataLoopIndex = 0;
-            $lastPhaseName = '';
-            $countPhases = array_count_values($data->database->PHASE);
-
-            foreach($countPhases as $phaseName => $count) {
-                $series[] = array('name' => $phaseName);
-
-                if($phaseNameLoopIndex > 0) {
-                    $count+= $countPhases[$lastPhaseName];
-                }
-
-                $lastPhaseName = $phaseName;
-
-                for($i=$dataLoopIndex; $i<$count; $i++) {
-                    $series[$phaseNameLoopIndex]['data'][] = $data->database->DV[$i];
-
-                    $dataLoopIndex++;
-                }
-
-                $phaseNameLoopIndex++;
-
-            }
-
-            $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
-            $chart = $highchartsGenerator->generateScatterPlot(
-                'Scatter plot (observation name)',
-                $series,
-                'linechart',
-                'x',
-                'y'
-            );
-
-            $twigVariables = array(
-                'data' => $data,
-                'analysisMessage' => $effectSizeChecker->getResultMessage($data),
-                'phasesLength' => array_count_values($data->database->PHASE),
-                'interceptEstimate' => $data->regression->coefficients[0]->Estimate,
-                'interceptStdError' => $data->regression->coefficients[0]->{'Std. Error'},
-                'interceptTValue' => $data->regression->coefficients[0]->{'t value'},
-                'interceptPr' => $data->regression->coefficients[0]->{'Pr(>|t|)'},
-                'treatmentEstimate' => $data->regression->coefficients[1]->Estimate,
-                'treatmentStdError' => $data->regression->coefficients[1]->{'Std. Error'},
-                'treatmentTValue' => $data->regression->coefficients[1]->{'t value'},
-                'treatmentPr' => $data->regression->coefficients[1]->{'Pr(>|t|)'},
-                'treatmentXTimeNaEstimate' => $data->regression->coefficients[2]->Estimate,
-                'treatmentXTimeNaStdError' => $data->regression->coefficients[2]->{'Std. Error'},
-                'treatmentXTimeNaTValue' => $data->regression->coefficients[2]->{'t value'},
-                'treatmentXTimeNaPr' => $data->regression->coefficients[2]->{'Pr(>|t|)'},
-                'r2' => $data->regression->{'r.squared'},
-                'adjustedR2' => $data->regression->{'adj.r.squared'},
-                'chart' => $chart
-            );
-
-
-
-        }
-        */
-
         return array(
             'items' => $items,
             'observation' => $observation,
@@ -219,9 +115,13 @@ class DataController extends Controller
         $itemId = 'item-' . $request->get('selectedData')['item-id'];
 
         $fase = implode(',', array_fill(0, $request->get('selectedData')['phases'][0]['phase-count'],
-                $request->get('selectedData')['phases'][0]['phase-name']))
+                //$request->get('selectedData')['phases'][0]['phase-name']
+                'A'
+                ))
                 . ',' . implode(',', array_fill(0, $request->get('selectedData')['phases'][1]['phase-count'],
-                $request->get('selectedData')['phases'][1]['phase-name']));
+                //$request->get('selectedData')['phases'][1]['phase-name']
+                'B'
+                ));
 
         $data = '';
 
