@@ -19,7 +19,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase "> Speedometer</span>
+                        <span id="speedometer-title" class="caption-subject bold font-dark uppercase "> Speedometer: {{ data.outMonte }} </span>
                         <span class="caption-helper"></span>
                     </div>
                 </div>
@@ -43,7 +43,8 @@
                             {% endif %}
 
                             {{ include('data/spinner.html.twig',
-                            {'spinnerWidth' : 100, 'analysisValue': analysisValue }) }}
+                                {'spinnerWidth' : 100, 'analysisValue': analysisValue })
+                            }}
                         </div>
                     </div>
                     <div class="row">
@@ -63,7 +64,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12 text-center">
                             <div style="padding-left:25px;" id="message"><strong>The effect size
-                                    is: {{ analysisValue }}.</strong><br>
+                                    is: <span id="effect-size-value">{{ analysisValue }}</span>.</strong><br>
                                 {{ analysisMessage }}
                             </div>
                         </div>
@@ -74,7 +75,8 @@
     </div>
 {% endif %}
 
-    {% if data is defined and data.outMonte == 'Allison & Gorman' %}
+    {% if data is defined %}
+        <div id="alison-gorman-analysis" {% if data.outMonte != 'Allison & Gorman' %}class="hidden"{% endif %}>
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="portlet light portlet-fit bordered">
@@ -166,7 +168,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">r</th>
-                                <td>{{ data.R.value }}</td>
+                                <td id="r-allison-gorman">{{ data.R.value }}</td>
                             </tr>
                         </table>
                     </div>
@@ -264,10 +266,12 @@
                 </div>
             </div>
         </div>
+
+        </div>
     {% endif %}
 
-    {% if data is defined and data.outMonte != 'Allison & Gorman' %}
-        <div class="row">
+    {% if data is defined %}
+        <div class="row" id="tau-u-analysis" {% if data.outMonte == 'Allison & Gorman' %}class="hidden"{% endif %}>
             <div class="col-md-6 col-sm-6">
                 <div class="portlet light portlet-fit bordered">
                     <div class="portlet-title">
@@ -347,9 +351,9 @@
 
                             <tr>
                                 <th scope="row">r Effect Size</th>
-                                <td>{{ data.PartitionsOfMatrix[10].AvsB | round(3, 'ceil') }}</td>
-                                <td>{{ data.TAU_U_Analysis[10].AvsBTrendB | round(3, 'ceil') }}</td>
-                                <td>{{ data.TAU_U_Analysis[10].AvsBTrendBTrendA | round(3, 'ceil') }}</td>
+                                <td id="r-a-vs-b">{{ data.PartitionsOfMatrix[10].AvsB | round(3, 'ceil') }}</td>
+                                <td id="r-a-vs-b-trend-b">{{ data.TAU_U_Analysis[10].AvsBTrendB | round(3, 'ceil') }}</td>
+                                <td id="r-a-vs-b-trend-b-trend-a">{{ data.TAU_U_Analysis[10].AvsBTrendBTrendA | round(3, 'ceil') }}</td>
                             </tr>
 
                             </tbody>

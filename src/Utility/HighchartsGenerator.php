@@ -26,7 +26,7 @@ class HighchartsGenerator {
         $ob->xAxis->title(array('text'  => $xAxisTitle));
         //$ob->xAxis->categories(array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'));
         $ob->xAxis->allowDecimals(false);
-        //$ob->xAxis->plotLines($this->generatePlotLines($series));
+        $ob->xAxis->plotLines($this->generatePlotLines($series));
 
         $ob->yAxis->title(array('text' => $yAxisTitle));
         $ob->yAxis->allowDecimals(false);
@@ -51,5 +51,34 @@ class HighchartsGenerator {
         $ob->series($series);
 
         return $ob;
+    }
+
+    private function generatePlotLines(array $series)
+    {
+        $plotLines = array();
+
+        $numberOfSeries = count($series);
+
+        for($i=0; $i<=$numberOfSeries-1; $i++) {
+
+            $nextSeriesIndex = $i + 1;
+
+            if(array_key_exists($nextSeriesIndex, $series)) {
+
+                $numberOfObservationFirstDataSet = array_pop($series[$i]['data']);
+                $numberOfObservationFirstDataSet = $numberOfObservationFirstDataSet['x'];
+
+                $xCoordinate = ($numberOfObservationFirstDataSet + $numberOfObservationFirstDataSet + 1) / 2;
+
+                $plotLines[] = array(
+                    'color' => 'red',
+                    'dashStyle' => 'longdashdot',
+                    'value' => $xCoordinate,
+                    'width' => '2'
+                );
+            }
+        }
+
+        return $plotLines;
     }
 }

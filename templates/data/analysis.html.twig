@@ -39,6 +39,35 @@
                         <i class="icon-directions font-green hide"></i>
                         <span class="caption-subject bold font-dark uppercase "> Phases to be compared</span>
                     </div>
+
+                    <div class="btn-group pull-right">
+                        <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Statistical index
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu pull-right" id="index-action">
+                            <li>
+                                <a data-index-id="1" href="javascript:;">
+                                    <i class="fa fa-map-o"></i> AvsB+trendB-trendA
+                                </a>
+                            </li>
+                            <li>
+                                <a data-index-id="2" href="javascript:;">
+                                    <i class="fa fa-map-o"></i> AvsB+trendB
+                                </a>
+                            </li>
+                            <li>
+                                <a data-index-id="3" href="javascript:;">
+                                    <i class="fa fa-map-o"></i> AvsB
+                                </a>
+                            </li>
+                            <li>
+                                <a data-index-id="4" href="javascript:;">
+                                    <i class="fa fa-map-o"></i> Allison & Gorman
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="portlet-body">
                     <div class="mt-element-step">
@@ -190,6 +219,52 @@
 
 
     <script>
+        $('#index-action li a').on('click', function(){
+            switch($(this).data('index-id')) {
+                case 1:
+                    $('#speedometer-title').text('Speedometer: ' + 'AvsB+trendB-trendA');
+                    $('#analysis').val($('#r-a-vs-b-trend-b-trend-a').text());
+                    $('#effect-size-value').text($('#r-a-vs-b-trend-b-trend-a').text());
+                    rotateArrow(parseFloat($("#analysis").val()));
+                    $('#alison-gorman-analysis').addClass('hidden');
+                    $('#tau-u-analysis').removeClass('hidden');
+
+                    break;
+
+                case 2:
+                    $('#speedometer-title').text('Speedometer: ' + 'AvsB+trendB');
+                    $('#analysis').val($('#r-a-vs-b-trend-b').text());
+                    $('#effect-size-value').text($('#r-a-vs-b-trend-b').text());
+                    rotateArrow(parseFloat($("#analysis").val()));
+                    $('#alison-gorman-analysis').addClass('hidden');
+                    $('#tau-u-analysis').removeClass('hidden');
+
+                    break;
+
+                case 3:
+                    $('#speedometer-title').text('Speedometer: ' + 'AvsB');
+                    $('#analysis').val($('#r-a-vs-b').text());
+                    $('#effect-size-value').text($('#r-a-vs-b').text());
+                    rotateArrow(parseFloat($("#analysis").val()));
+                    $('#alison-gorman-analysis').addClass('hidden');
+                    $('#tau-u-analysis').removeClass('hidden');
+
+                    break;
+
+                case 4:
+                    $('#speedometer-title').text('Speedometer: ' + 'Allison & Gorman');
+                    $('#analysis').val($('#r-allison-gorman').text());
+                    $('#effect-size-value').text($('#r-allison-gorman').text());
+                    rotateArrow(parseFloat($("#analysis").val()));
+                    $('#alison-gorman-analysis').removeClass('hidden');
+                    $('#tau-u-analysis').addClass('hidden');
+
+                    break;
+            }
+
+
+        });
+
         $('.phase-container').on('click', function () {
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');

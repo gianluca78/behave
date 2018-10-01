@@ -115,12 +115,10 @@ class DataController extends Controller
         $itemId = 'item-' . $request->get('selectedData')['item-id'];
 
         $fase = implode(',', array_fill(0, $request->get('selectedData')['phases'][0]['phase-count'],
-                //$request->get('selectedData')['phases'][0]['phase-name']
-                'A'
+                $request->get('selectedData')['phases'][0]['phase-name']
                 ))
                 . ',' . implode(',', array_fill(0, $request->get('selectedData')['phases'][1]['phase-count'],
-                //$request->get('selectedData')['phases'][1]['phase-name']
-                'B'
+                $request->get('selectedData')['phases'][1]['phase-name']
                 ));
 
         $data = '';
@@ -138,9 +136,12 @@ class DataController extends Controller
             }
         }
 
+        $nomiFase = $request->get('selectedData')['phases'][0]['phase-name'] . ',' . $request->get('selectedData')['phases'][1]['phase-name'];
+
         $response = $guzzle->request('GET' , 'users', [ 'query' => [
                 'data' => $data,
-                'fase' => $fase
+                'fase' => $fase,
+                'nomifase' => $nomiFase
             ]
             ]
         );
@@ -152,6 +153,12 @@ class DataController extends Controller
         $dataLoopIndex = 0;
         $lastPhaseName = '';
         $countPhases = array_count_values($data->database->PHASE);
+        $countPhases[$request->get('selectedData')['phases'][0]['phase-name']] = $countPhases['A'];
+        unset($countPhases['A']);
+        $countPhases[$request->get('selectedData')['phases'][1]['phase-name']] = $countPhases['B'];
+        unset($countPhases['B']);
+
+        //var_dump(date('Y-m-d', strtotime($rawData[1]->value->createdAt->date))); exit;
 
         foreach($countPhases as $phaseName => $count) {
             $series[] = array('name' => $phaseName);
@@ -163,7 +170,10 @@ class DataController extends Controller
             $lastPhaseName = $phaseName;
 
             for($i=$dataLoopIndex; $i<$count; $i++) {
-                $series[$phaseNameLoopIndex]['data'][] = $data->database->DV[$i];
+                $series[$phaseNameLoopIndex]['data'][] = array(
+                    'x' => $i,
+                    'y' => $data->database->DV[$i]
+                );
 
                 $dataLoopIndex++;
             }
@@ -177,8 +187,8 @@ class DataController extends Controller
             $request->get('selectedData')['observation-name'],
             $series,
             'linechart',
-            'x',
-            'y'
+            'Session',
+            'Value'
         );
 
         return array(
