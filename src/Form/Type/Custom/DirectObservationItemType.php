@@ -22,7 +22,8 @@ class DirectObservationItemType extends AbstractType
         $view->vars = array_merge($view->vars, array(
             'observationLengthInMinutes' => str_pad($options['observation_length_in_minutes'], 2, '0', STR_PAD_LEFT) . ':00',
             'typology' => $options['typology'],
-            'counter' => $options['counter_value']
+            'counter' => $options['counter_value'],
+            'label' => $options['label']
         ));
     }
 
@@ -77,8 +78,9 @@ class DirectObservationItemType extends AbstractType
         $defaults = array(
             'compound' => true,
             'counter_value' => 0,
-            'observation_length_in_minutes' => null,
             'interval_length_in_seconds' => null,
+            'label' => '',
+            'observation_length_in_minutes' => null,
             'typology' => null,
         );
 

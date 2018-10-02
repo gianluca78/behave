@@ -2,7 +2,7 @@
     margin: 4px 0 0;
 }
 
-.red-button, .red-button:hover {
+.red-button, .red-button:hover, .red-button:visited, .red-button:link, .red-button:active {
     background-color: darkred;
     color: #ffffff;
 }

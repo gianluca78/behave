@@ -30,7 +30,7 @@
                 <i class="fa fa-gift"></i>{{ observation.name }}</div>
         </div>
         <div class="portlet-body form">
-        {{ form_start(form) }}
+            {{ form_start(form) }}
 
             {% for key, field in form.children %}
             {% if key != 'submit' %}
@@ -69,7 +69,7 @@
 
     <script>
         $( document ).ready(function() {
-            $( '#form' ).behavioralRecordingTool();
+            $( '.form' ).behavioralRecordingTool();
             $( 'input[type="range"]' ).ionRangeSlider();
         });
 

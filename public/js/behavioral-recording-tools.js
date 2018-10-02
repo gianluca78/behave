@@ -94,7 +94,7 @@ if (typeof jQuery.ui == 'undefined') {
 
                             audioElement.pause();
                             audioElement.play();
-                            $( '#' + data.timerId ).effect('shake');
+                            //$( '#' + data.timerId ).effect('shake');
 
                             activeIntervalNumber[timerId]++;
                         }
@@ -104,6 +104,7 @@ if (typeof jQuery.ui == 'undefined') {
                                 && timestampNow <= timestampLastPlayedAudio[timerId] + numberOfSecondsToClickToCounterButton
                                 ){
                                 method = (!isCounterClicked[buttonId]) ? 'removeClass' : 'addClass';
+
                                 button[method]('red-button');
                             } else {
                                     if(data.timer == '00:00') {
@@ -141,26 +142,24 @@ if (typeof jQuery.ui == 'undefined') {
             });
 
             $( '.frequency-item' ).each(function(i, e) {
-                children = $(e).children();
-
-                observationLengthInMinutesId = $(children[0]).children()[0].id;
-                timerId = $(children[0]).children()[5].id;
-                buttonId = $(children[0]).children()[6].lastChild.id;
-                progressBarId = $(children[1])[0].id;
+                observationLengthInMinutesId = $(e).find('input[id*="observationLengthInMinutes"]').attr('id');
+                timerId = $(e).find('div[id*="timer"]').attr('id');
+                buttonId = $(e).find('a[id*="button"]').attr('id');
+                progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
 
                 startTimer(observationLengthInMinutesId, timerId, null, buttonId, progressBarId);
             });
 
             $( '.time-sampling-item' ).each(function(i, e) {
-                children = $(e).children()[1];
-                observationLengthInMinutesId = $(children).children()[0].id;
-                partialLengthInSecondsId = $(children).children()[2].id;
-                timerId = $(children).children()[4].id;
-                buttonId = $(e).children()[1].lastChild.children[0].id;
-                progressBarId = $(e).children()[2].id;
+                observationLengthInMinutesId = $(e).find('input[id*="observationLengthInMinutes"]').attr('id');
+                partialLengthInSecondsId = $(e).find('input[id*="intervalLengthInSeconds"]').attr('id');
+                timerId = $(e).find('div[id*="timer"]').attr('id');
+                buttonId = $(e).find('a[id*="button"]').attr('id');
+                progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
 
                 startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId);
             });
+
 
             $( "a.counter" ).click(function(e){
                 e.preventDefault();
@@ -199,7 +198,7 @@ if (typeof jQuery.ui == 'undefined') {
 
                 $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
                 $( '#' + baseSelectorId + '_counter').val(counterValue);
-                $( '#counter-' + baseSelectorId).html(counterValue);
+                $( '#counter-' + baseSelectorId).text(counterValue);
 
             });
 

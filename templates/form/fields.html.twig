@@ -244,27 +244,32 @@
 {% block frequency %}
     {% spaceless %}
         {% if observationLengthInMinutes is defined %}
-            <div class="form-group frequency-item">
-                <div class="row">
-                    {{ form_widget(form.observationLengthInMinutes) }}
-                    {{ form_widget(form.occurrenceTimestamps) }}
-                    {{ form_widget(form.counter) }}
-                    <div id="counter-{{ id }}" class="col-2 col-sm-2 col-md-2">
-                        <span>0</span>
-                    </div>
-                    <div class="col-5 col-sm-6 col-md-6 ">
-                        {{ form_label(form) }}
-                    </div>
-                    <div id="timer-{{ id }}" class="col-2 col-sm-2 col-md-2">
-                        {{ observationLengthInMinutes }}
-                    </div>
-                    <div class="col-2 col-sm-2 col-md-2">
-                        <a id="button-{{ id }}" class="frequency-counter btn btn-primary btn-lg red-button" data-base-selector-id="{{ id }}" href="" role="button">+</a>
-                    </div>
-                </div>
+            <div class="form-body">
+                <div class="form-group frequency-item">
+                    <label class="col-md-3 control-label required">
+                        {{ label }}
+                        <span id="counter-{{ id }}" class="badge badge-success">0</span>
+                    </label>
+                    <div class="col-md-9">
+                        <div class="row">
+                            {{ form_widget(form.observationLengthInMinutes) }}
+                            {{ form_widget(form.occurrenceTimestamps) }}
+                            {{ form_widget(form.counter) }}
 
-                <div id="progressBar-{{ id }}" class="row progress-bar">
-                    <div></div>
+                            <div class="col-md-6">
+                                <div id="timer-{{ id }}" style="display:none">
+                                    {{ observationLengthInMinutes }}
+                                </div>
+
+                                <div id="progressBar-{{ id }}" class="progress-bar">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <a id="button-{{ id }}" class="frequency-counter btn btn-primary btn-lg red-button" data-base-selector-id="{{ id }}" href="" role="button">+</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         {% else %}
@@ -316,7 +321,7 @@
 
                     <div class="col-md-9">
                         <div class="row text-center">
-                            <div class="col-12 col-md-5">
+                            <div class="col-12 col-md-6">
                                 {% for row in 1..11 %}
                                     {% for column in 1..11 %}
                                         {% if(row==1 and column==1) %}
@@ -404,9 +409,6 @@
 
                     </div>
 
-
-
-
                 {{ form_widget(form.xValue) }}
                 {{ form_widget(form.yValue) }}
             </div>
@@ -421,36 +423,35 @@
 
 {% block time_sampling %}
     {% if observationLengthInMinutes is defined %}
-        <div class="form-group time-sampling-item">
-            <div class="row">
-                {{ typology }}
-            </div>
+        <div class="form-body">
+            <div class="form-group time-sampling-item">
+                <label class="col-md-3 control-label required">{{ label }}</label>
+                <div class="col-md-9">
+                    <div class="row">
+                        {{ form_widget(form.observationLengthInMinutes) }}
+                        {{ form_widget(form.occurrenceTimestamps) }}
+                        {{ form_widget(form.intervalLengthInSeconds) }}
+                        {{ form_widget(form.intervalData) }}
 
-            <div class="row">
-                {{ form_widget(form.observationLengthInMinutes) }}
-                {{ form_widget(form.occurrenceTimestamps) }}
-                {{ form_widget(form.intervalLengthInSeconds) }}
-                {{ form_widget(form.intervalData) }}
 
-                <div id="timer-{{ id }}" class="col-2 col-sm-2 col-md-2">
-                    {{ observationLengthInMinutes }}
+                        <div class="col-md-6">
+                            <div id="timer-{{ id }}" style="display:none">
+                                {{ observationLengthInMinutes }}
+                            </div>
+
+                            <div id="progressBar-{{ id }}" class="progress-bar">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <a id="button-{{ id }}" class="counter btn btn-primary btn-lg red-button" data-base-selector-id="{{ id }}" href="" role="button">+</a>
+                        </div>
+                    </div>
+
+                    {{ form_widget(form.typology) }}
+                    {{ form_widget(form.counter) }}
                 </div>
-
-                <div class="col-8 col-sm-8 col-md-8">
-                    {{ form_label(form) }}
-                </div>
-
-                <div class="col-2 col-sm-2 col-md-2">
-                    <a id="button-{{ id }}" class="counter btn btn-primary btn-lg red-button" data-base-selector-id="{{ id }}" href="" role="button">+</a>
-                </div>
             </div>
-
-            <div id="progressBar-{{ id }}" class="row progress-bar">
-                <div></div>
-            </div>
-
-            {{ form_widget(form.typology) }}
-            {{ form_widget(form.counter) }}
         </div>
     {% else %}
         <div class="time-sampling-item">
