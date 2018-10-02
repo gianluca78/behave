@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block pageTitle %}
-    {{ observation.name }}
+    Data gathering about {{ observation.student.studentId }}
 {% endblock %}
 
 {% block title %}
@@ -23,14 +23,16 @@
 {% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
+
     <div class="portlet box green">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-gift"></i>Add a new student</div>
+                <i class="fa fa-gift"></i>{{ observation.name }}</div>
         </div>
         <div class="portlet-body form">
-        {% for key, field in form.children %}
+        {{ form_start(form) }}
+
+            {% for key, field in form.children %}
             {% if key != 'submit' %}
                 {{ form_row(field) }}
             {% endif %}
@@ -48,6 +50,12 @@
     </div>
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/meter.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/ion.rangeslider/css/ion.rangeSlider.skinFlat.css') }}">
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
 
@@ -57,13 +65,22 @@
 
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/behavioral-recording-tools.js') }}"></script>
+    <script src="{{ asset('theme/assets/global/plugins/ion.rangeslider/js/ion.rangeSlider.min.js') }}"></script>
 
     <script>
         $( document ).ready(function() {
             $( '#form' ).behavioralRecordingTool();
+            $( 'input[type="range"]' ).ionRangeSlider();
         });
 
         $( '.square' ).on('click', function(e){
+
+            $( '.square' ).each(function(){
+                $(this).css('background-color', 'transparent');
+            });
+
+            $(this).css('background-color', 'greenyellow');
+
             $( "input[name*='xValue']" ).val($( this ).attr('data-row'));
             $( "input[name*='yValue']" ).val($( this ).attr('data-column'));
         });

@@ -1,0 +1,73 @@
+.square {
+    float:left;
+    position: relative;
+    width: 9.09%;
+    padding-bottom: 9.09%;
+    margin: 0;
+    border: 1px solid lightgray;
+
+}
+
+.square:hover {
+    background-color: greenyellow;
+}
+
+.content {
+    position:absolute;
+    height:90%; /* = 100% - 2*5% padding */
+    width:90%; /* = 100% - 2*5% padding */
+    padding: 5%;
+
+}
+
+.table{
+    display:table;
+    width:100%;
+    height:100%;
+}
+.table-cell{
+    display:table-cell;
+    vertical-align:middle;
+}
+
+.meter-labels{
+    font-weight:900;
+    font-size:10pt;
+}
+
+.rotate-labels {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    writing-mode: lr-tb;
+}
+
+.x-axis {
+    border: 0;
+    border-top: 1px solid #000000;
+}
+
+.x-axis:hover {
+    background: none;
+}
+
+.y-axis {
+    border: 0;
+    border-right: 1px solid #000000;
+}
+
+.y-axis:hover {
+    background: none;
+}
+
+.first-column-row {
+    border-right: 0;
+}
+
+.sixth-row {
+    border-right: 1px dashed #000000;
+}
+
+.sixth-column {
+    border-top: 1px dashed #000000;
+}

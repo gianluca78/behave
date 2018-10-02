@@ -308,99 +308,108 @@
 {% block meter_item_widget %}
     {% spaceless %}
             {% if labelMaxY is defined %}
-            <div class="form-group text-center square-container">
-                <div class="row">
-                    <div class="col-12 col-md-12">{{ label }}</div>
-                </div>
+            <div class="form-body">
+                <div class="form-group square-container">
+                    <label class="col-md-3 control-label required">
+                        {{ label }}
+                    </label>
 
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                    {% for row in 1..11 %}
-                        {% for column in 1..11 %}
-                            {% if(row==1 and column==1) %}
-                                {% set label = labelMaxY %}
-                                {% set classLabelText = 'rotate-labels' %}
-                            {% elseif(row==6 and column==1) %}
-                                {% set label = labelY %}
-                                {% set classLabelText = 'rotate-labels' %}
-                            {% elseif(row==10 and column==1) %}
-                                {% set label = labelMinY %}
-                                {% set classLabelText = 'rotate-labels' %}
-                            {% endif %}
-                            {% if(row==11 and column==2) %}
-                                {% set label = labelMinX %}
-                                {% set classLabelText = '' %}
-                            {% elseif(row==11 and column==6) %}
-                                {% set label = labelX %}
-                                {% set classLabelText = '' %}
-                            {% elseif(row==11 and column==10) %}
-                                {% set label = labelMaxX %}
-                                {% set classLabelText = '' %}
-                            {% endif %}
+                    <div class="col-md-9">
+                        <div class="row text-center">
+                            <div class="col-12 col-md-5">
+                                {% for row in 1..11 %}
+                                    {% for column in 1..11 %}
+                                        {% if(row==1 and column==1) %}
+                                            {% set label = labelMaxY %}
+                                            {% set classLabelText = 'rotate-labels' %}
+                                        {% elseif(row==6 and column==1) %}
+                                            {% set label = labelY %}
+                                            {% set classLabelText = 'rotate-labels' %}
+                                        {% elseif(row==10 and column==1) %}
+                                            {% set label = labelMinY %}
+                                            {% set classLabelText = 'rotate-labels' %}
+                                        {% endif %}
+                                        {% if(row==11 and column==2) %}
+                                            {% set label = labelMinX %}
+                                            {% set classLabelText = '' %}
+                                        {% elseif(row==11 and column==6) %}
+                                            {% set label = labelX %}
+                                            {% set classLabelText = '' %}
+                                        {% elseif(row==11 and column==10) %}
+                                            {% set label = labelMaxX %}
+                                            {% set classLabelText = '' %}
+                                        {% endif %}
 
-                            {% set classAxis = '' %}
+                                        {% set classAxis = '' %}
 
-                            {% if row==11 %}
-                                {% set classAxis = 'x-axis' %}
-                            {% endif %}
+                                        {% if row==11 %}
+                                            {% set classAxis = 'x-axis' %}
+                                        {% endif %}
 
-                            {% if column==1 %}
-                                {% set classAxis = 'y-axis' %}
-                            {% endif %}
+                                        {% if column==1 %}
+                                            {% set classAxis = 'y-axis' %}
+                                        {% endif %}
 
-                            {% if row==11 and column==1 %}
-                                {% set classAxis = classAxis ~ ' first-column-row' %}
-                            {% endif %}
+                                        {% if row==11 and column==1 %}
+                                            {% set classAxis = classAxis ~ ' first-column-row' %}
+                                        {% endif %}
 
-                            {% if (row==10 and column==6) or
-                                (row==9 and column==6) or
-                                (row==8 and column==6) or
-                                (row==7 and column==6) or
-                                (row==6 and column==6) or
-                                (row==5 and column==6) or
-                                (row==4 and column==6) or
-                                (row==3 and column==6) or
-                                (row==2 and column==6) or
-                                (row==1 and column==6)
-                            %}
-                                {% set classAxis = classAxis ~ ' sixth-row' %}
-                            {% endif %}
+                                        {% if (row==10 and column==6) or
+                                        (row==9 and column==6) or
+                                        (row==8 and column==6) or
+                                        (row==7 and column==6) or
+                                        (row==6 and column==6) or
+                                        (row==5 and column==6) or
+                                        (row==4 and column==6) or
+                                        (row==3 and column==6) or
+                                        (row==2 and column==6) or
+                                        (row==1 and column==6)
+                                        %}
+                                            {% set classAxis = classAxis ~ ' sixth-row' %}
+                                        {% endif %}
 
-                            {% if (row==6 and column==2) or
-                                (row==6 and column==3) or
-                                (row==6 and column==4) or
-                                (row==6 and column==5) or
-                                (row==6 and column==6) or
-                                (row==6 and column==7) or
-                                (row==6 and column==8) or
-                                (row==6 and column==9) or
-                                (row==6 and column==10) or
-                                (row==6 and column==11)
-                            %}
-                                {% set classAxis = classAxis ~ ' sixth-column' %}
-                            {% endif %}
+                                        {% if (row==6 and column==2) or
+                                        (row==6 and column==3) or
+                                        (row==6 and column==4) or
+                                        (row==6 and column==5) or
+                                        (row==6 and column==6) or
+                                        (row==6 and column==7) or
+                                        (row==6 and column==8) or
+                                        (row==6 and column==9) or
+                                        (row==6 and column==10) or
+                                        (row==6 and column==11)
+                                        %}
+                                            {% set classAxis = classAxis ~ ' sixth-column' %}
+                                        {% endif %}
 
-                            <div class="square {{ classAxis }}" data-row="{{ row }}" data-column="{{ column }}">
-                                {% if( ((row==1 or row==6 or row==10) and column==1)
-                                or ((column==2 or column==6 or column==10) and row==11)
-                                )
-                                %}
-                                    <div class="content">
-                                        <div class="table">
-                                            <div class="table-cell meter-labels {{ classLabelText }}">
-                                                {{ label }}
-                                            </div>
+                                        <div class="square {{ classAxis }}" data-row="{{ row }}" data-column="{{ column }}">
+                                            {% if( ((row==1 or row==6 or row==10) and column==1)
+                                            or ((column==2 or column==6 or column==10) and row==11)
+                                            )
+                                            %}
+                                                <div class="content">
+                                                    <div class="table">
+                                                        <div class="table-cell meter-labels {{ classLabelText }}">
+                                                            {{ label }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            {% endif %}
                                         </div>
-                                    </div>
-
-                                {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
                             </div>
-                        {% endfor %}
-                    {% endfor %}
+                        </div>
+
                     </div>
-                </div>
+
+
+
+
                 {{ form_widget(form.xValue) }}
                 {{ form_widget(form.yValue) }}
+            </div>
             </div>
         {% else %}
             <div {{ block('widget_container_attributes') }}>
