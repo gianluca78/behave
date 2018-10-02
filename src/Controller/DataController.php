@@ -188,7 +188,8 @@ class DataController extends Controller
             $series,
             'linechart',
             'Session',
-            'Value'
+            'Value',
+            true
         );
 
         return array(

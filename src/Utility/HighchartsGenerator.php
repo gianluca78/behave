@@ -15,7 +15,7 @@ class HighchartsGenerator {
         $this->translator = $translator;
     }
 
-    public function generateScatterPlot($title, array $series, $divId, $xAxisTitle, $yAxisTitle) {
+    public function generateScatterPlot($title, array $series, $divId, $xAxisTitle, $yAxisTitle, $plotLine = false) {
         $xAxisTitle = $this->translator->trans($xAxisTitle, array(), 'chart');
         $yAxisTitle = $this->translator->trans($yAxisTitle, array(), 'chart');
 
@@ -26,7 +26,10 @@ class HighchartsGenerator {
         $ob->xAxis->title(array('text'  => $xAxisTitle));
         //$ob->xAxis->categories(array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'));
         $ob->xAxis->allowDecimals(false);
-        $ob->xAxis->plotLines($this->generatePlotLines($series));
+
+        if($plotLine) {
+            $ob->xAxis->plotLines($this->generatePlotLines($series));
+        }
 
         $ob->yAxis->title(array('text' => $yAxisTitle));
         $ob->yAxis->allowDecimals(false);
