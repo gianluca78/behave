@@ -192,7 +192,8 @@ class MeasureController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'title' => 'Data gathering'
+            'title' => 'Data gathering',
+            'observation' => $observation
         );
 
     }
