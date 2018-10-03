@@ -187,7 +187,7 @@ class MeasureController extends Controller
         $form = $formBuilder->getForm()->getForm();
 
         if ($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_COMPLETE_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('homepage'));
+            return $this->redirect($this->generateUrl('measure', array('id' => $observation->getId())));
         }
 
         return array(

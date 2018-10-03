@@ -23,6 +23,11 @@
 {% endblock %}
 
 {% block body %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
 
     <div class="portlet box green">
         <div class="portlet-title">

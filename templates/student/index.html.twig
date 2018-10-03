@@ -53,11 +53,13 @@
             <div class="portlet light portlet-fit bordered">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class=" icon-layers font-green"></i>
-                        <span class="caption-subject font-green bold uppercase">List</span>
-
-                        <a href="{{ path('student_new') }}" class="btn btn-default btn-sm">
-                            <i class="fa fa-plus"></i> {% trans %}New{% endtrans %} </a>
+                        <i class=" icon-layers font-dark"></i>
+                        <span class="caption-subject font-dark bold uppercase">List</span>
+                    </div>
+                    <div class="actions">
+                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('student_new') }}">
+                            <i class="fa fa-plus"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="portlet-body">
