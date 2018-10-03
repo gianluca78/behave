@@ -209,29 +209,34 @@
 
 {% block duration %}
     {% if observationLengthInMinutes is defined %}
-        <div class="form-group duration-item">
-            <div class="row">
-                {{ form_widget(form.observationLengthInMinutes) }}
-                {{ form_widget(form.occurrenceTimestamps) }}
-                {{ form_widget(form.intervalLengthInSeconds) }}
-                <div class="col-2 col-sm-2 col-md-2">
-                    <img src="/icons/spinner.png" width="24px" height="24px">
-                </div>
-                <div class="col-5 col-sm-6 col-md-6">
-                    {{ form_label(form) }}
-                </div>
-                <div id="timer-{{ id }}" class="col-2 col-sm-2 col-md-2">
-                    {{ observationLengthInMinutes }}
-                </div>
-                <div class="col-3 col-sm-2 col-md-2">
-                    <div id="player-{{ id }}">
-                        <a class="player btn btn-primary btn-lg" data-base-selector-id="{{ id }}" href="" role="button">&#9658;</a>
+        <div class="form-body">
+            <div class="form-group duration-item">
+                <label class="col-md-3 control-label required">
+                    {{ label }}
+                    <span class="spinner"><img src="/icons/spinner.png" width="24px" height="24px"></span>
+                </label>
+                <div class="col-md-9">
+                    <div class="row">
+                        {{ form_widget(form.observationLengthInMinutes) }}
+                        {{ form_widget(form.occurrenceTimestamps) }}
+                        {{ form_widget(form.intervalLengthInSeconds) }}
+
+                        <div class="col-md-6">
+                            <div id="timer-{{ id }}" style="display:none">
+                                {{ observationLengthInMinutes }}
+                            </div>
+
+                            <div id="progressBar-{{ id }}" class="progress-bar">
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="player-{{ id }}">
+                                <a class="player btn btn-primary btn-lg" data-base-selector-id="{{ id }}" href="" role="button">&#9658;</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div id="progressBar-{{ id }}" class="row progress-bar">
-                <div></div>
             </div>
         </div>
     {% else %}
@@ -269,36 +274,6 @@
                                 <a id="button-{{ id }}" class="frequency-counter btn btn-primary btn-lg red-button" data-base-selector-id="{{ id }}" href="" role="button">+</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        {% else %}
-            <div {{ block('widget_container_attributes') }}>
-                {{- block('form_rows') -}}
-            </div>
-        {% endif %}
-    {% endspaceless %}
-{% endblock %}
-
-{% block interval_recording_item_widget %}
-    {% spaceless %}
-        {% if observationLengthInMinutes is defined %}
-            <div class="form-group">
-                <div class="row">
-                    {{ form_widget(form.observationLengthInMinutes) }}
-                    {{ form_widget(form.occurrenceTimestamps) }}
-                    {{ form_widget(form.counter) }}
-                    <div id="counter-{{ id }}" class="col-2 col-sm-2 col-md-2">
-                        <span>0</span>
-                    </div>
-                    <div class="col-5 col-sm-6 col-md-6 ">
-                        {{ form_label(form) }}
-                    </div>
-                    <div id="timer-{{ id }}" class="col-2 col-sm-2 col-md-2">
-                        {{ observationLengthInMinutes }}
-                    </div>
-                    <div class="col-3 col-sm-2 col-md-2">
-                        <a class="counter btn btn-primary btn-lg" data-base-selector-id="{{ id }}" href="" role="button">+</a>
                     </div>
                 </div>
             </div>

@@ -132,11 +132,9 @@ if (typeof jQuery.ui == 'undefined') {
             }
 
             $( '.duration-item' ).each(function(i, e) {
-                children = $(e).children();
-
-                observationLengthInMinutesId = $(children[0]).children()[0].id;
-                timerId = $(children[0]).children()[5].id;
-                progressBarId = $(children)[1].id;
+                observationLengthInMinutesId = $(e).find('input[id*="observationLengthInMinutes"]').attr('id');
+                timerId = $(e).find('div[id*="timer"]').attr('id');
+                progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
 
                 startTimer(observationLengthInMinutesId, timerId, null, null, progressBarId);
             });
@@ -213,7 +211,7 @@ if (typeof jQuery.ui == 'undefined') {
                     newString = ($( this ).text() == '►') ? '■' : '►';
                     newIcon = (newString == '■') ? '<img src="/icons/spinner.GIF" width="24px" height="24px">' : '<img src="/icons/spinner.png" width="24px" height="24px">';
 
-                    iconSelector = $( this ).parent().parent().parent().children()[3];
+                    iconSelector = $( '.spinner' );
 
                     $( this ).html(newString);
                     $ ( iconSelector ).html(newIcon);
