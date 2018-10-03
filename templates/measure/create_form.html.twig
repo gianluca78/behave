@@ -70,7 +70,16 @@
     <script>
         $( document ).ready(function() {
             $( '.form' ).behavioralRecordingTool();
-            $( 'input[type="range"]' ).ionRangeSlider();
+
+            $( 'input[type="range"]').each(function(i, e){
+                $(e).ionRangeSlider({
+                    min: $(e).attr('min'),
+                    max: $(e).attr('max'),
+                    from: $(e).attr('min'),
+                    step: $(e).attr('step')
+                });
+            });
+
         });
 
         $( '.square' ).on('click', function(e){
