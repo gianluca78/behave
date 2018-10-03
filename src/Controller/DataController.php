@@ -154,15 +154,11 @@ class DataController extends Controller
         $lastPhaseName = '';
         $countPhases = array_count_values($data->database->PHASE);
 
-        if($request->get('selectedData')['phases'][0]['phase-name'] != 'A') {
-            $countPhases[$request->get('selectedData')['phases'][0]['phase-name']] = $countPhases['A'];
-            unset($countPhases['A']);
-        }
-
-        if($request->get('selectedData')['phases'][1]['phase-name'] != 'B') {
-            $countPhases[$request->get('selectedData')['phases'][1]['phase-name']] = $countPhases['B'];
-            unset($countPhases['B']);
-        }
+        $countPhases = array_combine(
+            array($request->get('selectedData')['phases'][0]['phase-name'],
+                $request->get('selectedData')['phases'][1]['phase-name']
+            ), $countPhases
+        );
 
         //var_dump(date('Y-m-d', strtotime($rawData[1]->value->createdAt->date))); exit;
 
