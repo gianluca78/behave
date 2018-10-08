@@ -128,8 +128,25 @@ class DataController extends Controller
         $rawData = $couchDbClient->getByIds(explode(',', $idData));
         $rawData = json_decode($rawData->getContents())->rows;
 
+
         foreach($rawData as $key => $observationData) {
-            $data.= $observationData->value->$itemId;
+
+            if(is_object($observationData->value->$itemId)) {
+                if(!$observationData->value->$itemId->typology && !$observationData->value->$itemId->counter) {
+                    $numberOfSeconds = 0;
+
+                    for($i=0; $i<count($observationData->value->$itemId->occurrenceTimestamps); $i+=2) {
+                        $numberOfSeconds += $observationData->value->$itemId->occurrenceTimestamps[$i + 1] - $observationData->value->$itemId->occurrenceTimestamps[$i];
+                    }
+
+                    $data.= $numberOfSeconds;
+
+                } else {
+                    $data .= $observationData->value->$itemId->counter;
+                }
+            } else {
+                $data.= $observationData->value->$itemId;
+            }
 
             if($key != count($rawData) -1) {
                 $data.= ',';
