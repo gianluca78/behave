@@ -79,7 +79,7 @@ class DirectObservationItem extends Item
         return $this->intervalLengthInSeconds;
     }
 
-    public function setIntervalLengthInSeconds(int $intervalLengthInSeconds)
+    public function setIntervalLengthInSeconds($intervalLengthInSeconds)
     {
         $this->intervalLengthInSeconds = $intervalLengthInSeconds;
 
@@ -91,7 +91,7 @@ class DirectObservationItem extends Item
         return $this->observationLengthInMinutes;
     }
 
-    public function setObservationLengthInMinutes(int $observationLengthInMinutes)
+    public function setObservationLengthInMinutes($observationLengthInMinutes)
     {
         $this->observationLengthInMinutes = $observationLengthInMinutes;
 

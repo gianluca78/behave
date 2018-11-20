@@ -130,7 +130,7 @@ class DataController extends Controller
 
 
         foreach($rawData as $key => $observationData) {
-
+            //PORCHERIA
             if(is_object($observationData->value->$itemId)) {
                 if(!$observationData->value->$itemId->typology && !$observationData->value->$itemId->counter) {
                     $numberOfSeconds = 0;

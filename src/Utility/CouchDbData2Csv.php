@@ -12,6 +12,9 @@ class CouchDbData2Csv {
         $this->extractLabels($rawData);
 
         foreach($rawData as $record) {
+
+            var_dump($record);exit;
+
             $row = array();
 
             foreach($record['value'] as $key => $value) {

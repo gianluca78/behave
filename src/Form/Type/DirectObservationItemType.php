@@ -36,7 +36,12 @@ class DirectObservationItemType extends AbstractType
                     ))
                 )
             ))
-            ->add('intervalLengthInSeconds', null, array('required' => false))
+            ->add('intervalLengthInSeconds', null, array(
+                'required' => false,
+                'constraints' => array(
+                    new IsMultiple()
+                )
+            ))
         ;
     }
 
