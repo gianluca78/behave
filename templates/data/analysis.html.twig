@@ -189,9 +189,22 @@
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="warning-dialog-number-observations" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body"> You need at least 4 observations to perform the statistical analysis</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="analysis_results"></div>
@@ -272,12 +285,16 @@
                 if ($('.phase-container.active').length == 2) {
                     $('#warning-dialog-phase').modal('show');
                 } else {
-                    $(this).addClass('active');
 
-                    if ($('.phase-container.active').length == 2 && $('.item-container.active').length == 1) {
-                        sendDataForAnalysis();
+                    if($(this).data('phase-count') < 4) {
+                        $('#warning-dialog-number-observations').modal('show');
+                    } else {
+                        $(this).addClass('active');
+
+                        if ($('.phase-container.active').length == 2 && $('.item-container.active').length == 1) {
+                            sendDataForAnalysis();
+                        }
                     }
-
                 }
             }
         });
