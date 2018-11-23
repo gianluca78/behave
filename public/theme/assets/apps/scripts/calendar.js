@@ -82,7 +82,12 @@ var AppCalendar = function() {
                 $(events).each(function(){
                     startDates.push(this.start.format('YYYY-MM-DD HH:mm:ss'));
 
-                    if(!this.allDay && this.end != null) {
+                    //fix the issue described here: https://github.com/fullcalendar/fullcalendar/issues/2764
+                    if(!this.allDay && this.end == null) {
+                        eventEndDate = new Date(this.start.format('YYYY-MM-DD HH:mm:ss'));
+                        eventEndDate.setHours(eventEndDate.getHours() + 3);
+                        endDates.push(eventEndDate.toISOString().replace('T', ' ').slice(0, 19));
+                    } else if (!this.allDay && this.end != null) {
                         endDates.push(this.end.format('YYYY-MM-DD HH:mm:ss'));
                     } else {
                         endDates.push(this.start.format('YYYY-MM-DD') + ' 23:59:59');
