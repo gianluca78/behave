@@ -144,7 +144,7 @@ class ObservationFormHandler
                                 $fakeWeek++;
                             }
 
-                            if (in_array($date->format('w'), $weekDays) && ($fakeWeek % $weekInterval === 0) ) {
+                            if (in_array($date->format('w'), $weekDays) && ($fakeWeek % $weekInterval === 0) && $date != $firstStartDate) {
                                 $occurrences++;
                                 $scheduledDates[] = $date;
                             }
@@ -177,7 +177,7 @@ class ObservationFormHandler
                                 $fakeWeek++;
                             }
 
-                            if (in_array($date->format('w'), $weekDays) && ($fakeWeek % $weekInterval === 0) ) {
+                            if (in_array($date->format('w'), $weekDays) && ($fakeWeek % $weekInterval === 0) && $date != $firstStartDate) {
                                 $scheduledDates[] = $date;
                             }
 
