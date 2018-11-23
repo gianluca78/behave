@@ -43,6 +43,27 @@ class Observation
     private $description;
 
     /**
+     * @var string $fillingInstructions
+     *
+     * @ORM\Column(name="filling_instructions", type="encrypted_text", length=255, nullable = true)
+     */
+    private $fillingInstructions;
+
+    /**
+     * @var string $place
+     *
+     * @ORM\Column(name="place", type="encrypted_text", length=255, nullable=true)
+     */
+    private $place;
+
+    /**
+     * @var string $setting
+     *
+     * @ORM\Column(name="setting", type="encrypted_text", length=255, nullable=true)
+     */
+    private $setting;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\ObservationDate", mappedBy="observation", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $observationDates;
@@ -154,6 +175,54 @@ class Observation
     public function setDescription($description)
     {
         $this->description = $description;
+    }
+
+    /**
+     * @param string $fillingInstructions
+     */
+    public function setFillingInstructions($fillingInstructions)
+    {
+        $this->fillingInstructions = $fillingInstructions;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFillingInstructions()
+    {
+        return $this->fillingInstructions;
+    }
+
+    /**
+     * @param string $place
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlace()
+    {
+        return $this->place;
+    }
+
+    /**
+     * @param string $setting
+     */
+    public function setSetting($setting)
+    {
+        $this->setting = $setting;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSetting()
+    {
+        return $this->setting;
     }
 
     /**

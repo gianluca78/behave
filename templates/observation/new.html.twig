@@ -217,9 +217,12 @@
     <div id="measure-form" class="portlet-body">
         {{ form_row(form.base_observation.name) }}
         {{ form_row(form.base_observation.description) }}
+        {{ form_row(form.base_observation.place) }}
+        {{ form_row(form.base_observation.setting) }}
         {{ form_row(form.base_observation.measure) }}
         {{ form_row(form.base_observation.observerUsername) }}
         {{ form_row(form.base_observation.observerUserId) }}
+        {{ form_row(form.base_observation.fillingInstructions) }}
 
         <div class="form-group">
             <label class="control-label required col-md-3">Schedule observation dates</label>
