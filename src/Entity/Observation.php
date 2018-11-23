@@ -212,7 +212,7 @@ class Observation
 
     public function isDateIncluded(\DateTime $dateTime)
     {
-        if($this->getObservationScheduler() && $this->getObservationScheduler()->getHasDates()) {
+        if($this->getObservationScheduler() && !$this->getObservationScheduler()->getHasDates()) {
             return true;
         }
 

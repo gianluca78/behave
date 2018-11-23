@@ -172,13 +172,13 @@ class MeasureController extends Controller
         $em = $this->getDoctrine()->getManager();
         $items = $em->getRepository('App\Entity\Item')->findItemsByMeasure($observation->getMeasure());
 
-        /*
-        if($observation->getObserverUserId() != $this->getUser()->getUserId() || !$observation->isDateIncluded(new \DateTime())) {
+        if(!$observation->getIsEnabled() || $observation->getObserverUserId() != $this->getUser()->getUserId()
+            || !$observation->isDateIncluded(new \DateTime())) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
 
             return $response;
-        }*/
+        }
 
         $formBuilder->addItems($items);
         $formBuilder->setAction($observation);

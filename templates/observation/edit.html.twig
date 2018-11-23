@@ -22,8 +22,14 @@
     </li>
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
         $( document ).ready(function() {
@@ -32,6 +38,25 @@
             $("#observation_edit_base_observation_isSingleCaseDesign").bootstrapSwitch('state', isSingleCaseDesign);
             $("#observation_edit_base_observation_isSingleCaseDesign").bootstrapSwitch('size', 'small');
         });
+
+        $( "#observation_edit_base_observation_observerUsername" ).autocomplete({
+            source: "{{ path('user_search') }}",
+            minLength: 2,
+            select: function( event, ui ) {
+                event.preventDefault();
+                $('#observation_edit_base_observation_observerUsername').val(jQuery(ui.item.label).text());
+                $('#observation_edit_base_observation_observerUserId').val(ui.item.value);
+            },
+            focus: function(event, ui) {
+                event.preventDefault();
+                $("#observation_edit_base_observation_observerUsername").val(jQuery(ui.item.label).text());
+            }
+        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+            return $( "<li>" )
+                    .attr( "data-value", item.value )
+                    .append(item.label).html(item.label)
+                    .appendTo( ul );
+        };
     </script>
 {% endblock %}
 
