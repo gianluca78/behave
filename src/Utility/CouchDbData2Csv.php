@@ -3,43 +3,67 @@ namespace App\Utility;
 
 class CouchDbData2Csv {
 
-    private $labels = array();
-    private $exclusions = array('_id', '_rev', 'observationId', 'userId');
-    private $values = array();
+    private $couchDbDataTransformer;
+
+    public function __construct(CouchDbDataTransformer $couchDbDataTransformer)
+    {
+        $this->couchDbDataTransformer = $couchDbDataTransformer;
+    }
 
     public function convert($rawData, $path)
     {
-        $this->extractLabels($rawData);
+        $rows = array();
 
-        foreach($rawData as $record) {
+        if($rawData) {
+            $rows[] = array_keys($rawData[0]);
 
-            var_dump($record);exit;
+            foreach($rawData as $record) {
 
-            $row = array();
+                $row = array();
 
-            foreach($record['value'] as $key => $value) {
-                if(!in_array($key, $this->exclusions)) {
+                foreach($record as $itemData) {
+                    if(is_array($itemData)) {
+                        switch($itemData['typology']) {
+                            case 'choice-checkboxes':
+                                $row[] = implode(',', $itemData['value']);
 
-                    $value = (isset($value['date'])) ? $value['date'] : $value;
-                    $value = is_array($value) ? $value['xValue'] . ', ' . $value['yValue'] : $value;
+                                break;
 
-                    $row[] = $value;
+                            case 'choice-radio':
+                                $row[] = $itemData['value'];
+
+                                break;
+
+
+                            case 'direct-observation':
+                                $row[] = $this->couchDbDataTransformer->calculateDirectObservationData($itemData['value']);
+
+                                break;
+
+                            case 'integer':
+                            case 'range':
+                            case 'text':
+                                $row[] = $itemData['value'];
+
+                                break;
+
+                            case 'meter':
+                                $row[] = $itemData['value']['xValue'] . ',' . $itemData['value']['yValue'];
+
+                                break;
+
+                        }
+                    } else {
+                        $row[] = $itemData;
+                    }
                 }
+
+                $rows[] = $row;
             }
 
-            $this->values[] = $row;
         }
-
-        $rows = array_merge($this->labels, $this->values);
 
         $this->saveTmpFileData($rows, $path);
-    }
-
-    private function extractLabels($rawData)
-    {
-        if(count($rawData) > 0) {
-            $this->labels[] = array_diff(array_keys($rawData[0]['value']), $this->exclusions);
-        }
     }
 
     private function saveTmpFileData($rows, $path)

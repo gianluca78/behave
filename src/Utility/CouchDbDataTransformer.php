@@ -122,7 +122,7 @@ class CouchDbDataTransformer {
         return $results;
     }
 
-    private function calculateDirectObservationData($value)
+    public function calculateDirectObservationData($value)
     {
         if(!$value['typology'] && !$value['counter']) {
             $numberOfSeconds = 0;

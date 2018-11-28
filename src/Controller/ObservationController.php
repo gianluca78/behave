@@ -7,6 +7,7 @@ use App\Form\Type\CalendarType;
 use App\Security\Encoder\OpenSslEncoder;
 use App\Utility\Auth0Api;
 use App\Utility\CouchDbData2Csv;
+use App\Utility\CouchDbDataTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -248,6 +249,8 @@ class ObservationController extends Controller
             $em->persist($observation);
             $em->flush();
 
+
+
             $observerEmail = $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->email;
 
             if($observation->getIsEnabled()) {
@@ -301,13 +304,15 @@ class ObservationController extends Controller
      * @param Observation $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function downloadDataAction(Observation $observation, CouchDbClient $couchDbClient, CouchDbData2Csv $couchDbData2Csv)
+    public function downloadDataAction(Observation $observation, CouchDbClient $couchDbClient, CouchDbData2Csv $couchDbData2Csv, CouchDbDataTransformer $couchDbDataTransformer)
     {
         $rawData = $couchDbClient->getObservationsById($observation->getId());
+        $rawData = json_decode($rawData->getContents(), true)['rows'];
+        $rawData = $couchDbDataTransformer->transformByData($rawData);
 
         $path = $this->container->getParameter('kernel.root_dir').'/Resources/tmp/raw-data.csv';
 
-        $couchDbData2Csv->convert(json_decode($rawData->getContents(), true)['rows'], $path);
+        $couchDbData2Csv->convert($rawData, $path);
 
         $response = new BinaryFileResponse($path);
         $response->headers->set('Content-type', 'text/csv');
