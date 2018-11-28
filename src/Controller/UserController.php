@@ -73,7 +73,7 @@ class UserController extends Controller
         foreach($auth0Api->getUsers($request->get('term')) as $key => $user) {
             $results[] = array(
                 'id' => $user->user_id,
-                'label' => '<img width="4%" src="' . $user->picture . '">' . $user->name . '</img>',
+                'label' => '<img width="10%" src="' . $user->picture . '">' . $user->name . '</img>',
                 'value' => $user->user_id,
                 'picture' => $user->picture
             );

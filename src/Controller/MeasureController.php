@@ -174,10 +174,15 @@ class MeasureController extends Controller
 
         if(!$observation->getIsEnabled() || $observation->getObserverUserId() != $this->getUser()->getUserId()
             || !$observation->isDateIncluded(new \DateTime())) {
-            $response = new Response('not allowed');
-            $response->setStatusCode(403);
 
-            return $response;
+
+            $nextDate = ($observation->getObserverUserId() == $this->getUser()->getUserId()) ?
+                $em->getRepository('App\Entity\ObservationDate')->findNextObservationDate($observation) :
+                null;
+
+            return $this->render('measure/not_allowed.html.twig', array(
+                'nextDate' => $nextDate
+            ));
         }
 
         $formBuilder->addItems($items);

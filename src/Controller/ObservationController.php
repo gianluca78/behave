@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\Handler\CalendarFormHandler;
 use App\Form\Type\CalendarType;
 use App\Security\Encoder\OpenSslEncoder;
+use App\Utility\Auth0Api;
 use App\Utility\CouchDbData2Csv;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
@@ -231,7 +232,7 @@ class ObservationController extends Controller
      * @param Observation $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function enableDisableAction(Request $request, Student $student)
+    public function enableDisableAction(Request $request, Student $student, \Swift_Mailer $mailer, Auth0Api $auth0Api)
     {
         $ids = json_decode($request->get('ids'), true);
 
@@ -246,6 +247,44 @@ class ObservationController extends Controller
 
             $em->persist($observation);
             $em->flush();
+
+            $observerEmail = $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->email;
+
+            if($observation->getIsEnabled()) {
+                $message = (new \Swift_Message('[BEHAVE] Observation'))
+                    ->setFrom('noreply@behaveproject.eu')
+                    ->setTo($observerEmail)
+                    ->setBody(
+                        $this->renderView(
+                            'emails/observation.html.twig',
+                            array(
+                                'givenName' => $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->given_name,
+                                'student' => $observation->getStudent(),
+                                'behaviour' => $observation->getName(),
+                                'observation' => $observation
+
+                            )
+                        ),
+                        'text/html'
+                    )
+                    /*
+                     * If you also want to include a plaintext version of the message
+                    ->addPart(
+                        $this->renderView(
+                            'emails/registration.txt.twig',
+                            array('name' => $name)
+                        ),
+                        'text/plain'
+                    )
+                    */
+                ;
+
+                try{
+                    $mailer->send($message);
+                }catch(\Swift_TransportException $e){
+                    $response = $e->getMessage() ;
+                }
+            }
 
         }
 

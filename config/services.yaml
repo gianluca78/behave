@@ -49,6 +49,7 @@ services:
             $privateKey: '%open_ssl_private_key%'
 
     App\Utility\Auth0Api:
+        public: true
         arguments:
             $authorizationHeader: '%auth0_api_authorization_header%'
             $baseUri: '%auth0_api_base_uri%'

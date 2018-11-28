@@ -1,0 +1,16 @@
+Dear {{ givenName }},
+the observation of the {{ student.studentId }}'s behaviour "{{ behaviour }}" has been assigned to you.
+
+{% if observation.observationDates | length > 0 %}
+The observation has to be done in the following dates and times:
+
+<ul>
+{% for observationDate in observation.observationDates %}
+    <li>{{ observationDate.startDateTimestamp | date('d F Y H:i') }} - {{ observationDate.endDateTimestamp | date('H:i') }}</li>
+{% endfor %}
+</ul>
+
+{% else %}
+    Here below the link to gather data: {{ url('measure', { 'id' : observation.id }) }}
+
+{% endif %}

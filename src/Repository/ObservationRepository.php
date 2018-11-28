@@ -25,6 +25,19 @@ class ObservationRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findIncomingObservations($numberOfHours)
+    {
+        $now = new \DateTime();
+        $now->add(new \DateInterval('PT' . $numberOfHours . 'H'));
+
+        return $this->createQueryBuilder('o')
+            ->join('o.observationDates', 'd')
+            ->where('d.startDateTimestamp = :startDate')->setParameter('startDate', $now->format('Y-m-d H:i') . ':00')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     /*
     public function findBySomething($value)
     {

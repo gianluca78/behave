@@ -32,6 +32,32 @@ class ObservationDateRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findIncomingObservations($numberOfHours)
+    {
+        $now = new \DateTime();
+        $now->add(new \DateInterval('PT' . $numberOfHours . 'H'));
+
+        return $this->createQueryBuilder('od')
+            ->where('od.startDateTimestamp = :startDate')->setParameter('startDate', $now->format('Y-m-d H:i') . ':00')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findNextObservationDate($observation)
+    {
+        $now = new \DateTime();
+
+        return $this->createQueryBuilder('od')
+            ->where('od.startDateTimestamp >= :now')->setParameter('now', $now->format('Y-m-d H:i') . ':00')
+            ->andWhere('od.observation = :observation')->setParameter('observation', $observation)
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
+
+
 //    /**
 //     * @return ObservationDate[] Returns an array of ObservationDate objects
 //     */
