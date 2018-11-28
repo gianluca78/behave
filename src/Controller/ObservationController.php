@@ -193,6 +193,22 @@ class ObservationController extends Controller
     }
 
     /**
+    * @Route("/number/{id}", name="observation_number")
+    * @Method({"GET"})
+    * @Template
+    *
+    * @param Observation $observation
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+    public function numberAction(Observation $observation, CouchDbClient $couchDbClient)
+    {
+        $observationData = $couchDbClient->getObservationsById($observation->getId());
+
+        return new Response(count(json_decode($observationData->getContents())->rows));
+
+    }
+
+    /**
     * @Route("/delete/{id}/{ids}", name="observation_delete")
     * @Method({"GET"})
     *
@@ -309,6 +325,7 @@ class ObservationController extends Controller
         $rawData = $couchDbClient->getObservationsById($observation->getId());
         $rawData = json_decode($rawData->getContents(), true)['rows'];
         $rawData = $couchDbDataTransformer->transformByData($rawData);
+        //dump($rawData);exit;
 
         $path = $this->container->getParameter('kernel.root_dir').'/Resources/tmp/raw-data.csv';
 
@@ -321,5 +338,6 @@ class ObservationController extends Controller
         $response->sendHeaders();
 
         return $response;
+
     }
 }

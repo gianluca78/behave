@@ -45,7 +45,7 @@ class Observation
     /**
      * @var string $fillingInstructions
      *
-     * @ORM\Column(name="filling_instructions", type="encrypted_text", length=255, nullable = true)
+     * @ORM\Column(name="filling_instructions", type="encrypted_text", length=255)
      */
     private $fillingInstructions;
 
@@ -119,6 +119,17 @@ class Observation
     public function getSlugIsEnabled()
     {
         return ($this->isEnabled) ? 'Yes' : 'No';
+    }
+
+    public function countCategorizedData()
+    {
+        $total = 0;
+
+        foreach($this->getObservationPhases() as $observationPhase) {
+            $total += count($observationPhase->getDataIds());
+        }
+
+        return $total;
     }
 
     /**
