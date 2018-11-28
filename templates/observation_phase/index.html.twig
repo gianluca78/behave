@@ -162,15 +162,9 @@
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a class="delete-button btn btn-circle btn-icon-only btn-default" data-toggle="modal" data-url="{{ path('observation_phase_delete', {'id': phase.id }) }}" href="#basic">
+                                        <a class="delete-button opaque btn btn-circle btn-icon-only btn-default" data-toggle="modal" data-url="{{ path('observation_phase_delete', {'id': phase.id }) }}" href="#basic">
                                             <i class="fa fa-trash"></i>
                                         </a>
-
-                                        <!--
-                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_delete', {'id': phase.id }) }}">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                        -->
 
                                         <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('data_list', {'id': phase.id }) }}">
                                             <i class="fa fa-list"></i>
