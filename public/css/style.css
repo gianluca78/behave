@@ -7,6 +7,7 @@
     color: #ffffff;
 }
 
+/*
 .progress-bar {
     width: 100%;
     margin: 10px auto;
@@ -18,10 +19,31 @@
     height: 100%;
     text-align: right;
     padding: 0;
-    line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+    line-height: 22px;
     width: 0;
     background-color: cornflowerblue;
     box-sizing: border-box;
+}*/
+
+.dashboard-stat2 {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    background: none;
+    padding: 0;
+}
+
+.dashboard-stat2 .progress-info .status {
+    font-size: 11px;
+    color: #333;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.progress {
+    background-color: lightgray;
 }
 
 .bootstrap-tagsinput{

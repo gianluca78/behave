@@ -120,10 +120,70 @@
                             </span>
                                 </td>
                                 <td>{{ record.observerUsername }}</td>
-                                <td>{{ record.countCategorizedData }} / {{ render(controller(
+                                <td>
+                                    {% set numberOfObservations = render(controller(
                                     'App\\Controller\\ObservationController::numberAction',
                                     { 'id': record.id }
-                                    )) }}</td>
+                                    )) %}
+
+                                    {% set percentage = (numberOfObservations != 0) ?
+                                    record.countCategorizedData / numberOfObservations * 100 :
+                                    0
+                                    %}
+
+                                    <div class="dashboard-stat2">
+                                        <div class="progress-info">
+                                            <div class="status">
+                                                <div class="status-title"> 0 </div>
+                                                <div class="status-number"> {{ percentage }}% ({{ record.CountCategorizedData }}/{{ numberOfObservations }})</div>
+                                            </div>
+
+                                            <div class="progress">
+                                                <span style="width: {{ percentage }}%; background-color: #36c6d3" class="progress-bar progress-bar-success">
+                                                    <span class="sr-only">{{ percentage }}% change</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!--
+                                    <div class="row">
+                                        <div class="dashboard-stat2">
+                                            <div class="display">
+                                                <div class="number">
+                                                    <h3 class="font-blue-sharp">
+                                                        {% set numberOfObservations = render(controller(
+                                                            'App\\Controller\\ObservationController::numberAction',
+                                                            { 'id': record.id }
+                                                        )) %}
+
+                                                        {% set percentage = (numberOfObservations != 0) ?
+                                                        record.countCategorizedData / numberOfObservations * 100 :
+                                                        0
+                                                        %}
+
+                                                        <span data-counter="counterup" data-value="{{ numberOfObservations }}">
+                                                            {{ record.countCategorizedData }} / {{ numberOfObservations }}
+                                                        </span>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="progress-info">
+                                                <div class="progress">
+                                                <span style="width: {{ percentage }}%;" class="progress-bar progress-bar-success blue-sharp">
+                                                    <span class="sr-only">{{ percentage }}% change</span>
+                                                </span>
+                                                </div>
+                                                <div class="status">
+                                                    <div class="status-title"> 0 </div>
+                                                    <div class="status-number"> {{ percentage }}% </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </td>
                             </tr>
                         {% endfor %}
 
@@ -160,6 +220,7 @@
     <script src="{{ asset('theme/assets/global/plugins/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}"></script>
     <script src="{{ asset('theme/assets/pages/scripts/table-datatables-managed.js') }}"></script>
+    <script src="{{ asset('theme/assets/pages/scripts/ui-general.min.js') }}"></script>
 
     <script>
         $( document ).ready(function() {
