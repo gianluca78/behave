@@ -46,7 +46,7 @@ if (typeof jQuery.ui == 'undefined') {
                 ).html('');
             };
 
-            function startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId)
+            function startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId, feedbackForIntervalRecordingId)
             {
                 var w = null;
                 var data = null;
@@ -92,9 +92,12 @@ if (typeof jQuery.ui == 'undefined') {
                             intervalPlayedAudio[timerId].push(data.intervalNumber);
                             timestampLastPlayedAudio[timerId] = ~~(Date.now()/1000);
 
-                            audioElement.pause();
-                            audioElement.play();
-                            //$( '#' + data.timerId ).effect('shake');
+                            if($('#' + feedbackForIntervalRecordingId).val() == 'visual-feedback') {
+                                $( '#' + progressBarId ).effect('pulsate', { 'duration': 800 });
+                            } else {
+                                audioElement.pause();
+                                audioElement.play();
+                            }
 
                             activeIntervalNumber[timerId]++;
                         }
@@ -136,7 +139,7 @@ if (typeof jQuery.ui == 'undefined') {
                 timerId = $(e).find('div[id*="timer"]').attr('id');
                 progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
 
-                startTimer(observationLengthInMinutesId, timerId, null, null, progressBarId);
+                startTimer(observationLengthInMinutesId, timerId, null, null, progressBarId, null);
             });
 
             $( '.frequency-item' ).each(function(i, e) {
@@ -145,17 +148,18 @@ if (typeof jQuery.ui == 'undefined') {
                 buttonId = $(e).find('a[id*="button"]').attr('id');
                 progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
 
-                startTimer(observationLengthInMinutesId, timerId, null, buttonId, progressBarId);
+                startTimer(observationLengthInMinutesId, timerId, null, buttonId, progressBarId, null);
             });
 
             $( '.time-sampling-item' ).each(function(i, e) {
                 observationLengthInMinutesId = $(e).find('input[id*="observationLengthInMinutes"]').attr('id');
                 partialLengthInSecondsId = $(e).find('input[id*="intervalLengthInSeconds"]').attr('id');
+                feedbackForIntervalRecordingId = $(e).find('input[id*="feedbackForIntervalRecording"]').attr('id');
                 timerId = $(e).find('div[id*="timer"]').attr('id');
                 buttonId = $(e).find('a[id*="button"]').attr('id');
                 progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
 
-                startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId);
+                startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId, feedbackForIntervalRecordingId);
             });
 
 

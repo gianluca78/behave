@@ -7,15 +7,15 @@
     color: #ffffff;
 }
 
-/*
-.progress-bar {
+
+.time-sampling-progress-bar {
     width: 100%;
     margin: 10px auto;
     height: 22px;
     background-color: darkgray;
 }
 
-.progress-bar div {
+.time-sampling-progress-bar div {
     height: 100%;
     text-align: right;
     padding: 0;
@@ -23,7 +23,7 @@
     width: 0;
     background-color: cornflowerblue;
     box-sizing: border-box;
-}*/
+}
 
 .dashboard-stat2 {
     -webkit-border-radius: 4px;

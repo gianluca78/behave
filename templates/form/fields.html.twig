@@ -408,13 +408,12 @@
                         {{ form_widget(form.intervalLengthInSeconds) }}
                         {{ form_widget(form.intervalData) }}
 
-
                         <div class="col-md-6">
                             <div id="timer-{{ id }}" style="display:none">
                                 {{ observationLengthInMinutes }}
                             </div>
 
-                            <div id="progressBar-{{ id }}" class="progress-bar">
+                            <div id="progressBar-{{ id }}" class="time-sampling-progress-bar">
                                 <div></div>
                             </div>
                         </div>
@@ -425,6 +424,7 @@
 
                     {{ form_widget(form.typology) }}
                     {{ form_widget(form.counter) }}
+                    {{ form_widget(form.feedbackForIntervalRecording) }}
                 </div>
             </div>
         </div>

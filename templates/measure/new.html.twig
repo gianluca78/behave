@@ -89,6 +89,7 @@
                                         {{ form_row(directObservationItem.observationLengthInMinutes) }}
                                         {{ form_row(directObservationItem.intervalLengthInSeconds) }}
                                         {{ form_row(directObservationItem.typology) }}
+                                        {{ form_row(directObservationItem.feedbackForIntervalRecording) }}
                                         {{ form_row(directObservationItem.positionNumber) }}
                                     </div>
                                 </div>
@@ -340,11 +341,13 @@
 
         $(".portlet-body").on('change', "select[id*='typology']", function(){
             intervalLengthInSecondsId = $(this).attr('id').replace('typology', 'intervalLengthInSeconds');
+            feedbackForIntervalRecordingId = $(this).attr('id').replace('typology', 'feedbackForIntervalRecording');
 
             switch($(this).val()) {
                 case 'duration':
                 case 'frequency':
                     $('#' + intervalLengthInSecondsId).parent().parent().hide();
+                    $('#' + feedbackForIntervalRecordingId).parent().parent().hide();
                     console.log($('#' + intervalLengthInSecondsId));
                     break;
 
@@ -352,6 +355,7 @@
                 case 'partial-interval':
                 case 'momentary-time-sampling':
                     $('#' + intervalLengthInSecondsId).parent().parent().show();
+                    $('#' + feedbackForIntervalRecordingId).parent().parent().show();
                     console.log($('#' + intervalLengthInSecondsId));
                     break;
             }
@@ -408,6 +412,7 @@
 
             if(type == 'direct-observation') {
                 $('#measure_directObservationItems_' + newIndex + '_intervalLengthInSeconds').parent().parent().hide();
+                $('#measure_directObservationItems_' + newIndex + '_feedbackForIntervalRecording').parent().parent().hide();
             }
         }
     </script>

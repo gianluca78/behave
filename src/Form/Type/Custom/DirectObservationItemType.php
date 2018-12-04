@@ -40,6 +40,10 @@ class DirectObservationItemType extends AbstractType
                     'data' => $options['interval_length_in_seconds']
                 )
             )
+            ->add('feedbackForIntervalRecording', HiddenType::class, array(
+                    'data' => $options['feedback_for_interval_recording']
+                )
+            )
             ->add('typology', HiddenType::class, array(
                     'data' => $options['typology']
                 )
@@ -79,6 +83,7 @@ class DirectObservationItemType extends AbstractType
             'compound' => true,
             'counter_value' => 0,
             'interval_length_in_seconds' => null,
+            'feedback_for_interval_recording' => null,
             'label' => '',
             'observation_length_in_minutes' => null,
             'typology' => null,
