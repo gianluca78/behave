@@ -2,7 +2,7 @@ Dear {{ givenName }},
 I just want to remind you about the observation of the {{ student.studentId }}'s behaviour "{{ behaviour }}" assigned to
 you for {{ observationStartDate | date('l F j') }} from {{ observationStartDate | date('H:i') }} to {{ observationEndDate | date('H:i') }}.
 
-Here you are the link to gather data: {{ url('measure', { 'id' : observation.id }) }} that be enabled only
+Here you are the link to gather data: {{ url('measure', { 'id' : observation.id }) }} that will be enabled only
 within the above mentioned time interval.
 
 

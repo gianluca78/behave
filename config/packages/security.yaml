@@ -10,10 +10,10 @@ security:
             oauth:
                 resource_owners:
                     auth0: "/auth0/callback"
-                login_path:        /login
-                default_target_path: homepage
+                login_path:        /connect/auth0
+                default_target_path: dashboard
                 use_forward:       false
-                failure_path:      /login
+                failure_path:      /connect/auth0
 
                 oauth_user_provider:
                     #service: hwi_oauth.user.provider
@@ -25,9 +25,10 @@ security:
             anonymous: ~
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/homepage, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/dashboard, roles: ROLE_OAUTH_USER }
         - { path: ^/user, roles: ROLE_OAUTH_USER }
         - { path: ^/data, roles: ROLE_OAUTH_USER }
-        - { path: ^/homepage, roles: ROLE_OAUTH_USER }
         - { path: ^/measure, roles: ROLE_OAUTH_USER }
         - { path: ^/observation, roles: ROLE_OAUTH_USER }
         - { path: ^/student, roles: ROLE_OAUTH_USER }

@@ -117,10 +117,15 @@ class MeasureController extends Controller
             return $this->redirect($this->generateUrl('measure_list'));
         }
 
+        $numberOfItems = $form->get('choiceItems')->count() + $form->get('directObservationItems')->count() +
+            $form->get('integerItems')->count() + $form->get('meterItems')->count() +
+            $form->get('rangeItems')->count() + $form->get('textItems')->count();
+
         return array(
             'form' => $form->createView(),
             'title' => $this->get('translator')->trans(self::NEW_TITLE),
-            'actionName' => 'New'
+            'actionName' => 'New',
+            'numberOfItems' => $numberOfItems
         );
 
     }

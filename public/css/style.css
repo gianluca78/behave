@@ -7,6 +7,17 @@
     color: #ffffff;
 }
 
+.control-label .required, .form-group .required {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+    color: #333;
+    font-size: 14px;
+}
+
+.control-label .required, .form-group .required::after {
+    content: "*";
+}
 
 .time-sampling-progress-bar {
     width: 100%;

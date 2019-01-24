@@ -29,6 +29,21 @@ class HomepageController extends Controller
      */
     public function homepageAction()
     {
+        if($this->getUser()) {
+            return $this->forward('App\Controller\HomepageController::dashboardAction');
+        }
+
+        return array();
+    }
+
+    /**
+     * @Route("/dashboard", name="dashboard")
+     * @Method({"GET"})
+     * @Template
+     *
+     */
+    public function dashboardAction()
+    {
         return array();
     }
 }

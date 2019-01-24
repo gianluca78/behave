@@ -32,6 +32,12 @@ class DirectObservationItemType extends AbstractType
             ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
             ->add('observationLengthInMinutes', null, array('required' => true))
+            ->add('intervalLengthInSeconds', null, array(
+                'required' => false,
+                'constraints' => array(
+                    new IsMultiple()
+                )
+            ))
             ->add('typology', ChoiceType::class, array(
                 'choices' => $choices,
                 'constraints' => array(
@@ -48,12 +54,6 @@ class DirectObservationItemType extends AbstractType
                         'choices' => $choicesForFeedback,
                         'message' => 'Choose a valid feedback typology'
                     ))
-                )
-            ))
-            ->add('intervalLengthInSeconds', null, array(
-                'required' => false,
-                'constraints' => array(
-                    new IsMultiple()
                 )
             ))
         ;

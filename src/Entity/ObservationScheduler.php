@@ -98,11 +98,12 @@ class ObservationScheduler
                     ->addViolation();
             }
 
+            /*
             if($this->getTimeOption() == 1 && $this->getTimeRangeStartTime() >= $this->getTimeRangeEndTime()) {
                 $context->buildViolation('The start time must be before the end time')
                     ->atPath('timeRangeStartTime')
                     ->addViolation();
-            }
+            }*/
 
             if($this->getWeeklyNumberOfWeeks() && $this->getWeeklyNumberOfWeeks() <= 0 ||
                 ($this->getRepeatOption() == 1 && !$this->getWeeklyNumberOfWeeks())) {

@@ -61,6 +61,7 @@
                                         </div>
                                     </div>
                                     <div class="portlet-body">
+                                        {{ form_row(choiceItem.type) }}
                                         {{ form_row(choiceItem.isExpanded) }}
                                         {{ form_row(choiceItem.isMultiple) }}
                                         {{ form_row(choiceItem.positionNumber) }}
@@ -253,6 +254,11 @@
 
             $("#measure_isShared").bootstrapSwitch('state', isShared);
             $("#measure_isShared").bootstrapSwitch('size', 'small');
+
+            $("select[id*='typology']").each(function(){
+                hideShowIntervalFeedback($(this));
+            });
+
         });
 
 
@@ -340,28 +346,12 @@
         });
 
         $(".portlet-body").on('change', "select[id*='typology']", function(){
-            intervalLengthInSecondsId = $(this).attr('id').replace('typology', 'intervalLengthInSeconds');
-            feedbackForIntervalRecordingId = $(this).attr('id').replace('typology', 'feedbackForIntervalRecording');
+            hideShowIntervalFeedback($(this));
 
-            switch($(this).val()) {
-                case 'duration':
-                case 'frequency':
-                    $('#' + intervalLengthInSecondsId).parent().parent().hide();
-                    $('#' + feedbackForIntervalRecordingId).parent().parent().hide();
-                    console.log($('#' + intervalLengthInSecondsId));
-                    break;
 
-                case 'whole-interval':
-                case 'partial-interval':
-                case 'momentary-time-sampling':
-                    $('#' + intervalLengthInSecondsId).parent().parent().show();
-                    $('#' + feedbackForIntervalRecordingId).parent().parent().show();
-                    console.log($('#' + intervalLengthInSecondsId));
-                    break;
-            }
         });
 
-        $( '.dropdown-menu a' ).on('click', function(e){
+        $( '.dropdown-menu a' ).on('click', function(e) {
             e.preventDefault();
 
             switch($.trim($( this ).text())) {
@@ -414,6 +404,51 @@
                 $('#measure_directObservationItems_' + newIndex + '_intervalLengthInSeconds').parent().parent().hide();
                 $('#measure_directObservationItems_' + newIndex + '_feedbackForIntervalRecording').parent().parent().hide();
             }
+        }
+
+        function hideShowIntervalFeedback(element)
+        {
+            intervalLengthInSecondsId = $(element).attr('id').replace('typology', 'intervalLengthInSeconds');
+            feedbackForIntervalRecordingId = $(element).attr('id').replace('typology', 'feedbackForIntervalRecording');
+
+            switch($(element).val()) {
+                case 'duration':
+                case 'frequency':
+                    $('#' + intervalLengthInSecondsId).parent().parent().hide();
+                    $('#' + feedbackForIntervalRecordingId).parent().parent().hide();
+                    console.log($('#' + intervalLengthInSecondsId));
+                    break;
+
+                case 'whole-interval':
+                case 'partial-interval':
+                case 'momentary-time-sampling':
+                    $('#' + intervalLengthInSecondsId).parent().parent().show();
+                    $('#' + feedbackForIntervalRecordingId).parent().parent().show();
+                    console.log($('#' + intervalLengthInSecondsId));
+                    break;
+            }
+
+            /*
+             intervalLengthInSecondsId = $(this).attr('id').replace('typology', 'intervalLengthInSeconds');
+             feedbackForIntervalRecordingId = $(this).attr('id').replace('typology', 'feedbackForIntervalRecording');
+
+             switch($(this).val()) {
+             case 'duration':
+             case 'frequency':
+             $('#' + intervalLengthInSecondsId).parent().parent().hide();
+             $('#' + feedbackForIntervalRecordingId).parent().parent().hide();
+             console.log($('#' + intervalLengthInSecondsId));
+             break;
+
+             case 'whole-interval':
+             case 'partial-interval':
+             case 'momentary-time-sampling':
+             $('#' + intervalLengthInSecondsId).parent().parent().show();
+             $('#' + feedbackForIntervalRecordingId).parent().parent().show();
+             console.log($('#' + intervalLengthInSecondsId));
+             break;
+             }
+             */
         }
     </script>
 {% endblock %}

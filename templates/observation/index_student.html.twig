@@ -220,6 +220,7 @@
     <script src="{{ asset('theme/assets/global/plugins/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}"></script>
     <script src="{{ asset('theme/assets/pages/scripts/table-datatables-managed.js') }}"></script>
+    <script src="{{ asset('theme/assets/global/plugins/jquery-bootpag/jquery.bootpag.min.js') }}"></script>
     <script src="{{ asset('theme/assets/pages/scripts/ui-general.min.js') }}"></script>
 
     <script>
@@ -267,12 +268,14 @@
                 if(ids.length > 0) {
                     $('#basic').modal('show');
 
-                    $('#confirm-delete').data('/observation/delete/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
+                    $('#confirm-delete').data('url', '/observation/delete/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
                 }
             }
         });
 
-
+        $('#confirm-delete').click(function( event ) {
+            window.location.href = $('#confirm-delete').data('url');
+        });
 
         $('#enable-button').on('click', function(){
             ids = [];

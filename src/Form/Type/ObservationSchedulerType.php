@@ -25,7 +25,7 @@ class ObservationSchedulerType extends AbstractType
                 'label' => ' '
             ))
             ->add('startDate', TextType::class, array(
-            'required' => false
+                'required' => false
         ))
             ->add('timeOption', ChoiceType::class, array(
                 'required' => false,
