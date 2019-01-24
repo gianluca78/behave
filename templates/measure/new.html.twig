@@ -263,23 +263,19 @@
 
 
         $(".portlet-body").on('click', '.m-icon-swapup', function(){
-            selectedItemId = $(this).parent().parent().parent().next().children().attr('id');
+            selectedItemId = $(this).parent().parent().next().children().first().attr('id');
             positionNumberId = selectedItemId + '_' + 'positionNumber';
             positionNumberStartValue = parseInt($('#' + positionNumberId).val());
 
             portlet = $(this).parent().parent().parent();
 
-            if(positionNumberStartValue != '0') {
-                itemIndex = positionNumberStartValue - 1;
+            if(positionNumberStartValue != '1') {
+                previousItemIndex = parseInt(positionNumberStartValue) - 2;
 
                 //the selected element goes up
-                console.log($('#' + positionNumberId));
-
                 $('#' + positionNumberId).val(positionNumberStartValue - 1);
 
-                console.log($('#' + positionNumberId));
-
-                previousElementPositionNumber = $('input[id*="' + itemIndex + '_positionNumber"]');
+                previousElementPositionNumber = $('input[id*="' + previousItemIndex + '_positionNumber"]');
 
                 //the previous element goes down
                 previousElementPositionNumber.val(parseInt(previousElementPositionNumber.val()) + 1);
@@ -290,28 +286,48 @@
         });
 
         $(".portlet-body").on('click', '.m-icon-swapdown', function(){
-            selectedItemId = $(this).parent().parent().parent().next().children().attr('id');
+            selectedItemId = $(this).parent().parent().next().children().first().attr('id');
+
             positionNumberId = selectedItemId + '_' + 'positionNumber';
             positionNumberStartValue = parseInt($('#' + positionNumberId).val());
 
             portlet = $(this).parent().parent().parent();
+
             numberOfItems = $('input[id*=positionNumber]').length;
 
             if(positionNumberStartValue != numberOfItems) {
-                itemIndex = positionNumberStartValue - 1;
+                nextItemIndex = positionNumberStartValue;
 
                 //the selected element goes down
                 $('#' + positionNumberId).val(positionNumberStartValue + 1);
 
-                previousElementPositionNumber = $('input[id*="' + itemIndex + '_positionNumber"]');
+                nextElementPositionNumber = $('input[id*="' + nextItemIndex + '_positionNumber"]');
 
-                //the previous element goes up
-                previousElementPositionNumber.val(parseInt(previousElementPositionNumber.val()) - 1);
+                //the next element goes up
+                nextElementPositionNumber.val(parseInt(nextElementPositionNumber.val()) - 1);
 
                 portlet.next().insertBefore(portlet);
-
-                $(".portlet-body").trigger( "change" );
             }
+        });
+
+        $(".portlet-body").on('click', '.remove', function() {
+            selectedItemId = $(this).parent().parent().next().children().first().attr('id');
+            positionNumberId = selectedItemId + '_' + 'positionNumber';
+
+            console.log(positionNumberId);
+
+            $('#'+ selectedItemId).remove();
+
+            index = 1;
+
+            $('input[id*="_positionNumber"]').each(function() {
+                    alert(index);
+
+                    $(this).val(index);
+
+                    index+= 1;
+                }
+            );
         });
 
         $(".portlet-body").on('change', "select[id*='type']", function(){
@@ -347,8 +363,6 @@
 
         $(".portlet-body").on('change', "select[id*='typology']", function(){
             hideShowIntervalFeedback($(this));
-
-
         });
 
         $( '.dropdown-menu a' ).on('click', function(e) {
@@ -427,28 +441,6 @@
                     console.log($('#' + intervalLengthInSecondsId));
                     break;
             }
-
-            /*
-             intervalLengthInSecondsId = $(this).attr('id').replace('typology', 'intervalLengthInSeconds');
-             feedbackForIntervalRecordingId = $(this).attr('id').replace('typology', 'feedbackForIntervalRecording');
-
-             switch($(this).val()) {
-             case 'duration':
-             case 'frequency':
-             $('#' + intervalLengthInSecondsId).parent().parent().hide();
-             $('#' + feedbackForIntervalRecordingId).parent().parent().hide();
-             console.log($('#' + intervalLengthInSecondsId));
-             break;
-
-             case 'whole-interval':
-             case 'partial-interval':
-             case 'momentary-time-sampling':
-             $('#' + intervalLengthInSecondsId).parent().parent().show();
-             $('#' + feedbackForIntervalRecordingId).parent().parent().show();
-             console.log($('#' + intervalLengthInSecondsId));
-             break;
-             }
-             */
         }
     </script>
 {% endblock %}
