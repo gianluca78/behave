@@ -263,71 +263,28 @@
 
 
         $(".portlet-body").on('click', '.m-icon-swapup', function(){
-            selectedItemId = $(this).parent().parent().next().children().first().attr('id');
-            positionNumberId = selectedItemId + '_' + 'positionNumber';
-            positionNumberStartValue = parseInt($('#' + positionNumberId).val());
-
             portlet = $(this).parent().parent().parent();
+            portlet.prev().insertAfter(portlet);
 
-            if(positionNumberStartValue != '1') {
-                previousItemIndex = parseInt(positionNumberStartValue) - 2;
-
-                //the selected element goes up
-                $('#' + positionNumberId).val(positionNumberStartValue - 1);
-
-                previousElementPositionNumber = $('input[id*="' + previousItemIndex + '_positionNumber"]');
-
-                //the previous element goes down
-                previousElementPositionNumber.val(parseInt(previousElementPositionNumber.val()) + 1);
-
-                portlet.prev().insertAfter(portlet);
-
-            }
+            resetPositionNumbers();
         });
 
         $(".portlet-body").on('click', '.m-icon-swapdown', function(){
-            selectedItemId = $(this).parent().parent().next().children().first().attr('id');
-
-            positionNumberId = selectedItemId + '_' + 'positionNumber';
-            positionNumberStartValue = parseInt($('#' + positionNumberId).val());
-
             portlet = $(this).parent().parent().parent();
+            portlet.next().insertBefore(portlet);
 
-            numberOfItems = $('input[id*=positionNumber]').length;
-
-            if(positionNumberStartValue != numberOfItems) {
-                nextItemIndex = positionNumberStartValue;
-
-                //the selected element goes down
-                $('#' + positionNumberId).val(positionNumberStartValue + 1);
-
-                nextElementPositionNumber = $('input[id*="' + nextItemIndex + '_positionNumber"]');
-
-                //the next element goes up
-                nextElementPositionNumber.val(parseInt(nextElementPositionNumber.val()) - 1);
-
-                portlet.next().insertBefore(portlet);
-            }
+            resetPositionNumbers();
         });
 
         $(".portlet-body").on('click', '.remove', function() {
             selectedItemId = $(this).parent().parent().next().children().first().attr('id');
             positionNumberId = selectedItemId + '_' + 'positionNumber';
 
-            console.log(positionNumberId);
-
             $('#'+ selectedItemId).remove();
 
-            index = 1;
+            $collectionHolder.attr('data-index-item', parseInt($collectionHolder.attr('data-index-item')) - 1);
 
-            $('input[id*="_positionNumber"]').each(function() {
-                    alert(index);
-
-                    $(this).val(index);
-
-                    index+= 1;
-                }
-            );
+            resetPositionNumbers();
         });
 
         $(".portlet-body").on('change', "select[id*='type']", function(){
@@ -441,6 +398,18 @@
                     console.log($('#' + intervalLengthInSecondsId));
                     break;
             }
+        }
+
+        function resetPositionNumbers()
+        {
+            index = 1;
+
+            $('input[id*="_positionNumber"]').each(function() {
+                        $(this).val(index);
+
+                        index+= 1;
+                    }
+            );
         }
     </script>
 {% endblock %}
