@@ -19,14 +19,14 @@
     content: "*";
 }
 
-.time-sampling-progress-bar {
+.behavioral-recording-progress-bar {
     width: 100%;
     margin: 10px auto;
     height: 22px;
     background-color: darkgray;
 }
 
-.time-sampling-progress-bar div {
+.behavioral-recording-progress-bar div {
     height: 100%;
     text-align: right;
     padding: 0;
