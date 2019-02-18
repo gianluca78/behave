@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ObservationPhaseRepository")
@@ -17,6 +20,20 @@ class ObservationPhase
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @var bool $isIntervention
+     *
+     * @ORM\Column(name="is_intervention", type="boolean", nullable=true)
+     */
+    private $isIntervention;
+
+    /**
+     * @var string $intervention
+     *
+     * @ORM\Column(name="intervention", type="encrypted_text", nullable=true)
+     */
+    private $intervention;
 
     /**
      * @var string $name
@@ -36,6 +53,19 @@ class ObservationPhase
      */
     private $dataIds;
 
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if($this->getIsIntervention() && !$this->getIntervention()
+        ) {
+            $context->buildViolation('Required field')
+                ->atPath('intervention')
+                ->addViolation();
+        }
+    }
+
     public function __toString()
     {
         return $this->name;
@@ -46,6 +76,34 @@ class ObservationPhase
         return $this->id;
     }
 
+    public function getIsIntervention()
+    {
+        return $this->isIntervention;
+    }
+
+    public function setIsIntervention(bool $isIntervention)
+    {
+        $this->isIntervention = $isIntervention;
+
+        return $this;
+    }
+
+    /**
+     * @param string $intervention
+     */
+    public function setIntervention($intervention)
+    {
+        $this->intervention = $intervention;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIntervention()
+    {
+        return $this->intervention;
+    }
+    
     /**
      * @return string
      */

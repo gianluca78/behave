@@ -35,6 +35,7 @@
   },
 
   "require-dev": {
+    "doctrine/doctrine-fixtures-bundle": "^3.1",
     "gianluca78/merlo-crud-bundle": "dev-master",
     "symfony/browser-kit": "^4.0",
     "symfony/css-selector": "^4.0",

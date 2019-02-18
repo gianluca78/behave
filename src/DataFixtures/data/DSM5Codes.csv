@@ -1,0 +1,634 @@
+116|309.21|F93.0|Separation Anxiety Disorder|1
+117|312.23|F94.0|Selective Mutism|1
+118|300.29|F40.218|Specific Phobia, Animal|1
+119|300.29|F40.228|Specific Phobia, Natural environment|1
+120|300.29|F40.230|Specific Phobia, Blood-injection-injury, Fear of blood|1
+121|300.29|F40.231|Specific Phobia, Blood-injection-injury, Fear of injections and transfusions|1
+122|300.29|F40.232|Specific Phobia, Blood-injection-injury, Fear of other medical care|1
+123|300.29|F40.233|Specific Phobia, Blood-injection-injury, Fear of injury|1
+124|300.29|F40.248|Specific Phobia, Situational|1
+125|300.29|F40.298|Specific Phobia, Other|1
+126|300.23|F40.10|Social Anxiety Disorder (Social Phobia)|1
+127|300.01|F41.0|Panic Disorder|1
+128|300.22|F40.00|Agoraphobia|1
+129|300.02|F41.1|Generalized Anxiety Disorder|1
+130|293.84|F06.4|Anxiety Disorder Due to Another Medical Condition|1
+131|300.09|F41.8|Other Specified Anxiety Disorder|1
+132|300.00|F41.9|Unspecified Anxiety Disorder|1
+61|296.41|F31.11|Bipolar I Disorder, Current or most recent episode manic, Mild|2
+62|296.42|F31.12|Bipolar I Disorder, Current or most recent episode manic, Moderate|2
+63|296.43|F31.13|Bipolar I Disorder, Current or most recent episode manic, Severe|2
+64|296.44|F31.2|Bipolar I Disorder, Current or most recent episode manic, With psychotic features|2
+65|296.45|F31.73|Bipolar I Disorder, Current or most recent episode manic, In partial remission|2
+66|296.46|F31.74|Bipolar I Disorder, Current or most recent episode manic, In full remission|2
+67|296.40|F31.9|Bipolar I Disorder, Current or most recent episode manic, Unspecified|2
+68|296.40|F31.0|Bipolar I Disorder, Current or most recent episode hypomanic|2
+69|296.45|F31.73|Bipolar I Disorder, Current or most recent episode hypomanic, In partial remission|2
+70|296.46|F31.74|Bipolar I Disorder, Current or most recent episode hypomanic, In full remission|2
+71|296.40|F31.9|Bipolar I Disorder, Current or most recent episode hypomanic, Unspecified|2
+72|296.51|F31.31|Bipolar I Disorder, Current or most recent episode depressed, Mild|2
+73|296.52|F31.32|Bipolar I Disorder, Current or most recent episode depressed, Moderate|2
+74|296.53|F31.4|Bipolar I Disorder, Current or most recent episode depressed, Severe|2
+75|296.54|F31.5|Bipolar I Disorder, Current or most recent episode depressed, With psychotic features|2
+76|296.55|F31.75|Bipolar I Disorder, Current or most recent episode depressed, In partial remission|2
+77|296.56|F31.76|Bipolar I Disorder, Current or most recent episode depressed, In full remission|2
+78|296.50|F31.9|Bipolar I Disorder, Current or most recent episode depressed, Unspecified|2
+79|296.7|F31.9|Bipolar I Disorder, Current or most recent episode unspecified|2
+80|296.89|F31.81|Bipolar II Disorder, Current or most recent episode hypomanic|2
+81|296.89|F31.81|Bipolar II Disorder, Current or most recent episode hypomanic, In partial remission|2
+82|296.89|F31.81|Bipolar II Disorder, Current or most recent episode hypomanic, In full remission|2
+83|296.89|F31.81|Bipolar II Disorder, Current or most recent episode depressed|2
+84|296.89|F31.81|Bipolar II Disorder, Current or most recent episode depressed, In partial remission|2
+85|296.89|F31.81|Bipolar II Disorder, Current or most recent episode depressed, In full remission|2
+86|301.13|F34.0|Cyclothymic Disorder|2
+87|293.83|F06.33|Bipolar and Related Disorder Due to Another Medical Condition, With manic features|2
+88|293.83|F06.33|Bipolar and Related Disorder Due to Another Medical Condition, With manic- or hypomanic-like episode|2
+89|293.83|F06.34|Bipolar and Related Disorder Due to Another Medical Condition, With mixed features|2
+90|296.89|F31.89|Other Specified Bipolar and Related Disorder|2
+91|296.80|F31.9|Unspecified Bipolar and Related Disorder|2
+92|296.99|F34.8|Disruptive Mood Dysregulation Disorder|3
+93|296.21|F32.0|Major Depressive Disorder, Single Episode, Mild |3
+94|296.22|F32.1|Major Depressive Disorder, Single Episode, Moderate |3
+95|296.23|F32.2|Major Depressive Disorder, Single Episode, Severe |3
+96|296.24|F32.3|Major Depressive Disorder, Single Episode, With psychotic features|3
+97|296.25|F32.4|Major Depressive Disorder, Single Episode, In partial remission|3
+98|296.26|F32.5|Major Depressive Disorder, Single Episode, In full remission|3
+99|296.20|F32.9|Major Depressive Disorder, Single Episode, Unspecified|3
+100|296.31|F33.0|Major Depressive Disorder, Recurrent Episode, Mild|3
+101|296.32|F33.1|Major Depressive Disorder, Recurrent Episode, Moderate|3
+102|296.33|F33.2|Major Depressive Disorder, Recurrent Episode, Severe|3
+103|296.34|F33.3|Major Depressive Disorder, Recurrent Episode, With psychotic features|3
+104|296.35|F33.41|Major Depressive Disorder, Recurrent Episode, In partial remission|3
+105|296.36|F33.42|Major Depressive Disorder, Recurrent Episode, In full remission|3
+106|296.30|F33.9|Major Depressive Disorder, Recurrent Episode, Unspecified|3
+107|300.4|F34.1|Persistent Depressive Disorder (Dysthymia)|3
+108|300.4|F34.1|Persistent Depressive Disorder (Dysthymia), In partial remission|3
+109|300.4|F34.1|Persistent Depressive Disorder (Dysthymia), In full remission|3
+110|625.4|N94.3|Premenstrual Dysphoric Disorder|3
+111|293.83|F06.31|Depressive Disorder Due to Another Medical Condition, With depressive features|3
+112|293.83|F06.32|Depressive Disorder Due to Another Medical Condition, With major depressive-like episode|3
+113|293.83|F06.34|Depressive Disorder Due to Another Medical Condition, With mixed features|3
+114|311|F32.8|Other Specified Depressive Disorder|3
+115|311|F32.9|Unspecified Depressive Disorder|3
+245|313.81|F91.3|Oppositional Defiant Disorder|4
+246|312.34|F63.81|Intermittent Explosive Disorder|4
+247|312.81|F91.1|Conduct Disorder, Childhood-onset type|4
+248|312.82|F91.2|Conduct Disorder, Adolescent-onset type|4
+249|312.89|F91.9|Conduct Disorder, Unspecified onset|4
+250|312.33|F63.1|Pyromania|4
+251|312.32|F63.2|Kleptomania|4
+252|312.89|F91.8|Other Specified Disruptive, Impulse-Control, and Conduct Disorder|4
+253|312.9|F91.9|Unpecified Disruptive, Impulse-Control, and Conduct Disorder|4
+153|300.14|F44.81|Dissociative Identity Disorder|5
+154|300.12|F44.0|Dissociative Amnesia|5
+155|300.13|F44.1|Dissociative Amnesia, With dissociative fugue|5
+156|300.6|F48.1|Depersonalization/Derealization Disorder|5
+157|300.15|F44.89|Other Specified Dissociative Disorder|5
+158|300.15|F44.9|Unspecified Dissociative Disorder|5
+195|307.6|F98.0|Enuresis|6
+196|307.7|F98.1|Encopresis|6
+197|788.39|N39.498|Other Specified Elimination Disorder, With urinary symptoms|6
+198|787.60|R15.9|Other Specified Elimination Disorder, With fecal symptoms|6
+199|788.30|R32|Unspecified Elimination Disorder, With urinary symptoms|6
+200|787.60|R15.9|Unspecified Elimination Disorder, With fecal symptoms|6
+173|307.52|F98.3|Pica, In children|7
+174|307.52|F98.3|Pica, In children, In remission|7
+175|307.52|F50.8|Pica, In adults|7
+176|307.52|F50.8|Pica, In adults, In remission|7
+177|307.53|F98.21|Rumination Disorder|7
+178|307.53|F98.21|Rumination Disorder, In remission|7
+179|307.59|F50.8|Avoidant/Restrictive Food Intake Disorder|7
+180|307.59|F50.8|Avoidant/Restrictive Food Intake Disorder, In remission|7
+181|307.1|F50.01|Anorexia Nervosa, Restricting type|7
+182|307.1|F50.01|Anorexia Nervosa, Restricting type, In partial remission|7
+183|307.1|F50.01|Anorexia Nervosa, Restricting type, In full remission|7
+184|307.1|F50.02|Anorexia Nervosa, Binge-eating/purging type|7
+185|307.1|F50.02|Anorexia Nervosa, Binge-eating/purging type, In partial remission|7
+186|307.1|F50.02|Anorexia Nervosa, Binge-eating/purging type, In full remission|7
+187|307.51|F50.2|Bulimia Nervosa|7
+188|307.51|F50.2|Bulimia Nervosa, In partial remission|7
+189|307.51|F50.2|Bulimia Nervosa, In full remission|7
+190|307.51|F50.8|Binge-Eating Disorder|7
+191|307.51|F50.8|Binge-Eating Disorder, In partial remission|7
+192|307.51|F50.8|Binge-Eating Disorder, In full remission|7
+193|307.59|F50.8|Other Specified Feeding or Eating Disorder|7
+194|307.50|F50.9|Unspecified Feeding or Eating Disorder|7
+241|302.6|F64.2|Gender Dyshporia in Children|8
+242|302.85|F64.1|Gender Dysphoria in Adolescents and Adults|8
+243|302.6|F64.8|Other Specified Gender Dysphoria|8
+244|302.6|F64.9|Unspecified Gender Dysphoria|8
+486|332.1|G21.11|Neuroleptic-Induced Parkinsonism|9
+487|332.1|G21.19|Other Medication-Induced Parkinsonism|9
+488|333.92|G21.0|Neuroleptic Malignant Syndrome|9
+489|333.72|G24.02|Medication-Induced Acute Dystonia|9
+490|333.99|G25.71|Medication-Induced Acute Akathisia|9
+491|333.85|G24.01|Tardive Dyskinesia|9
+492|333.72|G24.09|Tardive Dystonia|9
+493|333.99|G25.71|Tardive Akathisia|9
+494|333.1|G25.1|Medication-Induced Postural Tremor|9
+495|333.99|G25.79|Other Medication-Induced Movement Disorder|9
+496|995.29|T43.205A|Antidepressant Discontinuation Syndrome, Initial encounter|9
+497|995.29|T43.205D|Antidepressant Discontinuation Syndrome, Subsequent encounter|9
+498|995.29|T43.205S|Antidepressant Discontinuation Syndrome, Sequelae|9
+499|995.20|T50.905A|Other Adverse Effect of Medication, Initial encounter|9
+500|995.20|T50.905D|Other Adverse Effect of Medication, Subsequent encounter|9
+501|995.20|T50.905S|Other Adverse Effect of Medication, Sequelae|9
+409|293.0|F05|Delirium due to another medical condition|10
+410|293.0|F05|Delirium due to multiple etiologies|10
+411|780.09|R41.0|Other Specified Delirium|10
+412|780.09|R41.0|Unspecified Delirium|10
+413|294.11|F02.81|Probable Major Neurocognitive Disorder Due to Alzheimer's Disease, With behavioral disturbance|10
+414|294.10|F02.80|Probable Major Neurocognitive Disorder Due to Alzheimer's Disease, Without behavioral disturbance|10
+415|331.9|G31.9|Possible Major Neurocognitive Disorder Due to Alzheimer's Disease|10
+416|331.83|G31.84|Mild Neurocognitive Disorder Due to Alzheimer's Disease|10
+417|294.11|F02.81|Probable Major Neurocognitive Disorder Due to Frontotemporal Lobar Degeneration, With behavioral disturbance|10
+418|294.10|F02.80|Probable Major Neurocognitive Disorder Due to Frontotemporal Lobar Degeneration, Without behavioral disturbance|10
+419|331.9|G31.9|Possible Major Neurocognitive Disorder Due to Frontotemporal Lobar Degeneration|10
+420|331.83|G31.84|Mild Neurocognitive Disorder Due to Frontotemporal Lobar Degeneration|10
+421|294.11|F02.81|Probable Major Neurocognitive Disorder With Lewy Bodies, With behavioral disturbance|10
+422|294.10|F02.80|Probable Major Neurocognitive Disorder With Lewy Bodies, Without behavioral disturbance|10
+423|331.9|G31.9|Possible Major Neurocognitive Disorder With Lewy Bodies|10
+424|331.83|G31.84|Mild Neurocognitive Disorder With Lewy Bodies|10
+425|290.40|F01.51|Probable Major Vascular Neurocognitive Disorder, With behavioral disturbance|10
+426|290.40|F01.50|Probable Major Vascular Neurocognitive Disorder, Without behavioral disturbance|10
+427|331.9|G31.9|Possible Major Vascular Neurocognitive Disorder|10
+428|331.83|G31.84|Mild Vascular Neurocognitive Disorder|10
+429|294.11|F02.81|Major Neurocognitive Disorder Due to Traumatic Brain Injury, With behavioral disturbance|10
+430|294.10|F02.80|Major Neurocognitive Disorder Due to Traumatic Brain Injury, Without behavioral disturbance|10
+431|331.83|G31.84|Mild Neurocognitive Disorder Due to Traumatic Brain Injury|10
+432|294.11|F02.81|Major Neurocognitive Disorder Due to HIV Infection, With behavioral disturbance|10
+433|294.10|F02.80|Major Neurocognitive Disorder Due to HIV Infection, Without behavioral disturbance|10
+434|331.83|G31.84|Mild Neurocognitive Disorder Due to HIV Infection|10
+435|294.11|F02.81|Major Neurocognitive Disorder Due to Prion Disease, With behavioral disturbance|10
+436|294.10|F02.80|Major Neurocognitive Disorder Due to Prion Disease, Without behavioral disturbance|10
+437|331.83|G31.84|Mild Neurocognitive Disorder Due to Prion Disease|10
+438|294.11|F02.81|Major Neurocognitive Disorder Probably Due to Parkinson's Disease, With behavioral disturbance|10
+439|294.10|F02.80|Major Neurocognitive Disorder Probably Due to Parkinson's Disease, Without behavioral disturbance|10
+440|331.9|G31.9|Major Neurocognitive Disorder Possibly Due to Parkinson's Disease|10
+441|331.83|G31.84|Mild Neurocognitive Disorder Due to Parkinson's Disease|10
+442|294.11|F02.81|Major Neurocognitive Disorder Due to Huntington's Disease, With behavioral disturbance|10
+443|294.10|F02.80|Major Neurocognitive Disorder Due to Huntington's Disease, Without behavioral disturbance|10
+444|331.83|G31.84|Mild Neurocognitive Disorder Due to Huntington's Disease|10
+445|294.11|F02.81|Major Neurocognitive Disorder Due to Another Medical Condition, With behavioral disturbance|10
+446|294.10|F02.80|Major Neurocognitive Disorder Due to Another Medical Condition, Without behavioral disturbance|10
+447|331.83|G31.84|Mild Neurocognitive Disorder Due to Another Medical Condition|10
+448|294.11|F02.81|Major Neurocognitive Disorder Due to Multiple Etiologies, With behavioral disturbance|10
+449|294.10|F02.80|Major Neurocognitive Disorder Due to Multiple Etiologies, Without behavioral disturbance|10
+450|331.83|G31.84|Mild Neurocognitive Disorder Due to Multiple Etiologies|10
+451|799.59|R41.9|Unspecified Neurocognitive Disorder|10
+1|317|F70|Intellectual Disability (Intellectual Developmental Disorder), Mild|11
+2|318.0|F71|Intellectual Disability (Intellectual Developmental Disorder), Moderate|11
+3|318.1|F72|Intellectual Disability (Intellectual Developmental Disorder), Severe|11
+4|318.2|F73|Intellectual Disability (Intellectual Developmental Disorder), Profound|11
+5|315.8|F88|Global Developmental Delay|11
+6|319|F79|Unspecified Intellectual Disability (Intellectual Developmental Disorder)|11
+7|315.39|F80.9|Language Disorder|11
+8|315.39|F80.0|Speech Sound Disorder|11
+9|315.35|F80.81|Childhood-Onset Fluency Disorder (Stuttering)|11
+10|307.0|F98.5|Adult-Onset Fluency Disorder|11
+11|315.39|F80.89|Social (Pragmatic) Communication Disorder|11
+12|307.9|F80.9|Unspecified Communication Disorder|11
+13|299.00|F84.0|Autism Spectrum Disorder|11
+14|314.01|F90.2|Attention-Deficit/Hyperactivity Disorder, Combined presentation|11
+15|314.01|F90.2|Attention-Deficit/Hyperactivity Disorder, Combined Presentation, In partial remission|11
+16|314.00|F90.0|Attention-Deficit/Hyperactivity Disorder, Predominantly inattentive presentation|11
+17|314.00|F90.0|Attention-Deficit/Hyperactivity Disorder, Predominantly inattentive presentation, In partial remission|11
+18|314.01|F90.1|Attention-Deficit/Hyperactivity Disorder, Predominantly hyperactive/impulsive presentation|11
+19|314.01|F90.1|Attention-Deficit/Hyperactivity Disorder, Predominantly hyperactive/impulsive presentation, In partial remission|11
+20|314.01|F90.8|Other Specified Attention-Deficit/Hyperactivity Disorder|11
+21|314.01|F90.9|Unspecified Attention-Deficit/Hyperactivity Disorder|11
+22|315.00|F81.0|Specific Learning Disorder, With impairment in reading|11
+23|315.2|F81.81|Specific Learning Disorder, With impairment in written expression|11
+24|315.1|F81.2|Specific Learning Disorder, With impairment in mathematics|11
+25|315.4|F82|Developmental Coordination Disorder|11
+26|307.3|F98.4|Stereotypic Movement Disorder|11
+27|307.23|F95.2|Tourette's Disorder|11
+28|307.22|F95.1|Persistent (Chronic) Motor or Vocal Tic Disorder|11
+29|307.21|F95.0|Provisional Tic Disorder|11
+30|307.20|F95.8|Other Specified Tic Disorder|11
+31|307.20|F95.9|Unspecified Tic Disorder|11
+32|315.8|F88|Other Specified Neurodevelopmental Disorder|11
+33|315.9|F89|Unspecified Neurodevelopmental Disorder|11
+133|300.3|F42|Obsessive-Compulsive Disorder|12
+134|300.7|F45.22|Body Dysmorphic Disorder|12
+135|300.3|F42|Hoarding Disorder|12
+136|312.39|F63.3|Trichotillomania (Hair-Pulling Disorder)|12
+137|698.4|L98.1|Excoriation (Skin-Picking) Disorder|12
+138|294.8|F06.8|Obsessive-Compulsive and Related Disorder Due to Another Medical Condition|12
+139|300.3|F42|Other Specified Obsessive-Compulsive and Related Disorder|12
+140|300.3|F42|Unspecified Obsessive-Compulsive and Related Disorder|12
+502|V61.20|Z62.820|Parent-Child Relational Problem|13
+503|V61.8|Z62.891|Sibling Relational Problem|13
+504|V61.8|Z62.29|Upbringing Away from Parents|13
+505|V61.29|Z62.898|Child Affected By Parental Relationship Distress|13
+506|V61.10|Z63.0|Relationship Distress With Spouse or Intimate Partner|13
+507|V61.03|Z63.5|Disruption of Family by Separation or Divorce|13
+508|V61.8|Z63.8|High Expressed Emotion Level Within Family|13
+509|V62.82|Z63.4|Uncomplicated Bereavement|13
+510|995.54|T74.12XA|Child Physical Abuse, Confirmed, Initial Encounter|13
+511|995.54|T74.12XD|Child Physical Abuse, Confirmed, Subsequent Encounter|13
+512|995.54|T76.12XA|Child Physical Abuse, Suspected, Initial Encounter|13
+513|995.54|T76.12XD|Child Physical Abuse, Suspected, Subsequent Encounter|13
+514|V61.21|Z69.010|Encounter for Mental Health Services for Victim of Child Abuse by Parent|13
+515|V61.21|Z69.020|Encounter for Mental Health Services for Victim of Nonparental Child Abuse|13
+516|V15.41|Z62.810|Personal History (past history) of Physical Abuse in Childhood|13
+517|V61.22|Z69.011|Encounter for Mental Health Services for Perpetrator of Parental Child Abuse|13
+518|V62.83|Z69.021|Encounter for Mental Health Services for Perpetrator of Nonparental Child Abuse|13
+519|995.53|T74.22XA|Child Sexual Abuse, Confirmed, Initial Encounter|13
+520|995.53|T74.22XD|Child Sexual Abuse, Confirmed, Subsequent Encounter|13
+521|995.53|T76.22XA|Child Sexual Abuse, Suspected, Initial Encounter|13
+522|995.53|T76.22XD|Child Sexual Abuse, Suspected, Subsequent Encounter|13
+523|V61.21|Z69.010|Encounter for Mental Health Services for Victim of Child Sexual Abuse by Parent|13
+524|V61.21|Z69.020|Encounter for Mental Health Services for Victim of Nonparental Child Sexual Abuse|13
+525|V15.41|Z62.810|Personal History (past history) of Sexual Abuse in Childhood|13
+526|V61.22|Z69.011|Encounter for Mental Health Services for Perpetrator of Parental Child Sexual Abuse|13
+527|V62.83|Z69.021|Encounter for Mental Health Services for Perpetrator of Nonparental Child Sexual Abuse|13
+528|995.52|T74.02XA|Child Neglect, Confirmed, Initial Encounter|13
+529|995.52|T74.02XD|Child Neglect, Confirmed, Subsequent Encounter|13
+530|995.52|T76.02XA|Child Neglect, Suspected, Initial Encounter|13
+531|995.52|T76.02XD|Child Neglect, Suspected, Subsequent Encounter|13
+532|V61.21|Z69.010|Encounter for Mental Health Services for Victim of Child Neglect by Parent|13
+533|V61.21|Z69.020|Encounter for Mental Health Services for Victim of Nonparental Child Neglect|13
+534|V15.42|Z62.812|Personal History (past history) of Neglect in Childhood|13
+535|V61.22|Z69.011|Encounter for Mental Health Services for Perpetrator of Parental Child Neglect|13
+536|V62.83|Z69.021|Encounter for Mental Health Services for Perpetrator of Nonparental Child Neglect|13
+537|995.51|T74.32XA|Child Psychological Abuse, Confirmed, Initial Encounter|13
+538|995.51|T74.32XD|Child Psychological Abuse, Confirmed, Subsequent Encounter|13
+539|995.51|T76.32XA|Child Psychological Abuse, Suspected, Initial Encounter|13
+540|995.51|T76.32XD|Child Psychological Abuse, Suspected, Subsequent Encounter|13
+541|V61.21|Z69.010|Encounter for Mental Health Services for Victim of Child Psychological Abuse by Parent|13
+542|V61.21|Z69.020|Encounter for Mental Health Services for Victim of Nonparental Child Psychological Abuse|13
+543|V15.42|Z62.811|Personal History (past history) of Psychological Abuse in Childhood|13
+544|V61.22|Z69.011|Encounter for Mental Health Services for Perpetrator of Parental Child Psychological Abuse|13
+545|V62.83|Z69.021|Encounter for Mental Health Services for Perpetrator of Nonparnetal Child Psychological Abuse|13
+546|995.81|T74.11XA|Spouse or Partner Violence, Physical, Confirmed, Initial Encounter|13
+547|995.81|T74.11XD|Spouse or Partner Violence, Physical, Confirmed, Subsequent Encounter|13
+548|995.81|T76.11XA|Spouse or Partner Violence, Physical, Suspected, Initial Encounter|13
+549|995.81|T76.11XD|Spouse or Partner Violence, Physical, Suspected, Subsequent Encounter|13
+550|V61.11|Z69.11|Encounter for Mental Health Services for Victim of Spouse or Partner Violence, Physical|13
+551|V15.41|Z91.410|Personal History (past history) of Spouse or Partner Violence, Physical|13
+552|V61.12|Z69.12|Encounter for Mental Health Services for Perpetrator of Spouse or Partner Violence, Physical|13
+553|995.83|T74.21XA|Spouse or Partner Violence, Sexual, Confirmed, Initial Encounter|13
+554|995.83|T74.21XD|Spouse or Partner Violence, Sexual, Confirmed, Subsequent Encounter|13
+555|995.83|T76.21XA|Spouse or Partner Violence, Sexual, Suspected, Initial Encounter|13
+556|995.83|T76.21XD|Spouse or Partner Violence, Sexual, Suspected, Subsequent Encounter|13
+557|V61.11|Z69.81|Encounter for Mental Health Services for Victim of Spouse or Partner Violence, Sexual|13
+558|V15.41|Z91.410|Personal History (past history) of Spouse or Partner Violence, Sexual|13
+559|V61.12|Z69.12|Encounter for Mental Health Services for Perpetrator of Spouse or Partner Violence, Sexual|13
+560|995.85|T74.01XA|Spouse or Partner Neglect, Confirmed, Initial Encounter|13
+561|995.85|T74.01XD|Spouse or Partner Neglect, Confirmed, Subsequent Encounter|13
+562|995.85|T76.01XA|Spouse or Partner Neglect, Suspected, Initial Encounter|13
+563|995.85|T76.01XD|Spouse or Partner Neglect, Suspected, Subsequent Encounter|13
+564|V61.11|Z69.11|Encounter for Mental Health Services for Victim of Spouse or Partner Neglect|13
+565|V15.42|Z91.412|Personal History (past history) of Spouse or Partner Neglect|13
+566|V61.12|Z69.12|Encounter for Mental Health Services for Perpetrator of Spouse or Partner Neglect|13
+567|995.82|T74.31XA|Spouse or Partner Abuse, Psychological, Confirmed, Initial Encounter|13
+568|995.82|T74.31XD|Spouse or Partner Abuse, Psychological, Confirmed, Subsequent Encounter|13
+569|995.82|T76.31XA|Spouse or Partner Abuse, Psychological, Suspected, Initial Encounter|13
+570|995.82|T76.31XD|Spouse or Partner Abuse, Psychological, Suspected, Subsequent Encounter|13
+571|V61.11|Z69.11|Encounter for Mental Health Services for Victim of Spouse or Partner Psychological Abuse|13
+572|V15.42|Z91.411|Personal History (past history) of Spouse or Partner Psychological Abuse|13
+573|V61.12|Z69.12|Encounter for Mental Health Services for Perpetrator of Spouse or Partner Psychological Abuse|13
+574|995.81|T74.11XA|Adult Physical Abuse by Nonspouse or Nonpartner, Confirmed, Initial Encounter|13
+575|995.81|T74.11XD|Adult Physical Abuse by Nonspouse or Nonpartner, Confirmed, Subsequent Encounter|13
+576|995.81|T76.11XA|Adult Physical Abuse by Nonspouse or Nonpartner, Suspected, Initial Encounter|13
+577|995.81|T76.11XD|Adult Physical Abuse by Nonspouse or Nonpartner, Suspected, Subsequent Encounter|13
+578|995.83|T74.21XA|Adult Sexual Abuse by Nonspouse or Nonpartner, Confirmed, Initial Encounter|13
+579|995.83|T74.21XD|Adult Sexual Abuse by Nonspouse or Nonpartner, Confirmed, Subsequent Encounter  |13
+580|995.83|T76.21XA|Adult Sexual Abuse by Nonspouse or Nonpartner, Suspected, Initial Encounter  |13
+581|995.83|T76.21XD|Adult Sexual Abuse by Nonspouse or Nonpartner, Suspected, Subsequent Encounter  |13
+582|995.82|T74.31XA|Adult Psychological Abuse by Nonspouse or Nonpartner, Confirmed, Initial Encounter|13
+583|995.82|T74.31XD|Adult Psychological Abuse by Nonspouse or Nonpartner, Confirmed, Subsequent Encounter  |13
+584|995.82|T76.31XA|Adult Psychological Abuse by Nonspouse or Nonpartner, Suspected, Initial Encounter  |13
+585|995.82|T76.31XD|Adult Psychological Abuse by Nonspouse or Nonpartner, Suspected, Subsequent Encounter  |13
+586|V65.49|Z69.81|Encounter for Mental Health Services for Victim of Nonspouse or Nonpartner Adult Abuse|13
+587|V62.83|Z69.82|Encounter for Mental Health Services for Perpetrator of Nonspousal Adult Abuse|13
+588|V62.3|Z55.9|Academic or educational problem  |13
+589|V62.21|Z56.82|Problem related to current miltary deployment status  |13
+590|V62.29|Z56.9|Other problem related to employment  |13
+591|V60.0|Z59.0|Homelessness  |13
+592|V60.1|Z59.1|Inadequate housing  |13
+593|V60.89|Z59.2|Discord with neighbor, lodger, or landlord  |13
+594|V60.6|Z59.3|Problem related to living in a residential institution  |13
+595|V60.2|Z59.4|Lack of adequate food or safe drinking water  |13
+596|V60.2|Z59.5|Extreme poverty  |13
+597|V60.2|Z59.6|Low income  |13
+598|V60.2|Z59.7|Insufficient social insurance or welfare support  |13
+599|V60.9|Z59.9|Unspecified housing or economic problem  |13
+600|V62.89|Z60.0|Phase of life problem  |13
+601|V60.3|Z60.2|Problem related to living alone  |13
+602|V62.4|Z60.3|Acculturation difficulty  |13
+603|V62.4|Z60.4|Social exclusion or rejection  |13
+604|V62.4|Z60.5|Target of (perceived) adverse discrimination or persecution  |13
+605|V62.9|Z60.9|Unspecified problem related to social environment  |13
+606|V62.89|Z65.4|Victim of crime  |13
+607|V62.5|Z65.0|Conviction in civil or criminal proceedings without imprisonment  |13
+608|V62.5|Z65.1|Imprisonment or other incarceration  |13
+609|V62.5|Z65.2|Problems related to release from prison  |13
+610|V62.5|Z65.3|Problems related to other legal circumstances  |13
+611|V65.49|Z70.9|Sex counseling  |13
+612|V65.40|Z71.9|Other counseling or consultation  |13
+613|V62.89|Z65.8|Religious or spiritual problem  |13
+614|V61.7|Z64.0|Problems related to unwanted pregnancy  |13
+615|V61.5|Z64.1|Problems related to multiparity  |13
+616|V62.89|Z64.4|Discord with social service provider, including probation officer, case manager, or social services worker  |13
+617|V62.89|Z65.4|Victim of terrorism or torture  |13
+618|V62.22|Z65.5|Exposure to disaster, war, or other hostilities  |13
+619|V62.89|Z65.8|Other problem related to psychosocial circumstances  |13
+620|V62.9|Z65.9|Unspecified problem related to unspecified psychosocial circumstances  |13
+621|V15.49|Z91.49|Other personal history of psychological trauma  |13
+622|V15.59|Z91.5|Personal history of self-harm  |13
+623|V62.22|Z91.82|Personal history of military deployment  |13
+624|V15.89|Z91.89|Other personal risk factors  |13
+625|V69.9|Z72.9|Problem related to lifestyle  |13
+626|V71.01|Z72.811|Adult antisocial behavior  |13
+627|V71.02|Z72.810|Child or adolescent antisocial behavior  |13
+628|V63.9|Z75.3|Unavailability or inaccessibility of health care facilities  |13
+629|Z63.8|Z75.4|Unavailability or inaccessibility of other helping agencies  |13
+630|V15.81|Z91.19|Nonadherence to medical treatment  |13
+631|278.00|E66.9|Overweight or obesity  |13
+632|V65.2|Z76.5|Malingering  |13
+633|V40.31|Z91.83|Wandering associated with a mental disorder  |13
+634|V62.89|R41.83|Borderline intellectual functioning  |13
+482|294.8|F06.8|Other Specified Mental Disorder Due to Another Medical Condition|14
+483|294.9|F09|Unspecified Mental Disorder Due to Another Medical Condition|14
+484|300.9|F99|Other Specified Mental Disorder|14
+485|300.9|F99|Unspecified Mental Disorder|14
+465|302.82|F65.3|Voyeuristic Disorder|15
+466|302.82|F65.3|Voyeuristic Disorder, In full remission|15
+467|302.4|F65.2|Exhibitionistic Disorder|15
+468|302.4|F65.2|Exhibitionistic Disorder, In full remission|15
+469|302.89|F65.81|Frotteuristic Disorder|15
+470|302.89|F65.81|Frotteuristic Disorder, In full remission|15
+471|302.83|F65.51|Sexual Masochism Disorder|15
+472|302.83|F65.51|Sexual Masochism Disorder, In full remission|15
+473|302.84|F65.52|Sexual Sadism Disorder|15
+474|302.84|F65.52|Sexual Sadism Disorder, In full remission|15
+475|302.2|F65.4|Pedophilic Disorder|15
+476|302.81|F65.0|Fetishistic Disorder|15
+477|302.81|F65.0|Fetishistic Disorder, In full remission|15
+478|302.3|F65.1|Transvestic Disorder|15
+479|302.3|F65.1|Transvestic Disorder, In full remission|15
+480|302.89|F65.89|Other Specified Paraphilic Disorder|15
+481|302.9|F65.9|Unspecified Paraphilic Disorder|15
+452|301.0|F60.0|Paranoid Personality Disorder|16
+453|301.20|F60.1|Schizoid Personality Disorder|16
+454|301.22|F21|Schizotypal Personality Disorder|16
+455|301.7|F60.2|Antisocial Personality Disorder|16
+456|301.83|F60.3|Borderline Personality Disorder|16
+457|301.50|F60.4|Histrionic Personality Disorder|16
+458|301.81|F60.81|Narcissistic Personality Disorder|16
+459|301.82|F60.6|Avoidant Personality Disorder|16
+460|301.6|F60.7|Dependent Personality Disorder|16
+461|301.4|F60.5|Obsessive-Compulsive Personality Disorder|16
+462|310.1|F07.0|Personality Change Due to Another Medical Condition|16
+463|301.89|F60.89|Other Specified Personality Disorder|16
+464|301.9|F60.9|Unspecified Personality Disorder|16
+34|297.1|F22|Delusional Disorder|17
+35|298.8|F23|Brief Psychotic Disorder|17
+36|295.40|F20.81|Schizophreniform Disorder|17
+37|295.90|F20.9|Schizophrenia|17
+38|295.70|F25.0|Schizoaffective Disorder, Bipolar type, First episode, Currently in acute episode|17
+39|295.70|F25.0|Schizoaffective Disorder, Bipolar type, First episode, Currently in partial remission|17
+40|295.70|F25.0|Schizoaffective Disorder, Bipolar type, First episode, Currently in full remission|17
+41|295.70|F25.0|Schizoaffective Disorder, Bipolar type, Multiple episodes, Currently in acute episode|17
+42|295.70|F25.0|Schizoaffective Disorder, Bipolar type, Multiple episodes, Currently in partial remission|17
+43|295.70|F25.0|Schizoaffective Disorder, Bipolar type, Multiple episodes, Currently in full remission|17
+44|295.70|F25.0|Schizoaffective Disorder, Bipolar type, Continuous|17
+45|295.70|F25.0|Schizoaffective Disorder, Bipolar type, Unspecified|17
+46|295.70|F25.1|Schizoaffective Disorder, Depressive type, First episode, Currently in acute episode|17
+47|295.70|F25.1|Schizoaffective Disorder, Depressive type, First episode, Currently in partial remission|17
+48|295.70|F25.1|Schizoaffective Disorder, Depressive type, First episode, Currently in full remission|17
+49|295.70|F25.1|Schizoaffective Disorder, Depressive type, Multiple episodes, Currently in acute episode|17
+50|295.70|F25.1|Schizoaffective Disorder, Depressive type, Multiple episodes, Currently in partial remission|17
+51|295.70|F25.1|Schizoaffective Disorder, Depressive type, Multiple episodes, Currently in full remission|17
+52|295.70|F25.1|Schizoaffective Disorder, Depressive type, Continuous|17
+53|295.70|F25.1|Schizoaffective Disorder, Depressive type, Unspecified|17
+54|293.81|F06.2|Psychotic Disorder Due to Another Medical Condition, With delusions|17
+55|293.82|F06.0|Psychotic Disorder Due to Another Medical Condition, With hallucinations|17
+56|293.89|F06.1|Catatonia Associated With Another Mental Disorder|17
+57|293.89|F06.1|Catatonic Disorder Due to Another Medical Condition|17
+58|293.89|F06.1|Unspecified Catatonia|17
+59|298.8|F28|Other Specified Schizophrenia Spectrum and Other Psychotic Disorder|17
+60|298.9|F29|Unspecified Schizophrenia Spectrum and Other Psychotic Disorder|17
+232|302.74|F52.32|Delayed Ejaculation|18
+233|302.72|F52.21|Erectile Disorder|18
+234|302.73|F52.31|Female Orgasmic Disorder|18
+235|302.72|F52.22|Female Sexual Interest/Arousal Disorder|18
+236|302.76|F52.6|Genito-Pelvic Pain/Penetration Disorder|18
+237|302.71|F52.0|Male Hypoactive Sexual Desire Disorder|18
+238|302.75|F52.4|Premature (Early) Ejaculation|18
+239|302.79|F52.8|Other Specified Sexual Dysfunction|18
+240|302.70|F52.9|Unspecified Sexual Dysfunction|18
+201|780.52|G47.00|Insomnia Disorder|19
+202|780.54|G47.10|Hypersomnolence Disorder|19
+203|347.00|G47.419|Narcolepsy, Without cataplexy but with hypocretin deficiency|19
+204|347.01|G47.411|Narcolepsy, With cataplexy but without hypocretin deficiency|19
+205|347.00|G47.419|Autosomal dominant cerebellar ataxia, deafness, and narcolepsy|19
+206|347.00|G47.419|Autosomal dominant narcolepsy, obesity, and type 2 diabetes|19
+207|347.10|G47.429|Narcolepsy, Secondary to another medical condition|19
+208|327.23|G47.33|Obstructive Sleep Apnea Hypopnea|19
+209|327.21|G47.31|Central Sleep Apnea, Idiopathic central sleep apnea|19
+210|786.04|R06.3|Central Sleep Apnea, Cheyne-Stokes breathing|19
+211|780.57|G47.37|Central Sleep Apnea, Central sleep apnea comorbid with opioid use|19
+212|327.24|G47.34|Sleep-Related Hypoventilation, Idiopathic hypoventilation|19
+213|327.25|G47.35|Sleep-Related Hypoventilation, Congenital central alveolar hypoventilation|19
+214|327.26|G47.36|Sleep-Related Hypoventilation, Comorbid sleep-related hypoventilation|19
+215|307.45|G47.21|Circadian Rhythm Sleep-Wake Disorder, Delayed sleep phase type|19
+216|307.45|G47.22|Circadian Rhythm Sleep-Wake Disorder, Advanced sleep phase type|19
+217|307.45|G47.23|Circadian Rhythm Sleep-Wake Disorder, Irregular sleep-wake type|19
+218|307.45|G47.24|Circadian Rhythm Sleep-Wake Disorder, Non-24-hour sleep-wake type|19
+219|307.45|G47.26|Circadian Rhythm Sleep-Wake Disorder, Shift work type|19
+220|307.45|G47.20|Circadian Rhythm Sleep-Wake Disorder, Unspecified type|19
+221|307.46|F51.3|Non-Rapid Eye Movement Sleep Arousal Disorders, Sleepwalking type|19
+222|307.46|F51.4|Non-Rapid Eye Movement Sleep Arousal Disorders, Sleep terror type|19
+223|307.47|F51.5|Nightmare Disorder|19
+224|327.42|G47.52|Rapid Eye Movement Sleep Behavior Disorder|19
+225|333.94|G25.81|Restless Legs Syndrome|19
+226|780.52|G47.09|Other Specified Insomnia Disorder|19
+227|780.52|G47.00|Unspecified Insomnia Disorder|19
+228|780.54|G47.19|Other Specified Hypersomnolence Disorder|19
+229|780.54|G47.10|Unspecified Specified Hypersomnolence Disorder|19
+230|780.59|G47.8|Other Specified Sleep-Wake Disorder|19
+231|780.59|G47.9|Unspecified Sleep-Wake Disorder|19
+159|300.82|F45.1|Somatic Symptom Disorder|20
+160|300.7|F45.21|Illness Anxiety Disorder|20
+161|300.11|F44.4|Conversion Disorder (Functional Neurological Symptom Disorder), With weakness or paralysis|20
+162|300.11|F44.4|Conversion Disorder (Functional Neurological Symptom Disorder), With abnormal movement|20
+163|300.11|F44.4|Conversion Disorder (Functional Neurological Symptom Disorder), With swallowing symptoms|20
+164|300.11|F44.4|Conversion Disorder (Functional Neurological Symptom Disorder), With speech symptom|20
+165|300.11|F44.5|Conversion Disorder (Functional Neurological Symptom Disorder), With attacks or seizures|20
+166|300.11|F44.6|Conversion Disorder (Functional Neurological Symptom Disorder), With anesthesia or sensory loss|20
+167|300.11|F44.6|Conversion Disorder (Functional Neurological Symptom Disorder), With special sensory symptom|20
+168|300.11|F44.7|Conversion Disorder (Functional Neurological Symptom Disorder), With mixed symptoms|20
+169|316|F54|Psychological Factors Affecting Other Medical Conditions|20
+170|300.19|F68.10|Factitious Disorder (includes Factitious Disorder Imposed on Self, Factitious Disorder Imposed on Another)|20
+171|300.89|F45.8|Other Specified Somatic Symptom and Related Disorder|20
+172|300.82|F45.9|Unspecified Somatic Symptom and Related Disorder|20
+254|305.00|F10.10|Alcohol Use Disorder, Mild|21
+255|303.90|F10.20|Alcohol Use Disorder, Moderate|21
+256|303.90|F10.20|Alcohol Use Disorder, Severe |21
+257|303.00|F10.129|Alcohol Intoxication, With use disorder, Mild|21
+258|303.00|F10.229|Alcohol Intoxication, With use disorder, Moderate or Severe|21
+259|303.00|F10.929|Alcohol Intoxication, Without use disorder|21
+260|291.81|F10.239|Alcohol Withdrawal, Without perceptual disturbances|21
+261|291.81|F10.232|Alcohol Withdrawal, With perceptual disturbances|21
+262|291|F10|Alcohol-Induced Anxiety Disorder|21
+263|291|F10|Alcohol-Induced Mood Disorder|21
+264|291|F10|Alcohol-Induced Psychotic Disorder With Delusions|21
+265|291|F10|Alcohol-Induced Psychotic Disorder with Hallucinations|21
+266|291|F10|Alcohol-Induced Other Disorder|21
+267|291.9|F10.99|Unspecified Alcohol-Related Disorder|21
+268|305.90|F15.929|Caffeine Intoxication|21
+269|292.0|F15.93|Caffeine Withdrawal|21
+270|292|F15|Caffeine-Induced Anxiety Disorder|21
+271|292|F15|Caffeine-Induced Sleep Disorder|21
+272|292|F15|Caffeine-Induced Other Disorder|21
+273|292.9|F15.99|Unspecified Caffeine-Related Disorder|21
+274|305.20|F12.10|Cannabis Use Disorder, Mild|21
+275|304.30|F12.20|Cannabis Use Disorder, Moderate|21
+276|304.30|F12.20|Cannabis Use Disorder, Severe |21
+277|292.89|F12.129|Cannabis Intoxication, Without perceptual disturbances, With use disorder, Mild|21
+278|292.89|F12.229|Cannabis Intoxication, Without perceptual disturbances, With use disorder, Moderate or Severe|21
+279|292.89|F12.929|Cannabis Intoxication, Without perceptual disturbances, Without use disorder|21
+280|292.89|F12.122|Cannabis Intoxication, With perceptual disturbances, With use disorder, Mild|21
+281|292.89|F12.222|Cannabis Intoxication, With perceptual disturbances, With use disorder, Moderate or Severe|21
+282|292.89|F12.922|Cannabis Intoxication, With perceptual disturbances, Without use disorder|21
+283|292.0|F12.288|Cannabis Withdrawal|21
+284|292|F12|Cannabis-Induced Anxiety Disorder|21
+285|292|F12|Cannabis-Induced Mood Disorder|21
+286|292|F12|Cannabis-Induced Psychotic Disorder With Delusions|21
+287|292|F12|Cannabis-Induced Psychotic Disorder With Hallucinations|21
+288|292|F12|Cannabis-Induced Other Disorder|21
+289|292.9|F12.99|Unspecified Cannabis-Related Disorder|21
+290|305.90|F16.10|Phencyclidine Use Disorder, Mild|21
+291|304.60|F16.20|Phencyclidine Use Disorder, Moderate|21
+292|304.60|F16.20|Phencyclidine Use Disorder, Severe|21
+293|305.30|F16.10|Other Hallucinogen Use Disorder, Mild|21
+294|304.50|F16.20|Other Hallucinogen Use Disorder, Moderate|21
+295|304.50|F16.20|Other Hallucinogen Use Disorder, Severe|21
+296|292.89|F16.129|Phencyclidine Intoxication, With use disorder, Mild|21
+297|292.89|F16.229|Phencyclidine Intoxication, With use disorder, Moderate or Severe|21
+298|292.89|F16.929|Phencyclidine Intoxication, Without use disorder|21
+299|292.89|F16.129|Other Hallucinogen Intoxication, With use disorder, Mild|21
+300|292.89|F16.229|Other Hallucinogen Intoxication, With use disorder, Moderate or Severe|21
+301|292.89|F16.929|Other Hallucinogen Intoxication, Without use disorder|21
+302|292.89|F16.983|Hallucinogen Persisting Perception Disorder|21
+303|292|F16|Phencyclidine-Induced Anxiety Disorder|21
+304|292|F16|Phencyclidine-Induced Mood Disorder|21
+305|292|F16|Phencyclidine-Induced Psychotic Disorder With Delusions|21
+306|292|F16|Phencyclidine-Induced Psychotic Disorder With Hallucinations|21
+307|292|F16|Phencyclidine-Induced Other Disorder|21
+308|292|F16|Other Hallucinogen-Induced Anxiety Disorder|21
+309|292|F16|Other Hallucinogen-Induced Mood Disorder|21
+310|292|F16|Other Hallucinogen-Induced Psychotic Disorder With Delusions|21
+311|292|F16|Other Hallucinogen-Induced Psychotic Disorder With Hallucinations|21
+312|292|F16|Other Hallucinogen-Induced Other Disorder|21
+313|292.9|F16.99|Unspecified Phencyclidine-Related Disorder|21
+314|292.9|F16.99|Unspecified Hallucinogen-Related Disorder|21
+315|305.90|F18.10|Inhalant Use Disorder, Mild|21
+316|304.60|F18.20|Inhalant Use Disorder, Moderate|21
+317|304.60|F18.20|Inhalant Use Disorder, Severe|21
+318|292.89|F18.129|Inhalant Intoxication, With use disorder, Mild|21
+319|292.89|F18.229|Inhalant Intoxication, With use disorder, Moderate or Severe|21
+320|292.89|F18.929|Inhalant Intoxication, Without use disorder|21
+321|292|F18|Inhalant-Induced Anxiety Disorder|21
+322|292|F18|Inhalant-Induced Mood Disorder|21
+323|292|F18|Inhalant-Induced Psychotic Disorder With Delusions|21
+324|292|F18|Inhalant-Induced Psychotic Disorder With Hallucinations|21
+325|292|F18|Inhalant-Induced Other Disorder|21
+326|292.9|F18.99|Unspecified Inhalant-Related Disorder|21
+327|305.50|F11.10|Opioid Use Disorder, Mild|21
+328|304.00|F11.20|Opioid Use Disorder, Moderate|21
+329|304.00|F11.20|Opioid Use Disorder, Severe|21
+330|292.89|F11.129|Opioid Intoxication, Without perceptual disturbances, With use disorder, Mild|21
+331|292.89|F11.229|Opioid Intoxication, Without perceptual disturbances, With use disorder, Moderate or Severe|21
+332|292.89|F11.929|Opioid Intoxication, Without perceptual disturbances, Without use disorder|21
+333|292.89|F11.122|Opioid Intoxication, With perceptual disturbances, With use disorder, Mild|21
+334|292.89|F11.222|Opioid Intoxication, With perceptual disturbances, With use disorder, Moderate or Severe|21
+335|292.89|F11.922|Opioid Intoxication, With perceptual disturbances, Without use disorder|21
+336|292.0|F11.23|Opioid Withdrawal|21
+337|292|F11|Opioid-Induced Anxiety Disorder|21
+338|292|F11|Opioid-Induced Mood Disorder|21
+339|292|F11|Opioid-Induced Other Disorder|21
+340|292.9|F11.99|Unspecified Opioid-Related Disorder|21
+341|305.40|F13.10|Sedative, Hypnotic, or Anxiolytic Use Disorder, Mild|21
+342|304.10|F13.20|Sedative, Hypnotic, or Anxiolytic Use Disorder, Moderate|21
+343|304.10|F13.20|Sedative, Hypnotic, or Anxiolytic Use Disorder, Severe|21
+344|292.89|F13.129|Sedative, Hypnotic, or Anxiolytic Intoxication, With use disorder, Mild|21
+345|292.89|F13.229|Sedative, Hypnotic, or Anxiolytic Intoxication, With use disorder, Moderate or Severe|21
+346|292.89|F13.929|Sedative, Hypnotic, or Anxiolytic Intoxication, Without use disorder|21
+347|292.0|F13.239|Sedative, Hypnotic, or Anxiolytic Withdrawal, Without perceptual disturbances|21
+348|292.0|F13.232|Sedative, Hypnotic, or Anxiolytic Withdrawal, With perceptual disturbances|21
+349|292|F13|Sedative-, Hypnotic-, or Anxiolytic-Induced Anxiety Disorder|21
+350|292|F13|Sedative-, Hypnotic-, or Anxiolytic-Induced Mood Disorder|21
+351|292|F13|Sedative-, Hypnotic-, or Anxiolytic-Induced Psychotic Disorder With Delusions|21
+352|292|F13|Sedative-, Hypnotic-, or Anxiolytic-Induced Psychotic Disorder With Hallucinations|21
+353|292|F13|Sedative-, Hypnotic-, or Anxiolytic-Induced Other Disorder|21
+354|292.9|F13.99|Unspecified Sedative-, Hypnotic-, or Anxiolytic-Related Disorder|21
+355|305.70|F15.10|Stimulant Use Disorder, Amphetamine-type substance, Mild|21
+356|304.40|F15.20|Stimulant Use Disorder, Amphetamine-type substance, Moderate|21
+357|304.40|F15.20|Stimulant Use Disorder, Amphetamine-type substance, Severe|21
+358|305.60|F14.10|Stimulant Use Disorder, Cocaine, Mild|21
+359|304.20|F14.20|Stimulant Use Disorder, Cocaine, Moderate|21
+360|304.20|F14.20|Stimulant Use Disorder, Cocaine, Severe|21
+361|305.70|F15.10|Stimulant Use Disorder, Other or unspecified stimulant, Mild|21
+362|304.40|F15.20|Stimulant Use Disorder, Other or unspecified stimulant, Moderate|21
+363|304.40|F15.20|Stimulant Use Disorder, Other or unspecified stimulant, Severe|21
+364|292.89|F15.129|Stimulant Intoxication, Amphetamine or other stimulant, Without perceptual disturbances, With use disorder, Mild|21
+365|292.89|F15.229|Stimulant Intoxication, Amphetamine or other stimulant, Without perceptual disturbances, With use disorder, Moderate or Severe|21
+366|292.89|F15.929|Stimulant Intoxication, Amphetamine or other stimulant, Without perceptual disturbances, Without use disorder|21
+367|292.89|F14.129|Stimulant Intoxication, Cocaine, Without perceptual disturbances, With use disorder, Mild|21
+368|292.89|F14.229|Stimulant Intoxication, Cocaine, Without perceptual disturbances, With use disorder, Moderate or Severe|21
+369|292.89|F14.929|Stimulant Intoxication, Cocaine, Without perceptual disturbances, Without use disorder|21
+370|292.89|F15.122|Stimulant Intoxication, Amphetamine or other stimulant, With perceptual disturbances, With use disorder, Mild|21
+371|292.89|F15.222|Stimulant Intoxication, Amphetamine or other stimulant, With perceptual disturbances, With use disorder, Moderate or Severe|21
+372|292.89|F15.922|Stimulant Intoxication, Amphetamine or other stimulant, With perceptual disturbances, Without use disorder|21
+373|292.89|F14.122|Stimulant Intoxication, Cocaine, With perceptual disturbances, With use disorder, Mild|21
+374|292.89|F14.222|Stimulant Intoxication, Cocaine, With perceptual disturbances, With use disorder, Moderate or Severe|21
+375|292.89|F14.922|Stimulant Intoxication, Cocaine, With perceptual disturbances, Without use disorder|21
+376|292.0|F15.23|Stimulant Withdrawal, Amphetamine or other stimulant|21
+377|292.0|F14.23|Stimulant Withdrawal, Cocaine|21
+378|292|F15|Amphetamine- or Other Stimulant-Induced Anxiety Disorder|21
+379|292|F15|Amphetamine- or Other Stimulant-Induced Mood Disorder|21
+380|292|F15|Amphetamine- or Other Stimulant-Induced Psychotic Disorder With Delusions|21
+381|292|F15|Amphetamine- or Other Stimulant-Induced Psychotic Disorder With Hallucinations|21
+382|292|F15|Amphetamine- or Other Stimulant-Induced Other Disorder|21
+383|292|F14|Cocaine-Induced Anxiety Disorder|21
+384|292|F14|Cocaine-Induced Mood Disorder|21
+385|292|F14|Cocaine-Induced Psychotic Disorder With Delusions|21
+386|292|F14|Cocaine-Induced Psychotic Disorder With Hallucinations|21
+387|292|F14|Cocaine-Induced Other Disorder|21
+388|292.9|F15.99|Unspecified Stimulant-Related Disorder, Amphetamine or other stimulant|21
+389|292.9|F14.99|Unspecified Stimulant-Related Disorder, Cocaine|21
+390|305.1|Z72.0|Tobacco Use Disorder, Mild|21
+391|305.1|F17.200|Tobacco Use Disorder, Moderate|21
+392|305.1|F17.200|Tobacco  Use Disorder, Severe |21
+393|292.0|F17.203|Tobacco Withdrawal|21
+394|292.9|F17.209|Unspecified Tobacco-Related Disorder|21
+395|305.90|F19.10|Other (or Unknown) Substance Use Disorder, Mild|21
+396|304.90|F19.20|Other (or Unknown) Substance Use Disorder, Moderate|21
+397|304.90|F19.20|Other (or Unknown) Substance Use Disorder, Severe|21
+398|292.89|F19.129|Other (or Unknown) Substance Intoxication, With use disorder, Mild|21
+399|292.89|F19.229|Other (or Unknown) Substance Intoxication, With use disorder, Moderate or Severe|21
+400|292.89|F19.929|Other (or Unknown) Substance Intoxication, Without use disorder|21
+401|292.0|F19.239|Other (or Unknown) Substance Withdrawal|21
+402|292.89|F19|Other (or Unknown) Substance-Induced Anxiety Disorder|21
+403|292.84|F19|Other (or Unknown) Substance-Induced Mood Disorder|21
+404|292.9|F19|Other (or Unknown) Substance-Induced Psychotic Disorder With Delusions|21
+405|292.9|F19|Other (or Unknown) Substance-Induced Psychotic Disorder With Hallucinations|21
+406|292.9|F19|Other (or Unknown) Substance-Induced Other Disorder|21
+407|292.9|F19.99|Unspecified Other (or Unknown) Substance-Related Disorder|21
+408|312.31|F63.0|Gambling Disorder|21
+141|313.89|F94.1|Reactive Attachment Disorder|22
+142|313.89|F94.2|Disinhibited Social Engagement Disorder|22
+143|309.81|F43.10|Posttraumatic Stress Disorder (includes Posttraumatic Stress Disorder for Children 6 Years and Younger)|22
+144|308.3|F43.0|Acute Stress Disorder|22
+145|309.0|F43.21|Adjustment Disorder, With depressed mood|22
+146|309.24|F43.22|Adjustment Disorder, With anxiety|22
+147|309.28|F43.23|Adjustment Disorder, With mixed anxiety and depressed mood|22
+148|309.3|F43.24|Adjustment Disorder, With disturbance of conduct|22
+149|309.4|F43.25|Adjustment Disorder, With mixed disturbance of emotions and conduct|22
+150|309.9|F43.20|Adjustment Disorder, Unspecified|22
+151|309.89|F43.8|Other Specified Trauma-  and Stressor-Related Disorder|22
+152|309.9|F43.9|Unspecified Trauma- and Stressor-Related Disorder|22

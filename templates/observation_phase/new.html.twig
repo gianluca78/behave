@@ -50,6 +50,15 @@
     <div class="portlet-body">
         {{ form_start(form) }}
         {{ form_row(form.name) }}
+
+        <div class="form-group">
+            <label class="control-label required col-md-3">Is the phase an intervention?</label>
+            <div class="col-md-9">
+                {{ form_widget(form.isIntervention) }}
+            </div>
+        </div>
+
+        {{ form_row(form.intervention) }}
         {{ form_row(form._token) }}
 
         {{ form_end(form, {'render_rest': false}) }}
@@ -66,4 +75,28 @@
     </div>
 
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $( document ).ready(function() {
+            $('#observation_phase_isIntervention').bootstrapSwitch();
+
+            if($('#observation_phase_isIntervention').state() == true) {
+                $('#observation_phase_intervention').parent().parent().show();
+            } else {
+                $('#observation_phase_intervention').parent().parent().hide();
+            }
+        });
+
+        $('#observation_phase_isIntervention').on('switchChange.bootstrapSwitch', function (event, state) {
+            if(state == true) {
+                $('#observation_phase_intervention').parent().parent().show();
+            } else {
+                $('#observation_phase_intervention').parent().parent().hide();
+            }
+        });
+    </script>
 {% endblock %}
