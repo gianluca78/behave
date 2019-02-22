@@ -14,7 +14,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>Observations</span>
+        <span>Health information</span>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block pageTitle %}
-    Observations
+    Health information
 {% endblock %}
 
 {% block title %}
@@ -57,23 +57,11 @@
                         <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-plus"></i>
                         </a>
-                        <a id="enable-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="fa fa-power-off"></i>
-                        </a>
-                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="fa fa-calendar"></i>
-                        </a>
-                        <a id="phase-list-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="fa fa-list-ol"></i>
-                        </a>
                         <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-edit"></i>
                         </a>
                         <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-trash"></i>
-                        </a>
-                        <a id="download-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="fa fa-download"></i>
                         </a>
                     </div>
                 </div>
@@ -88,11 +76,10 @@
                                     <span></span>
                                 </label>
                             </th>
-                            <th> Name</th>
-                            <th> Description</th>
-                            <th> Enabled</th>
-                            <th> Observer</th>
-                            <th> Categorized data</th>
+                            <th> Disorder</th>
+                            <th> Age of onset</th>
+                            <th> Medical condition</th>
+                            <th> Comorbid disorders</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -105,47 +92,14 @@
                                         <span></span>
                                     </label>
                                 </td>
-                                <td> {{ record.name }} </td>
+                                <td> {{ record.dsm5Disorder }} </td>
                                 <td>
-                                    {{ record.description }}
+                                    {{ record.ageOfOnset }}
                                 </td>
                                 <td>
-                                    {% if(record.isEnabled == '1') %}
-                                        {% set classname = 'label-success' %}
-                                    {% else %}
-                                        {% set classname = 'label-warning' %}
-                                    {% endif %}
-                                    <span class="label label-sm {{ classname }}">
-                                {{ record.slugIsEnabled }}
-                            </span>
+                                    {{ record.medicalCondition}}
                                 </td>
-                                <td>{{ record.observerUsername }}</td>
-                                <td>
-                                    {% set numberOfObservations = render(controller(
-                                    'App\\Controller\\ObservationController::numberAction',
-                                    { 'id': record.id }
-                                    )) %}
-
-                                    {% set percentage = (numberOfObservations != 0) ?
-                                    record.countCategorizedData / numberOfObservations * 100 :
-                                    0
-                                    %}
-
-                                    <div class="dashboard-stat2">
-                                        <div class="progress-info">
-                                            <div class="status">
-                                                <div class="status-title"> 0 </div>
-                                                <div class="status-number"> {{ percentage }}% ({{ record.CountCategorizedData }}/{{ numberOfObservations }})</div>
-                                            </div>
-
-                                            <div class="progress">
-                                                <span style="width: {{ percentage }}%; background-color: #36c6d3" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">{{ percentage }}% change</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                <td></td>
                             </tr>
                         {% endfor %}
 
@@ -164,7 +118,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                             <h4 class="modal-title">Warning</h4>
                         </div>
-                        <div class="modal-body"> Are you sure you want to delete this observation?</div>
+                        <div class="modal-body"> Are you sure you want to delete this health information?</div>
                         <div class="modal-footer">
                             <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                             <button id="confirm-delete" type="button" class="btn red" data-url="">Yes, delete</button>
@@ -189,15 +143,11 @@
         $( document ).ready(function() {
             $('#edit-button').addClass('opaque');
             $('#delete-button').addClass('opaque');
-            $('#data-analysis-button').addClass('opaque');
-            $('#enable-button').addClass('opaque');
-            $('#download-button').addClass('opaque');
-            $('#phase-list-button').addClass('opaque');
         });
 
         $('#add-button').on('click', function(){
             if(!$(this).hasClass('opaque')) {
-                location.assign('{{ path('observation_new', { 'id': student.id }) }}');
+                location.assign('{{ path('student_health_information_new', { 'id': student.id }) }}');
             }
         });
 
@@ -205,13 +155,7 @@
             e.preventDefault();
 
             if(!$(this).hasClass('opaque')) {
-                location.assign('/observation/edit/' + $("#observation-datatable :checked").val());
-            }
-        });
-
-        $('#data-analysis-button').on('click', function(){
-            if(!$(this).hasClass('opaque')) {
-                location.assign('/calendar/' + $("#observation-datatable :checked").val());
+                location.assign('/student-health-information/edit/' + $("#observation-datatable :checked").val());
             }
         });
 
@@ -230,7 +174,7 @@
                 if(ids.length > 0) {
                     $('#basic').modal('show');
 
-                    $('#confirm-delete').data('url', '/observation/delete/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
+                    $('#confirm-delete').data('url', '/student-health-information/delete/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
                 }
             }
         });
@@ -238,30 +182,5 @@
         $('#confirm-delete').click(function( event ) {
             window.location.href = $('#confirm-delete').data('url');
         });
-
-        $('#enable-button').on('click', function(){
-            ids = [];
-
-            $('.checkboxes').each(function() {
-                if($(this).is(':checked')) {
-                    ids.push($(this).val());
-                }
-            });
-
-            location.assign('/observation/enableDisable/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
-        });
-
-        $('#download-button').on('click', function() {
-            if(!$(this).hasClass('opaque')) {
-                location.assign('/observation/download-data/' + $("#observation-datatable :checked").val());
-            }
-        });
-
-        $('#phase-list-button').on('click', function() {
-            if(!$(this).hasClass('opaque')) {
-                location.assign('/observation-phase/list/' + $("#observation-datatable :checked").val());
-            }
-        });
-
     </script>
 {% endblock %}

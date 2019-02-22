@@ -100,13 +100,18 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a class="delete" data-toggle="modal" data-url="{{ path('student_delete', {'id': child.id}) }}" href="#basic">
-                                                        <i class="fa fa-trash"></i>
+                                                    <a href="{{ path('observation_student_list', {'id': child.id}) }}">
+                                                        <i class="fa fa-eye"></i>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ path('observation_student_list', {'id': child.id}) }}">
-                                                        <i class="fa fa-eye"></i>
+                                                    <a href="{{ path('student_health_information_list', {'id': child.id}) }}">
+                                                        <i class="fa fa-medkit"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="delete" data-toggle="modal" data-url="{{ path('student_delete', {'id': child.id}) }}" href="#basic">
+                                                        <i class="fa fa-trash"></i>
                                                     </a>
                                                 </li>
                                             </ul>

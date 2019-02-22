@@ -17,6 +17,10 @@ class StudentType extends AbstractType
     {
         $builder
             ->add('studentId', null, array('required' => true))
+            ->add('yearOfBirth', ChoiceType::class, array(
+                'choices' => array_combine(range(date('Y'), 1970), range(date('Y'), 1970)),
+                'placeholder' => '-- Select the year of birth --'
+            ))
             ->add('sex', ChoiceType::class, array(
                 'choices' => array(
                     'Male' => 0,

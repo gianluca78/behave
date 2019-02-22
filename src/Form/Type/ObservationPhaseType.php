@@ -22,6 +22,9 @@ class ObservationPhaseType extends AbstractType
                 ->add('isIntervention', null, array(
                 'label' => ' '
                 ))
+                ->add('isUnderPharmacologicalTreatment', null, array(
+                'label' => ' '
+                ))
                 ->add('intervention', TextareaType::class, array(
                 'required' => false,
                 'attr' => array(

@@ -52,6 +52,13 @@
         {{ form_row(form.name) }}
 
         <div class="form-group">
+            <label class="control-label required col-md-3">Is the subject under pharmacological treatment during this phase?</label>
+            <div class="col-md-9">
+                {{ form_widget(form.isUnderPharmacologicalTreatment) }}
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="control-label required col-md-3">Is the phase an intervention?</label>
             <div class="col-md-9">
                 {{ form_widget(form.isIntervention) }}
@@ -83,8 +90,9 @@
     <script>
         $( document ).ready(function() {
             $('#observation_phase_isIntervention').bootstrapSwitch();
+            $('#observation_phase_isUnderPharmacologicalTreatment').bootstrapSwitch();
 
-            if($('#observation_phase_isIntervention').state() == true) {
+            if($('#observation_phase_isIntervention').bootstrapSwitch('state') == true) {
                 $('#observation_phase_intervention').parent().parent().show();
             } else {
                 $('#observation_phase_intervention').parent().parent().hide();

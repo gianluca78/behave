@@ -60,9 +60,20 @@ class Student
      */
     private $sex;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\StudentHealthInformation", mappedBy="student", orphanRemoval=true)
+     */
+    private $healthInformation;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $yearOfBirth;
+
     public function __construct()
     {
         $this->observations = new ArrayCollection();
+        $this->healthInformation = new ArrayCollection();
     }
 
     public function getId()
@@ -169,6 +180,49 @@ class Student
     public function setSex(int $sex)
     {
         $this->sex = $sex;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StudentHealthInformation[]
+     */
+    public function getHealthInformation(): Collection
+    {
+        return $this->healthInformation;
+    }
+
+    public function addHealthInformation(StudentHealthInformation $healthInformation): self
+    {
+        if (!$this->healthInformation->contains($healthInformation)) {
+            $this->healthInformation[] = $healthInformation;
+            $healthInformation->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHealthInformation(StudentHealthInformation $healthInformation): self
+    {
+        if ($this->healthInformation->contains($healthInformation)) {
+            $this->healthInformation->removeElement($healthInformation);
+            // set the owning side to null (unless already changed)
+            if ($healthInformation->getStudent() === $this) {
+                $healthInformation->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getYearOfBirth(): ?int
+    {
+        return $this->yearOfBirth;
+    }
+
+    public function setYearOfBirth(?int $yearOfBirth): self
+    {
+        $this->yearOfBirth = $yearOfBirth;
 
         return $this;
     }

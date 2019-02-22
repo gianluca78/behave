@@ -19,32 +19,20 @@ class Dsm5DisorderRepository extends ServiceEntityRepository
         parent::__construct($registry, Dsm5Disorder::class);
     }
 
-//    /**
-//     * @return Dsm5Disorder[] Returns an array of Dsm5Disorder objects
-//     */
-    /*
-    public function findByExampleField($value)
+    public function searchByDescriptionOrCodes($query)
     {
         return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('d.description LIKE :description')
+            ->orWhere('d.dsmId LIKE :dsmId')
+            ->orWhere('d.icd9 LIKE :icd9')
+            ->orWhere('d.icd10 LIKE :icd10')
+            ->setParameter('description', '%' . $query . '%')
+            ->setParameter('dsmId', '%' . $query . '%')
+            ->setParameter('icd9', '%' . $query . '%')
+            ->setParameter('icd10', '%' . $query . '%')
+            ->orderBy('d.description', 'ASC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getArrayResult()
+            ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Dsm5Disorder
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

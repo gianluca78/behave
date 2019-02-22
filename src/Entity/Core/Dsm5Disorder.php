@@ -43,6 +43,11 @@ class Dsm5Disorder
      */
     private $dsm5Category;
 
+    public function __toString()
+    {
+        return $this->description;
+    }
+
     public function getId()
     {
         return $this->id;

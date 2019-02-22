@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li>
+        <a href="{{ path('homepage') }}">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_list') }}">Students</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="{{ path('student_health_information_list', { 'id': student.id }) }}">Health information</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <span>New</span>
+    </li>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('js/vendor/fastselect/dist/fastselect.min.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{{ asset('js/vendor/fastsearch/src/fastsearch.js') }}"></script>
+    <script src="{{ asset('js/vendor/fastselect/src/fastselect.js') }}"></script>
+
+    <script>
+        $( document ).ready(function() {
+            $('#student_health_information_isSecondaryToAnotherMedicalCondition').bootstrapSwitch();
+
+            $("#student_health_information_dsm5Disorder").parent().parent().hide();
+
+            $('#student_health_information_comorbidDsm5Disorders').fastselect({
+                'placeholder': 'Choose disorders from the list or typing portion of its name',
+
+            });
+
+            if($('#student_health_information_isSecondaryToAnotherMedicalCondition').bootstrapSwitch('state') == true) {
+                $('#student_health_information_medicalCondition').parent().parent().show();
+            } else {
+                $('#student_health_information_medicalCondition').parent().parent().hide();
+            }
+        });
+
+        $('#student_health_information_isSecondaryToAnotherMedicalCondition').on('switchChange.bootstrapSwitch', function (event, state) {
+            if(state == true) {
+                $('#student_health_information_medicalCondition').parent().parent().show();
+            } else {
+                $('#student_health_information_medicalCondition').parent().parent().hide();
+            }
+        });
+    </script>
+
+    <script>
+        $( "#student_health_information_dsm5DisorderLabel" ).autocomplete({
+            source: "{{ path('disorder_search') }}",
+            minLength: 2,
+            select: function( event, ui ) {
+                event.preventDefault();
+
+                $('#student_health_information_dsm5DisorderLabel').val(ui.item.description);
+                $("#student_health_information_dsm5Disorder").val(ui.item.id);
+
+            },
+            focus: function(event, ui) {
+                event.preventDefault();
+                $("#student_health_information_dsm5DisorderLabel").val(ui.item.description);
+            }
+        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+
+            return $( "<li>" )
+                    .attr( "data-value", item.id )
+                    .append(item.description).html(item.description)
+                    .appendTo( ul );
+        };
+
+    </script>
+
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    <div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>New health information
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        {{ form_start(form) }}
+
+        {{ form_row(form.dsm5DisorderLabel) }}
+        {{ form_row(form.dsm5Disorder) }}
+        {{ form_row(form.ageOfOnset) }}
+
+        <div class="form-group">
+            <label class="control-label required col-md-3">Is secondary to another medical condition?</label>
+            <div class="col-md-9">
+                {{ form_widget(form.isSecondaryToAnotherMedicalCondition) }}
+            </div>
+        </div>
+
+        {{ form_row(form.medicalCondition) }}
+        {{ form_row(form.comorbidDsm5Disorders) }}
+
+
+        {{ form_row(form._token) }}
+
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9">
+                    {{ form_widget(form.submit, {'class': 'btn btn-circle green'}) }}
+                    <button type="button" class="btn btn-circle grey-salsa btn-outline">Cancel</button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
+        {{ form_end(form, {'render_rest': false}) }}
+
+    </div>
+
+{% endblock %}
