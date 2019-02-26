@@ -42,9 +42,20 @@
     writing-mode: lr-tb;
 }
 
+.max-y, .min-y, .max-x, .min-x {
+    position: relative;
+    font-variant: small-caps;
+}
+
+.label-y, .label-x {
+    font-variant: small-caps;
+    font-size: 12pt;
+    position: relative;
+}
+
 .x-axis {
     border: 0;
-    border-top: 1px solid #000000;
+    /*border-top: 1px solid #000000;*/
 }
 
 .x-axis:hover {
@@ -53,7 +64,7 @@
 
 .y-axis {
     border: 0;
-    border-right: 1px solid #000000;
+    /*border-right: 1px solid #000000;*/
 }
 
 .y-axis:hover {
@@ -65,9 +76,15 @@
 }
 
 .sixth-row {
-    border-right: 1px dashed #000000;
+    border-right: 2px solid #32c5d2;
 }
 
 .sixth-column {
-    border-top: 1px dashed #000000;
+    border-top: 2px solid #32c5d2;
+}
+
+.zero {
+    position: absolute;
+    left: 90%;
+    top: 0%;
 }

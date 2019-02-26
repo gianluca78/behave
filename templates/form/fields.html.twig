@@ -301,23 +301,26 @@
                                     {% for column in 1..11 %}
                                         {% if(row==1 and column==1) %}
                                             {% set label = labelMaxY %}
-                                            {% set classLabelText = 'rotate-labels' %}
+                                            {% set classLabelText = 'rotate-labels max-y' %}
                                         {% elseif(row==6 and column==1) %}
                                             {% set label = labelY %}
-                                            {% set classLabelText = 'rotate-labels' %}
+                                            {% set classLabelText = 'rotate-labels label-y' %}
+                                        {% elseif(row==6 and column==6) %}
+                                            {% set label = '0' %}
+                                            {% set classLabelText = 'zero' %}
                                         {% elseif(row==10 and column==1) %}
                                             {% set label = labelMinY %}
-                                            {% set classLabelText = 'rotate-labels' %}
+                                            {% set classLabelText = 'rotate-labels min-y' %}
                                         {% endif %}
                                         {% if(row==11 and column==2) %}
                                             {% set label = labelMinX %}
-                                            {% set classLabelText = '' %}
+                                            {% set classLabelText = 'max-x' %}
                                         {% elseif(row==11 and column==6) %}
                                             {% set label = labelX %}
-                                            {% set classLabelText = '' %}
-                                        {% elseif(row==11 and column==10) %}
+                                            {% set classLabelText = 'label-x' %}
+                                        {% elseif(row==11 and column==11) %}
                                             {% set label = labelMaxX %}
-                                            {% set classLabelText = '' %}
+                                            {% set classLabelText = 'min-x' %}
                                         {% endif %}
 
                                         {% set classAxis = '' %}
@@ -364,7 +367,8 @@
 
                                         <div class="square {{ classAxis }}" data-row="{{ row }}" data-column="{{ column }}">
                                             {% if( ((row==1 or row==6 or row==10) and column==1)
-                                            or ((column==2 or column==6 or column==10) and row==11)
+                                            or ((column==2 or column==6 or column==11) and row==11)
+                                            or (column==6 and row==6)
                                             )
                                             %}
                                                 <div class="content">
