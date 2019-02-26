@@ -174,6 +174,9 @@ var AppCalendar = function() {
                         $(this).remove();
                     }
                 },
+                eventClick: function(calEvent, jsEvent, view) {
+                    window.location.assign('/measure/' + $('#calendar').data('observation-id'));
+                },
                 eventDrop: function(event, delta, revertFunc) {
                     updateEvents();
                 },
@@ -182,7 +185,6 @@ var AppCalendar = function() {
                     updateEvents();
                 },
                 events: scheduledDates,
-
                 viewRender: function( view, element ) {
 
                     /*

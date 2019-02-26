@@ -91,7 +91,8 @@ class ObservationSchedulerType extends AbstractType
                     'placeholder' => false,
                     'choices' => array(
                         'After' => 0,
-                        'On date' => 1
+                        'On date' => 1,
+                        '3 years' => 2
                     )
                 )
             )

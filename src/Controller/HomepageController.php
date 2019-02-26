@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Security\Encoder\OpenSslEncoder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -42,8 +43,11 @@ class HomepageController extends Controller
      * @Template
      *
      */
-    public function dashboardAction()
+    public function dashboardAction(OpenSslEncoder $encoder)
     {
-        return array();
+        $futureObservationDates = $this->getDoctrine()->getRepository('App\Entity\ObservationDate')
+            ->findFutureObservations($encoder->encrypt($this->getUser()->getUserId()));
+
+        return array('observationDates' => $futureObservationDates);
     }
 }

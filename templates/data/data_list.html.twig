@@ -41,7 +41,6 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script src="{{ asset('theme/assets/global/plugins/horizontal-timeline/horizontal-timeline.js') }}"></script>
     <script src="{{ asset('theme/assets/global/plugins/slick/slick/slick.min.js') }}"></script>
     <script src="{{ asset('js/vendor/highcharts/6.1.1/highcharts.js') }}"></script>
     <script src="{{ asset('js/vendor/highcharts/6.1.1/modules/series-label.js') }}"></script>
@@ -57,7 +56,6 @@
             asNavFor: '.slider-nav'
         });
         $('.slider-nav').on('init', function(slick){
-
             slickCurrent = $('.col-lg-4.bg-grey.mt-step-col.slick-current');
             $(slickCurrent).addClass('active');
         });

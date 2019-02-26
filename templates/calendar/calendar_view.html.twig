@@ -58,8 +58,8 @@
                             {% set allDay = 'false' %}
                         {% endif %}
                         title: '{{ observation.name }}',
-                        start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
-                        end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
+                        start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('G') }}, {{ observationDate.startDateTimestamp | date('i') }}),
+                        end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('G') }}, {{ observationDate.endDateTimestamp | date('i') }}),
                         allDay: {{ allDay }},
                         backgroundColor: App.getBrandColor('red'),
                         test: true

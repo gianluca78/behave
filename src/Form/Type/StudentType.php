@@ -2,6 +2,7 @@
 namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Student;
@@ -26,6 +27,10 @@ class StudentType extends AbstractType
                     'Male' => 0,
                     'Female' => 1
                 )
+            ))
+            ->add('countryType', CountryType::class, array(
+                'label' => 'Country',
+                'placeholder' => '-- Select the country --'
             ))
             ->add('submit', SubmitType::class);;
     }

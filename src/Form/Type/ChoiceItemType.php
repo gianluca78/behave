@@ -16,14 +16,13 @@ class ChoiceItemType extends AbstractType
     {
         $builder
             ->add('positionNumber', HiddenType::class, array('required' => true))
-            ->add('type', ChoiceType::class, array(
+            ->add('choiceType', ChoiceType::class, array(
                 'choices' => array(
                     'Checkboxes' => 0,
                     'Dropdown list' => 1,
                     'Dropdown list with multiple selection' => 2,
                     'Radio buttons' => 3,
                 ),
-                'mapped' => false,
                 'placeholder' => '-- Select a type --'
             ))
             ->add('isExpanded', HiddenType::class, array('required' => false))

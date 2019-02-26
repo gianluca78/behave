@@ -68,6 +68,8 @@
 
             $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('state', isSingleCaseDesign);
             $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('size', 'small');
+            $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('onText', 'Yes');
+            $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('offText', 'No');
 
             $('#observation_observationScheduler_hasDates').bootstrapSwitch();
 
@@ -184,6 +186,10 @@
                         $('#observation_observationScheduler_repeatEndDate').parent().parent().show();
 
                         break;
+
+                    case '2':
+                        $('#observation_observationScheduler_repeatEndAfterNumberOfOccurrences').parent().parent().hide();
+                        $('#observation_observationScheduler_repeatEndDate').parent().parent().hide();
                 }
             }
         }
@@ -260,7 +266,7 @@
                     <div id="observation_observationScheduler_weeklyDaysOfWeek" class="col-md-9">
                         <div class="btn-group" data-toggle="buttons">
 
-                                <label class="btn btn-default active" for="observation_observationScheduler_weeklyDaysOfWeek_0"
+                                <label class="btn btn-default" for="observation_observationScheduler_weeklyDaysOfWeek_0"
                                                              class=""><input
                                                 class="toggle"
                                                 id="observation_observationScheduler_weeklyDaysOfWeek_0"

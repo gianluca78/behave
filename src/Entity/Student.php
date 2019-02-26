@@ -23,7 +23,7 @@ class Student
     private $id;
 
     /**
-     * @ORM\Column(name="student_id", type="encrypted_string", length=255)
+     * @ORM\Column(name="student_id", type="string", length=255)
      */
     private $studentId;
 
@@ -69,6 +69,11 @@ class Student
      * @ORM\Column(type="integer", nullable=true)
      */
     private $yearOfBirth;
+
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    private $countryType;
 
     public function __construct()
     {
@@ -187,12 +192,12 @@ class Student
     /**
      * @return Collection|StudentHealthInformation[]
      */
-    public function getHealthInformation(): Collection
+    public function getHealthInformation()
     {
         return $this->healthInformation;
     }
 
-    public function addHealthInformation(StudentHealthInformation $healthInformation): self
+    public function addHealthInformation(StudentHealthInformation $healthInformation)
     {
         if (!$this->healthInformation->contains($healthInformation)) {
             $this->healthInformation[] = $healthInformation;
@@ -202,7 +207,7 @@ class Student
         return $this;
     }
 
-    public function removeHealthInformation(StudentHealthInformation $healthInformation): self
+    public function removeHealthInformation(StudentHealthInformation $healthInformation)
     {
         if ($this->healthInformation->contains($healthInformation)) {
             $this->healthInformation->removeElement($healthInformation);
@@ -215,14 +220,26 @@ class Student
         return $this;
     }
 
-    public function getYearOfBirth(): ?int
+    public function getYearOfBirth()
     {
         return $this->yearOfBirth;
     }
 
-    public function setYearOfBirth(?int $yearOfBirth): self
+    public function setYearOfBirth(int $yearOfBirth)
     {
         $this->yearOfBirth = $yearOfBirth;
+
+        return $this;
+    }
+
+    public function getCountryType()
+    {
+        return $this->countryType;
+    }
+
+    public function setCountryType(string $countryType)
+    {
+        $this->countryType = $countryType;
 
         return $this;
     }

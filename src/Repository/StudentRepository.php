@@ -19,6 +19,18 @@ class StudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Student::class);
     }
 
+    public function findByCreatorUserIdOrderedByNameAsc($userId)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.creatorUserId = :creatorUserId')
+            ->setParameter('creatorUserId', $userId)
+            ->orderBy('s.studentId', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
 //    /**
 //     * @return Student[] Returns an array of Student objects
 //     */

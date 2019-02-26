@@ -22,7 +22,7 @@ class BaseObservationType extends AbstractType
             ->add('isSingleCaseDesign', null, array(
                     'required' => false,
                     'value' => 0,
-                    'label' => 'Single case'
+                    'label' => 'Single case?'
                 )
             )
             ->add('name', null, array('required' => true))

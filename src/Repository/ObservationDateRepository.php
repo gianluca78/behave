@@ -44,6 +44,19 @@ class ObservationDateRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findFutureObservations($observerUserId)
+    {
+        $now = new \DateTime();
+
+        return $this->createQueryBuilder('od')
+            ->join('od.observation', 'o')
+            ->where('od.startDateTimestamp >= :startDate')->setParameter('startDate', $now->format('U'))
+            ->andWhere('o.observerUserId = :observerUserId')->setParameter('observerUserId', $observerUserId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function findNextObservationDate($observation)
     {
         $now = new \DateTime();
@@ -56,34 +69,4 @@ class ObservationDateRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
-
-//    /**
-//     * @return ObservationDate[] Returns an array of ObservationDate objects
-//     */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?ObservationDate
-    {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Security\Encoder\OpenSslEncoder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -37,10 +38,10 @@ class StudentController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, OpenSslEncoder $encoder)
     {
-        $records = $this->getDoctrine()->getRepository('App\Entity\Student')->findByCreatorUserId(
-            $this->getUser()->getUserId()
+        $records = $this->getDoctrine()->getRepository('App\Entity\Student')->findByCreatorUserIdOrderedByNameAsc(
+            $encoder->encrypt($this->getUser()->getUserId())
         );
 
         return array(

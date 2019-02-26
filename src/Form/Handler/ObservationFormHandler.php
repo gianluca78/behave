@@ -187,6 +187,34 @@ class ObservationFormHandler
                         }
 
                         break;
+
+                    case 2:
+                        $weekInterval = $schedulerData->getWeeklyNumberOfWeeks();
+
+                        $weekDays = $schedulerData->getWeeklyDaysOfWeek();
+
+                        $endDate = clone $firstStartDate;
+                        $endDate->modify('+ 3 years');
+                        $interval = new \DateInterval('P1D');
+                        $period = new \DatePeriod($firstStartDate, $interval, $endDate);
+
+                        $fakeWeek = 0;
+                        $currentWeek = $firstStartDate->format('W');
+
+                        $scheduledDates = array();
+
+                        foreach ($period as $date) {
+                            if ($date->format('W') !== $currentWeek) {
+                                $currentWeek = $date->format('W');
+                                $fakeWeek++;
+                            }
+
+                            if (in_array($date->format('w'), $weekDays) && ($fakeWeek % $weekInterval === 0) && $date != $firstStartDate) {
+                                $scheduledDates[] = $date;
+                            }
+                        }
+
+                        break;
                 }
 
                 foreach($scheduledDates as $scheduledDate) {

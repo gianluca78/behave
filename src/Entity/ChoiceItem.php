@@ -47,6 +47,12 @@ class ChoiceItem extends Item
     private $measure;
 
     /**
+     * @ORM\Column(name="choice_type", type="integer")
+     */
+    private $choiceType;
+
+
+    /**
      * @return string
      */
     public function getEmptyValue()
@@ -181,6 +187,19 @@ class ChoiceItem extends Item
     {
         $this->label = $label;
     }
+
+    public function getChoiceType()
+    {
+        return $this->choiceType;
+    }
+
+    public function setChoiceType(int $choiceType)
+    {
+        $this->choiceType = $choiceType;
+
+        return $this;
+    }
+
 
 
 
