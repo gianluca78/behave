@@ -58,10 +58,14 @@
         <div class="col-md-6 coming-soon-content">
             {% block body %}
             <h1>You shall not pass!</h1>
-            {% if nextDate %}
-                <p>Your observation will start in...</p>
+            {% if observation.isEnabled %}
+                {% if nextDate %}
+                    <p>Your observation will start in...</p>
+                {% else %}
+                <p> You are now allowed to access this page.</p>
+                {% endif %}
             {% else %}
-            <p> You are now allowed to access this page.</p>
+                The observation is not enabled
             {% endif %}
         </div>
         {% if nextDate %}

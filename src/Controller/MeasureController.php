@@ -186,7 +186,8 @@ class MeasureController extends Controller
                 null;
 
             return $this->render('measure/not_allowed.html.twig', array(
-                'nextDate' => $nextDate
+                'nextDate' => $nextDate,
+                'observation' => $observation
             ));
         }
 
