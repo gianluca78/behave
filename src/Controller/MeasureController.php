@@ -158,7 +158,7 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="measure")
+     * @Route("/{id}/{token}", name="measure")
      * @Method({"GET", "POST"})
      *
      * @param Request $request

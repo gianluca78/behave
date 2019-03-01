@@ -57,14 +57,14 @@
                         <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-plus"></i>
                         </a>
-                        <a id="enable-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
-                            <i class="fa fa-power-off"></i>
-                        </a>
                         <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-calendar"></i>
                         </a>
                         <a id="phase-list-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-list-ol"></i>
+                        </a>
+                        <a id="share-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                            <i class="fa fa-share-square-o"></i>
                         </a>
                         <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
                             <i class="fa fa-edit"></i>
@@ -91,7 +91,6 @@
                             <th> Name</th>
                             <th> Description</th>
                             <th> Enabled</th>
-                            <th> Observer</th>
                             <th> Categorized data</th>
                         </tr>
                         </thead>
@@ -101,7 +100,7 @@
                             <tr class="odd gradeX">
                                 <td>
                                     <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                        <input type="checkbox" class="checkboxes" value="{{ record.id }}"/>
+                                        <input type="checkbox" class="checkboxes" value="{{ record.id }}" data-token="{{ record.token }}"/>
                                         <span></span>
                                     </label>
                                 </td>
@@ -111,15 +110,13 @@
                                 </td>
                                 <td>
                                     {% if(record.isEnabled == '1') %}
-                                        {% set classname = 'label-success' %}
+                                        {% set imageName = asset('/icons/power-on.png') %}
                                     {% else %}
-                                        {% set classname = 'label-warning' %}
+                                        {% set imageName = asset('/icons/power-off.png') %}
                                     {% endif %}
-                                    <span class="label label-sm {{ classname }}">
-                                {{ record.slugIsEnabled }}
-                            </span>
+
+                                    <a href="{{ path('observation_enable_disable', { 'id': record.id }) }}"><img src="{{ imageName }}" width="30%"></a>
                                 </td>
-                                <td>{{ record.observerUsername }}</td>
                                 <td>
                                     {% set numberOfObservations = render(controller(
                                     'App\\Controller\\ObservationController::numberAction',
@@ -172,6 +169,42 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="share" tabindex="-1" role="basic" aria-hidden="true" style="display: none;" data-observation-id="">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Share</h4>
+                        </div>
+                        <div class="modal-body">
+                            Share the observation with other users.
+
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                    <a id="copy-link-button" class="btn btn-icon-only btn-default" data-clipboard-text="">
+                                        <i class="fa fa-link"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <a id="send-link-button" class="btn btn-icon-only btn-default" href="javascript:;" data-clipboard-text="">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-md-6">
+                                Copy url
+                                </div>
+                                <div class="col-md-6">
+                                Send email
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -184,13 +217,31 @@
     <script src="{{ asset('theme/assets/pages/scripts/table-datatables-managed.js') }}"></script>
     <script src="{{ asset('theme/assets/global/plugins/jquery-bootpag/jquery.bootpag.min.js') }}"></script>
     <script src="{{ asset('theme/assets/pages/scripts/ui-general.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/clipboard.js/dist/clipboard.js') }}"></script>
 
     <script>
+
+        /*
+        var clipboard = new ClipboardJS('.btn');
+
+        clipboard.on('success', function(e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
+
+            e.clearSelection();
+        });
+
+        clipboard.on('error', function(e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });*/
+
         $( document ).ready(function() {
             $('#edit-button').addClass('opaque');
             $('#delete-button').addClass('opaque');
             $('#data-analysis-button').addClass('opaque');
-            $('#enable-button').addClass('opaque');
+            $('#share-button').addClass('opaque');
             $('#download-button').addClass('opaque');
             $('#phase-list-button').addClass('opaque');
         });
@@ -239,18 +290,6 @@
             window.location.href = $('#confirm-delete').data('url');
         });
 
-        $('#enable-button').on('click', function(){
-            ids = [];
-
-            $('.checkboxes').each(function() {
-                if($(this).is(':checked')) {
-                    ids.push($(this).val());
-                }
-            });
-
-            location.assign('/observation/enableDisable/{{ student.id }}/' + encodeURIComponent(JSON.stringify(ids)));
-        });
-
         $('#download-button').on('click', function() {
             if(!$(this).hasClass('opaque')) {
                 location.assign('/observation/download-data/' + $("#observation-datatable :checked").val());
@@ -260,6 +299,43 @@
         $('#phase-list-button').on('click', function() {
             if(!$(this).hasClass('opaque')) {
                 location.assign('/observation-phase/list/' + $("#observation-datatable :checked").val());
+            }
+        });
+
+        $('#share-button').on('click', function() {
+            if(!$(this).hasClass('opaque')) {
+                $('#share').modal('show');
+
+                ids = [];
+                tokens = [];
+
+                $('.checkboxes').each(function() {
+                    if($(this).is(':checked')) {
+                        ids.push($(this).val());
+                        tokens.push($(this).data('token'));
+                    }
+                });
+
+                $('#share').data('observation-id', ids[0]);
+
+                var clipboard = new ClipboardJS('.btn', {
+                    container: document.getElementById('share')
+                });
+                clipboard.on('success', function(e) {
+                    $('#copy-link-button').css('background-color', '#7FFF00');
+
+                    console.log(e);
+                });
+                clipboard.on('error', function(e) {
+                    console.log(e);
+                });
+
+                document.querySelector('#copy-link-button').addEventListener('click', function(){
+                    var copyButton = document.querySelector('#copy-link-button');
+
+                    copyButton.setAttribute('data-clipboard-text', '{{ baseUrl }}/measure/' + ids[0] + '/' + tokens[0]);
+                    copyButton.click();
+                });
             }
         });
 

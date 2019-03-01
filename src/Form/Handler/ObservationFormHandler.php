@@ -2,6 +2,7 @@
 namespace App\Form\Handler;
 
 use App\Entity\ObservationDate;
+use App\Utility\ObservationTokenGenerator;
 use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\Form\FormInterface,
     Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -17,14 +18,17 @@ class ObservationFormHandler
 
     private $entityManager;
     private $session;
+    private $tokenGenerator;
 
     public function __construct(
         EntityManagerInterface $entityManager,
-        SessionInterface $session
+        SessionInterface $session,
+        ObservationTokenGenerator $tokenGenerator
     )
     {
         $this->entityManager = $entityManager;
         $this->session = $session;
+        $this->tokenGenerator = $tokenGenerator;
     }
 
     public function handle(FormInterface $form, Request $request, $message)
@@ -56,6 +60,8 @@ class ObservationFormHandler
     public function create(Observation $entity, $schedulerData, $message)
     {
         $entity = $this->generateDates($schedulerData, $entity);
+        $entity->setToken($this->tokenGenerator->generate());
+
         $this->entityManager->persist($entity);
         $this->entityManager->flush();
 

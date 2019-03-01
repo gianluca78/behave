@@ -30,12 +30,6 @@ class BaseObservationType extends AbstractType
             ->add('fillingInstructions', TextareaType::class, array('required' => false))
             ->add('place', TextareaType::class, array('required' => false))
             ->add('setting', TextareaType::class, array('required' => false))
-            ->add('observerUsername', TextType::class, array(
-                'required' => true,
-                'label' => 'Observer username, email, or surname and name'
-                )
-            )
-            ->add('observerUserId', HiddenType::class, array('required' => true))
             ->add('measure', EntityType::class, array(
                     'attr' => array(
                         'data-live-search' => 'true',

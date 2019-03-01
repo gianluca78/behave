@@ -74,16 +74,6 @@ class Observation
     private $observationPhases;
 
     /**
-     * @ORM\Column(name="observer_user_id", type="encrypted_string", length=255)
-     */
-    private $observerUserId;
-
-    /**
-     * @ORM\Column(name="observer_username", type="encrypted_string", length=255)
-     */
-    private $observerUsername;
-
-    /**
      * @ORM\Column(name="creator_user_id", type="encrypted_string", length=255)
      */
     private $creatorUserId;
@@ -109,6 +99,11 @@ class Observation
      * @ORM\Column(type="boolean")
      */
     private $isSingleCaseDesign;
+
+    /**
+     * @ORM\Column(type="string", length=40, unique=true)
+     */
+    private $token;
 
     public function __construct()
     {
@@ -237,22 +232,6 @@ class Observation
     }
 
     /**
-     * @param mixed $observerUserId
-     */
-    public function setObserverUserId($observerUserId)
-    {
-        $this->observerUserId = $observerUserId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getObserverUserId()
-    {
-        return $this->observerUserId;
-    }
-
-    /**
      * @return Collection|ObservationDate[]
      */
     public function getObservationDates()
@@ -352,22 +331,6 @@ class Observation
     }
 
     /**
-     * @param mixed $observerUsername
-     */
-    public function setObserverUsername($observerUsername)
-    {
-        $this->observerUsername = $observerUsername;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getObserverUsername()
-    {
-        return $this->observerUsername;
-    }
-
-    /**
      * @param mixed $creatorUserId
      */
     public function setCreatorUserId($creatorUserId)
@@ -420,6 +383,18 @@ class Observation
     public function setIsSingleCaseDesign(bool $isSingleCaseDesign)
     {
         $this->isSingleCaseDesign = $isSingleCaseDesign;
+
+        return $this;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token)
+    {
+        $this->token = $token;
 
         return $this;
     }

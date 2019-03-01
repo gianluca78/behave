@@ -100,7 +100,7 @@ class ObservationController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexStudentAction(Student $student, OpenSslEncoder $encoder)
+    public function indexStudentAction(Student $student, OpenSslEncoder $encoder, Request $request)
     {
         $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findByStudentAndCreatorUserId(
             $student, $encoder->encrypt($this->getUser()->getUserId())
@@ -109,7 +109,8 @@ class ObservationController extends Controller
         return array(
             'records' => $records,
             'title' => $this->get('translator')->trans(self::INDEX_TITLE),
-            'student' => $student
+            'student' => $student,
+            'baseUrl' => $request->server->get('HTTP_HOST')
         );
     }
 
@@ -244,72 +245,26 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/enableDisable/{id}/{ids}", name="observation_enable_disable")
+     * @Route("/enableDisable/{id}", name="observation_enable_disable")
      * @Method({"GET"})
      *
      * @param Request $request
      * @param Observation $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function enableDisableAction(Request $request, Student $student, \Swift_Mailer $mailer, Auth0Api $auth0Api)
+    public function enableDisableAction(Request $request, Observation $observation, \Swift_Mailer $mailer, Auth0Api $auth0Api)
     {
-        $ids = json_decode($request->get('ids'), true);
-
         $em = $this->getDoctrine()->getManager();
+        $isEnableNewValue = ($observation->getIsEnabled()) ? false : true;
 
-        foreach($ids as $id) {
-            $observation = $em->getRepository('App\Entity\Observation')->find($id);
+        $observation->setIsEnabled($isEnableNewValue);
 
-            $isEnableNewValue = ($observation->getIsEnabled()) ? false : true;
-
-            $observation->setIsEnabled($isEnableNewValue);
-
-            $em->persist($observation);
-            $em->flush();
-
-            $observerEmail = $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->email;
-
-            if($observation->getIsEnabled()) {
-                $message = (new \Swift_Message('[BEHAVE] Observation'))
-                    ->setFrom('noreply@behaveproject.eu')
-                    ->setTo($observerEmail)
-                    ->setBody(
-                        $this->renderView(
-                            'emails/observation.html.twig',
-                            array(
-                                'givenName' => $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->given_name,
-                                'student' => $observation->getStudent(),
-                                'behaviour' => $observation->getName(),
-                                'observation' => $observation
-
-                            )
-                        ),
-                        'text/html'
-                    )
-                    /*
-                     * If you also want to include a plaintext version of the message
-                    ->addPart(
-                        $this->renderView(
-                            'emails/registration.txt.twig',
-                            array('name' => $name)
-                        ),
-                        'text/plain'
-                    )
-                    */
-                ;
-
-                try{
-                    $mailer->send($message);
-                }catch(\Swift_TransportException $e){
-                    $response = $e->getMessage() ;
-                }
-            }
-
-        }
+        $em->persist($observation);
+        $em->flush();
 
         $this->get('session')->getFlashbag()->add('success', 'Observation(s) update with success');
 
-        return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
+        return $this->redirect($this->generateUrl('observation_student_list', array('id' => $observation->getStudent()->getId())));
     }
 
     /**

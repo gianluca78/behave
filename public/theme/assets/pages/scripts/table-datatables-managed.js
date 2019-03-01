@@ -102,6 +102,8 @@ var TableDatatablesManaged = function () {
             [20, 40, 50, "All"]
         ], pageLength: 20, pagingType: "bootstrap_full_number", columnDefs: [
             {orderable: false, targets: 0 },
+            {orderable: false, targets: 3 },
+            {orderable: false, targets: 4 },
             {searchable: false, targets: 0 },
             {className: "dt-right"}
         ], order: [
@@ -120,7 +122,7 @@ var TableDatatablesManaged = function () {
                 $('#edit-button').removeClass('opaque');
                 $('#delete-button').removeClass('opaque');
                 $('#download-button').removeClass('opaque');
-                $('#enable-button').removeClass('opaque');
+                $('#share-button').removeClass('opaque');
                 $('#data-analysis-button').removeClass('opaque');
                 $('#phase-list-button').removeClass('opaque');
             }
@@ -128,6 +130,7 @@ var TableDatatablesManaged = function () {
             if($('.checkboxes:checked').length > 1) {
                 $('#edit-button').addClass('opaque');
                 $('#download-button').addClass('opaque');
+                $('#share-button').addClass('opaque');
                 $('#data-analysis-button').addClass('opaque');
                 $('#phase-list-button').addClass('opaque');
             }
@@ -136,7 +139,7 @@ var TableDatatablesManaged = function () {
                 $('#edit-button').addClass('opaque');
                 $('#delete-button').addClass('opaque');
                 $('#download-button').addClass('opaque');
-                $('#enable-button').addClass('opaque');
+                $('#share-button').addClass('opaque');
                 $('#data-analysis-button').addClass('opaque');
                 $('#phase-list-button').addClass('opaque');
             }

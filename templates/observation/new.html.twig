@@ -38,26 +38,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
 
     <script>
-        $( "#observation_base_observation_observerUsername" ).autocomplete({
-            source: "{{ path('user_search') }}",
-            minLength: 2,
-            select: function( event, ui ) {
-                event.preventDefault();
-                $('#observation_base_observation_observerUsername').val(jQuery(ui.item.label).text());
-                $('#observation_base_observation_observerUserId').val(ui.item.value);
-            },
-            focus: function(event, ui) {
-                event.preventDefault();
-                $("#observation_base_observation_observerUsername").val(jQuery(ui.item.label).text());
-            }
-        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-                return $( "<li>" )
-                        .attr( "data-value", item.value )
-                        .append(item.label).html(item.label)
-                        .appendTo( ul );
-            };
-
-
         $( document ).ready(function() {
             showHideScheduler();
             //showHideTime();
@@ -230,8 +210,6 @@
         {{ form_row(form.base_observation.place) }}
         {{ form_row(form.base_observation.setting) }}
         {{ form_row(form.base_observation.measure) }}
-        {{ form_row(form.base_observation.observerUsername) }}
-        {{ form_row(form.base_observation.observerUserId) }}
         {{ form_row(form.base_observation.fillingInstructions) }}
 
         <div class="form-group">
