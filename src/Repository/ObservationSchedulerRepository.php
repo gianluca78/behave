@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Observation;
 use App\Entity\ObservationScheduler;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;

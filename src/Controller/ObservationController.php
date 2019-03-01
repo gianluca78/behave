@@ -119,10 +119,10 @@ class ObservationController extends Controller
     *
     * @param Request $request
     * @param Observation $observation
-    * @param ObservationEditFormHandler $formHandler
+    * @param ObservationFormHandler $formHandler
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function editAction(Request $request, Observation $observation, ObservationEditFormHandler $formHandler)
+    public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler)
     {
         if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
@@ -131,7 +131,7 @@ class ObservationController extends Controller
             return $response;
         }
 
-        $form = $this->createForm(ObservationEditType::class, $observation, array(
+        $form = $this->createForm(ObservationType::class, $observation, array(
             'action' => $this->generateUrl('observation_edit', array('id' => $observation->getId())),
             'creatorUserId' => $this->getUser()->getUserId()
         ));
@@ -143,8 +143,9 @@ class ObservationController extends Controller
             );
         }
 
-        return $this->render('observation/edit.html.twig',
+        return $this->render('observation/new.html.twig',
             array(
+                'observation' => $observation,
                 'form' => $form->createView(),
                 'title' => $this->get('translator')->trans(self::EDIT_TITLE),
                 'student' => $observation->getStudent()
@@ -185,6 +186,7 @@ class ObservationController extends Controller
         }
 
         return array(
+            'observation' => $entity,
             'form' => $form->createView(),
             'title' => $this->get('translator')->trans(self::NEW_TITLE),
             'student' => $student
@@ -264,8 +266,6 @@ class ObservationController extends Controller
 
             $em->persist($observation);
             $em->flush();
-
-
 
             $observerEmail = $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->email;
 

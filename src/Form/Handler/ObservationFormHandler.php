@@ -43,21 +43,42 @@ class ObservationFormHandler
 
         $schedulerData = $form->get('observationScheduler')->getData();
 
-        $this->create($validObject, $schedulerData, $message);
+        if($validObject->getId())
+        {
+            $this->edit($validObject, $schedulerData, $message);
+        } else {
+            $this->create($validObject, $schedulerData, $message);
+        }
 
         return true;
     }
 
     public function create(Observation $entity, $schedulerData, $message)
     {
+        $entity = $this->generateDates($schedulerData, $entity);
         $this->entityManager->persist($entity);
+        $this->entityManager->flush();
 
+        $this->session->getFlashBag()->add('success', $message);
+    }
+
+    public function edit(Observation $entity, $schedulerData, $message)
+    {
+        $this->entityManager->getRepository('App\Entity\ObservationDate')->deleteFromTomorrow($entity);
+
+        $entity = $this->generateDates($schedulerData, $entity);
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+    }
+
+    private function generateDates($schedulerData, $entity)
+    {
         if($schedulerData->getHasDates()) {
             $entity->resetObservationDates();
 
             $firstStartDate = new \DateTime();
             $firstStartDate->setDate(
-                $schedulerData->getStartDate()->format('Y'), 
+                $schedulerData->getStartDate()->format('Y'),
                 $schedulerData->getStartDate()->format('m'),
                 $schedulerData->getStartDate()->format('d')
             );
@@ -235,8 +256,6 @@ class ObservationFormHandler
             }
         }
 
-        $this->entityManager->flush();
-
-        $this->session->getFlashBag()->add('success', $message);
+        return $entity;
     }
 }

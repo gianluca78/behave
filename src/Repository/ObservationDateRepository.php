@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ObservationDate;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use App\Entity\Observation;
 
 /**
  * @method ObservationDate|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,21 @@ class ObservationDateRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, ObservationDate::class);
+    }
+
+    public function deleteFromTomorrow(Observation $observation)
+    {
+        $now = new \DateTime();
+
+        return $this->createQueryBuilder('o')
+            ->delete()
+            ->where('o.observation = :observation')
+            ->andWhere('o.startDateTimestamp >= :startDate')
+            ->setParameter('observation', $observation)
+            ->setParameter('startDate', $now->format('Y-m-d H:i:s'))
+            ->getQuery()
+            ->execute()
+            ;
     }
 
     public function findByObservationIdAndDate()
