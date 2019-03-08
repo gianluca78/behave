@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/datatables/datatables.min.css') }}">
     <link rel="stylesheet"
           href="{{ asset('theme/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('theme/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -178,26 +179,61 @@
                             <h4 class="modal-title">Share</h4>
                         </div>
                         <div class="modal-body">
-                            Share the observation with other users.
+                            <div class="row">
+                                <div class="col-md-12">
+                                    Assign the observation to the observers sharing the following url:
+                                </div>
+                            </div>
 
-                            <div class="row text-center">
-                                <div class="col-md-6">
+                            <div class="row top5">
+                                <div class="col-md-9">
+                                    <input id="observation-url" class="form-control col-lg-9" type="text" value="">
+                                </div>
+                                <div class="col-md-3">
                                     <a id="copy-link-button" class="btn btn-icon-only btn-default" data-clipboard-text="">
                                         <i class="fa fa-link"></i>
                                     </a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a id="send-link-button" class="btn btn-icon-only btn-default" href="javascript:;" data-clipboard-text="">
-                                        <i class="fa fa-envelope-o"></i>
-                                    </a>
+                                    <span id="copy-url-text">Copy url</span>
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-md-6">
-                                Copy url
+
+                            <div class="row top5">
+                                <div class="col-md-12">
+                                    Insert the email addresses of the observers (press enter to add every new entry):
                                 </div>
-                                <div class="col-md-6">
-                                Send email
+                            </div>
+
+                            <div class="row top5">
+                                <div class="col-md-12" style="color: red;">
+                                    <ul id="messages"></ul>
+                                </div>
+
+                                <div class="col-md-12">
+                                    {{ form_start(form) }}
+
+                                    {{ form_widget(form.notificationEmails) }}
+                                    {{ form_row(form.observationId) }}
+                                    {{ form_row(form._token) }}
+                                </div>
+                            </div>
+
+                            <div class="row top5">
+                                <div class="col-md-12">
+                                    <h4>Observers' list</h4>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <ul id="notified-users" class="list-group">
+
+                                </ul>
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{ form_widget(form.submit, {'class': 'btn btn-circle green'}) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -218,25 +254,9 @@
     <script src="{{ asset('theme/assets/global/plugins/jquery-bootpag/jquery.bootpag.min.js') }}"></script>
     <script src="{{ asset('theme/assets/pages/scripts/ui-general.min.js') }}"></script>
     <script src="{{ asset('js/vendor/clipboard.js/dist/clipboard.js') }}"></script>
+    <script src="{{ asset('theme/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
 
     <script>
-
-        /*
-        var clipboard = new ClipboardJS('.btn');
-
-        clipboard.on('success', function(e) {
-            console.info('Action:', e.action);
-            console.info('Text:', e.text);
-            console.info('Trigger:', e.trigger);
-
-            e.clearSelection();
-        });
-
-        clipboard.on('error', function(e) {
-            console.error('Action:', e.action);
-            console.error('Trigger:', e.trigger);
-        });*/
-
         $( document ).ready(function() {
             $('#edit-button').addClass('opaque');
             $('#delete-button').addClass('opaque');
@@ -302,9 +322,38 @@
             }
         });
 
+        $('#notified-users').on('click', '.remove-email', function() {
+            ids = [];
+
+            $('.checkboxes').each(function() {
+                if($(this).is(':checked')) {
+                    ids.push($(this).val());
+                }
+            });
+
+            emailListElement = $(this).parent();
+
+            $.ajax({
+                url:"{{ path('observation_delete_notification_email') }}",
+                type:"GET",
+                data: {
+                    'email' : $(this).parent().text(),
+                    'observationId' : ids[0]
+                },
+                success: function(response) {
+                    $(emailListElement).remove();
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log(error);
+                }
+            });
+        });
+
         $('#share-button').on('click', function() {
             if(!$(this).hasClass('opaque')) {
-                $('#share').modal('show');
+                $('#copy-url-text').html('Copy url');
+                $('#notified-users').empty();
 
                 ids = [];
                 tokens = [];
@@ -316,13 +365,42 @@
                     }
                 });
 
+                $.ajax({
+                    url:"{{ path('observation_get_notification_emails') }}",
+                    type:"GET",
+                    data: {
+                        'observationId' : ids[0]
+                    },
+                    success: function(response) {
+                        console.log(response);
+
+                        $('#notified-users').append(
+                            response
+                        );
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                        console.log(error);
+                    }
+                });
+
+
+                $('#share').modal('show');
+
                 $('#share').data('observation-id', ids[0]);
+                $('#observation_notification_emails_observationId').val(ids[0]);
+                $('#observation_notification_emails_notificationEmails').tagsinput('removeAll');
+
+                observationUrl = '{{ baseUrl }}/measure/' + ids[0] + '/' + tokens[0];
+
+                $('#observation-url').val(observationUrl);
 
                 var clipboard = new ClipboardJS('.btn', {
                     container: document.getElementById('share')
                 });
                 clipboard.on('success', function(e) {
-                    $('#copy-link-button').css('background-color', '#7FFF00');
+                    $('#observation-url').select();
+                    $('#copy-url-text').html('COPIED!');
 
                     console.log(e);
                 });
@@ -333,10 +411,43 @@
                 document.querySelector('#copy-link-button').addEventListener('click', function(){
                     var copyButton = document.querySelector('#copy-link-button');
 
-                    copyButton.setAttribute('data-clipboard-text', '{{ baseUrl }}/measure/' + ids[0] + '/' + tokens[0]);
+                    copyButton.setAttribute('data-clipboard-text', observationUrl);
                     copyButton.click();
                 });
             }
+        });
+
+        $('form').on('submit', function(event) {
+            event.preventDefault();
+
+            $.ajax({
+                url:"{{ path('observation_save_notification_emails') }}",
+                type:"POST",
+                data: $( this ).serialize(),
+                success: function(response) {
+                    emails = $.parseJSON(response);
+
+                    $.each(emails, function(i, email) {
+                        $('#notified-users').append(
+                                '<li class="list-group-item">' + email + '<a name="Click here to remove the address" class="fa fa-trash remove-email"></a></li>'
+                        );
+                    });
+
+                    $('#share').modal('hide');
+                },
+                error: function(xhr, status, error) {
+                    messages = $.parseJSON(xhr.responseText);
+
+                    $('#messages').empty();
+
+                    $.each(messages, function(i, message) {
+                        $('#messages').append('<li>' + message + '</li>');
+                    });
+
+                    console.log(xhr.responseText);
+                    console.log(error);
+                }
+            });
         });
 
     </script>

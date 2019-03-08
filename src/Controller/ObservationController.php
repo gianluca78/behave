@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\Handler\CalendarFormHandler;
 use App\Form\Type\CalendarType;
+use App\Form\Type\ObservationNotificationEmailsType;
 use App\Security\Encoder\OpenSslEncoder;
 use App\Utility\Auth0Api;
 use App\Utility\CouchDbData2Csv;
@@ -25,6 +26,8 @@ use App\Entity\Observation;
 use App\Entity\Student;
 use App\CouchDb\Client as CouchDbClient;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/observation")
@@ -106,7 +109,10 @@ class ObservationController extends Controller
             $student, $encoder->encrypt($this->getUser()->getUserId())
         );
 
+        $form = $this->createForm(ObservationNotificationEmailsType::class, null, array());
+
         return array(
+            'form' => $form->createView(),
             'records' => $records,
             'title' => $this->get('translator')->trans(self::INDEX_TITLE),
             'student' => $student,
@@ -294,5 +300,111 @@ class ObservationController extends Controller
 
         return $response;
 
+    }
+
+    /**
+     * @Route("/delete-notification-email", name="observation_delete_notification_email")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteNotificationEmails(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $observation = $em->getRepository('App\Entity\Observation')->find($request->get('observationId'));
+        $observation->deleteNotificationEmail($request->get('email'));
+
+        $em->persist($observation);
+        $em->flush();
+
+        return new Response();
+    }
+
+    /**
+     * @Route("/get-notification-emails", name="observation_get_notification_emails")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getNotificationEmails(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $observation = $em->getRepository('App\Entity\Observation')->find($request->get('observationId'));
+
+        $result = '';
+
+        if($observation->getNotificationEmails()) {
+            foreach($observation->getNotificationEmails() as $email) {
+                $result.= '<li class="list-group-item">' . $email . '<a name="Click here to remove the address" class="fa fa-trash remove-email"></a></li>';
+            }
+        }
+
+        return new Response($result);
+    }
+
+
+    /**
+     * @Route("/save-notification-emails", name="observation_save_notification_emails")
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function saveNotificationEmailsAction(Request $request, ValidatorInterface $validator)
+    {
+        if(!$request->isXmlHttpRequest()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
+        $errors = array();
+
+        $emailConstraint = new Assert\Email();
+        $emailConstraint->message = 'The value {{ value }} is not a valid email address';
+
+        $emails = $request->get('observation_notification_emails')['notificationEmails'];
+
+        foreach($emails as $email) {
+            $errors[] = $validator->validate(
+                $email,
+                $emailConstraint
+            );
+        }
+
+        $cleanErrors = array();
+
+        foreach($errors as $error) {
+            if(count($errors[0]) > 0) {
+                $cleanErrors[] = $error[0]->getMessage();
+            }
+        }
+
+        if(count($cleanErrors) > 0) {
+            $response = new Response(json_encode($cleanErrors), 406);
+
+            return $response;
+
+        } else {
+            $em = $this->getDoctrine()->getManager();
+
+            $observation = $em->getRepository('App\Entity\Observation')->find($request->get('observation_notification_emails')['observationId']);
+
+            $notificationEmails = ($observation->getNotificationEmails()) ? $observation->getNotificationEmails() : array();
+
+            $observation->setNotificationEmails(array_unique(
+                array_merge($notificationEmails, $emails))
+            );
+
+            $em->persist($observation);
+            $em->flush();
+
+            return new Response(json_encode($emails));
+        }
     }
 }

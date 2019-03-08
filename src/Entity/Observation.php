@@ -105,6 +105,11 @@ class Observation
      */
     private $token;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $notificationEmails;
+
     public function __construct()
     {
         $this->observationDates = new ArrayCollection();
@@ -395,6 +400,27 @@ class Observation
     public function setToken(string $token)
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    public function getNotificationEmails()
+    {
+        return $this->notificationEmails;
+    }
+
+    public function setNotificationEmails($notificationEmails)
+    {
+        $this->notificationEmails = $notificationEmails;
+
+        return $this;
+    }
+
+    public function deleteNotificationEmail($email)
+    {
+        if (($key = array_search(trim($email), $this->getNotificationEmails())) !== false) {
+            unset($this->notificationEmails[$key]);
+        }
 
         return $this;
     }

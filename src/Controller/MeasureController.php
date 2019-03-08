@@ -172,18 +172,17 @@ class MeasureController extends Controller
     public function createFormAction(Request $request,
                                      FormBuilder $formBuilder,
                                      Observation $observation,
-                                     ItemFormHandler $formHandler)
+                                     ItemFormHandler $formHandler,
+                                     $token)
     {
         $em = $this->getDoctrine()->getManager();
         $items = $em->getRepository('App\Entity\Item')->findItemsByMeasure($observation->getMeasure());
 
-        if(!$observation->getIsEnabled() || $observation->getObserverUserId() != $this->getUser()->getUserId()
-            || !$observation->isDateIncluded(new \DateTime())) {
+        if(!$observation->getIsEnabled() ||
+            !$observation->isDateIncluded(new \DateTime()) ||
+            $observation->getToken() != $token) {
 
-
-            $nextDate = ($observation->getObserverUserId() == $this->getUser()->getUserId()) ?
-                $em->getRepository('App\Entity\ObservationDate')->findNextObservationDate($observation) :
-                null;
+            $nextDate = $em->getRepository('App\Entity\ObservationDate')->findNextObservationDate($observation);
 
             return $this->render('measure/not_allowed.html.twig', array(
                 'nextDate' => $nextDate,
@@ -199,7 +198,10 @@ class MeasureController extends Controller
         $form = $formBuilder->getForm()->getForm();
 
         if ($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_COMPLETE_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('measure', array('id' => $observation->getId())));
+            return $this->redirect($this->generateUrl('measure', array(
+                'id' => $observation->getId(),
+                'token' => $observation->getToken()
+            )));
         }
 
         return array(

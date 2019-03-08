@@ -83,7 +83,10 @@ class FormBuilder {
         $this->form->setAction(
             $this->urlGenerator->generate(
                 'measure',
-                array('id' => $observation->getId())
+                array(
+                    'id' => $observation->getId(),
+                    'token' => $observation->getToken()
+                )
             )
         );
     }
