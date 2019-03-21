@@ -44,43 +44,44 @@ class AppSendNotificationEmailCommand extends ContainerAwareCommand
 
             $observation = $observationDate->getObservation();
 
-            $observerEmail = $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->email;
+            $observersEmails = $observation->getNotificationEmails();
 
-            $message = (new \Swift_Message('[BEHAVE] Observation'))
-                ->setFrom('noreply@behaveproject.eu')
-                ->setTo($observerEmail)
-                ->setBody(
-                    $templating->render(
-                        'emails/observation-notification.html.twig',
-                        array(
-                            'givenName' => $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->given_name,
-                            'student' => $observation->getStudent(),
-                            'behaviour' => $observation->getName(),
-                            'observationStartDate' => $observationDate->getStartDateTimestamp(),
-                            'observationEndDate' => $observationDate->getEndDateTimestamp(),
-                            'observation' => $observation
-                        )
-                    ),
-                    'text/html'
-                )
-                /*
-                 * If you also want to include a plaintext version of the message
-                ->addPart(
-                    $this->renderView(
-                        'emails/registration.txt.twig',
-                        array('name' => $name)
-                    ),
-                    'text/plain'
-                )
-                */
-            ;
+            foreach($observersEmails as $email) {
+                $message = (new \Swift_Message('[BEHAVE] Observation'))
+                    ->setFrom('noreply@behaveproject.eu')
+                    ->setTo($email)
+                    ->setBody(
+                        $templating->render(
+                            'emails/observation-notification.html.twig',
+                            array(
+                                'givenName' => $auth0Api->getUserByUsername($observation->getObserverUsername())[0]->given_name,
+                                'student' => $observation->getStudent(),
+                                'behaviour' => $observation->getName(),
+                                'observationStartDate' => $observationDate->getStartDateTimestamp(),
+                                'observationEndDate' => $observationDate->getEndDateTimestamp(),
+                                'observation' => $observation
+                            )
+                        ),
+                        'text/html'
+                    )
+                    /*
+                     * If you also want to include a plaintext version of the message
+                    ->addPart(
+                        $this->renderView(
+                            'emails/registration.txt.twig',
+                            array('name' => $name)
+                        ),
+                        'text/plain'
+                    )
+                    */
+                ;
 
-            try{
-                $mailer->send($message);
-            }catch(\Swift_TransportException $e){
-                $response = $e->getMessage() ;
+                try{
+                    $mailer->send($message);
+                }catch(\Swift_TransportException $e){
+                    $response = $e->getMessage() ;
+                }
             }
-
         }
 
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');

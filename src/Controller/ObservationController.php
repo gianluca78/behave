@@ -268,6 +268,46 @@ class ObservationController extends Controller
         $em->persist($observation);
         $em->flush();
 
+        $observersEmails = $observation->getNotificationEmails();
+
+        if($observation->getIsEnabled()) {
+
+            foreach($observersEmails as $email) {
+                $message = (new \Swift_Message('[BEHAVE] Observation'))
+                    ->setFrom('noreply@behaveproject.eu')
+                    ->setTo($email)
+                    ->setBody(
+                        $this->renderView(
+                            'emails/observation.html.twig',
+                            array(
+                                'student' => $observation->getStudent(),
+                                'behaviour' => $observation->getName(),
+                                'observation' => $observation
+                            )
+                        ),
+                        'text/html'
+                    )
+                    /*
+                     * If you also want to include a plaintext version of the message
+                    ->addPart(
+                        $this->renderView(
+                            'emails/registration.txt.twig',
+                            array('name' => $name)
+                        ),
+                        'text/plain'
+                    )
+                    */
+                ;
+                try{
+                    $mailer->send($message);
+                }catch(\Swift_TransportException $e){
+                    $response = $e->getMessage() ;
+                }
+
+            }
+        }
+
+
         $this->get('session')->getFlashbag()->add('success', 'Observation(s) update with success');
 
         return $this->redirect($this->generateUrl('observation_student_list', array('id' => $observation->getStudent()->getId())));
