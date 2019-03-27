@@ -134,34 +134,53 @@ if (typeof jQuery.ui == 'undefined') {
                 }
             }
 
-            $( '.duration-item' ).each(function(i, e) {
-                observationLengthInMinutesId = $(e).find('input[id*="observationLengthInMinutes"]').attr('id');
-                timerId = $(e).find('div[id*="timer"]').attr('id');
-                progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
+            $( '.duration-item a.player').on('click', function(e) {
+                e.preventDefault();
 
-                startTimer(observationLengthInMinutesId, timerId, null, null, progressBarId, null);
+                if($(this).html() == 'START') {
+                    durationItem = $(this).parent().parent().parent().parent().parent();
+
+                    observationLengthInMinutesId = $(durationItem).find('input[id*="observationLengthInMinutes"]').attr('id');
+                    timerId = $(durationItem).find('div[id*="timer"]').attr('id');
+                    progressBarId = $(durationItem).find('div[id*="progressBar"]').attr('id');
+
+                    startTimer(observationLengthInMinutesId, timerId, null, null, progressBarId, null);
+                }
             });
 
-            $( '.frequency-item' ).each(function(i, e) {
-                observationLengthInMinutesId = $(e).find('input[id*="observationLengthInMinutes"]').attr('id');
-                timerId = $(e).find('div[id*="timer"]').attr('id');
-                buttonId = $(e).find('a[id*="button"]').attr('id');
-                progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
+            $( '.frequency-item a.frequency-counter').on('click', function(e) {
+                if($(this).html() == 'START') {
+                    $(this).html('+');
 
-                startTimer(observationLengthInMinutesId, timerId, null, buttonId, progressBarId, null);
+                    frequencyItem = $(this).parent().parent().parent().parent();
+
+                    observationLengthInMinutesId = $(frequencyItem).find('input[id*="observationLengthInMinutes"]').attr('id');
+                    timerId = $(frequencyItem).find('div[id*="timer"]').attr('id');
+                    buttonId = $(frequencyItem).find('a[id*="button"]').attr('id');
+                    progressBarId = $(frequencyItem).find('div[id*="progressBar"]').attr('id');
+
+                    startTimer(observationLengthInMinutesId, timerId, null, buttonId, progressBarId, null);
+
+                }
+
             });
 
-            $( '.time-sampling-item' ).each(function(i, e) {
-                observationLengthInMinutesId = $(e).find('input[id*="observationLengthInMinutes"]').attr('id');
-                partialLengthInSecondsId = $(e).find('input[id*="intervalLengthInSeconds"]').attr('id');
-                feedbackForIntervalRecordingId = $(e).find('input[id*="feedbackForIntervalRecording"]').attr('id');
-                timerId = $(e).find('div[id*="timer"]').attr('id');
-                buttonId = $(e).find('a[id*="button"]').attr('id');
-                progressBarId = $(e).find('div[id*="progressBar"]').attr('id');
+            $( '.time-sampling-item a.counter').on('click', function(){
+                if($(this).html() == 'START') {
+                    $(this).html('+');
 
-                startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId, feedbackForIntervalRecordingId);
+                    timeSamplingItem = $(this).parent().parent().parent().parent();
+
+                    observationLengthInMinutesId = $(timeSamplingItem).find('input[id*="observationLengthInMinutes"]').attr('id');
+                    partialLengthInSecondsId = $(timeSamplingItem).find('input[id*="intervalLengthInSeconds"]').attr('id');
+                    feedbackForIntervalRecordingId = $(timeSamplingItem).find('input[id*="feedbackForIntervalRecording"]').attr('id');
+                    timerId = $(timeSamplingItem).find('div[id*="timer"]').attr('id');
+                    buttonId = $(timeSamplingItem).find('a[id*="button"]').attr('id');
+                    progressBarId = $(timeSamplingItem).find('div[id*="progressBar"]').attr('id');
+
+                    startTimer(observationLengthInMinutesId, timerId, partialLengthInSecondsId, buttonId, progressBarId, feedbackForIntervalRecordingId);
+                }
             });
-
 
             $( "a.counter" ).click(function(e){
                 e.preventDefault();
