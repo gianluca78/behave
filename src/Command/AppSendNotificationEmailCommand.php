@@ -44,7 +44,7 @@ class AppSendNotificationEmailCommand extends ContainerAwareCommand
 
             $observation = $observationDate->getObservation();
 
-            $observersEmails = $observation->getNotificationEmails();
+            $observersEmails = is_array($observation->getNotificationEmails()) ? $observation->getNotificationEmails() : array();
 
             foreach($observersEmails as $email) {
                 $message = (new \Swift_Message('[BEHAVE] Observation'))

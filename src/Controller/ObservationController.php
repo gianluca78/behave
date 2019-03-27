@@ -270,7 +270,7 @@ class ObservationController extends Controller
 
         $observersEmails = $observation->getNotificationEmails();
 
-        if($observation->getIsEnabled()) {
+        if($observation->getIsEnabled() && is_array($observersEmails)) {
 
             foreach($observersEmails as $email) {
                 $message = (new \Swift_Message('[BEHAVE] Observation'))
