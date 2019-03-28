@@ -175,7 +175,7 @@ var AppCalendar = function() {
                     }
                 },
                 eventClick: function(calEvent, jsEvent, view) {
-                    window.location.assign('/measure/' + $('#calendar').data('observation-id'));
+                    window.location.assign('/measure/' + $('#calendar').data('observation-id') + '/' + $('#calendar').data('observation-token'));
                 },
                 eventDrop: function(event, delta, revertFunc) {
                     updateEvents();

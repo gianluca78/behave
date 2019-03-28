@@ -25,6 +25,18 @@ class ObservationRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findWithoutDatesByCreatorUserId($creatorUserId)
+    {
+        return $this->createQueryBuilder('o')
+            ->join('o.observationScheduler', 'os')
+            ->where('o.isEnabled = 1')
+            ->andWhere('o.creatorUserId = :creatorUserId')->setParameter('creatorUserId', $creatorUserId)
+            ->andWhere('os.hasDates = 0')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function findIncomingObservations($numberOfHours)
     {
         $now = new \DateTime();

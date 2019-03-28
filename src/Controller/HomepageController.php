@@ -48,6 +48,12 @@ class HomepageController extends Controller
         $futureObservationDates = $this->getDoctrine()->getRepository('App\Entity\ObservationDate')
             ->findFutureObservations($encoder->encrypt($this->getUser()->getUserId()));
 
-        return array('observationDates' => $futureObservationDates);
+        $observationsWithoutDates = $this->getDoctrine()->getRepository('App\Entity\Observation')
+            ->findWithoutDatesByCreatorUserId($encoder->encrypt($this->getUser()->getUserId()));
+
+        return array(
+            'observationDates' => $futureObservationDates,
+            'observationsWithoutDates' => $observationsWithoutDates
+        );
     }
 }

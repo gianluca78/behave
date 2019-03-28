@@ -61,8 +61,7 @@
                         start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('G') }}, {{ observationDate.startDateTimestamp | date('i') }}),
                         end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('G') }}, {{ observationDate.endDateTimestamp | date('i') }}),
                         allDay: {{ allDay }},
-                        backgroundColor: App.getBrandColor('red'),
-                        test: true
+                        backgroundColor: App.getBrandColor('red')
                     }{% if loop.index != observation.observationDates | length %},{% endif %}
                     {% endfor %}
 
@@ -89,7 +88,7 @@
                 <div class="portlet-body">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <div id="calendar" data-observation-id="{{ observation.id }}" data-observation-name="{{ observation.name }}" class="has-toolbar"> </div>
+                            <div id="calendar" data-observation-id="{{ observation.id }}" data-observation-token="{{ observation.token }}" data-observation-name="{{ observation.name }}" class="has-toolbar"> </div>
                         </div>
                     </div>
                 </div>

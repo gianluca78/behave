@@ -20,30 +20,77 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
     <script src="{{ asset('theme/assets/global/plugins/fullcalendar/fullcalendar.min.js') }}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="{{ asset('theme/assets/apps/scripts/calendar.js') }}"></script>
+    <script src="{{ asset('theme/assets/apps/scripts/calendar-dashboard.js') }}"></script>
 
     <script>
+        {% set backgroundColors = [
+            'red',
+            'yellow',
+            'purple',
+            'green',
+            'grey',
+            'blue'
+        ]
+        %}
+
+        {% set backgroundColorsWithoutDates = [
+            '#093145',
+            '#107896',
+            '#829356',
+            '#BCA136',
+            '#C2571A',
+            '#9A2617'
+        ]
+        %}
+
         AppCalendar.setScheduledDates(
                 [
                     {% if((observationDates | length) > 0) %}
-                    {% for observationDate in observationDates %}
-                    {
-                        {% if (observationDate.startDateTimestamp | date('H:i:s')) == '00:00:00' and observationDate.endDateTimestamp | date('H:i:s') == '23:59:59' %}
-                        {% set allDay = 'true' %}
-                        {% else %}
-                        {% set allDay = 'false' %}
-                        {% endif %}
-                        title: '{{ observationDate.observation.name }}',
-                        start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
-                        end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
-                        allDay: {{ allDay }},
-                        backgroundColor: App.getBrandColor('red')
-                    }{% if loop.index != observationDates | length %},{% endif %}
-                    {% endfor %}
+                        {% for observationDate in observationDates %}
+                        {
+                            {% if (observationDate.startDateTimestamp | date('H:i:s')) == '00:00:00' and observationDate.endDateTimestamp | date('H:i:s') == '23:59:59' %}
+                            {% set allDay = 'true' %}
+                            {% else %}
+                            {% set allDay = 'false' %}
+                            {% endif %}
+
+                            {% if(loop.index0 != 0) %}
+                                {% if(observationDate.observation.id != observationDates[loop.index0 - 1].observation.id) %}
+                                    {% set indexBackgroundColor = indexBackgroundColor + 1 %}
+                                {% endif %}
+
+                            {% else %}
+                                {% set indexBackgroundColor = 0 %}
+                            {% endif %}
+
+                            title: '{{ observationDate.observation.student.studentId | upper }}\n{{ observationDate.observation.name }}',
+                            start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
+                            end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
+                            allDay: {{ allDay }},
+                            backgroundColor: App.getBrandColor('{{ cycle(backgroundColors, indexBackgroundColor) }}'),
+                            observationId: '{{ observationDate.observation.id }}',
+                            observationToken: '{{ observationDate.observation.token }}'
+                        }{% if loop.index != observationDates | length %},{% endif %}
+                        {% endfor %}
                     {% endif %}
                 ]
         );
-        AppCalendar.setHasDates(true);
+        AppCalendar.setObservationsWithoutDates(
+                [
+                    {% if((observationsWithoutDates | length) > 0) %}
+                        {% for observationWithoutDate in observationsWithoutDates %}
+                        {
+                            title: '{{ observationWithoutDate.student.studentId | upper }}\n{{ observationWithoutDate.name }}',
+                            backgroundColor: '{{ cycle(backgroundColorsWithoutDates, loop.index0) }}',
+                            observationId: '{{ observationWithoutDate.id }}',
+                            observationToken: '{{ observationWithoutDate.token }}'
+
+                        }{% if loop.index != observationsWithoutDates | length %},{% endif %}
+                        {% endfor %}
+                    {% endif %}
+                ]
+        );
+
     </script>
 {% endblock %}
 

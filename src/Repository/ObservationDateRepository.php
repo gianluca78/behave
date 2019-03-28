@@ -60,14 +60,15 @@ class ObservationDateRepository extends ServiceEntityRepository
             ;
     }
 
-    public function findFutureObservations($observerUserId)
+    public function findFutureObservations($creatorUserId)
     {
         $now = new \DateTime();
 
         return $this->createQueryBuilder('od')
             ->join('od.observation', 'o')
             ->where('od.startDateTimestamp >= :startDate')->setParameter('startDate', $now->format('U'))
-            ->andWhere('o.observerUserId = :observerUserId')->setParameter('observerUserId', $observerUserId)
+            ->andWhere('o.creatorUserId = :creatorUserId')->setParameter('creatorUserId', $creatorUserId)
+            ->andWhere('o.isEnabled = 1')
             ->getQuery()
             ->getResult()
             ;
