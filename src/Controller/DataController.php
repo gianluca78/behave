@@ -29,47 +29,6 @@ use GuzzleHTTP\Client as GuzzleClient;
 class DataController extends Controller
 {
     /**
-     * @Route("/list/{id}", name="data_list")
-     * @Method({"GET"})
-     * @Template
-     *
-     * @param ObservationPhase $observationPhase
-     * @param CouchDbClient $couchDbClient
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function dataListAction(ObservationPhase $observationPhase, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer)
-    {
-        if($observationPhase->getObservation()->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
-            $response = new Response('not allowed');
-            $response->setStatusCode(403);
-
-            return $response;
-        }
-
-        $rawPhaseData = $couchDbClient->getByIds($observationPhase->getDataIds());
-        $rawPhaseData = json_decode($rawPhaseData->getContents(), true)['rows'];
-        $phaseData = $couchDbDataTransformer->transformByData($rawPhaseData);
-        $chartData = $couchDbDataTransformer->transformByNameAndData($rawPhaseData);
-
-        $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
-        $chart = $highchartsGenerator->generateScatterPlot(
-            $observationPhase->getObservation()->getName(),
-            $chartData,
-            'linechart',
-            'x',
-            'y'
-        );
-
-        return array(
-            'title' => 'Phase data',
-            'observation' => $observationPhase->getObservation(),
-            'phaseData' => $phaseData,
-            'chart' => $chart,
-            'observationPhase' => $observationPhase
-        );
-    }
-
-    /**
      * @Route("/analysis/{id}", name="data_analysis")
      * @Method({"GET", "POST"})
      * @Template
@@ -230,6 +189,73 @@ class DataController extends Controller
             'r2' => $data->regression->{'r.squared'},
             'adjustedR2' => $data->regression->{'adj.r.squared'},
             'chart' => $chart
+        );
+    }
+
+    /**
+     * @Route("/list/{id}", name="data_list")
+     * @Method({"GET"})
+     * @Template
+     *
+     * @param ObservationPhase $observationPhase
+     * @param CouchDbClient $couchDbClient
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function dataListAction(ObservationPhase $observationPhase, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer)
+    {
+        if($observationPhase->getObservation()->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
+        $rawPhaseData = $couchDbClient->getByIds($observationPhase->getDataIds());
+        $rawPhaseData = json_decode($rawPhaseData->getContents(), true)['rows'];
+        $phaseData = $couchDbDataTransformer->transformByData($rawPhaseData);
+        $chartData = $couchDbDataTransformer->transformByNameAndData($rawPhaseData);
+
+        $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
+        $chart = $highchartsGenerator->generateScatterPlot(
+            $observationPhase->getObservation()->getName(),
+            $chartData,
+            'linechart',
+            'x',
+            'y'
+        );
+
+        return array(
+            'title' => 'Phase data',
+            'observation' => $observationPhase->getObservation(),
+            'phaseData' => $phaseData,
+            'chart' => $chart,
+            'observationPhase' => $observationPhase
+        );
+    }
+
+    /**
+     * @Route("/new-aggregated-index/{id}", name="data_new_aggregated_index")
+     * @Method({"GET"})
+     * @Template
+     *
+     * @param Observation $observation
+     * @param CouchDbClient $couchDbClient
+     * @param CouchDbDataTransformer $couchDbDataTransformer
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newAggregatedIndexAction(Observation $observation, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer)
+    {
+        $gatheredData = $couchDbClient->getObservationsById($observation->getId());
+        $gatheredData = json_decode($gatheredData->getContents(), true)['rows'];
+
+        $items = $couchDbDataTransformer->transformByData($gatheredData, false);
+
+
+
+        return array(
+            'items' => $items,
+            'observation' => $observation,
+            'title' => 'New aggregated index'
         );
     }
 }

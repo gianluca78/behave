@@ -116,7 +116,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase "> Item be analyzed</span>
+                        <span class="caption-subject bold font-dark uppercase "> Item to be analyzed</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -146,12 +146,57 @@
 
                                     <div class="col-lg-{{ indexGrid }} bg-grey mt-step-col item-container" data-item-id="{{ key | split('-') | last }}">
                                         <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
-                                        <div class="mt-step-title uppercase font-grey-cascade">{{ itemValues.label }}</div>
-                                        <div class="mt-step-content font-grey-cascade"></div>
+                                        <div class="mt-step-title uppercase font-grey-cascade">
+                                            {{ itemValues.label }}
+
+                                            {% if(itemValues.typology == 'choice') %}
+                                                <div class="pull-right">
+                                                    <input type="checkbox" name="reverse-item" >
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="mt-step-content font-grey-cascade">
+                                            {% if(itemValues.typology == 'choice') %}
+                                            Click on the switch if you want to reverse the item.
+                                            {% endif %}
+                                        </div>
                                     </div>
 
                                 {% endfor %}
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="operations" class="row" style="display:none;">
+        <div class="col-md-12 col-sm-12">
+            <div class="portlet light portlet-fit bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-directions font-green hide"></i>
+                        <span class="caption-subject bold font-dark uppercase "> Operations</span>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div class="mt-element-step">
+                        <div class="row step-thin">
+                            <div class="slider slider-nav">
+                                <div class="col-lg-6 bg-grey mt-step-col operation-container" data-operation="sum">
+                                    <div class="mt-step-number first bg-white font-grey">1</div>
+                                    <div class="mt-step-title uppercase font-grey-cascade">Sum</div>
+                                    <div class="mt-step-content font-grey-cascade">The selected items will be aggregated adding their raw data.</div>
+                                </div>
+
+                                <div class="col-lg-6 bg-grey mt-step-col operation-container" data-operation="mean">
+                                    <div class="mt-step-number first bg-white font-grey">2</div>
+                                    <div class="mt-step-title uppercase font-grey-cascade">Mean</div>
+                                    <div class="mt-step-content font-grey-cascade">The selected items will be aggregated calculting their mean.</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -207,6 +252,21 @@
         </div>
     </div>
 
+    <div class="modal fade" id="warning-dialog-number-items" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Warning</h4>
+                </div>
+                <div class="modal-body"> You need to select at least 2 items to aggregate data</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="analysis_results"></div>
 {% endblock %}
 
@@ -232,6 +292,10 @@
 
 
     <script>
+        $("[name='reverse-item']").bootstrapSwitch();
+        $("[name='reverse-item']").bootstrapSwitch('onText', 'Yes');
+        $("[name='reverse-item']").bootstrapSwitch('offText', 'No');
+
         $('#index-action li a').on('click', function(){
             switch($(this).data('index-id')) {
                 case 1:
@@ -285,14 +349,19 @@
                 if ($('.phase-container.active').length == 2) {
                     $('#warning-dialog-phase').modal('show');
                 } else {
-
                     if($(this).data('phase-count') < 4) {
                         $('#warning-dialog-number-observations').modal('show');
                     } else {
                         $(this).addClass('active');
 
-                        if ($('.phase-container.active').length == 2 && $('.item-container.active').length == 1) {
-                            sendDataForAnalysis();
+                        if ($('.phase-container.active').length == 2) {
+                            if($('.item-container.active').length == 1) {
+                                sendDataForAnalysis();
+                            }
+
+                            if($('.item-container.active').length > 1 && $('.operation-container.active').length == 1) {
+                                sendDataForAnalysis();
+                            }
                         }
                     }
                 }
@@ -300,8 +369,37 @@
         });
 
         $('.item-container').on('click', function () {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                } else {
+                    $(this).addClass('active');
 
-                $('.item-container').each(function(){
+                    if ($('.phase-container.active').length == 2) {
+                        if($('.item-container.active').length == 1) {
+                            sendDataForAnalysis();
+                        }
+
+                        if($('.item-container.active').length > 1 && $('.operation-container.active').length == 1) {
+                            sendDataForAnalysis();
+                        }
+                    }
+                }
+
+                if ($('.item-container.active').length == 1) {
+                    $('#operations').hide();
+                }
+
+                if ($('.item-container.active').length > 1) {
+                    $('#operations').show();
+                }
+            });
+
+        $('.operation-container').on('click', function () {
+
+            if( ($(this).data('operation') == 'sum' || $(this).data('operation') == 'mean') && $('.item-container.active').length == 1) {
+                $('#warning-dialog-number-items').modal('show');
+            } else {
+                $('.operation-container').each(function(){
                     $(this).removeClass('active');
                 });
 
@@ -309,9 +407,8 @@
                     $(this).removeClass('active');
                 } else {
                     $(this).addClass('active');
-                    sendDataForAnalysis();
                 }
-
+            }
         });
 
         function sendDataForAnalysis() {

@@ -14,6 +14,16 @@ class ObservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Observation::class);
     }
 
+    public function findActiveObservationsByCreatorUserId($creatorUserId)
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.isEnabled = 1')
+            ->andWhere('o.creatorUserId = :creatorUserId')->setParameter('creatorUserId', $creatorUserId)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function findByStudentAndCreatorUserId(Student $student, $creatorUserId)
     {
         return $this->createQueryBuilder('o')

@@ -46,47 +46,49 @@
         AppCalendar.setScheduledDates(
                 [
                     {% if((observationDates | length) > 0) %}
-                        {% for observationDate in observationDates %}
-                        {
-                            {% if (observationDate.startDateTimestamp | date('H:i:s')) == '00:00:00' and observationDate.endDateTimestamp | date('H:i:s') == '23:59:59' %}
-                            {% set allDay = 'true' %}
-                            {% else %}
-                            {% set allDay = 'false' %}
-                            {% endif %}
+                    {% for observationDate in observationDates %}
+                    {
+                        {% if (observationDate.startDateTimestamp | date('H:i:s')) == '00:00:00' and observationDate.endDateTimestamp | date('H:i:s') == '23:59:59' %}
+                        {% set allDay = 'true' %}
+                        {% else %}
+                        {% set allDay = 'false' %}
+                        {% endif %}
 
-                            {% if(loop.index0 != 0) %}
-                                {% if(observationDate.observation.id != observationDates[loop.index0 - 1].observation.id) %}
-                                    {% set indexBackgroundColor = indexBackgroundColor + 1 %}
-                                {% endif %}
+                        {% if(loop.index0 != 0) %}
+                        {% if(observationDate.observation.id != observationDates[loop.index0 - 1].observation.id) %}
+                        {% set indexBackgroundColor = indexBackgroundColor + 1 %}
+                        {% endif %}
 
-                            {% else %}
-                                {% set indexBackgroundColor = 0 %}
-                            {% endif %}
+                        {% else %}
+                        {% set indexBackgroundColor = 0 %}
+                        {% endif %}
 
-                            title: '{{ observationDate.observation.student.studentId | upper }}\n{{ observationDate.observation.name }}',
-                            start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
-                            end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
-                            allDay: {{ allDay }},
-                            backgroundColor: App.getBrandColor('{{ cycle(backgroundColors, indexBackgroundColor) }}'),
-                            observationId: '{{ observationDate.observation.id }}',
-                            observationToken: '{{ observationDate.observation.token }}'
-                        }{% if loop.index != observationDates | length %},{% endif %}
-                        {% endfor %}
+                        title: '{{ observationDate.observation.student.studentId | upper }}\n{{ observationDate.observation.name }}',
+                        start: new Date({{ observationDate.startDateTimestamp | date('Y') }}, {{ observationDate.startDateTimestamp | date('n') - 1 }}, {{ observationDate.startDateTimestamp | date('j') }}, {{ observationDate.startDateTimestamp | date('H') }}, {{ observationDate.startDateTimestamp | date('i') }}),
+                        end: new Date({{ observationDate.endDateTimestamp | date('Y') }}, {{ observationDate.endDateTimestamp | date('n') - 1 }}, {{ observationDate.endDateTimestamp | date('j') }}, {{ observationDate.endDateTimestamp | date('H') }}, {{ observationDate.endDateTimestamp | date('i') }}),
+                        allDay: {{ allDay }},
+                        backgroundColor: App.getBrandColor('{{ cycle(backgroundColors, indexBackgroundColor) }}'),
+                        observationId: '{{ observationDate.observation.id }}',
+                        observationToken: '{{ observationDate.observation.token }}'
+                    }{% if loop.index != observationDates | length %},
+                    {% endif %}
+                    {% endfor %}
                     {% endif %}
                 ]
         );
         AppCalendar.setObservationsWithoutDates(
                 [
                     {% if((observationsWithoutDates | length) > 0) %}
-                        {% for observationWithoutDate in observationsWithoutDates %}
-                        {
-                            title: '{{ observationWithoutDate.student.studentId | upper }}\n{{ observationWithoutDate.name }}',
-                            backgroundColor: '{{ cycle(backgroundColorsWithoutDates, loop.index0) }}',
-                            observationId: '{{ observationWithoutDate.id }}',
-                            observationToken: '{{ observationWithoutDate.token }}'
+                    {% for observationWithoutDate in observationsWithoutDates %}
+                    {
+                        title: '{{ observationWithoutDate.student.studentId | upper }}\n{{ observationWithoutDate.name }}',
+                        backgroundColor: '{{ cycle(backgroundColorsWithoutDates, loop.index0) }}',
+                        observationId: '{{ observationWithoutDate.id }}',
+                        observationToken: '{{ observationWithoutDate.token }}'
 
-                        }{% if loop.index != observationsWithoutDates | length %},{% endif %}
-                        {% endfor %}
+                    }{% if loop.index != observationsWithoutDates | length %},
+                    {% endif %}
+                    {% endfor %}
                     {% endif %}
                 ]
         );
@@ -113,12 +115,65 @@
                 <div class="portlet-body">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
-                            <div id="calendar" class="has-toolbar"> </div>
+                            <div id="calendar" class="has-toolbar"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="col-md-6">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="portlet light portlet-fit bordered calendar">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-layers font-dark"></i>
+                        <span class="caption-subject font-dark sbold uppercase">Data to be categorized</span>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-scrollable">
+                        <table class="table table-striped table-bordered table-advance table-hover">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <i class="fa fa-user"></i> Student Id
+                                </th>
+                                <th class="hidden-xs">
+                                    <i class="fa fa-eye"></i> Observation name
+                                </th>
+                                <th class="hidden-xs">
+                                    <i class="fa fa-list-alt"></i> Description
+                                </th>
+                                <th>
+                                    <i class="fa fa-folder-open"></i> Uncategorized data
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for data in dataToBeCategorized %}
+                                <tr>
+                                    <td class="highlight">
+                                        <div class="success"></div>
+                                        <a href="{{ path('observation_student_list', { 'id' : data.student.id } ) }}"> {{ data.student.studentId }} </a>
+                                    </td>
+                                    <td class="hidden-xs"> {{ data.observation.name }} </td>
+                                    <td class="hidden-xs"> {{ data.observation.description }} </td>
+                                    <td> {{ data.numberOfUncategorizedData }} </td>
+                                    <td>
+                                        <a href="{{ path('observation_phase_list', { 'id' : data.observation.id }) }}"
+                                           class="btn btn-outline btn-circle btn-sm dark black">
+                                            <i class="fa fa-search"></i> View </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
