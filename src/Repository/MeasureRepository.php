@@ -13,6 +13,17 @@ class MeasureRepository extends ServiceEntityRepository
         parent::__construct($registry, Measure::class);
     }
 
+    public function countMeasuresByUserId($userId)
+    {
+        return $this->createQueryBuilder('m')
+            ->select('COUNT(m.id)')
+            ->andWhere('m.creatorUserId = :creatorUserId')
+            ->setParameter('creatorUserId', $userId)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
     /*
     public function findBySomething($value)
     {

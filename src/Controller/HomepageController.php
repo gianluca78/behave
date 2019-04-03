@@ -54,12 +54,27 @@ class HomepageController extends Controller
         $observations = $this->getDoctrine()->getRepository('App\Entity\Observation')
             ->findActiveObservationsByCreatorUserId($encoder->encrypt($this->getUser()->getUserId()));
 
+        $numberOfStudents = $this->getDoctrine()->getRepository('App\Entity\Student')->countStudentsByUserId(
+            $encoder->encrypt($this->getUser()->getUserId())
+        );
+
+        $numberOfMeasures = $this->getDoctrine()->getRepository('App\Entity\Measure')->countMeasuresByUserId(
+            $this->getUser()->getUserId()
+        );
+
         $dataToBeCategorized = array();
+
+        $numberOfAllData = 0;
+        $numberOfAllUncategorizedData = 0;
 
         foreach($observations as $observation) {
             $observationData = $couchDbClient->getObservationsById($observation->getId());
 
-            $numberOfUncategorizedData = count(json_decode($observationData->getContents())->rows) - $observation->countCategorizedData();
+            $numberOfAllObservations = count(json_decode($observationData->getContents())->rows);
+            $numberOfUncategorizedData = $numberOfAllObservations - $observation->countCategorizedData();
+
+            $numberOfAllData += $numberOfAllObservations;
+            $numberOfAllUncategorizedData += $numberOfUncategorizedData;
 
             if($numberOfUncategorizedData > 0) {
                 $dataToBeCategorized[] = array(
@@ -73,7 +88,10 @@ class HomepageController extends Controller
         return array(
             'observationDates' => $futureObservationDates,
             'observationsWithoutDates' => $observationsWithoutDates,
-            'dataToBeCategorized' => $dataToBeCategorized
+            'dataToBeCategorized' => $dataToBeCategorized,
+            'numberOfStudents' => $numberOfStudents,
+            'numberOfMeasures' => $numberOfMeasures,
+            'percentageCategorizedData' => 100 - (int) ($numberOfAllUncategorizedData / $numberOfAllData * 100)
         );
     }
 }

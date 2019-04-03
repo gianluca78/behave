@@ -133,12 +133,12 @@
                                         <div class="progress-info">
                                             <div class="status">
                                                 <div class="status-title"> 0 </div>
-                                                <div class="status-number"> {{ percentage }}% ({{ record.CountCategorizedData }}/{{ numberOfObservations }})</div>
+                                                <div class="status-number"> {{ percentage | number_format(2) }}% ({{ record.CountCategorizedData }}/{{ numberOfObservations }})</div>
                                             </div>
 
                                             <div class="progress">
                                                 <span style="width: {{ percentage }}%; background-color: #36c6d3" class="progress-bar progress-bar-success">
-                                                    <span class="sr-only">{{ percentage }}% change</span>
+                                                    <span class="sr-only">{{ percentage | number_format(2) }}%</span>
                                                 </span>
                                             </div>
                                         </div>

@@ -19,6 +19,17 @@ class StudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Student::class);
     }
 
+    public function countStudentsByUserId($userId)
+    {
+        return $this->createQueryBuilder('s')
+            ->select('COUNT(s.id)')
+            ->andWhere('s.creatorUserId = :creatorUserId')
+            ->setParameter('creatorUserId', $userId)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
     public function findByCreatorUserIdOrderedByNameAsc($userId)
     {
         return $this->createQueryBuilder('s')
