@@ -166,9 +166,8 @@ if (typeof jQuery.ui == 'undefined') {
             });
 
             $( '.time-sampling-item a.counter').on('click', function(){
-                if($(this).html() == 'START') {
-                    $(this).html('+');
 
+                if($(this).html() == 'START') {
                     timeSamplingItem = $(this).parent().parent().parent().parent();
 
                     observationLengthInMinutesId = $(timeSamplingItem).find('input[id*="observationLengthInMinutes"]').attr('id');
@@ -185,23 +184,27 @@ if (typeof jQuery.ui == 'undefined') {
             $( "a.counter" ).click(function(e){
                 e.preventDefault();
 
-                if( !$(this).hasClass('red-button') ) {
-                    baseSelectorId = $( this ).attr('data-base-selector-id');
-                    timerSelectorId = $(this).attr("id").replace('button', 'timer');
+                if($(this).html() == 'START') {
+                    $(this).html('+');
+                } else {
+                    if( !$(this).hasClass('red-button') ) {
+                        baseSelectorId = $( this ).attr('data-base-selector-id');
+                        timerSelectorId = $(this).attr("id").replace('button', 'timer');
 
-                    dataIntervalDiv = $( "#" + baseSelectorId + '_intervalData' );
+                        dataIntervalDiv = $( "#" + baseSelectorId + '_intervalData' );
 
-                    addTimeIntervalForm(dataIntervalDiv);
+                        addTimeIntervalForm(dataIntervalDiv);
 
-                    lastIndex = ($( "#" + baseSelectorId + '_intervalData' ).find(':input').length / 2) - 1;
+                        lastIndex = ($( "#" + baseSelectorId + '_intervalData' ).find(':input').length / 2) - 1;
 
-                    $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_intervalNumber').val(activeIntervalNumber[timerSelectorId]);
-                    $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_isBehaviorOccurred').val(true);
-                    $( '#' + baseSelectorId + '_counter').val(parseInt($( '#' + baseSelectorId + '_counter').val()) + 1);
+                        $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_intervalNumber').val(activeIntervalNumber[timerSelectorId]);
+                        $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_isBehaviorOccurred').val(true);
+                        $( '#' + baseSelectorId + '_counter').val(parseInt($( '#' + baseSelectorId + '_counter').val()) + 1);
 
-                    $(this).addClass('red-button');
+                        $(this).addClass('red-button');
 
-                    isCounterClicked[$(this).attr("id")] = true;
+                        isCounterClicked[$(this).attr("id")] = true;
+                    }
                 }
             });
 
