@@ -116,7 +116,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase "> Item to be analyzed</span>
+                        <span class="caption-subject bold font-dark uppercase "> Items to be analyzed</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -146,7 +146,7 @@
 
                                     <div class="col-lg-{{ indexGrid }} bg-grey mt-step-col item-container" data-item-id="{{ key | split('-') | last }}">
                                         <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
-                                        <div class="mt-step-title uppercase font-grey-cascade suca">
+                                        <div class="mt-step-title uppercase font-grey-cascade">
                                             {{ itemValues.label }}
 
                                             {% if('choice' in itemValues.typology) %}
