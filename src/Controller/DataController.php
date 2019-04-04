@@ -87,6 +87,16 @@ class DataController extends Controller
         $rawData = $couchDbClient->getByIds(explode(',', $idData));
         $rawData = json_decode($rawData->getContents())->rows;
 
+        //ordering data for timestamp ASC
+        $dates = [];
+
+        foreach($rawData as $key => $row) {
+            $dates[$key] = $row->value->createdAt->date;
+        }
+
+        array_multisort($dates, SORT_ASC, $rawData);
+        //end ordering
+
         $data = $dataPreparationTool->prepare($rawData, $request->get('selectedData')['items'], $request->get('selectedData')['operation']);
 
         $response = $guzzle->request('GET' , 'users', [ 'query' => [
@@ -187,6 +197,17 @@ class DataController extends Controller
 
         $rawPhaseData = $couchDbClient->getByIds($observationPhase->getDataIds());
         $rawPhaseData = json_decode($rawPhaseData->getContents(), true)['rows'];
+
+        //ordering data for timestamp ASC
+        $dates = [];
+
+        foreach($rawPhaseData as $key => $row) {
+            $dates[$key] = $row['value']['createdAt']['date'];
+        }
+
+        array_multisort($dates, SORT_ASC, $rawPhaseData);
+        //end ordering
+
         $phaseData = $couchDbDataTransformer->transformByData($rawPhaseData);
         $chartData = $couchDbDataTransformer->transformByNameAndData($rawPhaseData);
 
