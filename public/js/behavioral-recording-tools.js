@@ -226,25 +226,29 @@ if (typeof jQuery.ui == 'undefined') {
             $( "a.player" ).click(function(e){
                 e.preventDefault();
 
-                baseSelectorId = $( this ).attr('data-base-selector-id');
-                timer = $( "#timer-" + baseSelectorId );
-                occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
+                if($( this ).html() == 'START') {
+                    $( this ).html('►');
+                } else {
+                    baseSelectorId = $( this ).attr('data-base-selector-id');
+                    timer = $( "#timer-" + baseSelectorId );
+                    occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
 
-                if(timer.text() != '00:00') {
-                    newString = ($( this ).text() == '►') ? '■' : '►';
-                    newIcon = (newString == '■') ? '<img src="/icons/spinner.GIF" width="24px" height="24px">' : '<img src="/icons/spinner.png" width="24px" height="24px">';
+                    if(timer.text() != '00:00') {
+                        newString = ($( this ).text() == '►') ? '■' : '►';
+                        newIcon = (newString == '■') ? '<img src="/icons/spinner.GIF" width="24px" height="24px">' : '<img src="/icons/spinner.png" width="24px" height="24px">';
 
-                    iconSelector = $( '.spinner' );
+                        iconSelector = $( '.spinner' );
 
-                    $( this ).html(newString);
-                    $ ( iconSelector ).html(newIcon);
+                        $( this ).html(newString);
+                        $ ( iconSelector ).html(newIcon);
 
-                    addOccurrenceTimestampForm(occurrencesTimestampDiv);
+                        addOccurrenceTimestampForm(occurrencesTimestampDiv);
 
-                    lastIndex = $( "#" + baseSelectorId + '_occurrenceTimestamps' ).find(':input').length - 1;
-                    timestamp = ~~(Date.now()/1000);
+                        lastIndex = $( "#" + baseSelectorId + '_occurrenceTimestamps' ).find(':input').length - 1;
+                        timestamp = ~~(Date.now()/1000);
 
-                    $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
+                        $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
+                    }
                 }
             });
         });

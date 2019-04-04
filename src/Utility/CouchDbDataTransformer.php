@@ -124,6 +124,12 @@ class CouchDbDataTransformer {
 
     public function calculateDirectObservationData($value)
     {
+        //patch for the typology issue
+        //when the widget is duration and the user starts an observation without clicking on stop
+        if(!$value['counter'] && !$value['intervalData'] && count($value['occurrenceTimestamps']) % 2 != 0) {
+            array_pop($value['occurrenceTimestamps']);
+        }
+
         if(!$value['typology'] && !$value['counter']) {
             $numberOfSeconds = 0;
 
