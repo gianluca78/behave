@@ -146,18 +146,18 @@
 
                                     <div class="col-lg-{{ indexGrid }} bg-grey mt-step-col item-container" data-item-id="{{ key | split('-') | last }}">
                                         <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
-                                        <div class="mt-step-title uppercase font-grey-cascade">
+                                        <div class="mt-step-title uppercase font-grey-cascade suca">
                                             {{ itemValues.label }}
 
-                                            {% if(itemValues.typology == 'choice') %}
+                                            {% if('choice' in itemValues.typology) %}
                                                 <div class="pull-right">
-                                                    <input type="checkbox" name="reverse-item" >
+                                                    <input id="reverse-item-{{ key | split('-') | last }}" type="checkbox" name="reverse-item" >
                                                 </div>
                                             {% endif %}
                                         </div>
                                         <div class="mt-step-content font-grey-cascade">
-                                            {% if(itemValues.typology == 'choice') %}
-                                            Click on the switch if you want to reverse the item.
+                                            {% if('choice' in itemValues.typology) %}
+                                            Click on the switch to analyze item reverse score.
                                             {% endif %}
                                         </div>
                                     </div>
@@ -292,9 +292,37 @@
 
 
     <script>
+        function isReadyForAnalysis()
+        {
+            if ($('.phase-container.active').length == 2) {
+                if($('.item-container.active').length == 1) {
+                    return true;
+                }
+
+                if($('.item-container.active').length > 1 && $('.operation-container.active').length == 1) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         $("[name='reverse-item']").bootstrapSwitch();
         $("[name='reverse-item']").bootstrapSwitch('onText', 'Yes');
         $("[name='reverse-item']").bootstrapSwitch('offText', 'No');
+        $("[name='reverse-item']").on('switchChange.bootstrapSwitch', function (e, data) {
+
+            dataItemId = e.target.id.split('-').pop();
+            item = $(".item-container[data-item-id=" + dataItemId + "]");
+
+            if ($("[name='reverse-item']").bootstrapSwitch('state') === true && !$(item).hasClass('active')) {
+                $(item).addClass('active');
+            }
+
+            if(isReadyForAnalysis()) {
+                sendDataForAnalysis();
+            }
+        });
 
         $('#index-action li a').on('click', function(){
             switch($(this).data('index-id')) {
@@ -354,14 +382,8 @@
                     } else {
                         $(this).addClass('active');
 
-                        if ($('.phase-container.active').length == 2) {
-                            if($('.item-container.active').length == 1) {
-                                sendDataForAnalysis();
-                            }
-
-                            if($('.item-container.active').length > 1 && $('.operation-container.active').length == 1) {
-                                sendDataForAnalysis();
-                            }
+                        if(isReadyForAnalysis()) {
+                            sendDataForAnalysis();
                         }
                     }
                 }
@@ -374,14 +396,8 @@
                 } else {
                     $(this).addClass('active');
 
-                    if ($('.phase-container.active').length == 2) {
-                        if($('.item-container.active').length == 1) {
-                            sendDataForAnalysis();
-                        }
-
-                        if($('.item-container.active').length > 1 && $('.operation-container.active').length == 1) {
-                            sendDataForAnalysis();
-                        }
+                    if(isReadyForAnalysis()) {
+                        sendDataForAnalysis();
                     }
                 }
 
@@ -407,22 +423,37 @@
                     $(this).removeClass('active');
                 } else {
                     $(this).addClass('active');
+
+                    sendDataForAnalysis();
                 }
             }
         });
 
         function sendDataForAnalysis() {
+            operation = ($('.operation-container.active').data('operation')) ? $('.operation-container.active').data('operation') : 'none';
+
             selectedData = {};
             selectedData['phases'] = [];
-            selectedData['item-id'] = $('.item-container.active').data('item-id');
+            selectedData['items'] = [];
+            selectedData['operation'] = operation;
             selectedData['observation-name'] = '{{ observation.name }}';
 
             $('.phase-container.active').each(function() {
                 selectedData['phases'].push( {
-                        'phase-name': $(this).data('phase-name'),
-                        'phase-count': $(this).data('phase-count'),
-                        'phase-ids': $(this).data('phase-ids')
-                    }
+                            'phase-name': $(this).data('phase-name'),
+                            'phase-count': $(this).data('phase-count'),
+                            'phase-ids': $(this).data('phase-ids')
+                        }
+                );
+            });
+
+            $('.item-container.active').each(function() {
+                reverseScore = ($('#reverse-item-' + $(this).data('item-id')).prop('checked')) ? $('#reverse-item-' + $(this).data('item-id')).prop('checked') : false;
+
+                selectedData['items'].push( {
+                            'item-id': $(this).data('item-id'),
+                            'reverse-score': reverseScore
+                        }
                 );
             });
 
@@ -442,10 +473,7 @@
                     console.log(error);
                 }
             });
-
         }
     </script>
-
-
 {% endblock %}
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Utility\CouchDbDataTransformer;
+use App\Utility\DataPreparationTool;
 use App\Utility\EffectSizeChecker;
 use App\Utility\HighchartsGenerator;
 use GuzzleHttp\Exception\ClientException;
@@ -58,7 +59,7 @@ class DataController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function analysisResultsAction(Request $request, CouchDbClient $couchDbClient, EffectSizeChecker $effectSizeChecker) {
+    public function analysisResultsAction(Request $request, CouchDbClient $couchDbClient, EffectSizeChecker $effectSizeChecker, DataPreparationTool $dataPreparationTool) {
         if(!$request->isXmlHttpRequest()) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
@@ -71,48 +72,22 @@ class DataController extends Controller
         );
 
         $guzzle = new GuzzleClient($config);
-        $itemId = 'item-' . $request->get('selectedData')['item-id'];
 
         $fase = implode(',', array_fill(0, $request->get('selectedData')['phases'][0]['phase-count'],
                 $request->get('selectedData')['phases'][0]['phase-name']
-                ))
-                . ',' . implode(',', array_fill(0, $request->get('selectedData')['phases'][1]['phase-count'],
+            ))
+            . ',' . implode(',', array_fill(0, $request->get('selectedData')['phases'][1]['phase-count'],
                 $request->get('selectedData')['phases'][1]['phase-name']
-                ));
+            ));
 
-        $data = '';
+        $nomiFase = $request->get('selectedData')['phases'][0]['phase-name'] . ',' . $request->get('selectedData')['phases'][1]['phase-name'];
 
         $idData = $request->get('selectedData')['phases'][0]['phase-ids'] . ',' . $request->get('selectedData')['phases'][1]['phase-ids'];
 
         $rawData = $couchDbClient->getByIds(explode(',', $idData));
         $rawData = json_decode($rawData->getContents())->rows;
 
-
-        foreach($rawData as $key => $observationData) {
-            //PORCHERIA
-            if(is_object($observationData->value->$itemId)) {
-                if(!$observationData->value->$itemId->typology && !$observationData->value->$itemId->counter) {
-                    $numberOfSeconds = 0;
-
-                    for($i=0; $i<count($observationData->value->$itemId->occurrenceTimestamps); $i+=2) {
-                        $numberOfSeconds += $observationData->value->$itemId->occurrenceTimestamps[$i + 1] - $observationData->value->$itemId->occurrenceTimestamps[$i];
-                    }
-
-                    $data.= $numberOfSeconds;
-
-                } else {
-                    $data .= $observationData->value->$itemId->counter;
-                }
-            } else {
-                $data.= $observationData->value->$itemId;
-            }
-
-            if($key != count($rawData) -1) {
-                $data.= ',';
-            }
-        }
-
-        $nomiFase = $request->get('selectedData')['phases'][0]['phase-name'] . ',' . $request->get('selectedData')['phases'][1]['phase-name'];
+        $data = $dataPreparationTool->prepare($rawData, $request->get('selectedData')['items'], $request->get('selectedData')['operation']);
 
         $response = $guzzle->request('GET' , 'users', [ 'query' => [
                 'data' => $data,
@@ -230,32 +205,6 @@ class DataController extends Controller
             'phaseData' => $phaseData,
             'chart' => $chart,
             'observationPhase' => $observationPhase
-        );
-    }
-
-    /**
-     * @Route("/new-aggregated-index/{id}", name="data_new_aggregated_index")
-     * @Method({"GET"})
-     * @Template
-     *
-     * @param Observation $observation
-     * @param CouchDbClient $couchDbClient
-     * @param CouchDbDataTransformer $couchDbDataTransformer
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function newAggregatedIndexAction(Observation $observation, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer)
-    {
-        $gatheredData = $couchDbClient->getObservationsById($observation->getId());
-        $gatheredData = json_decode($gatheredData->getContents(), true)['rows'];
-
-        $items = $couchDbDataTransformer->transformByData($gatheredData, false);
-
-
-
-        return array(
-            'items' => $items,
-            'observation' => $observation,
-            'title' => 'New aggregated index'
         );
     }
 }
