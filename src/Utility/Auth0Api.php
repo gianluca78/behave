@@ -15,6 +15,17 @@ class Auth0Api {
         $this->guzzleClient = $guzzleClient;
     }
 
+    public function getUserByUserId($userId)
+    {
+        $response = $this->guzzleClient->request('GET', $this->baseUri . 'users/' . $userId, array(
+            'headers' => array (
+                'Authorization' => $this->authorizationHeader
+            ),
+        ));
+
+        return json_decode($response->getBody()->getContents());
+    }
+
     public function getUserByUsername($username)
     {
         $response = $this->guzzleClient->request('GET', $this->baseUri . 'users', array(
