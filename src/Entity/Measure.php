@@ -36,7 +36,7 @@ class Measure
     /**
      * @var string $description
      *
-     * @ORM\Column(name="description", type="encrypted_text", length=255)
+     * @ORM\Column(name="description", type="encrypted_text")
      */
     private $description;
 

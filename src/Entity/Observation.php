@@ -38,28 +38,28 @@ class Observation
     /**
      * @var string $description
      *
-     * @ORM\Column(name="description", type="encrypted_text", length=255)
+     * @ORM\Column(name="description", type="encrypted_text")
      */
     private $description;
 
     /**
      * @var string $fillingInstructions
      *
-     * @ORM\Column(name="filling_instructions", type="encrypted_text", length=255)
+     * @ORM\Column(name="filling_instructions", type="encrypted_text")
      */
     private $fillingInstructions;
 
     /**
      * @var string $place
      *
-     * @ORM\Column(name="place", type="encrypted_text", length=255, nullable=true)
+     * @ORM\Column(name="place", type="encrypted_text", nullable=true)
      */
     private $place;
 
     /**
      * @var string $setting
      *
-     * @ORM\Column(name="setting", type="encrypted_text", length=255, nullable=true)
+     * @ORM\Column(name="setting", type="encrypted_text", nullable=true)
      */
     private $setting;
 

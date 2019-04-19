@@ -91,7 +91,7 @@ class HomepageController extends Controller
             'dataToBeCategorized' => $dataToBeCategorized,
             'numberOfStudents' => $numberOfStudents,
             'numberOfMeasures' => $numberOfMeasures,
-            'percentageCategorizedData' => 100 - (int) ($numberOfAllUncategorizedData / $numberOfAllData * 100)
+            'percentageCategorizedData' => ($numberOfAllData == 0) ? 'N. A.' : 100 - (int) ($numberOfAllUncategorizedData / $numberOfAllData * 100)
         );
     }
 }
