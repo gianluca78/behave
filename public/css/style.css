@@ -88,6 +88,11 @@
     cursor: pointer;
 }
 
+.dropdown-menu.measure-menu {
+    top:-230px;
+    left: 15px;
+}
+
 /*****************************/
 /*   LEGEND SPINNER COLORS   */
 /*****************************/
@@ -126,4 +131,39 @@
     overflow: hidden;
     width: 100% !important;
     cursor: text;
+}
+
+.fstResultItem {
+    font-size: 1em !important;
+    display: block;
+    padding: .5em .71429em;
+    margin: 0;
+    cursor: pointer;
+    border-top: 1px solid #fff;
+}
+
+.fstMultipleMode .fstQueryInput {
+    font-size: 1em !important;
+    float: left;
+    padding: .28571em 0;
+    margin: 0 0 .35714em 0;
+    width: 2em;
+    color: #999;
+}
+
+.fstChoiceItem {
+    display: inline-block;
+    font-size: 1em !important;
+    position: relative;
+    margin: 0 .41667em .41667em 0;
+    padding: .33333em .33333em .33333em 1.5em;
+    float: left;
+    border-radius: .25em;
+    border: 1px solid #43A2F3;
+    cursor: auto;
+    color: #fff;
+    background-color: #43A2F3;
+    -webkit-animation: fstAnimationEnter 0.2s;
+    -moz-animation: fstAnimationEnter 0.2s;
+    animation: fstAnimationEnter 0.2s;
 }

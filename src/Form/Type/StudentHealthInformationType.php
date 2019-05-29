@@ -22,7 +22,9 @@ class StudentHealthInformationType extends AbstractType
             ->add('isSecondaryToAnotherMedicalCondition', null, array(
                 'label' => ' '
             ))
-            ->add('medicalCondition', TextareaType::class)
+            ->add('medicalCondition', TextareaType::class, array(
+                'required' => false
+            ))
             ->add('dsm5Disorder')
             ->add('dsm5DisorderLabel', TextType::class, array(
                 'mapped' => false,
@@ -40,7 +42,8 @@ class StudentHealthInformationType extends AbstractType
                             ->orderBy('d.description', 'ASC');
                     },
                 'choice_label' => 'description',
-                'multiple' => true
+                'multiple' => true,
+                'required' => false
             ])
             ->add('submit', SubmitType::class);;
         ;

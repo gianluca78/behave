@@ -123,7 +123,6 @@ class FormBuilder {
         $directObservationWidget->setLabel($item->getLabel());
         $directObservationWidget->setObservationLengthInMinutes($item->getObservationLengthInMinutes());
         $directObservationWidget->setIntervalLengthInSeconds($item->getIntervalLengthInSeconds());
-        $directObservationWidget->setFeedbackForIntervalRecording($item->getFeedbackForIntervalRecording());
         $directObservationWidget->setTypology($item->getTypology());
 
         $this->form = $directObservationWidget->addField($this->form, 'item-' . $item->getId());

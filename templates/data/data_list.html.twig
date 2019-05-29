@@ -132,6 +132,10 @@
                                                                         {% set itemValue = item.value | join(', ') %}
                                                                     {% endif %}
 
+                                                                    {% if item.typology == 'choice-dropdown' %}
+                                                                        {% set itemValue = item.value %}
+                                                                    {% endif %}
+
                                                                     {% if item.typology == 'choice-radio' %}
                                                                         {% set itemValue = item.value %}
                                                                     {% endif %}

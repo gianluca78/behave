@@ -26,11 +26,6 @@
             <div class="caption">
                 <i class="fa fa-gift"></i>Compose your measure
             </div>
-
-            <div class="actions">
-                {{ form_widget(form.isShared) }}
-            </div>
-
         </div>
         <div id="measure-form" class="portlet-body">
             {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems - 1 : - 1 %}
@@ -90,7 +85,6 @@
                                         {{ form_row(directObservationItem.observationLengthInMinutes) }}
                                         {{ form_row(directObservationItem.intervalLengthInSeconds) }}
                                         {{ form_row(directObservationItem.typology) }}
-                                        {{ form_row(directObservationItem.feedbackForIntervalRecording) }}
                                         {{ form_row(directObservationItem.positionNumber) }}
                                     </div>
                                 </div>
@@ -198,7 +192,7 @@
                             <i class="fa fa-plus"></i> Add item
                             <i class="fa fa-angle-down"></i>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu measure-menu">
                             <li>
                                 <a href="javascript:;">
                                     <i class="fa fa-dot-circle-o"></i> Choice</a>
@@ -250,13 +244,8 @@
         var $collectionHolder = $('div.items');
 
         $( document ).ready(function() {
-            isShared = ($("#measure_isShared").is(':checked')) ? true : false;
-
-            $("#measure_isShared").bootstrapSwitch('state', isShared);
-            $("#measure_isShared").bootstrapSwitch('size', 'small');
-
             $("select[id*='typology']").each(function(){
-                hideShowIntervalFeedback($(this));
+                hideShowInterval($(this));
             });
 
         });
@@ -319,7 +308,7 @@
         });
 
         $(".portlet-body").on('change', "select[id*='typology']", function(){
-            hideShowIntervalFeedback($(this));
+            hideShowInterval($(this));
         });
 
         $( '.dropdown-menu a' ).on('click', function(e) {
@@ -338,7 +327,7 @@
                     addItemForm('integer');
                     break;
 
-                case 'Meter':
+                case 'Four Quadrant Diagram':
                     addItemForm('meter');
                     break;
 
@@ -373,29 +362,23 @@
 
             if(type == 'direct-observation') {
                 $('#measure_directObservationItems_' + newIndex + '_intervalLengthInSeconds').parent().parent().hide();
-                $('#measure_directObservationItems_' + newIndex + '_feedbackForIntervalRecording').parent().parent().hide();
             }
         }
 
-        function hideShowIntervalFeedback(element)
+        function hideShowInterval(element)
         {
             intervalLengthInSecondsId = $(element).attr('id').replace('typology', 'intervalLengthInSeconds');
-            feedbackForIntervalRecordingId = $(element).attr('id').replace('typology', 'feedbackForIntervalRecording');
 
             switch($(element).val()) {
                 case 'duration':
                 case 'frequency':
                     $('#' + intervalLengthInSecondsId).parent().parent().hide();
-                    $('#' + feedbackForIntervalRecordingId).parent().parent().hide();
-                    console.log($('#' + intervalLengthInSecondsId));
                     break;
 
                 case 'whole-interval':
                 case 'partial-interval':
                 case 'momentary-time-sampling':
                     $('#' + intervalLengthInSecondsId).parent().parent().show();
-                    $('#' + feedbackForIntervalRecordingId).parent().parent().show();
-                    console.log($('#' + intervalLengthInSecondsId));
                     break;
             }
         }

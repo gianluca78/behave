@@ -26,10 +26,14 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/homepage, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/dashboard, roles: ROLE_OAUTH_USER }
-        - { path: ^/user, roles: ROLE_OAUTH_USER }
+        - { path: ^/calendar, roles: ROLE_OAUTH_USER }
         - { path: ^/data, roles: ROLE_OAUTH_USER }
+        - { path: ^/dashboard, roles: ROLE_OAUTH_USER }
+        - { path: ^/dsm5-disorder, roles: ROLE_OAUTH_USER }
         - { path: ^/measure, roles: ROLE_OAUTH_USER }
         - { path: ^/observation, roles: ROLE_OAUTH_USER }
+        - { path: ^/observation-phase, roles: ROLE_OAUTH_USER }
         - { path: ^/student, roles: ROLE_OAUTH_USER }
+        - { path: ^/student-health-information, roles: ROLE_OAUTH_USER }
         - { path: ^/secured, roles: ROLE_OAUTH_USER }
+        - { path: ^/user, roles: ROLE_OAUTH_USER }

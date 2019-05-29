@@ -23,11 +23,6 @@ class DirectObservationItemType extends AbstractType
             'Interval Recording - Momentary Time Sampling' => 'momentary-time-sampling'
         );
 
-        $choicesForFeedback = array(
-            'Bell' => 'bell',
-            'Visual feedback' => 'visual-feedback'
-        );
-
         $builder
             ->add('positionNumber', HiddenType::class, array('required' => true))
             ->add('label', null, array('required' => true))
@@ -44,15 +39,6 @@ class DirectObservationItemType extends AbstractType
                     new Choice(array(
                         'choices' => $choices,
                         'message' => 'Choose a valid typology of observation'
-                    ))
-                )
-            ))
-            ->add('feedbackForIntervalRecording', ChoiceType::class, array(
-                'choices' => $choicesForFeedback,
-                'constraints' => array(
-                    new Choice(array(
-                        'choices' => $choicesForFeedback,
-                        'message' => 'Choose a valid feedback typology'
                     ))
                 )
             ))

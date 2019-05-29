@@ -55,25 +55,25 @@
                         <span class="caption-subject bold uppercase"> List </span>
                     </div>
                     <div class="actions">
-                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Add a new observation" data-intro="Click here to add a new observation." data-step="1">
                             <i class="fa fa-plus"></i>
                         </a>
-                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Calendar" data-intro="When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day." data-step="2">
                             <i class="fa fa-calendar"></i>
                         </a>
-                        <a id="phase-list-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <a id="phase-list-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="List of phases" data-intro="The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase." data-step="3">
                             <i class="fa fa-list-ol"></i>
                         </a>
-                        <a id="share-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <a id="share-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Share" data-intro="When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation." data-step="4">
                             <i class="fa fa-share-square-o"></i>
                         </a>
-                        <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Edit" data-intro="Click here to edit the observation data." data-step="5">
                             <i class="fa fa-edit"></i>
                         </a>
-                        <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Delete" data-intro="Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data." data-step="6">
                             <i class="fa fa-trash"></i>
                         </a>
-                        <a id="download-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                        <a id="download-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Download raw data" data-intro="Do you need the raw data for your personal analyses or purposes? Just click here and download it. " data-step="7">
                             <i class="fa fa-download"></i>
                         </a>
                     </div>
@@ -91,6 +91,7 @@
                             </th>
                             <th> Name</th>
                             <th> Description</th>
+                            <th> Measure</th>
                             <th> Enabled</th>
                             <th> Categorized data</th>
                         </tr>
@@ -110,13 +111,16 @@
                                     {{ record.description }}
                                 </td>
                                 <td>
+                                    {{ record.measure }}
+                                </td>
+                                <td {% if loop.index0 == 0 %} data-intro="Click here to enable the data collection. Until the icon is red, you can't do that!" data-step="8"{% endif %}>
                                     {% if(record.isEnabled == '1') %}
                                         {% set imageName = asset('/icons/power-on.png') %}
                                     {% else %}
                                         {% set imageName = asset('/icons/power-off.png') %}
                                     {% endif %}
 
-                                    <a href="{{ path('observation_enable_disable', { 'id': record.id }) }}"><img src="{{ imageName }}" width="30%"></a>
+                                    <a href="{{ path('observation_enable_disable', { 'id': record.id }) }}"><img src="{{ imageName }}" width="30px" title="Turn on/off the collection of data"></a>
                                 </td>
                                 <td>
                                     {% set numberOfObservations = render(controller(

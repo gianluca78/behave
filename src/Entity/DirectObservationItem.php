@@ -29,11 +29,6 @@ class DirectObservationItem extends Item
     private $typology;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $feedbackForIntervalRecording;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Measure", inversedBy="directObservationItems")
      * @ORM\JoinColumn(name="measure_id", referencedColumnName="id")
      */
@@ -51,16 +46,6 @@ class DirectObservationItem extends Item
         ) {
             $context->buildViolation('Required field')
                 ->atPath('intervalLengthInSeconds')
-                ->addViolation();
-        }
-
-        if(($this->getTypology() == 'whole-interval' ||
-            $this->getTypology() == 'partial-interval' ||
-            $this->getTypology() == 'momentary-time-sampling') &&
-            (!$this->getFeedbackForIntervalRecording())
-        ) {
-            $context->buildViolation('Required field')
-                ->atPath('feedbackForIntervalRecording')
                 ->addViolation();
         }
     }
@@ -123,22 +108,6 @@ class DirectObservationItem extends Item
         $this->typology = $typology;
 
         return $this;
-    }
-
-    /**
-     * @param mixed $feedbackForIntervalRecording
-     */
-    public function setFeedbackForIntervalRecording($feedbackForIntervalRecording)
-    {
-        $this->feedbackForIntervalRecording = $feedbackForIntervalRecording;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFeedbackForIntervalRecording()
-    {
-        return $this->feedbackForIntervalRecording;
     }
 
     /**

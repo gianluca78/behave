@@ -97,13 +97,13 @@ Measures
                     <span class="caption-subject bold uppercase"> List </span>
                 </div>
                 <div class="actions">
-                    <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                    <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Add a new measure" data-intro="Clik here to add a new measure." data-step="1">
                         <i class="fa fa-plus"></i>
                     </a>
-                    <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;">
+                    <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Edit" data-intro="Click here to edit the measure settings." data-step="2">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a id="delete-button" class="btn btn-circle btn-icon-only btn-default">
+                    <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" title="Delete" data-intro="Click here to delete a measure." data-step="3">
                         <i class="fa fa-trash"></i>
                     </a>
                 </div>
@@ -121,7 +121,6 @@ Measures
                         </th>
                         <th> Name</th>
                         <th> Description</th>
-                        <th> Shared</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -137,16 +136,6 @@ Measures
                         <td> {{ record.name }} </td>
                         <td>
                             {{ record.description }}
-                        </td>
-                        <td>
-                            {% if(record.isShared == '1') %}
-                                {% set classname = 'label-success' %}
-                            {% else %}
-                                {% set classname = 'label-warning' %}
-                            {% endif %}
-                            <span class="label label-sm {{ classname }}">
-                                {{ record.slugIsShared }}
-                            </span>
                         </td>
                     </tr>
                     {% endfor %}

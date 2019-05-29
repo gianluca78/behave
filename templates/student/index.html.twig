@@ -50,14 +50,14 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="portlet light portlet-fit bordered">
+            <div class="portlet light portlet-fit bordered" data-intro="The students you are working on are displayed here. " data-step="2">
                 <div class="portlet-title">
                     <div class="caption">
                         <i class=" icon-layers font-dark"></i>
                         <span class="caption-subject font-dark bold uppercase">List</span>
                     </div>
                     <div class="actions">
-                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('student_new') }}">
+                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('student_new') }}" data-intro="In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember to not disclose personal information to identify the students." data-step="1" title="Add a new student">
                             <i class="fa fa-plus"></i>
                         </a>
                     </div>
@@ -80,7 +80,7 @@
                                     {% endif %}
                                 {% endif %}
 
-                                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">
+                                <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
                                     <div class="mt-card-item">
                                     <div class="mt-card-avatar mt-overlay-1">
                                         {% if child.sex == 0 %}
@@ -94,23 +94,23 @@
 
                                         <div class="mt-card-social">
                                             <ul>
-                                                <li>
-                                                    <a href="{{ path('student_edit', {'id': child.id}) }}">
+                                                <li {% if loop.index0 == 0 %} data-intro="Click here to edit data if you desire to change something." data-step="3"{% endif %}>
+                                                    <a href="{{ path('student_edit', {'id': child.id}) }}" title="Edit">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a href="{{ path('observation_student_list', {'id': child.id}) }}">
+                                                <li {% if loop.index0 == 0 %} data-intro="Clicking on this icon, you will access the list of the observations defined for a student. " data-step="4"{% endif %}>
+                                                    <a href="{{ path('observation_student_list', {'id': child.id}) }}" title="Observations">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a href="{{ path('student_health_information_list', {'id': child.id}) }}">
+                                                <li {% if loop.index0 == 0 %} data-intro="If you want, you can add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!" data-step="5"{% endif %}>
+                                                    <a href="{{ path('student_health_information_list', {'id': child.id}) }}" title="Health information">
                                                         <i class="fa fa-medkit"></i>
                                                     </a>
                                                 </li>
-                                                <li>
-                                                    <a class="delete" data-toggle="modal" data-url="{{ path('student_delete', {'id': child.id}) }}" href="#basic">
+                                                <li {% if loop.index0 == 0 %} data-intro="Did you make a mistake or, for any reason, you want to remove the student data from the server? Just click here to delete it." data-step="6"{% endif %}>
+                                                    <a class="delete" data-toggle="modal" data-url="{{ path('student_delete', {'id': child.id}) }}" title="Delete" href="#basic">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </li>

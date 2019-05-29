@@ -6,11 +6,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use App\Validator\Constraints as AppAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentRepository")
- * @AppAssert\IsUserIdUnique
+ * @UniqueEntity(
+ *      fields={"studentId", "creatorUserId"},
+ *      message = "The student id is already used"
+ * )
  * @ORM\HasLifecycleCallbacks
  */
 class Student
@@ -51,7 +54,7 @@ class Student
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="student")
+     * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="student", cascade={"persist", "remove"}))
      */
     private $observations;
 
@@ -61,7 +64,7 @@ class Student
     private $sex;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\StudentHealthInformation", mappedBy="student", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\StudentHealthInformation", mappedBy="student", orphanRemoval=true, cascade={"persist", "remove"}))
      */
     private $healthInformation;
 

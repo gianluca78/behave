@@ -6,11 +6,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; //TO BE REMOVED?
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MeasureRepository")
- * @UniqueEntity("name", message = "This value is already used")
+ * @UniqueEntity(
+ *      fields={"name", "creatorUserId"},
+ *      message = "This value is already used"
+ * )
  */
 class Measure
 {
@@ -29,7 +34,7 @@ class Measure
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", unique = true, length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
@@ -83,11 +88,6 @@ class Measure
     private $directObservationItems;
 
     /**
-     * @ORM\Column(name="is_shared", type="boolean")
-     */
-    private $isShared;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="measure")
      */
     private $observations;
@@ -101,12 +101,23 @@ class Measure
         $this->textItems = new ArrayCollection();
         $this->directObservationItems = new ArrayCollection();
         $this->observations = new ArrayCollection();
-        $this->isShared = false;
     }
 
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if($this->countItems() == 0) {
+            $context->buildViolation('You have to insert at least 1 item')
+                ->atPath('name')
+                ->addViolation();
+        }
     }
 
     /**
@@ -369,27 +380,6 @@ class Measure
                 $directObservationItem->setMeasure(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getSlugIsShared()
-    {
-        if($this->getIsShared()) {
-            return 'Yes';
-        }
-
-        return 'No';
-    }
-
-    public function getIsShared()
-    {
-        return $this->isShared;
-    }
-
-    public function setIsShared(bool $isShared)
-    {
-        $this->isShared = $isShared;
 
         return $this;
     }

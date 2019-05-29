@@ -6,6 +6,8 @@ use App\Entity\Core\Dsm5Disorder;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentHealthInformationRepository")
@@ -59,6 +61,20 @@ class StudentHealthInformation
     public function __construct()
     {
         $this->comorbidDsm5Disorders = new ArrayCollection();
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if($this->getIsSecondaryToAnotherMedicalCondition()) {
+            if(!$this->getMedicalCondition()) {
+                $context->buildViolation('Required field')
+                    ->atPath('medicalCondition')
+                    ->addViolation();
+            }
+        }
     }
 
     public function getId()
