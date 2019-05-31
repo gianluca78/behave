@@ -93,6 +93,10 @@
     left: 15px;
 }
 
+.bordered-img {
+    border: 1px dotted #808080;
+}
+
 /*****************************/
 /*   LEGEND SPINNER COLORS   */
 /*****************************/

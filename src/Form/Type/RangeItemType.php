@@ -15,10 +15,38 @@ class RangeItemType extends AbstractType
     {
         $builder
             ->add('positionNumber', HiddenType::class, array('required' => true))
-            ->add('label', null, array('required' => true))
-            ->add('min', null, array('required' => true))
-            ->add('max', null, array('required' => true))
-            ->add('step', null, array('required' => true, 'attr' => array('value' => 1)));
+            ->add('label', null, array(
+                'required' => true,
+                'label' => 'Text of the item',
+                'attr' => array(
+                    'placeholder' => 'For instance, how many times he calls out in class?'
+                )
+
+            ))
+            ->add('min', null, array(
+                'required' => true,
+                'label' => 'Minimum value',
+                'attr' => array(
+                    'placeholder' => 'For instance, 0'
+                )
+
+            ))
+            ->add('max', null, array(
+                'required' => true,
+                'label' => 'Maximum value',
+                'attr' => array(
+                    'placeholder' => 'For instance, 10'
+                )
+            ))
+            ->add('step', null, array(
+                'required' => true,
+                'attr' => array(
+                    'value' => 1,
+                    'placeholder' => 'The value that indicate how to increment the min value to go to the max one'
+
+                )
+                )
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

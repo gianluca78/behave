@@ -15,7 +15,13 @@ class IntegerItemType extends AbstractType
     {
         $builder
             ->add('positionNumber', HiddenType::class, array('required' => true))
-            ->add('label', null, array('required' => true))
+            ->add('label', null, array(
+                'required' => true,
+                'label' => 'Text of the item',
+                'attr' => array(
+                    'placeholder' => 'For instance: How many times...?'
+                )
+            ))
             ->add('fieldValue', HiddenType::class, array('required' => true));
     }
 

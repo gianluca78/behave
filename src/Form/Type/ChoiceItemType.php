@@ -27,19 +27,25 @@ class ChoiceItemType extends AbstractType
             ))
             ->add('isExpanded', HiddenType::class, array('required' => false))
             ->add('isMultiple', HiddenType::class, array('required' => false))
-            ->add('label', null, array('required' => true))
-            ->add('emptyValue', null, array('required' => false))
-            ->add('options', ChoiceType::class, array(
+            ->add('label', null, array(
                 'required' => true,
-                'choices' => array(),
-                'multiple' => true,
+                'label' => 'Text of the item',
                 'attr' => array(
-                    'data-role' => 'tagsinput'
+                    'placeholder' => 'For example: what is your favourite color?'
                 )
-            ))->add('options', TextType::class, array(
+            ))
+            ->add('emptyValue', null, array(
+                'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Default value displayed in a select before the user clicks on it.'
+                    )
+                )
+            )
+            ->add('options', TextType::class, array(
                 'required' => true,
                 'attr' => array(
-                    'data-role' => 'tagsinput'
+                    'data-role' => 'tagsinput',
+                    'placeholder' => 'Write the options and press enter after entering each one.'
                 )
             ));
     }
