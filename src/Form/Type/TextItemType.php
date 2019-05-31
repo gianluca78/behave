@@ -15,7 +15,9 @@ class TextItemType extends AbstractType
     {
         $builder
             ->add('positionNumber', HiddenType::class, array('required' => true))
-            ->add('label', null, array('required' => true,
+            ->add('label', null, array(
+                'required' => true,
+                'label' => 'Text of the item',
                 'attr' => array(
                     'placeholder' => 'For instance: What happens next, or as a result of the child\'s behavior?'
                 )
