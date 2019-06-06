@@ -480,9 +480,9 @@
             resetPositionNumbers();
         });
 
-        $(".portlet-body").on('change', "select[id*='type']", function(){
-            isExpandedElementId = $(this).attr('id').replace('type', 'isExpanded');
-            isMultipleElementId = $(this).attr('id').replace('type', 'isMultiple');
+        $(".portlet-body").on('change', "select[id*='choiceType']", function(){
+            isExpandedElementId = $(this).attr('id').replace('choiceType', 'isExpanded');
+            isMultipleElementId = $(this).attr('id').replace('choiceType', 'isMultiple');
 
             switch($(this).val()) {
                 //checkboxes
