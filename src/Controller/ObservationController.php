@@ -369,8 +369,15 @@ class ObservationController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getNotificationEmails(Request $request)
+    public function getNotificationEmailsAction(Request $request)
     {
+        if(!$request->isXmlHttpRequest()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $observation = $em->getRepository('App\Entity\Observation')->find($request->get('observationId'));
@@ -382,6 +389,31 @@ class ObservationController extends Controller
                 $result.= '<li class="list-group-item">' . $email . '<a name="Click here to remove the address" class="fa fa-trash remove-email"></a></li>';
             }
         }
+
+        return new Response($result);
+    }
+
+    /**
+     * @Route("/has-scheduled-dates", name="observation_has_scheduled_dates")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function hasScheduledDatesAction(Request $request)
+    {
+        if(!$request->isXmlHttpRequest()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $observation = $em->getRepository('App\Entity\Observation')->find($request->get('observationId'));
+
+        $result = ($observation->getObservationScheduler() && !$observation->getObservationScheduler()->getHasDates()) ? 'false' : 'true';
 
         return new Response($result);
     }

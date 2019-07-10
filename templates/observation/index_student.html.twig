@@ -201,44 +201,46 @@
                                 </div>
                             </div>
 
-                            <div class="row top5">
-                                <div class="col-md-12">
-                                    If you scheduled the observation dates, you can insert the email addresses of the
-                                    observers (press enter to add every new entry). They will be notified via email 1 hour before
-                                    the observation:
-                                </div>
-                            </div>
-
-                            <div class="row top5">
-                                <div class="col-md-12" style="color: red;">
-                                    <ul id="messages"></ul>
-                                </div>
-
-                                <div class="col-md-12">
-                                    {{ form_start(form) }}
-
-                                    {{ form_widget(form.notificationEmails) }}
-                                    {{ form_row(form.observationId) }}
-                                    {{ form_row(form._token) }}
-                                </div>
-                            </div>
-
-                            <div class="row top5">
-                                <div class="col-md-12">
-                                    <h4>Email addresses to be notified</h4>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <ul id="notified-users" class="list-group">
-
-                                </ul>
-                            </div>
-
-                            <div class="form-actions">
-                                <div class="row">
+                            <div id="scheduled-dates" class="hidden">
+                                <div class="row top5">
                                     <div class="col-md-12">
-                                        {{ form_widget(form.submit, {'class': 'btn btn-circle green'}) }}
+                                        If you scheduled the observation dates, you can insert the email addresses of the
+                                        observers (press enter to add every new entry). They will be notified via email 1 hour before
+                                        the observation:
+                                    </div>
+                                </div>
+
+                                <div class="row top5">
+                                    <div class="col-md-12" style="color: red;">
+                                        <ul id="messages"></ul>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        {{ form_start(form) }}
+
+                                        {{ form_widget(form.notificationEmails) }}
+                                        {{ form_row(form.observationId) }}
+                                        {{ form_row(form._token) }}
+                                    </div>
+                                </div>
+
+                                <div class="row top5">
+                                    <div class="col-md-12">
+                                        <h4>Email addresses to be notified</h4>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <ul id="notified-users" class="list-group">
+
+                                    </ul>
+                                </div>
+
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{ form_widget(form.submit, {'class': 'btn btn-circle green'}) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -384,6 +386,26 @@
                         $('#notified-users').append(
                             response
                         );
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(xhr.responseText);
+                        console.log(error);
+                    }
+                });
+
+
+                $.ajax({
+                    url:"{{ path('observation_has_scheduled_dates') }}",
+                    type:"GET",
+                    data: {
+                        'observationId' : ids[0]
+                    },
+                    success: function(response) {
+                        console.log(response);
+
+                        if(response == 'true') {
+                            $('#scheduled-dates').removeClass('hidden');
+                        }
                     },
                     error: function(xhr, status, error) {
                         console.log(xhr.responseText);
