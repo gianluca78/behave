@@ -11,6 +11,6 @@ The observation has to be done in the following dates and times:
 </ul>
 
 {% else %}
-    Here below the link to gather data: {{ url('measure', { 'id' : observation.id, 'token': observation.token }) }}
+    Here below the link to gather data: https://app.behaveproject.eu{{ path('measure', { 'id' : observation.id, 'token': observation.token }) }}
 
 {% endif %}
