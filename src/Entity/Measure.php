@@ -88,7 +88,7 @@ class Measure
     private $directObservationItems;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="measure")
+     * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="measure", cascade={"persist", "remove"})
      */
     private $observations;
 
