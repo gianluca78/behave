@@ -88,7 +88,7 @@ class Measure
     private $directObservationItems;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="measure", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Observation", mappedBy="measure")
      */
     private $observations;
 
@@ -115,6 +115,12 @@ class Measure
     {
         if($this->countItems() == 0) {
             $context->buildViolation('You have to insert at least 1 item')
+                ->atPath('name')
+                ->addViolation();
+        }
+
+        if($this->observations->count() > 0) {
+            $context->buildViolation('The measure is used in one or more observations. You can\'t edit it.')
                 ->atPath('name')
                 ->addViolation();
         }
