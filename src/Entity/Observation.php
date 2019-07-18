@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *      fields={"name", "creatorUserId"},
  *      message = "This value is already used"
  * )
- * @AppAssert\isMeasureChangeable*
+ * @AppAssert\IsMeasureChangeable*
  */
 class Observation
 {

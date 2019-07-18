@@ -1,6 +1,10 @@
 #index:
 #    path: /
 #    defaults: { _controller: 'App\Controller\DefaultController::index' }
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\HomepageController::homepageAction' }
+
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
     prefix:   /connect
