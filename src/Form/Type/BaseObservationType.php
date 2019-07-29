@@ -22,14 +22,15 @@ class BaseObservationType extends AbstractType
             ->add('isSingleCaseDesign', null, array(
                     'required' => false,
                     'value' => 0,
-                    'label' => 'Single case?'
+                    'label' => 'Single case?',
+                    'translation_domain' => 'forms'
                 )
             )
             ->add('name', null, array('required' => true))
             ->add('description', TextareaType::class, array('required' => true))
-            ->add('fillingInstructions', TextareaType::class, array('required' => false))
-            ->add('place', TextareaType::class, array('required' => false))
-            ->add('setting', TextareaType::class, array('required' => false))
+            ->add('fillingInstructions', TextareaType::class, array('required' => false, 'translation_domain' => 'forms'))
+            ->add('place', TextareaType::class, array('required' => false, 'translation_domain' => 'forms'))
+            ->add('setting', TextareaType::class, array('required' => false, 'translation_domain' => 'forms'))
             ->add('measure', EntityType::class, array(
                     'attr' => array(
                         'data-live-search' => 'true',
@@ -47,7 +48,9 @@ class BaseObservationType extends AbstractType
                         },
                 )
             )
-            ->add('submit', SubmitType::class);
+            ->add('submit', SubmitType::class, array(
+                'translation_domain' => 'forms'
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -25,7 +25,8 @@ class ObservationSchedulerType extends AbstractType
                 'label' => ' '
             ))
             ->add('startDate', TextType::class, array(
-                'required' => false
+                'required' => false,
+                'translation_domain' => 'forms'
         ))
             ->add('timeOption', ChoiceType::class, array(
                 'required' => false,
@@ -42,7 +43,7 @@ class ObservationSchedulerType extends AbstractType
                 'widget' => 'choice',
                 'constraints' => array(
                     new Assert\Time()
-                )
+                ),
             ))
             ->add('timeRangeEndTime', TimeType::class, array(
                 'input'  => 'datetime',
@@ -62,11 +63,13 @@ class ObservationSchedulerType extends AbstractType
                 'choices' => array(
                     'None' => 0,
                     'Weekly' => 1
-                )
+                ),
+                'translation_domain' => 'forms'
             ))
             ->add('weeklyNumberOfWeeks', IntegerType::class, array(
                 'required' => false,
-                'label' => 'every n week(s)'
+                'label' => 'every n week(s)',
+                'translation_domain' => 'forms'
             ))
             ->add('weeklyDaysOfWeek', ChoiceType::class, array(
                 'required' => false,
@@ -84,7 +87,8 @@ class ObservationSchedulerType extends AbstractType
                 'multiple' => true,
                 'attr' => array(
                     'class' => 'toggle'
-                )
+                ),
+                'translation_domain' => 'forms'
             ))
             ->add('repeatEndOption', ChoiceType::class, array(
                     'required' => false,
@@ -93,16 +97,19 @@ class ObservationSchedulerType extends AbstractType
                         'After' => 0,
                         'On date' => 1,
                         '3 years' => 2
-                    )
+                    ),
+                    'translation_domain' => 'forms'
                 )
             )
             ->add('repeatEndAfterNumberOfOccurrences', IntegerType::class, array(
                     'required' => false,
-                    'label' => 'Nr. occurrences'
+                    'label' => 'Nr. occurrences',
+                    'translation_domain' => 'forms'
                 )
             )
             ->add('repeatEndDate', TextType::class, array(
-                    'required' => false
+                    'required' => false,
+                    'translation_domain' => 'forms'
                 )
             )
         ;

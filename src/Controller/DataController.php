@@ -30,7 +30,7 @@ use GuzzleHTTP\Client as GuzzleClient;
 class DataController extends Controller
 {
     /**
-     * @Route("/analysis/{id}", name="data_analysis")
+     * @Route("/{_locale}/analysis/{id}", name="data_analysis")
      * @Method({"GET", "POST"})
      * @Template
      *
@@ -178,7 +178,7 @@ class DataController extends Controller
     }
 
     /**
-     * @Route("/list/{id}", name="data_list")
+     * @Route("/{_locale}/list/{id}", name="data_list")
      * @Method({"GET"})
      * @Template
      *
@@ -221,7 +221,7 @@ class DataController extends Controller
         );
 
         return array(
-            'title' => 'Phase data',
+            'title' => $this->get('translator')->trans('Phase data'),
             'observation' => $observationPhase->getObservation(),
             'phaseData' => $phaseData,
             'chart' => $chart,

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block pageTitle %}
-    Data gathering about {{ observation.student.studentId }}
+    {% trans %}Data gathering about{% endtrans %} {{ observation.student.studentId }}
 {% endblock %}
 
 {% block title %}
@@ -10,11 +10,11 @@
 
 {% block breadcrumbs %}
     <li>
-        <a href="{{ path('homepage') }}">Home</a>
+        <a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('measure_list') }}">Measures</a>
+        <a href="{{ path('measure_list') }}">{% trans %}Measures{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>

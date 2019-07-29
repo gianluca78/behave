@@ -96,7 +96,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/student/{id}/list", name="observation_student_list")
+     * @Route("/{_locale}/student/{id}/list", name="observation_student_list", requirements={"locale": "en|it"})
      * @Method({"GET"})
      * @Template
      *
@@ -121,7 +121,7 @@ class ObservationController extends Controller
     }
 
     /**
-    * @Route("/edit/{id}", name="observation_edit")
+    * @Route("/{_locale}/edit/{id}", name="observation_edit")
     * @Method({"GET", "POST"})  
     *
     * @param Request $request
@@ -161,7 +161,7 @@ class ObservationController extends Controller
     }
 
     /**
-    * @Route("/new/{id}", name="observation_new")
+    * @Route("/{_locale}/new/{id}", name="observation_new")
     * @Method({"GET", "POST"})
     * @Template
     *

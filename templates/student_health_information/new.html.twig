@@ -6,19 +6,19 @@
 
 {% block breadcrumbs %}
     <li>
-        <a href="{{ path('homepage') }}">Home</a>
+        <a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_health_information_list', { 'id': student.id }) }}">Health information</a>
+        <a href="{{ path('student_health_information_list', { 'id': student.id }) }}">{% trans %}Health information{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>New</span>
+        <span{% trans %}>New{% endtrans %}</span>
     </li>
 {% endblock %}
 
@@ -94,7 +94,7 @@
     <div class="portlet box green">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-gift"></i>New health information
+            <i class="fa fa-gift"></i>{{ title }}
         </div>
     </div>
 
@@ -106,7 +106,7 @@
         {{ form_row(form.ageOfOnset) }}
 
         <div class="form-group">
-            <label class="control-label required col-md-3">Is secondary to another medical condition?</label>
+            <label class="control-label required col-md-3">{% trans %}Is secondary to another medical condition?{% endtrans %}</label>
             <div class="col-md-9">
                 {{ form_widget(form.isSecondaryToAnotherMedicalCondition) }}
             </div>

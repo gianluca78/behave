@@ -23,15 +23,17 @@ class IsMeasureChangeableValidator extends ConstraintValidator {
 
         $oldData = $this->em
             ->getUnitOfWork()
-            ->getOriginalEntityData($object)['measure'];
+            ->getOriginalEntityData($object);
 
-        $data = $this->couchDbClient->getObservationsById($object->getId());
-        $data = json_decode($data->getContents(), true)['rows'];
+        if(isset($oldData['measure'])) {
+            $data = $this->couchDbClient->getObservationsById($object->getId());
+            $data = json_decode($data->getContents(), true)['rows'];
 
-        if($newValue != $oldData && !empty($data)) {
-            $this->context->buildViolation($constraint->message)
-                ->atPath('measure')
-                ->addViolation();
+            if($newValue != $oldData['measure'] && !empty($data)) {
+                $this->context->buildViolation($constraint->message)
+                    ->atPath('measure')
+                    ->addViolation();
+            }
         }
     }
 } 

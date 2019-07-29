@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="it" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="lEwn5bl" resname="day">
+        <source>day</source>
+        <target>Giorno</target>
+      </trans-unit>
+      <trans-unit id="W6RC0Gj" resname="print_chart">
+        <source>print_chart</source>
+        <target>Stampa grafico</target>
+      </trans-unit>
+      <trans-unit id="ti_VX5S" resname="download_png_image">
+        <source>download_png_image</source>
+        <target>scarica immagine PNG </target>
+      </trans-unit>
+      <trans-unit id="l6EOCEa" resname="download_jpeg_image">
+        <source>download_jpeg_image</source>
+        <target>Scarica immagine JPEG</target>
+      </trans-unit>
+      <trans-unit id="uwUPHoj" resname="download_pdf_document">
+        <source>download_pdf_document</source>
+        <target>Scarica documento PDF</target>
+      </trans-unit>
+      <trans-unit id="jTJwGNi" resname="download_svg_vector_image">
+        <source>download_svg_vector_image</source>
+        <target>Scarica immagine vettoriale SVG</target>
+      </trans-unit>
+      <trans-unit id="i6hJaiU" resname="baseline">
+        <source>baseline</source>
+        <target>Baseline</target>
+      </trans-unit>
+      <trans-unit id="d.TAtg7" resname="intervention">
+        <source>intervention</source>
+        <target>Intervento</target>
+      </trans-unit>
+      <trans-unit id="Ax_3qJq" resname="number_of_frequencies">
+        <source>number_of_frequencies</source>
+        <target>Frequenzq</target>
+      </trans-unit>
+      <trans-unit id="rONRR4M" resname="number_of_intervals">
+        <source>number_of_intervals</source>
+        <target>Durata (secondi)</target>
+      </trans-unit>
+      <trans-unit id="7bRlYkK" resname="note">
+        <source>note</source>
+        <target>Note</target>
+      </trans-unit>
+      <trans-unit id="Pzrx7Ou" resname="session">
+        <source>session</source>
+        <target>Sessione</target>
+      </trans-unit>
+      <trans-unit id="LXEWQrc" resname="x">
+        <source>x</source>
+        <target>x</target>
+      </trans-unit>
+      <trans-unit id="ofzkNjh" resname="y">
+        <source>y</source>
+        <target>y</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

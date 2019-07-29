@@ -31,8 +31,9 @@ class StudentHealthInformationType extends AbstractType
                 'label' => 'Disorder',
                 'required' => true,
                 'attr' => array(
-                    'placeholder' => 'Search by disorder name, DSM5, ICD9, OR ICD10 codes'
-                )
+                    'placeholder' => 'Search by disorder name, DSM5, ICD9, OR ICD10 codes',
+                ),
+                'translation_domain' => 'forms'
             ))
             ->add('comorbidDsm5Disorders', EntityType::class, [
                 'label' => 'Comorbid disorders',
@@ -45,7 +46,9 @@ class StudentHealthInformationType extends AbstractType
                 'multiple' => true,
                 'required' => false
             ])
-            ->add('submit', SubmitType::class);;
+            ->add('submit', SubmitType::class, array(
+                'translation_domain' => 'forms'
+            ));
         ;
     }
 

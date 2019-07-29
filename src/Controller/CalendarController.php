@@ -68,7 +68,7 @@ class CalendarController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="calendar_view")
+     * @Route("/{_locale}/{id}", name="calendar_view")
      * @Method({"GET"})
      * @Template
      *

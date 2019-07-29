@@ -5,11 +5,11 @@
 
 {% block breadcrumbs %}
     <li>
-        <a href="{{ path('homepage') }}">Home</a>
+        <a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -17,7 +17,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">{% trans %}Observations{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -29,7 +29,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>Data</span>
+        <span>{% trans %}Data{% endtrans %}</span>
     </li>
 {% endblock %}
 
@@ -87,8 +87,8 @@
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="note note-info">
-                    <h4 class="block">No data gathered!</h4>
-                    <p> When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.</p>
+                    <h4 class="block">{% trans %}No data gathered!{% endtrans %}</h4>
+                    <p> {% trans %}When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.{% endtrans %}</p>
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="icon-directions font-green hide"></i>
-                                <span class="caption-subject bold font-dark uppercase "> Gathered data</span>
+                                <span class="caption-subject bold font-dark uppercase "> {% trans %}Gathered data{% endtrans %}</span>
                             </div>
                         </div>
                         <div class="portlet-body">
@@ -120,7 +120,7 @@
                                             <div class="mt-element-list">
                                                 <div class="mt-list-head list-news font-white bg-blue-chambray">
                                                     <div class="list-head-title-container">
-                                                        <h3 class="list-title">Data gathered on {{ data.createdAt | date('Y-m-d H:i') }}</h3>
+                                                        <h3 class="list-title">{% trans %}Data gathered on{% endtrans %} {{ data.createdAt | date('Y-m-d H:i') }}</h3>
                                                     </div>
                                                 </div>
                                                 <div class="mt-list-container list-news">
@@ -189,7 +189,7 @@
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class="icon-directions font-green hide"></i>
-                                <span class="caption-subject bold font-dark uppercase "> Phase {{ observationPhase.name }} scatter plot</span>
+                                <span class="caption-subject bold font-dark uppercase "> {% trans %}Phase{% endtrans %} {{ observationPhase.name }} {% trans %}scatter plot{% endtrans %}</span>
                             </div>
                         </div>
                         <div class="portlet-body">

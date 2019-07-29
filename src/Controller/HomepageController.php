@@ -23,7 +23,7 @@ use App\CouchDb\Client as CouchDbClient;
 class HomepageController extends Controller
 {
     /**
-     * @Route("/homepage", name="homepage")
+     * @Route("/{_locale}/homepage", name="homepage", requirements={"locale": "en|it"})
      * @Method({"GET"})
      * @Template
      *
@@ -38,7 +38,7 @@ class HomepageController extends Controller
     }
 
     /**
-     * @Route("/dashboard", name="dashboard")
+     * @Route("/{_locale}/dashboard", name="dashboard", requirements={"locale": "en|it"})
      * @Method({"GET"})
      * @Template
      *

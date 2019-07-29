@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="uFoRBgh" resname="General stats">
+        <source>General stats</source>
+        <target>General stats</target>
+      </trans-unit>
+      <trans-unit id="eSWh8L7" resname="Record inserted successfully">
+        <source>Record inserted successfully</source>
+        <target>Record inserted successfully</target>
+      </trans-unit>
+      <trans-unit id="8dhclrs" resname="Record edited successfully">
+        <source>Record edited successfully</source>
+        <target>Record edited successfully</target>
+      </trans-unit>
+      <trans-unit id="PBg1u0S" resname="Record deleted successfully">
+        <source>Record deleted successfully</source>
+        <target>Record deleted successfully</target>
+      </trans-unit>
+      <trans-unit id="YPUCK3S" resname="Insert new observation">
+        <source>Insert new observation</source>
+        <target>Insert new observation</target>
+      </trans-unit>
+      <trans-unit id="0W9pd5b" resname="Edit observation">
+        <source>Edit observation</source>
+        <target>Edit observation</target>
+      </trans-unit>
+      <trans-unit id="xj_4dhv" resname="List of observations">
+        <source>List of observations</source>
+        <target>List of observations</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="GP3VSbL" resname="New">
+        <source>New</source>
+        <target>New</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="eJY5BfO" resname="Dates">
+        <source>Dates</source>
+        <target>Dates</target>
+      </trans-unit>
+      <trans-unit id="lyUVzBA" resname="Nr. of students">
+        <source>Nr. of students</source>
+        <target>Nr. of students</target>
+      </trans-unit>
+      <trans-unit id="PJDNFD2" resname="Categorized data">
+        <source>Categorized data</source>
+        <target>Categorized data</target>
+      </trans-unit>
+      <trans-unit id="Kw2TpR7" resname="Nr. of measures">
+        <source>Nr. of measures</source>
+        <target>Nr. of measures</target>
+      </trans-unit>
+      <trans-unit id="1dCjC1F" resname="Calendar">
+        <source>Calendar</source>
+        <target>Calendar</target>
+      </trans-unit>
+      <trans-unit id="Yg.sghh" resname="Data to be categorized">
+        <source>Data to be categorized</source>
+        <target>Data to be categorized</target>
+      </trans-unit>
+      <trans-unit id=".Xh2Wfc" resname="Student Id">
+        <source>Student Id</source>
+        <target>Student Id</target>
+      </trans-unit>
+      <trans-unit id=".HdHa3o" resname="Observation name">
+        <source>Observation name</source>
+        <target>Observation name</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="fIVqMsz" resname="Uncategorized data">
+        <source>Uncategorized data</source>
+        <target>Uncategorized data</target>
+      </trans-unit>
+      <trans-unit id="Khm7eN4" resname="Students">
+        <source>Students</source>
+        <target>Students</target>
+      </trans-unit>
+      <trans-unit id="byAvVKe" resname="List">
+        <source>List</source>
+        <target>List</target>
+      </trans-unit>
+      <trans-unit id="pqbQu_q" resname="Add a new student">
+        <source>Add a new student</source>
+        <target>Add a new student</target>
+      </trans-unit>
+      <trans-unit id="_HVYhpv" resname="Observations">
+        <source>Observations</source>
+        <target>Observations</target>
+      </trans-unit>
+      <trans-unit id="nJ3n3DM" resname="Health information">
+        <source>Health information</source>
+        <target>Health information</target>
+      </trans-unit>
+      <trans-unit id="6YHdrkX" resname="Warning">
+        <source>Warning</source>
+        <target>Warning</target>
+      </trans-unit>
+      <trans-unit id="lgvs_.c" resname="Are you sure you want to delete this student?">
+        <source>Are you sure you want to delete this student?</source>
+        <target>Are you sure you want to delete this student?</target>
+      </trans-unit>
+      <trans-unit id="fZ63rLE" resname="Close">
+        <source>Close</source>
+        <target>Close</target>
+      </trans-unit>
+      <trans-unit id="ewWo41r" resname="Yes, delete">
+        <source>Yes, delete</source>
+        <target>Yes, delete</target>
+      </trans-unit>
+      <trans-unit id="Ur4c1TR" resname="List of students">
+        <source>List of students</source>
+        <target>List of students</target>
+      </trans-unit>
+      <trans-unit id="ai6rpta" resname="Student inserted successfully">
+        <source>Student inserted successfully</source>
+        <target>Student inserted successfully</target>
+      </trans-unit>
+      <trans-unit id="XuBwIC1" resname="Student edited successfully">
+        <source>Student edited successfully</source>
+        <target>Student edited successfully</target>
+      </trans-unit>
+      <trans-unit id="kyTsP8x" resname="Student deleted successfully">
+        <source>Student deleted successfully</source>
+        <target>Student deleted successfully</target>
+      </trans-unit>
+      <trans-unit id="kz5nvlf" resname="Insert new student">
+        <source>Insert new student</source>
+        <target>Insert new student</target>
+      </trans-unit>
+      <trans-unit id="WXIiS1c" resname="Edit student">
+        <source>Edit student</source>
+        <target>Edit student</target>
+      </trans-unit>
+      <trans-unit id="MoAPEbz" resname="Data gathering about">
+        <source>Data gathering about</source>
+        <target>Data gathering about</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="qrqo.0R" resname="Measures">
+        <source>Measures</source>
+        <target>Measures</target>
+      </trans-unit>
+      <trans-unit id="AHuTV4O" resname="Add a new measure">
+        <source>Add a new measure</source>
+        <target>Add a new measure</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="MHZby6f" resname="Are you sure you want to delete this measure?">
+        <source>Are you sure you want to delete this measure?</source>
+        <target>Are you sure you want to delete this measure?</target>
+      </trans-unit>
+      <trans-unit id="j3OL8eO" resname="Data saved successfully">
+        <source>Data saved successfully</source>
+        <target>Data saved successfully</target>
+      </trans-unit>
+      <trans-unit id="P_Evj36" resname="Pick your favourite dates">
+        <source>Pick your favourite dates</source>
+        <target>Pick your favourite dates</target>
+      </trans-unit>
+      <trans-unit id="v4i6eKx" resname="Insert new measure">
+        <source>Insert new measure</source>
+        <target>Insert new measure</target>
+      </trans-unit>
+      <trans-unit id="xDHICZV" resname="Edit measure">
+        <source>Edit measure</source>
+        <target>Edit measure</target>
+      </trans-unit>
+      <trans-unit id="SLBvTdn" resname="Delete measure">
+        <source>Delete measure</source>
+        <target>Delete measure</target>
+      </trans-unit>
+      <trans-unit id="vpnMdZH" resname="List of measures">
+        <source>List of measures</source>
+        <target>List of measure</target>
+      </trans-unit>
+      <trans-unit id="3Mg5pAF" resname="View">
+        <source>View</source>
+        <target>View</target>
+      </trans-unit>
+      <trans-unit id="JkyMOBv" resname="student">
+        <source>student</source>
+        <target>student</target>
+      </trans-unit>
+      <trans-unit id="cOx0T7g" resname="Add a new observation">
+        <source>Add a new observation</source>
+        <target>Add a new observation</target>
+      </trans-unit>
+      <trans-unit id="M1_QPZE" resname="Click here to add a new observation.">
+        <source>Click here to add a new observation.</source>
+        <target>Click here to add a new observation.</target>
+      </trans-unit>
+      <trans-unit id="lfJGu5_" resname="When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.">
+        <source>When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</source>
+        <target>When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</target>
+      </trans-unit>
+      <trans-unit id="3ORbX07" resname="List of phases">
+        <source>List of phases</source>
+        <target>List of phases</target>
+      </trans-unit>
+      <trans-unit id="K0LTxN4" resname="The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.">
+        <source>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</source>
+        <target>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</target>
+      </trans-unit>
+      <trans-unit id="KYh6X.m" resname="Share">
+        <source>Share</source>
+        <target>Share</target>
+      </trans-unit>
+      <trans-unit id="wH4P9ye" resname="When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.">
+        <source>When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.</source>
+        <target>When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.</target>
+      </trans-unit>
+      <trans-unit id="rPshfQo" resname="Click here to edit the observation data.">
+        <source>Click here to edit the observation data.</source>
+        <target>Click here to edit the observation data.</target>
+      </trans-unit>
+      <trans-unit id="RduMntG" resname="Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.">
+        <source>Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.</source>
+        <target>Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.</target>
+      </trans-unit>
+      <trans-unit id="zpSWtLL" resname="Download raw data">
+        <source>Download raw data</source>
+        <target>Download raw data</target>
+      </trans-unit>
+      <trans-unit id="t10sCSJ" resname="Do you need the raw data for your personal analyses or purposes? Just click here and download it.">
+        <source>Do you need the raw data for your personal analyses or purposes? Just click here and download it.</source>
+        <target>Do you need the raw data for your personal analyses or purposes? Just click here and download it.</target>
+      </trans-unit>
+      <trans-unit id="6.lA8rP" resname="Measure">
+        <source>Measure</source>
+        <target>Measure</target>
+      </trans-unit>
+      <trans-unit id="ksHN.fT" resname="Enabled">
+        <source>Enabled</source>
+        <target>Enabled</target>
+      </trans-unit>
+      <trans-unit id="FrnBcOx" resname="Click here to enable the data collection. Until the icon is red, you can't do that!">
+        <source>Click here to enable the data collection. Until the icon is red, you can't do that!</source>
+        <target>Click here to enable the data collection. Until the icon is red, you can't do that!</target>
+      </trans-unit>
+      <trans-unit id="o_duu9Y" resname="Turn on/off the collection of data">
+        <source>Turn on/off the collection of data</source>
+        <target>Turn on/off the collection of data</target>
+      </trans-unit>
+      <trans-unit id="wuV5q0k" resname="Are you sure you want to delete this observation?">
+        <source>Are you sure you want to delete this observation?</source>
+        <target>Are you sure you want to delete this observation?</target>
+      </trans-unit>
+      <trans-unit id="7cvjdu." resname="Assign the observation to the observers sharing the following url:">
+        <source>Assign the observation to the observers sharing the following url:</source>
+        <target>Assign the observation to the observers sharing the following url:</target>
+      </trans-unit>
+      <trans-unit id="osB5wQO" resname="Copy url">
+        <source>Copy url</source>
+        <target>Copy url</target>
+      </trans-unit>
+      <trans-unit id="esTophR" resname="If you scheduled the observation dates, you can insert the email addresses of the&#10;                                        observers (press enter to add every new entry). They will be notified via email 1 hour before&#10;                                        the observation:">
+        <source>If you scheduled the observation dates, you can insert the email addresses of the
+                                        observers (press enter to add every new entry). They will be notified via email 1 hour before
+                                        the observation:</source>
+        <target>If you scheduled the observation dates, you can insert the email addresses of the
+                                        observers (press enter to add every new entry). They will be notified via email 1 hour before
+                                        the observation:</target>
+      </trans-unit>
+      <trans-unit id="IRUjkSP" resname="Email addresses to be notified">
+        <source>Email addresses to be notified</source>
+        <target>Email addresses to be notified</target>
+      </trans-unit>
+      <trans-unit id="DXogt9J" resname="Observation inserted successfully">
+        <source>Observation inserted successfully</source>
+        <target>Observation inserted successfully</target>
+      </trans-unit>
+      <trans-unit id="zqpMKMi" resname="Choose one of the following...">
+        <source>Choose one of the following...</source>
+        <target>Choose one of the following...</target>
+      </trans-unit>
+      <trans-unit id="ZFF6s6M" resname="Time option">
+        <source>Time option</source>
+        <target>Time option</target>
+      </trans-unit>
+      <trans-unit id="NCM_VCt" resname="All day">
+        <source>All day</source>
+        <target>All day</target>
+      </trans-unit>
+      <trans-unit id="WKzFEJ4" resname="Time range">
+        <source>Time range</source>
+        <target>Time range</target>
+      </trans-unit>
+      <trans-unit id="LKXc.HN" resname="Exact time">
+        <source>Exact time</source>
+        <target>Exact time</target>
+      </trans-unit>
+      <trans-unit id="NnN6gln" resname="Time range start time">
+        <source>Time range start time</source>
+        <target>Time range start time</target>
+      </trans-unit>
+      <trans-unit id="8AY7gIc" resname="Hour">
+        <source>Hour</source>
+        <target>Hour</target>
+      </trans-unit>
+      <trans-unit id="S3hmW_x" resname="Minute">
+        <source>Minute</source>
+        <target>Minute</target>
+      </trans-unit>
+      <trans-unit id="UceUsTv" resname="Time range end time">
+        <source>Time range end time</source>
+        <target>Time range end time</target>
+      </trans-unit>
+      <trans-unit id="haOas0X" resname="Yes">
+        <source>Yes</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="HqRCoTS" resname="No">
+        <source>No</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="oDJl1.G" resname="New observation">
+        <source>New observation</source>
+        <target>New observation</target>
+      </trans-unit>
+      <trans-unit id="B7a_1Rb" resname="Be careful!">
+        <source>Be careful!</source>
+        <target>Be careful!</target>
+      </trans-unit>
+      <trans-unit id="u4QtseS" resname="The dates already planned following today will be deleted to be replaced with the new ones.">
+        <source>The dates already planned following today will be deleted to be replaced with the new ones.</source>
+        <target>The dates already planned following today will be deleted to be replaced with the new ones.</target>
+      </trans-unit>
+      <trans-unit id="06J9ls0" resname="Scheduler">
+        <source>Scheduler</source>
+        <target>Scheduler</target>
+      </trans-unit>
+      <trans-unit id="zsOpuJs" resname="Data">
+        <source>Data</source>
+        <target>Data</target>
+      </trans-unit>
+      <trans-unit id="6U4WpCP" resname="Observation phases">
+        <source>Observation phases</source>
+        <target>Observation phases</target>
+      </trans-unit>
+      <trans-unit id="jk_vRzU" resname="Add a new phase">
+        <source>Add a new phase</source>
+        <target>Add a new phase</target>
+      </trans-unit>
+      <trans-unit id="UdK0wK6" resname="Statistical analyses">
+        <source>Statistical analyses</source>
+        <target>Statistical analyses</target>
+      </trans-unit>
+      <trans-unit id="hkbXfJG" resname="No phases defined!">
+        <source>No phases defined!</source>
+        <target>No phases defined!</target>
+      </trans-unit>
+      <trans-unit id="hQEcq_F" resname="Please add the names of the phases of your observation (for instance &quot;baseline&quot;, &quot;intervention&quot;, etc...)">
+        <source>Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...)</source>
+        <target>Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...)</target>
+      </trans-unit>
+      <trans-unit id="zXYDXxI" resname="gathered data:">
+        <source>gathered data:</source>
+        <target>gathered data:</target>
+      </trans-unit>
+      <trans-unit id="KlLxGvo" resname="Raw data per phase">
+        <source>Raw data per phase</source>
+        <target>Raw data per phase</target>
+      </trans-unit>
+      <trans-unit id="VcZRE4A" resname="Data categorization">
+        <source>Data categorization</source>
+        <target>Data categorization</target>
+      </trans-unit>
+      <trans-unit id="RjQuwe7" resname="Phase">
+        <source>Phase</source>
+        <target>Phase</target>
+      </trans-unit>
+      <trans-unit id="kTFZtnd" resname="Are you sure you want to delete this phase?">
+        <source>Are you sure you want to delete this phase?</source>
+        <target>Are you sure you want to delete this phase?</target>
+      </trans-unit>
+      <trans-unit id="tLC3Wnd" resname="Phases">
+        <source>Phases</source>
+        <target>Phases</target>
+      </trans-unit>
+      <trans-unit id="Qw1r8LH" resname="List of observation dates">
+        <source>List of observation dates</source>
+        <target>List of observation dates</target>
+      </trans-unit>
+      <trans-unit id="jxnUx6m" resname="New phase">
+        <source>New phase</source>
+        <target>New phase</target>
+      </trans-unit>
+      <trans-unit id="pfqweJT" resname="Is the subject under pharmacological treatment during this phase?">
+        <source>Is the subject under pharmacological treatment during this phase?</source>
+        <target>Is the subject under pharmacological treatment during this phase?</target>
+      </trans-unit>
+      <trans-unit id="7yJ.yvF" resname="Is the phase an intervention?">
+        <source>Is the phase an intervention?</source>
+        <target>Is the phase an intervention?</target>
+      </trans-unit>
+      <trans-unit id="Qifi_cl" resname="Observation phase edited successfully">
+        <source>Observation phase edited successfully</source>
+        <target>Observation phase edited successfully</target>
+      </trans-unit>
+      <trans-unit id="WY8ueR_" resname="Edit observation phase">
+        <source>Edit observation phase</source>
+        <target>Edit observation phase</target>
+      </trans-unit>
+      <trans-unit id="AxXSIz5" resname="No data gathered!">
+        <source>No data gathered!</source>
+        <target>No data gathered!</target>
+      </trans-unit>
+      <trans-unit id="vpvm6rN" resname="When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.">
+        <source>When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.</source>
+        <target>When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.</target>
+      </trans-unit>
+      <trans-unit id="WdDx8OQ" resname="Gathered data">
+        <source>Gathered data</source>
+        <target>Gathered data</target>
+      </trans-unit>
+      <trans-unit id="oHB6aA0" resname="scatter plot">
+        <source>scatter plot</source>
+        <target>scatter plot</target>
+      </trans-unit>
+      <trans-unit id="uSlcJcS" resname="Data gathered on">
+        <source>Data gathered on</source>
+        <target>Data gathered on</target>
+      </trans-unit>
+      <trans-unit id="1XVNiDu" resname="Phase data">
+        <source>Phase data</source>
+        <target>Phase data</target>
+      </trans-unit>
+      <trans-unit id="rTZi9HB" resname="Data analysis">
+        <source>Data analysis</source>
+        <target>Data analysis</target>
+      </trans-unit>
+      <trans-unit id="Dn34v0R" resname="Phases to be compared">
+        <source>Phases to be compared</source>
+        <target>Phases to be compared</target>
+      </trans-unit>
+      <trans-unit id="IgMfWDg" resname="Statistical index">
+        <source>Statistical index</source>
+        <target>Statistical index</target>
+      </trans-unit>
+      <trans-unit id="Q0AGa9G" resname="AvsB+trendB-trendA">
+        <source>AvsB+trendB-trendA</source>
+        <target>AvsB+trendB-trendA</target>
+      </trans-unit>
+      <trans-unit id="4GEjbwl" resname="AvsB+trendB">
+        <source>AvsB+trendB</source>
+        <target>AvsB+trendB</target>
+      </trans-unit>
+      <trans-unit id="c1y2H07" resname="AvsB">
+        <source>AvsB</source>
+        <target>AvsB</target>
+      </trans-unit>
+      <trans-unit id="6oBStR1" resname="Allison &amp; Gorman">
+        <source>Allison &amp; Gorman</source>
+        <target><![CDATA[Allison & Gorman]]></target>
+      </trans-unit>
+      <trans-unit id="v8WmtFt" resname="observations">
+        <source>observations</source>
+        <target>observations</target>
+      </trans-unit>
+      <trans-unit id="VtV3cEl" resname="Items to be analyzed">
+        <source>Items to be analyzed</source>
+        <target>Items to be analyzed</target>
+      </trans-unit>
+      <trans-unit id="v3lZ0uk" resname="Click on the switch to analyze item reverse score.">
+        <source>Click on the switch to analyze item reverse score.</source>
+        <target>Click on the switch to analyze item reverse score.</target>
+      </trans-unit>
+      <trans-unit id="NYzCAfh" resname="Operations">
+        <source>Operations</source>
+        <target>Operations</target>
+      </trans-unit>
+      <trans-unit id="oh198Ew" resname="Sum">
+        <source>Sum</source>
+        <target>Sum</target>
+      </trans-unit>
+      <trans-unit id="ClK6Mzp" resname="The selected items will be aggregated adding their raw data.">
+        <source>The selected items will be aggregated adding their raw data.</source>
+        <target>The selected items will be aggregated adding their raw data.</target>
+      </trans-unit>
+      <trans-unit id="cnp9EU9" resname="Mean">
+        <source>Mean</source>
+        <target>Mean</target>
+      </trans-unit>
+      <trans-unit id="pNzcK97" resname="The selected items will be aggregated calculting their mean.">
+        <source>The selected items will be aggregated calculting their mean.</source>
+        <target>The selected items will be aggregated calculting their mean.</target>
+      </trans-unit>
+      <trans-unit id="qcLXZBa" resname="You can analyze only 2 phases at a time">
+        <source>You can analyze only 2 phases at a time</source>
+        <target>You can analyze only 2 phases at a time</target>
+      </trans-unit>
+      <trans-unit id="wwQ4NxF" resname="You can select only 1 item at a time">
+        <source>You can select only 1 item at a time</source>
+        <target>You can select only 1 item at a time</target>
+      </trans-unit>
+      <trans-unit id="cBACKby" resname="You need at least 4 observations to perform the statistical analysis">
+        <source>You need at least 4 observations to perform the statistical analysis</source>
+        <target>You need at least 4 observations to perform the statistical analysis</target>
+      </trans-unit>
+      <trans-unit id="DHWdN2b" resname="You need to select at least 2 items to aggregate data">
+        <source>You need to select at least 2 items to aggregate data</source>
+        <target>You need to select at least 2 items to aggregate data</target>
+      </trans-unit>
+      <trans-unit id="76UdCTQ" resname="Speedometer:">
+        <source>Speedometer:</source>
+        <target>Speedometer:</target>
+      </trans-unit>
+      <trans-unit id="bOxFFLz" resname="Disorder">
+        <source>Disorder</source>
+        <target>Disorder</target>
+      </trans-unit>
+      <trans-unit id="sl1Egmy" resname="Age of onset">
+        <source>Age of onset</source>
+        <target>Age of onset</target>
+      </trans-unit>
+      <trans-unit id="dWypYN8" resname="Medical condition">
+        <source>Medical condition</source>
+        <target>Medical condition</target>
+      </trans-unit>
+      <trans-unit id="WRIT9If" resname="Comorbid disorders">
+        <source>Comorbid disorders</source>
+        <target>Comorbid disorders</target>
+      </trans-unit>
+      <trans-unit id="Tuyl1_F" resname="Are you sure you want to delete this health information?">
+        <source>Are you sure you want to delete this health information?</source>
+        <target>Are you sure you want to delete this health information?</target>
+      </trans-unit>
+      <trans-unit id="8yFByjY" resname="&gt;New">
+        <source>&gt;New</source>
+        <target><![CDATA[>New]]></target>
+      </trans-unit>
+      <trans-unit id="C4Sh.77" resname="Is secondary to another medical condition?">
+        <source>Is secondary to another medical condition?</source>
+        <target>Is secondary to another medical condition?</target>
+      </trans-unit>
+      <trans-unit id="health_information_inserted_successfully" resname="Health information inserted successfully">
+        <source>Health information inserted successfully</source>
+        <target>Health information inserted successfully</target>
+      </trans-unit>
+      <trans-unit id="insert_new_health_information" resname="Insert new health information">
+        <source>Insert new health information</source>
+        <target>Insert new health information</target>
+      </trans-unit>
+      <trans-unit id="edit_health_information" resname="Edit health information">
+        <source>Edit health information</source>
+        <target>Edit health information</target>
+      </trans-unit>
+      <trans-unit id="dsm5_disorder" resname="Dsm5 disorder">
+        <source>Dsm5 disorder</source>
+        <target>Dsm5 disorder</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

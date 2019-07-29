@@ -9,7 +9,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -17,7 +17,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">{% trans %}Observations{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -25,12 +25,12 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>Scheduler</span>
+        <span>{% trans %}Scheduler{% endtrans %}</span>
     </li>
 {% endblock %}
 
 {% block pageTitle %}
-    Students
+    {% trans %}Students{% endtrans %}
 {% endblock %}
 
 {% block stylesheets %}
@@ -82,7 +82,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class=" icon-layers font-dark"></i>
-                        <span class="caption-subject font-dark sbold uppercase">Calendar</span>
+                        <span class="caption-subject font-dark sbold uppercase">{% trans %}Calendar{% endtrans %}</span>
                     </div>
                 </div>
                 <div class="portlet-body">

@@ -10,7 +10,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block pageTitle %}
-    {{ actionName }} student
+    {{ actionName }} {% trans %}student{% endtrans %}
 {% endblock %}
 
 
@@ -27,7 +27,8 @@
     <div class="portlet box green">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-gift"></i>Add a new student</div>
+                <i class="fa fa-gift"></i>{{ actionName }} {% trans %}student{% endtrans %}
+            </div>
         </div>
         <div class="portlet-body form">
             {{ form_start(form) }}
@@ -48,7 +49,7 @@
     </div>
 
     {% for flashMessage in app.session.flashbag.get('success') %}
-        <div>{{ flashMessage }}</div>
+        <div>{{ flashMessage | trans }}</div>
     {% endfor %}
 
 {% endblock %}

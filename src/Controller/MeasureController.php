@@ -34,12 +34,12 @@ class MeasureController extends Controller
     CONST DATES_ADDED_SUCCESS = 'Dates added successfully';
     CONST DELETE_SUCCESS_STRING = 'Record deleted successfully';
     CONST CALENDAR_TITLE = 'Pick your favourite dates';
-    CONST NEW_TITLE = 'Insert new observation';
-    CONST EDIT_TITLE = 'Edit observation';
-    CONST INDEX_TITLE = 'List of observations';
+    CONST NEW_TITLE = 'Insert new measure';
+    CONST EDIT_TITLE = 'Edit measure';
+    CONST INDEX_TITLE = 'List of measures';
 
     /**
-     * @Route("/list", name="measure_list")
+     * @Route("/{_locale}/list", name="measure_list", requirements={"locale": "en|it"})
      * @Method({"GET"})
      * @Template
      *

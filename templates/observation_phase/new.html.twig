@@ -5,11 +5,11 @@
 
 {% block breadcrumbs %}
     <li>
-        <a href="{{ path('homepage') }}">Home</a>
+        <a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -17,7 +17,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">{% trans %}Observations{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -25,16 +25,16 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('observation_phase_list', { 'id': observation.id }) }}">Phases</a>
+        <a href="{{ path('observation_phase_list', { 'id': observation.id }) }}">{% trans %}Phases{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>New</span>
+        <span>{% trans %}New{% endtrans %}</span>
     </li>
 {% endblock %}
 
 {% block pageTitle %}
-    Data
+    {% trans %}Data{% endtrans %}
 {% endblock %}
 
 {% block body %}
@@ -43,7 +43,7 @@
 <div class="portlet box green">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-gift"></i>New phase
+            <i class="fa fa-gift"></i>{{ title }}
         </div>
     </div>
 
@@ -52,14 +52,14 @@
         {{ form_row(form.name) }}
 
         <div class="form-group">
-            <label class="control-label required col-md-3">Is the subject under pharmacological treatment during this phase?</label>
+            <label class="control-label required col-md-3">{% trans %}Is the subject under pharmacological treatment during this phase?{% endtrans %}</label>
             <div class="col-md-9">
                 {{ form_widget(form.isUnderPharmacologicalTreatment) }}
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label required col-md-3">Is the phase an intervention?</label>
+            <label class="control-label required col-md-3">{% trans %}Is the phase an intervention?{% endtrans %}</label>
             <div class="col-md-9">
                 {{ form_widget(form.isIntervention) }}
             </div>

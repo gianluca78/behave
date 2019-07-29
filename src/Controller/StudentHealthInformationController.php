@@ -65,7 +65,7 @@ class StudentHealthInformationController extends Controller
     }
 
     /**
-     * @Route("/{id}/list", name="student_health_information_list")
+     * @Route("/{_locale}/{id}/list", name="student_health_information_list")
      * @Method({"GET"})
      * @Template
      *
@@ -93,7 +93,7 @@ class StudentHealthInformationController extends Controller
     }
 
     /**
-     * @Route("/edit/{id}", name="student_health_information_edit")
+     * @Route("/{_locale}/edit/{id}", name="student_health_information_edit")
      * @Method({"GET", "POST"})
      *
      * @param Request $request
@@ -131,7 +131,7 @@ class StudentHealthInformationController extends Controller
     }
 
     /**
-     * @Route("/new/{id}", name="student_health_information_new")
+     * @Route("/{_locale}/new/{id}", name="student_health_information_new")
      * @Method({"GET", "POST"})
      * @Template
      *

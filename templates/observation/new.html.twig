@@ -10,15 +10,15 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('observation_student_list', { 'id': student.id }) }}">Observations</a>
+        <a href="{{ path('observation_student_list', { 'id': student.id }) }}">{% trans %}Observations{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>New</span>
+        <span>{% trans %}New{% endtrans %}</span>
     </li>
 {% endblock %}
 
@@ -48,8 +48,8 @@
 
             $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('state', isSingleCaseDesign);
             $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('size', 'small');
-            $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('onText', 'Yes');
-            $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('offText', 'No');
+            $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('onText', '{% trans %}Yes{% endtrans %}');
+            $("#observation_base_observation_isSingleCaseDesign").bootstrapSwitch('offText', '{% trans %}No{% endtrans %}');
 
             $('#observation_observationScheduler_hasDates').bootstrapSwitch();
 
@@ -195,7 +195,7 @@
     <div class="portlet box green">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-gift"></i>New observation
+            <i class="fa fa-gift"></i>{{ title }}
         </div>
 
         <div class="actions">
@@ -213,7 +213,7 @@
         {{ form_row(form.base_observation.fillingInstructions) }}
 
         <div class="form-group">
-            <label class="control-label required col-md-3">Schedule observation dates</label>
+            <label class="control-label required col-md-3">{% trans from 'forms' %}Schedule observation dates{% endtrans %}</label>
             <div class="col-md-9">
                 {{ form_widget(form.observationScheduler.hasDates ) }}
             </div>
@@ -221,8 +221,8 @@
 
         {% if observation.id %}
             <div class="note note-info">
-                <h4 class="block">Be careful!</h4>
-                <p> The dates already planned following today will be deleted to be replaced with the new ones. </p>
+                <h4 class="block">{% trans %}Be careful!{% endtrans %}</h4>
+                <p> {% trans %}The dates already planned following today will be deleted to be replaced with the new ones.{% endtrans %} </p>
             </div>
         {% endif %}
 
@@ -237,7 +237,7 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label required col-md-3">Time range</label>
+                <label class="control-label required col-md-3">{% trans from 'forms' %}Time range{% endtrans %}</label>
                 <div class="col-md-9">
                     <div class="range-slider">
                         <input type="text" class="js-range-slider" value="" />
@@ -250,7 +250,7 @@
             
             <div class="form-body">
                 <div class="form-group" style="display: block;">
-                    <label class="col-md-3 control-label">Weekly days of week</label>
+                    <label class="col-md-3 control-label">{% trans from 'forms' %}Weekly days of week{% endtrans %}</label>
 
                     <div id="observation_observationScheduler_weeklyDaysOfWeek" class="col-md-9">
                         <div class="btn-group" data-toggle="buttons">
@@ -262,7 +262,7 @@
                                                 name="observation[observationScheduler][weeklyDaysOfWeek][]" value="0"
                                                 type="checkbox"
                                                 {% if observation.observationScheduler and '0' in observation.observationScheduler.weeklyDaysOfWeek %}checked{% endif %}
-                                                > Sun</label>
+                                                > {% trans from 'forms' %}Sun{% endtrans %}</label>
                                 <label class="btn btn-default {% if observation.observationScheduler and '1' in observation.observationScheduler.weeklyDaysOfWeek %}active{% endif %}" for="observation_observationScheduler_weeklyDaysOfWeek_1"
                                                              class=""><input
                                                 class="toggle"
@@ -270,7 +270,7 @@
                                                 name="observation[observationScheduler][weeklyDaysOfWeek][]" value="1"
                                                 type="checkbox"
                                                 {% if observation.observationScheduler and '1' in observation.observationScheduler.weeklyDaysOfWeek %}checked{% endif %}
-                                                > Mon</label>
+                                                > {% trans from 'forms' %}Mon{% endtrans %}</label>
                                 <label class="btn btn-default {% if observation.observationScheduler and '2' in observation.observationScheduler.weeklyDaysOfWeek %}active{% endif %}" for="observation_observationScheduler_weeklyDaysOfWeek_2"
                                                              class=""><input
                                                 class="toggle"
@@ -278,7 +278,7 @@
                                                 name="observation[observationScheduler][weeklyDaysOfWeek][]" value="2"
                                                 type="checkbox"
                                                 {% if observation.observationScheduler and '2' in observation.observationScheduler.weeklyDaysOfWeek %}checked{% endif %}
-                                                > Tue</label>
+                                                > {% trans from 'forms' %}Tue{% endtrans %}</label>
                                 <label class="btn btn-default {% if observation.observationScheduler and '3' in observation.observationScheduler.weeklyDaysOfWeek %}active{% endif %}" for="observation_observationScheduler_weeklyDaysOfWeek_3"
                                                              class=""><input
                                                 class="toggle"
@@ -286,7 +286,7 @@
                                                 name="observation[observationScheduler][weeklyDaysOfWeek][]" value="3"
                                                 type="checkbox"
                                                 {% if observation.observationScheduler and '3' in observation.observationScheduler.weeklyDaysOfWeek %}checked{% endif %}
-                                                > Wed</label>
+                                                > {% trans from 'forms' %}Wed{% endtrans %}</label>
                                 <label class="btn btn-default {% if observation.observationScheduler and '4' in observation.observationScheduler.weeklyDaysOfWeek %}active{% endif %}" for="observation_observationScheduler_weeklyDaysOfWeek_4"
                                                              class=""><input
                                                 class="toggle"
@@ -294,7 +294,7 @@
                                                 name="observation[observationScheduler][weeklyDaysOfWeek][]" value="4"
                                                 type="checkbox"
                                                 {% if observation.observationScheduler and '4' in observation.observationScheduler.weeklyDaysOfWeek %}checked{% endif %}
-                                                > Thu</label>
+                                                > {% trans from 'forms' %}Thu{% endtrans %}</label>
                                 <label class="btn btn-default {% if observation.observationScheduler and '5' in observation.observationScheduler.weeklyDaysOfWeek %}active{% endif %}" for="observation_observationScheduler_weeklyDaysOfWeek_5"
                                                              class=""><input
                                                 class="toggle"
@@ -302,7 +302,7 @@
                                                 name="observation[observationScheduler][weeklyDaysOfWeek][]" value="5"
                                                 type="checkbox"
                                                 {% if observation.observationScheduler and '5' in observation.observationScheduler.weeklyDaysOfWeek %}checked{% endif %}
-                                                > Fri</label>
+                                                > {% trans from 'forms' %}Fri{% endtrans %}</label>
                                 <label class="btn btn-default {% if observation.observationScheduler and '6' in observation.observationScheduler.weeklyDaysOfWeek %}active{% endif %}" for="observation_observationScheduler_weeklyDaysOfWeek_6"
                                                              class=""><input
                                                 class="toggle"
@@ -310,7 +310,7 @@
                                                 name="observation[observationScheduler][weeklyDaysOfWeek][]" value="6"
                                                 type="checkbox"
                                                 {% if observation.observationScheduler and '6' in observation.observationScheduler.weeklyDaysOfWeek %}checked{% endif %}
-                                                > Sat</label>
+                                                > {% trans from 'forms' %}Sat{% endtrans %}</label>
 
                         </div>
                     </div>

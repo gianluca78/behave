@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="it" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="A.jBJz4" resname="Male">
+        <source>Male</source>
+        <target>Maschio</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Nazione</target>
+      </trans-unit>
+      <trans-unit id="454QTGH" resname="-- Select the country --">
+        <source>-- Select the country --</source>
+        <target>-- Seleziona la nazione --</target>
+      </trans-unit>
+      <trans-unit id="hjKse07" resname="Student id">
+        <source>Student id</source>
+        <target>Identificativo studente</target>
+      </trans-unit>
+      <trans-unit id="mvZ0Osg" resname="Year of birth">
+        <source>Year of birth</source>
+        <target>Anno di nascita</target>
+      </trans-unit>
+      <trans-unit id="jQZW8e3" resname="-- Select the year of birth --">
+        <source>-- Select the year of birth --</source>
+        <target>-- Seleziona l'anno di nascita --</target>
+      </trans-unit>
+      <trans-unit id="lT3W8rR" resname="Sex">
+        <source>Sex</source>
+        <target>Sesso</target>
+      </trans-unit>
+      <trans-unit id="6MyoCK5" resname="Female">
+        <source>Female</source>
+        <target>Femmina</target>
+      </trans-unit>
+      <trans-unit id="FV_BbAQ" resname="Submit">
+        <source>Submit</source>
+        <target>Salva</target>
+      </trans-unit>
+      <trans-unit id="nXfJaPr" resname="Single case?">
+        <source>Single case?</source>
+        <target>Caso singolo?</target>
+      </trans-unit>
+      <trans-unit id="6UY9zPB" resname="Place">
+        <source>Place</source>
+        <target>Luogo</target>
+      </trans-unit>
+      <trans-unit id="gYzY2Rr" resname="Setting">
+        <source>Setting</source>
+        <target>Setting</target>
+      </trans-unit>
+      <trans-unit id="HMyqZQL" resname="Filling instructions">
+        <source>Filling instructions</source>
+        <target>Istruzioni per la compilazione</target>
+      </trans-unit>
+      <trans-unit id="ibBe8pv" resname="Schedule observation dates">
+        <source>Schedule observation dates</source>
+        <target>Pianifica le date di osservazione</target>
+      </trans-unit>
+      <trans-unit id="gWlpMQG" resname="Start date">
+        <source>Start date</source>
+        <target>Data inizio</target>
+      </trans-unit>
+      <trans-unit id="WKzFEJ4" resname="Time range">
+        <source>Time range</source>
+        <target>Intervallo di tempo</target>
+      </trans-unit>
+      <trans-unit id="KeJz6aE" resname="Repeat option">
+        <source>Repeat option</source>
+        <target>Opzione di ripetizione</target>
+      </trans-unit>
+      <trans-unit id="3JN7WYk" resname="None">
+        <source>None</source>
+        <target>Nessuna</target>
+      </trans-unit>
+      <trans-unit id="KXUTJIG" resname="Weekly">
+        <source>Weekly</source>
+        <target>Settimanale</target>
+      </trans-unit>
+      <trans-unit id="eybzL3z" resname="every n week(s)">
+        <source>every n week(s)</source>
+        <target>ogni n settimana(e)</target>
+      </trans-unit>
+      <trans-unit id="oxdY9RE" resname="Weekly days of week">
+        <source>Weekly days of week</source>
+        <target>Giorni della settimana</target>
+      </trans-unit>
+      <trans-unit id="rTs_cmT" resname="Repeat end option">
+        <source>Repeat end option</source>
+        <target>Opzione fine ripetizione</target>
+      </trans-unit>
+      <trans-unit id="6rb300I" resname="Repeat end date">
+        <source>Repeat end date</source>
+        <target>Data fine ripetizione</target>
+      </trans-unit>
+      <trans-unit id="GZEEOm6" resname="Nr. occurrences">
+        <source>Nr. occurrences</source>
+        <target>Num. di ripetizioni</target>
+      </trans-unit>
+      <trans-unit id="e2j_VRC" resname="After">
+        <source>After</source>
+        <target>Dopo</target>
+      </trans-unit>
+      <trans-unit id="k87XpG_" resname="On date">
+        <source>On date</source>
+        <target>In data</target>
+      </trans-unit>
+      <trans-unit id="UKhbxWI" resname="3 years">
+        <source>3 years</source>
+        <target>3 anni</target>
+      </trans-unit>
+      <trans-unit id="2xjxf_U" resname="Sun">
+        <source>Sun</source>
+        <target>Dom</target>
+      </trans-unit>
+      <trans-unit id="9A1.Ufa" resname="Mon">
+        <source>Mon</source>
+        <target>Lun</target>
+      </trans-unit>
+      <trans-unit id="0es5sJv" resname="Tue">
+        <source>Tue</source>
+        <target>Mar</target>
+      </trans-unit>
+      <trans-unit id="WDOfRd_" resname="Wed">
+        <source>Wed</source>
+        <target>Mer</target>
+      </trans-unit>
+      <trans-unit id="faESEu0" resname="Thu">
+        <source>Thu</source>
+        <target>Gio</target>
+      </trans-unit>
+      <trans-unit id="Ztq0DOo" resname="Fri">
+        <source>Fri</source>
+        <target>Ven</target>
+      </trans-unit>
+      <trans-unit id=".etxtWn" resname="Sat">
+        <source>Sat</source>
+        <target>Sab</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Nome</target>
+      </trans-unit>
+      <trans-unit id="D64FcWy" resname="Intervention">
+        <source>Intervention</source>
+        <target>Intervento</target>
+      </trans-unit>
+      <trans-unit id="Yt1ZLWq" resname="Please describe the behavioral intervention">
+        <source>Please describe the behavioral intervention</source>
+        <target>Per favore descrivi l'intervento comportamentale</target>
+      </trans-unit>
+      <trans-unit id="search_by_disorder" resname="Search by disorder name, DSM5, ICD9, OR ICD10 codes">
+        <source>Search by disorder name, DSM5, ICD9, OR ICD10 codes</source>
+        <target>Cerca per nome del disturbo, o codici DSM5, ICD9, o ICD10</target>
+      </trans-unit>
+      <trans-unit id="disorder" resname="Disorder">
+        <source>Disorder</source>
+        <target>Disturbo</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="A.jBJz4" resname="Male">
+        <source>Male</source>
+        <target>Male</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Country</target>
+      </trans-unit>
+      <trans-unit id="454QTGH" resname="-- Select the country --">
+        <source>-- Select the country --</source>
+        <target>-- Select the country --</target>
+      </trans-unit>
+      <trans-unit id="hjKse07" resname="Student id">
+        <source>Student id</source>
+        <target>Student id</target>
+      </trans-unit>
+      <trans-unit id="mvZ0Osg" resname="Year of birth">
+        <source>Year of birth</source>
+        <target>Year of birth</target>
+      </trans-unit>
+      <trans-unit id="jQZW8e3" resname="-- Select the year of birth --">
+        <source>-- Select the year of birth --</source>
+        <target>-- Select the year of birth --</target>
+      </trans-unit>
+      <trans-unit id="lT3W8rR" resname="Sex">
+        <source>Sex</source>
+        <target>Sex</target>
+      </trans-unit>
+      <trans-unit id="6MyoCK5" resname="Female">
+        <source>Female</source>
+        <target>Female</target>
+      </trans-unit>
+      <trans-unit id="FV_BbAQ" resname="Submit">
+        <source>Submit</source>
+        <target>Submit</target>
+      </trans-unit>
+      <trans-unit id="nXfJaPr" resname="Single case?">
+        <source>Single case?</source>
+        <target>Single case?</target>
+      </trans-unit>
+      <trans-unit id="6UY9zPB" resname="Place">
+        <source>Place</source>
+        <target>Place</target>
+      </trans-unit>
+      <trans-unit id="gYzY2Rr" resname="Setting">
+        <source>Setting</source>
+        <target>Setting</target>
+      </trans-unit>
+      <trans-unit id="HMyqZQL" resname="Filling instructions">
+        <source>Filling instructions</source>
+        <target>Filling instructions</target>
+      </trans-unit>
+      <trans-unit id="ibBe8pv" resname="Schedule observation dates">
+        <source>Schedule observation dates</source>
+        <target>Schedule observation dates</target>
+      </trans-unit>
+      <trans-unit id="gWlpMQG" resname="Start date">
+        <source>Start date</source>
+        <target>Start date</target>
+      </trans-unit>
+      <trans-unit id="WKzFEJ4" resname="Time range">
+        <source>Time range</source>
+        <target>Time range</target>
+      </trans-unit>
+      <trans-unit id="KeJz6aE" resname="Repeat option">
+        <source>Repeat option</source>
+        <target>Repeat option</target>
+      </trans-unit>
+      <trans-unit id="3JN7WYk" resname="None">
+        <source>None</source>
+        <target>None</target>
+      </trans-unit>
+      <trans-unit id="KXUTJIG" resname="Weekly">
+        <source>Weekly</source>
+        <target>Weekly</target>
+      </trans-unit>
+      <trans-unit id="eybzL3z" resname="every n week(s)">
+        <source>every n week(s)</source>
+        <target>every n week(s)</target>
+      </trans-unit>
+      <trans-unit id="oxdY9RE" resname="Weekly days of week">
+        <source>Weekly days of week</source>
+        <target>Weekly days of week</target>
+      </trans-unit>
+      <trans-unit id="rTs_cmT" resname="Repeat end option">
+        <source>Repeat end option</source>
+        <target>Repeat end option</target>
+      </trans-unit>
+      <trans-unit id="6rb300I" resname="Repeat end date">
+        <source>Repeat end date</source>
+        <target>Repeat end date</target>
+      </trans-unit>
+      <trans-unit id="GZEEOm6" resname="Nr. occurrences">
+        <source>Nr. occurrences</source>
+        <target>Nr. occurrences</target>
+      </trans-unit>
+      <trans-unit id="e2j_VRC" resname="After">
+        <source>After</source>
+        <target>After</target>
+      </trans-unit>
+      <trans-unit id="k87XpG_" resname="On date">
+        <source>On date</source>
+        <target>On date</target>
+      </trans-unit>
+      <trans-unit id="UKhbxWI" resname="3 years">
+        <source>3 years</source>
+        <target>3 years</target>
+      </trans-unit>
+      <trans-unit id="2xjxf_U" resname="Sun">
+        <source>Sun</source>
+        <target>Sun</target>
+      </trans-unit>
+      <trans-unit id="9A1.Ufa" resname="Mon">
+        <source>Mon</source>
+        <target>Mon</target>
+      </trans-unit>
+      <trans-unit id="0es5sJv" resname="Tue">
+        <source>Tue</source>
+        <target>Tue</target>
+      </trans-unit>
+      <trans-unit id="WDOfRd_" resname="Wed">
+        <source>Wed</source>
+        <target>Wed</target>
+      </trans-unit>
+      <trans-unit id="faESEu0" resname="Thu">
+        <source>Thu</source>
+        <target>Thu</target>
+      </trans-unit>
+      <trans-unit id="Ztq0DOo" resname="Fri">
+        <source>Fri</source>
+        <target>Fri</target>
+      </trans-unit>
+      <trans-unit id=".etxtWn" resname="Sat">
+        <source>Sat</source>
+        <target>Sat</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="D64FcWy" resname="Intervention">
+        <source>Intervention</source>
+        <target>Intervention</target>
+      </trans-unit>
+      <trans-unit id="Yt1ZLWq" resname="Please describe the behavioral intervention">
+        <source>Please describe the behavioral intervention</source>
+        <target>Please describe the behavioral intervention</target>
+      </trans-unit>
+      <trans-unit id="disorder" resname="Disorder">
+        <source>Disorder</source>
+        <target>Disorder</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

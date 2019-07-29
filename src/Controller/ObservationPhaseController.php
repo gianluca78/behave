@@ -28,12 +28,12 @@ class ObservationPhaseController extends Controller
     CONST NEW_SUCCESS_STRING = 'Observation phase inserted successfully';
     CONST EDIT_SUCCESS_STRING = 'Observation phase edited successfully';
     CONST DELETE_SUCCESS_STRING = 'Observation phase deleted successfully';
-    CONST NEW_TITLE = 'Insert new observation date';
-    CONST EDIT_TITLE = 'Edit observation date';
+    CONST NEW_TITLE = 'Insert new observation phase';
+    CONST EDIT_TITLE = 'Edit observation phase';
     CONST INDEX_TITLE = 'List of observation dates';
 
     /**
-     * @Route("/list/{id}", name="observation_phase_list")
+     * @Route("/{_locale}/list/{id}", name="observation_phase_list")
      * @Method({"GET"})
      * @Template
      *
@@ -64,7 +64,7 @@ class ObservationPhaseController extends Controller
     }
 
     /**
-     * @Route("/new/{id}", name="observation_phase_new")
+     * @Route("/{_locale}/new/{id}", name="observation_phase_new")
      * @Method({"GET", "POST"})
      * @Template
      *
@@ -93,7 +93,7 @@ class ObservationPhaseController extends Controller
     }
 
     /**
-     * @Route("/edit/{id}", name="observation_phase_edit")
+     * @Route("/{_locale}/edit/{id}", name="observation_phase_edit")
      * @Method({"GET", "POST"})
      *
      * @param Request $request

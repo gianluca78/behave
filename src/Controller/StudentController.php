@@ -31,7 +31,7 @@ class StudentController extends Controller
     CONST INDEX_TITLE = 'List of students';
 
     /**
-     * @Route("/list", name="student_list")
+     * @Route("/{_locale}/list", name="student_list", requirements={"locale": "en|it"})
      * @Method({"GET"})
      * @Template
      *
@@ -51,7 +51,7 @@ class StudentController extends Controller
     }
 
     /**
-    * @Route("/edit/{id}", name="student_edit")
+    * @Route("/{_locale}/edit/{id}", name="student_edit", requirements={"locale": "en|it"})
     * @Method({"GET", "POST"})  
     *
     * @param Request $request
@@ -73,13 +73,13 @@ class StudentController extends Controller
             array(
                 'form' => $form->createView(),
                 'title' => $this->get('translator')->trans(self::EDIT_TITLE),
-                'actionName' => 'Edit'
+                'actionName' => $this->get('translator')->trans('Edit')
             )
         );
     }
 
     /**
-    * @Route("/new", name="student_new")
+    * @Route("/{_locale}/new", name="student_new", requirements={"locale": "en|it"})
     * @Method({"GET", "POST"})
     * @Template
     *
@@ -93,7 +93,9 @@ class StudentController extends Controller
         $entity->setCreatorUserId($this->getUser()->getUserId());
 
         $form = $this->createForm(StudentType::class, $entity, array(
-            'action' => $this->generateUrl('student_new')
+            'action' => $this->generateUrl('student_new', array(
+                    'locale' => $request->getLocale()
+                ))
         ));
 
         if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
@@ -103,7 +105,7 @@ class StudentController extends Controller
         return array(
             'form' => $form->createView(),
             'title' => $this->get('translator')->trans(self::NEW_TITLE),
-            'actionName' => 'New'
+            'actionName' => $this->get('translator')->trans('New')
         );
 
     }

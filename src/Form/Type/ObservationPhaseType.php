@@ -17,7 +17,9 @@ class ObservationPhaseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', TextType::class, array(
-                    'required' => true
+                    'required' => true,
+                    'label' => 'Name',
+                    'translation_domain' => 'forms'
                 ))
                 ->add('isIntervention', null, array(
                 'label' => ' '
@@ -29,9 +31,12 @@ class ObservationPhaseType extends AbstractType
                 'required' => false,
                 'attr' => array(
                     'placeholder' => 'Please describe the behavioral intervention'
-                )
+                ),
+                'translation_domain' => 'forms'
             ))
-                ->add('submit', SubmitType::class);
+                ->add('submit', SubmitType::class, array(
+                    'translation_domain' => 'forms'
+            ));
         ;
     }
 

@@ -5,11 +5,11 @@
 
 {% block breadcrumbs %}
     <li>
-        <a href="{{ path('homepage') }}">Home</a>
+        <a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -17,7 +17,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">{% trans %}Observations{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -25,7 +25,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>Data analysis</span>
+        <span>{% trans %}Data analysis{% endtrans %}</span>
     </li>
 {% endblock %}
 
@@ -37,33 +37,33 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase "> Phases to be compared</span>
+                        <span class="caption-subject bold font-dark uppercase "> {% trans %}Phases to be compared{% endtrans %}</span>
                     </div>
 
                     <div class="btn-group pull-right">
                         <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            Statistical index
+                            {% trans %}Statistical index{% endtrans %}
                             <i class="fa fa-angle-down"></i>
                         </button>
                         <ul class="dropdown-menu pull-right" id="index-action">
                             <li>
                                 <a data-index-id="1" href="javascript:;">
-                                    <i class="fa fa-map-o"></i> AvsB+trendB-trendA
+                                    <i class="fa fa-map-o"></i> {% trans %}AvsB+trendB-trendA{% endtrans %}
                                 </a>
                             </li>
                             <li>
                                 <a data-index-id="2" href="javascript:;">
-                                    <i class="fa fa-map-o"></i> AvsB+trendB
+                                    <i class="fa fa-map-o"></i> {% trans %}AvsB+trendB{% endtrans %}
                                 </a>
                             </li>
                             <li>
                                 <a data-index-id="3" href="javascript:;">
-                                    <i class="fa fa-map-o"></i> AvsB
+                                    <i class="fa fa-map-o"></i> {% trans %}AvsB{% endtrans %}
                                 </a>
                             </li>
                             <li>
                                 <a data-index-id="4" href="javascript:;">
-                                    <i class="fa fa-map-o"></i> Allison & Gorman
+                                    <i class="fa fa-map-o"></i> {% trans %}Allison & Gorman{% endtrans %}
                                 </a>
                             </li>
                         </ul>
@@ -98,7 +98,7 @@
                                         <div class="mt-step-number first bg-white font-grey">{{ loop.index }}</div>
                                         <div class="mt-step-title uppercase font-grey-cascade">{{ phase.name }}</div>
                                         <div class="mt-step-content font-grey-cascade">{{ phase.dataIds | length }}
-                                            observations
+                                            {% trans %}observations{% endtrans %}
                                         </div>
                                     </div>
                                 {% endfor %}
@@ -116,7 +116,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase "> Items to be analyzed</span>
+                        <span class="caption-subject bold font-dark uppercase "> {% trans %}Items to be analyzed{% endtrans %}</span>
                     </div>
                 </div>
                 <div class="portlet-body">
@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="mt-step-content font-grey-cascade">
                                             {% if('choice' in itemValues.typology) %}
-                                            Click on the switch to analyze item reverse score.
+                                                {% trans %}Click on the switch to analyze item reverse score.{% endtrans %}
                                             {% endif %}
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase "> Operations</span>
+                        <span class="caption-subject bold font-dark uppercase "> {% trans %}Operations{% endtrans %}</span>
                     </div>
                 </div>
 
@@ -188,14 +188,14 @@
                             <div class="slider slider-nav">
                                 <div class="col-lg-6 bg-grey mt-step-col operation-container" data-operation="sum">
                                     <div class="mt-step-number first bg-white font-grey">1</div>
-                                    <div class="mt-step-title uppercase font-grey-cascade">Sum</div>
-                                    <div class="mt-step-content font-grey-cascade">The selected items will be aggregated adding their raw data.</div>
+                                    <div class="mt-step-title uppercase font-grey-cascade">{% trans %}Sum{% endtrans %}</div>
+                                    <div class="mt-step-content font-grey-cascade">{% trans %}The selected items will be aggregated adding their raw data.{% endtrans %}</div>
                                 </div>
 
                                 <div class="col-lg-6 bg-grey mt-step-col operation-container" data-operation="mean">
                                     <div class="mt-step-number first bg-white font-grey">2</div>
-                                    <div class="mt-step-title uppercase font-grey-cascade">Mean</div>
-                                    <div class="mt-step-content font-grey-cascade">The selected items will be aggregated calculting their mean.</div>
+                                    <div class="mt-step-title uppercase font-grey-cascade">{% trans %}Mean{% endtrans %}</div>
+                                    <div class="mt-step-content font-grey-cascade">{% trans %}The selected items will be aggregated calculting their mean.{% endtrans %}</div>
                                 </div>
                             </div>
                         </div>
@@ -210,11 +210,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Warning</h4>
+                    <h4 class="modal-title">{% trans %}Warning{% endtrans %}</h4>
                 </div>
-                <div class="modal-body"> You can analyze only 2 phases at a time</div>
+                <div class="modal-body"> {% trans %}You can analyze only 2 phases at a time{% endtrans %}</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -227,11 +227,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Warning</h4>
+                    <h4 class="modal-title">{% trans %}Warning{% endtrans %}</h4>
                 </div>
-                <div class="modal-body"> You can select only 1 item at a time</div>
+                <div class="modal-body"> {% trans %}You can select only 1 item at a time{% endtrans %}</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -242,11 +242,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Warning</h4>
+                    <h4 class="modal-title">{% trans %}Warning{% endtrans %}</h4>
                 </div>
-                <div class="modal-body"> You need at least 4 observations to perform the statistical analysis</div>
+                <div class="modal-body"> {% trans %}You need at least 4 observations to perform the statistical analysis{% endtrans %}</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -257,11 +257,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Warning</h4>
+                    <h4 class="modal-title">{% trans %}Warning{% endtrans %}</h4>
                 </div>
-                <div class="modal-body"> You need to select at least 2 items to aggregate data</div>
+                <div class="modal-body"> {% trans %}You need to select at least 2 items to aggregate data{% endtrans %}</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -327,7 +327,7 @@
         $('#index-action li a').on('click', function(){
             switch($(this).data('index-id')) {
                 case 1:
-                    $('#speedometer-title').text('Speedometer: ' + 'AvsB+trendB-trendA');
+                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}AvsB+trendB-trendA{% endtrans %}');
                     $('#analysis').val($('#r-a-vs-b-trend-b-trend-a').text());
                     $('#effect-size-value').text($('#r-a-vs-b-trend-b-trend-a').text());
                     rotateArrow(parseFloat($("#analysis").val()));
@@ -337,7 +337,7 @@
                     break;
 
                 case 2:
-                    $('#speedometer-title').text('Speedometer: ' + 'AvsB+trendB');
+                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}AvsB+trendB{% endtrans %}');
                     $('#analysis').val($('#r-a-vs-b-trend-b').text());
                     $('#effect-size-value').text($('#r-a-vs-b-trend-b').text());
                     rotateArrow(parseFloat($("#analysis").val()));
@@ -347,7 +347,7 @@
                     break;
 
                 case 3:
-                    $('#speedometer-title').text('Speedometer: ' + 'AvsB');
+                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}AvsB{% endtrans %}');
                     $('#analysis').val($('#r-a-vs-b').text());
                     $('#effect-size-value').text($('#r-a-vs-b').text());
                     rotateArrow(parseFloat($("#analysis").val()));
@@ -357,7 +357,7 @@
                     break;
 
                 case 4:
-                    $('#speedometer-title').text('Speedometer: ' + 'Allison & Gorman');
+                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}Allison & Gorman{% endtrans %}');
                     $('#analysis').val($('#r-allison-gorman').text());
                     $('#effect-size-value').text($('#r-allison-gorman').text());
                     rotateArrow(parseFloat($("#analysis").val()));

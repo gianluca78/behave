@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-{{ title }}
+    {% trans %}Measures{% endtrans %}
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -9,16 +9,16 @@
     <i class="fa fa-circle"></i>
 </li>
 <li>
-    <span>Measures</span>
+    <span>{% trans %}Measures{% endtrans %}</span>
     <i class="fa fa-circle"></i>
 </li>
 <li>
-    <span>List</span>
+    <span>{% trans %}List{% endtrans %}</span>
 </li>
 {% endblock %}
 
 {% block pageTitle %}
-Measures
+    {% trans %}Measures{% endtrans %}
 {% endblock %}
 
 {% block stylesheets %}
@@ -94,16 +94,16 @@ Measures
             <div class="portlet-title">
                 <div class="caption font-dark">
                     <i class="icon-settings font-dark"></i>
-                    <span class="caption-subject bold uppercase"> List </span>
+                    <span class="caption-subject bold uppercase"> {% trans %}List{% endtrans %} </span>
                 </div>
                 <div class="actions">
-                    <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Add a new measure" data-intro="Clik here to add a new measure." data-step="1">
+                    <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="{% trans %}Add a new measure{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clik here to add a new measure.{% endtrans %}" data-step="1">
                         <i class="fa fa-plus"></i>
                     </a>
-                    <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="Edit" data-intro="Click here to edit the measure settings." data-step="2">
+                    <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="{% trans %}Edit{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to edit the measure settings.{% endtrans %}" data-step="2">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" title="Delete" data-intro="Click here to delete a measure." data-step="3">
+                    <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" title="{% trans %}Delete{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to delete a measure.{% endtrans %}" data-step="3">
                         <i class="fa fa-trash"></i>
                     </a>
                 </div>
@@ -119,8 +119,8 @@ Measures
                                 <span></span>
                             </label>
                         </th>
-                        <th> Name</th>
-                        <th> Description</th>
+                        <th> {% trans %}Name{% endtrans %}</th>
+                        <th> {% trans %}Description{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -153,12 +153,12 @@ Measures
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h4 class="modal-title">Warning</h4>
+                        <h4 class="modal-title">{% trans %}Warning{% endtrans %}</h4>
                     </div>
-                    <div class="modal-body"> Are you sure you want to delete this measure?</div>
+                    <div class="modal-body"> {% trans %}Are you sure you want to delete this measure?{% endtrans %}</div>
                     <div class="modal-footer">
-                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                        <button id="confirm-delete" type="button" class="btn red" data-url="">Yes, delete</button>
+                        <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
+                        <button id="confirm-delete" type="button" class="btn red" data-url="">{% trans %}Yes, delete{% endtrans %}</button>
                     </div>
                 </div>
             </div>

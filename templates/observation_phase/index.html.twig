@@ -9,7 +9,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('student_list') }}">Students</a>
+        <a href="{{ path('student_list') }}">{% trans %}Students{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -17,7 +17,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">Observations</a>
+        <a href="{{ path('observation_student_list', { 'id': observation.student.id }) }}">{% trans %}Observations{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -25,12 +25,12 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <span>Data</span>
+        <span>{% trans %}Data{% endtrans %}</span>
     </li>
 {% endblock %}
 
 {% block pageTitle %}
-    Data
+    {% trans %}Data{% endtrans %}
 {% endblock %}
 
 {% block stylesheets %}
@@ -104,15 +104,15 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-layers font-dark"></i>
-                        <span class="caption-subject font-dark bold uppercase">Observation phases</span>
+                        <span class="caption-subject font-dark bold uppercase">{% trans %}Observation phases{% endtrans %}</span>
                     </div>
                     <div class="actions">
-                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_new', { 'id': observation.id }) }}" title="Add a new phase" data-intro="Click here to add a new observation phase." data-step="1">
+                        <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_new', { 'id': observation.id }) }}" title="{% trans %}Add a new phase{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to add a new observation phase.{% endtrans %}" data-step="1">
                             <i class="fa fa-plus"></i>
                         </a>
 
                         {% if observation.isSingleCaseDesign %}
-                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('data_analysis', { 'id': observation.id }) }}" title="Statistical analyses" data-intro="Clicking here, you can compare two observation phases (for instance baseline and intervetion) and evaluate whether your work to decrease a negative behaviour (or increase a positive behaviour) worked or not." data-step="2">
+                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('data_analysis', { 'id': observation.id }) }}" title="{% trans %}Statistical analyses{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clicking here, you can compare two observation phases (for instance baseline and intervetion) and evaluate whether your work to decrease a negative behaviour (or increase a positive behaviour) worked or not.{% endtrans %}" data-step="2">
                             <i class="fa fa-line-chart"></i>
                         </a>
                         {% endif %}
@@ -122,8 +122,8 @@
                 <div class="portlet-body">
                     {% if observation.observationPhases | length == 0 %}
                         <div class="note note-info">
-                            <h4 class="block">No phases defined!</h4>
-                            <p> Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...)</p>
+                            <h4 class="block">{% trans %}No phases defined!{% endtrans %}</h4>
+                            <p> {% trans %}Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...){% endtrans %}</p>
                         </div>
                     {% endif %}
 
@@ -154,19 +154,19 @@
                                 <div class="col-md-{{ indexGrid }} bg-grey-steel mt-step-col">
                                     <div class="mt-step-number">{{ loop.index }}</div>
                                     <div class="mt-step-title uppercase font-grey-cascade">
-                                        <sup class="badge badge-success">gathered data: {{ phase.dataIds | length }} </sup> {{ phase.name }}
+                                        <sup class="badge badge-success">{% trans %}gathered data:{% endtrans %} {{ phase.dataIds | length }} </sup> {{ phase.name }}
                                     </div>
                                     <div class="mt-step-content font-grey-cascade">
 
-                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_edit', {'id': phase.id }) }}" title="Edit" data-intro="Click here to edit the phase data." data-step="3">
+                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('observation_phase_edit', {'id': phase.id }) }}" title="{% trans %}Edit{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to edit the phase data.{% endtrans %}" data-step="3">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a class="delete-button opaque btn btn-circle btn-icon-only btn-default" data-toggle="modal" data-url="{{ path('observation_phase_delete', {'id': phase.id }) }}" href="#basic" title="Delete" data-intro="Click here to delete the phase." data-step="4">
+                                        <a class="delete-button opaque btn btn-circle btn-icon-only btn-default" data-toggle="modal" data-url="{{ path('observation_phase_delete', {'id': phase.id }) }}" href="#basic" title="{% trans %}Delete{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to delete the phase.{% endtrans %}" data-step="4">
                                             <i class="fa fa-trash"></i>
                                         </a>
 
-                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('data_list', {'id': phase.id }) }}" title="Raw data per phase" data-intro="Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot." data-step="5">
+                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('data_list', {'id': phase.id }) }}" title="{% trans %}Raw data per phase{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.{% endtrans %}" data-step="5">
                                             <i class="fa fa-list"></i>
                                         </a>
                                     </div>
@@ -183,19 +183,19 @@
     <div class="row">
         <div class="col-md-12">
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
-            <div class="portlet light bordered" data-intro="This section contains all the session data collected by observers" data-step="6">
+            <div class="portlet light bordered" data-intro="{% trans from 'tutorial' %}This section contains all the session data collected by observers{% endtrans %}" data-step="6">
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject bold uppercase"> Data categorization </span>
+                        <span class="caption-subject bold uppercase"> {% trans %}Data categorization{% endtrans %} </span>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="btn-group pull-right">
-                            <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-intro="Clicking here, you can associate data to a phase after selecting the checkboxes near the data." data-step="7">
-                                Phases
+                            <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-intro="{% trans from 'tutorial' %}Clicking here, you can associate data to a phase after selecting the checkboxes near the data.{% endtrans %}" data-step="7">
+                                {% trans %}Phases{% endtrans %}
                                 <i class="fa fa-angle-down"></i>
                             </button>
                             <ul class="dropdown-menu pull-right">
@@ -222,8 +222,8 @@
                                     <span></span>
                                 </label>
                             </th>
-                            <th> Dates</th>
-                            <th> Phase</th>
+                            <th> {% trans %}Dates{% endtrans %}</th>
+                            <th> {% trans %}Phase{% endtrans %}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -258,12 +258,12 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                            <h4 class="modal-title">Warning</h4>
+                            <h4 class="modal-title">{% trans %}Warning{% endtrans %}</h4>
                         </div>
-                        <div class="modal-body"> Are you sure you want to delete this phase?</div>
+                        <div class="modal-body"> {% trans %}Are you sure you want to delete this phase?{% endtrans %}</div>
                         <div class="modal-footer">
-                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
-                            <button id="confirm-delete" type="button" class="btn red" data-url="">Yes, delete</button>
+                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
+                            <button id="confirm-delete" type="button" class="btn red" data-url="">{% trans %}Yes, delete{% endtrans %}</button>
                         </div>
                     </div>
                 </div>
