@@ -55,75 +55,75 @@
       </trans-unit>
       <trans-unit id="lsPGVGI" resname="Clik here to add a new measure.">
         <source>Clik here to add a new measure.</source>
-        <target>__Clik here to add a new measure.</target>
+        <target>Clik here to add a new measure.</target>
       </trans-unit>
       <trans-unit id="m5PU_K1" resname="Click here to edit the measure settings.">
         <source>Click here to edit the measure settings.</source>
-        <target>__Click here to edit the measure settings.</target>
+        <target>Click here to edit the measure settings.</target>
       </trans-unit>
       <trans-unit id="M944ZHs" resname="Click here to delete a measure.">
         <source>Click here to delete a measure.</source>
-        <target>__Click here to delete a measure.</target>
+        <target>Click here to delete a measure.</target>
       </trans-unit>
       <trans-unit id="M1_QPZE" resname="Click here to add a new observation.">
         <source>Click here to add a new observation.</source>
-        <target>__Click here to add a new observation.</target>
+        <target>Click here to add a new observation.</target>
       </trans-unit>
       <trans-unit id="lfJGu5_" resname="When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.">
         <source>When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</source>
-        <target>__When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</target>
+        <target>When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</target>
       </trans-unit>
       <trans-unit id="K0LTxN4" resname="The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.">
         <source>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</source>
-        <target>__The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</target>
+        <target>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</target>
       </trans-unit>
       <trans-unit id="wH4P9ye" resname="When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.">
         <source>When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.</source>
-        <target>__When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.</target>
+        <target>When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.</target>
       </trans-unit>
       <trans-unit id="rPshfQo" resname="Click here to edit the observation data.">
         <source>Click here to edit the observation data.</source>
-        <target>__Click here to edit the observation data.</target>
+        <target>Click here to edit the observation data.</target>
       </trans-unit>
       <trans-unit id="RduMntG" resname="Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.">
         <source>Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.</source>
-        <target>__Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.</target>
+        <target>Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.</target>
       </trans-unit>
       <trans-unit id="t10sCSJ" resname="Do you need the raw data for your personal analyses or purposes? Just click here and download it.">
         <source>Do you need the raw data for your personal analyses or purposes? Just click here and download it.</source>
-        <target>__Do you need the raw data for your personal analyses or purposes? Just click here and download it.</target>
+        <target>Do you need the raw data for your personal analyses or purposes? Just click here and download it.</target>
       </trans-unit>
       <trans-unit id="FrnBcOx" resname="Click here to enable the data collection. Until the icon is red, you can't do that!">
         <source>Click here to enable the data collection. Until the icon is red, you can't do that!</source>
-        <target>__Click here to enable the data collection. Until the icon is red, you can't do that!</target>
+        <target>Click here to enable the data collection. Until the icon is red, you can't do that!</target>
       </trans-unit>
       <trans-unit id="cLy_2h8" resname="Click here to add a new observation phase.">
         <source>Click here to add a new observation phase.</source>
-        <target>__Click here to add a new observation phase.</target>
+        <target>Click here to add a new observation phase.</target>
       </trans-unit>
       <trans-unit id="2_FlVAx" resname="Clicking here, you can compare two observation phases (for instance baseline and intervetion) and evaluate whether your work to decrease a negative behaviour (or increase a positive behaviour) worked or not.">
         <source>Clicking here, you can compare two observation phases (for instance baseline and intervetion) and evaluate whether your work to decrease a negative behaviour (or increase a positive behaviour) worked or not.</source>
-        <target>__Clicking here, you can compare two observation phases (for instance baseline and intervetion) and evaluate whether your work to decrease a negative behaviour (or increase a positive behaviour) worked or not.</target>
+        <target>Clicking here, you can compare two observation phases (for instance baseline and intervetion) and evaluate whether your work to decrease a negative behaviour (or increase a positive behaviour) worked or not.</target>
       </trans-unit>
-      <trans-unit id="7aqioCK" resname="Click here to edit the phase data.">
-        <source>Click here to edit the phase data.</source>
-        <target>__Click here to edit the phase data.</target>
+      <trans-unit id="57Y7Vfc" resname="Click here to edit the observation phase.">
+        <source>Click here to edit the observation phase.</source>
+        <target>Click here to edit the observation phase.</target>
       </trans-unit>
       <trans-unit id="kMHZVBM" resname="Click here to delete the phase.">
         <source>Click here to delete the phase.</source>
-        <target>__Click here to delete the phase.</target>
+        <target>Click here to delete the phase.</target>
       </trans-unit>
       <trans-unit id="PLaDjFK" resname="Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.">
         <source>Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.</source>
-        <target>__Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.</target>
+        <target>Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.</target>
       </trans-unit>
       <trans-unit id="8JtgQoQ" resname="This section contains all the session data collected by observers">
         <source>This section contains all the session data collected by observers</source>
-        <target>__This section contains all the session data collected by observers</target>
+        <target>This section contains all the session data collected by observers</target>
       </trans-unit>
       <trans-unit id="oYKWdAt" resname="Clicking here, you can associate data to a phase after selecting the checkboxes near the data.">
         <source>Clicking here, you can associate data to a phase after selecting the checkboxes near the data.</source>
-        <target>__Clicking here, you can associate data to a phase after selecting the checkboxes near the data.</target>
+        <target>Clicking here, you can associate data to a phase after selecting the checkboxes near the data.</target>
       </trans-unit>
     </body>
   </file>

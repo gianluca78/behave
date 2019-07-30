@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="Ax_3qJq" resname="number_of_frequencies">
         <source>number_of_frequencies</source>
-        <target>Frequenzq</target>
+        <target>Frequenza</target>
       </trans-unit>
       <trans-unit id="rONRR4M" resname="number_of_intervals">
         <source>number_of_intervals</source>

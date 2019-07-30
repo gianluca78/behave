@@ -52,7 +52,7 @@ class DataController extends Controller
     }
 
     /**
-     * @Route("/analysis-results", name="data_analysis_results")
+     * @Route("/{_locale}/analysis-results", name="data_analysis_results")
      * @Method({"POST"})
      * @Template
      *
@@ -157,7 +157,7 @@ class DataController extends Controller
 
         return array(
             'data' => $data,
-            'analysisMessage' => $effectSizeChecker->getResultMessage($data),
+            'analysisMessage' => $this->get('translator')->trans($effectSizeChecker->getResultMessage($data), array(), 'r_analysis'),
             'phasesLength' => array_count_values($data->database->PHASE),
             'interceptEstimate' => $data->regression->coefficients[0]->Estimate,
             'interceptStdError' => $data->regression->coefficients[0]->{'Std. Error'},

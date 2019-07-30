@@ -33,13 +33,17 @@
         <source>decrease</source>
         <target>decrease</target>
       </trans-unit>
-      <trans-unit id="vKKZsKG" resname="effect_size_sentence">
-        <source>effect_size_sentence</source>
-        <target>The effect size is: %s.</target>
-      </trans-unit>
       <trans-unit id="dCNOmK." resname="null">
         <source>null</source>
         <target>null</target>
+      </trans-unit>
+      <trans-unit id="1EO6yub" resname="The effect size is">
+        <source>The effect size is</source>
+        <target>The effect size is</target>
+      </trans-unit>
+      <trans-unit id="VFUSAXm" resname="Descriptive Statistics">
+        <source>Descriptive Statistics</source>
+        <target>Descriptive Statistics</target>
       </trans-unit>
     </body>
   </file>

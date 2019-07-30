@@ -205,45 +205,17 @@
         <source>Add a new observation</source>
         <target>Add a new observation</target>
       </trans-unit>
-      <trans-unit id="M1_QPZE" resname="Click here to add a new observation.">
-        <source>Click here to add a new observation.</source>
-        <target>Click here to add a new observation.</target>
-      </trans-unit>
-      <trans-unit id="lfJGu5_" resname="When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.">
-        <source>When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</source>
-        <target>When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</target>
-      </trans-unit>
       <trans-unit id="3ORbX07" resname="List of phases">
         <source>List of phases</source>
         <target>List of phases</target>
-      </trans-unit>
-      <trans-unit id="K0LTxN4" resname="The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.">
-        <source>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</source>
-        <target>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</target>
       </trans-unit>
       <trans-unit id="KYh6X.m" resname="Share">
         <source>Share</source>
         <target>Share</target>
       </trans-unit>
-      <trans-unit id="wH4P9ye" resname="When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.">
-        <source>When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.</source>
-        <target>When an observation is planned and enabled, you have to inform the observer to collect the data about a behaviour. You can do that copying the URL of the data collection page or adding the observers' emails to send them an automatic notification via email one hour before the observation.</target>
-      </trans-unit>
-      <trans-unit id="rPshfQo" resname="Click here to edit the observation data.">
-        <source>Click here to edit the observation data.</source>
-        <target>Click here to edit the observation data.</target>
-      </trans-unit>
-      <trans-unit id="RduMntG" resname="Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.">
-        <source>Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.</source>
-        <target>Click here to delete the observation. Be careful, deleting the observation, you will lose definitively all the collected data.</target>
-      </trans-unit>
       <trans-unit id="zpSWtLL" resname="Download raw data">
         <source>Download raw data</source>
         <target>Download raw data</target>
-      </trans-unit>
-      <trans-unit id="t10sCSJ" resname="Do you need the raw data for your personal analyses or purposes? Just click here and download it.">
-        <source>Do you need the raw data for your personal analyses or purposes? Just click here and download it.</source>
-        <target>Do you need the raw data for your personal analyses or purposes? Just click here and download it.</target>
       </trans-unit>
       <trans-unit id="6.lA8rP" resname="Measure">
         <source>Measure</source>
@@ -252,10 +224,6 @@
       <trans-unit id="ksHN.fT" resname="Enabled">
         <source>Enabled</source>
         <target>Enabled</target>
-      </trans-unit>
-      <trans-unit id="FrnBcOx" resname="Click here to enable the data collection. Until the icon is red, you can't do that!">
-        <source>Click here to enable the data collection. Until the icon is red, you can't do that!</source>
-        <target>Click here to enable the data collection. Until the icon is red, you can't do that!</target>
       </trans-unit>
       <trans-unit id="o_duu9Y" resname="Turn on/off the collection of data">
         <source>Turn on/off the collection of data</source>
@@ -521,10 +489,6 @@
         <source>You need to select at least 2 items to aggregate data</source>
         <target>You need to select at least 2 items to aggregate data</target>
       </trans-unit>
-      <trans-unit id="76UdCTQ" resname="Speedometer:">
-        <source>Speedometer:</source>
-        <target>Speedometer:</target>
-      </trans-unit>
       <trans-unit id="bOxFFLz" resname="Disorder">
         <source>Disorder</source>
         <target>Disorder</target>
@@ -553,21 +517,61 @@
         <source>Is secondary to another medical condition?</source>
         <target>Is secondary to another medical condition?</target>
       </trans-unit>
-      <trans-unit id="health_information_inserted_successfully" resname="Health information inserted successfully">
+      <trans-unit id="Y3F.vkG" resname="Health information inserted successfully">
         <source>Health information inserted successfully</source>
         <target>Health information inserted successfully</target>
       </trans-unit>
-      <trans-unit id="insert_new_health_information" resname="Insert new health information">
+      <trans-unit id="8c2lEi_" resname="Insert new health information">
         <source>Insert new health information</source>
         <target>Insert new health information</target>
       </trans-unit>
-      <trans-unit id="edit_health_information" resname="Edit health information">
+      <trans-unit id="2Eg33V8" resname="Edit health information">
         <source>Edit health information</source>
         <target>Edit health information</target>
       </trans-unit>
-      <trans-unit id="dsm5_disorder" resname="Dsm5 disorder">
+      <trans-unit id="UQILzGE" resname="Dsm5 disorder">
         <source>Dsm5 disorder</source>
         <target>Dsm5 disorder</target>
+      </trans-unit>
+      <trans-unit id="RxnpJwG" resname="Scatter plot">
+        <source>Scatter plot</source>
+        <target>Scatter plot</target>
+      </trans-unit>
+      <trans-unit id="xfAEcPr" resname="Speedometer">
+        <source>Speedometer</source>
+        <target>Speedometer</target>
+      </trans-unit>
+      <trans-unit id="LB9ESSG" resname="Behavioral management model across europe (BeHave) project">
+        <source>Behavioral management model across europe (BeHave) project</source>
+        <target>Behavioral management model across europe (BeHave) project</target>
+      </trans-unit>
+      <trans-unit id="aufWQ2B" resname="BEHAVE application">
+        <source>BEHAVE application</source>
+        <target>BEHAVE application</target>
+      </trans-unit>
+      <trans-unit id="iVMfoeX" resname="an ICT-based solution supporting the observation and the management of problem behaviours">
+        <source>an ICT-based solution supporting the observation and the management of problem behaviours</source>
+        <target>an ICT-based solution supporting the observation and the management of problem behaviours</target>
+      </trans-unit>
+      <trans-unit id="bkIkRyy" resname="Build your session-to-session measure using many different widgets">
+        <source>Build your session-to-session measure using many different widgets</source>
+        <target>Build your session-to-session measure using many different widgets</target>
+      </trans-unit>
+      <trans-unit id="CKDDP5E" resname="Collect">
+        <source>Collect</source>
+        <target>Collect</target>
+      </trans-unit>
+      <trans-unit id="u0C.PN2" resname="Collect data directly throught your favourite device: personal computer, mobile phone, or tablet">
+        <source>Collect data directly throught your favourite device: personal computer, mobile phone, or tablet</source>
+        <target>Collect data directly throught your favourite device: personal computer, mobile phone, or tablet</target>
+      </trans-unit>
+      <trans-unit id="ytW.Kcc" resname="Analyze">
+        <source>Analyze</source>
+        <target>Analyze</target>
+      </trans-unit>
+      <trans-unit id="_Fd1VTq" resname="Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan">
+        <source>Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan</source>
+        <target>Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan</target>
       </trans-unit>
     </body>
   </file>

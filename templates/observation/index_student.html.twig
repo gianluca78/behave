@@ -360,7 +360,7 @@
 
         $('#share-button').on('click', function() {
             if(!$(this).hasClass('opaque')) {
-                $('#copy-url-text').html('Copy url');
+                $('#copy-url-text').html('{% trans %}Copy url{% endtrans %}');
                 $('#notified-users').empty();
                 $('#messages').empty();
 

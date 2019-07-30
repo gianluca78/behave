@@ -327,7 +327,7 @@
         $('#index-action li a').on('click', function(){
             switch($(this).data('index-id')) {
                 case 1:
-                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}AvsB+trendB-trendA{% endtrans %}');
+                    $('#speedometer-title').text('{% trans %}Speedometer{% endtrans %}: ' + '{% trans %}AvsB+trendB-trendA{% endtrans %}');
                     $('#analysis').val($('#r-a-vs-b-trend-b-trend-a').text());
                     $('#effect-size-value').text($('#r-a-vs-b-trend-b-trend-a').text());
                     rotateArrow(parseFloat($("#analysis").val()));
@@ -337,7 +337,7 @@
                     break;
 
                 case 2:
-                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}AvsB+trendB{% endtrans %}');
+                    $('#speedometer-title').text('{% trans %}Speedometer{% endtrans %}: ' + '{% trans %}AvsB+trendB{% endtrans %}');
                     $('#analysis').val($('#r-a-vs-b-trend-b').text());
                     $('#effect-size-value').text($('#r-a-vs-b-trend-b').text());
                     rotateArrow(parseFloat($("#analysis").val()));
@@ -347,7 +347,7 @@
                     break;
 
                 case 3:
-                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}AvsB{% endtrans %}');
+                    $('#speedometer-title').text('{% trans %}Speedometer{% endtrans %}: ' + '{% trans %}AvsB{% endtrans %}');
                     $('#analysis').val($('#r-a-vs-b').text());
                     $('#effect-size-value').text($('#r-a-vs-b').text());
                     rotateArrow(parseFloat($("#analysis").val()));
@@ -357,7 +357,7 @@
                     break;
 
                 case 4:
-                    $('#speedometer-title').text('{% trans %}Speedometer:{% endtrans %} ' + '{% trans %}Allison & Gorman{% endtrans %}');
+                    $('#speedometer-title').text('{% trans %}Speedometer{% endtrans %}: ' + '{% trans %}Allison & Gorman{% endtrans %}');
                     $('#analysis').val($('#r-allison-gorman').text());
                     $('#effect-size-value').text($('#r-allison-gorman').text());
                     rotateArrow(parseFloat($("#analysis").val()));

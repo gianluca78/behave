@@ -153,11 +153,11 @@
         <source>Please describe the behavioral intervention</source>
         <target>Per favore descrivi l'intervento comportamentale</target>
       </trans-unit>
-      <trans-unit id="search_by_disorder" resname="Search by disorder name, DSM5, ICD9, OR ICD10 codes">
+      <trans-unit id="vUmafT_" resname="Search by disorder name, DSM5, ICD9, OR ICD10 codes">
         <source>Search by disorder name, DSM5, ICD9, OR ICD10 codes</source>
         <target>Cerca per nome del disturbo, o codici DSM5, ICD9, o ICD10</target>
       </trans-unit>
-      <trans-unit id="disorder" resname="Disorder">
+      <trans-unit id="bOxFFLz" resname="Disorder">
         <source>Disorder</source>
         <target>Disturbo</target>
       </trans-unit>

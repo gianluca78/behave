@@ -5,7 +5,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span class="caption-subject bold font-dark uppercase "> Scatter plot</span>
+                        <span class="caption-subject bold font-dark uppercase "> {% trans %}Scatter plot{% endtrans %}</span>
                         <span class="caption-helper"></span>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-directions font-green hide"></i>
-                        <span id="speedometer-title" class="caption-subject bold font-dark uppercase "> Speedometer: {{ data.outMonte }} </span>
+                        <span id="speedometer-title" class="caption-subject bold font-dark uppercase "> {% trans %}Speedometer{% endtrans %}: {{ data.outMonte }} </span>
                         <span class="caption-helper"></span>
                     </div>
                 </div>
@@ -63,9 +63,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 text-center">
-                            <div style="padding-left:25px;" id="message"><strong>The effect size
-                                    is: <span id="effect-size-value">{{ analysisValue }}</span>.</strong><br>
-                                {{ analysisMessage }}
+                            <div style="padding-left:25px;" id="message"><strong>{% trans from 'r_analysis' %}The effect size is{% endtrans %}:
+                                    <span id="effect-size-value">{{ analysisValue }}</span>.</strong><br>
+                                    {{ analysisMessage }}
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                         <div class="caption">
                             <i class="icon-directions font-green hide"></i>
                             <span class="caption-subject bold font-dark uppercase "> Allison & Gorman</span>
-                            <span class="caption-helper">Descriptive Statistics</span>
+                            <span class="caption-helper">{% trans from 'r_analysis' %}Descriptive Statistics{% endtrans %}</span>
                         </div>
                     </div>
                     <div class="portlet-body">
