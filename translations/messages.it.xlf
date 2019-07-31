@@ -561,7 +561,7 @@
         <source>Collect</source>
         <target>Colleziona</target>
       </trans-unit>
-      <trans-unit id="u0C.PN2" resname="Collect data directly throught your favourite device: personal computer, mobile phone, or tablet">
+      <trans-unit id="XVj0_b5" resname="Collect data directly throught your favourite device: personal computer, mobile phone, or tablet">
         <source>Collect data directly throught your favourite device: personal computer, mobile phone, or tablet</source>
         <target>Colleziona i dati direttamente tramite il tuo dispositivo preferito: personal computer, smartphone, o tablet</target>
       </trans-unit>
@@ -572,6 +572,18 @@
       <trans-unit id="_Fd1VTq" resname="Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan">
         <source>Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan</source>
         <target>A partire da una simulazione Montecarlo, l'applicazione sceglie il migliore algoritmo per calcolare la grandezza dell'effetto dell'intervento comportamentale applicato</target>
+      </trans-unit>
+      <trans-unit id="F9cGdoy" resname="LANGUAGES">
+        <source>LANGUAGES</source>
+        <target>LINGUA</target>
+      </trans-unit>
+      <trans-unit id="uhGL9.y" resname="English">
+        <source>English</source>
+        <target>Inglese</target>
+      </trans-unit>
+      <trans-unit id=".h2cfbN" resname="Italian">
+        <source>Italian</source>
+        <target>Italiano</target>
       </trans-unit>
     </body>
   </file>
