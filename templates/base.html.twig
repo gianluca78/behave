@@ -284,7 +284,12 @@
 
             console.log($('[data-step]').length);
 
-            introJs().setOption("showStepNumbers", "false").start();
+            introJs().setOption("showStepNumbers", "false").
+                      setOption("nextLabel", "{% trans %}Next{% endtrans %}").
+                      setOption("prevLabel", "{% trans %}Prev{% endtrans %}").
+                      setOption("skipLabel", "{% trans %}Skip{% endtrans %}").
+                      setOption("doneLabel", "{% trans %}Done{% endtrans %}").
+                      start();
         }
     );
 

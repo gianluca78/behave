@@ -601,6 +601,22 @@
         <source>The observation is not enabled</source>
         <target>The observation is not enabled</target>
       </trans-unit>
+      <trans-unit id="H.V6Kdf" resname="Next">
+        <source>Next</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="c5Epmfr" resname="Prev">
+        <source>Prev</source>
+        <target>Prev</target>
+      </trans-unit>
+      <trans-unit id="KNA1ltJ" resname="Skip">
+        <source>Skip</source>
+        <target>Skip</target>
+      </trans-unit>
+      <trans-unit id="EaZ2fVZ" resname="Done">
+        <source>Done</source>
+        <target>Done</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
