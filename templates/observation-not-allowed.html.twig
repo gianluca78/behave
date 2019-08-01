@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Metronic Admin Theme #1 | Coming Soon</title>
+    <title>{% trans %}You shall not pass{% endtrans %}!</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -57,15 +57,15 @@
     <div class="row">
         <div class="col-md-6 coming-soon-content">
             {% block body %}
-            <h1>You shall not pass!</h1>
+            <h1>{% trans %}You shall not pass{% endtrans %}!</h1>
             {% if observation.isEnabled %}
                 {% if nextDate %}
-                    <p>Your observation will start in...</p>
+                    <p>{% trans %}Your observation will start in{% endtrans %}...</p>
                 {% else %}
-                <p> You are now allowed to access this page.</p>
+                <p> {% trans %}You are now allowed to access this page{% endtrans %}.</p>
                 {% endif %}
             {% else %}
-                The observation is not enabled
+                {% trans %}The observation is not enabled{% endtrans %}
             {% endif %}
         </div>
         {% if nextDate %}
@@ -120,15 +120,7 @@
 
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <!-- END THEME LAYOUT SCRIPTS -->
-<script>
-    $(document).ready(function()
-    {
-        $('#clickmewow').click(function()
-        {
-            $('#radio1003').attr('checked', 'checked');
-        });
-    })
-</script>
+
 </body>
 
 </html>

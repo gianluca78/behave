@@ -25,6 +25,14 @@
         <source>download_pdf_document</source>
         <target>Download PDF document</target>
       </trans-unit>
+      <trans-unit id="download_csv" resname="download_csv">
+        <source>download_csv</source>
+        <target>Download CSV</target>
+      </trans-unit>
+      <trans-unit id="download_xls" resname="download_xls">
+        <source>download_xls</source>
+        <target>Download XLS</target>
+      </trans-unit>
       <trans-unit id="jTJwGNi" resname="download_svg_vector_image">
         <source>download_svg_vector_image</source>
         <target>Download SVG vector image</target>
@@ -60,6 +68,14 @@
       <trans-unit id="ofzkNjh" resname="y">
         <source>y</source>
         <target>y</target>
+      </trans-unit>
+      <trans-unit id="view_data" resname="view_data">
+        <source>View data table</source>
+        <target>View data table</target>
+      </trans-unit>
+      <trans-unit id="open_in_cloud" resname="open_in_cloud">
+        <source>Open in cloud</source>
+        <target>Open in cloud</target>
       </trans-unit>
     </body>
   </file>

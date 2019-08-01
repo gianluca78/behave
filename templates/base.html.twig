@@ -118,6 +118,28 @@
                             </a>
 
                         </li>
+
+                        <li class="dropdown dropdown-user">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                               data-close-others="true">
+
+                                <img class="img-circle" src="{{ asset('icons/flags/rounded/' ~ app.request.locale ~ '.svg') }}" alt="English language" title="English language">
+
+                                <span class="username username-hide-on-mobile">{{ app.request.locale | upper }}</span>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">
+                                        <img src="{{ asset('icons/flags/square/en.svg') }}" alt="English language" title="English language" width="20px"> {% trans %}English{% endtrans %}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'it'})) }}">
+                                        <img src="{{ asset('icons/flags/square/it.svg') }}" alt="Italian language" title="Italian language" width="20px"> {% trans %}Italian{% endtrans %}</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <!-- END USER LOGIN DROPDOWN -->
 
                         <!-- BEGIN QUICK SIDEBAR TOGGLER -->
@@ -248,6 +270,8 @@
 <!-- END THEME LAYOUT SCRIPTS -->
 
 <script>
+    var dataTableUserLocaleUrl = '{{ asset('theme/assets/global/plugins/datatables/languages/' ~ app.request.locale ~'.json') }}';
+
     $( document ).ready(function() {
         if($('[data-step]').length > 0) {
             $('#take-a-tour').parent().removeClass('hidden');

@@ -585,6 +585,22 @@
         <source>Italian</source>
         <target>Italiano</target>
       </trans-unit>
+      <trans-unit id="raf74TI" resname="You shall not pass">
+        <source>You shall not pass</source>
+        <target>Non puoi passare</target>
+      </trans-unit>
+      <trans-unit id="psUc8iR" resname="Your observation will start in">
+        <source>Your observation will start in</source>
+        <target>La tua osservazione inizierà in</target>
+      </trans-unit>
+      <trans-unit id="0Cl2tky" resname="You are now allowed to access this page">
+        <source>You are now allowed to access this page</source>
+        <target>Non sei autorizzato ad accedere a questa pagina</target>
+      </trans-unit>
+      <trans-unit id="U.VBVpB" resname="The observation is not enabled">
+        <source>The observation is not enabled</source>
+        <target>L'osservazione non è abilitata</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

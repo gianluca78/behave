@@ -10,7 +10,11 @@ var TableDatatablesManaged = function () {
             {className: "dt-right"}
         ], order: [
             [1, "asc"]
-        ]});
+        ],
+           language: {
+               url: dataTableUserLocaleUrl
+           }
+        });
         jQuery("#measure-datatable_wrapper");
         e.find(".group-checkable").change(function () {
             var e = jQuery(this).attr("data-set"), t = jQuery(this).is(":checked");
@@ -59,7 +63,11 @@ var TableDatatablesManaged = function () {
             {className: "dt-right"}
         ], order: [
             [1, "asc"]
-        ]});
+        ],
+           language: {
+               url: dataTableUserLocaleUrl
+           }
+        });
         jQuery("#observation-phase-datatable_wrapper");
         e.find(".group-checkable").change(function () {
             var e = jQuery(this).attr("data-set"), t = jQuery(this).is(":checked");
@@ -108,7 +116,11 @@ var TableDatatablesManaged = function () {
             {className: "dt-right"}
         ], order: [
             [1, "asc"]
-        ]});
+        ],
+           language: {
+               url: dataTableUserLocaleUrl
+           }
+        });
         jQuery("#observation-datatable_wrapper");
         e.find(".group-checkable").change(function () {
             var e = jQuery(this).attr("data-set"), t = jQuery(this).is(":checked");

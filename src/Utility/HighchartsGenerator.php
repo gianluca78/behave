@@ -43,13 +43,15 @@ class HighchartsGenerator {
 
         $ob->tooltip->formatter($formatter);
 
-        /*
         $ob->lang->downloadJPEG($this->translator->trans('download_jpeg_image', array(), 'chart'));
         $ob->lang->downloadPDF($this->translator->trans('download_pdf_document', array(), 'chart'));
+        $ob->lang->downloadCSV($this->translator->trans('download_csv_document', array(), 'chart'));
+        $ob->lang->downloadXLS($this->translator->trans('download_xls_document', array(), 'chart'));
         $ob->lang->downloadPNG($this->translator->trans('download_png_image', array(), 'chart'));
         $ob->lang->downloadSVG($this->translator->trans('download_svg_vector_image', array(), 'chart'));
         $ob->lang->printChart($this->translator->trans('print_chart', array(), 'chart'));
-        */
+        $ob->lang->openInCloud($this->translator->trans('open_in_cloud', array(), 'chart'));
+        $ob->lang->viewData($this->translator->trans('view_data', array(), 'chart'));
 
         $ob->series($series);
 
