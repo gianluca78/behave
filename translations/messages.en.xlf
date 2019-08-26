@@ -521,6 +521,14 @@
         <source>Health information inserted successfully</source>
         <target>Health information inserted successfully</target>
       </trans-unit>
+      <trans-unit id="Y3F.vkn" resname="Health information edited successfully">
+        <source>Health information edited successfully</source>
+        <target>Health information edited successfully</target>
+      </trans-unit>
+      <trans-unit id="Y3F.vkC" resname="Health information deleted successfully">
+        <source>Health information deleted successfully</source>
+        <target>Health information deleted successfully</target>
+      </trans-unit>
       <trans-unit id="8c2lEi_" resname="Insert new health information">
         <source>Insert new health information</source>
         <target>Insert new health information</target>

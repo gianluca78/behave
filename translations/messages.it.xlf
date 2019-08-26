@@ -521,6 +521,14 @@
         <source>Health information inserted successfully</source>
         <target>Informazioni sanitarie inserite con successo</target>
       </trans-unit>
+      <trans-unit id="Y3F.vkn" resname="Health information edited successfully">
+        <source>Health information edited successfully</source>
+        <target>Informazioni sanitarie modificate con successo</target>
+      </trans-unit>
+      <trans-unit id="Y3F.vkC" resname="Health information deleted successfully">
+        <source>Health information deleted successfully</source>
+        <target>Informazioni sanitarie cancellate con successo</target>
+      </trans-unit>
       <trans-unit id="8c2lEi_" resname="Insert new health information">
         <source>Insert new health information</source>
         <target>Inserisci nuove informazioni sanitarie</target>

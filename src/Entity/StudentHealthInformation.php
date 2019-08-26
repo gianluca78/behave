@@ -138,6 +138,21 @@ class StudentHealthInformation
         return $this->comorbidDsm5Disorders;
     }
 
+    public function getStringComorbidDsm5Disorders()
+    {
+        $result = '';
+
+        foreach($this->comorbidDsm5Disorders as $key => $disorder) {
+            $result.= $disorder;
+
+            if($key != count($this->comorbidDsm5Disorders) - 1) {
+                $result.= '; ';
+            }
+        }
+
+        return $result;
+    }
+
     public function addComorbidDsm5Disorder(Dsm5Disorder $comorbidDsm5Disorder): self
     {
         if (!$this->comorbidDsm5Disorders->contains($comorbidDsm5Disorder)) {
