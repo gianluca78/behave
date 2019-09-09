@@ -157,6 +157,58 @@
         <source>Disorder</source>
         <target>Disorder</target>
       </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="FGRbQsp" resname="Choice type">
+        <source>Choice type</source>
+        <target>Choice type</target>
+      </trans-unit>
+      <trans-unit id="sQKVi7h" resname="-- Select a type --">
+        <source>-- Select a type --</source>
+        <target>-- Select a type --</target>
+      </trans-unit>
+      <trans-unit id="GG.PjJQ" resname="Checkboxes">
+        <source>Checkboxes</source>
+        <target>Checkboxes</target>
+      </trans-unit>
+      <trans-unit id="b26Et7Y" resname="Dropdown list">
+        <source>Dropdown list</source>
+        <target>Dropdown list</target>
+      </trans-unit>
+      <trans-unit id="suYP9Ye" resname="Dropdown list with multiple selection">
+        <source>Dropdown list with multiple selection</source>
+        <target>Dropdown list with multiple selection</target>
+      </trans-unit>
+      <trans-unit id="D_Ygn3S" resname="Radio buttons">
+        <source>Radio buttons</source>
+        <target>Radio buttons</target>
+      </trans-unit>
+      <trans-unit id="KrXiqAj" resname="Text of the item">
+        <source>Text of the item</source>
+        <target>Text of the item</target>
+      </trans-unit>
+      <trans-unit id="hq0EJKF" resname="For example: what is your favourite color?">
+        <source>For example: what is your favourite color?</source>
+        <target>For example: what is your favourite color?</target>
+      </trans-unit>
+      <trans-unit id="Ga0i3rq" resname="Empty value">
+        <source>Empty value</source>
+        <target>Empty value</target>
+      </trans-unit>
+      <trans-unit id="6LRY4bb" resname="Default value displayed in a select before the user clicks on it.">
+        <source>Default value displayed in a select before the user clicks on it.</source>
+        <target>Default value displayed in a select before the user clicks on it.</target>
+      </trans-unit>
+      <trans-unit id="0NuLXjZ" resname="Options">
+        <source>Options</source>
+        <target>Options</target>
+      </trans-unit>
+      <trans-unit id="0Nchp1k" resname="Write the options and press enter after entering each one.">
+        <source>Write the options and press enter after entering each one.</source>
+        <target>Write the options and press enter after entering each one.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

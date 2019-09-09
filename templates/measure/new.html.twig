@@ -10,7 +10,7 @@
         <i class="fa fa-circle"></i>
     </li>
     <li>
-        <a href="{{ path('measure_list') }}">Measures</a>
+        <a href="{{ path('measure_list') }}">{% trans %}Measures{% endtrans %}</a>
         <i class="fa fa-circle"></i>
     </li>
     <li>
@@ -24,7 +24,7 @@
     <div class="portlet box green">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-gift"></i>Compose your measure
+                <i class="fa fa-gift"></i>{% trans %}Compose your measure{% endtrans %}
             </div>
         </div>
         <div id="measure-form" class="portlet-body">
@@ -189,33 +189,33 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <a class="btn btn-circle green" href="javascript:;" data-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-plus"></i> Add item
+                            <i class="fa fa-plus"></i> {% trans %}Add item{% endtrans %}
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu measure-menu">
                             <li>
                                 <a href="javascript:;">
-                                    <i class="fa fa-dot-circle-o"></i> Choice</a>
+                                    <i class="fa fa-dot-circle-o"></i> {% trans %}Choice{% endtrans %}</a>
                             </li>
                             <li>
                                 <a href="javascript:;">
-                                    <i class="fa fa-eye"></i> Direct Observation</a>
+                                    <i class="fa fa-eye"></i> {% trans %}Direct Observation{% endtrans %}</a>
                             </li>
                             <li>
                                 <a href="javascript:;">
-                                    <i class="fa fa-cube"></i> Integer</a>
+                                    <i class="fa fa-cube"></i> {% trans %}Integer{% endtrans %}</a>
                             </li>
                             <li>
                                 <a href="javascript:;">
-                                    <i class="fa fa-th"></i> Four Quadrant Diagram</a>
+                                    <i class="fa fa-th"></i> {% trans %}Four Quadrant Diagram{% endtrans %}</a>
                             </li>
                             <li>
                                 <a href="javascript:;">
-                                    <i class="fa fa-arrows-h"></i> Range</a>
+                                    <i class="fa fa-arrows-h"></i> {% trans %}Range{% endtrans %}</a>
                             </li>
                             <li>
                                 <a href="javascript:;">
-                                    <i class="fa fa-font"></i> Text</a>
+                                    <i class="fa fa-font"></i> {% trans %}Text{% endtrans %}</a>
                             </li>
                         </ul>
 
@@ -234,21 +234,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Integer item</h4>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Integer item{% endtrans %}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>The widget is aimed to support the creation of items with a numeric response.</p>
+                    <p>{% trans from 'tutorial-measures' %}The widget is aimed to support the creation of items with a numeric response{% endtrans %}.</p>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/integer-item-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/integer-item-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/integer-item-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/integer-item-gather-' ~ app.request.locale ~ '.png') }}"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans from 'tutorial-measures' %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -259,43 +259,43 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Direct observation item</h4>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Direct observation item{% endtrans %}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>The widget is aimed to measure a phenomenon evaluating its frequency, its duration, or whether it occurs or does not occur during specified time periods.</p>
+                    <p>{% trans from 'tutorial-measures' %}The widget is aimed to measure a phenomenon evaluating its frequency, its duration, or whether it occurs or does not occur during specified time periods.{% endtrans %}</p>
 
-                    <h4>Duration</h4>
+                    <h4>{% trans from 'tutorial-measures' %}Duration{% endtrans %}</h4>
 
-                    <p>The following images shows an example of the direct item creation phase, selecting the type "Duration recording":</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example of the direct item creation phase, selecting the type "Duration recording"{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-duration-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-duration-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-duration-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-duration-gather-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <h4>Frequency</h4>
+                    <h4>{% trans from 'tutorial-measures' %}Frequency{% endtrans %}</h4>
 
-                    <p>The following images shows an example of the direct item creation phase, selecting the type "Frequency":</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example of the direct item creation phase, selecting the type "Frequency"{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-frequency-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-frequency-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-frequency-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-frequency-gather-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <h4>Interval recording</h4>
+                    <h4>{% trans from 'tutorial-measures' %}Interval recording{% endtrans %}</h4>
 
-                    <p>The following images shows an example of the direct item creation phase, selecting the type "Interval recording":</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example of the direct item creation phase, selecting the type "Interval recording"{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-interval-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-interval-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-interval-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/direct-item-interval-gather-' ~ app.request.locale ~ '.png') }}"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans from 'tutorial-measures' %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -306,21 +306,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Four Quadrant Diagram item</h4>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Four Quadrant Diagram item{% endtrans %}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>The widget is aimed to create a cartesian plane. The user has to select the point in the plane where he feels to belong according to the predefined categories. </p>
+                    <p>{% trans from 'tutorial-measures' %}The widget is aimed to create a cartesian plane. The user has to select the point in the plane where he feels to belong according to the predefined categories{% endtrans %}. </p>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/meter-item-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/meter-item-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/meter-item-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/meter-item-gather-' ~ app.request.locale ~ '.png') }}"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans from 'tutorial-measures' %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -331,21 +331,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Range item</h4>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Range item{% endtrans %}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>The widget is aimed to create an input with a numeric value which must be no less than a given value, and no more than another given value.</p>
+                    <p>{% trans from 'tutorial-measures' %}The widget is aimed to create an input with a numeric value which must be no less than a given value, and no more than another given value{% endtrans %}.</p>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/range-item-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/range-item-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/range-item-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/range-item-gather-' ~ app.request.locale ~ '.png') }}"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans from 'tutorial-measures' %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -356,21 +356,21 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Text item</h4>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Text item{% endtrans %}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>The widget is aimed to create a textual input.</p>
+                    <p>{% trans from 'tutorial-measures' %}The widget is aimed to create a textual input{% endtrans %}.</p>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/text-item-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/text-item-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/text-item-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/text-item-gather-' ~ app.request.locale ~ '.png') }}"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans from 'tutorial-measures' %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -381,53 +381,53 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Choice item</h4>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Choice item{% endtrans %}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>The widget is aimed to create radio buttons and selects. Multiple selections of values are allowed. </p>
+                    <p>{% trans from 'tutorial-measures' %}The widget is aimed to create radio buttons and selects. Multiple selections of values are allowed{% endtrans %}. </p>
 
-                    <h4>Checkboxes</h4>
+                    <h4>{% trans from 'tutorial-measures' %}Checkboxes{% endtrans %}</h4>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-checkboxes-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-checkboxes-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-checkboxes-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-checkboxes-gather-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <h4>Dropdown list</h4>
+                    <h4>{% trans from 'tutorial-measures' %}Dropdown list{% endtrans %}</h4>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-gather-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <h4>Dropdown list with multiple selection</h4>
+                    <h4>{% trans from 'tutorial-measures' %}Dropdown list with multiple selection{% endtrans %}</h4>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-multiple-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-multiple-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-multiple-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-dropdown-multiple-gather-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <h4>Radio buttons</h4>
+                    <h4>{% trans from 'tutorial-measures' %}Radio buttons{% endtrans %}</h4>
 
-                    <p>The following images shows an example about the measure creation phase:</p>
+                    <p>{% trans from 'tutorial-measures' %}The following images shows an example about the measure creation phase{% endtrans %}:</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-radio-build.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-radio-build-' ~ app.request.locale ~ '.png') }}"></p>
 
-                    <p>and what this produce in the data collection section.</p>
+                    <p>{% trans from 'tutorial-measures' %}and what this produce in the data collection section{% endtrans %}.</p>
 
-                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-radio-gather.png') }}"></p>
+                    <p><img class="img-responsive bordered-img" src="{{ asset('images/choice-item-radio-gather-' ~ app.request.locale ~ '.png') }}"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans from 'tutorial-measures' %}Close{% endtrans %}</button>
                 </div>
             </div>
         </div>
@@ -535,47 +535,53 @@
             }
         });
 
-        $( '.dropdown-menu a' ).on('click', function(e) {
+        $( '.dropdown-menu.measure-menu a' ).on('click', function(e) {
             e.preventDefault();
 
             switch($.trim($( this ).text())) {
                 case 'Choice':
-                    addItemForm('choice');
+                case 'Scelta':
+                    addItemForm('choice', $.trim($( this ).text()));
                     break;
 
                 case 'Direct Observation':
-                    addItemForm('direct-observation');
+                case 'Osservazione Diretta':
+                    addItemForm('direct-observation', $.trim($( this ).text()));
                     break;
 
                 case 'Integer':
-                    addItemForm('integer');
+                case 'Numerico':
+                    addItemForm('integer', $.trim($( this ).text()));
                     break;
 
                 case 'Four Quadrant Diagram':
-                    addItemForm('meter');
+                case 'Diagramma a Quattro Quadranti':
+                    addItemForm('meter', $.trim($( this ).text()));
                     break;
 
                 case 'Range':
-                    addItemForm('range');
+                case 'Intervallo di valori':
+                    addItemForm('range', $.trim($( this ).text()));
                     break;
 
                 case 'Text':
-                    addItemForm('text');
+                case 'Testo':
+                    addItemForm('text', $.trim($( this ).text()));
             }
         });
 
-        function addItemForm(type) {
+        function addItemForm(type, name) {
             prototype = $collectionHolder.data('prototype-' + type);
             index = $collectionHolder.attr('data-index-item');
             newIndex = parseInt(index) + 1;
             newItemNumber = newIndex + 1;
-            typeName = (type == 'meter') ? 'Four Quadrant Diagram' : type;
+            typeName = name.toUpperCase();
 
             newForm = prototype.replace(/__name__/g, newIndex);
 
             portlet = '<div class="portlet"><div class="portlet-title"><div class="tools">'
-                    + typeName.toUpperCase() +
-                    '<a data-toggle="modal" style="position:relative; top: -2px; left: 1px;" href="#' + type + '"><img src="{{ asset('icons/question.svg') }}" width="16px" height="14px" name="Information about the item type" title="Information about the item type"></a><a href="javascript:;" class="m-icon-swapup" title="Move the item up"></a><a href="javascript:;" class="m-icon-swapdown" title="Move the item down"> </a><a href="javascript:;" class="collapse" title="Close the section"> </a><a href="javascript:;" class="remove" title="Remove the item"> </a></div></div><div class="portlet-body">'
+                    + typeName +
+                    '<a data-toggle="modal" style="position:relative; top: -2px; left: 1px;" href="#' + type + '"><img src="{{ asset('icons/question.svg') }}" width="16px" height="14px" name="{% trans %}Information about the item type{% endtrans %}" title="{% trans %}Information about the item type{% endtrans %}"></a><a href="javascript:;" class="m-icon-swapup" title="{% trans %}Move the item up{% endtrans %}"></a><a href="javascript:;" class="m-icon-swapdown" title="{% trans %}Move the item down{% endtrans %}"> </a><a href="javascript:;" class="collapse" title="{% trans %}Close the section{% endtrans %}"> </a><a href="javascript:;" class="remove" title="{% trans %}Remove the item{% endtrans %}"> </a></div></div><div class="portlet-body">'
                     + newForm +
                     '</div></div>';
 

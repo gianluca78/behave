@@ -71,7 +71,7 @@
       </trans-unit>
       <trans-unit id="lfJGu5_" resname="When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.">
         <source>When you plan an observation, the session of observation are automatically inserted in a calendar. Did you have an unexpected event and you have to postpone to observation? Just drag and drop the event in another time slot or day.</source>
-        <target>Quando pianifichi un'osservazione, la sessione di osservazione è automaticamente inserita in un calendario. Hai avuto un imprevisto e devi posticipare l'ooservazione? Semplicemente trascina e rilascia l'evento in un'altra fascia oraria o giorno.</target>
+        <target>Quando pianifichi un'osservazione, la sessione di osservazione è automaticamente inserita in un calendario. Hai avuto un imprevisto e devi posticipare l'osservazione? Semplicemente trascina e rilascia l'evento in un'altra fascia oraria o giorno.</target>
       </trans-unit>
       <trans-unit id="K0LTxN4" resname="The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.">
         <source>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the right phase.</source>

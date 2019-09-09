@@ -22,13 +22,20 @@ class MeasureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('required' => true))
-            ->add('description', TextareaType::class, array('required' => true))
+            ->add('name', null, array(
+                'required' => true,
+                'translation_domain' => 'forms'
+            ))
+            ->add('description', TextareaType::class, array(
+                'required' => true,
+                'translation_domain' => 'forms'
+            ))
             ->add('choiceItems', CollectionType::class, array(
                 'entry_type' => ChoiceItemType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
-                'by_reference' => false
+                'by_reference' => false,
+                'translation_domain' => 'forms'
             ))
             ->add('directObservationItems', CollectionType::class, array(
                 'entry_type' => DirectObservationItemType::class,
@@ -60,7 +67,9 @@ class MeasureType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false
             ))
-            ->add('submit', SubmitType::class);;
+            ->add('submit', SubmitType::class, array(
+                'translation_domain' => 'forms'
+            ));;
     }
 
     public function configureOptions(OptionsResolver $resolver)

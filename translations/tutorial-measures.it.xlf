@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="it" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="jg75arl" resname="Integer item">
+        <source>Integer item</source>
+        <target>Item a risposta numerica</target>
+      </trans-unit>
+      <trans-unit id="_zxd3W6" resname="The widget is aimed to support the creation of items with a numeric response">
+        <source>The widget is aimed to support the creation of items with a numeric response</source>
+        <target>L'elemento ha lo scopo di supportare la creazione degli item a risposta numerica</target>
+      </trans-unit>
+      <trans-unit id="QR6l91F" resname="The following images shows an example about the measure creation phase">
+        <source>The following images shows an example about the measure creation phase</source>
+        <target>Le immagini seguenti mostrano un esempio relativo alla fase di creazione</target>
+      </trans-unit>
+      <trans-unit id="kA80Ae2" resname="and what this produce in the data collection section">
+        <source>and what this produce in the data collection section</source>
+        <target>e cosa produce nella sezione di collezione dei dati</target>
+      </trans-unit>
+      <trans-unit id="fZ63rLE" resname="Close">
+        <source>Close</source>
+        <target>Chiudi</target>
+      </trans-unit>
+      <trans-unit id="WdFsjsq" resname="Direct observation item">
+        <source>Direct observation item</source>
+        <target>Item a osservazione diretta</target>
+      </trans-unit>
+      <trans-unit id="LZkw7.g" resname="The widget is aimed to measure a phenomenon evaluating its frequency, its duration, or whether it occurs or does not occur during specified time periods.">
+        <source>The widget is aimed to measure a phenomenon evaluating its frequency, its duration, or whether it occurs or does not occur during specified time periods.</source>
+        <target>L'elemento è finalizzato a misurare un fenomeno valutandone la sua frequenza, durata, o se si verifica o no durante un periodo di tempo specifico.</target>
+      </trans-unit>
+      <trans-unit id="T8UqPEx" resname="Duration">
+        <source>Duration</source>
+        <target>Durata</target>
+      </trans-unit>
+      <trans-unit id="QHGDEKn" resname="The following images shows an example of the direct item creation phase, selecting the type &quot;Duration recording&quot;">
+        <source>The following images shows an example of the direct item creation phase, selecting the type "Duration recording"</source>
+        <target>Le immagini seguenti mostrano un esempio della fase di creazione degli item a osservazione diretta, selezionando il tipo "Registrazione della durata"</target>
+      </trans-unit>
+      <trans-unit id="FrZmjZg" resname="Frequency">
+        <source>Frequency</source>
+        <target>Frequenza</target>
+      </trans-unit>
+      <trans-unit id="7rgMn79" resname="The following images shows an example of the direct item creation phase, selecting the type &quot;Frequency&quot;">
+        <source>The following images shows an example of the direct item creation phase, selecting the type "Frequency"</source>
+        <target>Le immagini seguenti mostrano un esempio della fase di creazione degli item a osservazione diretta, selezionando il tipo "Frequenza"</target>
+      </trans-unit>
+      <trans-unit id="XelsRIg" resname="Interval recording">
+        <source>Interval recording</source>
+        <target>Registrazione a intervalli</target>
+      </trans-unit>
+      <trans-unit id="mQN.Ftt" resname="The following images shows an example of the direct item creation phase, selecting the type &quot;Interval recording&quot;">
+        <source>The following images shows an example of the direct item creation phase, selecting the type "Interval recording"</source>
+        <target>Le immagini seguenti mostrano un esempio della fase di creazione degli item a osservazione diretta, selezionando il tipo "Registrazione a intervalli"</target>
+      </trans-unit>
+      <trans-unit id="nPn1Hx_" resname="Four Quadrant Diagram item">
+        <source>Four Quadrant Diagram item</source>
+        <target>Diagramma a 4 quadranti</target>
+      </trans-unit>
+      <trans-unit id="QHZLB.j" resname="The widget is aimed to create a cartesian plane. The user has to select the point in the plane where he feels to belong according to the predefined categories">
+        <source>The widget is aimed to create a cartesian plane. The user has to select the point in the plane where he feels to belong according to the predefined categories</source>
+        <target>L'elemento è finalizzato a creare un piano cartesiano. L'utente deve selezionare il punto nel piano che meglio descrive la sua posizione in relazione alle categorie predefinite</target>
+      </trans-unit>
+      <trans-unit id="yUTDElv" resname="Range item">
+        <source>Range item</source>
+        <target>Item basato su intervallo di valori</target>
+      </trans-unit>
+      <trans-unit id="jJW08Op" resname="The widget is aimed to create an input with a numeric value which must be no less than a given value, and no more than another given value">
+        <source>The widget is aimed to create an input with a numeric value which must be no less than a given value, and no more than another given value</source>
+        <target>L'elemento è finalizzato a creare un item a risposta numerica i cui valori non possono essere minori di un valore data, e non maggiori di un altro valore dato</target>
+      </trans-unit>
+      <trans-unit id="rPYQMJ4" resname="Text item">
+        <source>Text item</source>
+        <target>Item testuale</target>
+      </trans-unit>
+      <trans-unit id="Zre6igK" resname="The widget is aimed to create a textual input">
+        <source>The widget is aimed to create a textual input</source>
+        <target>L'elemento è finalizzato a creare un campo per risposte di tipo testuale</target>
+      </trans-unit>
+      <trans-unit id="NOQ0Z_k" resname="Choice item">
+        <source>Choice item</source>
+        <target>Item scelta</target>
+      </trans-unit>
+      <trans-unit id="54gz1bR" resname="The widget is aimed to create radio buttons and selects. Multiple selections of values are allowed">
+        <source>The widget is aimed to create radio buttons and selects. Multiple selections of values are allowed</source>
+        <target>L'elemento è finalizzato a creare radio button e menu a tendina. La selezione di valori multipli è consentita</target>
+      </trans-unit>
+      <trans-unit id="GG.PjJQ" resname="Checkboxes">
+        <source>Checkboxes</source>
+        <target>Caselle di controllo</target>
+      </trans-unit>
+      <trans-unit id="b26Et7Y" resname="Dropdown list">
+        <source>Dropdown list</source>
+        <target>Menu a tendina</target>
+      </trans-unit>
+      <trans-unit id="suYP9Ye" resname="Dropdown list with multiple selection">
+        <source>Dropdown list with multiple selection</source>
+        <target>Menu a tendina con selezione multipla</target>
+      </trans-unit>
+      <trans-unit id="D_Ygn3S" resname="Radio buttons">
+        <source>Radio buttons</source>
+        <target>Radio button</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

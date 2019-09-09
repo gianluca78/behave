@@ -521,11 +521,11 @@
         <source>Health information inserted successfully</source>
         <target>Health information inserted successfully</target>
       </trans-unit>
-      <trans-unit id="Y3F.vkn" resname="Health information edited successfully">
+      <trans-unit id="oiv3K76" resname="Health information edited successfully">
         <source>Health information edited successfully</source>
         <target>Health information edited successfully</target>
       </trans-unit>
-      <trans-unit id="Y3F.vkC" resname="Health information deleted successfully">
+      <trans-unit id="O4E6Ls9" resname="Health information deleted successfully">
         <source>Health information deleted successfully</source>
         <target>Health information deleted successfully</target>
       </trans-unit>
@@ -624,6 +624,198 @@
       <trans-unit id="EaZ2fVZ" resname="Done">
         <source>Done</source>
         <target>Done</target>
+      </trans-unit>
+      <trans-unit id="76A4msb" resname="Choice">
+        <source>Choice</source>
+        <target>Choice</target>
+      </trans-unit>
+      <trans-unit id="zglJpJd" resname="Direct Observation">
+        <source>Direct Observation</source>
+        <target>Direct Observation</target>
+      </trans-unit>
+      <trans-unit id="KHaBS9c" resname="Integer">
+        <source>Integer</source>
+        <target>Integer</target>
+      </trans-unit>
+      <trans-unit id="WVMnaxV" resname="Four Quadrant Diagram">
+        <source>Four Quadrant Diagram</source>
+        <target>Four Quadrant Diagram</target>
+      </trans-unit>
+      <trans-unit id="XedKgbG" resname="Range">
+        <source>Range</source>
+        <target>Range</target>
+      </trans-unit>
+      <trans-unit id="cZiMTY4" resname="Text">
+        <source>Text</source>
+        <target>Text</target>
+      </trans-unit>
+      <trans-unit id="0aCzKac" resname="Add item">
+        <source>Add item</source>
+        <target>Add item</target>
+      </trans-unit>
+      <trans-unit id="aWRVD2x" resname="Compose your measure">
+        <source>Compose your measure</source>
+        <target>Compose your measure</target>
+      </trans-unit>
+      <trans-unit id="KrXiqAj" resname="Text of the item">
+        <source>Text of the item</source>
+        <target>Text of the item</target>
+      </trans-unit>
+      <trans-unit id="gX_MhLL" resname="For instance: Interruptions of conversation">
+        <source>For instance: Interruptions of conversation</source>
+        <target>For instance: Interruptions of conversation</target>
+      </trans-unit>
+      <trans-unit id="ghRWywf" resname="Observation length in minutes">
+        <source>Observation length in minutes</source>
+        <target>Observation length in minutes</target>
+      </trans-unit>
+      <trans-unit id="_m.n3Z8" resname="In general, 10 or 15 minutes">
+        <source>In general, 10 or 15 minutes</source>
+        <target>In general, 10 or 15 minutes</target>
+      </trans-unit>
+      <trans-unit id="l8zDaf5" resname="Interval length in seconds">
+        <source>Interval length in seconds</source>
+        <target>Interval length in seconds</target>
+      </trans-unit>
+      <trans-unit id="505w.wa" resname="The number of seconds has to be multiple of the observation length">
+        <source>The number of seconds has to be multiple of the observation length</source>
+        <target>The number of seconds has to be multiple of the observation length</target>
+      </trans-unit>
+      <trans-unit id="A58DMlx" resname="Typology">
+        <source>Typology</source>
+        <target>Typology</target>
+      </trans-unit>
+      <trans-unit id="DlL36nc" resname="Duration Recording">
+        <source>Duration Recording</source>
+        <target>Duration Recording</target>
+      </trans-unit>
+      <trans-unit id="FrZmjZg" resname="Frequency">
+        <source>Frequency</source>
+        <target>Frequency</target>
+      </trans-unit>
+      <trans-unit id="ozDdFp3" resname="Interval Recording - Whole Interval">
+        <source>Interval Recording - Whole Interval</source>
+        <target>Interval Recording - Whole Interval</target>
+      </trans-unit>
+      <trans-unit id="lxHCE_6" resname="Interval Recording - Partial Interval">
+        <source>Interval Recording - Partial Interval</source>
+        <target>Interval Recording - Partial Interval</target>
+      </trans-unit>
+      <trans-unit id="25FUHoI" resname="Interval Recording - Momentary Time Sampling">
+        <source>Interval Recording - Momentary Time Sampling</source>
+        <target>Interval Recording - Momentary Time Sampling</target>
+      </trans-unit>
+      <trans-unit id="ZnnPHzi" resname="For instance: How many times...?">
+        <source>For instance: How many times...?</source>
+        <target>For instance: How many times...?</target>
+      </trans-unit>
+      <trans-unit id="nlcmUm7" resname="Name of the diagram">
+        <source>Name of the diagram</source>
+        <target>Name of the diagram</target>
+      </trans-unit>
+      <trans-unit id="AL_R_k_" resname="For example: Mood meter">
+        <source>For example: Mood meter</source>
+        <target>For example: Mood meter</target>
+      </trans-unit>
+      <trans-unit id="w0Um0Za" resname="Y axis name">
+        <source>Y axis name</source>
+        <target>Y axis name</target>
+      </trans-unit>
+      <trans-unit id="7CLraFv" resname="For example: Pleasantness">
+        <source>For example: Pleasantness</source>
+        <target>For example: Pleasantness</target>
+      </trans-unit>
+      <trans-unit id="2yI_H.7" resname="Label of the max value for the y axis">
+        <source>Label of the max value for the y axis</source>
+        <target>Label of the max value for the y axis</target>
+      </trans-unit>
+      <trans-unit id="nzP86k9" resname="Label of the min value for the y axis">
+        <source>Label of the min value for the y axis</source>
+        <target>Label of the min value for the y axis</target>
+      </trans-unit>
+      <trans-unit id="VFtgZB7" resname="Label of the max value for the x axis">
+        <source>Label of the max value for the x axis</source>
+        <target>Label of the max value for the x axis</target>
+      </trans-unit>
+      <trans-unit id="GjDfsnc" resname="Label of the min value for the x axis">
+        <source>Label of the min value for the x axis</source>
+        <target>Label of the min value for the x axis</target>
+      </trans-unit>
+      <trans-unit id="cBTC6lO" resname="For example: High">
+        <source>For example: High</source>
+        <target>For example: High</target>
+      </trans-unit>
+      <trans-unit id="qL.kGxv" resname="For example: Low">
+        <source>For example: Low</source>
+        <target>For example: Low</target>
+      </trans-unit>
+      <trans-unit id="5GNn902" resname="X axis name">
+        <source>X axis name</source>
+        <target>X axis name</target>
+      </trans-unit>
+      <trans-unit id="Bg0yltj" resname="For example: Energy">
+        <source>For example: Energy</source>
+        <target>For example: Energy</target>
+      </trans-unit>
+      <trans-unit id="QL48D.o" resname="For instance, how many times he calls out in class?">
+        <source>For instance, how many times he calls out in class?</source>
+        <target>For instance, how many times he calls out in class?</target>
+      </trans-unit>
+      <trans-unit id="a1N7iE3" resname="Minimum value">
+        <source>Minimum value</source>
+        <target>Minimum value</target>
+      </trans-unit>
+      <trans-unit id="ajBHbfm" resname="Maximum value">
+        <source>Maximum value</source>
+        <target>Maximum value</target>
+      </trans-unit>
+      <trans-unit id="DhJBrHS" resname="For instance, 0">
+        <source>For instance, 0</source>
+        <target>For instance, 0</target>
+      </trans-unit>
+      <trans-unit id="e68.kia" resname="For instance, 10">
+        <source>For instance, 10</source>
+        <target>For instance, 10</target>
+      </trans-unit>
+      <trans-unit id="jmpsynq" resname="Step">
+        <source>Step</source>
+        <target>Step</target>
+      </trans-unit>
+      <trans-unit id="tNGUWEQ" resname="The value that indicate how to increment the min value to go to the max one">
+        <source>The value that indicate how to increment the min value to go to the max one</source>
+        <target>The value that indicate how to increment the min value to go to the max one</target>
+      </trans-unit>
+      <trans-unit id="tD72xKy" resname="For instance: What happens next, or as a result of the child's behavior?">
+        <source>For instance: What happens next, or as a result of the child's behavior?</source>
+        <target>For instance: What happens next, or as a result of the child's behavior?</target>
+      </trans-unit>
+      <trans-unit id="9LJP7QJ" resname="Placeholder">
+        <source>Placeholder</source>
+        <target>Placeholder</target>
+      </trans-unit>
+      <trans-unit id="CPUr5j." resname="This is a short hint that describes the expected value of an input field">
+        <source>This is a short hint that describes the expected value of an input field</source>
+        <target>This is a short hint that describes the expected value of an input field</target>
+      </trans-unit>
+      <trans-unit id="KUBsBy9" resname="Information about the item type">
+        <source>Information about the item type</source>
+        <target>Information about the item type</target>
+      </trans-unit>
+      <trans-unit id="wd9fUQ9" resname="Move the item up">
+        <source>Move the item up</source>
+        <target>Move the item up</target>
+      </trans-unit>
+      <trans-unit id="HIyKEny" resname="Move the item down">
+        <source>Move the item down</source>
+        <target>Move the item down</target>
+      </trans-unit>
+      <trans-unit id="GZnmcpk" resname="Close the section">
+        <source>Close the section</source>
+        <target>Close the section</target>
+      </trans-unit>
+      <trans-unit id="M_H.8SO" resname="Remove the item">
+        <source>Remove the item</source>
+        <target>Remove the item</target>
       </trans-unit>
     </body>
   </file>

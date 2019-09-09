@@ -59,7 +59,7 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/edit/{id}", name="measure_edit")
+     * @Route("/{_locale}/edit/{id}", name="measure_edit", requirements={"locale": "en|it"})
      * @Method({"GET", "POST"})
      *
      * @param Request $request
@@ -95,7 +95,7 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/new", name="measure_new")
+     * @Route("/{_locale}/new", name="measure_new", requirements={"locale": "en|it"})
      * @Method({"GET", "POST"})
      * @Template
      *
