@@ -40,10 +40,6 @@ class DirectObservationItemType extends AbstractType
                     'data' => $options['interval_length_in_seconds']
                 )
             )
-            ->add('feedbackForIntervalRecording', HiddenType::class, array(
-                    'data' => $options['feedback_for_interval_recording']
-                )
-            )
             ->add('typology', HiddenType::class, array(
                     'data' => $options['typology']
                 )

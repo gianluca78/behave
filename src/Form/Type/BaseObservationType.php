@@ -37,6 +37,7 @@ class BaseObservationType extends AbstractType
                         'title' => 'Choose one of the following...',
                         'data-size' => 5
                     ),
+                    'required' => true,
                     'class' => Measure::class,
                     'choice_label' => 'name',
                     'query_builder' => function (EntityRepository $er) use ($options) {
