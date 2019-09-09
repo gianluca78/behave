@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li class="hidden">
-                            <a id="take-a-tour" href="javascript;">
+                            <a class="take-a-tour" href="javascript;">
                                 <i class="fa fa-question-circle"></i>
                                 <span class="title">{% trans from 'top-menu' %}Take a tour{% endtrans %}</span>
                             </a>
@@ -196,6 +196,12 @@
                                     <span class="selected"></span>
                                 </a>
                             </li>
+                            <li class="hidden">
+                                <a class="take-a-tour" href="javascript;">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="title">{% trans from 'top-menu' %}Take a tour{% endtrans %}</span>
+                                </a>
+                            </li>
                         {% endif %}
 
                     </ul>
@@ -274,12 +280,12 @@
 
     $( document ).ready(function() {
         if($('[data-step]').length > 0) {
-            $('#take-a-tour').parent().removeClass('hidden');
+            $('.take-a-tour').parent().removeClass('hidden');
         }
     });
 
 
-    $('#take-a-tour').click(function(e) {
+    $('.take-a-tour').click(function(e) {
             e.preventDefault();
 
             console.log($('[data-step]').length);
