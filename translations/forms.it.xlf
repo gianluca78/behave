@@ -145,6 +145,18 @@
         <source>Name</source>
         <target>Nome</target>
       </trans-unit>
+      <trans-unit id="5NhjIj9" resname="Name of the measure">
+        <source>Name of the measure</source>
+        <target>Nome della misura</target>
+      </trans-unit>
+      <trans-unit id="5MhtIL4" resname="For instance: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms">
+        <source>For instance: the scale consists of 10 items designed to assess a person\'s anxiety as presence of cognitive and somatic symptoms</source>
+        <target>Per esempio: la scala è composta da 10 item finalizzati a valutare l'ansietà di una persona identificando la presenza di sintomi somatici e cognitivi</target>
+      </trans-unit>
+      <trans-unit id="5MBt5L4" resname="For instance: Anxiety scale">
+        <source>For instance: Anxiety scale</source>
+        <target>Per esempio: Scala dell'ansia</target>
+      </trans-unit>
       <trans-unit id="D64FcWy" resname="Intervention">
         <source>Intervention</source>
         <target>Intervento</target>

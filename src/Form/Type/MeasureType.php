@@ -23,12 +23,19 @@ class MeasureType extends AbstractType
     {
         $builder
             ->add('name', null, array(
+                'label' => 'Name of the measure',
                 'required' => true,
-                'translation_domain' => 'forms'
+                'translation_domain' => 'forms',
+                'attr' => array(
+                    'placeholder' => 'For instance: Anxiety scale',
+                )
             ))
             ->add('description', TextareaType::class, array(
                 'required' => true,
-                'translation_domain' => 'forms'
+                'translation_domain' => 'forms',
+                'attr' => array(
+                    'placeholder' => 'For instance: the scale consists of 10 items designed to assess a person\'s anxiety as presence of cognitive and somatic symptoms'
+                )
             ))
             ->add('choiceItems', CollectionType::class, array(
                 'entry_type' => ChoiceItemType::class,
