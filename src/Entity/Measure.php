@@ -114,7 +114,7 @@ class Measure
     public function validate(ExecutionContextInterface $context, $payload)
     {
         if($this->countItems() == 0) {
-            $context->buildViolation('You have to insert at least 1 item')
+            $context->buildViolation('You have to insert at least 1 item: click on the button "Add item" below to do it')
                 ->atPath('name')
                 ->addViolation();
         }
