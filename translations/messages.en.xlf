@@ -817,6 +817,10 @@
         <source>Remove the item</source>
         <target>Remove the item</target>
       </trans-unit>
+      <trans-unit id="vYLPFmm" resname="Number">
+        <source>Number</source>
+        <target>Number</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

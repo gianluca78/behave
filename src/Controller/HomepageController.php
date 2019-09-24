@@ -28,10 +28,13 @@ class HomepageController extends Controller
      * @Template
      *
      */
-    public function homepageAction()
+    public function homepageAction(Request $request)
     {
         if($this->getUser()) {
-            return $this->forward('App\Controller\HomepageController::dashboardAction');
+            return $this->forward('App\Controller\HomepageController::dashboardAction', array(
+                '_route' => $request->attributes->get('_route'),
+                '_route_params' => $request->attributes->get('_route_params')
+            ));
         }
 
         return array();

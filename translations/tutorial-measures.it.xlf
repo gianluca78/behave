@@ -105,6 +105,10 @@
         <source>Radio buttons</source>
         <target>Radio button</target>
       </trans-unit>
+      <trans-unit id="8xda8S2" resname="Number item">
+        <source>Number item</source>
+        <target>__Number item</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

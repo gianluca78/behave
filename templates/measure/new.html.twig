@@ -203,7 +203,7 @@
                             </li>
                             <li>
                                 <a href="javascript:;">
-                                    <i class="fa fa-cube"></i> {% trans %}Integer{% endtrans %}</a>
+                                    <i class="fa fa-cube"></i> {% trans %}Number{% endtrans %}</a>
                             </li>
                             <li>
                                 <a href="javascript:;">
@@ -234,7 +234,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Integer item{% endtrans %}</h4>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Number item{% endtrans %}</h4>
                 </div>
                 <div class="modal-body">
                     <p>{% trans from 'tutorial-measures' %}The widget is aimed to support the creation of items with a numeric response{% endtrans %}.</p>
@@ -549,7 +549,7 @@
                     addItemForm('direct-observation', $.trim($( this ).text()));
                     break;
 
-                case 'Integer':
+                case 'Number':
                 case 'Numerico':
                     addItemForm('integer', $.trim($( this ).text()));
                     break;
