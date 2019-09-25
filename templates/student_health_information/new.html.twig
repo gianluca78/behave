@@ -38,10 +38,8 @@
         $( document ).ready(function() {
             $('#student_health_information_isSecondaryToAnotherMedicalCondition').bootstrapSwitch();
 
-            $("#student_health_information_dsm5Disorder").parent().parent().hide();
-
             $('#student_health_information_comorbidDsm5Disorders').fastselect({
-                'placeholder': 'Choose disorders from the list or typing portion of its name',
+                'placeholder': 'Choose disorders from the list or typing portion of its name'
 
             });
 
@@ -61,31 +59,6 @@
         });
     </script>
 
-    <script>
-        $( "#student_health_information_dsm5DisorderLabel" ).autocomplete({
-            source: "{{ path('disorder_search') }}",
-            minLength: 2,
-            select: function( event, ui ) {
-                event.preventDefault();
-
-                $('#student_health_information_dsm5DisorderLabel').val(ui.item.description);
-                $("#student_health_information_dsm5Disorder").val(ui.item.id);
-
-            },
-            focus: function(event, ui) {
-                event.preventDefault();
-                $("#student_health_information_dsm5DisorderLabel").val(ui.item.description);
-            }
-        }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-
-            return $( "<li>" )
-                    .attr( "data-value", item.id )
-                    .append(item.description).html(item.description)
-                    .appendTo( ul );
-        };
-
-    </script>
-
 {% endblock %}
 
 {% block body %}
@@ -101,7 +74,6 @@
     <div class="portlet-body">
         {{ form_start(form) }}
 
-        {{ form_row(form.dsm5DisorderLabel) }}
         {{ form_row(form.dsm5Disorder) }}
         {{ form_row(form.ageOfOnset) }}
 

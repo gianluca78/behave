@@ -25,15 +25,13 @@ class StudentHealthInformationType extends AbstractType
             ->add('medicalCondition', TextareaType::class, array(
                 'required' => false
             ))
-            ->add('dsm5Disorder')
-            ->add('dsm5DisorderLabel', TextType::class, array(
-                'mapped' => false,
-                'label' => 'Disorder',
-                'required' => true,
-                'attr' => array(
-                    'placeholder' => 'Search by disorder name, DSM5, ICD9, OR ICD10 codes',
-                ),
-                'translation_domain' => 'forms'
+            ->add('dsm5Disorder', EntityType::class, array(
+                'class' => Dsm5Disorder::class,
+                'choice_label' => 'description',
+                'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('u')
+                            ->orderBy('u.description', 'ASC');
+                    },
             ))
             ->add('comorbidDsm5Disorders', EntityType::class, [
                 'label' => 'Comorbid disorders',

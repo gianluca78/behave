@@ -159,7 +159,7 @@
                 <div class="portlet-body">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-intro="{% trans from 'tutorial' %}Here you can find the number of students you are working on.{% endtrans %}" data-step="2">
-                            <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+                            <a class="dashboard-stat dashboard-stat-v2 blue" href="{{ path('student_list') }}">
                                 <div class="visual">
                                     <i class="fa fa-user"></i>
                                 </div>
@@ -181,7 +181,7 @@
                         </div>
                         <div class="margin-bottom-10 visible-sm"> </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" data-intro="{% trans from 'tutorial' %}This box shows how many measures you inserted.{% endtrans %} " data-step="4">
-                            <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                            <a class="dashboard-stat dashboard-stat-v2 purple" href="{{ path('measure_list') }}">
                                 <div class="visual">
                                     <i class="fa fa-bar-chart-o"></i>
                                 </div>

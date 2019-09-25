@@ -19,13 +19,6 @@ class BaseObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('isSingleCaseDesign', null, array(
-                    'required' => false,
-                    'value' => 0,
-                    'label' => 'Single case?',
-                    'translation_domain' => 'forms'
-                )
-            )
             ->add('name', null, array('required' => true))
             ->add('description', TextareaType::class, array('required' => true))
             ->add('fillingInstructions', TextareaType::class, array('required' => false, 'translation_domain' => 'forms'))

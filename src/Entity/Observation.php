@@ -101,11 +101,6 @@ class Observation
     private $observationScheduler;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isSingleCaseDesign;
-
-    /**
      * @ORM\Column(type="string", length=40, unique=true)
      */
     private $token;
@@ -381,18 +376,6 @@ class Observation
         if ($this !== $observationScheduler->getObservation()) {
             $observationScheduler->setObservation($this);
         }
-
-        return $this;
-    }
-
-    public function getIsSingleCaseDesign()
-    {
-        return $this->isSingleCaseDesign;
-    }
-
-    public function setIsSingleCaseDesign(bool $isSingleCaseDesign)
-    {
-        $this->isSingleCaseDesign = $isSingleCaseDesign;
 
         return $this;
     }
