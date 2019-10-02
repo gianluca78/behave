@@ -50,7 +50,7 @@ class Observation
     /**
      * @var string $fillingInstructions
      *
-     * @ORM\Column(name="filling_instructions", type="encrypted_text")
+     * @ORM\Column(name="filling_instructions", type="encrypted_text", nullable=true)
      */
     private $fillingInstructions;
 

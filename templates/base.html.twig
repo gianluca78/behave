@@ -59,7 +59,7 @@
         <div class="page-header-inner ">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a href="{{ path('dashboard') }}">
+                <a href="{{ path('homepage') }}">
                     <img src="{{ asset('theme/assets/layouts/layout/img/logo.svg') }}" width="60px" alt="logo"
                          class="logo-default"/> </a>
             </div>
@@ -82,6 +82,12 @@
                                 <i class="fa fa-balance-scale"></i>
                                 <span class="title">{% trans from 'top-menu' %}Measures{% endtrans %}</span>
                                 <span class="selected"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('online-guide') }}">
+                                <i class="fa fa-question-circle"></i>
+                                <span class="title">{% trans from 'top-menu' %}Online guide{% endtrans %}</span>
                             </a>
                         </li>
                         <li class="hidden">
@@ -194,6 +200,12 @@
                                     <i class="fa fa-balance-scale"></i>
                                     <span class="title">{% trans from 'top-menu' %}Measures{% endtrans %}</span>
                                     <span class="selected"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('online-guide') }}">
+                                    <i class="fa fa-question-circle"></i>
+                                    <span class="title">{% trans from 'top-menu' %}Online guide{% endtrans %}</span>
                                 </a>
                             </li>
                             <li class="hidden">

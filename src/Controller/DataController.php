@@ -155,7 +155,7 @@ class DataController extends Controller
             true
         );
 
-        return array(
+        $templateVariables = array(
             'data' => $data,
             'analysisMessage' => $this->get('translator')->trans($effectSizeChecker->getResultMessage($data), array(), 'r_analysis'),
             'phasesLength' => array_count_values($data->database->PHASE),
@@ -167,14 +167,19 @@ class DataController extends Controller
             'treatmentStdError' => $data->regression->coefficients[1]->{'Std. Error'},
             'treatmentTValue' => $data->regression->coefficients[1]->{'t value'},
             'treatmentPr' => $data->regression->coefficients[1]->{'Pr(>|t|)'},
-            'treatmentXTimeNaEstimate' => $data->regression->coefficients[2]->Estimate,
-            'treatmentXTimeNaStdError' => $data->regression->coefficients[2]->{'Std. Error'},
-            'treatmentXTimeNaTValue' => $data->regression->coefficients[2]->{'t value'},
-            'treatmentXTimeNaPr' => $data->regression->coefficients[2]->{'Pr(>|t|)'},
             'r2' => $data->regression->{'r.squared'},
             'adjustedR2' => $data->regression->{'adj.r.squared'},
             'chart' => $chart
         );
+
+        if(isset($data->regression->coeffients[2])) {
+            $templateVariables['treatmentXTimeNaEstimate'] = $data->regression->coefficients[2]->Estimate;
+            $templateVariables['treatmentXTimeNaStdError'] = $data->regression->coefficients[2]->{'Std. Error'};
+            $templateVariables['treatmentXTimeNaTValue'] = $data->regression->coefficients[2]->{'t value'};
+            $templateVariables['treatmentXTimeNaPr'] = $data->regression->coefficients[2]->{'Pr(>|t|)'};
+        }
+
+        return $templateVariables;
     }
 
     /**

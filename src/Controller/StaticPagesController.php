@@ -32,4 +32,15 @@ class StaticPagesController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/{_locale}/online-guide", name="online-guide", requirements={"locale": "en|it"})
+     * @Method({"GET"})
+     * @Template
+     *
+     */
+    public function onlineGuideAction()
+    {
+        return array();
+    }
 }
