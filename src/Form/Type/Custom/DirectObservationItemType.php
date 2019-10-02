@@ -77,7 +77,7 @@ class DirectObservationItemType extends AbstractType
     {
         $defaults = array(
             'compound' => true,
-            'counter_value' => -1,
+            'counter_value' => 0,
             'interval_length_in_seconds' => null,
             'feedback_for_interval_recording' => null,
             'label' => '',

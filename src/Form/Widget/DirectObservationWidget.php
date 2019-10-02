@@ -14,6 +14,7 @@ class DirectObservationWidget implements WidgetInterface {
     private $label;
     private $observationLengthInMinutes;
     private $intervalLengthInSeconds;
+    private $feedbackForIntervalRecording;
     private $typology;
     private $translator;
     private $value;
@@ -32,10 +33,10 @@ class DirectObservationWidget implements WidgetInterface {
                 'attr' => array(
                     'value' => $this->value
                 ),
-                'counter_value' => -1, //to be removed
                 'label' => $this->label,
                 'observation_length_in_minutes' => $this->observationLengthInMinutes,
                 'interval_length_in_seconds' => $this->intervalLengthInSeconds,
+                'feedback_for_interval_recording' => $this->feedbackForIntervalRecording,
                 'typology' => $this->typology
             )
         );
@@ -142,6 +143,21 @@ class DirectObservationWidget implements WidgetInterface {
         $this->observationLengthInMinutes = $observationLengthInMinutes;
     }
 
+    /**
+     * @param mixed $feedbackForIntervalRecording
+     */
+    public function setFeedbackForIntervalRecording($feedbackForIntervalRecording)
+    {
+        $this->feedbackForIntervalRecording = $feedbackForIntervalRecording;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFeedbackForIntervalRecording()
+    {
+        return $this->feedbackForIntervalRecording;
+    }
 
 
 }

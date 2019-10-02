@@ -198,9 +198,7 @@ if (typeof jQuery.ui == 'undefined') {
                         $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_intervalNumber').val(activeIntervalNumber[timerSelectorId]);
                         $( '#' + baseSelectorId + '_intervalData_' + lastIndex + '_isBehaviorOccurred').val(true);
 
-                        counterValue = $( '#' + baseSelectorId + '_counter').val() == 0 ?
-                            parseInt($( '#' + baseSelectorId + '_counter').val()) + 2 :
-                            parseInt($( '#' + baseSelectorId + '_counter').val()) + 1;
+                        counterValue = parseInt($( '#' + baseSelectorId + '_counter').val()) + 1;
 
                         $( '#' + baseSelectorId + '_counter').val(counterValue);
 
