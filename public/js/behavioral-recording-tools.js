@@ -148,7 +148,9 @@ if (typeof jQuery.ui == 'undefined') {
             });
 
             $( '.frequency-item a.frequency-counter').on('click', function(e) {
-                if($(this).html() == 'START') {
+                e.preventDefault();
+
+                if($(this).html().indexOf('START') > -1) {
                     $(this).html('+');
 
                     frequencyItem = $(this).parent().parent().parent().parent();
@@ -160,6 +162,19 @@ if (typeof jQuery.ui == 'undefined') {
 
                     startTimer(observationLengthInMinutesId, timerId, null, buttonId, progressBarId, null);
 
+                } else {
+                    baseSelectorId = $( this ).attr('data-base-selector-id');
+                    counterValue = parseInt($( '#' + baseSelectorId + '_counter').val()) + 1;
+                    occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
+
+                    addOccurrenceTimestampForm(occurrencesTimestampDiv);
+
+                    lastIndex = $( "#" + baseSelectorId + '_occurrenceTimestamps' ).find(':input').length - 1;
+                    timestamp = ~~(Date.now()/1000);
+
+                    $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
+                    $( '#' + baseSelectorId + '_counter').val(counterValue);
+                    $( '#counter-' + baseSelectorId).text(counterValue);
                 }
 
             });
@@ -207,24 +222,6 @@ if (typeof jQuery.ui == 'undefined') {
                         isCounterClicked[$(this).attr("id")] = true;
                     }
                 }
-            });
-
-            $( "a.frequency-counter" ).click(function(e){
-                e.preventDefault();
-
-                baseSelectorId = $( this ).attr('data-base-selector-id');
-                counterValue = parseInt($( '#' + baseSelectorId + '_counter').val()) + 1;
-                occurrencesTimestampDiv = $( "#" + baseSelectorId + '_occurrenceTimestamps' );
-
-                addOccurrenceTimestampForm(occurrencesTimestampDiv);
-
-                lastIndex = $( "#" + baseSelectorId + '_occurrenceTimestamps' ).find(':input').length - 1;
-                timestamp = ~~(Date.now()/1000);
-
-                $( '#' + baseSelectorId + '_occurrenceTimestamps_' + lastIndex).val(timestamp);
-                $( '#' + baseSelectorId + '_counter').val(counterValue);
-                $( '#counter-' + baseSelectorId).text(counterValue);
-
             });
 
             $( "a.player" ).click(function(e){
