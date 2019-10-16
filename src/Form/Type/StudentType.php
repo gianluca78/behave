@@ -17,7 +17,10 @@ class StudentType extends AbstractType
             ->add('studentId', null, array(
                 'required' => true,
                 'label' => 'Student id',
-                'translation_domain' => 'forms'
+                'translation_domain' => 'forms',
+                'attr' => array(
+                    'placeholder' => 'A nickname or a code to identify the student'
+                )
             ))
             ->add('yearOfBirth', ChoiceType::class, array(
                 'choices' => array_combine(range(date('Y'), 1970), range(date('Y'), 1970)),

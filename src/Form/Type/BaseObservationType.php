@@ -19,11 +19,40 @@ class BaseObservationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('required' => true))
-            ->add('description', TextareaType::class, array('required' => true))
-            ->add('fillingInstructions', TextareaType::class, array('required' => false, 'translation_domain' => 'forms'))
-            ->add('place', TextareaType::class, array('required' => false, 'translation_domain' => 'forms'))
-            ->add('setting', TextareaType::class, array('required' => false, 'translation_domain' => 'forms'))
+            ->add('name', null, array(
+                    'label' => 'Behaviour to be observed',
+                    'required' => true,
+                    'translation_domain' => 'forms',
+                    'attr' => array(
+                        'placeholder' => 'Interruption of discussions during the class'
+                    )
+                )
+            )
+            ->add('description', TextareaType::class, array(
+                    'required' => true,
+                    'attr' => array(
+                        'placeholder' => 'Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not'
+                    ),
+                    'translation_domain' => 'forms',
+                )
+            )
+            ->add('place', TextareaType::class, array(
+                    'required' => false, 'translation_domain' => 'forms',
+                    'translation_domain' => 'forms',
+                    'attr' => array(
+                        'placeholder' => 'For instance: school, home, gym'
+                    )
+
+                )
+            )
+            ->add('setting', TextareaType::class, array(
+                    'required' => false, 'translation_domain' => 'forms',
+                    'translation_domain' => 'forms',
+                    'attr' => array(
+                        'placeholder' => 'For instance: during the math class, or the dinner'
+                    )
+                )
+            )
             ->add('measure', EntityType::class, array(
                     'attr' => array(
                         'data-live-search' => 'true',

@@ -107,7 +107,7 @@
       </trans-unit>
       <trans-unit id="8xda8S2" resname="Number item">
         <source>Number item</source>
-        <target>__Number item</target>
+        <target>Numero di item</target>
       </trans-unit>
     </body>
   </file>

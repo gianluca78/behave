@@ -18,7 +18,7 @@ class ObservationPhaseType extends AbstractType
     {
         $builder->add('name', TextType::class, array(
                     'required' => true,
-                    'label' => 'Name',
+                    'label' => 'Phase name',
                     'translation_domain' => 'forms'
                 ))
                 ->add('isIntervention', null, array(
