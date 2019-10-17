@@ -821,6 +821,14 @@
         <source>Number</source>
         <target>Numerico</target>
       </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Azioni</target>
+      </trans-unit>
+      <trans-unit id="1ur_gjW" resname="Download">
+        <source>Download</source>
+        <target>Download</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -17,6 +17,10 @@
         <source>Take a tour</source>
         <target>Fai un tour</target>
       </trans-unit>
+      <trans-unit id="tiOTgL1" resname="Online guide">
+        <source>Online guide</source>
+        <target>Guida online</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -97,15 +97,32 @@
                     <span class="caption-subject bold uppercase"> {% trans %}List{% endtrans %} </span>
                 </div>
                 <div class="actions">
-                    <a id="add-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="{% trans %}Add a new measure{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clik here to add a new measure.{% endtrans %}" data-step="1">
-                        <i class="fa fa-plus"></i>
-                    </a>
-                    <a id="edit-button" class="btn btn-circle btn-icon-only btn-default" href="javascript:;" title="{% trans %}Edit{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to edit the measure settings.{% endtrans %}" data-step="2">
-                        <i class="fa fa-edit"></i>
-                    </a>
-                    <a id="delete-button" class="btn btn-circle btn-icon-only btn-default" title="{% trans %}Delete{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to delete a measure.{% endtrans %}" data-step="3">
-                        <i class="fa fa-trash"></i>
-                    </a>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="btn-group pull-right">
+                                <a id="add-button" class="btn btn-circle btn-icon-only btn-default" style="margin-right: 10px;" href="javascript:;" title="{% trans %}Add a new observation{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to add a new observation.{% endtrans %}" data-step="1">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+
+                                <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    {% trans %}Actions{% endtrans %}
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a id="edit-button" href="javascript:;">
+                                            <i class="fa fa-edit"></i> {% trans %}Edit{% endtrans %}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="delete-button" href="javascript:;">
+                                            <i class="fa fa-trash"></i> {% trans %}Delete{% endtrans %}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="portlet-body">

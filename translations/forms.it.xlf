@@ -225,27 +225,27 @@
         <source>Write the options and press enter after entering each one.</source>
         <target>Scrivi le opzioni e premi invio dopo l'inserimento di ciascuna.</target>
       </trans-unit>
-      <trans-unit id="7NJhk1o" resname="A nickname or a code to identify the student">
+      <trans-unit id="CC79LQn" resname="A nickname or a code to identify the student">
         <source>A nickname or a code to identify the student</source>
         <target>Un nickname o un codice per identificare lo studente</target>
       </trans-unit>
-      <trans-unit id="7Nbnmt4" resname="Interruption of discussions during the class">
+      <trans-unit id="n9mRXeP" resname="Interruption of discussions during the class">
         <source>Interruption of discussions during the class</source>
         <target>Interruzioni della discussione durante le lezioni</target>
       </trans-unit>
-      <trans-unit id="4Dbhkr5" resname="Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not">
-          <source>Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not</source>
-          <target>Descrivere il comportamento in un modo misurabile e ripetibile in modo che l'osservatore possa comprendere facilmente cosa è il comportamento  e cosa non è</target>
+      <trans-unit id="L_KPrEe" resname="Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not">
+        <source>Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not</source>
+        <target>Descrivere il comportamento in un modo misurabile e ripetibile in modo che l'osservatore possa comprendere facilmente cosa è il comportamento  e cosa non è</target>
       </trans-unit>
-      <trans-unit id="9Yhhfr1" resname="For instance: school, home, gym">
+      <trans-unit id="vAG.tCu" resname="For instance: school, home, gym">
         <source>For instance: school, home, gym</source>
         <target>Per esempio: scuola, casa, palestra</target>
       </trans-unit>
-      <trans-unit id="7Nrs4r1" resname="For instance: during the math class, or the dinner">
+      <trans-unit id="uzAAFZU" resname="For instance: during the math class, or the dinner">
         <source>For instance: during the math class, or the dinner</source>
         <target>Per esempio: durante la lezione di matematica, o la cena</target>
       </trans-unit>
-      <trans-unit id="8Nrr4r1" resname="Phase name">
+      <trans-unit id="sdnqXcl" resname="Phase name">
         <source>Phase name</source>
         <target>Nome della fase</target>
       </trans-unit>
