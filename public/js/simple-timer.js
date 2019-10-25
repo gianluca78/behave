@@ -1,8 +1,10 @@
 self.addEventListener("message", function(e) {
+    data = JSON.parse(e.data);
+
     var startDate = new Date();
-    var observationLengthInMinutes = e.data.observationLengthInMinutes;
-    var partialLengthInSeconds = e.data.partialLengthInSeconds || null;
-    var timerId = e.data.timerId;
+    var observationLengthInMinutes = data.observationLengthInMinutes;
+    var partialLengthInSeconds = data.partialLengthInSeconds || null;
+    var timerId = data.timerId;
 
     var countDownDate = new Date(startDate.getTime() + observationLengthInMinutes * 60000).getTime();
 
@@ -37,7 +39,7 @@ function countdown(countDownDate, startDate, observationLengthInMinutes, partial
         var secondsInterval = formatTimestampDifferenceToTimerMinutes(distanceInterval);
     }
 
-    postMessage({
+    postMessage(JSON.stringify({
         'distance': distance,
         'hasInterval': hasInterval,
         'timer': minutes + ':' + seconds,
@@ -45,7 +47,7 @@ function countdown(countDownDate, startDate, observationLengthInMinutes, partial
         'intervalTimer': minutesInterval + ':' + secondsInterval,
         'observationLengthInMilliseconds': observationLengthInMilliseconds,
         'timerId': timerId
-    });
+    }));
 
     if(minutes == '00' && seconds == '00') {
         self.close();

@@ -59,22 +59,22 @@ if (typeof jQuery.ui == 'undefined') {
                     // Check whether Web Worker has been created. If not, create a new Web Worker based on the Javascript file simple-timer.js
                     if (w==null){
                         w = new Worker("/js/simple-timer.js");
-                        w.postMessage({
+                        w.postMessage(JSON.stringify({
                             observationLengthInMinutes: observationLengthInMinutes,
                             partialLengthInSeconds: partialLengthInSeconds,
                             timerId: timerId
-                        });
+                        }));
                     }
 
                     // Update timer div with output from Web Worker
                     w.onmessage = function (event) {
                         var timestampNow = ~~(Date.now()/1000);
                         var button = $ ( '#' + buttonId);
-                        var data = event.data;
+                        var data = JSON.parse(event.data);
 
                         $( '#' + data.timerId ).text(data.timer);
 
-                        var audioElement = new Audio(audioPath);
+                        //var audioElement = new Audio(audioPath);
 
                         if(!(timerId in intervalPlayedAudio)) {
                             intervalPlayedAudio[timerId] = [];
