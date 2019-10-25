@@ -34,6 +34,11 @@ class DirectObservationItem extends Item
      */
     private $measure;
 
+    public function __sleep()
+    {
+        return array('label', 'positionNumber', 'intervalLengthInSeconds', 'observationLengthInMinutes', 'typology');
+    }
+
     /**
      * @Assert\Callback
      */

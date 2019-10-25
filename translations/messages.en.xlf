@@ -829,6 +829,18 @@
         <source>Download</source>
         <target>Download</target>
       </trans-unit>
+      <trans-unit id="OXSn8f7" resname="cant-delete-measure">
+        <source>cant-delete-measure</source>
+        <target>You can't delete the measure "%s": it has been already associated to at least to an observation.</target>
+      </trans-unit>
+      <trans-unit id=".HMyTkZ" resname="Import measure">
+        <source>Import measure</source>
+        <target>Import measure</target>
+      </trans-unit>
+      <trans-unit id="NmSJVXn" resname="Export">
+        <source>Export</source>
+        <target>Export</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

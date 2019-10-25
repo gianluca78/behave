@@ -74,6 +74,12 @@ class MeterItem extends Item
      */
     private $measure;
 
+    public function __sleep()
+    {
+        return array('label', 'positionNumber', 'xValue', 'yValue', 'labelY', 'labelMaxY', 'labelMinY', 'labelX',
+            'labelMaxX', 'labelMinX');
+    }
+
     /**
      * @return mixed
      */

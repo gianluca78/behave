@@ -39,6 +39,7 @@
     $( document ).ready(function() {
         $('#edit-button').addClass('opaque');
         $('#delete-button').addClass('opaque');
+        $('#export-button').addClass('opaque');
     });
 
     $('#add-button').on('click', function(){
@@ -47,11 +48,25 @@
         }
     });
 
+    $('#import-button').on('click', function(){
+        if(!$(this).hasClass('opaque')) {
+            location.assign('{{ path('measure_import') }}');
+        }
+    });
+
     $('#edit-button').on('click', function(e){
         e.preventDefault();
 
         if(!$(this).hasClass('opaque')) {
             location.assign('/measure/{{ app.request.locale }}/edit/' + $("#measure-datatable :checked").val());
+        }
+    });
+
+    $('#export-button').on('click', function(e){
+        e.preventDefault();
+
+        if(!$(this).hasClass('opaque')) {
+            location.assign('/measure/export/' + $("#measure-datatable :checked").val());
         }
     });
 
@@ -69,7 +84,7 @@
         if(ids.length > 0) {
             $('#basic').modal('show');
 
-            $('#confirm-delete').data('url', '/measure/delete/' + encodeURIComponent(JSON.stringify(ids)));
+            $('#confirm-delete').data('url', '/measure/{{ app.request.locale }}/delete/' + encodeURIComponent(JSON.stringify(ids)));
         }
     });
 
@@ -83,6 +98,12 @@
 {% block body %}
 {% for flashMessage in app.session.flashbag.get('success') %}
 <div class="alert alert-success">
+    {{ flashMessage }}
+</div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('warning') %}
+<div class="alert alert-warning">
     {{ flashMessage }}
 </div>
 {% endfor %}
@@ -104,6 +125,10 @@
                                     <i class="fa fa-plus"></i>
                                 </a>
 
+                                <a id="import-button" class="btn btn-circle btn-icon-only btn-default" style="margin-right: 10px;" href="javascript:;" title="{% trans %}Import measure{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to import a measure.{% endtrans %}" data-step="2">
+                                    <i class="fa fa-upload"></i>
+                                </a>
+
                                 <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     {% trans %}Actions{% endtrans %}
                                     <i class="fa fa-angle-down"></i>
@@ -117,6 +142,11 @@
                                     <li>
                                         <a id="delete-button" href="javascript:;">
                                             <i class="fa fa-trash"></i> {% trans %}Delete{% endtrans %}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="export-button" href="javascript:;">
+                                            <i class="fa fa-download"></i> {% trans %}Export{% endtrans %}
                                         </a>
                                     </li>
                                 </ul>

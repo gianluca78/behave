@@ -51,6 +51,10 @@ class ChoiceItem extends Item
      */
     private $choiceType;
 
+    public function __sleep()
+    {
+        return array('label', 'positionNumber', 'emptyValue', 'isExpanded', 'isMultiple', 'options', 'choiceType');
+    }
 
     /**
      * @return string

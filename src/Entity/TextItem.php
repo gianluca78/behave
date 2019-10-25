@@ -32,6 +32,11 @@ class TextItem extends Item
      */
     private $measure;
 
+    public function __sleep()
+    {
+        return array('label', 'positionNumber', 'placeholder');
+    }
+
     /**
      * @return mixed
      */

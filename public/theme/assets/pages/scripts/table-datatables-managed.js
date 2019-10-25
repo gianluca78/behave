@@ -27,6 +27,7 @@ var TableDatatablesManaged = function () {
             } else {
                 $('#edit-button').addClass('opaque');
                 $('#delete-button').addClass('opaque');
+                $('#export-button').addClass('opaque');
             }
 
 
@@ -35,15 +36,18 @@ var TableDatatablesManaged = function () {
             if($('.checkboxes:checked').length == 1) {
                 $('#edit-button').removeClass('opaque');
                 $('#delete-button').removeClass('opaque');
+                $('#export-button').removeClass('opaque');
             }
 
             if($('.checkboxes:checked').length > 1) {
                 $('#edit-button').addClass('opaque');
+                $('#edit-export').addClass('opaque');
             }
 
             if($('.checkboxes:checked').length == 0) {
                 $('#edit-button').addClass('opaque');
                 $('#delete-button').addClass('opaque');
+                $('#export-button').addClass('opaque');
             }
 
 

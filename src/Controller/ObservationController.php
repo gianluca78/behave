@@ -479,4 +479,24 @@ class ObservationController extends Controller
             return new Response(json_encode($emails));
         }
     }
+
+    /**
+     * @Route("/test", name="observation_test")
+     * @Method({"GET"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    /*
+    public function test()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        dump($entityManager->getRepository('App\Entity\Observation')->find(96));
+
+        exit;
+
+        return none;
+
+
+    }*/
 }

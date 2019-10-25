@@ -38,6 +38,11 @@ class RangeItem extends Item
      */
     private $measure;
 
+    public function __sleep()
+    {
+        return array('label', 'positionNumber', 'min', 'max', 'step');
+    }
+
     /**
      * @return mixed
      */

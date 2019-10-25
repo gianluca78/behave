@@ -2,8 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\ChoiceItem;
+use App\Entity\DirectObservationItem;
+use App\Entity\IntegerItem;
+use App\Entity\MeterItem;
+use App\Entity\RangeItem;
+use App\Entity\TextItem;
 use App\Form\Handler\CalendarFormHandler;
 use App\Form\Type\CalendarType;
+use App\Form\Type\ImportMeasureType;
+use App\Utility\MeasureExporter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -19,6 +27,8 @@ use App\Form\Type\MeasureType;
 
 use App\Form\Builder\FormBuilder;
 use App\Form\Handler\ItemFormHandler;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * @Route("/measure")
@@ -95,6 +105,102 @@ class MeasureController extends Controller
     }
 
     /**
+     * @Route("/export/{id}", name="measure_export")
+     * @Method({"GET"})
+     *
+     * @param Measure $measure
+     * @param MeasureExporter $measureExporter
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function exportMeasureAction(Measure $measure, MeasureExporter $measureExporter)
+    {
+        $response = new Response($measureExporter->export($measure));
+
+        $disposition = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+            strtolower(mb_ereg_replace("([^\w\s\d\-_~,;\[\]\(\).])", '', $measure->getName().'.txt'))
+        );
+
+        $response->headers->set('Content-Disposition', $disposition);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/import", name="measure_import")
+     * @Method({"GET", "POST"})
+     * @Template
+     *
+     * @param Request $request
+     * @param Measure $measure
+     * @param MeasureExporter $measureExporter
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function importMeasureAction(Request $request)
+    {
+        $form = $this->createForm(ImportMeasureType::class, null, array(
+            'action' => $this->generateUrl('measure_import'),
+        ));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form['file']->getData();
+
+            $fileContent = unserialize(file_get_contents($file->getPathname()));
+
+            $em = $this->getDoctrine()->getManager();
+
+            $measure = new Measure();
+            $measure->setName($fileContent['name']);
+            $measure->setDescription($fileContent['description']);
+            $measure->setCreatorUserId($this->getUser()->getUserId());
+
+            foreach($fileContent['choiceItems'] as $item) {
+                $item->setMeasure($measure);
+                $measure->addChoiceItem($item);
+            }
+
+            foreach($fileContent['integerItems'] as $item) {
+                $item->setMeasure($measure);
+                $measure->addIntegerItem($item);
+            }
+
+            foreach($fileContent['meterItems'] as $item) {
+                $item->setMeasure($measure);
+                $measure->addMeterItem($item);
+            }
+
+            foreach($fileContent['rangeItems'] as $item) {
+                $item->setMeasure($measure);
+                $measure->addRangeItem($item);
+            }
+
+            foreach($fileContent['textItems'] as $item) {
+                $item->setMeasure($measure);
+                $measure->addTextItem($item);
+            }
+
+            foreach($fileContent['directObservationItems'] as $item) {
+                $item->setMeasure($measure);
+                $measure->addDirectObservationItem($item);
+            }
+
+            $em->persist($measure);
+            $em->flush();
+
+            $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans('Measure imported with success!'));
+
+            return $this->redirect($this->generateUrl('measure_list'));
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'title' => $this->get('translator')->trans('Import measure'),
+        );
+    }
+
+    /**
      * @Route("/{_locale}/new", name="measure_new", requirements={"locale": "en|it"})
      * @Method({"GET", "POST"})
      * @Template
@@ -131,7 +237,7 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/delete/{ids}", name="measure_delete")
+     * @Route("/{_locale}/delete/{ids}", name="measure_delete", requirements={"locale": "en|it"})
      * @Method({"GET"})
      *
      * @param Request $request
@@ -147,11 +253,21 @@ class MeasureController extends Controller
         foreach($ids as $id) {
             $measure = $em->getRepository('App\Entity\Measure')->find($id);
 
-            $em->remove($measure);
-            $em->flush();
+            $observations = $em->getRepository('App\Entity\Observation')->findByMeasure($measure);
+
+            if(!$observations) {
+                $flashTypology = 'success';
+                $flashMessage = $this->get('translator')->trans(self::DELETE_SUCCESS_STRING);
+
+                $em->remove($measure);
+                $em->flush();
+            } else {
+                $flashTypology = 'warning';
+                $flashMessage = sprintf($this->get('translator')->trans('cant-delete-measure', array(), 'messages'), (string) $measure);
+            }
         }
 
-        $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));
+        $this->get('session')->getFlashbag()->add($flashTypology, $flashMessage);
 
         return $this->redirect($this->generateUrl('measure_list'));
 

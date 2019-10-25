@@ -125,6 +125,10 @@
         <source>Clicking here, you can associate data to a phase after selecting the checkboxes near the data.</source>
         <target>Cliccando qui puoi associare i dati ad una fase dopo aver selezionato la casella di spunta vicino al dato.</target>
       </trans-unit>
+      <trans-unit id="ZxaWl1J" resname="Click here to import a measure.">
+        <source>Click here to import a measure.</source>
+        <target>Clicca qui per importare una misura.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
