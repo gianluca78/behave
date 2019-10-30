@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\CouchDb\Client;
 use App\Form\Handler\CalendarFormHandler;
 use App\Form\Type\CalendarType;
 use App\Form\Type\ObservationNotificationEmailsType;
@@ -225,7 +226,7 @@ class ObservationController extends Controller
     * @param Observation $entity
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function deleteAction(Request $request, Student $student)
+    public function deleteAction(Request $request, Student $student, Client $couchDbClient)
     {
         $ids = json_decode($request->get('ids'), true);
 
@@ -241,8 +242,20 @@ class ObservationController extends Controller
                 return $response;
             }
 
+
+            $data = $couchDbClient->getObservationsById($observation->getId());
+            $data = json_decode($data->getContents(), true)['rows'];
+
+            foreach($data as $document) {
+                $id = $document['value']['_id'];
+                $rev = $document['value']['_rev'];
+
+                $couchDbClient->delete($id, $rev);
+            }
+
             $em->remove($observation);
             $em->flush();
+
         }
 
         $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));

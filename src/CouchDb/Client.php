@@ -33,6 +33,27 @@ class Client {
         return $this;
     }
 
+    public function delete($id, $rev)
+    {
+        try {
+            $response = $this->guzzle->request(
+                "DELETE",
+                'http://localhost:5984/' . $this->databaseName . '/' . $id . '?rev=' . $rev,
+                array(
+                    'base_uri' => $this->url
+                )
+            );
+
+            if($response->getStatusCode() == 200) {
+                return $response->getBody();
+            }
+        } catch (\GuzzleHttp\ExceptionRequestException $e) {
+            throw new \Exception('no connection with CouchDb server');
+        }
+
+        return $this;
+    }
+
     public function getByIds(array $ids)
     {
         try {
