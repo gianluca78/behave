@@ -200,7 +200,34 @@ class MeasureController extends Controller
         );
     }
 
+
     /**
+     * @Route("/{_locale}/import-live", name="measure_import_live")
+     * @Method({"POST"})
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function importLiveAction(Request $request) {
+        if(!$request->isXmlHttpRequest()) {
+            $response = new Response('not allowed');
+            $response->setStatusCode(403);
+
+            return $response;
+        }
+
+        $file = $request->files->get('file');
+
+        return new Response(
+            json_encode(
+                unserialize(
+                    file_get_contents($file->getPathname())
+                )
+            )
+        );
+    }
+
+        /**
      * @Route("/{_locale}/new", name="measure_new", requirements={"locale": "en|it"})
      * @Method({"GET", "POST"})
      * @Template

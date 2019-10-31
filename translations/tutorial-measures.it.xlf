@@ -109,6 +109,14 @@
         <source>Number item</source>
         <target>Numero di item</target>
       </trans-unit>
+      <trans-unit id="n84I8pz" resname="Import items">
+        <source>Import items</source>
+        <target>__Import items</target>
+      </trans-unit>
+      <trans-unit id="VOa.0Es" resname="In this field you can upload a measure previously exported from the list of measures. In this way you will not have to re-enter the items and you can customize the items to your liking.">
+        <source>In this field you can upload a measure previously exported from the list of measures. In this way you will not have to re-enter the items and you can customize the items to your liking.</source>
+        <target>In questo campo puoi fare l'upload di una misura precedentemente esportata dall'elenco delle misure. In questo modo non dovrai inserire nuovamente gli item e potrai personalizzare a tuo piacimento gli item.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

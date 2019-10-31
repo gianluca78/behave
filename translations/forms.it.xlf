@@ -249,6 +249,10 @@
         <source>Phase name</source>
         <target>Nome della fase</target>
       </trans-unit>
+      <trans-unit id=".gHyVkZ" resname="Import items">
+        <source>Import items</source>
+        <target>Importa items</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

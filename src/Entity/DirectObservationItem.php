@@ -6,12 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Constraints as AppAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use JsonSerializable;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DirectObservationItemRepository")
  * @AppAssert\IsMultiple*
  */
-class DirectObservationItem extends Item
+class DirectObservationItem extends Item implements JsonSerializable
 {
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -37,6 +39,17 @@ class DirectObservationItem extends Item
     public function __sleep()
     {
         return array('label', 'positionNumber', 'intervalLengthInSeconds', 'observationLengthInMinutes', 'typology');
+    }
+
+    public function jsonSerialize() {
+        $direct = new \stdClass();
+        $direct->label = $this->getLabel();
+        $direct->intervalLengthInSeconds = $this->getIntervalLengthInSeconds();
+        $direct->observationLengthInMinutes = $this->getObservationLengthInMinutes();
+        $direct->typology = $this->getTypology();
+        $direct->positionNumber = $this->getPositionNumber();
+
+        return $direct;
     }
 
     /**

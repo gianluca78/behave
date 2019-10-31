@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ChoiceItemRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class ChoiceItem extends Item
+class ChoiceItem extends Item implements JsonSerializable
 {
     /**
      * @var string $emptyValue
@@ -54,6 +56,19 @@ class ChoiceItem extends Item
     public function __sleep()
     {
         return array('label', 'positionNumber', 'emptyValue', 'isExpanded', 'isMultiple', 'options', 'choiceType');
+    }
+
+    public function jsonSerialize() {
+        $choice = new \stdClass();
+        $choice->label = $this->getLabel();
+        $choice->emptyValue = $this->getEmptyValue();
+        $choice->isExpanded = $this->getIsExpanded();
+        $choice->isMultiple = $this->getIsMultiple();
+        $choice->options = $this->getOptions();
+        $choice->choiceType = $this->getChoiceType();
+        $choice->positionNumber = $this->getPositionNumber();
+
+        return $choice;
     }
 
     /**

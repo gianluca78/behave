@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TextItemRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class TextItem extends Item
+class TextItem extends Item implements JsonSerializable
 {
     /**
      * @var string $fieldValue
@@ -35,6 +36,15 @@ class TextItem extends Item
     public function __sleep()
     {
         return array('label', 'positionNumber', 'placeholder');
+    }
+
+    public function jsonSerialize() {
+        $text = new \stdClass();
+        $text->label = $this->getLabel();
+        $text->placeholder = $this->getPlaceholder();
+        $text->positionNumber = $this->getPositionNumber();
+
+        return $text;
     }
 
     /**

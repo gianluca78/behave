@@ -3,6 +3,7 @@ namespace App\Form\Type;
 
 use App\Entity\Measure;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -36,6 +37,12 @@ class MeasureType extends AbstractType
                 'attr' => array(
                     'placeholder' => 'For instance: the scale consists of 10 items designed to assess a person\'s anxiety as presence of cognitive and somatic symptoms'
                 )
+            ))
+            ->add('fileImport', FileType::class, array(
+                'required' => false,
+                'mapped' => false,
+                'translation_domain' => 'forms',
+                'label' => 'Import items'
             ))
             ->add('choiceItems', CollectionType::class, array(
                 'entry_type' => ChoiceItemType::class,

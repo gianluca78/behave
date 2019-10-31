@@ -841,6 +841,14 @@
         <source>Export</source>
         <target>Export</target>
       </trans-unit>
+      <trans-unit id="cZqv8he" resname="Items imported with success!">
+        <source>Items imported with success!</source>
+        <target>Items imported with success!</target>
+      </trans-unit>
+      <trans-unit id="kmPIQM4" resname="Something went wrong with the format or content of the file. Please correct the problem and try again.">
+        <source>Something went wrong with the format or content of the file. Please correct the problem and try again.</source>
+        <target>Something went wrong with the format or content of the file. Please correct the problem and try again.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

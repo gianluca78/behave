@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MeterItemRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class MeterItem extends Item
+class MeterItem extends Item implements JsonSerializable
 {
     /**
      * @var string $xValue
@@ -78,6 +79,22 @@ class MeterItem extends Item
     {
         return array('label', 'positionNumber', 'xValue', 'yValue', 'labelY', 'labelMaxY', 'labelMinY', 'labelX',
             'labelMaxX', 'labelMinX');
+    }
+
+    public function jsonSerialize() {
+        $meter = new \stdClass();
+        $meter->label = $this->getLabel();
+        $meter->xValue = $this->getXValue();
+        $meter->yValue = $this->getYValue();
+        $meter->labelY = $this->getLabelY();
+        $meter->labelMaxY = $this->getLabelMaxY();
+        $meter->labelMinY = $this->getLabelMinY();
+        $meter->labelX = $this->getLabelX();
+        $meter->labelMaxX = $this->getLabelMaxX();
+        $meter->labelMinX = $this->getLabelMinX();
+        $meter->positionNumber = $this->getPositionNumber();
+
+        return $meter;
     }
 
     /**

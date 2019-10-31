@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\IntegerItemRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class IntegerItem extends Item
+class IntegerItem extends Item implements JsonSerializable
 {
     /**
      * @var string $fieldValue
@@ -29,6 +30,15 @@ class IntegerItem extends Item
     {
         return array('label', 'positionNumber');
     }
+
+    public function jsonSerialize() {
+        $integer = new \stdClass();
+        $integer->label = $this->getLabel();
+        $integer->positionNumber = $this->getPositionNumber();
+
+        return $integer;
+    }
+
 
     /**
      * @return mixed

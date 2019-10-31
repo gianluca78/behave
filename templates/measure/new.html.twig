@@ -27,11 +27,23 @@
                 <i class="fa fa-gift"></i>{% trans %}Compose your measure{% endtrans %}
             </div>
         </div>
+
         <div id="measure-form" class="portlet-body">
             {% set indexItemNumber = (numberOfItems is defined) ? numberOfItems - 1 : - 1 %}
 
+            <div class="alert alert-success hide"></div>
+            <div class="alert alert-warning hide"></div>
+
             {{ form_row(form.name) }}
             {{ form_row(form.description) }}
+
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="measure_file">
+                    {% trans from 'forms' %}Import items{% endtrans %}
+                    <a data-toggle="modal" href="#import"><img src="{{ asset('icons/question.svg') }}" width="16px" height="14px" name="{% trans %}Information about the item type{% endtrans %}" title="{% trans %}Information about the item type{% endtrans %}"></a>
+                </label>
+                {{ form_widget(form.fileImport) }}
+            </div>
 
             <div class="items"
                  data-index-item="{{ indexItemNumber }}"
@@ -254,6 +266,23 @@
         </div>
     </div>
 
+    <div class="modal fade" id="import" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">{% trans from 'tutorial-measures' %}Import items{% endtrans %}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{% trans from 'tutorial-measures' %}In this field you can upload a measure previously exported from the list of measures. In this way you will not have to re-enter the items and you can customize the items to your liking.{% endtrans %}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans from 'tutorial-measures' %}Close{% endtrans %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="direct-observation" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -453,6 +482,131 @@
 
         });
 
+        var fdata = new FormData();
+        $("#measure_fileImport").on("change", function (e) {
+
+            file = this.files[0];
+
+            fdata.append("file", file);
+
+            $.ajax({
+                url: "{{ path('measure_import_live', { '_locale': app.request.locale }) }}",
+                type: "post",
+                data: fdata,
+                processData: false,
+                contentType: false,
+                success: function (response, status, jqxhr) {
+                    response = jQuery.parseJSON(response);
+
+                    numberOfItems = response.choiceItems.length + response.directObservationItems.length +
+                            response.integerItems.length + response.rangeItems.length + response.meterItems.length +
+                            response.textItems.length;
+
+                    for(n = 1; n <= numberOfItems; n++) {
+                        for (i = 0; i < response.choiceItems.length; i++) {
+                            choice = response.choiceItems[i];
+
+                            if(choice.positionNumber == n) {
+                                index = addItemForm('choice');
+
+                                $('#measure_choiceItems_' + index + '_label').val(choice.label);
+                                $('#measure_choiceItems_' + index + '_emptyValue').val(choice.emptyValue);
+                                $('#measure_choiceItems_' + index + '_isExpanded').val(choice.isExpended);
+                                $('#measure_choiceItems_' + index + '_isMultiple').val(choice.isMultiple);
+
+                                options = choice.options.split(',');
+
+                                for(i = 0; i <= options.length; i++) {
+                                    $('#measure_choiceItems_' + index + '_options').tagsinput('add', options[i]);
+                                }
+
+                                $('#measure_choiceItems_' + index + '_choiceType').val(choice.choiceType);
+                                $('#measure_choiceItems_' + index + '_choiceType').trigger('change');
+                            }
+                        }
+
+                        for (i = 0; i < response.directObservationItems.length; i++) {
+                            direct = response.directObservationItems[i];
+
+                            if(direct.positionNumber == n) {
+                                index = addItemForm('direct-observation');
+
+                                $('#measure_directObservationItems_' + index + '_label').val(direct.label);
+                                $('#measure_directObservationItems_' + index + '_intervalLengthInSeconds').val(direct.intervalLengthInSeconds);
+                                $('#measure_directObservationItems_' + index + '_observationLengthInMinutes').val(direct.observationLengthInMinutes);
+                                $('#measure_directObservationItems_' + index + '_typology').val(direct.typology);
+                                $('#measure_directObservationItems_' + index + '_typology').trigger('change');
+                            }
+                        }
+
+
+                        for (i = 0; i < response.integerItems.length; i++) {
+                            integer = response.integerItems[i];
+
+                            if(integer.positionNumber == n) {
+                                index = addItemForm('integer');
+
+                                $('#measure_integerItems_' + index + '_label').val(integer.label);
+                            }
+                        }
+
+                        for (i = 0; i < response.meterItems.length; i++) {
+                            meter = response.meterItems[i];
+
+                            if(meter.positionNumber == n) {
+                                index = addItemForm('meter');
+
+                                $('#measure_meterItems_' + index + '_label').val(meter.label);
+                                $('#measure_meterItems_' + index + '_xValue').val(meter.xValue);
+                                $('#measure_meterItems_' + index + '_yValue').val(meter.yValue);
+                                $('#measure_meterItems_' + index + '_labelY').val(meter.labelY);
+                                $('#measure_meterItems_' + index + '_labelMaxY').val(meter.labelMaxY);
+                                $('#measure_meterItems_' + index + '_labelMinY').val(meter.labelMinY);
+                                $('#measure_meterItems_' + index + '_labelX').val(meter.labelX);
+                                $('#measure_meterItems_' + index + '_labelMaxX').val(meter.labelMaxX);
+                                $('#measure_meterItems_' + index + '_labelMinX').val(meter.labelMinX);
+                            }
+                        }
+
+                        for (i = 0; i < response.rangeItems.length; i++) {
+                            range = response.rangeItems[i];
+
+                            if(range.positionNumber == n) {
+                                index = addItemForm('range');
+
+                                $('#measure_rangeItems_' + index + '_label').val(range.label);
+                                $('#measure_rangeItems_' + index + '_min').val(range.min);
+                                $('#measure_rangeItems_' + index + '_max').val(range.max);
+                                $('#measure_rangeItems_' + index + '_step').val(range.step);
+                            }
+                        };
+
+                        for (i = 0; i < response.textItems.length; i++) {
+                            text = response.textItems[i];
+
+                            if(text.positionNumber == n) {
+                                index = addItemForm('text');
+
+                                $('#measure_textItems_' + index + '_label').val(text.label);
+                                $('#measure_textItems_' + index + '_placeholder').val(text.placeholder);
+                            }
+                        }
+                    }
+
+                    $('#measure_file').val('');
+                    $(".alert.alert-warning").addClass('hide');
+                    $(".alert.alert-success").removeClass('hide');
+                    $(".alert.alert-success").html('{% trans %}Items imported with success!{% endtrans %}');
+
+
+                    },
+                error: function (jqxhr, status, errorMessage) {
+                    $(".alert.alert-success").addClass('hide');
+                    $(".alert.alert-warning").removeClass('hide');
+                    $(".alert.alert-warning").html('{% trans %}Something went wrong with the format or content of the file. Please correct the problem and try again.{% endtrans %}');
+                }
+            });
+        });
 
         $(".portlet-body").on('click', '.m-icon-swapup', function(){
             portlet = $(this).parent().parent().parent();
@@ -541,36 +695,64 @@
             switch($.trim($( this ).text())) {
                 case 'Choice':
                 case 'Scelta':
-                    addItemForm('choice', $.trim($( this ).text()));
+                    addItemForm('choice');
                     break;
 
                 case 'Direct Observation':
                 case 'Osservazione Diretta':
-                    addItemForm('direct-observation', $.trim($( this ).text()));
+                    addItemForm('direct-observation');
                     break;
 
                 case 'Number':
                 case 'Numerico':
-                    addItemForm('integer', $.trim($( this ).text()));
+                    addItemForm('integer');
                     break;
 
                 case 'Four Quadrant Diagram':
                 case 'Diagramma a Quattro Quadranti':
-                    addItemForm('meter', $.trim($( this ).text()));
+                    addItemForm('meter');
                     break;
 
                 case 'Range':
                 case 'Intervallo di valori':
-                    addItemForm('range', $.trim($( this ).text()));
+                    addItemForm('range');
                     break;
 
                 case 'Text':
                 case 'Testo':
-                    addItemForm('text', $.trim($( this ).text()));
+                    addItemForm('text');
             }
         });
 
-        function addItemForm(type, name) {
+        function addItemForm(type) {
+
+            switch(type) {
+                case 'choice':
+                    name = '{% trans %}Choice{% endtrans %}';
+                    break;
+
+                case 'direct-observation':
+                    name = '{% trans %}Direct Observation{% endtrans %}';
+                    break;
+
+                case 'integer':
+                    name = '{% trans %}Number{% endtrans %}';
+                    break;
+
+                case 'meter':
+                    name = '{% trans %}Four Quadrant Diagram{% endtrans %}';
+                    break;
+
+                case 'range':
+                    name = '{% trans %}Range{% endtrans %}';
+                    break;
+
+                case 'text':
+                    name = '{% trans %}Text{% endtrans %}';
+                    break;
+            }
+
+
             prototype = $collectionHolder.data('prototype-' + type);
             index = $collectionHolder.attr('data-index-item');
             newIndex = parseInt(index) + 1;
@@ -598,6 +780,8 @@
             if(type == 'direct-observation') {
                 $('#measure_directObservationItems_' + newIndex + '_intervalLengthInSeconds').parent().parent().hide();
             }
+
+            return newIndex;
         }
 
         function hideShowInterval(element)

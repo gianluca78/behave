@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RangeItemRepository")
  */
-class RangeItem extends Item
+class RangeItem extends Item implements JsonSerializable
 {
     /**
      * @var int $min
@@ -41,6 +42,17 @@ class RangeItem extends Item
     public function __sleep()
     {
         return array('label', 'positionNumber', 'min', 'max', 'step');
+    }
+
+    public function jsonSerialize() {
+        $range = new \stdClass();
+        $range->label = $this->getLabel();
+        $range->positionNumber = $this->getPositionNumber();
+        $range->min = $this->getMin();
+        $range->max = $this->getMax();
+        $range->step = $this->getStep();
+
+        return $range;
     }
 
     /**
