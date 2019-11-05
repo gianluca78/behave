@@ -80,27 +80,24 @@ var TableDatatablesManaged = function () {
             })
 
             if(t) {
-                $('#delete-button').removeClass('opaque');
+                $('#delete-raw-data').removeClass('opaque');
             } else {
-                $('#edit-button').addClass('opaque');
-                $('#delete-button').addClass('opaque');
+                $('#delete-raw-data').addClass('opaque');
             }
 
 
         }), e.on("change", "tbody tr .checkboxes", function () {
 
             if($('.checkboxes:checked').length == 1) {
-                $('#edit-button').removeClass('opaque');
-                $('#delete-button').removeClass('opaque');
+                $('#delete-raw-data').removeClass('opaque');
             }
 
             if($('.checkboxes:checked').length > 1) {
-                $('#edit-button').addClass('opaque');
+                $('#delete-raw-data').removeClass('opaque');
             }
 
             if($('.checkboxes:checked').length == 0) {
-                $('#edit-button').addClass('opaque');
-                $('#delete-button').addClass('opaque');
+                $('#delete-raw-data').addClass('opaque');
             }
 
             $(this).parents("tr").toggleClass("active")

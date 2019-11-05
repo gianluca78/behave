@@ -84,10 +84,28 @@
             $('#confirm-delete').data('url', $(this).data('url'));
         });
 
+        $('#delete-raw-data').click(function( event ) {
+            ids = [];
+
+            $("input:checked").each(function(index) {
+                if($("input:checked")[index].value) {
+                    ids.push($("input:checked")[index].value);
+                }
+            });
+
+            $('#confirm-delete-raw-data').data('ids', ids);
+        });
+
         $('#confirm-delete').click(function( event ) {
             window.location.href = $('#confirm-delete').data('url');
         });
 
+        $('#confirm-delete-raw-data').click(function( event ) {
+            ids = $('#confirm-delete-raw-data').data('ids');
+            ids = ids.toString().replace(',', '/');
+
+            window.location.href = '/observation-phase/delete-raw-data/{{ observation.id }}/' + ids;
+        });
     </script>
 {% endblock %}
 
@@ -166,7 +184,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
 
-                                        <a class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('data_list', {'id': phase.id }) }}" title="{% trans %}Raw data per phase{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.{% endtrans %}" data-step="5">
+                                        <a id="delete-data" class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('data_list', {'id': phase.id }) }}" title="{% trans %}Raw data per phase{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.{% endtrans %}" data-step="5">
                                             <i class="fa fa-list"></i>
                                         </a>
                                     </div>
@@ -198,6 +216,11 @@
                                 {% trans %}Phases{% endtrans %}
                                 <i class="fa fa-angle-down"></i>
                             </button>
+
+                            <a id="delete-raw-data" class="opaque btn btn-circle btn-icon-only btn-default" data-toggle="modal" href="#basic2" title="Delete">
+                                <i class="fa fa-trash"></i>
+                            </a>
+
                             <ul class="dropdown-menu pull-right">
                                 {% for record in records %}
                                     <li>
@@ -268,6 +291,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="modal fade" id="basic2" tabindex="-1" role="basic" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">{% trans %}Warning{% endtrans %}</h4>
+                        </div>
+                        <div class="modal-body"> {% trans %}Are you sure you want to delete this data?{% endtrans %}</div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn dark btn-outline" data-dismiss="modal">{% trans %}Close{% endtrans %}</button>
+                            <button id="confirm-delete-raw-data" type="button" class="btn red" data-ids="">{% trans %}Yes, delete{% endtrans %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </div>
     </div>
 {% endblock %}

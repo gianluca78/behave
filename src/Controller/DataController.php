@@ -107,7 +107,13 @@ class DataController extends Controller
             ]
         );
 
-        $data = json_decode($response->getBody()->getContents());
+        $contents = $response->getBody()->getContents();
+
+        //remove unwanted and unexpected warning messages from the resulting JSON
+        $positionJson = strpos($contents, '{  "outMonte"');
+        $jsonContents = substr($contents, $positionJson);
+
+        $data = json_decode($jsonContents);
 
         $series = array();
         $phaseNameLoopIndex = 0;

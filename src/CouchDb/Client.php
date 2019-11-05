@@ -77,6 +77,27 @@ class Client {
         return $this;
     }
 
+    public function getObservationById($id)
+    {
+        try {
+            $response = $this->guzzle->request(
+                "GET",
+                'http://localhost:5984/' . $this->databaseName . '/_design/allObservation/_view/byId?key=%22' . $id .'%22',
+                array(
+                    'base_uri' => $this->url
+                )
+            );
+
+            if($response->getStatusCode() == 200) {
+                return $response->getBody();
+            }
+        } catch (\GuzzleHttp\ExceptionRequestException $e) {
+            throw new \Exception('no connection with CouchDb server');
+        }
+
+        return $this;
+    }
+
     public function getObservationsById($id)
     {
         try {

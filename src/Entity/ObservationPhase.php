@@ -147,6 +147,15 @@ class ObservationPhase
         return ($this->dataIds) ? $this->dataIds : array();
     }
 
+    public function hasDataId($dataId)
+    {
+        if(is_array($this->dataIds) && in_array($dataId, $this->dataIds)) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function removeDataId($dataId)
     {
         if(is_array($this->dataIds) && in_array($dataId, $this->dataIds)) {
