@@ -10,13 +10,14 @@ use App\Security\Encoder\OpenSslEncoder;
 use App\Utility\Auth0Api;
 use App\Utility\CouchDbData2Csv;
 use App\Utility\CouchDbDataTransformer;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
-    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use App\Form\Handler\ObservationFormHandler;
 use App\Form\Handler\ObservationEditFormHandler;
@@ -36,7 +37,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * Class ObservationController
  * @package App\Controller
  */
-class ObservationController extends Controller
+class ObservationController extends AbstractController
 {
     CONST NEW_SUCCESS_STRING = 'Observation inserted successfully';
     CONST EDIT_SUCCESS_STRING = 'Observation edited successfully';
@@ -48,14 +49,13 @@ class ObservationController extends Controller
     CONST INDEX_TITLE = 'List of observations';
 
     /**
-     * @Route("/dates/{id}", name="observation_dates")
-     * @Method({"GET", "POST"})
+     * @Route("/dates/{id}", name="observation_dates", methods={"GET", "POST"})
      * @Template
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function calendarAction(Request $request, Observation $observation, CalendarFormHandler $calendarFormHandler)
+    public function calendarAction(Request $request, Observation $observation, CalendarFormHandler $calendarFormHandler, TranslatorInterface $translator)
     {
         $form = $this->createForm(CalendarType::class, null, array(
             'action' => $this->generateUrl('observation_dates', array('id' => $observation->getId())),
@@ -67,7 +67,7 @@ class ObservationController extends Controller
         $form->get('startTime')->setData($startTime);
         $form->get('endTime')->setData($endTime);
 
-        if($calendarFormHandler->handle($form, $request, $observation, $this->get('translator')->trans(self::DATES_ADDED_SUCCESS))) {
+        if($calendarFormHandler->handle($form, $request, $observation, $translator->trans(self::DATES_ADDED_SUCCESS))) {
             return $this->redirect($this->generateUrl('observation_list'));
         }
 
@@ -79,32 +79,30 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/list", name="observation_list")
-     * @Method({"GET"})
+     * @Route("/list", name="observation_list", methods={"GET"})
      * @Template
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, TranslatorInterface $translator)
     {
         $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findAll();
 
         return array(
             'records' => $records,
-            'title' => $this->get('translator')->trans(self::INDEX_TITLE)
+            'title' => $translator->trans(self::INDEX_TITLE)
         );
     }
 
     /**
-     * @Route("/{_locale}/student/{id}/list", name="observation_student_list", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/student/{id}/list", name="observation_student_list", requirements={"locale": "en|it"}, methods={"GET"})
      * @Template
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexStudentAction(Student $student, OpenSslEncoder $encoder, Request $request)
+    public function indexStudentAction(Student $student, OpenSslEncoder $encoder, Request $request, TranslatorInterface $translator)
     {
         $records = $this->getDoctrine()->getRepository('App\Entity\Observation')->findByStudentAndCreatorUserId(
             $student, $encoder->encrypt($this->getUser()->getUserId())
@@ -115,22 +113,21 @@ class ObservationController extends Controller
         return array(
             'form' => $form->createView(),
             'records' => $records,
-            'title' => $this->get('translator')->trans(self::INDEX_TITLE),
+            'title' => $translator->trans(self::INDEX_TITLE),
             'student' => $student,
             'baseUrl' => $request->server->get('HTTP_HOST')
         );
     }
 
     /**
-    * @Route("/{_locale}/edit/{id}", name="observation_edit")
-    * @Method({"GET", "POST"})  
+    * @Route("/{_locale}/edit/{id}", name="observation_edit", methods={"GET", "POST"})
     *
     * @param Request $request
     * @param Observation $observation
     * @param ObservationFormHandler $formHandler
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler)
+    public function editAction(Request $request, Observation $observation, ObservationFormHandler $formHandler, TranslatorInterface $translator)
     {
         if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
@@ -144,7 +141,7 @@ class ObservationController extends Controller
             'creatorUserId' => $this->getUser()->getUserId()
         ));
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::EDIT_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('observation_student_list', array(
                 'id' => $observation->getStudent()->getId())
                 )
@@ -155,22 +152,21 @@ class ObservationController extends Controller
             array(
                 'observation' => $observation,
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
+                'title' => $translator->trans(self::EDIT_TITLE),
                 'student' => $observation->getStudent()
             )
         );
     }
 
     /**
-    * @Route("/{_locale}/new/{id}", name="observation_new")
-    * @Method({"GET", "POST"})
+    * @Route("/{_locale}/new/{id}", name="observation_new", methods={"GET", "POST"})
     * @Template
     *
     * @param Request $request
     * @param ObservationFormHandler $formHandler
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function newAction(Request $request, Student $student, ObservationFormHandler $formHandler)
+    public function newAction(Request $request, Student $student, ObservationFormHandler $formHandler, TranslatorInterface $translator)
     {
         if($student->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
@@ -189,22 +185,21 @@ class ObservationController extends Controller
         ));
 
         
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::NEW_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
         }
 
         return array(
             'observation' => $entity,
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE),
+            'title' => $translator->trans(self::NEW_TITLE),
             'student' => $student
         );
 
     }
 
     /**
-    * @Route("/number/{id}", name="observation_number")
-    * @Method({"GET"})
+    * @Route("/number/{id}", name="observation_number", methods={"GET"})
     * @Template
     *
     * @param Observation $observation
@@ -219,14 +214,13 @@ class ObservationController extends Controller
     }
 
     /**
-    * @Route("/delete/{id}/{ids}", name="observation_delete")
-    * @Method({"GET"})
+    * @Route("/delete/{id}/{ids}", name="observation_delete", methods={"GET"})
     *
     * @param Request $request
     * @param Observation $entity
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function deleteAction(Request $request, Student $student, Client $couchDbClient)
+    public function deleteAction(Request $request, Student $student, Client $couchDbClient, TranslatorInterface $translator)
     {
         $ids = json_decode($request->get('ids'), true);
 
@@ -258,14 +252,13 @@ class ObservationController extends Controller
 
         }
 
-        $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));
+        $this->get('session')->getFlashbag()->add('success', $translator->trans(self::DELETE_SUCCESS_STRING));
 
         return $this->redirect($this->generateUrl('observation_student_list', array('id' => $student->getId())));
     }
 
     /**
-     * @Route("/enableDisable/{id}", name="observation_enable_disable")
-     * @Method({"GET"})
+     * @Route("/enableDisable/{id}", name="observation_enable_disable", methods={"GET"})
      *
      * @param Request $request
      * @param Observation $entity
@@ -327,8 +320,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/download-data/{id}", name="observation_download_data")
-     * @Method({"GET"})
+     * @Route("/download-data/{id}", name="observation_download_data", methods={"GET"})
      *
      * @param Request $request
      * @param Observation $entity
@@ -341,7 +333,7 @@ class ObservationController extends Controller
         $rawData = $couchDbDataTransformer->transformByData($rawData);
         //dump($rawData);exit;
 
-        $path = $this->container->getParameter('kernel.root_dir').'/Resources/tmp/raw-data.csv';
+        $path = $this->getParameter('kernel.root_dir').'/Resources/tmp/raw-data.csv';
 
         $couchDbData2Csv->convert($rawData, $path);
 
@@ -356,8 +348,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/delete-notification-email", name="observation_delete_notification_email")
-     * @Method({"GET"})
+     * @Route("/delete-notification-email", name="observation_delete_notification_email", methods={"GET"})
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -376,8 +367,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/get-notification-emails", name="observation_get_notification_emails")
-     * @Method({"GET"})
+     * @Route("/get-notification-emails", name="observation_get_notification_emails", methods={"GET"})
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -407,8 +397,7 @@ class ObservationController extends Controller
     }
 
     /**
-     * @Route("/has-scheduled-dates", name="observation_has_scheduled_dates")
-     * @Method({"GET"})
+     * @Route("/has-scheduled-dates", name="observation_has_scheduled_dates", methods={"GET"})
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -433,8 +422,7 @@ class ObservationController extends Controller
 
 
     /**
-     * @Route("/save-notification-emails", name="observation_save_notification_emails")
-     * @Method({"POST"})
+     * @Route("/save-notification-emails", name="observation_save_notification_emails", methods={"POST"})
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -492,24 +480,4 @@ class ObservationController extends Controller
             return new Response(json_encode($emails));
         }
     }
-
-    /**
-     * @Route("/test", name="observation_test")
-     * @Method({"GET"})
-     *
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    /*
-    public function test()
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        dump($entityManager->getRepository('App\Entity\Observation')->find(96));
-
-        exit;
-
-        return none;
-
-
-    }*/
 }

@@ -4,7 +4,7 @@ namespace App\Form\Widget;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Form\Type\Custom\DirectObservationItemType;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class DirectObservationWidget implements WidgetInterface {

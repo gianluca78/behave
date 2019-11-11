@@ -5,7 +5,7 @@ namespace App\Form\Widget;
 use Symfony\Component\Form\FormBuilderInterface;
 use App\Form\Type\Custom\MeterItemType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class MeterWidget implements WidgetInterface {
 

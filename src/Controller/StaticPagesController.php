@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use App\Security\Encoder\OpenSslEncoder;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
-    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
 
@@ -20,11 +19,10 @@ use App\CouchDb\Client as CouchDbClient;
  * Class StaticPagesController
  * @package App\Controller
  */
-class StaticPagesController extends Controller
+class StaticPagesController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/privacy-policy", name="privacy-policy", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/privacy-policy", name="privacy-policy", requirements={"locale": "en|it"}, methods={"GET"})
      * @Template
      *
      */
@@ -34,8 +32,7 @@ class StaticPagesController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/online-guide", name="online-guide", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/online-guide", name="online-guide", requirements={"locale": "en|it"}, methods={"GET"})
      * @Template
      *
      */

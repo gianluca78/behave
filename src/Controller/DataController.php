@@ -8,13 +8,14 @@ use App\Utility\EffectSizeChecker;
 use App\Utility\HighchartsGenerator;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
-    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use App\Entity\Observation;
 use App\Entity\ObservationPhase;
@@ -27,11 +28,10 @@ use GuzzleHTTP\Client as GuzzleClient;
  * Class DataController
  * @package App\Controller
  */
-class DataController extends Controller
+class DataController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/analysis/{id}", name="data_analysis")
-     * @Method({"GET", "POST"})
+     * @Route("/{_locale}/analysis/{id}", name="data_analysis", methods={"GET", "POST"})
      * @Template
      *
      */
@@ -52,14 +52,13 @@ class DataController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/analysis-results", name="data_analysis_results")
-     * @Method({"POST"})
+     * @Route("/{_locale}/analysis-results", name="data_analysis_results", methods={"GET", "POST"})
      * @Template
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function analysisResultsAction(Request $request, CouchDbClient $couchDbClient, EffectSizeChecker $effectSizeChecker, DataPreparationTool $dataPreparationTool) {
+    public function analysisResultsAction(Request $request, CouchDbClient $couchDbClient, EffectSizeChecker $effectSizeChecker, DataPreparationTool $dataPreparationTool, TranslatorInterface $translator) {
         if(!$request->isXmlHttpRequest()) {
             $response = new Response('not allowed');
             $response->setStatusCode(403);
@@ -151,7 +150,7 @@ class DataController extends Controller
 
         }
 
-        $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
+        $highchartsGenerator = new HighchartsGenerator($translator);
         $chart = $highchartsGenerator->generateScatterPlot(
             $request->get('selectedData')['observation-name'],
             $series,
@@ -163,7 +162,7 @@ class DataController extends Controller
 
         $templateVariables = array(
             'data' => $data,
-            'analysisMessage' => $this->get('translator')->trans($effectSizeChecker->getResultMessage($data), array(), 'r_analysis'),
+            'analysisMessage' => $translator->trans($effectSizeChecker->getResultMessage($data), array(), 'r_analysis'),
             'phasesLength' => array_count_values($data->database->PHASE),
             'interceptEstimate' => $data->regression->coefficients[0]->Estimate,
             'interceptStdError' => $data->regression->coefficients[0]->{'Std. Error'},
@@ -189,15 +188,14 @@ class DataController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/list/{id}", name="data_list")
-     * @Method({"GET"})
+     * @Route("/{_locale}/list/{id}", name="data_list", methods={"GET"})
      * @Template
      *
      * @param ObservationPhase $observationPhase
      * @param CouchDbClient $couchDbClient
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function dataListAction(ObservationPhase $observationPhase, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer)
+    public function dataListAction(ObservationPhase $observationPhase, CouchDbClient $couchDbClient, CouchDbDataTransformer $couchDbDataTransformer, TranslatorInterface $translator)
     {
         if($observationPhase->getObservation()->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
@@ -222,7 +220,7 @@ class DataController extends Controller
         $phaseData = $couchDbDataTransformer->transformByData($rawPhaseData);
         $chartData = $couchDbDataTransformer->transformByNameAndData($rawPhaseData);
 
-        $highchartsGenerator = new HighchartsGenerator($this->get('translator'));
+        $highchartsGenerator = new HighchartsGenerator($translator);
         $chart = $highchartsGenerator->generateScatterPlot(
             $observationPhase->getObservation()->getName(),
             $chartData,
@@ -232,7 +230,7 @@ class DataController extends Controller
         );
 
         return array(
-            'title' => $this->get('translator')->trans('Phase data'),
+            'title' => $translator->trans('Phase data'),
             'observation' => $observationPhase->getObservation(),
             'phaseData' => $phaseData,
             'chart' => $chart,

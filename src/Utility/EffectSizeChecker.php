@@ -1,7 +1,7 @@
 <?php
 namespace App\Utility;
 
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class EffectSizeChecker {
 

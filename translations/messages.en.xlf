@@ -849,6 +849,34 @@
         <source>Something went wrong with the format or content of the file. Please correct the problem and try again.</source>
         <target>Something went wrong with the format or content of the file. Please correct the problem and try again.</target>
       </trans-unit>
+      <trans-unit id="Lgw_rB9" resname="500 internal server error">
+        <source>500 internal server error</source>
+        <target>500 internal server error</target>
+      </trans-unit>
+      <trans-unit id="2yRuGrR" resname="Sorry, something has gone wrong on the app's server.">
+        <source>Sorry, something has gone wrong on the app's server.</source>
+        <target>Sorry, something has gone wrong on the app's server.</target>
+      </trans-unit>
+      <trans-unit id="1zF_P0Z" resname="Try again, and contact us if the problem persists.">
+        <source>Try again, and contact us if the problem persists.</source>
+        <target>Try again, and contact us if the problem persists.</target>
+      </trans-unit>
+      <trans-unit id="KqsIdaj" resname="404 not found">
+        <source>404 not found</source>
+        <target>404 not found</target>
+      </trans-unit>
+      <trans-unit id="gsZnfiM" resname="Sorry – the page you have requested does not exist">
+        <source>Sorry – the page you have requested does not exist</source>
+        <target>Sorry – the page you have requested does not exist</target>
+      </trans-unit>
+      <trans-unit id="sJ1F1is" resname="You may have followed an outdated link, or have mistyped a URL. If you believe this to be an error, please report it">
+        <source>You may have followed an outdated link, or have mistyped a URL. If you believe this to be an error, please report it</source>
+        <target>You may have followed an outdated link, or have mistyped a URL. If you believe this to be an error, please report it</target>
+      </trans-unit>
+      <trans-unit id="TErZdc9" resname="Are you sure you want to delete this data?">
+        <source>Are you sure you want to delete this data?</source>
+        <target>Are you sure you want to delete this data?</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -5,11 +5,10 @@ namespace App\Controller;
 use App\Utility\HighchartsGenerator;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
-    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
 
@@ -24,13 +23,12 @@ use GuzzleHTTP\Client as GuzzleClient;
  * Class CalendarController
  * @package App\Controller
  */
-class CalendarController extends Controller
+class CalendarController extends AbstractController
 {
      CONST CALENDAR_VIEW_TITLE = '';
 
     /**
-     * @Route("/update-date", name="calendar_update_observation_date")
-     * @Method({"POST"})
+     * @Route("/update-date", name="calendar_update_observation_date", methods={"POST"})
      * @Template
      *
      * @param Request $request
@@ -68,8 +66,7 @@ class CalendarController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/{id}", name="calendar_view")
-     * @Method({"GET"})
+     * @Route("/{_locale}/{id}", name="calendar_view", methods={"GET"})
      * @Template
      *
      * @param Observation $entity

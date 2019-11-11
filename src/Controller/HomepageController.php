@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use App\Security\Encoder\OpenSslEncoder;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
-    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
 
@@ -20,11 +19,10 @@ use App\CouchDb\Client as CouchDbClient;
  * Class HomepageController
  * @package App\Controller
  */
-class HomepageController extends Controller
+class HomepageController extends AbstractController
 {
     /**
-     * @Route("/{_locale}/homepage", name="homepage", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/homepage", name="homepage", requirements={"locale": "en|it"}, methods={"GET"})
      * @Template
      *
      */
@@ -41,8 +39,7 @@ class HomepageController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/dashboard", name="dashboard", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/dashboard", name="dashboard", requirements={"locale": "en|it"}, methods={"GET"})
      * @Template
      *
      */

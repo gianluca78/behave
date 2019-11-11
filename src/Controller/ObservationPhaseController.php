@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
-    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use App\Form\Handler\ObservationPhaseFormHandler;
 use App\Form\Type\ObservationPhaseType;
@@ -23,7 +24,7 @@ use App\CouchDb\Client as CouchDbClient;
  * Class ObservationPhaseController
  * @package App\Controller
  */
-class ObservationPhaseController extends Controller
+class ObservationPhaseController extends AbstractController
 {
     CONST NEW_SUCCESS_STRING = 'Observation phase inserted successfully';
     CONST EDIT_SUCCESS_STRING = 'Observation phase edited successfully';
@@ -33,15 +34,14 @@ class ObservationPhaseController extends Controller
     CONST INDEX_TITLE = 'List of observation dates';
 
     /**
-     * @Route("/{_locale}/list/{id}", name="observation_phase_list")
-     * @Method({"GET"})
+     * @Route("/{_locale}/list/{id}", name="observation_phase_list", methods={"GET"})
      * @Template
      *
      * @param Request $request
      * @param Observation $observation
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Observation $observation, CouchDbClient $couchDbClient)
+    public function indexAction(Observation $observation, CouchDbClient $couchDbClient, TranslatorInterface $translator)
     {
         if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
             $response = new Response('not allowed');
@@ -56,7 +56,7 @@ class ObservationPhaseController extends Controller
 
         return array(
             'records' => $records,
-            'title' => $this->get('translator')->trans(self::INDEX_TITLE),
+            'title' => $translator->trans(self::INDEX_TITLE),
             'observation' => $observation,
             'observationData' => json_decode($observationData->getContents())->rows,
             'observationPhases' => $observation->getObservationPhases()
@@ -64,15 +64,14 @@ class ObservationPhaseController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/new/{id}", name="observation_phase_new")
-     * @Method({"GET", "POST"})
+     * @Route("/{_locale}/new/{id}", name="observation_phase_new", methods={"GET", "POST"})
      * @Template
      *
      * @param Request $request
      * @param ObservationPhaseFormHandler $formHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request, Observation $observation, ObservationPhaseFormHandler $formHandler)
+    public function newAction(Request $request, Observation $observation, ObservationPhaseFormHandler $formHandler, TranslatorInterface $translator)
     {
         $entity = new ObservationPhase();
         $entity->setObservation($observation);
@@ -81,33 +80,32 @@ class ObservationPhaseController extends Controller
             'action' => $this->generateUrl('observation_phase_new', array('id' => $observation->getId()))
         ));
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::NEW_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('observation_phase_list', array('id' => $observation->getId())));
         }
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE),
+            'title' => $translator->trans(self::NEW_TITLE),
             'observation' => $observation
         );
     }
 
     /**
-     * @Route("/{_locale}/edit/{id}", name="observation_phase_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{_locale}/edit/{id}", name="observation_phase_edit", methods={"GET", "POST"})
      *
      * @param Request $request
      * @param ObservationPhase $observationPhase
      * @param ObservationPhaseFormHandler $formHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, ObservationPhase $observationPhase, ObservationPhaseFormHandler $formHandler)
+    public function editAction(Request $request, ObservationPhase $observationPhase, ObservationPhaseFormHandler $formHandler, TranslatorInterface $translator)
     {
         $form = $this->createForm(ObservationPhaseType::class, $observationPhase, array(
             'action' => $this->generateUrl('observation_phase_edit', array('id' => $observationPhase->getId()))
         ));
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::EDIT_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('observation_phase_list', array(
                         'id' => $observationPhase->getObservation()->getId())
                 )
@@ -117,28 +115,27 @@ class ObservationPhaseController extends Controller
         return $this->render('observation_phase/new.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
+                'title' => $translator->trans(self::EDIT_TITLE),
                 'observation' => $observationPhase->getObservation()
             )
         );
     }
 
     /**
-     * @Route("/delete/{id}", name="observation_phase_delete")
-     * @Method({"GET"})
+     * @Route("/delete/{id}", name="observation_phase_delete", methods={"GET"})
      *
      * @param Request $request
      * @param ObservationPhase $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction(Request $request, ObservationPhase $entity)
+    public function deleteAction(Request $request, ObservationPhase $entity, TranslatorInterface $translator)
     {
         $em = $this->getDoctrine()->getManager();
 
         $em->remove($entity);
         $em->flush();
 
-        $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));
+        $this->get('session')->getFlashbag()->add('success', $translator->trans(self::DELETE_SUCCESS_STRING));
 
         return $this->redirect($this->generateUrl('observation_phase_list', array(
             'id' => $entity->getObservation()->getId()
@@ -146,14 +143,13 @@ class ObservationPhaseController extends Controller
     }
 
     /**
-     * @Route("/delete-raw-data/{id}/{ids}", name="observation_phase_delete_raw_data", requirements={"ids": "[a-zA-Z0-9\/]+"})
-     * @Method({"GET"})
+     * @Route("/delete-raw-data/{id}/{ids}", name="observation_phase_delete_raw_data", requirements={"ids": "[a-zA-Z0-9\/]+"}, methods={"GET"})
      *
      * @param Request $request
      * @param Observation $observation
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteRawAction(Observation $observation, $ids, CouchDbClient $couchDbClient)
+    public function deleteRawAction(Observation $observation, $ids, CouchDbClient $couchDbClient, TranslatorInterface $translator)
     {
         $ids = explode('/', $ids);
 
@@ -182,7 +178,7 @@ class ObservationPhaseController extends Controller
             }
         }
 
-        $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));
+        $this->get('session')->getFlashbag()->add('success', $translator->trans(self::DELETE_SUCCESS_STRING));
 
         return $this->redirect($this->generateUrl('observation_phase_list', array(
             'id' => $observation->getId()
@@ -190,8 +186,7 @@ class ObservationPhaseController extends Controller
     }
 
     /**
-     * @Route("/has-data-id/{dataId}", name="observation_phase_has_data_id")
-     * @Method({"GET"})
+     * @Route("/has-data-id/{dataId}", name="observation_phase_has_data_id", methods={"GET"})
      *
      * @param Request $request
      * @param ObservationPhase $entity
@@ -209,8 +204,7 @@ class ObservationPhaseController extends Controller
 
 
     /**
-     * @Route("/save-observation-phase-data/{id}", name="observation_phase_save_observation_phase_data")
-     * @Method({"POST"})
+     * @Route("/save-observation-phase-data/{id}", name="observation_phase_save_observation_phase_data", methods={"POST"})
      *
      * @param Request $request
      * @param ObservationPhase $entity

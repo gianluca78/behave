@@ -12,13 +12,15 @@ use App\Form\Handler\CalendarFormHandler;
 use App\Form\Type\CalendarType;
 use App\Form\Type\ImportMeasureType;
 use App\Utility\MeasureExporter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use App\Entity\Measure;
 use App\Entity\Observation;
@@ -36,7 +38,7 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
  * Class MeasureController
  * @package App\Controller
  */
-class MeasureController extends Controller
+class MeasureController extends AbstractController
 {
     CONST NEW_COMPLETE_SUCCESS_STRING = 'Data saved successfully';
     CONST NEW_SUCCESS_STRING = 'Record inserted successfully';
@@ -49,14 +51,13 @@ class MeasureController extends Controller
     CONST INDEX_TITLE = 'List of measures';
 
     /**
-     * @Route("/{_locale}/list", name="measure_list", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/list", name="measure_list", requirements={"locale": "en|it"}, methods={"GET"})
      * @Template
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, TranslatorInterface $translator)
     {
         $records = $this->getDoctrine()->getRepository('App\Entity\Measure')->findByCreatorUserId(
             $this->getUser()->getUserId()
@@ -64,20 +65,19 @@ class MeasureController extends Controller
 
         return array(
             'records' => $records,
-            'title' => $this->get('translator')->trans(self::INDEX_TITLE)
+            'title' => $translator->trans(self::INDEX_TITLE)
         );
     }
 
     /**
-     * @Route("/{_locale}/edit/{id}", name="measure_edit", requirements={"locale": "en|it"})
-     * @Method({"GET", "POST"})
+     * @Route("/{_locale}/edit/{id}", name="measure_edit", requirements={"locale": "en|it"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param Measure $observation
      * @param MeasureFormHandler $formHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Measure $measure, MeasureFormHandler $formHandler)
+    public function editAction(Request $request, Measure $measure, MeasureFormHandler $formHandler, TranslatorInterface $translator)
     {
         $formHandler->setOriginalChoiceItems($measure->getChoiceItems());
         $formHandler->setOriginalDirectObservationItems($measure->getDirectObservationItems());
@@ -90,7 +90,7 @@ class MeasureController extends Controller
             'action' => $this->generateUrl('measure_edit', array('id' => $measure->getId())),
         ));
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::EDIT_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('measure_list'));
         }
 
@@ -105,8 +105,7 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/export/{id}", name="measure_export")
-     * @Method({"GET"})
+     * @Route("/export/{id}", name="measure_export", methods={"GET"})
      *
      * @param Measure $measure
      * @param MeasureExporter $measureExporter
@@ -127,8 +126,7 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/import", name="measure_import")
-     * @Method({"GET", "POST"})
+     * @Route("/import", name="measure_import", methods={"GET", "POST"})
      * @Template
      *
      * @param Request $request
@@ -136,7 +134,7 @@ class MeasureController extends Controller
      * @param MeasureExporter $measureExporter
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function importMeasureAction(Request $request)
+    public function importMeasureAction(Request $request, TranslatorInterface $translator)
     {
         $form = $this->createForm(ImportMeasureType::class, null, array(
             'action' => $this->generateUrl('measure_import'),
@@ -189,7 +187,7 @@ class MeasureController extends Controller
             $em->persist($measure);
             $em->flush();
 
-            $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans('Measure imported with success!'));
+            $this->get('session')->getFlashbag()->add('success', $translator->trans('Measure imported with success!'));
 
             return $this->redirect($this->generateUrl('measure_list'));
         }
@@ -202,8 +200,7 @@ class MeasureController extends Controller
 
 
     /**
-     * @Route("/{_locale}/import-live", name="measure_import_live")
-     * @Method({"POST"})
+     * @Route("/{_locale}/import-live", name="measure_import_live", methods={"POST"})
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -228,15 +225,14 @@ class MeasureController extends Controller
     }
 
         /**
-     * @Route("/{_locale}/new", name="measure_new", requirements={"locale": "en|it"})
-     * @Method({"GET", "POST"})
+     * @Route("/{_locale}/new", name="measure_new", requirements={"locale": "en|it"}, methods={"GET", "POST"})
      * @Template
      *
      * @param Request $request
      * @param MeasureFormHandler $formHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newAction(Request $request, MeasureFormHandler $formHandler)
+    public function newAction(Request $request, MeasureFormHandler $formHandler, TranslatorInterface $translator)
     {
         $entity = new Measure();
         $entity->setCreatorUserId($this->getUser()->getUserId());
@@ -246,7 +242,7 @@ class MeasureController extends Controller
         ));
 
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::NEW_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('measure_list'));
         }
 
@@ -256,7 +252,7 @@ class MeasureController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE),
+            'title' => $translator->trans(self::NEW_TITLE),
             'actionName' => 'New',
             'numberOfItems' => $numberOfItems
         );
@@ -264,14 +260,13 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/delete/{ids}", name="measure_delete", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/delete/{ids}", name="measure_delete", requirements={"locale": "en|it"}, methods={"GET"})
      *
      * @param Request $request
      * @param Measure $entity
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction(Request $request)
+    public function deleteAction(Request $request, TranslatorInterface $translator)
     {
         $ids = json_decode($request->get('ids'), true);
 
@@ -284,13 +279,13 @@ class MeasureController extends Controller
 
             if(!$observations) {
                 $flashTypology = 'success';
-                $flashMessage = $this->get('translator')->trans(self::DELETE_SUCCESS_STRING);
+                $flashMessage = $translator->trans(self::DELETE_SUCCESS_STRING);
 
                 $em->remove($measure);
                 $em->flush();
             } else {
                 $flashTypology = 'warning';
-                $flashMessage = sprintf($this->get('translator')->trans('cant-delete-measure', array(), 'messages'), (string) $measure);
+                $flashMessage = sprintf($translator->trans('cant-delete-measure', array(), 'messages'), (string) $measure);
             }
         }
 
@@ -301,8 +296,7 @@ class MeasureController extends Controller
     }
 
     /**
-     * @Route("/{id}/{token}", name="measure")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/{token}", name="measure", methods={"GET", "POST"})
      *
      * @param Request $request
      * @param FormBuilder $formBuilder
@@ -316,7 +310,8 @@ class MeasureController extends Controller
                                      FormBuilder $formBuilder,
                                      Observation $observation,
                                      ItemFormHandler $formHandler,
-                                     $token)
+                                     $token,
+                                     TranslatorInterface $translator)
     {
         $em = $this->getDoctrine()->getManager();
         $items = $em->getRepository('App\Entity\Item')->findItemsByMeasure($observation->getMeasure());
@@ -340,7 +335,7 @@ class MeasureController extends Controller
 
         $form = $formBuilder->getForm()->getForm();
 
-        if ($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_COMPLETE_SUCCESS_STRING))) {
+        if ($formHandler->handle($form, $request, $translator->trans(self::NEW_COMPLETE_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('measure', array(
                 'id' => $observation->getId(),
                 'token' => $observation->getToken()

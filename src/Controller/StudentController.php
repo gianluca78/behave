@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use App\Security\Encoder\OpenSslEncoder;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route,
-    Sensio\Bundle\FrameworkExtraBundle\Configuration\Method,
+use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController,
     Symfony\Component\HttpFoundation\Request,
     Symfony\Component\HttpFoundation\Response;
+
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 use App\Form\Handler\StudentFormHandler;
 use App\Form\Type\StudentType;
@@ -21,7 +22,7 @@ use App\Entity\Student;
  * Class StudentController
  * @package App\Controller
  */
-class StudentController extends Controller
+class StudentController extends AbstractController
 {
     CONST NEW_SUCCESS_STRING = 'Student inserted successfully';
     CONST EDIT_SUCCESS_STRING = 'Student edited successfully';
@@ -31,14 +32,13 @@ class StudentController extends Controller
     CONST INDEX_TITLE = 'List of students';
 
     /**
-     * @Route("/{_locale}/list", name="student_list", requirements={"locale": "en|it"})
-     * @Method({"GET"})
+     * @Route("/{_locale}/list", name="student_list", requirements={"locale": "en|it"}, methods={"GET"})
      * @Template
      *
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, OpenSslEncoder $encoder)
+    public function indexAction(Request $request, OpenSslEncoder $encoder, TranslatorInterface $translator)
     {
         $records = $this->getDoctrine()->getRepository('App\Entity\Student')->findByCreatorUserIdOrderedByNameAsc(
             $encoder->encrypt($this->getUser()->getUserId())
@@ -46,48 +46,46 @@ class StudentController extends Controller
 
         return array(
             'records' => $records,
-            'title' => $this->get('translator')->trans(self::INDEX_TITLE)
+            'title' => $translator->trans(self::INDEX_TITLE)
         );
     }
 
     /**
-    * @Route("/{_locale}/edit/{id}", name="student_edit", requirements={"locale": "en|it"})
-    * @Method({"GET", "POST"})  
+    * @Route("/{_locale}/edit/{id}", name="student_edit", requirements={"locale": "en|it"}, methods={"GET", "POST"})
     *
     * @param Request $request
     * @param Student $student
     * @param StudentFormHandler $formHandler
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function editAction(Request $request, Student $student, StudentFormHandler $formHandler)
+    public function editAction(Request $request, Student $student, StudentFormHandler $formHandler, TranslatorInterface $translator)
     {
         $form = $this->createForm(StudentType::class, $student, array(
             'action' => $this->generateUrl('student_edit', array('id' => $student->getId())),
         ));
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::EDIT_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::EDIT_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('student_list'));
         }
 
         return $this->render('student/new.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
-                'actionName' => $this->get('translator')->trans('Edit')
+                'title' => $translator->trans(self::EDIT_TITLE),
+                'actionName' => $translator->trans('Edit')
             )
         );
     }
 
     /**
-    * @Route("/{_locale}/new", name="student_new", requirements={"locale": "en|it"})
-    * @Method({"GET", "POST"})
+    * @Route("/{_locale}/new", name="student_new", requirements={"locale": "en|it"}, methods={"GET", "POST"})
     * @Template
     *
     * @param Request $request
     * @param StudentFormHandler $formHandler
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function newAction(Request $request, StudentFormHandler $formHandler)
+    public function newAction(Request $request, StudentFormHandler $formHandler, TranslatorInterface $translator)
     {
         $entity = new Student();
         $entity->setCreatorUserId($this->getUser()->getUserId());
@@ -98,34 +96,33 @@ class StudentController extends Controller
                 ))
         ));
 
-        if($formHandler->handle($form, $request, $this->get('translator')->trans(self::NEW_SUCCESS_STRING))) {
+        if($formHandler->handle($form, $request, $translator->trans(self::NEW_SUCCESS_STRING))) {
             return $this->redirect($this->generateUrl('student_list'));
         }
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans(self::NEW_TITLE),
-            'actionName' => $this->get('translator')->trans('New')
+            'title' => $translator->trans(self::NEW_TITLE),
+            'actionName' => $translator->trans('New')
         );
 
     }
 
     /**
-    * @Route("/delete/{id}", name="student_delete")
-    * @Method({"GET"})
+    * @Route("/delete/{id}", name="student_delete", methods={"GET"})
     *
     * @param Request $request
     * @param Student $entity
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function deleteAction(Request $request, Student $entity)
+    public function deleteAction(Request $request, Student $entity, TranslatorInterface $translator)
     {
         $em = $this->getDoctrine()->getManager();
 
         $em->remove($entity);
         $em->flush();
 
-        $this->get('session')->getFlashbag()->add('success', $this->get('translator')->trans(self::DELETE_SUCCESS_STRING));
+        $this->get('session')->getFlashbag()->add('success', $translator->trans(self::DELETE_SUCCESS_STRING));
 
         return $this->redirect($this->generateUrl('student_list'));
     }

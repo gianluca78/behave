@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 use Symfony\Component\Validator\Constraints\Range;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RangeWidget implements WidgetInterface {
 
