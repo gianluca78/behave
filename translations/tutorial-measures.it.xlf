@@ -111,7 +111,7 @@
       </trans-unit>
       <trans-unit id="n84I8pz" resname="Import items">
         <source>Import items</source>
-        <target>__Import items</target>
+        <target>Importa items</target>
       </trans-unit>
       <trans-unit id="VOa.0Es" resname="In this field you can upload a measure previously exported from the list of measures. In this way you will not have to re-enter the items and you can customize the items to your liking.">
         <source>In this field you can upload a measure previously exported from the list of measures. In this way you will not have to re-enter the items and you can customize the items to your liking.</source>
