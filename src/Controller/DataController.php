@@ -67,7 +67,7 @@ class DataController extends AbstractController
         }
 
         $config = array (
-            'base_uri' => 'http://150.145.114.110/rtest/p'
+            'base_uri' => getenv('RAPACHE_BASE_URI')
         );
 
         $guzzle = new GuzzleClient($config);
