@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="lEwn5bl" resname="day">
+        <source>day</source>
+        <target>dia</target>
+      </trans-unit>
+      <trans-unit id="W6RC0Gj" resname="print_chart">
+        <source>print_chart</source>
+        <target>imprimir gráfico</target>
+      </trans-unit>
+      <trans-unit id="ti_VX5S" resname="download_png_image">
+        <source>download_png_image</source>
+        <target>download de imagem PNG</target>
+      </trans-unit>
+      <trans-unit id="l6EOCEa" resname="download_jpeg_image">
+        <source>download_jpeg_image</source>
+        <target>download de imagem JPEG</target>
+      </trans-unit>
+      <trans-unit id="uwUPHoj" resname="download_pdf_document">
+        <source>download_pdf_document</source>
+        <target>download de documento PDF</target>
+      </trans-unit>
+      <trans-unit id="9hFTy1i" resname="download_csv">
+        <source>download_csv</source>
+        <target>download CSV</target>
+      </trans-unit>
+      <trans-unit id="ZrZPn4." resname="download_xls">
+        <source>download_xls</source>
+        <target>download XLS</target>
+      </trans-unit>
+      <trans-unit id="jTJwGNi" resname="download_svg_vector_image">
+        <source>download_svg_vector_image</source>
+        <target>download de imagem vetorial SVG</target>
+      </trans-unit>
+      <trans-unit id="i6hJaiU" resname="baseline">
+        <source>baseline</source>
+        <target>linha de base</target>
+      </trans-unit>
+      <trans-unit id="d.TAtg7" resname="intervention">
+        <source>intervention</source>
+        <target>intervenção</target>
+      </trans-unit>
+      <trans-unit id="Ax_3qJq" resname="number_of_frequencies">
+        <source>number_of_frequencies</source>
+        <target>frequência</target>
+      </trans-unit>
+      <trans-unit id="rONRR4M" resname="number_of_intervals">
+        <source>number_of_intervals</source>
+        <target>duração (segundos)</target>
+      </trans-unit>
+      <trans-unit id="7bRlYkK" resname="note">
+        <source>note</source>
+        <target>nota</target>
+      </trans-unit>
+      <trans-unit id="Pzrx7Ou" resname="session">
+        <source>session</source>
+        <target>sessão</target>
+      </trans-unit>
+      <trans-unit id="LXEWQrc" resname="x">
+        <source>x</source>
+        <target>x</target>
+      </trans-unit>
+      <trans-unit id="ofzkNjh" resname="y">
+        <source>y</source>
+        <target>y</target>
+      </trans-unit>
+      <trans-unit id="JdJYY1j" resname="view_data">
+        <source>view_data</source>
+        <target>ver tabela de dados</target>
+      </trans-unit>
+      <trans-unit id="Pdwj13p" resname="open_in_cloud">
+        <source>open_in_cloud</source>
+        <target>abrir na cloud</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

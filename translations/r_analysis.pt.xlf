@@ -7,43 +7,43 @@
     <body>
       <trans-unit id="4xIofPe" resname="treatment_effect">
         <source>treatment_effect</source>
-        <target>The treatment has a %s effect on the %s of the behaviour occurrence</target>
+        <target>O tratamento tem %s de efeito em %s de ocorrências comportamentais.</target>
       </trans-unit>
       <trans-unit id="ZlznTxR" resname="treatment_no_effect">
         <source>treatment_no_effect</source>
-        <target>The treatment doesn't have an effect on the occurrence of the behaviour </target>
+        <target>O tratamento não tem efeito na ocorrência do comportamento</target>
       </trans-unit>
       <trans-unit id="gduOu7v" resname="small">
         <source>small</source>
-        <target>small</target>
+        <target>pequeno</target>
       </trans-unit>
       <trans-unit id="wIJFand" resname="medium">
         <source>medium</source>
-        <target>medium</target>
+        <target>médio</target>
       </trans-unit>
       <trans-unit id="01xBaoW" resname="large">
         <source>large</source>
-        <target>large</target>
+        <target>grande</target>
       </trans-unit>
       <trans-unit id="4gpUjyP" resname="increase">
         <source>increase</source>
-        <target>increase</target>
+        <target>aumento</target>
       </trans-unit>
       <trans-unit id="styXH0i" resname="decrease">
         <source>decrease</source>
-        <target>decrease</target>
+        <target>decréscimo</target>
       </trans-unit>
       <trans-unit id="dCNOmK." resname="null">
         <source>null</source>
-        <target>null</target>
+        <target>nulo</target>
       </trans-unit>
       <trans-unit id="1EO6yub" resname="The effect size is">
         <source>The effect size is</source>
-        <target>The effect size is</target>
+        <target>A dimensão do efeito é</target>
       </trans-unit>
       <trans-unit id="VFUSAXm" resname="Descriptive Statistics">
         <source>Descriptive Statistics</source>
-        <target>Descriptive Statistics</target>
+        <target>Estatísticas descritivas</target>
       </trans-unit>
     </body>
   </file>

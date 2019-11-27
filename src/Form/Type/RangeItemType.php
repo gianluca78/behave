@@ -42,7 +42,7 @@ class RangeItemType extends AbstractType
                 'required' => true,
                 'attr' => array(
                     'value' => 1,
-                    'placeholder' => 'The value that indicate how to increment the min value to go to the max one'
+                    'placeholder' => 'The value that specifies the increment from the minimum value to the maximum value.'
 
                 )
                 )

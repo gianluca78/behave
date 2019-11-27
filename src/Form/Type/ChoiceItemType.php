@@ -31,13 +31,13 @@ class ChoiceItemType extends AbstractType
                 'required' => true,
                 'label' => 'Text of the item',
                 'attr' => array(
-                    'placeholder' => 'For example: what is your favourite color?'
+                    'placeholder' => 'For example: What is your favourite color?'
                 )
             ))
             ->add('emptyValue', null, array(
                 'required' => false,
                 'attr' => array(
-                    'placeholder' => 'Default value displayed in a select before the user clicks on it.'
+                    'placeholder' => 'Default value displayed is selected until the user clicks on it.'
                     )
                 )
             )
@@ -45,7 +45,7 @@ class ChoiceItemType extends AbstractType
                 'required' => true,
                 'attr' => array(
                     'data-role' => 'tagsinput',
-                    'placeholder' => 'Write the options and press enter after entering each one.'
+                    'placeholder' => 'Write the options and press enter after entering each individual one.'
                 )
             ));
     }

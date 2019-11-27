@@ -68,7 +68,7 @@ class ObservationSchedulerType extends AbstractType
             ))
             ->add('weeklyNumberOfWeeks', IntegerType::class, array(
                 'required' => false,
-                'label' => 'every n week(s)',
+                'label' => 'every \'n\' week(s)',
                 'translation_domain' => 'forms'
             ))
             ->add('weeklyDaysOfWeek', ChoiceType::class, array(
@@ -103,7 +103,7 @@ class ObservationSchedulerType extends AbstractType
             )
             ->add('repeatEndAfterNumberOfOccurrences', IntegerType::class, array(
                     'required' => false,
-                    'label' => 'Nr. occurrences',
+                    'label' => 'Number of occurrences',
                     'translation_domain' => 'forms'
                 )
             )

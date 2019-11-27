@@ -53,9 +53,9 @@
         <source>Setting</source>
         <target>Setting</target>
       </trans-unit>
-      <trans-unit id="HMyqZQL" resname="Filling instructions">
-        <source>Filling instructions</source>
-        <target>Filling instructions</target>
+      <trans-unit id="HMyqZQL" resname="Filling in instructions">
+        <source>Filling in instructions</source>
+        <target>Filling in instructions</target>
       </trans-unit>
       <trans-unit id="ibBe8pv" resname="Schedule observation dates">
         <source>Schedule observation dates</source>
@@ -81,13 +81,13 @@
         <source>Weekly</source>
         <target>Weekly</target>
       </trans-unit>
-      <trans-unit id="eybzL3z" resname="every n week(s)">
-        <source>every n week(s)</source>
-        <target>every n week(s)</target>
+      <trans-unit id="eybzL3z" resname="every 'n' week(s)">
+        <source>every 'n' week(s)</source>
+        <target>every 'n' week(s)</target>
       </trans-unit>
-      <trans-unit id="oxdY9RE" resname="Weekly days of week">
-        <source>Weekly days of week</source>
-        <target>Weekly days of week</target>
+      <trans-unit id="oxdY9RE" resname="Days of week">
+        <source>Days of week</source>
+        <target>Days of week</target>
       </trans-unit>
       <trans-unit id="rTs_cmT" resname="Repeat end option">
         <source>Repeat end option</source>
@@ -97,9 +97,9 @@
         <source>Repeat end date</source>
         <target>Repeat end date</target>
       </trans-unit>
-      <trans-unit id="GZEEOm6" resname="Nr. occurrences">
-        <source>Nr. occurrences</source>
-        <target>Nr. occurrences</target>
+      <trans-unit id="GZEEOm6" resname="Number of occurrences">
+        <source>Number of occurrences</source>
+        <target>Number of occurrences</target>
       </trans-unit>
       <trans-unit id="e2j_VRC" resname="After">
         <source>After</source>
@@ -149,13 +149,13 @@
         <source>Name of the measure</source>
         <target>Name of the measure</target>
       </trans-unit>
-      <trans-unit id="31EhA1V" resname="For instance: Anxiety scale">
-        <source>For instance: Anxiety scale</source>
-        <target>For instance: Anxiety scale</target>
+      <trans-unit id="31EhA1V" resname="For example: Anxiety scale">
+        <source>For example: Anxiety scale</source>
+        <target>For example: Anxiety scale</target>
       </trans-unit>
-      <trans-unit id="Gg7bUXI" resname="For instance: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms">
-        <source>For instance: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms</source>
-        <target>For instance: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms</target>
+      <trans-unit id="Gg7bUXI" resname="For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms">
+        <source>For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms</source>
+        <target>For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms</target>
       </trans-unit>
       <trans-unit id="D64FcWy" resname="Intervention">
         <source>Intervention</source>
@@ -201,37 +201,37 @@
         <source>Text of the item</source>
         <target>Text of the item</target>
       </trans-unit>
-      <trans-unit id="hq0EJKF" resname="For example: what is your favourite color?">
-        <source>For example: what is your favourite color?</source>
-        <target>For example: what is your favourite color?</target>
+      <trans-unit id="hq0EJKF" resname="For example: What is your favourite color?">
+        <source>For example: What is your favourite color?</source>
+        <target>For example: What is your favourite color?</target>
       </trans-unit>
       <trans-unit id="Ga0i3rq" resname="Empty value">
         <source>Empty value</source>
         <target>Empty value</target>
       </trans-unit>
-      <trans-unit id="6LRY4bb" resname="Default value displayed in a select before the user clicks on it.">
-        <source>Default value displayed in a select before the user clicks on it.</source>
-        <target>Default value displayed in a select before the user clicks on it.</target>
+      <trans-unit id="6LRY4bb" resname="Default value displayed is selected until the user clicks on it.">
+        <source>Default value displayed is selected until the user clicks on it.</source>
+        <target>Default value displayed is selected until the user clicks on it.</target>
       </trans-unit>
       <trans-unit id="0NuLXjZ" resname="Options">
         <source>Options</source>
         <target>Options</target>
       </trans-unit>
-      <trans-unit id="0Nchp1k" resname="Write the options and press enter after entering each one.">
-        <source>Write the options and press enter after entering each one.</source>
-        <target>Write the options and press enter after entering each one.</target>
+      <trans-unit id="0Nchp1k" resname="Write the options and press enter after entering each individual one.">
+        <source>Write the options and press enter after entering each individual one.</source>
+        <target>Write the options and press enter after entering each individual one.</target>
       </trans-unit>
-      <trans-unit id="CC79LQn" resname="A nickname or a code to identify the student">
-        <source>A nickname or a code to identify the student</source>
-        <target>A nickname or a code to identify the student</target>
+      <trans-unit id="CC79LQn" resname="Use a  nickname or a code to identify the student">
+        <source>Use a  nickname or a code to identify the student</source>
+        <target>Use a  nickname or a code to identify the student</target>
       </trans-unit>
-      <trans-unit id="n9mRXeP" resname="Interruption of discussions during the class">
-        <source>Interruption of discussions during the class</source>
-        <target>Interruption of discussions during the class</target>
+      <trans-unit id="n9mRXeP" resname="Interrupting of classroom discussions during the lesson">
+        <source>Interrupting of classroom discussions during the lesson</source>
+        <target>Interrupting of classroom discussions during the lesson</target>
       </trans-unit>
-      <trans-unit id="L_KPrEe" resname="Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not">
-        <source>Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not</source>
-        <target>Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not</target>
+      <trans-unit id="L_KPrEe" resname="Describe the behaviour in a measurable, and repeatable way so any observer can easily identify what the behavior is and what it is not">
+        <source>Describe the behaviour in a measurable, and repeatable way so any observer can easily identify what the behavior is and what it is not</source>
+        <target>Describe the behaviour in a measurable, and repeatable way so any observer can easily identify what the behavior is and what it is not</target>
       </trans-unit>
       <trans-unit id="vAG.tCu" resname="For instance: school, home, gym">
         <source>For instance: school, home, gym</source>

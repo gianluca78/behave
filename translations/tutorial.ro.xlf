@@ -7,127 +7,127 @@
     <body>
       <trans-unit id="gf3E2.1" resname="The general stats panel summarizes information about your activity on the BEHAVE application.">
         <source>The general stats panel summarizes information about your activity on the BEHAVE application.</source>
-        <target>The general stats panel summarizes information about your activity on the BEHAVE application.</target>
+        <target>Panoul general de statistici rezumă informații despre activitatea dvs. în aplicația BEHAVE.</target>
       </trans-unit>
       <trans-unit id="yemVLNX" resname="Here you can find the number of students you are working with.">
         <source>Here you can find the number of students you are working with.</source>
-        <target>Here you can find the number of students you are working with.</target>
+        <target>Aici puteți găsi numărul de elevi la care lucrați.</target>
       </trans-unit>
       <trans-unit id="K2JgnQu" resname="The percentage of categorized data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.">
         <source>The percentage of categorized data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.</source>
-        <target>The percentage of categorized data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.</target>
+        <target>Procentul de date clasificate indică câte date ați asociat unei faze de colectare a datelor. Când se face o observație, sistemul nu știe a priori dacă datele sunt luate în timpul unei etape inițiale sau al unei intervenții. Trebuie să o faceți manual pentru a avea un control maxim asupra datelor dvs.</target>
       </trans-unit>
       <trans-unit id="da.__Lz" resname="This box shows how many measures you have inserted.">
         <source>This box shows how many measures you have inserted.</source>
-        <target>This box shows how many measures you have inserted.</target>
+        <target>Această casetă arată câte măsuri ați introdus.</target>
       </trans-unit>
       <trans-unit id="0YmKpKZ" resname="The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.">
         <source>The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.</source>
-        <target>The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.</target>
+        <target>Calendarul vă reamintește observațiile planificate pentru astăzi. Doar faceți clic pe una dintre căsuțe pentru a accesa secțiunea de colectare a datelor.</target>
       </trans-unit>
       <trans-unit id="x0omzH9" resname="Here you can find observation data that has not yet been categorized.">
         <source>Here you can find observation data that has not yet been categorized.</source>
-        <target>Here you can find observation data that has not yet been categorized.</target>
+        <target>Aici puteți găsi date de observare care nu au fost încă clasificate.</target>
       </trans-unit>
       <trans-unit id="wt_fGeR" resname="The students you are working on are displayed here.">
         <source>The students you are working on are displayed here.</source>
-        <target>The students you are working on are displayed here.</target>
+        <target>Elevii la care lucrați sunt afișați aici.</target>
       </trans-unit>
       <trans-unit id="J9lAQVI" resname="In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.">
         <source>In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.</source>
-        <target>In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.</target>
+        <target>În aplicația BEHAVE, totul începe cu inserarea unui elev. Faceți clic aici pentru a face asta. Vă rugăm să vă amintiți să nu dezvăluiți informații personale pentru a identifica studenții.</target>
       </trans-unit>
       <trans-unit id="ciTkiuM" resname="Click here to edit data if you want to change something.">
         <source>Click here to edit data if you want to change something.</source>
-        <target>Click here to edit data if you want to change something.</target>
+        <target>Faceți clic aici pentru a edita datele dacă doriți să schimbați ceva.</target>
       </trans-unit>
       <trans-unit id="deWs66A" resname="Clicking on this icon will show you the list of the observations defined for a student.">
         <source>Clicking on this icon will show you the list of the observations defined for a student.</source>
-        <target>Clicking on this icon will show you the list of the observations defined for a student.</target>
+        <target>Făcând clic pe această pictogramă, veți accesa lista observațiilor definite pentru un elev.</target>
       </trans-unit>
       <trans-unit id="afWARCA" resname="It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!">
         <source>It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!</source>
-        <target>It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!</target>
+        <target>Dacă doriți, puteți adăuga informații medicale, cum ar fi o tulburare diagnosticată sau o afecțiune medicală specifică. Comportamentul pe care doriți să îl observați poate fi puternic influențat de acesta!</target>
       </trans-unit>
       <trans-unit id="Sc.g6Zp" resname="If you need to remove the student data from the server please click here to delete it.">
         <source>If you need to remove the student data from the server please click here to delete it.</source>
-        <target>If you need to remove the student data from the server please click here to delete it.</target>
+        <target>Ați făcut o greșeală sau, din orice motiv, doriți să eliminați datele elevului de pe server? Doar faceți clic aici pentru a le șterge.</target>
       </trans-unit>
       <trans-unit id="lsPGVGI" resname="Clik here to add a new measure.">
         <source>Clik here to add a new measure.</source>
-        <target>Clik here to add a new measure.</target>
+        <target>Faceți clic aici pentru a adăuga o nouă măsurătoare.</target>
       </trans-unit>
       <trans-unit id="m5PU_K1" resname="Click here to edit the measure settings.">
         <source>Click here to edit the measure settings.</source>
-        <target>Click here to edit the measure settings.</target>
+        <target>Faceți clic aici pentru a edita setările măsurătorii.</target>
       </trans-unit>
       <trans-unit id="M944ZHs" resname="Click here to delete a measure.">
         <source>Click here to delete a measure.</source>
-        <target>Click here to delete a measure.</target>
+        <target>Faceți clic aici pentru a șterge o măsurătoare.</target>
       </trans-unit>
       <trans-unit id="M1_QPZE" resname="Click here to add a new observation.">
         <source>Click here to add a new observation.</source>
-        <target>Click here to add a new observation.</target>
+        <target>Faceți clic aici pentru a adăuga o nouă observație.</target>
       </trans-unit>
       <trans-unit id="lfJGu5_" resname="When planning an observation, the observation session is automatically inserted into a calendar. If you need to postpone the observation? Simply drag and drop the event into another time slot or day.">
         <source>When planning an observation, the observation session is automatically inserted into a calendar. If you need to postpone the observation? Simply drag and drop the event into another time slot or day.</source>
-        <target>When planning an observation, the observation session is automatically inserted into a calendar. If you need to postpone the observation? Simply drag and drop the event into another time slot or day.</target>
+        <target>Când planificați o observație, sesiunea de observație este inserată automat într-un calendar. Ați avut un eveniment neașteptat și trebuie să amânați observația? Pur și simplu trageți și plasați evenimentul într-un alt interval orar sau într-o altă zi.</target>
       </trans-unit>
       <trans-unit id="K0LTxN4" resname="The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the correct phase.">
         <source>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the correct phase.</source>
-        <target>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the correct phase.</target>
+        <target>Datele colectate în timpul sesiunilor de observație trebuie să fie organizate în conformitate cu un proiect de caz unic. Faceți clic aici pentru a defini numele fazelor și asocierea datelor la faza potrivită.</target>
       </trans-unit>
       <trans-unit id="wH4P9ye" resname="When an observation is planned and enabled, you have to inform the observer to collect the data about the behaviour. You can do that by copying the URL of the data collection page or adding the observers email to send them an automatic notification via email one hour before the observation.">
         <source>When an observation is planned and enabled, you have to inform the observer to collect the data about the behaviour. You can do that by copying the URL of the data collection page or adding the observers email to send them an automatic notification via email one hour before the observation.</source>
-        <target>When an observation is planned and enabled, you have to inform the observer to collect the data about the behaviour. You can do that by copying the URL of the data collection page or adding the observers email to send them an automatic notification via email one hour before the observation.</target>
+        <target>Când o observație este planificată și activată, trebuie să informați observatorul pentru a colecta datele despre un comportament. Puteți face asta copiind adresa URL a paginii de colectare a datelor sau adăugând e-mailurile observatorilor pentru a le trimite o notificare automată prin e-mail cu o oră înainte de observare.</target>
       </trans-unit>
       <trans-unit id="rPshfQo" resname="Click here to edit the observation data.">
         <source>Click here to edit the observation data.</source>
-        <target>Click here to edit the observation data.</target>
+        <target>Faceți clic aici pentru a edita datele de observație.</target>
       </trans-unit>
       <trans-unit id="RduMntG" resname="Click here to delete the observation. Be careful when deleting the observation as you will lose all of the collected data.">
         <source>Click here to delete the observation. Be careful when deleting the observation as you will lose all of the collected data.</source>
-        <target>Click here to delete the observation. Be careful when deleting the observation as you will lose all of the collected data.</target>
+        <target>Faceți clic aici pentru a șterge observația. Fii atent, ștergând observația, vei pierde definitiv toate datele colectate.</target>
       </trans-unit>
       <trans-unit id="t10sCSJ" resname="Do you need the raw data for your personal analyses or plan? Just click here and download it.">
         <source>Do you need the raw data for your personal analyses or plan? Just click here and download it.</source>
-        <target>Do you need the raw data for your personal analyses or plan? Just click here and download it.</target>
+        <target>Aveți nevoie de datele brute pentru analizele sau scopurile dvs. personale? Doar faceți clic aici și descărcați-le.</target>
       </trans-unit>
       <trans-unit id="FrnBcOx" resname="Click here to enable data collection. As long as it comes it's red, you can't do it!">
         <source>Click here to enable data collection. As long as it comes it's red, you can't do it!</source>
-        <target>Click here to enable data collection. As long as it comes it's red, you can't do it!</target>
+        <target>Faceți clic aici pentru a activa colectarea datelor. Cât timp pictograma nu este roșie, nu poți face asta!</target>
       </trans-unit>
       <trans-unit id="cLy_2h8" resname="Click here to add a new observation phase.">
         <source>Click here to add a new observation phase.</source>
-        <target>Click here to add a new observation phase.</target>
+        <target>Faceți clic aici pentru a adăuga o nouă fază de observare.</target>
       </trans-unit>
       <trans-unit id="2_FlVAx" resname="By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.">
         <source>By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.</source>
-        <target>By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.</target>
+        <target>Făcând clic aici, puteți compara două faze de observare (de exemplu, valorile inițiale și intervenția) și puteți evalua dacă munca dvs. pentru a reduce un comportament negativ (sau crește un comportament pozitiv) a funcționat sau nu.</target>
       </trans-unit>
       <trans-unit id="57Y7Vfc" resname="Click here to edit the observation phase.">
         <source>Click here to edit the observation phase.</source>
-        <target>Click here to edit the observation phase.</target>
+        <target>Faceți clic aici pentru a edita faza de observație.</target>
       </trans-unit>
       <trans-unit id="kMHZVBM" resname="Click here to delete the phase.">
         <source>Click here to delete the phase.</source>
-        <target>Click here to delete the phase.</target>
+        <target>Faceți clic aici pentru a șterge faza.</target>
       </trans-unit>
       <trans-unit id="PLaDjFK" resname="By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.">
         <source>By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.</source>
-        <target>By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.</target>
+        <target>Făcând clic aici, veți putea vizualiza datele fiecărei sesiuni de colectare a datelor și să priviți diagrama de distribuție corespunzătoare.</target>
       </trans-unit>
       <trans-unit id="8JtgQoQ" resname="This section contains all the session data collected by observers">
         <source>This section contains all the session data collected by observers</source>
-        <target>This section contains all the session data collected by observers</target>
+        <target>Această secțiune conține toate datele sesiunii colectate de către observatori</target>
       </trans-unit>
       <trans-unit id="oYKWdAt" resname="By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.">
         <source>By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.</source>
-        <target>By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.</target>
+        <target>Făcând clic aici, puteți asocia datele la o fază după selectarea casetelor de selectare din apropierea datelor.</target>
       </trans-unit>
       <trans-unit id="ZxaWl1J" resname="Click here to import a measure.">
         <source>Click here to import a measure.</source>
-        <target>Click here to import a measure.</target>
+        <target>Faceți clic aici pentru a importa o măsură.</target>
       </trans-unit>
     </body>
   </file>

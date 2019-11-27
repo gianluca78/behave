@@ -130,7 +130,7 @@
                         </a>
 
                         {% if observation.observationPhases | length >= 2 %}
-                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('data_analysis', { 'id': observation.id }) }}" title="{% trans %}Statistical analyses{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clicking here, you can compare two observation phases (for instance baseline and intervetion) and evaluate whether your work to decrease a negative behaviour (or increase a positive behaviour) worked or not.{% endtrans %}" data-step="2">
+                        <a id="data-analysis-button" class="btn btn-circle btn-icon-only btn-default" href="{{ path('data_analysis', { 'id': observation.id }) }}" title="{% trans %}Statistical analyses{% endtrans %}" data-intro="{% trans from 'tutorial' %}By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.{% endtrans %}" data-step="2">
                             <i class="fa fa-line-chart"></i>
                         </a>
                         {% endif %}
@@ -141,7 +141,7 @@
                     {% if observation.observationPhases | length == 0 %}
                         <div class="note note-info">
                             <h4 class="block">{% trans %}No phases defined!{% endtrans %}</h4>
-                            <p> {% trans %}Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...){% endtrans %}</p>
+                            <p> {% trans %}Please add the name of the observation phases (eg "baseline", "intervention", etc.){% endtrans %}</p>
                         </div>
                     {% endif %}
 
@@ -184,7 +184,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
 
-                                        <a id="delete-data" class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('data_list', {'id': phase.id }) }}" title="{% trans %}Raw data per phase{% endtrans %}" data-intro="{% trans from 'tutorial' %}Clicking here, you will be able to view the data of each session of data collection and to look at the relative scatter plot.{% endtrans %}" data-step="5">
+                                        <a id="delete-data" class="opaque btn btn-circle btn-icon-only btn-default" href="{{ path('data_list', {'id': phase.id }) }}" title="{% trans %}Raw data per phase{% endtrans %}" data-intro="{% trans from 'tutorial' %}By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.{% endtrans %}" data-step="5">
                                             <i class="fa fa-list"></i>
                                         </a>
                                     </div>
@@ -212,7 +212,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="btn-group pull-right">
-                            <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-intro="{% trans from 'tutorial' %}Clicking here, you can associate data to a phase after selecting the checkboxes near the data.{% endtrans %}" data-step="7">
+                            <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-intro="{% trans from 'tutorial' %}By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.{% endtrans %}" data-step="7">
                                 {% trans %}Phases{% endtrans %}
                                 <i class="fa fa-angle-down"></i>
                             </button>

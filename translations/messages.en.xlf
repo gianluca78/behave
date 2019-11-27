@@ -49,33 +49,33 @@
         <source>Dates</source>
         <target>Dates</target>
       </trans-unit>
-      <trans-unit id="lyUVzBA" resname="Nr. of students">
-        <source>Nr. of students</source>
-        <target>Nr. of students</target>
+      <trans-unit id="lyUVzBA" resname="Number of students">
+        <source>Number of students</source>
+        <target>Number of students</target>
       </trans-unit>
-      <trans-unit id="PJDNFD2" resname="Categorized data">
-        <source>Categorized data</source>
-        <target>Categorized data</target>
+      <trans-unit id="PJDNFD2" resname="Categorised data">
+        <source>Categorised data</source>
+        <target>Categorised data</target>
       </trans-unit>
-      <trans-unit id="Kw2TpR7" resname="Nr. of measures">
-        <source>Nr. of measures</source>
-        <target>Nr. of measures</target>
+      <trans-unit id="Kw2TpR7" resname="Number of measures">
+        <source>Number of measures</source>
+        <target>Number of measures</target>
       </trans-unit>
       <trans-unit id="1dCjC1F" resname="Calendar">
         <source>Calendar</source>
         <target>Calendar</target>
       </trans-unit>
-      <trans-unit id="Yg.sghh" resname="Data to be categorized">
-        <source>Data to be categorized</source>
-        <target>Data to be categorized</target>
+      <trans-unit id="Yg.sghh" resname="Data to be categorised">
+        <source>Data to be categorised</source>
+        <target>Data to be categorised</target>
       </trans-unit>
       <trans-unit id=".Xh2Wfc" resname="Student Id">
         <source>Student Id</source>
         <target>Student Id</target>
       </trans-unit>
-      <trans-unit id=".HdHa3o" resname="Observation name">
-        <source>Observation name</source>
-        <target>Observation name</target>
+      <trans-unit id=".HdHa3o" resname="Name of the Observation ">
+        <source>Name of the Observation </source>
+        <target>Name of the Observation </target>
       </trans-unit>
       <trans-unit id="Um4Ah8w" resname="Description">
         <source>Description</source>
@@ -109,9 +109,9 @@
         <source>Warning</source>
         <target>Warning</target>
       </trans-unit>
-      <trans-unit id="lgvs_.c" resname="Are you sure you want to delete this student?">
-        <source>Are you sure you want to delete this student?</source>
-        <target>Are you sure you want to delete this student?</target>
+      <trans-unit id="lgvs_.c" resname="Are you sure you want to delete this students name?">
+        <source>Are you sure you want to delete this students name?</source>
+        <target>Are you sure you want to delete this students name?</target>
       </trans-unit>
       <trans-unit id="fZ63rLE" resname="Close">
         <source>Close</source>
@@ -249,9 +249,9 @@
                                         observers (press enter to add every new entry). They will be notified via email 1 hour before
                                         the observation:</target>
       </trans-unit>
-      <trans-unit id="IRUjkSP" resname="Email addresses to be notified">
-        <source>Email addresses to be notified</source>
-        <target>Email addresses to be notified</target>
+      <trans-unit id="IRUjkSP" resname="Email addresses to be contacted with">
+        <source>Email addresses to be contacted with</source>
+        <target>Email addresses to be contacted with</target>
       </trans-unit>
       <trans-unit id="DXogt9J" resname="Observation inserted successfully">
         <source>Observation inserted successfully</source>
@@ -309,9 +309,9 @@
         <source>Be careful!</source>
         <target>Be careful!</target>
       </trans-unit>
-      <trans-unit id="u4QtseS" resname="The dates already planned following today will be deleted to be replaced with the new ones.">
-        <source>The dates already planned following today will be deleted to be replaced with the new ones.</source>
-        <target>The dates already planned following today will be deleted to be replaced with the new ones.</target>
+      <trans-unit id="u4QtseS" resname="The previous dates will be deleted and be replaced with the new ones agreed today.">
+        <source>The previous dates will be deleted and be replaced with the new ones agreed today.</source>
+        <target>The previous dates will be deleted and be replaced with the new ones agreed today.</target>
       </trans-unit>
       <trans-unit id="06J9ls0" resname="Scheduler">
         <source>Scheduler</source>
@@ -338,8 +338,8 @@
         <target>No phases defined!</target>
       </trans-unit>
       <trans-unit id="hQEcq_F" resname="Please add the names of the phases of your observation (for instance &quot;baseline&quot;, &quot;intervention&quot;, etc...)">
-        <source>Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...)</source>
-        <target>Please add the names of the phases of your observation (for instance "baseline", "intervention", etc...)</target>
+        <source>Please add the name of the observation phases (eg "baseline", "intervention", etc.)</source>
+        <target>Please add the name of the observation phases (eg "baseline", "intervention", etc.)</target>
       </trans-unit>
       <trans-unit id="zXYDXxI" resname="gathered data:">
         <source>gathered data:</source>
@@ -393,9 +393,9 @@
         <source>No data gathered!</source>
         <target>No data gathered!</target>
       </trans-unit>
-      <trans-unit id="vpvm6rN" resname="When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.">
-        <source>When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.</source>
-        <target>When you'll get data, this section will show the raw data and a scatter plot for the item with a numeric reply.</target>
+      <trans-unit id="vpvm6rN" resname="When you collect the data, in this section you will see the raw data and a scatter diagram for this with a numeric response.">
+        <source>When you collect the data, in this section you will see the raw data and a scatter diagram for this with a numeric response.</source>
+        <target>When you collect the data, in this section you will see the raw data and a scatter diagram for this with a numeric response.</target>
       </trans-unit>
       <trans-unit id="WdDx8OQ" resname="Gathered data">
         <source>Gathered data</source>
@@ -461,9 +461,9 @@
         <source>Sum</source>
         <target>Sum</target>
       </trans-unit>
-      <trans-unit id="ClK6Mzp" resname="The selected items will be aggregated adding their raw data.">
-        <source>The selected items will be aggregated adding their raw data.</source>
-        <target>The selected items will be aggregated adding their raw data.</target>
+      <trans-unit id="ClK6Mzp" resname="The selected items will be aggregated, adding their raw data.">
+        <source>The selected items will be aggregated, adding their raw data.</source>
+        <target>The selected items will be aggregated, adding their raw data.</target>
       </trans-unit>
       <trans-unit id="cnp9EU9" resname="Mean">
         <source>Mean</source>
@@ -537,9 +537,9 @@
         <source>Edit health information</source>
         <target>Edit health information</target>
       </trans-unit>
-      <trans-unit id="UQILzGE" resname="Dsm5 disorder">
-        <source>Dsm5 disorder</source>
-        <target>Dsm5 disorder</target>
+      <trans-unit id="UQILzGE" resname="DSM5 disorder">
+        <source>DSM5 disorder</source>
+        <target>DSM5 disorder</target>
       </trans-unit>
       <trans-unit id="RxnpJwG" resname="Scatter plot">
         <source>Scatter plot</source>
@@ -601,9 +601,9 @@
         <source>Your observation will start in</source>
         <target>Your observation will start in</target>
       </trans-unit>
-      <trans-unit id="0Cl2tky" resname="You are now allowed to access this page">
-        <source>You are now allowed to access this page</source>
-        <target>You are now allowed to access this page</target>
+      <trans-unit id="0Cl2tky" resname="You now have permission to access this page">
+        <source>You now have permission to access this page</source>
+        <target>You now have permission to access this page</target>
       </trans-unit>
       <trans-unit id="U.VBVpB" resname="The observation is not enabled">
         <source>The observation is not enabled</source>
@@ -661,9 +661,9 @@
         <source>Text of the item</source>
         <target>Text of the item</target>
       </trans-unit>
-      <trans-unit id="gX_MhLL" resname="For instance: Interruptions of conversation">
-        <source>For instance: Interruptions of conversation</source>
-        <target>For instance: Interruptions of conversation</target>
+      <trans-unit id="gX_MhLL" resname="For example: Interrupting conversations">
+        <source>For example: Interrupting conversations</source>
+        <target>For example: Interrupting conversations</target>
       </trans-unit>
       <trans-unit id="ghRWywf" resname="Observation length in minutes">
         <source>Observation length in minutes</source>
@@ -677,9 +677,9 @@
         <source>Interval length in seconds</source>
         <target>Interval length in seconds</target>
       </trans-unit>
-      <trans-unit id="505w.wa" resname="The number of seconds has to be multiple of the observation length">
-        <source>The number of seconds has to be multiple of the observation length</source>
-        <target>The number of seconds has to be multiple of the observation length</target>
+      <trans-unit id="505w.wa" resname="The number of seconds has to be an exact fit for the observation length in seconds">
+        <source>The number of seconds has to be an exact fit for the observation length in seconds</source>
+        <target>The number of seconds has to be an exact fit for the observation length in seconds</target>
       </trans-unit>
       <trans-unit id="A58DMlx" resname="Typology">
         <source>Typology</source>
@@ -781,13 +781,13 @@
         <source>Step</source>
         <target>Step</target>
       </trans-unit>
-      <trans-unit id="tNGUWEQ" resname="The value that indicate how to increment the min value to go to the max one">
-        <source>The value that indicate how to increment the min value to go to the max one</source>
-        <target>The value that indicate how to increment the min value to go to the max one</target>
+      <trans-unit id="tNGUWEQ" resname="The value that specifies the increment from the minimum value to the maximum value.">
+        <source>The value that specifies the increment from the minimum value to the maximum value.</source>
+        <target>The value that specifies the increment from the minimum value to the maximum value.</target>
       </trans-unit>
-      <trans-unit id="tD72xKy" resname="For instance: What happens next, or as a result of the child's behavior?">
-        <source>For instance: What happens next, or as a result of the child's behavior?</source>
-        <target>For instance: What happens next, or as a result of the child's behavior?</target>
+      <trans-unit id="tD72xKy" resname="For example: What happens next, or what happens as a result of the child's behavior?">
+        <source>For example: What happens next, or what happens as a result of the child's behavior?</source>
+        <target>For example: What happens next, or what happens as a result of the child's behavior?</target>
       </trans-unit>
       <trans-unit id="9LJP7QJ" resname="Placeholder">
         <source>Placeholder</source>
@@ -831,7 +831,7 @@
       </trans-unit>
       <trans-unit id="OXSn8f7" resname="cant-delete-measure">
         <source>cant-delete-measure</source>
-        <target>You can't delete the measure "%s": it has been already associated to at least to an observation.</target>
+        <target>You can't delete the measure "%s": it has already been  associated to at least to an observation.</target>
       </trans-unit>
       <trans-unit id=".HMyTkZ" resname="Import measure">
         <source>Import measure</source>
@@ -841,9 +841,9 @@
         <source>Export</source>
         <target>Export</target>
       </trans-unit>
-      <trans-unit id="cZqv8he" resname="Items imported with success!">
-        <source>Items imported with success!</source>
-        <target>Items imported with success!</target>
+      <trans-unit id="cZqv8he" resname="Items successfully imported!">
+        <source>Items successfully imported!</source>
+        <target>Items successfully imported!</target>
       </trans-unit>
       <trans-unit id="kmPIQM4" resname="Something went wrong with the format or content of the file. Please correct the problem and try again.">
         <source>Something went wrong with the format or content of the file. Please correct the problem and try again.</source>

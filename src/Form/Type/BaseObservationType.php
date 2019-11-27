@@ -24,14 +24,14 @@ class BaseObservationType extends AbstractType
                     'required' => true,
                     'translation_domain' => 'forms',
                     'attr' => array(
-                        'placeholder' => 'Interruption of discussions during the class'
+                        'placeholder' => 'Interrupting of classroom discussions during the lesson'
                     )
                 )
             )
             ->add('description', TextareaType::class, array(
                     'required' => true,
                     'attr' => array(
-                        'placeholder' => 'Describe the behaviour in a measurable, and repeatable way so as to an observer can easily understand what the behavior is and what it is not'
+                        'placeholder' => 'Describe the behaviour in a measurable, and repeatable way so any observer can easily identify what the behavior is and what it is not'
                     ),
                     'translation_domain' => 'forms',
                 )

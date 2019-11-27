@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="it" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
       <trans-unit id="uFoRBgh" resname="General stats">
         <source>General stats</source>
-        <target>Statistiche generali</target>
+        <target>Statistici generale</target>
       </trans-unit>
       <trans-unit id="eSWh8L7" resname="Record inserted successfully">
         <source>Record inserted successfully</source>
-        <target>Record inserted successfully</target>
+        <target>Înregirare inserită cu succes</target>
       </trans-unit>
       <trans-unit id="8dhclrs" resname="Record edited successfully">
         <source>Record edited successfully</source>
-        <target>Record edited successfully</target>
+        <target>Înregirare editată cu succes</target>
       </trans-unit>
       <trans-unit id="PBg1u0S" resname="Record deleted successfully">
         <source>Record deleted successfully</source>
-        <target>Record deleted successfully</target>
+        <target>Înregirare eliminată cu succes</target>
       </trans-unit>
       <trans-unit id="YPUCK3S" resname="Insert new observation">
         <source>Insert new observation</source>
-        <target>Insert new observation</target>
+        <target>Înregistrează o nouă observație</target>
       </trans-unit>
       <trans-unit id="0W9pd5b" resname="Edit observation">
         <source>Edit observation</source>
-        <target>Modifica osservazione</target>
+        <target>Editează observația</target>
       </trans-unit>
       <trans-unit id="xj_4dhv" resname="List of observations">
         <source>List of observations</source>
-        <target>List of observations</target>
+        <target>Listă de observații</target>
       </trans-unit>
       <trans-unit id="RkxP.QG" resname="Edit">
         <source>Edit</source>
-        <target>Modifica</target>
+        <target>Editează</target>
       </trans-unit>
       <trans-unit id="GP3VSbL" resname="New">
         <source>New</source>
-        <target>Nuovo</target>
+        <target>Nou</target>
       </trans-unit>
       <trans-unit id="4tClSWj" resname="Delete">
         <source>Delete</source>
-        <target>Cancella</target>
+        <target>Șterge</target>
       </trans-unit>
       <trans-unit id="eJY5BfO" resname="Dates">
         <source>Dates</source>
@@ -51,379 +51,377 @@
       </trans-unit>
       <trans-unit id="lyUVzBA" resname="Number of students">
         <source>Number of students</source>
-        <target>Num. di studenti</target>
+        <target>Număr de elevi</target>
       </trans-unit>
       <trans-unit id="PJDNFD2" resname="Categorised data">
         <source>Categorised data</source>
-        <target>Dati categorizzati</target>
+        <target>Date categorizate</target>
       </trans-unit>
       <trans-unit id="Kw2TpR7" resname="Number of measures">
         <source>Number of measures</source>
-        <target>Num. di misure</target>
+        <target>Număr de măsurători</target>
       </trans-unit>
       <trans-unit id="1dCjC1F" resname="Calendar">
         <source>Calendar</source>
-        <target>Calendario</target>
+        <target>Calendar</target>
       </trans-unit>
       <trans-unit id="Yg.sghh" resname="Data to be categorised">
         <source>Data to be categorised</source>
-        <target>Dati da categorizzare</target>
+        <target>Date de categorizat</target>
       </trans-unit>
       <trans-unit id=".Xh2Wfc" resname="Student Id">
         <source>Student Id</source>
-        <target>Id dello studente</target>
+        <target>ID elev</target>
       </trans-unit>
       <trans-unit id=".HdHa3o" resname="Name of the Observation ">
         <source>Name of the Observation </source>
-        <target>Nome dell'osservazione</target>
+        <target>Denumirea observației</target>
       </trans-unit>
       <trans-unit id="Um4Ah8w" resname="Description">
         <source>Description</source>
-        <target>Descrizione</target>
+        <target>Descriere</target>
       </trans-unit>
       <trans-unit id="fIVqMsz" resname="Uncategorized data">
         <source>Uncategorized data</source>
-        <target>Dati non categorizzati</target>
+        <target>Date necategorizate</target>
       </trans-unit>
       <trans-unit id="Khm7eN4" resname="Students">
         <source>Students</source>
-        <target>Studenti</target>
+        <target>Elevi</target>
       </trans-unit>
       <trans-unit id="byAvVKe" resname="List">
         <source>List</source>
-        <target>Elenco</target>
+        <target>Listă</target>
       </trans-unit>
       <trans-unit id="pqbQu_q" resname="Add a new student">
         <source>Add a new student</source>
-        <target>Aggiungi un nuovo studente</target>
+        <target>Adaugă un nou elev</target>
       </trans-unit>
       <trans-unit id="_HVYhpv" resname="Observations">
         <source>Observations</source>
-        <target>Osservazioni</target>
+        <target>Observații</target>
       </trans-unit>
       <trans-unit id="nJ3n3DM" resname="Health information">
         <source>Health information</source>
-        <target>Informazioni sulla salute</target>
+        <target>Informații despre sănătate</target>
       </trans-unit>
       <trans-unit id="6YHdrkX" resname="Warning">
         <source>Warning</source>
-        <target>Attenzione</target>
+        <target>Atenție</target>
       </trans-unit>
       <trans-unit id="lgvs_.c" resname="Are you sure you want to delete this students name?">
         <source>Are you sure you want to delete this students name?</source>
-        <target>Sei sicuro di volere cancellare questo studente?</target>
+        <target>Ești sigur că vrei să elimini acest elev?</target>
       </trans-unit>
       <trans-unit id="fZ63rLE" resname="Close">
         <source>Close</source>
-        <target>Chiudi</target>
+        <target>Închide</target>
       </trans-unit>
       <trans-unit id="ewWo41r" resname="Yes, delete">
         <source>Yes, delete</source>
-        <target>Si, cancella</target>
+        <target>Da, elimină</target>
       </trans-unit>
       <trans-unit id="Ur4c1TR" resname="List of students">
         <source>List of students</source>
-        <target>Lista di studenti</target>
+        <target>Lista elevilor</target>
       </trans-unit>
       <trans-unit id="ai6rpta" resname="Student inserted successfully">
         <source>Student inserted successfully</source>
-        <target>Studente inserito con successo</target>
+        <target>Elev adăugat cu succes</target>
       </trans-unit>
       <trans-unit id="XuBwIC1" resname="Student edited successfully">
         <source>Student edited successfully</source>
-        <target>Studente modificato con successo</target>
+        <target>Elev editat cu succes</target>
       </trans-unit>
       <trans-unit id="kyTsP8x" resname="Student deleted successfully">
         <source>Student deleted successfully</source>
-        <target>Studente cancellato con successo</target>
+        <target>Elev eliminat cu succes</target>
       </trans-unit>
       <trans-unit id="kz5nvlf" resname="Insert new student">
         <source>Insert new student</source>
-        <target>Inserisci un nuovo studente</target>
+        <target>Introdu un nou elev</target>
       </trans-unit>
       <trans-unit id="WXIiS1c" resname="Edit student">
         <source>Edit student</source>
-        <target>Modifica studente</target>
+        <target>Editează elev</target>
       </trans-unit>
       <trans-unit id="MoAPEbz" resname="Data gathering about">
         <source>Data gathering about</source>
-        <target>Raccolta dati su</target>
+        <target>Culegere de date despre</target>
       </trans-unit>
       <trans-unit id="OnhpU4i" resname="Home">
         <source>Home</source>
-        <target>Home</target>
+        <target>Acasă</target>
       </trans-unit>
       <trans-unit id="qrqo.0R" resname="Measures">
         <source>Measures</source>
-        <target>Misure</target>
+        <target>Măsurători</target>
       </trans-unit>
       <trans-unit id="AHuTV4O" resname="Add a new measure">
         <source>Add a new measure</source>
-        <target>Aggiungi una nuova misura</target>
+        <target>Adaugă o nouă măsurătoare</target>
       </trans-unit>
       <trans-unit id="3NHVIj9" resname="Name">
         <source>Name</source>
-        <target>Nome</target>
+        <target>Denumire</target>
       </trans-unit>
       <trans-unit id="MHZby6f" resname="Are you sure you want to delete this measure?">
         <source>Are you sure you want to delete this measure?</source>
-        <target>Sei sicuro che vuoi cancellare questa misura?</target>
+        <target>Ești sigur că vrei să elimini această măsurătoare?</target>
       </trans-unit>
       <trans-unit id="j3OL8eO" resname="Data saved successfully">
         <source>Data saved successfully</source>
-        <target>Dati salvati con successo</target>
+        <target>Date salvate cu succes</target>
       </trans-unit>
       <trans-unit id="P_Evj36" resname="Pick your favourite dates">
         <source>Pick your favourite dates</source>
-        <target>Seleziona le tue date preferite</target>
+        <target>Alege datele tale preferate</target>
       </trans-unit>
       <trans-unit id="v4i6eKx" resname="Insert new measure">
         <source>Insert new measure</source>
-        <target>Inserisci una nuova misura</target>
+        <target>Introdu o nouă măsurătoare</target>
       </trans-unit>
       <trans-unit id="xDHICZV" resname="Edit measure">
         <source>Edit measure</source>
-        <target>Modifica la misura</target>
+        <target>Editează măsurătoarea</target>
       </trans-unit>
       <trans-unit id="SLBvTdn" resname="Delete measure">
         <source>Delete measure</source>
-        <target>Cancella la misura</target>
+        <target>Elimină măsurătoarea</target>
       </trans-unit>
       <trans-unit id="vpnMdZH" resname="List of measures">
         <source>List of measures</source>
-        <target>Elenco delle misure</target>
+        <target>Lista măsurătorilor</target>
       </trans-unit>
       <trans-unit id="3Mg5pAF" resname="View">
         <source>View</source>
-        <target>Visualizza</target>
+        <target>Vizualizează</target>
       </trans-unit>
       <trans-unit id="JkyMOBv" resname="student">
         <source>student</source>
-        <target>studente</target>
+        <target>elev</target>
       </trans-unit>
       <trans-unit id="cOx0T7g" resname="Add a new observation">
         <source>Add a new observation</source>
-        <target>Aggiungi una nuova osservazione</target>
+        <target>Adaugă o nouă observație</target>
       </trans-unit>
       <trans-unit id="3ORbX07" resname="List of phases">
         <source>List of phases</source>
-        <target>Lista delle fasi</target>
+        <target>Lista de faze</target>
       </trans-unit>
       <trans-unit id="KYh6X.m" resname="Share">
         <source>Share</source>
-        <target>Condividi</target>
+        <target>Share</target>
       </trans-unit>
       <trans-unit id="zpSWtLL" resname="Download raw data">
         <source>Download raw data</source>
-        <target>Scarica i dati grezzi</target>
+        <target>Descarcă datele brute</target>
       </trans-unit>
       <trans-unit id="6.lA8rP" resname="Measure">
         <source>Measure</source>
-        <target>Misura</target>
+        <target>Măsoară</target>
       </trans-unit>
       <trans-unit id="ksHN.fT" resname="Enabled">
         <source>Enabled</source>
-        <target>Abilitato</target>
+        <target>Abilitează</target>
       </trans-unit>
       <trans-unit id="o_duu9Y" resname="Turn on/off the collection of data">
         <source>Turn on/off the collection of data</source>
-        <target>Accendi/spegni la raccolta dei dati</target>
+        <target>Activează/dezactivează colectarea datelor</target>
       </trans-unit>
       <trans-unit id="wuV5q0k" resname="Are you sure you want to delete this observation?">
         <source>Are you sure you want to delete this observation?</source>
-        <target>Sei sicuro di volere cancellare questa osservazione?</target>
+        <target>Ești sigur că vrei să elimini această observație?</target>
       </trans-unit>
       <trans-unit id="7cvjdu." resname="Assign the observation to the observers sharing the following url:">
         <source>Assign the observation to the observers sharing the following url:</source>
-        <target>Assegna l'osservazione agli osservatori condividendo il seguente url:</target>
+        <target>Asociază observația observatorilor cu ajutorul unrmătorului link:</target>
       </trans-unit>
       <trans-unit id="osB5wQO" resname="Copy url">
         <source>Copy url</source>
-        <target>Copia url</target>
+        <target>Copiază url</target>
       </trans-unit>
       <trans-unit id="esTophR" resname="If you scheduled the observation dates, you can insert the email addresses of the&#10;                                        observers (press enter to add every new entry). They will be notified via email 1 hour before&#10;                                        the observation:">
         <source>If you scheduled the observation dates, you can insert the email addresses of the
                                         observers (press enter to add every new entry). They will be notified via email 1 hour before
                                         the observation:</source>
-        <target>Se hai programmato delle date di osservazione, puoi inserire l'indirizzo email degli
-                                                        osservatori (premi il tasto invio per aggiungere ogni nuovo elemento). Essi riceveranno una notifica via email 1 ora prima
-                                                        dell'osservazione:</target>
+        <target>Dacă ai programat datele de observație, poți introduce adresele de email ale observatorilor (apasă enter pentru a adăuga o nouă intrare). Vor fi notificați prin email cu o oră inainte de observație:</target>
       </trans-unit>
       <trans-unit id="IRUjkSP" resname="Email addresses to be contacted with">
         <source>Email addresses to be contacted with</source>
-        <target>Indirizzi email a cui inviare la notifica</target>
+        <target>Adresă de email pentru notificare</target>
       </trans-unit>
       <trans-unit id="DXogt9J" resname="Observation inserted successfully">
         <source>Observation inserted successfully</source>
-        <target>Osservazione inserita con successo</target>
+        <target>Observație introdusă cu succes</target>
       </trans-unit>
       <trans-unit id="zqpMKMi" resname="Choose one of the following...">
         <source>Choose one of the following...</source>
-        <target>Scegli uno dei seguenti...</target>
+        <target>Alege una din următoarele opțiuni:</target>
       </trans-unit>
       <trans-unit id="ZFF6s6M" resname="Time option">
         <source>Time option</source>
-        <target>Opzioni temporali</target>
+        <target>Opțiuni temporale</target>
       </trans-unit>
       <trans-unit id="NCM_VCt" resname="All day">
         <source>All day</source>
-        <target>Tutto il giorno</target>
+        <target>Întreaga zi</target>
       </trans-unit>
       <trans-unit id="WKzFEJ4" resname="Time range">
         <source>Time range</source>
-        <target>Fascia oraria</target>
+        <target>Interval orar</target>
       </trans-unit>
       <trans-unit id="LKXc.HN" resname="Exact time">
         <source>Exact time</source>
-        <target>Orario esatto</target>
+        <target>Orar exact</target>
       </trans-unit>
       <trans-unit id="NnN6gln" resname="Time range start time">
         <source>Time range start time</source>
-        <target>Ora inizio fascia oraria</target>
+        <target>Moment inițial al intervalului orar</target>
       </trans-unit>
       <trans-unit id="8AY7gIc" resname="Hour">
         <source>Hour</source>
-        <target>Ora</target>
+        <target>Oră</target>
       </trans-unit>
       <trans-unit id="S3hmW_x" resname="Minute">
         <source>Minute</source>
-        <target>Minuti</target>
+        <target>Minute</target>
       </trans-unit>
       <trans-unit id="UceUsTv" resname="Time range end time">
         <source>Time range end time</source>
-        <target>Ora fine fascia oraria</target>
+        <target>Moment final al intervalului orar</target>
       </trans-unit>
       <trans-unit id="haOas0X" resname="Yes">
         <source>Yes</source>
-        <target>Si</target>
+        <target>Da</target>
       </trans-unit>
       <trans-unit id="HqRCoTS" resname="No">
         <source>No</source>
-        <target>No</target>
+        <target>Nu</target>
       </trans-unit>
       <trans-unit id="oDJl1.G" resname="New observation">
         <source>New observation</source>
-        <target>Nuova osservazione</target>
+        <target>Nouă observație</target>
       </trans-unit>
       <trans-unit id="B7a_1Rb" resname="Be careful!">
         <source>Be careful!</source>
-        <target>Attenzione!</target>
+        <target>Atenție!</target>
       </trans-unit>
       <trans-unit id="u4QtseS" resname="The previous dates will be deleted and be replaced with the new ones agreed today.">
         <source>The previous dates will be deleted and be replaced with the new ones agreed today.</source>
-        <target>Le date precedentemente pianificate da oggi in poi saranno cancellate e rimpiazzate con le nuove.</target>
+        <target>Începând de astăzi, datele planificate anterior for fi eliminate și înlocuite cu noile date.</target>
       </trans-unit>
       <trans-unit id="06J9ls0" resname="Scheduler">
         <source>Scheduler</source>
-        <target>Schedulatore</target>
+        <target>Orar</target>
       </trans-unit>
       <trans-unit id="zsOpuJs" resname="Data">
         <source>Data</source>
-        <target>Dati</target>
+        <target>Date</target>
       </trans-unit>
       <trans-unit id="6U4WpCP" resname="Observation phases">
         <source>Observation phases</source>
-        <target>Fasi di osservazione</target>
+        <target>Fazele observației</target>
       </trans-unit>
       <trans-unit id="jk_vRzU" resname="Add a new phase">
         <source>Add a new phase</source>
-        <target>Aggiungi una nuova fase</target>
+        <target>Adaugă o nouă fază</target>
       </trans-unit>
       <trans-unit id="UdK0wK6" resname="Statistical analyses">
         <source>Statistical analyses</source>
-        <target>Analisi statistiche</target>
+        <target>Analize stetistice</target>
       </trans-unit>
       <trans-unit id="hkbXfJG" resname="No phases defined!">
         <source>No phases defined!</source>
-        <target>Nessuna fase definita!</target>
+        <target>Nu ai definit nicio fază!</target>
       </trans-unit>
       <trans-unit id="hQEcq_F" resname="Please add the names of the phases of your observation (for instance &quot;baseline&quot;, &quot;intervention&quot;, etc...)">
         <source>Please add the name of the observation phases (eg "baseline", "intervention", etc.)</source>
-        <target>Per favore aggiungi i nomi delle fasi della tua osservazione (per esempio "baseline", "intervento", ecc...)</target>
+        <target>Vă rugăm să adăugați denumirea fazelor observației (de exemplu </target>
       </trans-unit>
       <trans-unit id="zXYDXxI" resname="gathered data:">
         <source>gathered data:</source>
-        <target>dati raccolti:</target>
+        <target>date colectate:</target>
       </trans-unit>
       <trans-unit id="KlLxGvo" resname="Raw data per phase">
         <source>Raw data per phase</source>
-        <target>Dati grezzi per fase</target>
+        <target>Date brute per fază</target>
       </trans-unit>
       <trans-unit id="VcZRE4A" resname="Data categorization">
         <source>Data categorization</source>
-        <target>Categorizzazione dei dati</target>
+        <target>Categorizarea datelor</target>
       </trans-unit>
       <trans-unit id="RjQuwe7" resname="Phase">
         <source>Phase</source>
-        <target>Fase</target>
+        <target>Fază</target>
       </trans-unit>
       <trans-unit id="kTFZtnd" resname="Are you sure you want to delete this phase?">
         <source>Are you sure you want to delete this phase?</source>
-        <target>Sei sicuro di volere cancellare questa fase?</target>
+        <target>Ești sigur că vrei să ștergi această fază?</target>
       </trans-unit>
       <trans-unit id="tLC3Wnd" resname="Phases">
         <source>Phases</source>
-        <target>Fasi</target>
+        <target>Faze</target>
       </trans-unit>
       <trans-unit id="Qw1r8LH" resname="List of observation dates">
         <source>List of observation dates</source>
-        <target>Elenco delle date di osservazione</target>
+        <target>Lista datelor de observație</target>
       </trans-unit>
       <trans-unit id="jxnUx6m" resname="New phase">
         <source>New phase</source>
-        <target>Nuova fase</target>
+        <target>Nouă fază</target>
       </trans-unit>
       <trans-unit id="pfqweJT" resname="Is the subject under pharmacological treatment during this phase?">
         <source>Is the subject under pharmacological treatment during this phase?</source>
-        <target>Il soggetto è sotto trattamento farmacologico durante questa fase?</target>
+        <target>Subiectul este sub efectul tratamentului farmacologic în această fază?</target>
       </trans-unit>
       <trans-unit id="7yJ.yvF" resname="Is the phase an intervention?">
         <source>Is the phase an intervention?</source>
-        <target>La fase è un intervento?</target>
+        <target>Faza este o intervenție?</target>
       </trans-unit>
       <trans-unit id="Qifi_cl" resname="Observation phase edited successfully">
         <source>Observation phase edited successfully</source>
-        <target>Fase di osservazione modificata con successo</target>
+        <target>Fază de observație editată cu succes</target>
       </trans-unit>
       <trans-unit id="WY8ueR_" resname="Edit observation phase">
         <source>Edit observation phase</source>
-        <target>Modifica fase di osservazione</target>
+        <target>Editează faza de observație</target>
       </trans-unit>
       <trans-unit id="AxXSIz5" resname="No data gathered!">
         <source>No data gathered!</source>
-        <target>Nessun dato raccolto!</target>
+        <target>Nicio informație colectată!</target>
       </trans-unit>
       <trans-unit id="vpvm6rN" resname="When you collect the data, in this section you will see the raw data and a scatter diagram for this with a numeric response.">
         <source>When you collect the data, in this section you will see the raw data and a scatter diagram for this with a numeric response.</source>
-        <target>Quando raccoglierai i dati, questa sezione ti mostrerà i dati grezzi e uno scatter plot per l'item con una modalità di risposta numerica.</target>
+        <target>Când colectezi datele, în această secțiune vei vedea datele brute și o diagramă de dispersie pentru acest element cu un răspuns numeric.</target>
       </trans-unit>
       <trans-unit id="WdDx8OQ" resname="Gathered data">
         <source>Gathered data</source>
-        <target>Dati raccolti</target>
+        <target>Date colectate</target>
       </trans-unit>
       <trans-unit id="oHB6aA0" resname="scatter plot">
         <source>scatter plot</source>
-        <target>scatter plot</target>
+        <target>diagramă de dispersie</target>
       </trans-unit>
       <trans-unit id="uSlcJcS" resname="Data gathered on">
         <source>Data gathered on</source>
-        <target>Dati raccolti il</target>
+        <target>Date culese în</target>
       </trans-unit>
       <trans-unit id="1XVNiDu" resname="Phase data">
         <source>Phase data</source>
-        <target>Dati della fase</target>
+        <target>Datele fazei</target>
       </trans-unit>
       <trans-unit id="rTZi9HB" resname="Data analysis">
         <source>Data analysis</source>
-        <target>Analisi dei dati</target>
+        <target>Analiza datelor</target>
       </trans-unit>
       <trans-unit id="Dn34v0R" resname="Phases to be compared">
         <source>Phases to be compared</source>
-        <target>Fasi da comparare</target>
+        <target>Faze de comparat</target>
       </trans-unit>
       <trans-unit id="IgMfWDg" resname="Statistical index">
         <source>Statistical index</source>
-        <target>Indice statistico</target>
+        <target>Index statistic</target>
       </trans-unit>
       <trans-unit id="Q0AGa9G" resname="AvsB+trendB-trendA">
         <source>AvsB+trendB-trendA</source>
@@ -439,31 +437,31 @@
       </trans-unit>
       <trans-unit id="6oBStR1" resname="Allison &amp; Gorman">
         <source>Allison &amp; Gorman</source>
-        <target><![CDATA[Allison & Gorman]]></target>
+        <target>Allison &amp; Gorman</target>
       </trans-unit>
       <trans-unit id="v8WmtFt" resname="observations">
         <source>observations</source>
-        <target>osservazioni</target>
+        <target>observații</target>
       </trans-unit>
       <trans-unit id="VtV3cEl" resname="Items to be analyzed">
         <source>Items to be analyzed</source>
-        <target>Item da analizzare</target>
+        <target>Itemi de analizat</target>
       </trans-unit>
       <trans-unit id="v3lZ0uk" resname="Click on the switch to analyze item reverse score.">
         <source>Click on the switch to analyze item reverse score.</source>
-        <target>Clicca sull'interruttore per analizzare l'item con punteggio inverso.</target>
+        <target>Fă clic pe buton pentru a analiza scorul invers.</target>
       </trans-unit>
       <trans-unit id="NYzCAfh" resname="Operations">
         <source>Operations</source>
-        <target>Operazioni</target>
+        <target>Operații</target>
       </trans-unit>
       <trans-unit id="oh198Ew" resname="Sum">
         <source>Sum</source>
-        <target>Somma</target>
+        <target>Sumă</target>
       </trans-unit>
       <trans-unit id="ClK6Mzp" resname="The selected items will be aggregated, adding their raw data.">
         <source>The selected items will be aggregated, adding their raw data.</source>
-        <target>Gli item selezionati saranno aggregati sommando i dati grezzi.</target>
+        <target>Itemii selectați vor fi agregați însumând datele lor brute.</target>
       </trans-unit>
       <trans-unit id="cnp9EU9" resname="Mean">
         <source>Mean</source>
@@ -471,215 +469,215 @@
       </trans-unit>
       <trans-unit id="pNzcK97" resname="The selected items will be aggregated calculting their mean.">
         <source>The selected items will be aggregated calculting their mean.</source>
-        <target>L'item selezionato sarà aggregato calcolandone la media.</target>
+        <target>Itemii selectați vor fi agregați calculând media lor.</target>
       </trans-unit>
       <trans-unit id="qcLXZBa" resname="You can analyze only 2 phases at a time">
         <source>You can analyze only 2 phases at a time</source>
-        <target>Puoi analizzare solo 2 fasi alla volta</target>
+        <target>Poți analiza doar două faze concomitent.</target>
       </trans-unit>
       <trans-unit id="wwQ4NxF" resname="You can select only 1 item at a time">
         <source>You can select only 1 item at a time</source>
-        <target>Puoi selezionare solo 1 item alla volta</target>
+        <target>Poți selecta doar un singur item odată</target>
       </trans-unit>
       <trans-unit id="cBACKby" resname="You need at least 4 observations to perform the statistical analysis">
         <source>You need at least 4 observations to perform the statistical analysis</source>
-        <target>Hai bisogno di almeno 4 osservazioni per eseguire le analisi statistiche</target>
+        <target>Ai nevoie de cel puțin 4 observații pentru a efectua analiza statistică</target>
       </trans-unit>
       <trans-unit id="DHWdN2b" resname="You need to select at least 2 items to aggregate data">
         <source>You need to select at least 2 items to aggregate data</source>
-        <target>Puoi selezionare almeno 2 item per aggregare i dati</target>
+        <target>Trebuie să selectezi cel puțin 2 elemente pentru a agrega date</target>
       </trans-unit>
       <trans-unit id="bOxFFLz" resname="Disorder">
         <source>Disorder</source>
-        <target>Disturbo</target>
+        <target>Tulburare</target>
       </trans-unit>
       <trans-unit id="sl1Egmy" resname="Age of onset">
         <source>Age of onset</source>
-        <target>Età di insorgenza</target>
+        <target>Vârsta primei manifestări</target>
       </trans-unit>
       <trans-unit id="dWypYN8" resname="Medical condition">
         <source>Medical condition</source>
-        <target>Condizione medica</target>
+        <target>Situație medicală</target>
       </trans-unit>
       <trans-unit id="WRIT9If" resname="Comorbid disorders">
         <source>Comorbid disorders</source>
-        <target>Disturbi in comorbidità</target>
+        <target>Tulburări comorbide</target>
       </trans-unit>
       <trans-unit id="Tuyl1_F" resname="Are you sure you want to delete this health information?">
         <source>Are you sure you want to delete this health information?</source>
-        <target>Sei sicuro di volere cancellare queste informazioni sanitarie?</target>
+        <target>Ești sigur că vrei să elimini aceste informații despre sănătate?</target>
       </trans-unit>
       <trans-unit id="8yFByjY" resname="&gt;New">
         <source>&gt;New</source>
-        <target><![CDATA[>Nuovo]]></target>
+        <target>&gt;Nou</target>
       </trans-unit>
       <trans-unit id="C4Sh.77" resname="Is secondary to another medical condition?">
         <source>Is secondary to another medical condition?</source>
-        <target>È secondario a un'altra condizione medica?</target>
+        <target>Este secundar unei alte condiții medicale</target>
       </trans-unit>
       <trans-unit id="Y3F.vkG" resname="Health information inserted successfully">
         <source>Health information inserted successfully</source>
-        <target>Informazioni sanitarie inserite con successo</target>
+        <target>Informații medicale introduse cu succes</target>
       </trans-unit>
       <trans-unit id="oiv3K76" resname="Health information edited successfully">
         <source>Health information edited successfully</source>
-        <target>Informazioni sanitarie modificate con successo</target>
+        <target>Informații medicale editate cu succes</target>
       </trans-unit>
       <trans-unit id="O4E6Ls9" resname="Health information deleted successfully">
         <source>Health information deleted successfully</source>
-        <target>Informazioni sanitarie cancellate con successo</target>
+        <target>Informații medicale eliminate cu succes</target>
       </trans-unit>
       <trans-unit id="8c2lEi_" resname="Insert new health information">
         <source>Insert new health information</source>
-        <target>Inserisci nuove informazioni sanitarie</target>
+        <target>Introdu noi informații medicale</target>
       </trans-unit>
       <trans-unit id="2Eg33V8" resname="Edit health information">
         <source>Edit health information</source>
-        <target>Modifica informazioni sanitarie</target>
+        <target>Editează informațiile medicale</target>
       </trans-unit>
       <trans-unit id="UQILzGE" resname="DSM5 disorder">
         <source>DSM5 disorder</source>
-        <target>Disturbo del DSM5</target>
+        <target>DSM5 disorder</target>
       </trans-unit>
       <trans-unit id="RxnpJwG" resname="Scatter plot">
         <source>Scatter plot</source>
-        <target>Scatter plot</target>
+        <target>Diagramă de dispersie</target>
       </trans-unit>
       <trans-unit id="xfAEcPr" resname="Speedometer">
         <source>Speedometer</source>
-        <target>Tachimetro</target>
+        <target>Vitezometru</target>
       </trans-unit>
       <trans-unit id="LB9ESSG" resname="Behavioral management model across europe (BeHave) project">
         <source>Behavioral management model across europe (BeHave) project</source>
-        <target>Progetto Behavioral management model across europe (BeHave)</target>
+        <target>Proiectul Behavioral management model across europe (BeHave)</target>
       </trans-unit>
       <trans-unit id="aufWQ2B" resname="BEHAVE application">
         <source>BEHAVE application</source>
-        <target>Applicazione BEHAVE</target>
+        <target>Aplicația BEHAVE</target>
       </trans-unit>
       <trans-unit id="iVMfoeX" resname="an ICT-based solution supporting the observation and the management of problem behaviours">
         <source>an ICT-based solution supporting the observation and the management of problem behaviours</source>
-        <target>una soluzione basata sulle ICT per supportare l'osservazione e la gestione dei problemi comportamentali</target>
+        <target>o soluție bazată pe TIC pentru sprijinirea observării și managementului problemelor de comportament</target>
       </trans-unit>
       <trans-unit id="bkIkRyy" resname="Build your session-to-session measure using many different widgets">
         <source>Build your session-to-session measure using many different widgets</source>
-        <target>Costruisci la tua misura usando numerosi strumenti di composizione</target>
+        <target>Creează-ți măsurătoarea de la sesiune la sesiune folosind multe instruemente diferite</target>
       </trans-unit>
       <trans-unit id="CKDDP5E" resname="Collect">
         <source>Collect</source>
-        <target>Colleziona</target>
+        <target>Colectează</target>
       </trans-unit>
       <trans-unit id="XVj0_b5" resname="Collect data directly throught your favourite device: personal computer, mobile phone, or tablet">
         <source>Collect data directly throught your favourite device: personal computer, mobile phone, or tablet</source>
-        <target>Colleziona i dati direttamente tramite il tuo dispositivo preferito: personal computer, smartphone, o tablet</target>
+        <target>Colectează date direct pe dispozitivul tău preferat: computer personal, telefon mobil sau tabletă</target>
       </trans-unit>
       <trans-unit id="ytW.Kcc" resname="Analyze">
         <source>Analyze</source>
-        <target>Analizza</target>
+        <target>Analizează</target>
       </trans-unit>
       <trans-unit id="_Fd1VTq" resname="Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan">
         <source>Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan</source>
-        <target>A partire da una simulazione Montecarlo, l'applicazione sceglie il migliore algoritmo per calcolare la grandezza dell'effetto dell'intervento comportamentale applicato</target>
+        <target>Pornind de la o simulare Montecarlo, aplicația alege cel mai bun algoritm pentru a calcula volumul impactului pe care l-a avut intervenția comportamentală aplicată.</target>
       </trans-unit>
       <trans-unit id="F9cGdoy" resname="LANGUAGES">
         <source>LANGUAGES</source>
-        <target>LINGUA</target>
+        <target>LIMBA</target>
       </trans-unit>
       <trans-unit id="uhGL9.y" resname="English">
         <source>English</source>
-        <target>Inglese</target>
+        <target>Engleză</target>
       </trans-unit>
       <trans-unit id=".h2cfbN" resname="Italian">
         <source>Italian</source>
-        <target>Italiano</target>
+        <target>Italiană</target>
       </trans-unit>
       <trans-unit id="raf74TI" resname="You shall not pass">
         <source>You shall not pass</source>
-        <target>Non puoi passare</target>
+        <target>Nu poți trece</target>
       </trans-unit>
       <trans-unit id="psUc8iR" resname="Your observation will start in">
         <source>Your observation will start in</source>
-        <target>La tua osservazione inizierà in</target>
+        <target>Observația ta va începe în</target>
       </trans-unit>
       <trans-unit id="0Cl2tky" resname="You now have permission to access this page">
         <source>You now have permission to access this page</source>
-        <target>Non sei autorizzato ad accedere a questa pagina</target>
+        <target>Nu ești autorizat să accesezi această pagină</target>
       </trans-unit>
       <trans-unit id="U.VBVpB" resname="The observation is not enabled">
         <source>The observation is not enabled</source>
-        <target>L'osservazione non è abilitata</target>
+        <target>Observația nu este abilitată</target>
       </trans-unit>
       <trans-unit id="H.V6Kdf" resname="Next">
         <source>Next</source>
-        <target>Successivo</target>
+        <target>Următor</target>
       </trans-unit>
       <trans-unit id="c5Epmfr" resname="Prev">
         <source>Prev</source>
-        <target>Precedente</target>
+        <target>Anterior</target>
       </trans-unit>
       <trans-unit id="KNA1ltJ" resname="Skip">
         <source>Skip</source>
-        <target>Salta</target>
+        <target>Treci mai departe</target>
       </trans-unit>
       <trans-unit id="EaZ2fVZ" resname="Done">
         <source>Done</source>
-        <target>Fatto</target>
+        <target>Terminat</target>
       </trans-unit>
       <trans-unit id="76A4msb" resname="Choice">
         <source>Choice</source>
-        <target>Scelta</target>
+        <target>Alegere</target>
       </trans-unit>
       <trans-unit id="zglJpJd" resname="Direct Observation">
         <source>Direct Observation</source>
-        <target>Osservazione Diretta</target>
+        <target>Observație directă</target>
       </trans-unit>
       <trans-unit id="KHaBS9c" resname="Integer">
         <source>Integer</source>
-        <target>Numerico</target>
+        <target>Număr întreg</target>
       </trans-unit>
       <trans-unit id="WVMnaxV" resname="Four Quadrant Diagram">
         <source>Four Quadrant Diagram</source>
-        <target>Diagramma a Quattro Quadranti</target>
+        <target>Diagramă de patru cadrane</target>
       </trans-unit>
       <trans-unit id="XedKgbG" resname="Range">
         <source>Range</source>
-        <target>Intervallo di valori</target>
+        <target>Interval de valori</target>
       </trans-unit>
       <trans-unit id="cZiMTY4" resname="Text">
         <source>Text</source>
-        <target>Testo</target>
+        <target>Text</target>
       </trans-unit>
       <trans-unit id="0aCzKac" resname="Add item">
         <source>Add item</source>
-        <target>Aggiungi item</target>
+        <target>Adaugă item</target>
       </trans-unit>
       <trans-unit id="aWRVD2x" resname="Compose your measure">
         <source>Compose your measure</source>
-        <target>Componi la tua misura</target>
+        <target>Compune măsurătoarea</target>
       </trans-unit>
       <trans-unit id="KrXiqAj" resname="Text of the item">
         <source>Text of the item</source>
-        <target>Testo dell'item</target>
+        <target>Textul itemului</target>
       </trans-unit>
       <trans-unit id="gX_MhLL" resname="For example: Interrupting conversations">
         <source>For example: Interrupting conversations</source>
-        <target>Per esempio: Interruzioni della conversazione</target>
+        <target>De exemplu: Întrerupe conversația</target>
       </trans-unit>
       <trans-unit id="ghRWywf" resname="Observation length in minutes">
         <source>Observation length in minutes</source>
-        <target>Lunghezza dell'osservazione in minuti</target>
+        <target>Durata observației în minute</target>
       </trans-unit>
       <trans-unit id="_m.n3Z8" resname="In general, 10 or 15 minutes">
         <source>In general, 10 or 15 minutes</source>
-        <target>In generale, 10 o 15 minuti</target>
+        <target>În general, 10 sau 15 minute</target>
       </trans-unit>
       <trans-unit id="l8zDaf5" resname="Interval length in seconds">
         <source>Interval length in seconds</source>
-        <target>Lunghezza degli intervalli in secondi</target>
+        <target>Lungimea intervalului în secunde</target>
       </trans-unit>
       <trans-unit id="505w.wa" resname="The number of seconds has to be an exact fit for the observation length in seconds">
         <source>The number of seconds has to be an exact fit for the observation length in seconds</source>
-        <target>Il numero di secondi deve essere multiplo della lunghezza totale dell'osservazione</target>
+        <target>Numărul de secunde trebuie să fie multiplu al duratei totale de observație</target>
       </trans-unit>
       <trans-unit id="A58DMlx" resname="Typology">
         <source>Typology</source>
@@ -687,195 +685,195 @@
       </trans-unit>
       <trans-unit id="DlL36nc" resname="Duration Recording">
         <source>Duration Recording</source>
-        <target>Registrazione della durata</target>
+        <target>Înregistrarea duratei</target>
       </trans-unit>
       <trans-unit id="FrZmjZg" resname="Frequency">
         <source>Frequency</source>
-        <target>Frequenza</target>
+        <target>Frecvența</target>
       </trans-unit>
       <trans-unit id="ozDdFp3" resname="Interval Recording - Whole Interval">
         <source>Interval Recording - Whole Interval</source>
-        <target>Registrazione a Intervalli - Whole Interval</target>
+        <target>Înregistrare pe intervale - interval total</target>
       </trans-unit>
       <trans-unit id="lxHCE_6" resname="Interval Recording - Partial Interval">
         <source>Interval Recording - Partial Interval</source>
-        <target>Registrazione a intervalli - Partial Interval</target>
+        <target>Înregistrare pe intervale - interval parțial</target>
       </trans-unit>
       <trans-unit id="25FUHoI" resname="Interval Recording - Momentary Time Sampling">
         <source>Interval Recording - Momentary Time Sampling</source>
-        <target>Registrazione a intervalli - Momentary Time Sampling</target>
+        <target>Înregistrare pe intervale - timp momentan de prelevare</target>
       </trans-unit>
       <trans-unit id="ZnnPHzi" resname="For instance: How many times...?">
         <source>For instance: How many times...?</source>
-        <target>Per esempio: Quante volte...?</target>
+        <target>De exemplu: De câte ori... ?</target>
       </trans-unit>
       <trans-unit id="nlcmUm7" resname="Name of the diagram">
         <source>Name of the diagram</source>
-        <target>Nome del diagramma</target>
+        <target>Denumirea diagramei</target>
       </trans-unit>
       <trans-unit id="AL_R_k_" resname="For example: Mood meter">
         <source>For example: Mood meter</source>
-        <target>Per esempio: Metro delle emozioni</target>
+        <target>De exemplu: Măsurător de stări emoționale</target>
       </trans-unit>
       <trans-unit id="w0Um0Za" resname="Y axis name">
         <source>Y axis name</source>
-        <target>Nome dell'asse Y</target>
+        <target>Denumirea axei Y</target>
       </trans-unit>
       <trans-unit id="7CLraFv" resname="For example: Pleasantness">
         <source>For example: Pleasantness</source>
-        <target>Per esempio: Piacevolezza</target>
+        <target>De exemplu: Agreabil</target>
       </trans-unit>
       <trans-unit id="2yI_H.7" resname="Label of the max value for the y axis">
         <source>Label of the max value for the y axis</source>
-        <target>Etichetta del massimo valore dell'asse y</target>
+        <target>Eticheta valorii maxime pentru axa y</target>
       </trans-unit>
       <trans-unit id="nzP86k9" resname="Label of the min value for the y axis">
         <source>Label of the min value for the y axis</source>
-        <target>Etichetta del minimo valore dell'asse y</target>
+        <target>Eticheta valorii minime pentru axa y</target>
       </trans-unit>
       <trans-unit id="VFtgZB7" resname="Label of the max value for the x axis">
         <source>Label of the max value for the x axis</source>
-        <target>Etichetta del massimo valore dell'asse x</target>
+        <target>Eticheta valorii maxime pentru axa x</target>
       </trans-unit>
       <trans-unit id="GjDfsnc" resname="Label of the min value for the x axis">
         <source>Label of the min value for the x axis</source>
-        <target>Etichetta del minimo valore dell'asse x</target>
+        <target>Eticheta valorii minime pentru axa x</target>
       </trans-unit>
       <trans-unit id="cBTC6lO" resname="For example: High">
         <source>For example: High</source>
-        <target>Per esempio: Alto</target>
+        <target>De exemplu: Mare</target>
       </trans-unit>
       <trans-unit id="qL.kGxv" resname="For example: Low">
         <source>For example: Low</source>
-        <target>Per esempio: Basso</target>
+        <target>De exemplu: Mic</target>
       </trans-unit>
       <trans-unit id="5GNn902" resname="X axis name">
         <source>X axis name</source>
-        <target>Nome asse X</target>
+        <target>Denumirea axei X</target>
       </trans-unit>
       <trans-unit id="Bg0yltj" resname="For example: Energy">
         <source>For example: Energy</source>
-        <target>Per esempio: Energia</target>
+        <target>De exemplu: Energia</target>
       </trans-unit>
       <trans-unit id="QL48D.o" resname="For instance, how many times he calls out in class?">
         <source>For instance, how many times he calls out in class?</source>
-        <target>Per esempio, quante volte parla ad alta voce in classe?</target>
+        <target>De exemplu, de câte ori strigă în clasă?</target>
       </trans-unit>
       <trans-unit id="a1N7iE3" resname="Minimum value">
         <source>Minimum value</source>
-        <target>Valore minimo</target>
+        <target>Valoarea minimă</target>
       </trans-unit>
       <trans-unit id="ajBHbfm" resname="Maximum value">
         <source>Maximum value</source>
-        <target>Valore massimo</target>
+        <target>Valoare maximă</target>
       </trans-unit>
       <trans-unit id="DhJBrHS" resname="For instance, 0">
         <source>For instance, 0</source>
-        <target>Per esempio, 0</target>
+        <target>De exemplu, 0</target>
       </trans-unit>
       <trans-unit id="e68.kia" resname="For instance, 10">
         <source>For instance, 10</source>
-        <target>Per esempio, 10</target>
+        <target>De exemplu, 10</target>
       </trans-unit>
       <trans-unit id="jmpsynq" resname="Step">
         <source>Step</source>
-        <target>Passo</target>
+        <target>Etapa</target>
       </trans-unit>
       <trans-unit id="tNGUWEQ" resname="The value that specifies the increment from the minimum value to the maximum value.">
         <source>The value that specifies the increment from the minimum value to the maximum value.</source>
-        <target>Il valore indica come incrementare il valore minimo per raggiungere il valore massimo</target>
+        <target>Valoarea care indică cum să incrementăm valoarea mină pentru a merge la valoarea maximă</target>
       </trans-unit>
       <trans-unit id="tD72xKy" resname="For example: What happens next, or what happens as a result of the child's behavior?">
         <source>For example: What happens next, or what happens as a result of the child's behavior?</source>
-        <target>Per esempio: Cosa accade dopo, o come risultato del comportamento?</target>
+        <target>De exemplu: Ce se întâmplă în continuare sau ca urmare a comportamentului copilului?</target>
       </trans-unit>
       <trans-unit id="9LJP7QJ" resname="Placeholder">
         <source>Placeholder</source>
-        <target>Segnaposto</target>
+        <target>Substitut</target>
       </trans-unit>
       <trans-unit id="CPUr5j." resname="This is a short hint that describes the expected value of an input field">
         <source>This is a short hint that describes the expected value of an input field</source>
-        <target>Questo breve suggerimento descrive il valore atteso di un campo di input</target>
+        <target>Acesta este un scurt indiciu care descrie valoarea așteptată a unui câmp de intrare</target>
       </trans-unit>
       <trans-unit id="KUBsBy9" resname="Information about the item type">
         <source>Information about the item type</source>
-        <target>Informazioni relative al tipo di item</target>
+        <target>Informații despre tipul articolului</target>
       </trans-unit>
       <trans-unit id="wd9fUQ9" resname="Move the item up">
         <source>Move the item up</source>
-        <target>Sposta l\'elemento in alto</target>
+        <target>Mută elementul în sus</target>
       </trans-unit>
       <trans-unit id="HIyKEny" resname="Move the item down">
         <source>Move the item down</source>
-        <target>Sposta l\'elemento in basso</target>
+        <target>Mută elementul în jos</target>
       </trans-unit>
       <trans-unit id="GZnmcpk" resname="Close the section">
         <source>Close the section</source>
-        <target>Chiudi la sezione</target>
+        <target>Închide secțiunea</target>
       </trans-unit>
       <trans-unit id="M_H.8SO" resname="Remove the item">
         <source>Remove the item</source>
-        <target>Rimuovi l\'item</target>
+        <target>Elimină elementul</target>
       </trans-unit>
       <trans-unit id="vYLPFmm" resname="Number">
         <source>Number</source>
-        <target>Numerico</target>
+        <target>Număr</target>
       </trans-unit>
       <trans-unit id=".4BZ3Gd" resname="Actions">
         <source>Actions</source>
-        <target>Azioni</target>
+        <target>Acţiuni</target>
       </trans-unit>
       <trans-unit id="1ur_gjW" resname="Download">
         <source>Download</source>
-        <target>Download</target>
+        <target>Descarcă</target>
       </trans-unit>
       <trans-unit id="OXSn8f7" resname="cant-delete-measure">
         <source>cant-delete-measure</source>
-        <target>Impossibile cancellare la misura "%s": è già stata associata almeno a un'osservazione.</target>
+        <target>Nu puteți șterge măsura „% s”: a fost deja asociată cel puțin unei observații.</target>
       </trans-unit>
       <trans-unit id=".HMyTkZ" resname="Import measure">
         <source>Import measure</source>
-        <target>Importa una misura</target>
+        <target>Importă măsură</target>
       </trans-unit>
       <trans-unit id="NmSJVXn" resname="Export">
         <source>Export</source>
-        <target>Esporta</target>
+        <target>Exportă</target>
       </trans-unit>
       <trans-unit id="cZqv8he" resname="Items successfully imported!">
         <source>Items successfully imported!</source>
-        <target>Item importati con successo!</target>
+        <target>Items successfully imported!</target>
       </trans-unit>
       <trans-unit id="kmPIQM4" resname="Something went wrong with the format or content of the file. Please correct the problem and try again.">
         <source>Something went wrong with the format or content of the file. Please correct the problem and try again.</source>
-        <target>Qualcosa è andato storto con il formato o il contenuto del file. Per favore correggi il problema e riprova.</target>
+        <target>Ceva nu e corect în formatul sau conținutul fișierului. Te rugăm să corectezi problema și să încerci din nou.</target>
       </trans-unit>
       <trans-unit id="Lgw_rB9" resname="500 internal server error">
         <source>500 internal server error</source>
-        <target>500 errore interno</target>
+        <target>500 Eroare internă a server-ului</target>
       </trans-unit>
       <trans-unit id="2yRuGrR" resname="Sorry, something has gone wrong on the app's server.">
         <source>Sorry, something has gone wrong on the app's server.</source>
-        <target>Ci dispiace, qualcosa è andato storto sul server.</target>
+        <target>Ne pare rău, ceva e greșit pe serverul aplicației.</target>
       </trans-unit>
       <trans-unit id="1zF_P0Z" resname="Try again, and contact us if the problem persists.">
         <source>Try again, and contact us if the problem persists.</source>
-        <target>Prova nuovamente e contattaci se il problema persiste.</target>
+        <target>Încercați din nou și contactați-ne dacă problema persistă.</target>
       </trans-unit>
       <trans-unit id="KqsIdaj" resname="404 not found">
         <source>404 not found</source>
-        <target>404 non trovato</target>
+        <target>404 Nu a fost gasit</target>
       </trans-unit>
       <trans-unit id="gsZnfiM" resname="Sorry – the page you have requested does not exist">
         <source>Sorry – the page you have requested does not exist</source>
-        <target>Ci dispiace – la pagina che hai richiesto non esiste</target>
+        <target>Ne pare rău - pagina solicitată nu există</target>
       </trans-unit>
       <trans-unit id="sJ1F1is" resname="You may have followed an outdated link, or have mistyped a URL. If you believe this to be an error, please report it">
         <source>You may have followed an outdated link, or have mistyped a URL. If you believe this to be an error, please report it</source>
-        <target>Potresti avere seguito un link antiquato, o hai sbagliato a digitare l'URL. Se credi che questo sia un errore, per favore segnalalo</target>
+        <target>Este posibil să fi urmărit un link expirat sau să fi greșit o adresă URL. Dacă crezi că aceasta este o eroare, te rugăm să o raportezi</target>
       </trans-unit>
       <trans-unit id="TErZdc9" resname="Are you sure you want to delete this data?">
         <source>Are you sure you want to delete this data?</source>
-        <target>Sei sicuro di cancellare questo dato?</target>
+        <target>Ești sigur că vrei să ștergi aceste date?</target>
       </trans-unit>
     </body>
   </file>

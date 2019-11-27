@@ -28,7 +28,7 @@ class MeasureType extends AbstractType
                 'required' => true,
                 'translation_domain' => 'forms',
                 'attr' => array(
-                    'placeholder' => 'For instance: Anxiety scale',
+                    'placeholder' => 'For example: Anxiety scale',
                 )
             ))
             ->add('description', TextareaType::class, array(

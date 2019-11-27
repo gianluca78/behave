@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="it" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
       <trans-unit id="A.jBJz4" resname="Male">
         <source>Male</source>
-        <target>Maschio</target>
+        <target>Masculin</target>
       </trans-unit>
       <trans-unit id="cB0CHQj" resname="Country">
         <source>Country</source>
-        <target>Nazione</target>
+        <target>Țara</target>
       </trans-unit>
       <trans-unit id="454QTGH" resname="-- Select the country --">
         <source>-- Select the country --</source>
-        <target>-- Seleziona la nazione --</target>
+        <target>-- Selectați țara --</target>
       </trans-unit>
       <trans-unit id="hjKse07" resname="Student id">
         <source>Student id</source>
-        <target>Identificativo studente</target>
+        <target>ID elev</target>
       </trans-unit>
       <trans-unit id="mvZ0Osg" resname="Year of birth">
         <source>Year of birth</source>
-        <target>Anno di nascita</target>
+        <target>Anul nașterii</target>
       </trans-unit>
       <trans-unit id="jQZW8e3" resname="-- Select the year of birth --">
         <source>-- Select the year of birth --</source>
-        <target>-- Seleziona l'anno di nascita --</target>
+        <target>-- Selectați anul nașterii --</target>
       </trans-unit>
       <trans-unit id="lT3W8rR" resname="Sex">
         <source>Sex</source>
-        <target>Sesso</target>
+        <target>Sex</target>
       </trans-unit>
       <trans-unit id="6MyoCK5" resname="Female">
         <source>Female</source>
-        <target>Femmina</target>
+        <target>Feminin</target>
       </trans-unit>
       <trans-unit id="FV_BbAQ" resname="Submit">
         <source>Submit</source>
-        <target>Salva</target>
+        <target>Salvează</target>
       </trans-unit>
       <trans-unit id="nXfJaPr" resname="Single case?">
         <source>Single case?</source>
-        <target>Caso singolo?</target>
+        <target>Caz unic?</target>
       </trans-unit>
       <trans-unit id="6UY9zPB" resname="Place">
         <source>Place</source>
-        <target>Luogo</target>
+        <target>Loc</target>
       </trans-unit>
       <trans-unit id="gYzY2Rr" resname="Setting">
         <source>Setting</source>
-        <target>Setting</target>
+        <target>Context</target>
       </trans-unit>
       <trans-unit id="HMyqZQL" resname="Filling in instructions">
         <source>Filling in instructions</source>
-        <target>Istruzioni per la compilazione</target>
+        <target>Instrucțiuni de completare</target>
       </trans-unit>
       <trans-unit id="ibBe8pv" resname="Schedule observation dates">
         <source>Schedule observation dates</source>
-        <target>Pianifica le date di osservazione</target>
+        <target>Planifică datele de observație</target>
       </trans-unit>
       <trans-unit id="gWlpMQG" resname="Start date">
         <source>Start date</source>
-        <target>Data inizio</target>
+        <target>Data inițială</target>
       </trans-unit>
       <trans-unit id="WKzFEJ4" resname="Time range">
         <source>Time range</source>
-        <target>Intervallo di tempo</target>
+        <target>Interval de timp</target>
       </trans-unit>
       <trans-unit id="KeJz6aE" resname="Repeat option">
         <source>Repeat option</source>
-        <target>Opzione di ripetizione</target>
+        <target>Opțiuni de repetare</target>
       </trans-unit>
       <trans-unit id="3JN7WYk" resname="None">
         <source>None</source>
-        <target>Nessuna</target>
+        <target>Niciuna</target>
       </trans-unit>
       <trans-unit id="KXUTJIG" resname="Weekly">
         <source>Weekly</source>
-        <target>Settimanale</target>
+        <target>Săptămânal</target>
       </trans-unit>
       <trans-unit id="eybzL3z" resname="every 'n' week(s)">
         <source>every 'n' week(s)</source>
-        <target>ogni n settimana(e)</target>
+        <target>la fiecare n săptămână(i)</target>
       </trans-unit>
       <trans-unit id="oxdY9RE" resname="Days of week">
         <source>Days of week</source>
-        <target>Giorni della settimana</target>
+        <target>Zile din săptămână</target>
       </trans-unit>
       <trans-unit id="rTs_cmT" resname="Repeat end option">
         <source>Repeat end option</source>
-        <target>Opzione fine ripetizione</target>
+        <target>Opțiuni incheiere repetare</target>
       </trans-unit>
       <trans-unit id="6rb300I" resname="Repeat end date">
         <source>Repeat end date</source>
-        <target>Data fine ripetizione</target>
+        <target>Dată incheiere repetare</target>
       </trans-unit>
       <trans-unit id="GZEEOm6" resname="Number of occurrences">
         <source>Number of occurrences</source>
-        <target>Num. di ripetizioni</target>
+        <target>Număr de repetări</target>
       </trans-unit>
       <trans-unit id="e2j_VRC" resname="After">
         <source>After</source>
-        <target>Dopo</target>
+        <target>După</target>
       </trans-unit>
       <trans-unit id="k87XpG_" resname="On date">
         <source>On date</source>
-        <target>In data</target>
+        <target>În data</target>
       </trans-unit>
       <trans-unit id="UKhbxWI" resname="3 years">
         <source>3 years</source>
-        <target>3 anni</target>
+        <target>3 ani</target>
       </trans-unit>
       <trans-unit id="2xjxf_U" resname="Sun">
         <source>Sun</source>
-        <target>Dom</target>
+        <target>Dum</target>
       </trans-unit>
       <trans-unit id="9A1.Ufa" resname="Mon">
         <source>Mon</source>
@@ -127,131 +127,127 @@
       </trans-unit>
       <trans-unit id="WDOfRd_" resname="Wed">
         <source>Wed</source>
-        <target>Mer</target>
+        <target>Mie</target>
       </trans-unit>
       <trans-unit id="faESEu0" resname="Thu">
         <source>Thu</source>
-        <target>Gio</target>
+        <target>Joi</target>
       </trans-unit>
       <trans-unit id="Ztq0DOo" resname="Fri">
         <source>Fri</source>
-        <target>Ven</target>
+        <target>Vin</target>
       </trans-unit>
       <trans-unit id=".etxtWn" resname="Sat">
         <source>Sat</source>
-        <target>Sab</target>
+        <target>Sâm</target>
       </trans-unit>
       <trans-unit id="3NHVIj9" resname="Name">
         <source>Name</source>
-        <target>Nome</target>
+        <target>Nume</target>
       </trans-unit>
       <trans-unit id="4Q0jrcQ" resname="Name of the measure">
         <source>Name of the measure</source>
-        <target>Nome della misura</target>
-      </trans-unit>
-      <trans-unit id="Gg7bUXI" resname="For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms">
-        <source>For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms</source>
-        <target>Per esempio: la scala è composta da 10 item finalizzati a valutare l'ansietà di una persona identificando la presenza di sintomi somatici e cognitivi</target>
+        <target>Denumirea măsurătorii</target>
       </trans-unit>
       <trans-unit id="31EhA1V" resname="For example: Anxiety scale">
         <source>For example: Anxiety scale</source>
-        <target>Per esempio: Scala dell'ansia</target>
+        <target>De exemplu: Scala de anxietate</target>
+      </trans-unit>
+      <trans-unit id="Gg7bUXI" resname="For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms">
+        <source>For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms</source>
+        <target>De exemplu: Scala constă în 10 itemi destinați să măsoare anxietatea unei persoane, identificând prezența simptoamelor somatice și cognitive</target>
       </trans-unit>
       <trans-unit id="D64FcWy" resname="Intervention">
         <source>Intervention</source>
-        <target>Intervento</target>
+        <target>Intervenție</target>
       </trans-unit>
       <trans-unit id="Yt1ZLWq" resname="Please describe the behavioral intervention">
         <source>Please describe the behavioral intervention</source>
-        <target>Per favore descrivi l'intervento comportamentale</target>
-      </trans-unit>
-      <trans-unit id="vUmafT_" resname="Search by disorder name, DSM5, ICD9, OR ICD10 codes">
-        <source>Search by disorder name, DSM5, ICD9, OR ICD10 codes</source>
-        <target>Cerca per nome del disturbo, o codici DSM5, ICD9, o ICD10</target>
+        <target>Vă rugăm să descrieți intervenția comportamentală</target>
       </trans-unit>
       <trans-unit id="bOxFFLz" resname="Disorder">
         <source>Disorder</source>
-        <target>Disturbo</target>
+        <target>Tulburare</target>
       </trans-unit>
       <trans-unit id="Um4Ah8w" resname="Description">
         <source>Description</source>
-        <target>Descrizione</target>
+        <target>Descriere</target>
       </trans-unit>
       <trans-unit id="FGRbQsp" resname="Choice type">
         <source>Choice type</source>
-        <target>Scegli il tipo</target>
+        <target>Alege tipul</target>
       </trans-unit>
       <trans-unit id="sQKVi7h" resname="-- Select a type --">
         <source>-- Select a type --</source>
-        <target>-- Seleziona un tipo --</target>
+        <target>-- Selectați tipul --</target>
       </trans-unit>
       <trans-unit id="GG.PjJQ" resname="Checkboxes">
         <source>Checkboxes</source>
-        <target>Caselle di controllo</target>
+        <target>Căsuțe de control</target>
       </trans-unit>
       <trans-unit id="b26Et7Y" resname="Dropdown list">
         <source>Dropdown list</source>
-        <target>Menu a tendina</target>
+        <target>Meniu multiopțiuni</target>
       </trans-unit>
       <trans-unit id="suYP9Ye" resname="Dropdown list with multiple selection">
         <source>Dropdown list with multiple selection</source>
-        <target>Menu a tendina con selezione di valori multipli</target>
+        <target>Meniu cu selectare de valori multiple</target>
       </trans-unit>
       <trans-unit id="D_Ygn3S" resname="Radio buttons">
         <source>Radio buttons</source>
-        <target>Radio button</target>
+        <target>Buton tip radio</target>
       </trans-unit>
       <trans-unit id="KrXiqAj" resname="Text of the item">
         <source>Text of the item</source>
-        <target>Testo dell'item</target>
+        <target>Textul itemului</target>
       </trans-unit>
       <trans-unit id="hq0EJKF" resname="For example: What is your favourite color?">
         <source>For example: What is your favourite color?</source>
-        <target>Per esempio: Qual è il tuo colore preferito?</target>
+        <target>De exemplu: Care este culoarea ta preferată?</target>
       </trans-unit>
       <trans-unit id="Ga0i3rq" resname="Empty value">
         <source>Empty value</source>
-        <target>Valore campo vuoto</target>
+        <target>Câmp gol</target>
       </trans-unit>
       <trans-unit id="6LRY4bb" resname="Default value displayed is selected until the user clicks on it.">
         <source>Default value displayed is selected until the user clicks on it.</source>
-        <target>Valore predefinito in un menu a tendina prima che l'utente clicchi su di essa.</target>
+        <target>Valoare predefinită într-un meniu multiopțiuni înainte ca utilizatorul să aleagă</target>
       </trans-unit>
       <trans-unit id="0NuLXjZ" resname="Options">
         <source>Options</source>
-        <target>Opzioni</target>
+        <target>Opțiuni</target>
       </trans-unit>
       <trans-unit id="0Nchp1k" resname="Write the options and press enter after entering each individual one.">
         <source>Write the options and press enter after entering each individual one.</source>
-        <target>Scrivi le opzioni e premi invio dopo l'inserimento di ciascuna.</target>
+        <target>Scrie opțiunile și apasă enter după întroducerea fiecăreia din ele</target>
       </trans-unit>
       <trans-unit id="CC79LQn" resname="Use a  nickname or a code to identify the student">
         <source>Use a  nickname or a code to identify the student</source>
-        <target>Un nickname o un codice per identificare lo studente</target>
+        <target>O poreclă sau un cod pentru identificarea elevului</target>
       </trans-unit>
       <trans-unit id="n9mRXeP" resname="Interrupting of classroom discussions during the lesson">
         <source>Interrupting of classroom discussions during the lesson</source>
-        <target>Interruzioni della discussione durante le lezioni</target>
+        <target>Întreruperea discuțiilor în timpul lecției</target>
       </trans-unit>
       <trans-unit id="L_KPrEe" resname="Describe the behaviour in a measurable, and repeatable way so any observer can easily identify what the behavior is and what it is not">
         <source>Describe the behaviour in a measurable, and repeatable way so any observer can easily identify what the behavior is and what it is not</source>
-        <target>Descrivere il comportamento in un modo misurabile e ripetibile in modo che l'osservatore possa comprendere facilmente cosa è il comportamento  e cosa non è</target>
+        <target>Descrieți comportamentul în termeni măsurabili și repetibili așa încât observatorul să poată interpreta cu ușurință ceea ce este și ceea ce nu este comportamentul respectiv</target>
       </trans-unit>
       <trans-unit id="vAG.tCu" resname="For instance: school, home, gym">
         <source>For instance: school, home, gym</source>
-        <target>Per esempio: scuola, casa, palestra</target>
+        <target>De exemplu: școală, casă, sală de sport</target>
       </trans-unit>
       <trans-unit id="uzAAFZU" resname="For instance: during the math class, or the dinner">
         <source>For instance: during the math class, or the dinner</source>
-        <target>Per esempio: durante la lezione di matematica, o la cena</target>
+        <target>De exemplu: în timpul lecției de matematică, sau la cină</target>
       </trans-unit>
       <trans-unit id="sdnqXcl" resname="Phase name">
         <source>Phase name</source>
-        <target>Nome della fase</target>
+        <target>Denumirea fazei</target>
       </trans-unit>
       <trans-unit id="n84I8pz" resname="Import items">
         <source>Import items</source>
-        <target>Importa items</target>
+        <target>Import items</target>
       </trans-unit>
     </body>
   </file>

@@ -29,7 +29,7 @@ class DirectObservationItemType extends AbstractType
                 'label' => 'Text of the item',
                 'required' => true,
                 'attr' => array(
-                        'placeholder' => 'For instance: Interruptions of conversation'
+                        'placeholder' => 'For example: Interrupting conversations'
                     )
                 )
             )
@@ -43,7 +43,7 @@ class DirectObservationItemType extends AbstractType
             ->add('intervalLengthInSeconds', null, array(
                 'required' => false,
                 'attr' => array(
-                    'placeholder' => 'The number of seconds has to be multiple of the observation length'
+                    'placeholder' => 'The number of seconds has to be an exact fit for the observation length in seconds'
                 ),
                 'constraints' => array(
                     new IsMultiple()

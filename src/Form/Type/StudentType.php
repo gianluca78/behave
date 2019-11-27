@@ -19,7 +19,7 @@ class StudentType extends AbstractType
                 'label' => 'Student id',
                 'translation_domain' => 'forms',
                 'attr' => array(
-                    'placeholder' => 'A nickname or a code to identify the student'
+                    'placeholder' => 'Use a  nickname or a code to identify the student'
                 )
             ))
             ->add('yearOfBirth', ChoiceType::class, array(

@@ -210,7 +210,7 @@
         {% if observation.id %}
             <div class="note note-info">
                 <h4 class="block">{% trans %}Be careful!{% endtrans %}</h4>
-                <p> {% trans %}The dates already planned following today will be deleted to be replaced with the new ones.{% endtrans %} </p>
+                <p> {% trans %}The previous dates will be deleted and be replaced with the new ones agreed today.{% endtrans %} </p>
             </div>
         {% endif %}
 
@@ -238,7 +238,7 @@
             
             <div class="form-body">
                 <div class="form-group" style="display: block;">
-                    <label class="col-md-3 control-label">{% trans from 'forms' %}Weekly days of week{% endtrans %}</label>
+                    <label class="col-md-3 control-label">{% trans from 'forms' %}Days of week{% endtrans %}</label>
 
                     <div id="observation_observationScheduler_weeklyDaysOfWeek" class="col-md-9">
                         <div class="btn-group" data-toggle="buttons">

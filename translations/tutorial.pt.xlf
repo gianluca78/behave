@@ -7,127 +7,127 @@
     <body>
       <trans-unit id="gf3E2.1" resname="The general stats panel summarizes information about your activity on the BEHAVE application.">
         <source>The general stats panel summarizes information about your activity on the BEHAVE application.</source>
-        <target>The general stats panel summarizes information about your activity on the BEHAVE application.</target>
+        <target>O painel de estatísticas gerais sumariza a informação acerca da sua atividade na aplicação BEHAVE.</target>
       </trans-unit>
       <trans-unit id="yemVLNX" resname="Here you can find the number of students you are working with.">
         <source>Here you can find the number of students you are working with.</source>
-        <target>Here you can find the number of students you are working with.</target>
+        <target>Aqui pode encontrar o número de alunos com que se encontra a trabalhar neste momento.</target>
       </trans-unit>
       <trans-unit id="K2JgnQu" resname="The percentage of categorized data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.">
         <source>The percentage of categorized data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.</source>
-        <target>The percentage of categorized data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.</target>
+        <target>A percentagem de dados categorizados indica quantos dados foram associados a uma fase da recolha de dados. Quando uma observação é feita, o sistema não sabe antecipadamente se os dados são obtidos durante a linha de base ou na intervenção. É necessário que o faça manualmente para ter o máximo controlo sobre seus dados.</target>
       </trans-unit>
       <trans-unit id="da.__Lz" resname="This box shows how many measures you have inserted.">
         <source>This box shows how many measures you have inserted.</source>
-        <target>This box shows how many measures you have inserted.</target>
+        <target>Esta caixa mostra quantas medidas se encontram inseridas.</target>
       </trans-unit>
       <trans-unit id="0YmKpKZ" resname="The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.">
         <source>The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.</source>
-        <target>The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.</target>
+        <target>O calendário relembra as observações agendadas para hoje. Basta clicar numa das linhas para ser direcionado para a secção de recolha de dados.</target>
       </trans-unit>
       <trans-unit id="x0omzH9" resname="Here you can find observation data that has not yet been categorized.">
         <source>Here you can find observation data that has not yet been categorized.</source>
-        <target>Here you can find observation data that has not yet been categorized.</target>
+        <target>Aqui poderá encontrar dados de observação que ainda não se encontram categorizados. </target>
       </trans-unit>
       <trans-unit id="wt_fGeR" resname="The students you are working on are displayed here.">
         <source>The students you are working on are displayed here.</source>
-        <target>The students you are working on are displayed here.</target>
+        <target>Os alunos com quem se encontra a trabalhar são apresentados aqui.</target>
       </trans-unit>
       <trans-unit id="J9lAQVI" resname="In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.">
         <source>In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.</source>
-        <target>In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.</target>
+        <target>Na aplicação BEHAVE, tudo começa com a inserção de um aluno. Clique aqui para o fazer. Por favor recorde-se de não divulgar informações pessoais que possam identificar o aluno.</target>
       </trans-unit>
       <trans-unit id="ciTkiuM" resname="Click here to edit data if you want to change something.">
         <source>Click here to edit data if you want to change something.</source>
-        <target>Click here to edit data if you want to change something.</target>
+        <target>Clique aqui para editar dados caso deseje fazer alguma alteração.</target>
       </trans-unit>
       <trans-unit id="deWs66A" resname="Clicking on this icon will show you the list of the observations defined for a student.">
         <source>Clicking on this icon will show you the list of the observations defined for a student.</source>
-        <target>Clicking on this icon will show you the list of the observations defined for a student.</target>
+        <target>Clicando neste ícone acederá à lista de observações definidas para um aluno.</target>
       </trans-unit>
       <trans-unit id="afWARCA" resname="It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!">
         <source>It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!</source>
-        <target>It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!</target>
+        <target>Caso pretenda, pode adicionar informações médicas tais como uma perturbação diagnosticada ou uma condição médica específica. O comportamento que quer observar poderá ser fortemente influenciado por esses fatores!</target>
       </trans-unit>
       <trans-unit id="Sc.g6Zp" resname="If you need to remove the student data from the server please click here to delete it.">
         <source>If you need to remove the student data from the server please click here to delete it.</source>
-        <target>If you need to remove the student data from the server please click here to delete it.</target>
+        <target>Houve algum erro ou, por qualquer motivo, deseja remover os dados do aluno do servidor? Basta clicar aqui para eliminar.</target>
       </trans-unit>
       <trans-unit id="lsPGVGI" resname="Clik here to add a new measure.">
         <source>Clik here to add a new measure.</source>
-        <target>Clik here to add a new measure.</target>
+        <target>Clique aqui para adicionar uma nova medida.</target>
       </trans-unit>
       <trans-unit id="m5PU_K1" resname="Click here to edit the measure settings.">
         <source>Click here to edit the measure settings.</source>
-        <target>Click here to edit the measure settings.</target>
+        <target>Clique aqui para editar as definições da medida.</target>
       </trans-unit>
       <trans-unit id="M944ZHs" resname="Click here to delete a measure.">
         <source>Click here to delete a measure.</source>
-        <target>Click here to delete a measure.</target>
+        <target>Clique aqui para eliminar uma nova medida.</target>
       </trans-unit>
       <trans-unit id="M1_QPZE" resname="Click here to add a new observation.">
         <source>Click here to add a new observation.</source>
-        <target>Click here to add a new observation.</target>
+        <target>Clique aqui para adicionar uma nova observação.</target>
       </trans-unit>
       <trans-unit id="lfJGu5_" resname="When planning an observation, the observation session is automatically inserted into a calendar. If you need to postpone the observation? Simply drag and drop the event into another time slot or day.">
         <source>When planning an observation, the observation session is automatically inserted into a calendar. If you need to postpone the observation? Simply drag and drop the event into another time slot or day.</source>
-        <target>When planning an observation, the observation session is automatically inserted into a calendar. If you need to postpone the observation? Simply drag and drop the event into another time slot or day.</target>
+        <target>Ao planear uma observação, a sessão de observação é inserida automaticamente no calendário. Aconteceu algum imprevisto e necessita de adiar a observação? Simplesmente arraste e solte o evento para outro horário ou dia.</target>
       </trans-unit>
       <trans-unit id="K0LTxN4" resname="The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the correct phase.">
         <source>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the correct phase.</source>
-        <target>The data collected during the sessions of observation must be organized according to a single case design. Click here to define phase names and associate data to the correct phase.</target>
+        <target>Os dados recolhidos durante as sessões de observação devem ser organizados em casos individuais. Clique aqui para definir os nomes das fases e associar os dados à fase correspondente.</target>
       </trans-unit>
       <trans-unit id="wH4P9ye" resname="When an observation is planned and enabled, you have to inform the observer to collect the data about the behaviour. You can do that by copying the URL of the data collection page or adding the observers email to send them an automatic notification via email one hour before the observation.">
         <source>When an observation is planned and enabled, you have to inform the observer to collect the data about the behaviour. You can do that by copying the URL of the data collection page or adding the observers email to send them an automatic notification via email one hour before the observation.</source>
-        <target>When an observation is planned and enabled, you have to inform the observer to collect the data about the behaviour. You can do that by copying the URL of the data collection page or adding the observers email to send them an automatic notification via email one hour before the observation.</target>
+        <target>Quando uma observação é planeada e se encontra ativada, deverá informar o observador para iniciar a recolha de dados de um comportamento. Poderá fazê-lo copiando o URL da página de recolha de dados ou adicionando os emails dos observadores para enviar automaticamente uma notificação por email uma hora antes da observação.</target>
       </trans-unit>
       <trans-unit id="rPshfQo" resname="Click here to edit the observation data.">
         <source>Click here to edit the observation data.</source>
-        <target>Click here to edit the observation data.</target>
+        <target>Clique aqui para editar os dados de observação.</target>
       </trans-unit>
       <trans-unit id="RduMntG" resname="Click here to delete the observation. Be careful when deleting the observation as you will lose all of the collected data.">
         <source>Click here to delete the observation. Be careful when deleting the observation as you will lose all of the collected data.</source>
-        <target>Click here to delete the observation. Be careful when deleting the observation as you will lose all of the collected data.</target>
+        <target>Clique aqui para eliminar a observação. Tenha cuidado, ao apagar a observação, todos os dados recolhidos serão perdidos.</target>
       </trans-unit>
       <trans-unit id="t10sCSJ" resname="Do you need the raw data for your personal analyses or plan? Just click here and download it.">
         <source>Do you need the raw data for your personal analyses or plan? Just click here and download it.</source>
-        <target>Do you need the raw data for your personal analyses or plan? Just click here and download it.</target>
+        <target>Necessita dos dados brutos para os seus objetivos ou análises pessoais? Basta clicar aqui para fazer o download. </target>
       </trans-unit>
       <trans-unit id="FrnBcOx" resname="Click here to enable data collection. As long as it comes it's red, you can't do it!">
         <source>Click here to enable data collection. As long as it comes it's red, you can't do it!</source>
-        <target>Click here to enable data collection. As long as it comes it's red, you can't do it!</target>
+        <target>Clique aqui para permitir a recolha de dados. Enquanto o ícone está de cor vermelho, não é possível fazê-lo!</target>
       </trans-unit>
       <trans-unit id="cLy_2h8" resname="Click here to add a new observation phase.">
         <source>Click here to add a new observation phase.</source>
-        <target>Click here to add a new observation phase.</target>
+        <target>Clique aqui para adicionar uma nova fase de observação.</target>
       </trans-unit>
       <trans-unit id="2_FlVAx" resname="By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.">
         <source>By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.</source>
-        <target>By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.</target>
+        <target>Clicando aqui, poderá comparar duas fases de observação (por exemplo, a linha de base e a intervenção) e avaliar se o seu trabalho no sentido do decréscimo dos comportamentos negativos (ou aumento dos comportamentos positivos) teve efeito ou não.</target>
       </trans-unit>
       <trans-unit id="57Y7Vfc" resname="Click here to edit the observation phase.">
         <source>Click here to edit the observation phase.</source>
-        <target>Click here to edit the observation phase.</target>
+        <target>Clique aqui para editar a fase de observação.</target>
       </trans-unit>
       <trans-unit id="kMHZVBM" resname="Click here to delete the phase.">
         <source>Click here to delete the phase.</source>
-        <target>Click here to delete the phase.</target>
+        <target>Clique aqui para eliminar a fase.</target>
       </trans-unit>
       <trans-unit id="PLaDjFK" resname="By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.">
         <source>By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.</source>
-        <target>By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.</target>
+        <target>Clicando aqui, poderá visualizar os dados de cada sessão de recolha de dados e visualizar os gráficos de dispersão correspondentes.</target>
       </trans-unit>
       <trans-unit id="8JtgQoQ" resname="This section contains all the session data collected by observers">
         <source>This section contains all the session data collected by observers</source>
-        <target>This section contains all the session data collected by observers</target>
+        <target>Esta secção contém todos os dados das sessões recolhidos pelos observadores.</target>
       </trans-unit>
       <trans-unit id="oYKWdAt" resname="By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.">
         <source>By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.</source>
-        <target>By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.</target>
+        <target>Clicando aqui, poderá associar dados a uma fase depois de selecionar as caixas de verificação próximas aos dados.</target>
       </trans-unit>
       <trans-unit id="ZxaWl1J" resname="Click here to import a measure.">
         <source>Click here to import a measure.</source>
-        <target>Click here to import a measure.</target>
+        <target>Clique aqui para importar a medida.</target>
       </trans-unit>
     </body>
   </file>
