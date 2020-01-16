@@ -110,12 +110,14 @@ class ObservationController extends AbstractController
 
         $form = $this->createForm(ObservationNotificationEmailsType::class, null, array());
 
+        $protocol = (!empty($request->server->get('HTTPS')) && $request->server->get('HTTPS') !== 'off' || $request->server->get('SERVER_PORT') == 443) ? "https://" : "http://";
+
         return array(
             'form' => $form->createView(),
             'records' => $records,
             'title' => $translator->trans(self::INDEX_TITLE),
             'student' => $student,
-            'baseUrl' => $request->server->get('HTTP_HOST')
+            'baseUrl' => $protocol . $request->server->get('HTTP_HOST')
         );
     }
 

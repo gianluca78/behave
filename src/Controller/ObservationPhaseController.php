@@ -166,11 +166,12 @@ class ObservationPhaseController extends AbstractController
 
                     $em->persist($phase);
                     $em->flush();
+                }
 
-                    //@TODO add a control
-                    $data = $couchDbClient->getObservationById($id);
-                    $data = json_decode($data->getContents(), true)['rows'];
+                $data = $couchDbClient->getObservationById($id);
+                $data = json_decode($data->getContents(), true)['rows'];
 
+                if($data) {
                     $rev = $data[0]['value']['_rev'];
 
                     $couchDbClient->delete($id, $rev);
