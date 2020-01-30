@@ -260,7 +260,7 @@ class ObservationController extends AbstractController
     }
 
     /**
-     * @Route("/enableDisable/{id}", name="observation_enable_disable", methods={"GET"})
+     * @Route("/{_locale}/enableDisable/{id}", name="observation_enable_disable", methods={"GET"})
      *
      * @param Request $request
      * @param Observation $entity

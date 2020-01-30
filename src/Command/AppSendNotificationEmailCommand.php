@@ -17,7 +17,7 @@ class AppSendNotificationEmailCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setDescription('Add a short description for your command')
+            ->setDescription('Send a notification email a number of hours before the observation')
             ->addArgument('numberOfHours', InputArgument::REQUIRED, 'number of hours before the notification is sent')
         ;
     }
@@ -26,7 +26,6 @@ class AppSendNotificationEmailCommand extends ContainerAwareCommand
     {
         $io = new SymfonyStyle($input, $output);
         $numberOfHours = $input->getArgument('numberOfHours');
-
         $mailer = $this->getContainer()->get('mailer');
         $templating = $this->getContainer()->get('twig');
 
@@ -80,6 +79,6 @@ class AppSendNotificationEmailCommand extends ContainerAwareCommand
             }
         }
 
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        $io->success('Task completed with success.');
     }
 }

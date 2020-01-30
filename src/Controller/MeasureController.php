@@ -97,7 +97,7 @@ class MeasureController extends AbstractController
         return $this->render('measure/new.html.twig',
             array(
                 'form' => $form->createView(),
-                'title' => $this->get('translator')->trans(self::EDIT_TITLE),
+                'title' => $translator->trans(self::EDIT_TITLE),
                 'numberOfItems' => $measure->countItems(),
                 'actionName' => 'Edit'
             )
@@ -194,7 +194,7 @@ class MeasureController extends AbstractController
 
         return array(
             'form' => $form->createView(),
-            'title' => $this->get('translator')->trans('Import measure'),
+            'title' => $translator->trans('Import measure'),
         );
     }
 
@@ -336,7 +336,7 @@ class MeasureController extends AbstractController
         $form = $formBuilder->getForm()->getForm();
 
         if ($formHandler->handle($form, $request, $translator->trans(self::NEW_COMPLETE_SUCCESS_STRING))) {
-            return $this->redirect($this->generateUrl('measure', array(
+            return $this->redirect($this->generateUrl('dashboard', array(
                 'id' => $observation->getId(),
                 'token' => $observation->getToken()
             )));

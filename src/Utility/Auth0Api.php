@@ -55,4 +55,13 @@ class Auth0Api {
 
         return json_decode($response->getBody()->getContents());
     }
+
+    /**
+     * @param mixed $authorizationHeader
+     */
+    public function setAuthorizationHeader($authorizationHeader)
+    {
+        $this->authorizationHeader = $authorizationHeader;
+    }
+
 } 

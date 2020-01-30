@@ -146,7 +146,7 @@
                                         {% set imageName = asset('/icons/power-off.png') %}
                                     {% endif %}
 
-                                    <a href="{{ path('observation_enable_disable', { 'id': record.id }) }}"><img src="{{ imageName }}" width="30px" title="{% trans %}Turn on/off the collection of data{% endtrans %}"></a>
+                                    <a href="{{ path('observation_enable_disable', { 'id': record.id, 'locale': app.request.locale }) }}"><img src="{{ imageName }}" width="30px" title="{% trans %}Turn on/off the collection of data{% endtrans %}"></a>
                                 </td>
                                 <td>
                                     {% set numberOfObservations = render(controller(

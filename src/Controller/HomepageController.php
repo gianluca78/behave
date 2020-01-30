@@ -45,6 +45,12 @@ class HomepageController extends AbstractController
      */
     public function dashboardAction(OpenSslEncoder $encoder, CouchDbClient $couchDbClient)
     {
+        //echo $this->container->get('security.token_storage')->getToken()->getRawToken()['id_token'];
+
+        //dump($this->getUser()->getOAuthToken());exit;
+
+        //dump($this->container->get('security.token_storage')->getToken()->getRawToken()['id_token']); exit;
+
         $futureObservationDates = $this->getDoctrine()->getRepository('App\Entity\ObservationDate')
             ->findFutureObservations($encoder->encrypt($this->getUser()->getUserId()));
 

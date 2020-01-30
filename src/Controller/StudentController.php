@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\CouchDb\Client;
 use App\Security\Encoder\OpenSslEncoder;
 use Symfony\Component\Routing\Annotation\Route,
     Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -115,8 +116,27 @@ class StudentController extends AbstractController
     * @param Student $entity
     * @return \Symfony\Component\HttpFoundation\Response
     */
-    public function deleteAction(Request $request, Student $entity, TranslatorInterface $translator)
+    public function deleteAction(Request $request, Student $entity, TranslatorInterface $translator, Client $couchDbClient)
     {
+        foreach($entity->getObservations() as $observation) {
+            if($observation->getStudent()->getCreatorUserId() != $this->getUser()->getUserId()) {
+                $response = new Response('not allowed');
+                $response->setStatusCode(403);
+
+                return $response;
+            }
+
+            $data = $couchDbClient->getObservationsById($observation->getId());
+            $data = json_decode($data->getContents(), true)['rows'];
+
+            foreach($data as $document) {
+                $id = $document['value']['_id'];
+                $rev = $document['value']['_rev'];
+
+                $couchDbClient->delete($id, $rev);
+            }
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $em->remove($entity);

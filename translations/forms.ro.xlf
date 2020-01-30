@@ -249,6 +249,10 @@
         <source>Import items</source>
         <target>Import items</target>
       </trans-unit>
+      <trans-unit id="h88kHpz" resname="Behaviour to be observed">
+        <source>Behaviour to be observed</source>
+        <target>Comportament de observat</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

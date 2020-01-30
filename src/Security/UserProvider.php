@@ -69,6 +69,7 @@ class UserProvider implements UserProviderInterface, OAuthAwareUserProviderInter
 
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
+        //dump($response); exit;
         return $this->loadUserByUserId($response->getData()['sub']);
     }
 } 

@@ -137,9 +137,9 @@
 {% endblock %}
 
 {% block body %}
-    {% for message in app.flashes('success') %}
-        <div>
-            {{ message }}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+            {{ flashMessage }}
         </div>
     {% endfor %}
 
