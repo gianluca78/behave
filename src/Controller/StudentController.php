@@ -110,7 +110,7 @@ class StudentController extends AbstractController
     }
 
     /**
-    * @Route("/delete/{id}", name="student_delete", methods={"GET"})
+    * @Route("/{_locale}/delete/{id}", name="student_delete", methods={"GET"})
     *
     * @param Request $request
     * @param Student $entity

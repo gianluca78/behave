@@ -41,42 +41,10 @@ class ObservationController extends AbstractController
 {
     CONST NEW_SUCCESS_STRING = 'Observation inserted successfully';
     CONST EDIT_SUCCESS_STRING = 'Observation edited successfully';
-    CONST DATES_ADDED_SUCCESS = 'Dates added successfully';
     CONST DELETE_SUCCESS_STRING = 'Observation deleted successfully';
-    CONST CALENDAR_TITLE = 'Pick your favourite dates';
     CONST NEW_TITLE = 'Insert new observation';
     CONST EDIT_TITLE = 'Edit observation';
     CONST INDEX_TITLE = 'List of observations';
-
-    /**
-     * @Route("/dates/{id}", name="observation_dates", methods={"GET", "POST"})
-     * @Template
-     *
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function calendarAction(Request $request, Observation $observation, CalendarFormHandler $calendarFormHandler, TranslatorInterface $translator)
-    {
-        $form = $this->createForm(CalendarType::class, null, array(
-            'action' => $this->generateUrl('observation_dates', array('id' => $observation->getId())),
-        ));
-
-        $startTime = ($observation->getObservationDates()->count() > 0) ? $observation->getObservationDates()->first()->getStartDateTimestamp() : null;
-        $endTime = ($observation->getObservationDates()->count() > 0) ? $observation->getObservationDates()->first()->getEndDateTimestamp() : null;
-
-        $form->get('startTime')->setData($startTime);
-        $form->get('endTime')->setData($endTime);
-
-        if($calendarFormHandler->handle($form, $request, $observation, $translator->trans(self::DATES_ADDED_SUCCESS))) {
-            return $this->redirect($this->generateUrl('observation_list'));
-        }
-
-        return array(
-            'form' => $form->createView(),
-            'title' => self::CALENDAR_TITLE,
-            'observation' => $observation
-        );
-    }
 
     /**
      * @Route("/list", name="observation_list", methods={"GET"})
@@ -216,7 +184,7 @@ class ObservationController extends AbstractController
     }
 
     /**
-    * @Route("/delete/{id}/{ids}", name="observation_delete", methods={"GET"})
+    * @Route("/{_locale}/delete/{id}/{ids}", name="observation_delete", methods={"GET"})
     *
     * @param Request $request
     * @param Observation $entity

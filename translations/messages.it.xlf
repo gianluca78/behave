@@ -33,6 +33,18 @@
         <source>List of observations</source>
         <target>List of observations</target>
       </trans-unit>
+      <trans-unit id="V4UCK3S" resname="Insert new observation phase">
+        <source>Insert new observation phase</source>
+        <target>Inserisci una fase di osservazione</target>
+      </trans-unit>
+      <trans-unit id="0Wy4d5b" resname="Edit observation phase">
+        <source>Edit observation phase</source>
+        <target>Modifica una fase di osservazione</target>
+      </trans-unit>
+      <trans-unit id="xj_4yhv" resname="List of observation phases">
+        <source>List of observation phases</source>
+        <target>Elenco delle fasi di osservazione</target>
+      </trans-unit>
       <trans-unit id="RkxP.QG" resname="Edit">
         <source>Edit</source>
         <target>Modifica</target>
@@ -257,6 +269,27 @@
         <source>Observation inserted successfully</source>
         <target>Osservazione inserita con successo</target>
       </trans-unit>
+      <trans-unit id="DXogtd4" resname="Observation edited successfully">
+        <source>Observation edited successfully</source>
+        <target>Osservazione modificata con successo</target>
+      </trans-unit>
+      <trans-unit id="BXoRtd5" resname="Observation deleted successfully">
+        <source>Observation deleted successfully</source>
+        <target>Osservazione cancellata con successo</target>
+      </trans-unit>
+      <trans-unit id="DXog24J" resname="Observation phase inserted successfully">
+        <source>Observation phase inserted successfully</source>
+        <target>Fase di osservazione inserita con successo</target>
+      </trans-unit>
+      <trans-unit id="DXogdd4" resname="Observation edited successfully">
+        <source>Observation phase edited successfully</source>
+        <target>Fase di osservazione modificata con successo</target>
+      </trans-unit>
+      <trans-unit id="B4htd5" resname="Observation deleted successfully">
+        <source>Observation phase deleted successfully</source>
+        <target>Fase di osservazione cancellata con successo</target>
+      </trans-unit>
+
       <trans-unit id="zqpMKMi" resname="Choose one of the following...">
         <source>Choose one of the following...</source>
         <target>Scegli uno dei seguenti...</target>
@@ -536,6 +569,10 @@
       <trans-unit id="2Eg33V8" resname="Edit health information">
         <source>Edit health information</source>
         <target>Modifica informazioni sanitarie</target>
+      </trans-unit>
+      <trans-unit id="2Eg33Z3" resname="List of health information">
+        <source>List of health information</source>
+        <target>Elenco delle informazioni sanitarie</target>
       </trans-unit>
       <trans-unit id="UQILzGE" resname="DSM5 disorder">
         <source>DSM5 disorder</source>

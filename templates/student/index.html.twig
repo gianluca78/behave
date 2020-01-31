@@ -110,7 +110,7 @@
                                                     </a>
                                                 </li>
                                                 <li {% if loop.index0 == 0 %} data-intro="{% trans from 'tutorial' %}If you need to remove the student data from the server please click here to delete it.{% endtrans %}" data-step="6"{% endif %}>
-                                                    <a class="delete" data-toggle="modal" data-url="{{ path('student_delete', {'id': child.id}) }}" title="{% trans %}Delete{% endtrans %}" href="#basic">
+                                                    <a class="delete" data-toggle="modal" data-url="{{ path('student_delete', {'id': child.id, 'locale': app.request.locale}) }}" title="{% trans %}Delete{% endtrans %}" href="#basic">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </li>

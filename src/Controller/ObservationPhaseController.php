@@ -31,7 +31,7 @@ class ObservationPhaseController extends AbstractController
     CONST DELETE_SUCCESS_STRING = 'Observation phase deleted successfully';
     CONST NEW_TITLE = 'Insert new observation phase';
     CONST EDIT_TITLE = 'Edit observation phase';
-    CONST INDEX_TITLE = 'List of observation dates';
+    CONST INDEX_TITLE = 'List of observation phases';
 
     /**
      * @Route("/{_locale}/list/{id}", name="observation_phase_list", methods={"GET"})
@@ -122,7 +122,7 @@ class ObservationPhaseController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="observation_phase_delete", methods={"GET"})
+     * @Route("/{_locale}/delete/{id}", name="observation_phase_delete", methods={"GET"})
      *
      * @param Request $request
      * @param ObservationPhase $entity
@@ -143,7 +143,7 @@ class ObservationPhaseController extends AbstractController
     }
 
     /**
-     * @Route("/delete-raw-data/{id}/{ids}", name="observation_phase_delete_raw_data", requirements={"ids": "[a-zA-Z0-9\/]+"}, methods={"GET"})
+     * @Route("/{_locale}/delete-raw-data/{id}/{ids}", name="observation_phase_delete_raw_data", requirements={"ids": "[a-zA-Z0-9\/]+"}, methods={"GET"})
      *
      * @param Request $request
      * @param Observation $observation

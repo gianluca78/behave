@@ -104,7 +104,7 @@
             ids = $('#confirm-delete-raw-data').data('ids');
             ids = ids.toString().replace(',', '/');
 
-            window.location.href = '/observation-phase/delete-raw-data/{{ observation.id }}/' + ids;
+            window.location.href = '/observation-phase/{{ app.request.locale }}/delete-raw-data/{{ observation.id }}/' + ids;
         });
     </script>
 {% endblock %}
@@ -180,7 +180,7 @@
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a class="delete-button opaque btn btn-circle btn-icon-only btn-default" data-toggle="modal" data-url="{{ path('observation_phase_delete', {'id': phase.id }) }}" href="#basic" title="{% trans %}Delete{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to delete the phase.{% endtrans %}" data-step="4">
+                                        <a class="delete-button opaque btn btn-circle btn-icon-only btn-default" data-toggle="modal" data-url="{{ path('observation_phase_delete', {'id': phase.id, 'locale': app.request.locale }) }}" href="#basic" title="{% trans %}Delete{% endtrans %}" data-intro="{% trans from 'tutorial' %}Click here to delete the phase.{% endtrans %}" data-step="4">
                                             <i class="fa fa-trash"></i>
                                         </a>
 

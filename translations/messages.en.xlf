@@ -33,6 +33,18 @@
         <source>List of observations</source>
         <target>List of observations</target>
       </trans-unit>
+      <trans-unit id="V4UCK3S" resname="Insert new observation phase">
+        <source>Insert new observation phase</source>
+        <target>Insert new observation phase</target>
+      </trans-unit>
+      <trans-unit id="0Wy4d5b" resname="Edit observation phase">
+        <source>Edit observation phase</source>
+        <target>Edit observation phase</target>
+      </trans-unit>
+      <trans-unit id="xj_4yhv" resname="List of observation phases">
+        <source>List of observation phases</source>
+        <target>List of observation phases</target>
+      </trans-unit>
       <trans-unit id="RkxP.QG" resname="Edit">
         <source>Edit</source>
         <target>Edit</target>
@@ -256,6 +268,26 @@
       <trans-unit id="DXogt9J" resname="Observation inserted successfully">
         <source>Observation inserted successfully</source>
         <target>Observation inserted successfully</target>
+      </trans-unit>
+      <trans-unit id="DXogtd4" resname="Observation edited successfully">
+        <source>Observation edited successfully</source>
+        <target>Observation edited successfully</target>
+      </trans-unit>
+      <trans-unit id="BXoRtd5" resname="Observation deleted successfully">
+        <source>Observation deleted successfully</source>
+        <target>Observation deleted successfully</target>
+      </trans-unit>
+      <trans-unit id="DXog24J" resname="Observation phase inserted successfully">
+        <source>Observation phase inserted successfully</source>
+        <target>Observation phase inserted successfully</target>
+      </trans-unit>
+      <trans-unit id="DXogdd4" resname="Observation edited successfully">
+        <source>Observation phase edited successfully</source>
+        <target>Observation phase edited successfully</target>
+      </trans-unit>
+      <trans-unit id="B4htd5" resname="Observation deleted successfully">
+        <source>Observation phase deleted successfully</source>
+        <target>Observation phase deleted successfully</target>
       </trans-unit>
       <trans-unit id="zqpMKMi" resname="Choose one of the following...">
         <source>Choose one of the following...</source>
@@ -536,6 +568,10 @@
       <trans-unit id="2Eg33V8" resname="Edit health information">
         <source>Edit health information</source>
         <target>Edit health information</target>
+      </trans-unit>
+      <trans-unit id="2Eg33Z3" resname="List of health information">
+        <source>List of health information</source>
+        <target>List of health information</target>
       </trans-unit>
       <trans-unit id="UQILzGE" resname="DSM5 disorder">
         <source>DSM5 disorder</source>
