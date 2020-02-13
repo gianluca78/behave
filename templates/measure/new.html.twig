@@ -695,31 +695,42 @@
             switch($.trim($( this ).text())) {
                 case 'Choice':
                 case 'Scelta':
+                case 'Alegere':
+                case 'Escolha':
                     addItemForm('choice');
                     break;
 
                 case 'Direct Observation':
                 case 'Osservazione Diretta':
+                case 'Observație directă':
+                case 'Observação direta':
                     addItemForm('direct-observation');
                     break;
 
                 case 'Number':
                 case 'Numerico':
+                case 'Număr':
+                case 'Número':
                     addItemForm('integer');
                     break;
 
                 case 'Four Quadrant Diagram':
                 case 'Diagramma a Quattro Quadranti':
+                case 'Diagramă de patru cadrane':
+                case 'Diagrama dos quatro quadrantes':
                     addItemForm('meter');
                     break;
 
                 case 'Range':
                 case 'Intervallo di valori':
+                case 'Interval de valori':
+                case 'Intervalo de valores':
                     addItemForm('range');
                     break;
 
                 case 'Text':
                 case 'Testo':
+                case 'Texto':
                     addItemForm('text');
             }
         });
