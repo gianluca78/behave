@@ -65,7 +65,7 @@
                         <div class="col-md-12 col-sm-12 text-center">
                             <div style="padding-left:25px;" id="message"><strong>{% trans from 'r_analysis' %}The effect size is{% endtrans %}:
                                     <span id="effect-size-value">{{ analysisValue }}</span>.</strong><br>
-                                    {{ analysisMessage }}
+                                    <span id="effect-size-message">{{ analysisMessages[data.outMonte] }}</span>
                             </div>
                         </div>
                     </div>
@@ -73,6 +73,11 @@
             </div>
         </div>
     </div>
+
+    <div class="hidden" id="AvsB+trendB-trendA-message">{{ analysisMessages['AvsB+trendB-trendA'] }}</div>
+    <div class="hidden" id="AvsB+trendB-message">{{ analysisMessages['AvsB+trendB'] }}</div>
+    <div class="hidden" id="AvsB-message">{{ analysisMessages['AvsB'] }}</div>
+    <div class="hidden" id="AllisonGorman-message">{{ analysisMessages['Allison & Gorman'] }}</div>
 {% endif %}
 
     {% if data is defined %}

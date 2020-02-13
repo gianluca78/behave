@@ -333,6 +333,7 @@
                     rotateArrow(parseFloat($("#analysis").val()));
                     $('#alison-gorman-analysis').addClass('hidden');
                     $('#tau-u-analysis').removeClass('hidden');
+                    $('#effect-size-message').html($('#AvsB+trendB-trendA-message').text());
 
                     break;
 
@@ -343,6 +344,7 @@
                     rotateArrow(parseFloat($("#analysis").val()));
                     $('#alison-gorman-analysis').addClass('hidden');
                     $('#tau-u-analysis').removeClass('hidden');
+                    $('#effect-size-message').html($('#AvsB+trendB-message').text());
 
                     break;
 
@@ -353,6 +355,7 @@
                     rotateArrow(parseFloat($("#analysis").val()));
                     $('#alison-gorman-analysis').addClass('hidden');
                     $('#tau-u-analysis').removeClass('hidden');
+                    $('#effect-size-message').html($('#AvsB-message').text());
 
                     break;
 
@@ -363,6 +366,7 @@
                     rotateArrow(parseFloat($("#analysis").val()));
                     $('#alison-gorman-analysis').removeClass('hidden');
                     $('#tau-u-analysis').addClass('hidden');
+                    $('#effect-size-message').html($('#AllisonGorman-message').text());
 
                     break;
             }

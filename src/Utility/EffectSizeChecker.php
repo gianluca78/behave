@@ -12,9 +12,27 @@ class EffectSizeChecker {
         $this->translator = $translator;
     }
 
-    public function getResultMessage($analysesValue)
+    public function getResultMessages($analysesValue)
     {
-        switch($analysesValue->outMonte) {
+        $typologies = array(
+            'AvsB+trendB-trendA',
+            'AvsB+trendB',
+            'AvsB',
+            'Allison & Gorman'
+        );
+
+        $result = array();
+
+        foreach($typologies as $typology) {
+            $result[$typology] = $this->getResultMessage($typology, $analysesValue);
+        }
+
+        return $result;
+    }
+
+    public function getResultMessage($typology, $analysesValue)
+    {
+        switch($typology) {
             case 'AvsB+trendB-trendA':
                 $analysisValue = $analysesValue->TAU_U_Analysis[10]->AvsBTrendBTrendA;
                 break;

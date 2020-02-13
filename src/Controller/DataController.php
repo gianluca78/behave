@@ -162,7 +162,7 @@ class DataController extends AbstractController
 
         $templateVariables = array(
             'data' => $data,
-            'analysisMessage' => $translator->trans($effectSizeChecker->getResultMessage($data), array(), 'r_analysis'),
+            'analysisMessages' => $effectSizeChecker->getResultMessages($data), array(), 'r_analysis',
             'phasesLength' => array_count_values($data->database->PHASE),
             'interceptEstimate' => $data->regression->coefficients[0]->Estimate,
             'interceptStdError' => $data->regression->coefficients[0]->{'Std. Error'},
