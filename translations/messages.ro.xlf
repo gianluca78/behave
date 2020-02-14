@@ -85,8 +85,8 @@
         <source>Student Id</source>
         <target>ID elev</target>
       </trans-unit>
-      <trans-unit id=".HdHa3o" resname="Name of the Observation ">
-        <source>Name of the Observation </source>
+      <trans-unit id=".HdHa3o" resname="Name of the Observation">
+        <source>Name of the Observation</source>
         <target>Denumirea observației</target>
       </trans-unit>
       <trans-unit id="Um4Ah8w" resname="Description">
