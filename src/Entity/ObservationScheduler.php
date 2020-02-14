@@ -118,13 +118,19 @@ class ObservationScheduler
                     ->addViolation();
             }
 
-            if($this->getRepeatEndOption() === '0' && $this->getRepeatEndAfterNumberOfOccurrences() <= 0) {
+            if($this->getRepeatEndOption() == 0 && $this->getRepeatEndAfterNumberOfOccurrences() && $this->getRepeatEndAfterNumberOfOccurrences() <= 0) {
                 $context->buildViolation('This value must be a positive integer')
                     ->atPath('repeatEndAfterNumberOfOccurrences')
                     ->addViolation();
             }
 
-            if($this->getRepeatEndOption() === '1' && $this->getRepeatEndDate() <= $this->getStartDate()) {
+            if($this->getRepeatEndOption() == 0 && !$this->getRepeatEndAfterNumberOfOccurrences()) {
+                $context->buildViolation('Required field')
+                    ->atPath('repeatEndAfterNumberOfOccurrences')
+                    ->addViolation();
+            }
+
+            if($this->getRepeatEndOption() == 1 && $this->getRepeatEndDate() <= $this->getStartDate()) {
                 $context->buildViolation('The end date must follow the start date')
                     ->atPath('repeatEndDate')
                     ->addViolation();
