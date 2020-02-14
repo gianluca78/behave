@@ -222,6 +222,11 @@
                             </a>
 
                             <ul class="dropdown-menu pull-right">
+                                    <li>
+                                        <a data-phase-id="no-phase" href="javascript:;">
+                                            <i class="fa fa-map-o"></i> {% trans %}No phase{% endtrans %}
+                                        </a>
+                                    </li>
                                 {% for record in records %}
                                     <li>
                                         <a data-phase-id="{{ record.id }}" href="javascript:;">

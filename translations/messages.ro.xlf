@@ -395,6 +395,10 @@
         <source>Phases</source>
         <target>Faze</target>
       </trans-unit>
+      <trans-unit id="NL1jPsY" resname="No phase">
+        <source>No phase</source>
+        <target>Fara faza</target>
+      </trans-unit>
       <trans-unit id="Qw1r8LH" resname="List of observation dates">
         <source>List of observation dates</source>
         <target>Lista datelor de observație</target>
