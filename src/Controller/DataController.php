@@ -83,6 +83,35 @@ class DataController extends AbstractController
 
         $idData = $request->get('selectedData')['phases'][0]['phase-ids'] . ',' . $request->get('selectedData')['phases'][1]['phase-ids'];
 
+        //new
+        $rawData = array();
+
+        $offset = 0;
+
+        foreach(explode(',', $nomiFase) as $key => $phase) {
+
+            $phaseIds = explode(',', $idData);
+            $phaseCount = $request->get('selectedData')['phases'][$key]['phase-count'];
+
+            $phaseData = $couchDbClient->getByIds(array_slice($phaseIds, $offset, $phaseCount));
+            $phaseData = json_decode($phaseData->getContents())->rows;
+
+            $offset = $offset + $phaseCount;
+
+            //ordering data for timestamp ASC
+            $phaseDates = [];
+
+            foreach($phaseData as $keyPhase => $row) {
+                $phaseDates[$keyPhase] = $row->value->createdAt->date;
+            }
+
+            array_multisort($phaseDates, SORT_ASC, $phaseData);
+            //end ordering
+
+            $rawData = array_merge($rawData, $phaseData);
+        }
+
+        /*
         $rawData = $couchDbClient->getByIds(explode(',', $idData));
         $rawData = json_decode($rawData->getContents())->rows;
 
@@ -95,6 +124,7 @@ class DataController extends AbstractController
 
         array_multisort($dates, SORT_ASC, $rawData);
         //end ordering
+        */
 
         $data = $dataPreparationTool->prepare($rawData, $request->get('selectedData')['items'], $request->get('selectedData')['operation']);
 
