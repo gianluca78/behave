@@ -157,6 +157,10 @@
         <source>For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms</source>
         <target>De exemplu: Scala constă în 10 itemi destinați să măsoare anxietatea unei persoane, identificând prezența simptoamelor somatice și cognitive</target>
       </trans-unit>
+      <trans-unit id="Gg5b6Xc" resname="For example: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms">
+        <source>For example: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms</source>
+        <target>De exemplu: scala este formată din 10 elemente concepute pentru a evalua anxietatea unei persoane ca prezență a simptomelor cognitive și somatice</target>
+      </trans-unit>
       <trans-unit id="D64FcWy" resname="Intervention">
         <source>Intervention</source>
         <target>Intervenție</target>

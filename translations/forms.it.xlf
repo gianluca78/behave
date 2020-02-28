@@ -157,6 +157,10 @@
         <source>For example: Anxiety scale</source>
         <target>Per esempio: Scala dell'ansia</target>
       </trans-unit>
+      <trans-unit id="Gg5b6Xc" resname="For example: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms">
+        <source>For example: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms</source>
+        <target>Per esempio: la scala è composta da 10 item finalizzati a valutare l'ansia di una persona come la presenza di sintomi somatici o cognitivi</target>
+      </trans-unit>
       <trans-unit id="D64FcWy" resname="Intervention">
         <source>Intervention</source>
         <target>Intervento</target>

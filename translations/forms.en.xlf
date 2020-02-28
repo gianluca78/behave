@@ -157,6 +157,10 @@
         <source>For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms</source>
         <target>For example: a scale is made up of 10 items designed to assess a person's anxiety as part of cognitive and somatic symptoms</target>
       </trans-unit>
+      <trans-unit id="Gg5b6Xc" resname="For example: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms">
+        <source>For example: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms</source>
+        <target>For example: the scale consists of 10 items designed to assess a person's anxiety as presence of cognitive and somatic symptoms</target>
+      </trans-unit>
       <trans-unit id="D64FcWy" resname="Intervention">
         <source>Intervention</source>
         <target>Intervention</target>

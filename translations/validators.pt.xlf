@@ -381,6 +381,10 @@
         <source>The CSRF token is invalid. Please try to resubmit the form.</source>
         <target>O token CSRF é inválido. Por favor tente submeter o formulário de novo.</target>
       </trans-unit>
+      <trans-unit id="bnxWW6Z" resname="The measure is used in one or more observations. You can't edit it.">
+        <source>The measure is used in one or more observations. You can't edit it.</source>
+        <target>A medida é usada em uma ou mais observações. Você não pode editá-lo.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

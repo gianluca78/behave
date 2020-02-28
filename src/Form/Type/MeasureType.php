@@ -35,7 +35,7 @@ class MeasureType extends AbstractType
                 'required' => true,
                 'translation_domain' => 'forms',
                 'attr' => array(
-                    'placeholder' => 'For instance: the scale consists of 10 items designed to assess a person\'s anxiety as presence of cognitive and somatic symptoms'
+                    'placeholder' => 'For example: the scale consists of 10 items designed to assess a person\'s anxiety as presence of cognitive and somatic symptoms'
                 )
             ))
             ->add('fileImport', FileType::class, array(
