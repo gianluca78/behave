@@ -33,7 +33,7 @@ class StudentHealthInformationController extends AbstractController
     CONST INDEX_TITLE = 'List of health information';
 
     /**
-     * @Route("/delete/{id}/{ids}", name="student_health_information_delete", methods={"GET"})
+     * @Route("/{_locale}/delete/{id}/{ids}", name="student_health_information_delete", methods={"GET"})
      *
      * @param Request $request
      * @param StudentHealthInformation $entity
