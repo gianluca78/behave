@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="dCNOmK." resname="null">
+        <source>null</source>
+        <target>null</target>
+      </trans-unit>
+      <trans-unit id="gduOu7v" resname="small">
+        <source>small</source>
+        <target>klein</target>
+      </trans-unit>
+      <trans-unit id="wIJFand" resname="medium">
+        <source>medium</source>
+        <target>mittel</target>
+      </trans-unit>
+      <trans-unit id="01xBaoW" resname="large">
+        <source>large</source>
+        <target>groß</target>
+      </trans-unit>
+      <trans-unit id="1EO6yub" resname="The effect size is">
+        <source>The effect size is</source>
+        <target>Die Effektgröße ist</target>
+      </trans-unit>
+      <trans-unit id="VFUSAXm" resname="Descriptive Statistics">
+        <source>Descriptive Statistics</source>
+        <target>Deskriptive Statistik</target>
+      </trans-unit>
+      <trans-unit id="4gpUjyP" resname="increase">
+        <source>increase</source>
+        <target>erhöhen</target>
+      </trans-unit>
+      <trans-unit id="styXH0i" resname="decrease">
+        <source>decrease</source>
+        <target>verringern</target>
+      </trans-unit>
+      <trans-unit id="ZlznTxR" resname="treatment_no_effect">
+        <source>treatment_no_effect</source>
+        <target>treatment_no_effect</target>
+      </trans-unit>
+      <trans-unit id="4xIofPe" resname="treatment_effect">
+        <source>treatment_effect</source>
+        <target>treatment_effect</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -140,6 +140,10 @@
                                         <img src="{{ asset('icons/flags/square/en.svg') }}" alt="English language" title="English language" width="20px"> {% trans %}English{% endtrans %}</a>
                                 </li>
                                 <li>
+                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'de'})) }}">
+                                        <img src="{{ asset('icons/flags/square/de.svg') }}" alt="German language" title="German language" width="20px"> {% trans %}German{% endtrans %}</a>
+                                </li>
+                                <li>
                                     <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'it'})) }}">
                                         <img src="{{ asset('icons/flags/square/it.svg') }}" alt="Italian language" title="Italian language" width="20px"> {% trans %}Italian{% endtrans %}</a>
                                 </li>

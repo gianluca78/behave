@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LB9ESSG" resname="Behavioral management model across europe (BeHave) project">
+        <source>Behavioral management model across europe (BeHave) project</source>
+        <target>Projekt: Behavioral management model across europe (BeHave)</target>
+      </trans-unit>
+      <trans-unit id="aufWQ2B" resname="BEHAVE application">
+        <source>BEHAVE application</source>
+        <target>BEHAVE Anwendung</target>
+      </trans-unit>
+      <trans-unit id="iVMfoeX" resname="an ICT-based solution supporting the observation and the management of problem behaviours">
+        <source>an ICT-based solution supporting the observation and the management of problem behaviours</source>
+        <target>eine ICT-basierte Lösung, die die Beobachtung und das Management von Problemverhalten unterstützt</target>
+      </trans-unit>
+      <trans-unit id="F9cGdoy" resname="LANGUAGES">
+        <source>LANGUAGES</source>
+        <target>Sprachen</target>
+      </trans-unit>
+      <trans-unit id="uhGL9.y" resname="English">
+        <source>English</source>
+        <target>Englisch</target>
+      </trans-unit>
+      <trans-unit id=".h2cfbN" resname="Italian">
+        <source>Italian</source>
+        <target>Italienisch</target>
+      </trans-unit>
+      <trans-unit id=".h3cfbN" resname="Portuguese">
+        <source>Portuguese</source>
+        <target>Portugiesisch</target>
+      </trans-unit>
+      <trans-unit id=".h4cfbN" resname="Romanian">
+        <source>Romanian</source>
+        <target>Rumänisch</target>
+      </trans-unit>
+      <trans-unit id=".h5cfbN" resname="German">
+        <source>German</source>
+        <target>Deutsche</target>
+      </trans-unit>
+      <trans-unit id="6.lA8rP" resname="Measure">
+        <source>Measure</source>
+        <target>Maßnahme</target>
+      </trans-unit>
+      <trans-unit id="bkIkRyy" resname="Build your session-to-session measure using many different widgets">
+        <source>Build your session-to-session measure using many different widgets</source>
+        <target>Erstellen Sie Ihre Maßnahme von Sitzung zu Sitzung mit vielen verschiedenen Widgets</target>
+      </trans-unit>
+      <trans-unit id="CKDDP5E" resname="Collect">
+        <source>Collect</source>
+        <target>Sammeln</target>
+      </trans-unit>
+      <trans-unit id="XVj0_b5" resname="Collect data directly throught your favourite device: personal computer, mobile phone, or tablet">
+        <source>Collect data directly throught your favourite device: personal computer, mobile phone, or tablet</source>
+        <target>Sammeln Sie Daten direkt über Ihr Lieblingsgerät: Computer, Mobiltelefon oder Tablet</target>
+      </trans-unit>
+      <trans-unit id="ytW.Kcc" resname="Analyze">
+        <source>Analyze</source>
+        <target>Analysieren </target>
+      </trans-unit>
+      <trans-unit id="_Fd1VTq" resname="Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan">
+        <source>Starting from a Montecarlo simulation, the application chooses the best algorithm to calculate the effect size of the applied behavioural intervention plan</source>
+        <target>Ausgehend von einer Montecarlo-Simulation wählt die Anwendung den besten Algorithmus aus, um die Effektgröße des angewandten Verhaltensinterventionsplans zu berechnen</target>
+      </trans-unit>
+      <trans-unit id="raf74TI" resname="You shall not pass">
+        <source>You shall not pass</source>
+        <target>Hier geht es nicht weiter</target>
+      </trans-unit>
+      <trans-unit id="psUc8iR" resname="Your observation will start in">
+        <source>Your observation will start in</source>
+        <target>Ihre Beobachtung beginnt in</target>
+      </trans-unit>
+      <trans-unit id=".A00iIS" resname="You now have permission to access this page">
+        <source>You now have permission to access this page</source>
+        <target>Sie können nun auf diese Seite zugreifen</target>
+      </trans-unit>
+      <trans-unit id="U.VBVpB" resname="The observation is not enabled">
+        <source>The observation is not enabled</source>
+        <target>Die Beobachtung ist nicht aktiviert</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Startseite</target>
+      </trans-unit>
+      <trans-unit id="Khm7eN4" resname="Students">
+        <source>Students</source>
+        <target>Schüler*innen</target>
+      </trans-unit>
+      <trans-unit id="nJ3n3DM" resname="Health information">
+        <source>Health information</source>
+        <target>Informationen zur Gesundheit</target>
+      </trans-unit>
+      <trans-unit id="8yFByjY" resname="&gt;New">
+        <source>&gt;New</source>
+        <target>&gt;Neu</target>
+      </trans-unit>
+      <trans-unit id="C4Sh.77" resname="Is secondary to another medical condition?">
+        <source>Is secondary to another medical condition?</source>
+        <target>Ist zweitrangig gegenüber einer anderen Erkrankung?</target>
+      </trans-unit>
+      <trans-unit id="byAvVKe" resname="List">
+        <source>List</source>
+        <target>Liste</target>
+      </trans-unit>
+      <trans-unit id="cOx0T7g" resname="Add a new observation">
+        <source>Add a new observation</source>
+        <target>Eine neue Beobachtung hinzufügen</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Aktionen</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Löschen</target>
+      </trans-unit>
+      <trans-unit id="bOxFFLz" resname="Disorder">
+        <source>Disorder</source>
+        <target>Störung</target>
+      </trans-unit>
+      <trans-unit id="sl1Egmy" resname="Age of onset">
+        <source>Age of onset</source>
+        <target>Alter des Beginns</target>
+      </trans-unit>
+      <trans-unit id="dWypYN8" resname="Medical condition">
+        <source>Medical condition</source>
+        <target>Medizinischer Zustand</target>
+      </trans-unit>
+      <trans-unit id="WRIT9If" resname="Comorbid disorders">
+        <source>Comorbid disorders</source>
+        <target>Komorbide Erkrankungen</target>
+      </trans-unit>
+      <trans-unit id="6YHdrkX" resname="Warning">
+        <source>Warning</source>
+        <target>Warnung</target>
+      </trans-unit>
+      <trans-unit id="Tuyl1_F" resname="Are you sure you want to delete this health information?">
+        <source>Are you sure you want to delete this health information?</source>
+        <target>Sind Sie sicher, dass Sie diese Gesundheitsinformationen löschen möchten?</target>
+      </trans-unit>
+      <trans-unit id="fZ63rLE" resname="Close">
+        <source>Close</source>
+        <target>Schließen</target>
+      </trans-unit>
+      <trans-unit id="ewWo41r" resname="Yes, delete">
+        <source>Yes, delete</source>
+        <target>Löschen</target>
+      </trans-unit>
+      <trans-unit id="_HVYhpv" resname="Observations">
+        <source>Observations</source>
+        <target>Beobachtungen</target>
+      </trans-unit>
+      <trans-unit id="GP3VSbL" resname="New">
+        <source>New</source>
+        <target>Neu</target>
+      </trans-unit>
+      <trans-unit id="B7a_1Rb" resname="Be careful!">
+        <source>Be careful!</source>
+        <target>Vorsicht!</target>
+      </trans-unit>
+      <trans-unit id="MzODiTX" resname="The previous dates will be deleted and be replaced with the new ones agreed today.">
+        <source>The previous dates will be deleted and be replaced with the new ones agreed today.</source>
+        <target>Die nach dem heutigen Tag bereits geplanten Termine werden gestrichen und durch die neuen ersetzt.</target>
+      </trans-unit>
+      <trans-unit id="1dCjC1F" resname="Calendar">
+        <source>Calendar</source>
+        <target>Kalender</target>
+      </trans-unit>
+      <trans-unit id="3ORbX07" resname="List of phases">
+        <source>List of phases</source>
+        <target>Liste der Phasen</target>
+      </trans-unit>
+      <trans-unit id="KYh6X.m" resname="Share">
+        <source>Share</source>
+        <target>Teilen</target>
+      </trans-unit>
+      <trans-unit id="1ur_gjW" resname="Download">
+        <source>Download</source>
+        <target>Herunterladen</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="ksHN.fT" resname="Enabled">
+        <source>Enabled</source>
+        <target>Aktivieren </target>
+      </trans-unit>
+      <trans-unit id="B4RqmRi" resname="Categorised data">
+        <source>Categorised data</source>
+        <target>Kategorisierte Daten</target>
+      </trans-unit>
+      <trans-unit id="o_duu9Y" resname="Turn on/off the collection of data">
+        <source>Turn on/off the collection of data</source>
+        <target>Ein-/Ausschalten der Datenerfassung</target>
+      </trans-unit>
+      <trans-unit id="wuV5q0k" resname="Are you sure you want to delete this observation?">
+        <source>Are you sure you want to delete this observation?</source>
+        <target>Sind Sie sicher, dass Sie diese Bemerkung löschen wollen?</target>
+      </trans-unit>
+      <trans-unit id="7cvjdu." resname="Assign the observation to the observers sharing the following url:">
+        <source>Assign the observation to the observers sharing the following url:</source>
+        <target>Leiten Sie die Beobachtung an die Beobachter weiter, indem Sie folgende Url teilen:</target>
+      </trans-unit>
+      <trans-unit id="osB5wQO" resname="Copy url">
+        <source>Copy url</source>
+        <target>Url kopieren</target>
+      </trans-unit>
+      <trans-unit id="esTophR" resname="If you scheduled the observation dates, you can insert the email addresses of the&#10;                                        observers (press enter to add every new entry). They will be notified via email 1 hour before&#10;                                        the observation:">
+        <source>If you scheduled the observation dates, you can insert the email addresses of the
+                                        observers (press enter to add every new entry). They will be notified via email 1 hour before
+                                        the observation:</source>
+        <target>Wenn Sie Beobachtungsdaten geplant haben, können Sie die E-Mail-Adresse der Beobachter eingeben (drücken Sie die Eingabetaste, um jedes neue Element hinzuzufügen). Diese erhalten eine E-Mail-Benachrichtigung 1 Stunde vor der Beobachtung:</target>
+      </trans-unit>
+      <trans-unit id="wv7Pg0L" resname="Email addresses to be contacted with">
+        <source>Email addresses to be contacted with</source>
+        <target>Zu benachrichtigende E-Mail-Adressen</target>
+      </trans-unit>
+      <trans-unit id="eJY5BfO" resname="Dates">
+        <source>Dates</source>
+        <target>Daten</target>
+      </trans-unit>
+      <trans-unit id="Lgw_rB9" resname="500 internal server error">
+        <source>500 internal server error</source>
+        <target>500 interner Server-Fehler </target>
+      </trans-unit>
+      <trans-unit id="2yRuGrR" resname="Sorry, something has gone wrong on the app's server.">
+        <source>Sorry, something has gone wrong on the app's server.</source>
+        <target>Es tut uns leid, auf dem Server der App ist etwas schief gelaufen.</target>
+      </trans-unit>
+      <trans-unit id="1zF_P0Z" resname="Try again, and contact us if the problem persists.">
+        <source>Try again, and contact us if the problem persists.</source>
+        <target>Versuchen Sie es noch einmal und kontaktieren Sie uns, wenn das Problem weiterhin besteht.</target>
+      </trans-unit>
+      <trans-unit id="KqsIdaj" resname="404 not found">
+        <source>404 not found</source>
+        <target>404 nicht gefunden</target>
+      </trans-unit>
+      <trans-unit id="gsZnfiM" resname="Sorry – the page you have requested does not exist">
+        <source>Sorry – the page you have requested does not exist</source>
+        <target>Entschuldigung - die von Ihnen angeforderte Seite existiert nicht.</target>
+      </trans-unit>
+      <trans-unit id="sJ1F1is" resname="You may have followed an outdated link, or have mistyped a URL. If you believe this to be an error, please report it">
+        <source>You may have followed an outdated link, or have mistyped a URL. If you believe this to be an error, please report it</source>
+        <target>Möglicherweise sind Sie einem veralteten Link gefolgt oder haben sich bei der Eingabe einer URL vertippt. Wenn Sie glauben, dass dies ein Fehler ist, melden Sie ihn bitte</target>
+      </trans-unit>
+      <trans-unit id="rTZi9HB" resname="Data analysis">
+        <source>Data analysis</source>
+        <target>Analyse der Daten</target>
+      </trans-unit>
+      <trans-unit id="Dn34v0R" resname="Phases to be compared">
+        <source>Phases to be compared</source>
+        <target>Zu vergleichende Phasen</target>
+      </trans-unit>
+      <trans-unit id="IgMfWDg" resname="Statistical index">
+        <source>Statistical index</source>
+        <target>Statistischer Index</target>
+      </trans-unit>
+      <trans-unit id="Q0AGa9G" resname="AvsB+trendB-trendA">
+        <source>AvsB+trendB-trendA</source>
+        <target>AvsB+trendB-trendA</target>
+      </trans-unit>
+      <trans-unit id="4GEjbwl" resname="AvsB+trendB">
+        <source>AvsB+trendB</source>
+        <target>AvsB+trendB</target>
+      </trans-unit>
+      <trans-unit id="c1y2H07" resname="AvsB">
+        <source>AvsB</source>
+        <target>AvsB</target>
+      </trans-unit>
+      <trans-unit id="6oBStR1" resname="Allison &amp; Gorman">
+        <source>Allison &amp; Gorman</source>
+        <target>Allison &amp; Gorman</target>
+      </trans-unit>
+      <trans-unit id="v8WmtFt" resname="observations">
+        <source>observations</source>
+        <target>Beobachtungen</target>
+      </trans-unit>
+      <trans-unit id="VtV3cEl" resname="Items to be analyzed">
+        <source>Items to be analyzed</source>
+        <target>Zu analysierende Items</target>
+      </trans-unit>
+      <trans-unit id="v3lZ0uk" resname="Click on the switch to analyze item reverse score.">
+        <source>Click on the switch to analyze item reverse score.</source>
+        <target>Klicken Sie auf den Schalter, um das Item mit umgekehrter Bewertung zu analysieren.</target>
+      </trans-unit>
+      <trans-unit id="NYzCAfh" resname="Operations">
+        <source>Operations</source>
+        <target>Operationen</target>
+      </trans-unit>
+      <trans-unit id="oh198Ew" resname="Sum">
+        <source>Sum</source>
+        <target>Summe</target>
+      </trans-unit>
+      <trans-unit id="sq8AMXa" resname="The selected items will be aggregated, adding their raw data.">
+        <source>The selected items will be aggregated, adding their raw data.</source>
+        <target>Die ausgewählten Elemente werden unter Hinzufügung ihrer Rohdaten zusammengefasst.</target>
+      </trans-unit>
+      <trans-unit id="cnp9EU9" resname="Mean">
+        <source>Mean</source>
+        <target>Bedeutet</target>
+      </trans-unit>
+      <trans-unit id="pNzcK97" resname="The selected items will be aggregated calculting their mean.">
+        <source>The selected items will be aggregated calculting their mean.</source>
+        <target>Die ausgewählten Elemente werden zusammengefasst, um ihren Mittelwert zu berechnen.</target>
+      </trans-unit>
+      <trans-unit id="qcLXZBa" resname="You can analyze only 2 phases at a time">
+        <source>You can analyze only 2 phases at a time</source>
+        <target>Sie können nur 2 Phasen auf einmal analysieren</target>
+      </trans-unit>
+      <trans-unit id="wwQ4NxF" resname="You can select only 1 item at a time">
+        <source>You can select only 1 item at a time</source>
+        <target>Sie können jeweils nur 1 Item auf einmal auswählen.</target>
+      </trans-unit>
+      <trans-unit id="cBACKby" resname="You need at least 4 observations to perform the statistical analysis">
+        <source>You need at least 4 observations to perform the statistical analysis</source>
+        <target>Sie benötigen mindestens 4 Beobachtungen, um die statistische Analyse durchzuführen</target>
+      </trans-unit>
+      <trans-unit id="DHWdN2b" resname="You need to select at least 2 items to aggregate data">
+        <source>You need to select at least 2 items to aggregate data</source>
+        <target>Sie müssen mindestens 2 Elemente auswählen, um Daten zusammen zu fassen.</target>
+      </trans-unit>
+      <trans-unit id="xfAEcPr" resname="Speedometer">
+        <source>Speedometer</source>
+        <target>Geschwindigkeitsmesser</target>
+      </trans-unit>
+      <trans-unit id="zsOpuJs" resname="Data">
+        <source>Data</source>
+        <target>Daten</target>
+      </trans-unit>
+      <trans-unit id="AxXSIz5" resname="No data gathered!">
+        <source>No data gathered!</source>
+        <target>Es werden keine Daten gesammelt!</target>
+      </trans-unit>
+      <trans-unit id=".x5brwS" resname="When you collect the data, in this section you will see the raw data and a scatter diagram for this with a numeric response.">
+        <source>When you collect the data, in this section you will see the raw data and a scatter diagram for this with a numeric response.</source>
+        <target>Wenn Sie die Daten sammeln, sehen Sie in diesem Abschnitt die Rohdaten und ein Streudiagramm mit einer numerischen Rückmeldung.</target>
+      </trans-unit>
+      <trans-unit id="WdDx8OQ" resname="Gathered data">
+        <source>Gathered data</source>
+        <target>Gesammelte Daten</target>
+      </trans-unit>
+      <trans-unit id="uSlcJcS" resname="Data gathered on">
+        <source>Data gathered on</source>
+        <target>Gesammelte Daten zu</target>
+      </trans-unit>
+      <trans-unit id="RjQuwe7" resname="Phase">
+        <source>Phase</source>
+        <target>Phase</target>
+      </trans-unit>
+      <trans-unit id="oHB6aA0" resname="scatter plot">
+        <source>scatter plot</source>
+        <target>Streudiagramm</target>
+      </trans-unit>
+      <trans-unit id="RxnpJwG" resname="Scatter plot">
+        <source>Scatter plot</source>
+        <target>Streudiagramm</target>
+      </trans-unit>
+      <trans-unit id="qrqo.0R" resname="Measures">
+        <source>Measures</source>
+        <target>Maßnahmen</target>
+      </trans-unit>
+      <trans-unit id="aWRVD2x" resname="Compose your measure">
+        <source>Compose your measure</source>
+        <target>Erstellen Sie Ihre Maßnahme</target>
+      </trans-unit>
+      <trans-unit id="KUBsBy9" resname="Information about the item type">
+        <source>Information about the item type</source>
+        <target>Informationen über den Item-Typ</target>
+      </trans-unit>
+      <trans-unit id="0aCzKac" resname="Add item">
+        <source>Add item</source>
+        <target>Item hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="76A4msb" resname="Choice">
+        <source>Choice</source>
+        <target>Auswahl</target>
+      </trans-unit>
+      <trans-unit id="zglJpJd" resname="Direct Observation">
+        <source>Direct Observation</source>
+        <target>Direkte Beobachtung</target>
+      </trans-unit>
+      <trans-unit id="vYLPFmm" resname="Number">
+        <source>Number</source>
+        <target>Nummer</target>
+      </trans-unit>
+      <trans-unit id="WVMnaxV" resname="Four Quadrant Diagram">
+        <source>Four Quadrant Diagram</source>
+        <target>Vier-Quadranten-Diagramm</target>
+      </trans-unit>
+      <trans-unit id="XedKgbG" resname="Range">
+        <source>Range</source>
+        <target>Bereich</target>
+      </trans-unit>
+      <trans-unit id="cZiMTY4" resname="Text">
+        <source>Text</source>
+        <target>Text</target>
+      </trans-unit>
+      <trans-unit id="e3ehEsz" resname="Items successfully imported!">
+        <source>Items successfully imported!</source>
+        <target>Items mit Erfolg importiert!</target>
+      </trans-unit>
+      <trans-unit id="kmPIQM4" resname="Something went wrong with the format or content of the file. Please correct the problem and try again.">
+        <source>Something went wrong with the format or content of the file. Please correct the problem and try again.</source>
+        <target>Etwas ist mit dem Format oder dem Inhalt der Datei falsch gelaufen. Bitte korrigieren Sie das Problem und versuchen Sie es erneut.</target>
+      </trans-unit>
+      <trans-unit id="wd9fUQ9" resname="Move the item up">
+        <source>Move the item up</source>
+        <target>Den Artikel nach oben verschieben</target>
+      </trans-unit>
+      <trans-unit id="HIyKEny" resname="Move the item down">
+        <source>Move the item down</source>
+        <target>Den Artikel nach unten verschieben</target>
+      </trans-unit>
+      <trans-unit id="GZnmcpk" resname="Close the section">
+        <source>Close the section</source>
+        <target>Den Abschnitt schließen</target>
+      </trans-unit>
+      <trans-unit id="M_H.8SO" resname="Remove the item">
+        <source>Remove the item</source>
+        <target>Das Element entfernen</target>
+      </trans-unit>
+      <trans-unit id="MoAPEbz" resname="Data gathering about">
+        <source>Data gathering about</source>
+        <target>Datenerfassung über</target>
+      </trans-unit>
+      <trans-unit id=".HMyTkZ" resname="Import measure">
+        <source>Import measure</source>
+        <target>Maßnahme importieren</target>
+      </trans-unit>
+      <trans-unit id="NmSJVXn" resname="Export">
+        <source>Export</source>
+        <target>Export</target>
+      </trans-unit>
+      <trans-unit id="MHZby6f" resname="Are you sure you want to delete this measure?">
+        <source>Are you sure you want to delete this measure?</source>
+        <target>Sind Sie sicher, dass Sie diese Maßnahme löschen wollen?</target>
+      </trans-unit>
+      <trans-unit id="JkyMOBv" resname="student">
+        <source>student</source>
+        <target>Schüler*in</target>
+      </trans-unit>
+      <trans-unit id="pqbQu_q" resname="Add a new student">
+        <source>Add a new student</source>
+        <target>Eine*n neue*n Schüler*in hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="w0VGco1" resname="Are you sure you want to delete this students name?">
+        <source>Are you sure you want to delete this students name?</source>
+        <target>Sind Sie sicher, dass Sie den Namen dieses Studenten löschen möchten?</target>
+      </trans-unit>
+      <trans-unit id="H.V6Kdf" resname="Next">
+        <source>Next</source>
+        <target>Weiter</target>
+      </trans-unit>
+      <trans-unit id="c5Epmfr" resname="Prev">
+        <source>Prev</source>
+        <target>Zurück</target>
+      </trans-unit>
+      <trans-unit id="KNA1ltJ" resname="Skip">
+        <source>Skip</source>
+        <target>Überspringen</target>
+      </trans-unit>
+      <trans-unit id="EaZ2fVZ" resname="Done">
+        <source>Done</source>
+        <target>Fertig</target>
+      </trans-unit>
+      <trans-unit id="uFoRBgh" resname="General stats">
+        <source>General stats</source>
+        <target>Allgemeine Angaben</target>
+      </trans-unit>
+      <trans-unit id="El9baCy" resname="Number of students">
+        <source>Number of students</source>
+        <target>Anzahl der Schüler</target>
+      </trans-unit>
+      <trans-unit id="5DcEDRi" resname="Number of measures">
+        <source>Number of measures</source>
+        <target>Nr. der Maßnahmen</target>
+      </trans-unit>
+      <trans-unit id="kugCNP2" resname="Data to be categorised">
+        <source>Data to be categorised</source>
+        <target>Zu kategorisierende Daten</target>
+      </trans-unit>
+      <trans-unit id=".Xh2Wfc" resname="Student Id">
+        <source>Student Id</source>
+        <target>Schüler*in ID</target>
+      </trans-unit>
+      <trans-unit id="SfLQFlm" resname="Name of the Observation">
+        <source>Name of the Observation</source>
+        <target>Name der Beobachtung</target>
+      </trans-unit>
+      <trans-unit id="fIVqMsz" resname="Uncategorized data">
+        <source>Uncategorized data</source>
+        <target>Nicht kategorisierte Daten</target>
+      </trans-unit>
+      <trans-unit id="3Mg5pAF" resname="View">
+        <source>View</source>
+        <target>Anzeigen</target>
+      </trans-unit>
+      <trans-unit id="U9443sg" resname="Report a problem">
+        <source>Report a problem</source>
+        <target>Ein Problem melden</target>
+      </trans-unit>
+      <trans-unit id="06J9ls0" resname="Scheduler">
+        <source>Scheduler</source>
+        <target>Terminplaner</target>
+      </trans-unit>
+      <trans-unit id="tLC3Wnd" resname="Phases">
+        <source>Phases</source>
+        <target>Phasen</target>
+      </trans-unit>
+      <trans-unit id="pfqweJT" resname="Is the subject under pharmacological treatment during this phase?">
+        <source>Is the subject under pharmacological treatment during this phase?</source>
+        <target>Wird das Individuum in dieser Phase pharmakologisch behandelt?</target>
+      </trans-unit>
+      <trans-unit id="7yJ.yvF" resname="Is the phase an intervention?">
+        <source>Is the phase an intervention?</source>
+        <target>Ist die Phase eine Intervention?</target>
+      </trans-unit>
+      <trans-unit id="6U4WpCP" resname="Observation phases">
+        <source>Observation phases</source>
+        <target>Beobachtungsphasen</target>
+      </trans-unit>
+      <trans-unit id="jk_vRzU" resname="Add a new phase">
+        <source>Add a new phase</source>
+        <target>Eine neue Phase hinzufügen</target>
+      </trans-unit>
+      <trans-unit id="UdK0wK6" resname="Statistical analyses">
+        <source>Statistical analyses</source>
+        <target>Statistische Analysen</target>
+      </trans-unit>
+      <trans-unit id="hkbXfJG" resname="No phases defined!">
+        <source>No phases defined!</source>
+        <target>Keine Phasen definiert!</target>
+      </trans-unit>
+      <trans-unit id="LW81Zg_" resname="Please add the name of the observation phases (eg &quot;baseline&quot;, &quot;intervention&quot;, etc.)">
+        <source>Please add the name of the observation phases (eg "baseline", "intervention", etc.)</source>
+        <target>Bitte fügen Sie die Namen der Phasen Ihrer Beobachtung hinzu (z.B. „Baseline", "Intervention", etc...)</target>
+      </trans-unit>
+      <trans-unit id="zXYDXxI" resname="gathered data:">
+        <source>gathered data:</source>
+        <target>gesammelte Daten:</target>
+      </trans-unit>
+      <trans-unit id="KlLxGvo" resname="Raw data per phase">
+        <source>Raw data per phase</source>
+        <target>Rohdaten pro Phase</target>
+      </trans-unit>
+      <trans-unit id="VcZRE4A" resname="Data categorization">
+        <source>Data categorization</source>
+        <target>Datenkategorisierung</target>
+      </trans-unit>
+      <trans-unit id="61ohqIC" resname="No phase">
+        <source>No phase</source>
+        <target>Keine Phase</target>
+      </trans-unit>
+      <trans-unit id="kTFZtnd" resname="Are you sure you  want to delete this phase?">
+        <source>Are you sure you want to delete this phase?</source>
+        <target>Sind Sie sicher, dass Sie diese Phase löschen wollen?</target>
+      </trans-unit>
+      <trans-unit id="TErZdc9" resname="Are you sure you want to delete this data?">
+        <source>Are you sure you want to delete this data?</source>
+        <target>Sind Sie sicher, dass Sie diese Daten löschen möchten?</target>
+      </trans-unit>
+      <trans-unit id="1XVNiDu" resname="Phase data">
+        <source>Phase data</source>
+        <target>Phasendaten</target>
+      </trans-unit>
+      <trans-unit id="769kNCf" resname="Measure imported with success!">
+        <source>Measure imported with success!</source>
+        <target>Maßnahme mit Erfolg importiert!</target>
+      </trans-unit>
+      <trans-unit id="OXSn8f7" resname="cant-delete-measure">
+        <source>cant-delete-measure</source>
+        <target>cant-delete-measure</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

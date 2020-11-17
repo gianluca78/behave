@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="M1_QPZE" resname="Click here to add a new observation.">
+        <source>Click here to add a new observation.</source>
+        <target>Klicken Sie hier, um eine neue Beobachtung hinzuzufügen.</target>
+      </trans-unit>
+      <trans-unit id="3JO8SJ8" resname="Click here to enable data collection. As long as it comes it's red, you can't do it!">
+        <source>Click here to enable data collection. As long as it comes it's red, you can't do it!</source>
+        <target>Klicken Sie hier, um die Datenerfassung zu aktivieren. Solange das Symbol rot ist, können keine Daten eingegeben werden!</target>
+      </trans-unit>
+      <trans-unit id="ZxaWl1J" resname="Click here to import a measure.">
+        <source>Click here to import a measure.</source>
+        <target>Klicken Sie hier, um eine Maßnahme zu importieren.</target>
+      </trans-unit>
+      <trans-unit id="wt_fGeR" resname="The students you are working on are displayed here.">
+        <source>The students you are working on are displayed here.</source>
+        <target>Hier werden die Schüler*innen angezeigt, mit denen Sie arbeiten.</target>
+      </trans-unit>
+      <trans-unit id="XiQeK8P" resname="In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.">
+        <source>In the BEHAVE application, everything begins with the insertion of a student. Click here to do that. Please remember NOT TO disclose personal information to identify the students.</source>
+        <target>In der BEHAVE-Anwendung beginnt alles mit dem Einfügen einer/ eines Schülerin/ Schülers. Klicken Sie hier, um mit dem Einfügen zu beginnen. Bitte denken Sie daran, keine persönlichen Informationen preiszugeben, die die/ den Schülerin/ Schüler identifizieren könnten.</target>
+      </trans-unit>
+      <trans-unit id="ymojhit" resname="Click here to edit data if you want to change something.">
+        <source>Click here to edit data if you want to change something.</source>
+        <target>Klicken Sie hier, um Daten zu bearbeiten, wenn Sie etwas ändern möchten.</target>
+      </trans-unit>
+      <trans-unit id="LKohQ0V" resname="Clicking on this icon will show you the list of the observations defined for a student.">
+        <source>Clicking on this icon will show you the list of the observations defined for a student.</source>
+        <target>Wenn Sie auf dieses Symbol klicken, wird Ihnen die Liste der Beobachtungen angezeigt, die für eine*n Schüler*in definiert wurden.</target>
+      </trans-unit>
+      <trans-unit id="aOqhq1V" resname="It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!">
+        <source>It can be helpful if you choose  to add medical information such as a diagnosed disorder or a specific medical condition. The behaviour you want to observe can be strongly influenced by it!</source>
+        <target>Es kann hilfreich sein, wenn Sie medizinische Informationen wie eine diagnostizierte Störung oder eine bestimmte Krankheit hinzufügen. Das Verhalten, das Sie beobachten möchten, kann stark davon beeinflusst werden!</target>
+      </trans-unit>
+      <trans-unit id="fIFLbMC" resname="If you need to remove the student data from the server please click here to delete it.">
+        <source>If you need to remove the student data from the server please click here to delete it.</source>
+        <target>Haben Sie einen Fehler gemacht oder möchten Sie, aus welchem Grund auch immer, die Daten der/ des Schülerin/ Schülers vom Server entfernen? Klicken Sie einfach hier, um sie zu löschen.</target>
+      </trans-unit>
+      <trans-unit id="gf3E2.1" resname="The general stats panel summarizes information about your activity on the BEHAVE application.">
+        <source>The general stats panel summarizes information about your activity on the BEHAVE application.</source>
+        <target>Das allgemeine Statistik-Panel fasst die Informationen über Ihre Aktivität in der BEHAVE-Anwendung zusammen.</target>
+      </trans-unit>
+      <trans-unit id="pLcqav3" resname="Here you can find the number of students you are working with.">
+        <source>Here you can find the number of students you are working with.</source>
+        <target>Hier finden Sie die Anzahl der Schüler*innen, mit denen Sie arbeiten.</target>
+      </trans-unit>
+      <trans-unit id="XdHdLE_" resname="The percentage of Categorised data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.">
+        <source>The percentage of Categorised data indicates how many data you associated to a data collection phase. When an observation is done, the system doesn't know a priori if data is taken during o baseline or an intervention. You have to do it manually to have maximum control over your data.</source>
+        <target>Der Prozentsatz der kategorisierten Daten gibt an, wie viele Daten Sie einer Datenerfassungsphase zugeordnet haben. Wenn eine Beobachtung durchgeführt wird, weiß das System nicht a priori, ob Daten während einer Basislinie oder eines Eingriffs erfasst werden. Sie müssen dies manuell tun, um maximale Kontrolle über Ihre Daten zu haben.</target>
+      </trans-unit>
+      <trans-unit id="lS7EkXh" resname="This box shows how many measures you have inserted.">
+        <source>This box shows how many measures you have inserted.</source>
+        <target>Dieses Feld zeigt an, wie viele Maßnahmen Sie eingefügt haben.</target>
+      </trans-unit>
+      <trans-unit id="0YmKpKZ" resname="The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.">
+        <source>The calendar reminds you the observations planned for today. Just click on one of the boxes to go to the data collection section.</source>
+        <target>Der Kalender erinnert Sie an die für heute geplanten Beobachtungen. Klicken Sie einfach auf eines der Kästchen, um zum Abschnitt Datensammlung zu gelangen.</target>
+      </trans-unit>
+      <trans-unit id="x0omzH9" resname="Here you can find observation data that has not yet been categorized.">
+        <source>Here you can find observation data that has not yet been categorized.</source>
+        <target>Hier finden Sie Beobachtungsdaten, die noch nicht kategorisiert wurden.</target>
+      </trans-unit>
+      <trans-unit id="cLy_2h8" resname="Click here to add a new observation phase.">
+        <source>Click here to add a new observation phase.</source>
+        <target>Klicken Sie hier, um eine neue Beobachtungsphase hinzuzufügen.</target>
+      </trans-unit>
+      <trans-unit id="isSqr5V" resname="By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.">
+        <source>By clicking here, you can compare two observation phases (for instance baseline and intervetion) and then evaluate your work to see if it decrease a negative behaviour or increase a positive behaviour.</source>
+        <target>Wenn Sie hier klicken, können Sie zwei Beobachtungsphasen (z.B. Baseline und Intervention) vergleichen und beurteilen, ob Ihre Arbeit zur Verminderung von negativem Verhalten, oder zur Erhöhung eines positiven Verhaltens geführt bzw. einen positiven Effekt gehabt hat oder nicht.</target>
+      </trans-unit>
+      <trans-unit id="57Y7Vfc" resname="Click here to edit the observation phase.">
+        <source>Click here to edit the observation phase.</source>
+        <target>Klicken Sie hier, um die Beobachtungsphase zu bearbeiten.</target>
+      </trans-unit>
+      <trans-unit id="kMHZVBM" resname="Click here to delete the phase.">
+        <source>Click here to delete the phase.</source>
+        <target>Klicken Sie hier, um die Phase zu löschen.</target>
+      </trans-unit>
+      <trans-unit id="iH83pvZ" resname="By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.">
+        <source>By clicking here, you will be able to see the data of each session of data that has been collected and to look at the relative scatter plot.</source>
+        <target>Wenn Sie hier klicken, können Sie die gesammelten Daten jeder Sitzung und das zugehörige Streudiagramm anzeigen.</target>
+      </trans-unit>
+      <trans-unit id="8JtgQoQ" resname="This section contains all the session data collected by observers">
+        <source>This section contains all the session data collected by observers</source>
+        <target>Dieser Abschnitt enthält alle von den Beobachtern gesammelten Sitzungsdaten</target>
+      </trans-unit>
+      <trans-unit id="IVmpsyi" resname="By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.">
+        <source>By clicking here, you can associate the data with a particular phase after selecting the check boxes next to the data.</source>
+        <target>Wenn Sie hier klicken, können Sie die Daten einer bestimmten Phase zuordnen, nachdem Sie die Kontrollkästchen neben den Daten aktiviert haben.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="8xda8S2" resname="Number item">
+        <source>Number item</source>
+        <target>Anzahl der Items</target>
+      </trans-unit>
+      <trans-unit id="UBIIukx" resname="The widget will support the creation of items with a numeric response">
+        <source>The widget will support the creation of items with a numeric response</source>
+        <target>Das Tool ist für die Erstellung von Elementen mit einer numerischen Antwort vorgesehen.</target>
+      </trans-unit>
+      <trans-unit id="VS_DNKV" resname="The following images show an example of the measure creation phase">
+        <source>The following images show an example of the measure creation phase</source>
+        <target>Die folgenden Bilder zeigen ein Beispiel für die Entstehungsphase der Maßnahme.</target>
+      </trans-unit>
+      <trans-unit id="2jDr8QI" resname="and what this produces in the data collection section">
+        <source>and what this produces in the data collection section</source>
+        <target>und was sie im Bereich der Datenerfassung produziert.</target>
+      </trans-unit>
+      <trans-unit id="fZ63rLE" resname="Close">
+        <source>Close</source>
+        <target>schließen</target>
+      </trans-unit>
+      <trans-unit id="n84I8pz" resname="Import items">
+        <source>Import items</source>
+        <target>Items importieren</target>
+      </trans-unit>
+      <trans-unit id="YsnG9J5" resname="In this field you can upload a measure from previously list of measures. In this way you will not have to re-enter the items and you can customize the items to your liking.">
+        <source>In this field you can upload a measure from previously list of measures. In this way you will not have to re-enter the items and you can customize the items to your liking.</source>
+        <target>In diesem Feld können Sie ei</target>
+      </trans-unit>
+      <trans-unit id="WdFsjsq" resname="Direct observation item">
+        <source>Direct observation item</source>
+        <target>Gegenstand der direkten Beobachtung</target>
+      </trans-unit>
+      <trans-unit id="s4bf65h" resname="The widget will measure an event, evaluating its frequency, its duration, or whether it occurs or does not occur during specific time periods.">
+        <source>The widget will measure an event, evaluating its frequency, its duration, or whether it occurs or does not occur during specific time periods.</source>
+        <target>Das Tool soll ein Phänomen messen/bewerten, indem es seine Häufigkeit, Dauer oder sein Auftreten bzw. Nichtauftreten über bestimmte Zeiträume bewertet. </target>
+      </trans-unit>
+      <trans-unit id="T8UqPEx" resname="Duration">
+        <source>Duration</source>
+        <target>Dauer</target>
+      </trans-unit>
+      <trans-unit id="QHGDEKn" resname="The following images shows an example of the direct item creation phase, selecting the type &quot;Duration recording&quot;">
+        <source>The following images shows an example of the direct item creation phase, selecting the type "Duration recording"</source>
+        <target>Die folgenden Bilder zeigen ein Beispiel für den Schritt der Erstellung des Items der direkten Beobachtung durch Auswahl des Typs "Aufzeichnungsdauer".</target>
+      </trans-unit>
+      <trans-unit id="FrZmjZg" resname="Frequency">
+        <source>Frequency</source>
+        <target>Frequenz</target>
+      </trans-unit>
+      <trans-unit id="7rgMn79" resname="The following images shows an example of the direct item creation phase, selecting the type &quot;Frequency&quot;">
+        <source>The following images shows an example of the direct item creation phase, selecting the type "Frequency"</source>
+        <target>Die folgenden Bilder zeigen ein Beispiel für den Schritt der Erstellung des Items der direkten Beobachtung durch Auswahl des Typs "Häufigkeit".</target>
+      </trans-unit>
+      <trans-unit id="XelsRIg" resname="Interval recording">
+        <source>Interval recording</source>
+        <target>Intervallaufzeichnung</target>
+      </trans-unit>
+      <trans-unit id="7U7tnGu" resname="The following images show an example of the direct observation item creation step, by selecting the &quot;interval recording&quot; type">
+        <source>The following images show an example of the direct observation item creation step, by selecting the "interval recording" type</source>
+        <target>Die folgenden Bilder zeigen ein Beispiel für den Schritt der Erstellung des Items der direkten Beobachtung durch Auswahl des Typs "Intervallaufzeichnung".</target>
+      </trans-unit>
+      <trans-unit id="nPn1Hx_" resname="Four Quadrant Diagram item">
+        <source>Four Quadrant Diagram item</source>
+        <target>Item des Vier-Quadranten-Diagramms</target>
+      </trans-unit>
+      <trans-unit id="WZXIw2S" resname="The widget will create a cartesian plane. The user has to select the point in the plane where he feels it belongs according to a predefined categories">
+        <source>The widget will create a cartesian plane. The user has to select the point in the plane where he feels it belongs according to a predefined categories</source>
+        <target>Das Widget erstellt eine kartesische Ebene. Der Benutzer muss den Punkt in der Ebene auswählen, an dem er glaubt, dass er zu einer vordefinierten Kategorie gehört</target>
+      </trans-unit>
+      <trans-unit id="yUTDElv" resname="Range item">
+        <source>Range item</source>
+        <target>Bereichsbasiertes Item</target>
+      </trans-unit>
+      <trans-unit id="mJU1noa" resname="The widget will create an input with a numeric value which must be no less than a given value, and no more than another given value">
+        <source>The widget will create an input with a numeric value which must be no less than a given value, and no more than another given value</source>
+        <target>Das Tool erzeugt eine Eingabe mit einem numerischen Wert, der nicht kleiner als ein gegebener Wert und nicht größer als ein anderer gegebener Wert sein darf.</target>
+      </trans-unit>
+      <trans-unit id="rPYQMJ4" resname="Text item">
+        <source>Text item</source>
+        <target>Item Text</target>
+      </trans-unit>
+      <trans-unit id="jyNRcBW" resname="The widget will create a textual input">
+        <source>The widget will create a textual input</source>
+        <target>Das Tool ist für die Erstellung eines Feldes für Textantworten vorgesehen.</target>
+      </trans-unit>
+      <trans-unit id="NOQ0Z_k" resname="Choice item">
+        <source>Choice item</source>
+        <target>Auswahl des Items</target>
+      </trans-unit>
+      <trans-unit id="54gz1bR" resname="The widget is aimed to create radio buttons and selects. Multiple selections of values are allowed">
+        <source>The widget is aimed to create radio buttons and selects. Multiple selections of values are allowed</source>
+        <target>Das Tool ist auf die Erstellung eines kartesischen Plans ausgerichtet. Der Benutzer muss den Punkt in der Ebene auswählen, der seine Position im Verhältnis zu den vordefinierten Kategorien am besten beschreibt.</target>
+      </trans-unit>
+      <trans-unit id="GG.PjJQ" resname="Checkboxes">
+        <source>Checkboxes</source>
+        <target>Kontrollkästchen</target>
+      </trans-unit>
+      <trans-unit id="b26Et7Y" resname="Dropdown list">
+        <source>Dropdown list</source>
+        <target>Auswahlliste</target>
+      </trans-unit>
+      <trans-unit id="suYP9Ye" resname="Dropdown list with multiple selection">
+        <source>Dropdown list with multiple selection</source>
+        <target>Auswahlliste mit Mehrfachauswahl</target>
+      </trans-unit>
+      <trans-unit id="D_Ygn3S" resname="Radio buttons">
+        <source>Radio buttons</source>
+        <target>Auswahlknöpfe</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

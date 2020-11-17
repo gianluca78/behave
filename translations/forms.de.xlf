@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="ibBe8pv" resname="Schedule observation dates">
+        <source>Schedule observation dates</source>
+        <target>Beobachtungsdaten planen</target>
+      </trans-unit>
+      <trans-unit id="WKzFEJ4" resname="Time range">
+        <source>Time range</source>
+        <target>Zeitspanne</target>
+      </trans-unit>
+      <trans-unit id="dn1qPff" resname="Days of week">
+        <source>Days of week</source>
+        <target>wöchentliche Wochentage</target>
+      </trans-unit>
+      <trans-unit id="2xjxf_U" resname="Sun">
+        <source>Sun</source>
+        <target>So</target>
+      </trans-unit>
+      <trans-unit id="9A1.Ufa" resname="Mon">
+        <source>Mon</source>
+        <target>Mo</target>
+      </trans-unit>
+      <trans-unit id="0es5sJv" resname="Tue">
+        <source>Tue</source>
+        <target>Di</target>
+      </trans-unit>
+      <trans-unit id="WDOfRd_" resname="Wed">
+        <source>Wed</source>
+        <target>Mi</target>
+      </trans-unit>
+      <trans-unit id="faESEu0" resname="Thu">
+        <source>Thu</source>
+        <target>Do</target>
+      </trans-unit>
+      <trans-unit id="Ztq0DOo" resname="Fri">
+        <source>Fri</source>
+        <target>Fr</target>
+      </trans-unit>
+      <trans-unit id=".etxtWn" resname="Sat">
+        <source>Sat</source>
+        <target>Sa</target>
+      </trans-unit>
+      <trans-unit id="n84I8pz" resname="Import items">
+        <source>Import items</source>
+        <target>Items importieren</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

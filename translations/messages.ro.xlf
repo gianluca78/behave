@@ -631,6 +631,18 @@
         <source>Italian</source>
         <target>Italiană</target>
       </trans-unit>
+      <trans-unit id=".h3cfbN" resname="Portuguese">
+        <source>Portuguese</source>
+        <target>Portugheză</target>
+      </trans-unit>
+      <trans-unit id=".h4cfbN" resname="Romanian">
+        <source>Romanian</source>
+        <target>Română</target>
+      </trans-unit>
+      <trans-unit id=".h5cfbN" resname="German">
+        <source>German</source>
+        <target>German</target>
+      </trans-unit>
       <trans-unit id="raf74TI" resname="You shall not pass">
         <source>You shall not pass</source>
         <target>Nu poți trece</target>
