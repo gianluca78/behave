@@ -12,7 +12,8 @@ Parker, R. I., Vannest, K. J., Davis, J. L., & Sauber, S. B. (2011). Combining n
 
 Disclaimer
 ----
-![BEHAVE project logo](https://www.behaveproject.eu/images/logobehave.png)   
-![Erasmus+ logo](https://eacea.ec.europa.eu/sites/eacea-site/files/logosbeneficaireserasmusright_en_0.jpg)    
+<img alt="BEHAVE project logo" src="https://www.behaveproject.eu/images/logobehave.png" width="18%" height="18%">
+<img alt="Erasmus+ logo" src="https://eacea.ec.europa.eu/sites/eacea-site/files/logosbeneficaireserasmusright_en_0.jpg" width="25%" height="25%">
+
 _The European Commission support for the production of this publication does not constitute an endorsement of the contents which reflects the views only of the authors, and the Commission cannot be held responsible for any use which may be made of the information contained therein_    
 
