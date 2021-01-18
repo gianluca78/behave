@@ -6,9 +6,9 @@ The BEHAVE application is one of the main results of the **BEHAVE project** (htt
 
 References
 ----
-Allison, D. B., & Gorman, B. S. (1993). Calculating effect sizes for meta-analysis: The case of the single case??? _Behaviour Research and Therapy_, 31(6), 621–631.\
-Horner, J. _rApache: Web application development with R and Apache._, 2012. URL http://www.rapache.net.\
-Parker, R. I., Vannest, K. J., Davis, J. L., & Sauber, S. B. (2011). Combining nonoverlap and trend for single-case research: Tau-u. _Behavior Therapy_, 42(2), 284–299.\
+Allison, D. B., & Gorman, B. S. (1993). Calculating effect sizes for meta-analysis: The case of the single case??? _Behaviour Research and Therapy_, 31(6), 621–631.    
+Horner, J. _rApache: Web application development with R and Apache._, 2012. URL http://www.rapache.net.    
+Parker, R. I., Vannest, K. J., Davis, J. L., & Sauber, S. B. (2011). Combining nonoverlap and trend for single-case research: Tau-u. _Behavior Therapy_, 42(2), 284–299.    
 
 Dislaimer
 ----
