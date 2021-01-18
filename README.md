@@ -10,7 +10,7 @@ Allison, D. B., & Gorman, B. S. (1993). Calculating effect sizes for meta-analys
 Horner, J. _rApache: Web application development with R and Apache._, 2012. URL http://www.rapache.net.    
 Parker, R. I., Vannest, K. J., Davis, J. L., & Sauber, S. B. (2011). Combining nonoverlap and trend for single-case research: Tau-u. _Behavior Therapy_, 42(2), 284–299.    
 
-Dislaimer
+Disclaimer
 ----
 ![BEHAVE project logo](https://www.behaveproject.eu/images/logobehave.png)   
 ![Erasmus+ logo](https://eacea.ec.europa.eu/sites/eacea-site/files/logosbeneficaireserasmusright_en_0.jpg)    
