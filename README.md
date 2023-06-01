@@ -4,6 +4,11 @@ The **BEHAVE application** is a tool which will help you to gather data and make
 The BEHAVE application is based on a client-server architecture. The clients (web browsers) are connected to the Apache/httpd application server running the PHP framework Symfony on top of a MySQL and a CouchDb databases. The client frontend has been developed using the Bootstrap framework that make it easier to develop responsive application adaptable to any screen size. The module RApache (Horner, 2012) is installed on the Apache web server to analyse the datasets collected by the users.   
 The BEHAVE application is one of the main results of the **BEHAVE project** (http://www.behaveproject.eu) funded in the framework of an ERASMUS+ KA2 Strategic Partnership for school education project (2017-1-IT02-KA201-036540). 
 
+Developers
+----
+* Main developer: Gianluca Merlo
+* Other developers: Alberto Mirisola, Davide Taibi, Giuseppe Chiazzese
+
 References
 ----
 Allison, D. B., & Gorman, B. S. (1993). Calculating effect sizes for meta-analysis: The case of the single case??? _Behaviour Research and Therapy_, 31(6), 621–631.    
@@ -13,7 +18,7 @@ Parker, R. I., Vannest, K. J., Davis, J. L., & Sauber, S. B. (2011). Combining n
 Disclaimer
 ----
 <img alt="BEHAVE project logo" src="https://www.behaveproject.eu/images/logobehave.png" width="18%" height="18%">
-<img alt="Erasmus+ logo" src="https://eacea.ec.europa.eu/sites/eacea-site/files/logosbeneficaireserasmusright_en_0.jpg" width="25%" height="25%">
+<img alt="Erasmus+ logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Erasmus%2B_Logo.svg" width="25%" height="25%">
 
 _The European Commission support for the production of this publication does not constitute an endorsement of the contents which reflects the views only of the authors, and the Commission cannot be held responsible for any use which may be made of the information contained therein_    
 
